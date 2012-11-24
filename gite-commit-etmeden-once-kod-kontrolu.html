@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Halit Alptekin Personal Blog - Git&#8217;e Commit Etmeden Önce Kod&nbsp;Kontrolü</title>
+    <meta name="description" content="Python Kodlarınızı Commit Etmeden Önce Kontrol Etme">
+    <meta name="keywords" content="git, github, git pre-commit, pep, pyflakes, python, hdblog">
+    <meta name="author" content="halit">
+    <meta name="robots" content="index, follow, all"/>
+
+    <!-- Le HTML5 shim, for IE6-8 support of HTML elements -->
+    <!--[if lt IE 9]>
+    <script src="./theme/html5.js"></script>
+    <![endif]-->
+
+    <!-- Le styles -->
+    <link href="./theme/bootstrap.min.css" rel="stylesheet">
+    <link href="./theme/bootstrap.min.responsive.css" rel="stylesheet">
+    <link href="./theme/local.css" rel="stylesheet">
+    <link href="./theme/pygments.css" rel="stylesheet">
+
+</head>
+
+<body>
+
+<div class="navbar">
+    <div class="navbar-inner">
+    <div class="container">
+
+         <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+             <span class="icon-bar"></span>
+             <span class="icon-bar"></span>
+             <span class="icon-bar"></span>
+         </a>
+
+        <a class="brand" href=".">Halit Alptekin Personal Blog</a>
+
+        <div class="nav-collapse">
+        <ul class="nav">
+        
+            
+        <li><a href="./pages/about-me.html">About Me</a></li>
+	    <li><a href="./pages/contact.html">Contact</a></li>
+        </ul>
+        </div>
+        
+    </div>
+    </div>
+</div>
+
+<div class="container">
+    <div class="content">
+    <div class="row">
+
+        <div class="span9">
+        
+    <div class='article'>
+        <div class="content-title">
+            <h1>Git&#8217;e Commit Etmeden Önce Kod&nbsp;Kontrolü</h1>
+            Sep 14, 2012
+
+
+by <a class="url fn" href="./author/halit.html">halit</a>
+ 
+
+in <a href="./category/programlama.html">programlama</a>
+
+ 
+    tagged <a href="./tag/git.html">git</a> <a href="./tag/github.html">github</a> <a href="./tag/git-pre-commit.html">git pre-commit</a> <a href="./tag/pep.html">pep</a> <a href="./tag/pyflakes.html">pyflakes</a> <a href="./tag/python.html">python</a> 
+
+        </div>
+	
+        <div><p>Git sistemi programcılar için gerçekten bulunmaz bir nimet. Hem yazdığınız hemde ilerde yazacağınız kodlar için size birçok olanak sağlıyor. Örneğin çok kullanıcılı bir uygulamaya başlayacaksanız herkes gun içinde yazdığı kodları birbirine mail ile gondermesi artık kabul edilebilir birşey değil. Bunun için versiyon kontrol sistemleri var. Tabi en bilinenleri de git ve svn. Svn kullanıyorsanız google code size ucretsiz bir alan sağlayacaktır. Eğer git kullanıyorsanız da github aynı işi gormekte. Tabi sadece aynı işi gormekle de kalmıyor çok fazla yenilik&nbsp;getiriyor.</p>
+<p><a href="http://www.flickr.com/photos/zerok/2981864585/" title="Some books are just great by zerok, on Flickr"><img alt="Some books are just great" src="http://farm4.staticflickr.com/3284/2981864585_0ef831e73f_z.jpg" /></a></p>
+<p>Benim git sisteminde son farkettiğim bir yenilikde commit oncesinde işlem belirtme. Yani siz kodlarınızı commit(işleme) etmeden once belirttiğiniz kodları sistemde çalıştırabiliyorsunuz. Aklıma hemen bu konuda kullanabileceğim guzel bir uygulama geldi. Pyflakes ve Pylint gibi Python uygulamaları yazdığınız kodları satır satır <span class="caps">PEP</span> kurallarına gore inceliyor. Gereksiz bulduğu satırlar veya kod parçaları varsa bunları size bildiriyor. Ben de bu uygulamaları commit etmeden hemen once çalıştırırsam kodlaırmdaki eksiklikleri gorurum ve duzeltene kadar uğraşırım diye duşundum. Birazcık araştırmayla <strong>.git/hooks/pre-commit</strong> dosyasının tam olarak yapmak istediğime yaradığını&nbsp;oğrendim.</p>
+<p>Öncelikle pyflakes&#8217;in nasıl çalıştığını bilmemiz lazım. Bunun için bilgisayarımıza&nbsp;kuralım.</p>
+<div class="codehilite"><pre><span class="n">sudo</span> <span class="n">pip</span> <span class="n">install</span> <span class="n">flake8</span>
+</pre></div>
+
+
+<p>Şimdi de bir hayli çarpık bir kod yazalım. İçerisinde çok fazla hata ve eksiklik olsun. Adını ben sacma.py&nbsp;koydum.</p>
+<div class="codehilite"><pre><span class="c">#!/usr/bin/python</span>
+
+<span class="kn">import</span> <span class="nn">sys</span><span class="o">,</span> <span class="nn">string</span><span class="o">,</span> <span class="nn">random</span>
+
+<span class="k">def</span> <span class="nf">sallamasyon</span><span class="p">()</span>
+  <span class="n">kelimeler</span> <span class="o">=</span> <span class="n">string</span><span class="o">.</span><span class="n">uppercase</span>
+    <span class="k">print</span> <span class="s">&quot;kelime gonder: &quot;</span><span class="o">+</span><span class="n">random</span><span class="o">.</span><span class="n">choice</span><span class="p">(</span><span class="n">letters</span><span class="p">)</span>
+    <span class="k">print</span> <span class="o">---</span>
+
+<span class="n">sallamasyon</span><span class="p">()</span>
+</pre></div>
+
+
+<p>Şimdi bu yazdığımız kodu test edelim. Bunun için aşağıdaki komut&nbsp;yeterlidir.</p>
+<div class="codehilite"><pre><span class="n">flake8</span> <span class="n">sacma</span><span class="o">.</span><span class="n">py</span>
+</pre></div>
+
+
+<p>Komutumuzun çıktısı aşağıdaki gibi&nbsp;olacaktır.</p>
+<div class="codehilite"><pre><span class="n">sacma</span><span class="o">.</span><span class="n">py</span><span class="p">:</span><span class="mi">5</span><span class="p">:</span> <span class="n">invalid</span> <span class="n">syntax</span>
+<span class="k">def</span> <span class="nf">sallamasyon</span><span class="p">()</span>
+                 <span class="o">^</span>
+<span class="n">sacma</span><span class="o">.</span><span class="n">py</span><span class="p">:</span><span class="mi">3</span><span class="p">:</span><span class="mi">11</span><span class="p">:</span> <span class="n">E401</span> <span class="n">multiple</span> <span class="n">imports</span> <span class="n">on</span> <span class="n">one</span> <span class="n">line</span>
+<span class="n">sacma</span><span class="o">.</span><span class="n">py</span><span class="p">:</span><span class="mi">5</span><span class="p">:</span><span class="mi">1</span><span class="p">:</span> <span class="n">E302</span> <span class="n">expected</span> <span class="mi">2</span> <span class="n">blank</span> <span class="n">lines</span><span class="p">,</span> <span class="n">found</span> <span class="mi">1</span>
+<span class="n">sacma</span><span class="o">.</span><span class="n">py</span><span class="p">:</span><span class="mi">6</span><span class="p">:</span><span class="mi">3</span><span class="p">:</span> <span class="n">E111</span> <span class="n">indentation</span> <span class="ow">is</span> <span class="ow">not</span> <span class="n">a</span> <span class="n">multiple</span> <span class="n">of</span> <span class="n">four</span>
+<span class="n">sacma</span><span class="o">.</span><span class="n">py</span><span class="p">:</span><span class="mi">6</span><span class="p">:</span><span class="mi">3</span><span class="p">:</span> <span class="n">E113</span> <span class="n">unexpected</span> <span class="n">indentation</span>
+<span class="n">sacma</span><span class="o">.</span><span class="n">py</span><span class="p">:</span><span class="mi">7</span><span class="p">:</span><span class="mi">30</span><span class="p">:</span> <span class="n">E701</span> <span class="n">multiple</span> <span class="n">statements</span> <span class="n">on</span> <span class="n">one</span> <span class="n">line</span> <span class="p">(</span><span class="n">colon</span><span class="p">)</span>
+<span class="n">sacma</span><span class="o">.</span><span class="n">py</span><span class="p">:</span><span class="mi">7</span><span class="p">:</span><span class="mi">16</span><span class="p">:</span> <span class="n">E702</span> <span class="n">multiple</span> <span class="n">statements</span> <span class="n">on</span> <span class="n">one</span> <span class="n">line</span> <span class="p">(</span><span class="n">semicolon</span><span class="p">)</span>
+<span class="n">sacma</span><span class="o">.</span><span class="n">py</span><span class="p">:</span><span class="mi">7</span><span class="p">:</span><span class="mi">5</span><span class="p">:</span> <span class="n">E113</span> <span class="n">unexpected</span> <span class="n">indentation</span>
+<span class="n">sacma</span><span class="o">.</span><span class="n">py</span><span class="p">:</span><span class="mi">7</span><span class="p">:</span><span class="mi">16</span><span class="p">:</span> <span class="n">E231</span> <span class="n">missing</span> <span class="n">whitespace</span> <span class="n">after</span> <span class="s">&#39;;&#39;</span>
+<span class="n">sacma</span><span class="o">.</span><span class="n">py</span><span class="p">:</span><span class="mi">7</span><span class="p">:</span><span class="mi">37</span><span class="p">:</span> <span class="n">E231</span> <span class="n">missing</span> <span class="n">whitespace</span> <span class="n">after</span> <span class="s">&#39;;&#39;</span>
+<span class="n">sacma</span><span class="o">.</span><span class="n">py</span><span class="p">:</span><span class="mi">7</span><span class="p">:</span><span class="mi">12</span><span class="p">:</span> <span class="n">E225</span> <span class="n">missing</span> <span class="n">whitespace</span> <span class="n">around</span> <span class="n">operator</span>
+<span class="n">sacma</span><span class="o">.</span><span class="n">py</span><span class="p">:</span><span class="mi">7</span><span class="p">:</span><span class="mi">33</span><span class="p">:</span> <span class="n">E225</span> <span class="n">missing</span> <span class="n">whitespace</span> <span class="n">around</span> <span class="n">operator</span>
+</pre></div>
+
+
+<p>Ne kadar da guzel ve temiz bir şekilde uyarıyor değil mi? Sıfır hata verene kadar duzeltirseniz sizin için çok faydalı&nbsp;olur.</p>
+<p>Şimdi de bu işlemi her commit oncesi yapmasını sağlayalım. Bunun için proje klasorumuzdeki <strong>.git/hooks/pre-commit</strong> dosyasının içine bunları ekleyip kaydediyoruz. (.sample uzantılısında nasıl kullanacağınıza dair guzel ornekler&nbsp;var)</p>
+<div class="codehilite"><pre><span class="c">#!/bin/sh</span>
+
+<span class="nv">flake8</span><span class="o">=</span><span class="k">$(</span>which flake8<span class="k">)</span>
+
+<span class="k">if</span> <span class="o">[</span> -z <span class="s2">&quot;$flake8&quot;</span> <span class="o">]</span>; <span class="k">then</span>
+<span class="nb">echo</span> <span class="s2">&quot;Flake8 yuklu degil.Lutfen once kurunuz.&quot;</span>
+    <span class="nb">exit </span>1
+<span class="k">fi</span>
+
+<span class="nv"><span class="caps">FILES</span></span><span class="o">=</span><span class="k">$(</span>git diff --cached --name-only --diff-filter<span class="o">=</span><span class="caps">ACM</span> | grep -e .py<span class="nv">$)</span>
+<span class="k">if</span> <span class="o">[</span> -n <span class="s2">&quot;$<span class="caps">FILES</span>&quot;</span> <span class="o">]</span>; <span class="k">then</span>
+flake8 --ignore<span class="o">=</span>E501 <span class="nv">$<span class="caps">FILES</span></span>
+<span class="k">fi</span>
+</pre></div>
+
+
+<p>Şimdi de bu yazdığımız kodun olduğu dizinde sırayla aşağıdaki komutları girelim. Eğer ilk başta aldığımız hatayı alırsanız başarıyla çalışıyor&nbsp;demektir.</p>
+<div class="codehilite"><pre><span class="n">git</span> <span class="n">init</span>
+<span class="n">git</span> <span class="n">add</span> <span class="n">sacma</span><span class="o">.</span><span class="n">py</span>
+<span class="n">git</span> <span class="n">commit</span> <span class="o">-</span><span class="n">m</span> <span class="s">&quot;sacma commit&quot;</span>
+</pre></div>
+
+
+<p>Peki bunun size nasıl bir faydası olur? Öncelikle Python&#8217;un bir guzel ve temiz kod yazma sanatı olduğunu hatırlatayım. Bu sanatın da <strong><span class="caps">PEP</span></strong> adında çok guzel kuralları var. Uyup uymamak sizin elinizde. Ama pitonik kod yazmak için bu kurallara uymak zorunda olduğunuzu unutmayın. Ayrıcana ne zararı olabilir ki? Yaptığınız hataları gosteriyor, gereksiz değişkenleri, kullanılmamış modulleri belirtiyor. Bana gore başucu uygulamanız&nbsp;olsun.</p>
+<p><strong>Pyflakes</strong> yerine <strong>Pylint</strong>&#8216;i de deneyebilirsiniz.<strong>Pylint</strong> biraz daha derin sonuçlar çıkarıyor. <strong>Pyflakes</strong> ise direk sonuç odaklı&nbsp;oluyor.</p></div>
+	
+        <hr>
+        <div class="addthis_toolbox addthis_default_style addthis_32x32_style">
+            <a class="addthis_button_preferred_1"></a>
+            <a class="addthis_button_preferred_2"></a>
+            <a class="addthis_button_preferred_3"></a>
+            <a class="addthis_button_preferred_4"></a>
+            <a class="addthis_button_preferred_5"></a>
+            <a class="addthis_button_preferred_6"></a>
+            <a class="addthis_button_preferred_7"></a>
+            <a class="addthis_button_preferred_8"></a>
+            <a class="addthis_button_preferred_9"></a>
+            <a class="addthis_button_preferred_10"></a>
+            <a class="addthis_counter addthis_bubble_style"></a>
+        </div>
+        <script type="text/javascript" src="http://s7.addthis.com/js/250/addthis_widget.js#pubid=ra-504c6d593daec57a"></script>
+        <hr>   	   
+        <h2>Comments</h2>
+	
+	
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+    var disqus_shortname = 'halitalptekin'; 
+
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+    </div>
+
+        </div>
+        
+        <div class="span3">
+
+            <div class="well" style="padding: 8px 0; background-color: #FBFBFB;">
+            <ul class="nav nav-list">
+                <li class="nav-header"> 
+                Site
+                </li>
+            
+                <li><a href="./archives.html">Archives</a>
+                <li><a href="./tags.html">Tags</a>
+                <li><a href="./feeds/all.atom.xml" rel="alternate">Atom feed</a></li>
+                
+                <li><a href="./feeds/all.rss.xml" rel="alternate">RSS feed</a></li>
+                
+                 <li><a href="./sitemap.xml">Sitemap</a>
+            </ul>
+            </div>
+
+
+            
+            <div class="well" style="padding: 8px 0; background-color: #FBFBFB;">
+            <ul class="nav nav-list">
+                <li class="nav-header"> 
+                Categories
+                </li>
+                
+                
+                <li><a href="./category/tasarim.html">tasarim</a></li>
+                
+                <li><a href="./category/server.html">server</a></li>
+                
+                <li><a href="./category/python.html">python</a></li>
+                
+                <li><a href="./category/programlama.html">programlama</a></li>
+                
+                <li><a href="./category/linux.html">linux</a></li>
+                
+                <li><a href="./category/kisisel.html">kisisel</a></li>
+                
+                <li><a href="./category/internet.html">internet</a></li>
+                
+                <li><a href="./category/guvenlik.html">guvenlik</a></li>
+                
+                <li><a href="./category/genel.html">genel</a></li>
+                
+                <li><a href="./category/eglence.html">eglence</a></li>
+                
+                <li><a href="./category/django.html">django</a></li>
+                
+                <li><a href="./category/arduino.html">arduino</a></li>
+                                   
+            </ul>
+            </div>
+            
+
+
+            
+            <div class="well" style="padding: 8px 0; background-color: #FBFBFB;">
+            <ul class="nav nav-list">
+                <li class="nav-header"> 
+                Links
+                </li>
+            
+            
+                <li><a href="http://www.google.com">Google</a></li>
+            
+                <li><a href="http://www.python.org">Python</a></li>
+            
+            </ul>
+            </div>
+            
+
+
+            
+            <div class="social">
+            <div class="well" style="padding: 8px 0; background-color: #FBFBFB;">
+            <ul class="nav nav-list">
+                <li class="nav-header"> 
+                Social
+                </li>
+           
+                
+                <li><a href="http://twitter.com/halitalptekin">twitter</a></li>
+                
+                <li><a href="http://github.com/halitalptekin">github</a></li>
+                
+                <li><a href="http://stackoverflow.com/users/1151618/halit-alptekin">stackoverflow</a></li>
+                
+                <li><a href="http://tr.linkedin.com/in/halitalptekin">linkedin</a></li>
+                
+            </ul>
+            </div>
+            </div>
+            
+
+            
+            <div class="well" style="padding: 8px 0; background-color: #FBFBFB;">
+            <ul class="nav nav-list">
+                <li class="nav-header"> 
+                Ads
+                </li>
+
+                
+                <li><a href="http://www.tamindir.com" title="Program Indir"><img src="/media/reklam/tamindir.jpg" alt="Tamindir" title="Program Indir"></a>
+                </li>
+                
+                <li><a href="http://www.tatilbuldur.com" title="TatilBudur"><img src="/media/reklam/tatilbudur.png" alt="TatilBudur" title="TatilBudur"></a>
+                </li>
+                
+            </ul>
+            </div>
+            
+
+        </div>  
+    </div> 
+    </div> 
+
+<footer>
+	<hr>
+	<p><a href='http://www.halitalptekin.com'>Halit Alptekin Personal Blog</a> &copy; 2012</p>
+</footer>
+
+</div> <!-- /container -->
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+<script src="http://twitter.github.com/bootstrap/assets/js/bootstrap-collapse.js"></script>
+
+</body>
+</html>

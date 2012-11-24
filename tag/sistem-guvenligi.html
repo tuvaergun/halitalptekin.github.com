@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Halit Alptekin Personal Blog</title>
+    <meta name="description" content="Programming and Life Blog Of Halit Alptekin. Karadeniz Technical University Computer Engineering Student.">
+    <meta name="keywords" content="programlama, blog, personal blog, linux, python, django, php, bootstrap, seo, bilgisayar muhendisligi, ktu, karadeniz teknik universitesi, programming">
+    <meta name="author" content="halit">
+    <meta name="robots" content="index, follow, all"/>
+
+    <!-- Le HTML5 shim, for IE6-8 support of HTML elements -->
+    <!--[if lt IE 9]>
+    <script src=".././theme/html5.js"></script>
+    <![endif]-->
+
+    <!-- Le styles -->
+    <link href=".././theme/bootstrap.min.css" rel="stylesheet">
+    <link href=".././theme/bootstrap.min.responsive.css" rel="stylesheet">
+    <link href=".././theme/local.css" rel="stylesheet">
+    <link href=".././theme/pygments.css" rel="stylesheet">
+
+</head>
+
+<body>
+
+<div class="navbar">
+    <div class="navbar-inner">
+    <div class="container">
+
+         <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+             <span class="icon-bar"></span>
+             <span class="icon-bar"></span>
+             <span class="icon-bar"></span>
+         </a>
+
+        <a class="brand" href="../.">Halit Alptekin Personal Blog</a>
+
+        <div class="nav-collapse">
+        <ul class="nav">
+        
+            
+        <li><a href=".././pages/about-me.html">About Me</a></li>
+	    <li><a href=".././pages/contact.html">Contact</a></li>
+        </ul>
+        </div>
+        
+    </div>
+    </div>
+</div>
+
+<div class="container">
+    <div class="content">
+    <div class="row">
+
+        <div class="span9">
+                
+
+        
+
+
+
+    <div class='article'>
+        <div class="content-title">
+            <a href=".././guvenlik-ile-ilgili-python-araclari.html"><h1>Güvenlik İle İlgili Python&nbsp;Araçları</h1></a>
+            Aug 17, 2012
+
+
+by <a class="url fn" href=".././author/halit.html">halit</a>
+ 
+
+in <a href=".././category/python.html">python</a>
+
+ 
+    tagged <a href=".././tag/ceh.html">ceh</a> <a href=".././tag/etik-hacker.html">etik hacker</a> <a href=".././tag/python.html">python</a> <a href=".././tag/python-araclari.html">python araçları</a> <a href=".././tag/reverse-engineering.html">reverse engineering</a> <a href=".././tag/sistem-guvenligi.html">sistem güvenliği</a> 
+ 
+        </div>
+        
+        <div><p>Python akla hayale gelemeyecek kadar çok alanda kullanılıyor.Bunların arasında bilimsel araştırmalardan tutun da marsa gonderilen robotun test aşamlarında kullanılmasına kadar birçok alanda Python&#8217;a denk gelebilirsiniz.benimde uzun suredir severek her kutuphanesini frameworkunu kullandığım bu dilin aktif olduğu alanlardan biriside kesinlikle guvenliktir.Eğer sizde sistem guvenliği,tersine muhendislik,guvenlik araştırmaları gibi konular ile yakından ilgili iseniz Python&#8217;da sizin için birçok araç bulunmakta.Bir sitede gorduğum bu harika listeden eminim ihtiyaç sahipleri&nbsp;faydalanacaktır.</p>
+<p><a href="http://www.flickr.com/photos/dmguz/2554899459/" title="Certified Ethical Hacker by dmguz, on Flickr"><img alt="Certified Ethical Hacker" src="http://farm4.staticflickr.com/3025/2554899459_60bc2aa0e3_z.jpg" /></a></p>
+<p>Aşağıdaki araçların çoğu python ile yazılmış.Diğer kısımları ise C kutuphanelerini pythonda kullanmanız için yazılmışlar.Eminim beyaz şapkalı guvenlik uzmanlarının içine çok fazla&nbsp;yarayacaktır.</p>
+<p><strong>Ağ</strong><br />
+<a href="http://secdev.org/projects/scapy">Scapy</a> - ağ paketlerini gonderme, dinleme ve işleme. İnteraktif olarak veya kutuphane olarak kullanılabilir.<br />
+<a href="http://code.google.com/p/pypcap/">pycap</a>, <a href="http://oss.coresecurity.com/projects/pcapy.html">Pcapy</a> ve <a href="http://pylibpcap.sourceforge.net/">pylibpcap</a> - libpcap için çeşitli Python bağlayıcıları<br />
+<a href="http://code.google.com/p/dpkt/">dpkt</a> - hızlı, basit paket yaratma parse etme, temel <span class="caps">TCP</span>/<span class="caps">IP</span> protokollerinin tanımlarına sahip<br />
+<a href="http://oss.coresecurity.com/projects/impacket.html">Impacket</a> - Ağ paketleri yaratma ve decode etme. <span class="caps">NMB</span> ve <span class="caps">SMB</span> gibi yuksek-seviye protokoller için desteği de var.<br />
+<a href="http://jon.oberheide.org/pynids/">pynids</a> - dinleme, <span class="caps">IP</span> defragmentation, <span class="caps">TCP</span> stream tekrar birleştirme ve port tarama tespiti sunan libnids wrapper<br />
+<a href="http://dirtbags.net/py-pcap/">Dirtbags py-pcap</a> - libpcap olmadan pcap dosyalarını okuma<br />
+<a href="http://monkey.org/%7Ejose/software/flowgrep/">flowgrep</a> - regular expression kullanarak paket yuklerine grep<br />
+<a href="http://code.google.com/p/httplib2/">httplib2</a> - Diğer <span class="caps">HTTP</span> kutuphanelerinde eksik olan çok sayıda ozelliğe sahip kapsamlı bir <span class="caps">HTTP</span> istemci kutuphanesi<br />
+<a href="http://code.google.com/p/knock/">Knock Subdomain Scan</a> - hedef bir alandaki alt alanları bir kelime listesi kullanarak listeler<br />
+<a href="https://bitbucket.org/IntrepidusGroup/mallory">Mallory</a> - man-in-the-middle proxy<br />
+<a href="http://mitmproxy.org/">mitmproxy</a> - <span class="caps">SSL</span> destekli, mitm proxy. Konsol arayuzunde trafik akışı geçiş anında incelenip&nbsp;değiştirilebilir.</p>
+<p><strong>Debug ve reverse engineering</strong><br />
+<a href="http://code.google.com/p/paimei">Paimei</a> - Reverse engineering framework, <a href="http://pedram.redhive.com/PyDbg/">PyDBG</a>, <span class="caps">PIDA</span>, pGRAPH&#8217;ı içeriyor<br />
+<a href="http://www.immunityinc.com/products-immdbg.shtml">Immunity Debugger</a> - script destekli grafik arayuz ve komut satırı debugger<br />
+<a href="http://d-dome.net/idapython/">IDAPython</a> - Python programlama dili ile entegre olup script&#8217;lerin <span class="caps">IDA</span> Pro içinde çalıştırılabilmesini sağlayan bir <span class="caps">IDA</span> Pro plugini.<br />
+<a href="http://code.google.com/p/pyemu/">PyEMU</a> - <span class="caps">IA</span>-32 emulator, zararlı yazılım analizinde kullanışlı<br />
+<a href="http://code.google.com/p/pefile/">pefile</a> - Portable Executable dosyalarını okuma ve çalışma<br />
+<a href="http://dkbza.org/pydasm.html">pydasm</a> - <a href="http://www.nologin.org/main.pl?action=codeView&amp;codeId=49&amp;">libdasm</a> x86 disassembling kutuphanesi için Python arabirimi<br />
+<a href="http://pydbgeng.sourceforge.net/">PyDbgEng</a> - Microsoft Windows Debugnig Engine için Python wrapper<br />
+<a href="http://oss.coresecurity.com/projects/uhooker.htm">uhooker</a> - <span class="caps">DLL</span>&#8217;ler içinden yapılan <span class="caps">API</span> çağrılarını yakalama ve çalıştırılabilir dosyanın hafızasında istenilen adresler&#8230;<br />
+<a href="http://www.ragestorm.net/distorm/">diStorm64</a> - <span class="caps">AMD64</span> için dissambler kutuphanesi, <span class="caps">BSD</span> lisanslı<br />
+<a href="http://bitbucket.org/haypo/python-ptrace/wiki/Home">python-ptrace</a> - ptrace kullanan debugger (işlemleri trace için Linux, <span class="caps">BSD</span> ve Darwin sistem&nbsp;çağrısı)</p>
+<p><strong>Fuzzing</strong><br />
+<a href="http://code.google.com/p/sulley/">Sulley</a> - Genişletilebilir bileşenlere sahip fuzzer geliştirme ve fuzz test framework<br />
+<a href="http://peachfuzz.sourceforge.net/">Peach Fuzzing Platform</a> - Generation ve mutation tabanlı fuzzing için genişletilebilir fuzzing framework<br />
+<a href="http://antiparser.sourceforge.net/">antiparser</a> - fuzz test ve fault injection <span class="caps">API</span><br />
+<a href="http://theartoffuzzing.com/"><span class="caps">TAOF</span></a>, <a href="http://theartoffuzzing.com/joomla/index.php?option=com_content&amp;task=view&amp;id=21&amp;Itemid=40">ProxyFuzz</a> ile, bir mitm non-deterministic network fuzzer<br />
+<a href="http://untidy.sourceforge.net/">untidy</a> - Genel amaçlı <span class="caps">XML</span> fuzzer<br />
+<a href="http://www.powerfuzzer.com/">Powerfuzzer</a> - Tamamen otomatikleştirilebilen ve ozelleştirilebilen we fuzzer (<span class="caps">HTTP</span> protoklu tabanlı uygulama fuzzer)<br />
+<a href="https://www.isecpartners.com/file_fuzzers.html">FileP</a> - Dosya fuzzer. Kaynak dosya listesinden mutate edilmiş dosyalar yaratır ve bunları harici bir programa verir.<br />
+<span class="caps">SMUDGE</span><br />
+<a href="http://www.packetstormsecurity.org/fuzzer/mistress.rar">Mistress</a> - Önceden belirlenmiş pattern&#8217;lere gore dosya formatları ve bozuk veriye sahip protokol testi<br />
+<a href="https://www.isecpartners.com/fuzzbox.html">Fuzzbox</a> - çoklu-codec medya fuzzer<br />
+<a href="https://www.isecpartners.com/forensic_fuzzing_tools.html">Forensic Fuzzing Araçları</a> - fuzzed dosyalar, fuzzed dosya sistemleri yaratıp forensic araçlarının ve inceleme sistemlerinin test edilmesi<br />
+<a href="https://www.isecpartners.com/windows_ipc_fuzzing_tools.html">Windows <span class="caps">IPC</span> Fuzzing Araçları</a> - Windows Interprocess Communication mekanizmalarını kullanan uygulamaları fuzz etmekte kullanılan araçlar<br />
+<a href="https://www.isecpartners.com/wsbang.html">WSBang</a> - <span class="caps">SOAP</span> tabanlı web servislerinin otomatik guvenlik testi<br />
+<a href="http://construct.wikispaces.com/">Construct</a> - Binary veya textual veri yapılarını parse ve inşa. Kendi veri yapılarınızı tanımlayın.<br />
+<a href="http://sites.google.com/site/felipeandresmanzano/fuzzer.py?attredirects=0">fuzzer.py (feliam)</a> - Felipe Andres Manzano&#8217;dan basit bir fuzzer<br />
+<a href="https://bitbucket.org/haypo/fusil/wiki/Home">Fusil</a> - Fuzzing programları yazmak için python&nbsp;kutuphanesi</p>
+<p><strong>Web</strong><br />
+<a href="https://www.isecpartners.com/proxmon.html">ProxMon</a> - Proxy log&#8217;larını işleyip bulunan problemleri raporlar<br />
+<a href="https://www.isecpartners.com/wsmap.html">WSMap</a> - web servis endpoint&#8217;leri bulmada ve dosyaları keşfetmede<br />
+<a href="http://twill.idyll.org/">Twill</a> - Webe komut satırından bakın. Otomatik webn testi destekliyor.<br />
+<a href="http://trac.getwindmill.com/">Windmill</a> - Web uygulamanızı otomatik olarak test ve debug etmenizi sağlayan web test aracı<br />
+<a href="http://funkload.nuxeo.org/">FunkLoad</a> - Fonksiyonel ve yuk&nbsp;testi</p>
+<p><strong>Forensic</strong><br />
+<a href="https://www.volatilesystems.com/default/volatility/">Volatility</a> - Volatile hafıza (<span class="caps">RAM</span>) orneklerinden dijital bulgular çıkarma<br />
+<a href="http://sandman.msuiche.net/">SandMan</a> - Windows surumune bağlı olmadan hibernation dosyasını okuma<br />
+<a href="http://code.google.com/p/libforensics/">LibForensics</a> - Dijital forensic uygulamaları geliştirmek için kutuphane<br />
+<a href="http://mark0.net/code-tridlib-e.html">TrIDLib</a> - Dosya tiplerini binary imzalarından tanıma. Artık Python bağlantısı da&nbsp;içeriyor.</p>
+<p><strong>Zararlı Yazılım Analizi</strong><br />
+<a href="http://code.google.com/p/pyew/">pyew</a> - komut satırı hexadecimal editor ve disassembler, temelde zararlı yazılım testi için<br />
+<a href="http://www.decalage.info/exefilter">Exefilter</a> - e-postalardaki, web sayfalarındaki veya dosyalardaki dosya formatlarını filreleme. Çoğu genel dosya tipini tespit ediyor ve aktif içeriği çıkarabiliyor.<br />
+<a href="http://xael.org/norman/python/pyclamav/index.html">pyClamAV</a> - Python yazılımınıza virus tespit yetenekleri ekleyin<br />
+<a href="https://code.google.com/p/jsunpack-n/">jsunpack-n</a> - Genel JavaScript unpacker: browser fonksiyonlarını emule ederek browser ve browser plug-in açıklarını hedefleyen exploit&#8217;leri tespit etmek için<br />
+<a href="http://code.google.com/p/yara-project/source/browse/trunk/yara-python/README">yara-python</a> - zararlı yazılım orneklerini tanımlama ve sınıflandırma&nbsp;için</p>
+<p><strong><span class="caps">PDF</span></strong><br />
+<a href="http://blog.didierstevens.com/programs/pdf-tools">Didier Stevens&#8217;ın <span class="caps">PDF</span> Araçları</a> - <span class="caps">PDF</span> dosyalarını analiz, tanıma ve yaratma (<a href="http://blog.didierstevens.com/programs/pdf-tools/#pdfid">PDFiD</a>, <a href="http://blog.didierstevens.com/programs/pdf-tools/#pdf-parser">pdf-parser</a>, mPDF ve <a href="http://blog.didierstevens.com/programs/pdf-tools/#make-pdf">make-pdf</a> dahil)<br />
+<a href="http://code.google.com/p/opaf/">Opaf</a> - Open <span class="caps">PDF</span> Analysis Framework. <span class="caps">PDF</span>&#8217;i analiz edilip değiştirilebilen bir <span class="caps">XML</span> ağacına donuşturur.<br />
+<a href="http://www.decalage.info/python/origapy">Origapy</a> - <span class="caps">PDF</span> dosyalarını sanitze eden Origami Ruby modulu için Python wrapper<br />
+<a href="http://pybrary.net/pyPdf/">pyPDF</a> - python <span class="caps">PDF</span> toolkit. bilgi ayrıştırma, bolme, birleştirme, kesme, kriptolama ve dekriptolama&#8230;<br />
+<a href="http://www.unixuser.org/%7Eeuske/python/pdfminer/index.html">PDFMiner</a> - <span class="caps">PDF</span> dosyalardan text çıkarma<br />
+<a href="http://code.google.com/p/python-poppler-qt4/">python-poppler-qt4</a> - Poppler <span class="caps">PDF</span> kutuphanesi için Python bağlantısı , <span class="caps">QT4</span> desteği&nbsp;dahil</p>
+<p><strong>Genel</strong><br />
+<a href="http://oss.coresecurity.com/projects/inlineegg.html">InlineEgg</a> - Python&#8217;da kuçuk assembly programlar yazmak için sınıflar<br />
+<a href="http://corelabs.coresecurity.com/index.php?module=Wiki&amp;action=view&amp;type=tool&amp;name=Exomind">Exomind</a> - sosyal ağ hizmetleri, arama motorları ve anlık mesajlaşma uzerine grafikler yaratmak ve açık kaynak intelligence modulleri ve fikirleri geliştirmek için<br />
+<a href="http://www.securityfocus.com/tools/3851">RevHosts</a> - Verilen <span class="caps">IP</span> adresi için sanal host&#8217;ları listeleme<br />
+<a href="http://undefined.org/python/#simplejson">simplejson</a> - <span class="caps">JSON</span> kodlayıcı/dekoder or. Google <span class="caps">AJAX</span> <span class="caps">API</span><br />
+<a href="http://dcortesi.com/2008/05/28/google-ajax-search-api-example-python-code/">PyMangle</a> - diğer sızma testi araçlarıyla kullanmak için kelime listeleri yaratma komut satırı aracı ve python kutuphanesi<br />
+<a href="https://bitbucket.org/haypo/hachoir/wiki/Home">Hachoir</a> - Bir binary stream field&#8217;lerini goruntuleme ve&nbsp;duzenleme</p>
+<p><strong>Diğer yararlı kutuphane ve araçlar</strong><br />
+<a href="http://ipython.scipy.org/">IPython</a> - Object introspection ve sistem shell erişimi için kendi ozel komut sistemi gibi çok sayıda ozelliğe sahip gelişmiş interaktif Python shell<br />
+<a href="http://www.crummy.com/software/BeautifulSoup/">Beautiful Soup</a> - ekrandan bilgi toplama için optimize <span class="caps">HTML</span> parser<br />
+<a href="http://matplotlib.sourceforge.net/">matplotlib</a> - array&#8217;ların 2D plot&#8217;larını yapmak için<br />
+<a href="http://code.enthought.com/projects/mayavi/">Mayavi</a> - 3 boyutlu bilimsel veri gorselleştirme ve plot<br />
+<a href="http://www.secdev.org/projects/rtgraph3d/">RTGraph3D</a> - 3B dinamik grafikler yaratma<br />
+<a href="http://twistedmatrix.com/">Twisted</a> - event-driven ağ motoru<br />
+<a href="https://fedorahosted.org/suds/">Suds</a> - Web hizmetleri için basit <span class="caps">SOAP</span> istemcisi<br />
+<a href="http://chandlerproject.org/bin/view/Projects/MeTooCrypto">M2Crypto</a> - OpenSSL wrapper<br />
+<a href="http://networkx.lanl.gov/">NetworkX</a> - grafik kutuphanesi (edge,node)<br />
+<a href="http://pyparsing.wikispaces.com/">pyparsing</a> - genel parse modulu<br />
+<a href="http://codespeak.net/lxml/">lxml</a> - Python dilinde <span class="caps">XML</span> ve <span class="caps">HTML</span> ile çalışmada en zengin ozelliklere sahip ve kullanımı en kolay kutuphane.<br />
+<a href="http://www.noah.org/wiki/Pexpect">Pexpect</a> - Diğer programları kontrol ve otomatikleştirme, Don Libes Expect sistemine benzer<br />
+<a href="http://groups.csail.mit.edu/uid/sikuli/">Sikuli</a> - <span class="caps">GUI</span>&#8217;leri ekran goruntuleri ile arama ve otomatikleştirme teknolojisi. <a href="http://www.jython.org/">Jython</a> script&#8217;ler ile kullanılabiliyor<br />
+<a href="http://www.riverbankcomputing.co.uk/software/pyqt">PyQt</a> ve <a href="http://www.pyside.org/">PySide</a> - Qt application framework ve <span class="caps">GUI</span> kutuphanesi için Python&nbsp;bağlantıları</p>
+<p><a href="http://dirk-loss.de/python-tools.htm">Kaynak</a> <a href="http://www.olympos.net/belgeler/urun/python/guvenlik-denetimi-yapanlar-icin-python-araclari-2851314.html">Turkçeleştirme</a></p></div>
+        <hr />
+    </div>
+		
+    
+        <div class="pagination">
+<ul>
+
+    <li class="prev disabled"><a href="#">&larr; Previous</a></li>
+
+
+
+    <li class="active"><a href=".././tag/sistem güvenliği.html">1</a></li>
+
+
+
+    <li class="next disabled"><a href="#">&rarr; Next</a></li>
+
+
+</ul>
+</div>
+    
+
+
+ 
+
+ 
+ 
+
+
+        </div>
+        
+        <div class="span3">
+
+            <div class="well" style="padding: 8px 0; background-color: #FBFBFB;">
+            <ul class="nav nav-list">
+                <li class="nav-header"> 
+                Site
+                </li>
+            
+                <li><a href=".././archives.html">Archives</a>
+                <li><a href=".././tags.html">Tags</a>
+                <li><a href=".././feeds/all.atom.xml" rel="alternate">Atom feed</a></li>
+                
+                <li><a href=".././feeds/all.rss.xml" rel="alternate">RSS feed</a></li>
+                
+                 <li><a href=".././sitemap.xml">Sitemap</a>
+            </ul>
+            </div>
+
+
+            
+            <div class="well" style="padding: 8px 0; background-color: #FBFBFB;">
+            <ul class="nav nav-list">
+                <li class="nav-header"> 
+                Categories
+                </li>
+                
+                
+                <li><a href=".././category/tasarim.html">tasarim</a></li>
+                
+                <li><a href=".././category/server.html">server</a></li>
+                
+                <li><a href=".././category/python.html">python</a></li>
+                
+                <li><a href=".././category/programlama.html">programlama</a></li>
+                
+                <li><a href=".././category/linux.html">linux</a></li>
+                
+                <li><a href=".././category/kisisel.html">kisisel</a></li>
+                
+                <li><a href=".././category/internet.html">internet</a></li>
+                
+                <li><a href=".././category/guvenlik.html">guvenlik</a></li>
+                
+                <li><a href=".././category/genel.html">genel</a></li>
+                
+                <li><a href=".././category/eglence.html">eglence</a></li>
+                
+                <li><a href=".././category/django.html">django</a></li>
+                
+                <li><a href=".././category/arduino.html">arduino</a></li>
+                                   
+            </ul>
+            </div>
+            
+
+
+            
+            <div class="well" style="padding: 8px 0; background-color: #FBFBFB;">
+            <ul class="nav nav-list">
+                <li class="nav-header"> 
+                Links
+                </li>
+            
+            
+                <li><a href="http://www.google.com">Google</a></li>
+            
+                <li><a href="http://www.python.org">Python</a></li>
+            
+            </ul>
+            </div>
+            
+
+
+            
+            <div class="social">
+            <div class="well" style="padding: 8px 0; background-color: #FBFBFB;">
+            <ul class="nav nav-list">
+                <li class="nav-header"> 
+                Social
+                </li>
+           
+                
+                <li><a href="http://twitter.com/halitalptekin">twitter</a></li>
+                
+                <li><a href="http://github.com/halitalptekin">github</a></li>
+                
+                <li><a href="http://stackoverflow.com/users/1151618/halit-alptekin">stackoverflow</a></li>
+                
+                <li><a href="http://tr.linkedin.com/in/halitalptekin">linkedin</a></li>
+                
+            </ul>
+            </div>
+            </div>
+            
+
+            
+            <div class="well" style="padding: 8px 0; background-color: #FBFBFB;">
+            <ul class="nav nav-list">
+                <li class="nav-header"> 
+                Ads
+                </li>
+
+                
+                <li><a href="http://www.tamindir.com" title="Program Indir"><img src="/media/reklam/tamindir.jpg" alt="Tamindir" title="Program Indir"></a>
+                </li>
+                
+                <li><a href="http://www.tatilbuldur.com" title="TatilBudur"><img src="/media/reklam/tatilbudur.png" alt="TatilBudur" title="TatilBudur"></a>
+                </li>
+                
+            </ul>
+            </div>
+            
+
+        </div>  
+    </div> 
+    </div> 
+
+<footer>
+	<hr>
+	<p><a href='http://www.halitalptekin.com'>Halit Alptekin Personal Blog</a> &copy; 2012</p>
+</footer>
+
+</div> <!-- /container -->
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+<script src="http://twitter.github.com/bootstrap/assets/js/bootstrap-collapse.js"></script>
+
+</body>
+</html>

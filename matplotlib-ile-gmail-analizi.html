@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Halit Alptekin Personal Blog - Matplotlib İle Gmail&nbsp;Analizi</title>
+    <meta name="description" content="Python'un Bilimsel Araçlarından Birisi İle Mail Analizi">
+    <meta name="keywords" content="matlab, matplotlib, python, python matlab, python matplotlib, hdblog">
+    <meta name="author" content="halit">
+    <meta name="robots" content="index, follow, all"/>
+
+    <!-- Le HTML5 shim, for IE6-8 support of HTML elements -->
+    <!--[if lt IE 9]>
+    <script src="./theme/html5.js"></script>
+    <![endif]-->
+
+    <!-- Le styles -->
+    <link href="./theme/bootstrap.min.css" rel="stylesheet">
+    <link href="./theme/bootstrap.min.responsive.css" rel="stylesheet">
+    <link href="./theme/local.css" rel="stylesheet">
+    <link href="./theme/pygments.css" rel="stylesheet">
+
+</head>
+
+<body>
+
+<div class="navbar">
+    <div class="navbar-inner">
+    <div class="container">
+
+         <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+             <span class="icon-bar"></span>
+             <span class="icon-bar"></span>
+             <span class="icon-bar"></span>
+         </a>
+
+        <a class="brand" href=".">Halit Alptekin Personal Blog</a>
+
+        <div class="nav-collapse">
+        <ul class="nav">
+        
+            
+        <li><a href="./pages/about-me.html">About Me</a></li>
+	    <li><a href="./pages/contact.html">Contact</a></li>
+        </ul>
+        </div>
+        
+    </div>
+    </div>
+</div>
+
+<div class="container">
+    <div class="content">
+    <div class="row">
+
+        <div class="span9">
+        
+    <div class='article'>
+        <div class="content-title">
+            <h1>Matplotlib İle Gmail&nbsp;Analizi</h1>
+            Sep 12, 2012
+
+
+by <a class="url fn" href="./author/halit.html">halit</a>
+ 
+
+in <a href="./category/python.html">python</a>
+
+ 
+    tagged <a href="./tag/matlab.html">matlab</a> <a href="./tag/matplotlib.html">matplotlib</a> <a href="./tag/python.html">python</a> <a href="./tag/python-matlab.html">python matlab</a> <a href="./tag/python-matplotlib.html">python matplotlib</a> 
+
+        </div>
+	
+        <div><p>Python&#8217;un son gunlerde çok fazla kullanılmaya başladığı alanlardan birisi de kuşkusuz bilimsel araştırmalar oldu.Marsa gonderilen Curiosity&#8217;nin bile test kısımları Python ile yapılmıştı.Ben de bu yuzden onceden beri ilgili olduğum bu alana şoyle bir bakayım dedim.Kutuphaneler ile uğraştığımdan kendimi bir kaç çizim kutuphanesi aradım.Geçen yazımda gosterdiğim gibi Turtle adında bir tane bulmuştum.Ancak onun ile bilimsel araştırma duzeyinde ciddi proje yapmak pek mumkun değil.Sadece algoritma duzeyinizin gelişmesinde rol oynabilir.Ben biraz daha matlab&#8217;a yakın bir kutuphane arıyordum ve matplotlibi buldum.Adı bana matlabı andırıyor.Hatta syntaxı bile matlab&#8217;dan Python&#8217;a geçeceklerin rahat alışması için benzer&nbsp;yapılmış.</p>
+<p>Bende bu kutuphane ile uğraşırken guzel bir kod parçası buldum ve bunu kendime gore biraz değiştirdim.Bu kod ile gmail adresinize gelen mailleri zamanlara gore kıyaslayıp guzel bir grafik elde edebiliyorsunuz.En azından guzel bir çizim aracı arayanlar için ornek olabilir.Kod aşağıdaki gibi.Benim mail adresime ait ornek çıktılar da hemen alt&nbsp;tarafta.</p>
+<p>Kodun yaptığı işe gelirsen oncelikle gmail adresimizden maillerin başlık kısımlarını alıyor ve daha sonra bunları çeşitli zamanlarda gelen mailler olarak donduruyor.İlk 2 fonksiyon bu işe yarıyor.Son fonksiyonda matplotlib kutuphanesi ile gelen verileri ekrana basıyor.Aşağıdaki kod ile son 5 yıla ait gelen maillerinizin grafiğini çizdirebilirsiniz.Eğer giden maillerinize bakmak isterseniz alt kısımda yer alan inbox ismini sent yapmanız&nbsp;yeterlidir.</p>
+<p>Aşağıdaki kodu çalıştırmak için sadece mail adresiniz ve şifrenizi girmeniz yeterlidir.Ayrıcana ben gmail kullandım diye sizde onu kullanmak zorunda değilsiniz.İlk fonksiyonda değişiklik yaparak diğer sunucularda da kullanılabilir hale&nbsp;getirebilirsiniz.</p>
+<div class="codehilite"><pre><span class="kn">from</span> <span class="nn">imaplib</span> <span class="kn">import</span> <span class="n">IMAP4_SSL</span>
+<span class="kn">from</span> <span class="nn">datetime</span> <span class="kn">import</span> <span class="n">date</span><span class="p">,</span> <span class="n">timedelta</span><span class="p">,</span> <span class="n">datetime</span>
+<span class="kn">from</span> <span class="nn">time</span> <span class="kn">import</span> <span class="n">mktime</span>
+<span class="kn">from</span> <span class="nn">email.utils</span> <span class="kn">import</span> <span class="n">parsedate</span>
+<span class="kn">from</span> <span class="nn">pylab</span> <span class="kn">import</span> <span class="n">plot_date</span><span class="p">,</span> <span class="n">show</span><span class="p">,</span> <span class="n">xticks</span><span class="p">,</span> <span class="n">date2num</span>
+<span class="kn">from</span> <span class="nn">pylab</span> <span class="kn">import</span> <span class="n">figure</span><span class="p">,</span> <span class="n">hist</span><span class="p">,</span> <span class="n">num2date</span>
+<span class="kn">from</span> <span class="nn">matplotlib.dates</span> <span class="kn">import</span> <span class="n">DateFormatter</span>
+
+<span class="k">def</span> <span class="nf">getHeaders</span><span class="p">(</span><span class="n">address</span><span class="p">,</span> <span class="n">password</span><span class="p">,</span> <span class="n">folder</span><span class="p">,</span> <span class="n">d</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot; retrieve the headers of the emails</span>
+<span class="sd">        from d days ago until now &quot;&quot;&quot;</span>
+    <span class="c"># imap connection</span>
+    <span class="n">mail</span> <span class="o">=</span> <span class="n">IMAP4_SSL</span><span class="p">(</span><span class="s">&#39;imap.gmail.com&#39;</span><span class="p">)</span>
+    <span class="n">mail</span><span class="o">.</span><span class="n">login</span><span class="p">(</span><span class="n">address</span><span class="p">,</span> <span class="n">password</span><span class="p">)</span>
+    <span class="n">mail</span><span class="o">.</span><span class="n">select</span><span class="p">(</span><span class="n">folder</span><span class="p">)</span>
+    <span class="c"># retrieving the uids</span>
+    <span class="n">interval</span> <span class="o">=</span> <span class="p">(</span><span class="n">date</span><span class="o">.</span><span class="n">today</span><span class="p">()</span> <span class="o">-</span> <span class="n">timedelta</span><span class="p">(</span><span class="n">d</span><span class="p">))</span><span class="o">.</span><span class="n">strftime</span><span class="p">(</span><span class="s">&quot;</span><span class="si">%d</span><span class="s">-%b-%Y&quot;</span><span class="p">)</span>
+    <span class="n">result</span><span class="p">,</span> <span class="n">data</span> <span class="o">=</span> <span class="n">mail</span><span class="o">.</span><span class="n">uid</span><span class="p">(</span><span class="s">&#39;search&#39;</span><span class="p">,</span> <span class="bp">None</span><span class="p">,</span>
+                            <span class="s">&#39;(<span class="caps">SENTSINCE</span> {date})&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">date</span><span class="o">=</span><span class="n">interval</span><span class="p">))</span>
+    <span class="c"># retrieving the headers</span>
+    <span class="n">result</span><span class="p">,</span> <span class="n">data</span> <span class="o">=</span> <span class="n">mail</span><span class="o">.</span><span class="n">uid</span><span class="p">(</span><span class="s">&#39;fetch&#39;</span><span class="p">,</span> <span class="n">data</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s">&#39; &#39;</span><span class="p">,</span> <span class="s">&#39;,&#39;</span><span class="p">),</span>
+                            <span class="s">&#39;(<span class="caps">BODY</span>[<span class="caps">HEADER</span>.<span class="caps">FIELDS</span> (<span class="caps">DATE</span>)])&#39;</span><span class="p">)</span>
+    <span class="n">mail</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+    <span class="n">mail</span><span class="o">.</span><span class="n">logout</span><span class="p">()</span>
+    <span class="k">return</span> <span class="n">data</span>
+
+<span class="k">def</span> <span class="nf">diurnalPlot</span><span class="p">(</span><span class="n">headers</span><span class="p">):</span>
+    <span class="n">xday</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="n">ytime</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">h</span> <span class="ow">in</span> <span class="n">headers</span><span class="p">:</span>
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">h</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">:</span>
+            <span class="n">timestamp</span> <span class="o">=</span> <span class="n">mktime</span><span class="p">(</span><span class="n">parsedate</span><span class="p">(</span><span class="n">h</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="mi">5</span><span class="p">:]</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s">&#39;.&#39;</span><span class="p">,</span> <span class="s">&#39;:&#39;</span><span class="p">)))</span>
+            <span class="n">mailstamp</span> <span class="o">=</span> <span class="n">datetime</span><span class="o">.</span><span class="n">fromtimestamp</span><span class="p">(</span><span class="n">timestamp</span><span class="p">)</span>
+            <span class="n">xday</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">mailstamp</span><span class="p">)</span>
+            <span class="c"># Time the email is arrived</span>
+            <span class="c"># Note that years, month and day are not important here.</span>
+            <span class="n">y</span> <span class="o">=</span> <span class="n">datetime</span><span class="p">(</span><span class="mi">2010</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">14</span><span class="p">,</span>
+                         <span class="n">mailstamp</span><span class="o">.</span><span class="n">hour</span><span class="p">,</span> <span class="n">mailstamp</span><span class="o">.</span><span class="n">minute</span><span class="p">,</span> <span class="n">mailstamp</span><span class="o">.</span><span class="n">second</span><span class="p">)</span>
+            <span class="n">ytime</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">y</span><span class="p">)</span>
+
+    <span class="n">plot_date</span><span class="p">(</span><span class="n">xday</span><span class="p">,</span> <span class="n">ytime</span><span class="p">,</span> <span class="s">&#39;.&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=.</span><span class="mi">7</span><span class="p">)</span>
+    <span class="n">xticks</span><span class="p">(</span><span class="n">rotation</span><span class="o">=</span><span class="mi">30</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">xday</span><span class="p">,</span> <span class="n">ytime</span>
+
+<span class="k">def</span> <span class="nf">dailyDistributioPlot</span><span class="p">(</span><span class="n">ytime</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot; draw the histogram of the daily distribution &quot;&quot;&quot;</span>
+    <span class="c"># converting dates to numbers</span>
+    <span class="n">numtime</span> <span class="o">=</span> <span class="p">[</span><span class="n">date2num</span><span class="p">(</span><span class="n">t</span><span class="p">)</span> <span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="n">ytime</span><span class="p">]</span>
+    <span class="c"># plotting the histogram</span>
+    <span class="n">ax</span> <span class="o">=</span> <span class="n">figure</span><span class="p">()</span><span class="o">.</span><span class="n">gca</span><span class="p">()</span>
+    <span class="n">_</span><span class="p">,</span> <span class="n">_</span><span class="p">,</span> <span class="n">patches</span> <span class="o">=</span> <span class="n">hist</span><span class="p">(</span><span class="n">numtime</span><span class="p">,</span> <span class="n">bins</span><span class="o">=</span><span class="mi">24</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=.</span><span class="mi">5</span><span class="p">)</span>
+    <span class="c"># adding the labels for the x axis</span>
+    <span class="n">tks</span> <span class="o">=</span> <span class="p">[</span><span class="n">num2date</span><span class="p">(</span><span class="n">p</span><span class="o">.</span><span class="n">get_x</span><span class="p">())</span> <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">patches</span><span class="p">]</span>
+    <span class="n">xticks</span><span class="p">(</span><span class="n">tks</span><span class="p">,</span> <span class="n">rotation</span><span class="o">=</span><span class="mi">75</span><span class="p">)</span>
+    <span class="c"># formatting the dates on the x axis</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">xaxis</span><span class="o">.</span><span class="n">set_major_formatter</span><span class="p">(</span><span class="n">DateFormatter</span><span class="p">(</span><span class="s">&#39;%H:%M&#39;</span><span class="p">))</span>
+
+<span class="k">print</span> <span class="s">&#39;Fetching emails...&#39;</span>
+<span class="n">headers</span> <span class="o">=</span> <span class="n">getHeaders</span><span class="p">(</span><span class="s">&#39;info@halitalptekin.com&#39;</span><span class="p">,</span>
+                     <span class="s">&#39;mailsifrem&#39;</span><span class="p">,</span> <span class="s">&#39;inbox&#39;</span><span class="p">,</span> <span class="mi">365</span> <span class="o">*</span> <span class="mi">5</span><span class="p">)</span>
+
+<span class="k">print</span> <span class="s">&#39;Plotting some statistics...&#39;</span>
+<span class="n">xday</span><span class="p">,</span> <span class="n">ytime</span> <span class="o">=</span> <span class="n">diurnalPlot</span><span class="p">(</span><span class="n">headers</span><span class="p">)</span>
+<span class="n">dailyDistributioPlot</span><span class="p">(</span><span class="n">ytime</span><span class="p">)</span>
+<span class="k">print</span> <span class="nb">len</span><span class="p">(</span><span class="n">xday</span><span class="p">),</span> <span class="s">&#39;Emails analysed.&#39;</span>
+<span class="n">show</span><span class="p">()</span>
+</pre></div>
+
+
+<p>Ben baya mail silmeme rağmen toplam 2035 mailimi inceledi.Ve sonuçları da çok kısa bir sure içerisinde&nbsp;gosterdi.</p>
+<p><img alt="Python Gmail Matplotlib" src="http://www.halitalptekin.com/media/upload/python-gmail-matplotlib-2.png" /></p>
+<p><img alt="Python Gmail Matplotlib 2" src="http://www.halitalptekin.com/media/upload/python-gmail-matplotlib-1.png" /></p></div>
+	
+        <hr>
+        <div class="addthis_toolbox addthis_default_style addthis_32x32_style">
+            <a class="addthis_button_preferred_1"></a>
+            <a class="addthis_button_preferred_2"></a>
+            <a class="addthis_button_preferred_3"></a>
+            <a class="addthis_button_preferred_4"></a>
+            <a class="addthis_button_preferred_5"></a>
+            <a class="addthis_button_preferred_6"></a>
+            <a class="addthis_button_preferred_7"></a>
+            <a class="addthis_button_preferred_8"></a>
+            <a class="addthis_button_preferred_9"></a>
+            <a class="addthis_button_preferred_10"></a>
+            <a class="addthis_counter addthis_bubble_style"></a>
+        </div>
+        <script type="text/javascript" src="http://s7.addthis.com/js/250/addthis_widget.js#pubid=ra-504c6d593daec57a"></script>
+        <hr>   	   
+        <h2>Comments</h2>
+	
+	
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+    var disqus_shortname = 'halitalptekin'; 
+
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+    </div>
+
+        </div>
+        
+        <div class="span3">
+
+            <div class="well" style="padding: 8px 0; background-color: #FBFBFB;">
+            <ul class="nav nav-list">
+                <li class="nav-header"> 
+                Site
+                </li>
+            
+                <li><a href="./archives.html">Archives</a>
+                <li><a href="./tags.html">Tags</a>
+                <li><a href="./feeds/all.atom.xml" rel="alternate">Atom feed</a></li>
+                
+                <li><a href="./feeds/all.rss.xml" rel="alternate">RSS feed</a></li>
+                
+                 <li><a href="./sitemap.xml">Sitemap</a>
+            </ul>
+            </div>
+
+
+            
+            <div class="well" style="padding: 8px 0; background-color: #FBFBFB;">
+            <ul class="nav nav-list">
+                <li class="nav-header"> 
+                Categories
+                </li>
+                
+                
+                <li><a href="./category/tasarim.html">tasarim</a></li>
+                
+                <li><a href="./category/server.html">server</a></li>
+                
+                <li><a href="./category/python.html">python</a></li>
+                
+                <li><a href="./category/programlama.html">programlama</a></li>
+                
+                <li><a href="./category/linux.html">linux</a></li>
+                
+                <li><a href="./category/kisisel.html">kisisel</a></li>
+                
+                <li><a href="./category/internet.html">internet</a></li>
+                
+                <li><a href="./category/guvenlik.html">guvenlik</a></li>
+                
+                <li><a href="./category/genel.html">genel</a></li>
+                
+                <li><a href="./category/eglence.html">eglence</a></li>
+                
+                <li><a href="./category/django.html">django</a></li>
+                
+                <li><a href="./category/arduino.html">arduino</a></li>
+                                   
+            </ul>
+            </div>
+            
+
+
+            
+            <div class="well" style="padding: 8px 0; background-color: #FBFBFB;">
+            <ul class="nav nav-list">
+                <li class="nav-header"> 
+                Links
+                </li>
+            
+            
+                <li><a href="http://www.google.com">Google</a></li>
+            
+                <li><a href="http://www.python.org">Python</a></li>
+            
+            </ul>
+            </div>
+            
+
+
+            
+            <div class="social">
+            <div class="well" style="padding: 8px 0; background-color: #FBFBFB;">
+            <ul class="nav nav-list">
+                <li class="nav-header"> 
+                Social
+                </li>
+           
+                
+                <li><a href="http://twitter.com/halitalptekin">twitter</a></li>
+                
+                <li><a href="http://github.com/halitalptekin">github</a></li>
+                
+                <li><a href="http://stackoverflow.com/users/1151618/halit-alptekin">stackoverflow</a></li>
+                
+                <li><a href="http://tr.linkedin.com/in/halitalptekin">linkedin</a></li>
+                
+            </ul>
+            </div>
+            </div>
+            
+
+            
+            <div class="well" style="padding: 8px 0; background-color: #FBFBFB;">
+            <ul class="nav nav-list">
+                <li class="nav-header"> 
+                Ads
+                </li>
+
+                
+                <li><a href="http://www.tamindir.com" title="Program Indir"><img src="/media/reklam/tamindir.jpg" alt="Tamindir" title="Program Indir"></a>
+                </li>
+                
+                <li><a href="http://www.tatilbuldur.com" title="TatilBudur"><img src="/media/reklam/tatilbudur.png" alt="TatilBudur" title="TatilBudur"></a>
+                </li>
+                
+            </ul>
+            </div>
+            
+
+        </div>  
+    </div> 
+    </div> 
+
+<footer>
+	<hr>
+	<p><a href='http://www.halitalptekin.com'>Halit Alptekin Personal Blog</a> &copy; 2012</p>
+</footer>
+
+</div> <!-- /container -->
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+<script src="http://twitter.github.com/bootstrap/assets/js/bootstrap-collapse.js"></script>
+
+</body>
+</html>

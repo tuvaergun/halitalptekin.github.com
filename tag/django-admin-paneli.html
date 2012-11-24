@@ -1,0 +1,585 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Halit Alptekin Personal Blog</title>
+    <meta name="description" content="Programming and Life Blog Of Halit Alptekin. Karadeniz Technical University Computer Engineering Student.">
+    <meta name="keywords" content="programlama, blog, personal blog, linux, python, django, php, bootstrap, seo, bilgisayar muhendisligi, ktu, karadeniz teknik universitesi, programming">
+    <meta name="author" content="halit">
+    <meta name="robots" content="index, follow, all"/>
+
+    <!-- Le HTML5 shim, for IE6-8 support of HTML elements -->
+    <!--[if lt IE 9]>
+    <script src=".././theme/html5.js"></script>
+    <![endif]-->
+
+    <!-- Le styles -->
+    <link href=".././theme/bootstrap.min.css" rel="stylesheet">
+    <link href=".././theme/bootstrap.min.responsive.css" rel="stylesheet">
+    <link href=".././theme/local.css" rel="stylesheet">
+    <link href=".././theme/pygments.css" rel="stylesheet">
+
+</head>
+
+<body>
+
+<div class="navbar">
+    <div class="navbar-inner">
+    <div class="container">
+
+         <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+             <span class="icon-bar"></span>
+             <span class="icon-bar"></span>
+             <span class="icon-bar"></span>
+         </a>
+
+        <a class="brand" href="../.">Halit Alptekin Personal Blog</a>
+
+        <div class="nav-collapse">
+        <ul class="nav">
+        
+            
+        <li><a href=".././pages/about-me.html">About Me</a></li>
+	    <li><a href=".././pages/contact.html">Contact</a></li>
+        </ul>
+        </div>
+        
+    </div>
+    </div>
+</div>
+
+<div class="container">
+    <div class="content">
+    <div class="row">
+
+        <div class="span9">
+                
+
+        
+
+
+
+    <div class='article'>
+        <div class="content-title">
+            <a href=".././django-admin-paneli-ve-ayarlar.html"><h1>Django Admin Paneli Ve&nbsp;Ayarlar</h1></a>
+            Jun 08, 2012
+
+
+by <a class="url fn" href=".././author/halit.html">halit</a>
+ 
+
+in <a href=".././category/django.html">django</a>
+
+ 
+    tagged <a href=".././tag/django.html">django</a> <a href=".././tag/django-admin-paneli.html">django admin paneli</a> <a href=".././tag/django-ayarlari.html">django ayarları</a> <a href=".././tag/django-dersleri.html">django dersleri</a> <a href=".././tag/django-settings.html">django settings</a> <a href=".././tag/django-veritabani.html">django veritabanı</a> 
+ 
+        </div>
+        
+        <div><p>Bir onceki <a href="http://www.halitalptekin.com/makale/django/django-ile-tanisma/">yazımda</a> ilk projemizi başlatıp Django&#8217;ya kısa bir giriş yapmıştık.Şimdi de modellere geçmeden hemen once admin panelimizi kurup settings.py dosyamız içinde ufak ayarlar yapacağız.Bu yazıdan hemen sonra da Django&#8217;da modellere giriş yapacağız.Modeller konusunu yeniden yazmak yerine HDBlog&#8217;un kodlarından anlatarak devam edeceğim.Boylelikle elimizde canlı bir ornekte olmuş&nbsp;olacak.</p>
+<p>Şimdi oncelikle bir onceki yazımda oluşturduğumuz django projesinin içine giriyoruz ve ilk uygulamamızı oluşturuyoruz.Django&#8217;da uygulama oluşturmak için aşağıdaki komutu kullanmanız yeterli&nbsp;olacaktır.</p>
+<div class="codehilite"><pre><span class="n">python</span> <span class="n">manage</span><span class="o">.</span><span class="n">py</span> <span class="n">startapp</span> <span class="n">blogdeneme</span>
+</pre></div>
+
+
+<p>Yukarıdaki komut ile blogdeneme adında bir uygulama oluşturuyoruz.Bu uygulamanın klasorune girdiğinizde <strong><strong>init</strong>.py</strong>,<strong>models.py</strong>,<strong>tests.py</strong>,<strong>views.py</strong> dosyalarını gormeniz gerekecektir.Eğer gorduyseniz başarıyla yeni uygulama oluşturdunuz&nbsp;demektir.</p>
+<p>Proje dizinimizdeki(ben djangoders adında proje oluşturdum) settings.py dosyasını açarsanız aşağıdaki gibi bir goruntuyle karşılaşacaksınız.Bu dosyaya veritabanı bilgilerinden media ve statik dosyalarımızın yerlerine kadar birçok onemli bilgiyi&nbsp;giriyoruz.</p>
+<div class="codehilite"><pre><span class="n"><span class="caps">DEBUG</span></span> <span class="o">=</span> <span class="bp">True</span>
+<span class="n">TEMPLATE_DEBUG</span> <span class="o">=</span> <span class="n"><span class="caps">DEBUG</span></span>
+
+<span class="n"><span class="caps">ADMINS</span></span> <span class="o">=</span> <span class="p">(</span>
+    <span class="c"># (&#39;Your Name&#39;, &#39;your_email@example.com&#39;),</span>
+<span class="p">)</span>
+
+<span class="n"><span class="caps">MANAGERS</span></span> <span class="o">=</span> <span class="n"><span class="caps">ADMINS</span></span>
+
+<span class="n"><span class="caps">DATABASES</span></span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s">&#39;default&#39;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s">&#39;<span class="caps">ENGINE</span>&#39;</span><span class="p">:</span> <span class="s">&#39;django.db.backends.&#39;</span><span class="p">,</span> <span class="c"># Add &#39;postgresql_psycopg2&#39;, &#39;mysql&#39;, &#39;sqlite3&#39; or &#39;oracle&#39;.</span>
+        <span class="s">&#39;<span class="caps">NAME</span>&#39;</span><span class="p">:</span> <span class="s">&#39;&#39;</span><span class="p">,</span>                      <span class="c"># Or path to database file if using sqlite3.</span>
+        <span class="s">&#39;<span class="caps">USER</span>&#39;</span><span class="p">:</span> <span class="s">&#39;&#39;</span><span class="p">,</span>                      <span class="c"># Not used with sqlite3.</span>
+        <span class="s">&#39;<span class="caps">PASSWORD</span>&#39;</span><span class="p">:</span> <span class="s">&#39;&#39;</span><span class="p">,</span>                  <span class="c"># Not used with sqlite3.</span>
+        <span class="s">&#39;<span class="caps">HOST</span>&#39;</span><span class="p">:</span> <span class="s">&#39;&#39;</span><span class="p">,</span>                      <span class="c"># Set to empty string for localhost. Not used with sqlite3.</span>
+        <span class="s">&#39;<span class="caps">PORT</span>&#39;</span><span class="p">:</span> <span class="s">&#39;&#39;</span><span class="p">,</span>                      <span class="c"># Set to empty string for default. Not used with sqlite3.</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="c"># Local time zone for this installation. Choices can be found here:</span>
+<span class="c"># http://en.wikipedia.org/wiki/List_of_tz_zones_by_name</span>
+<span class="c"># although not all choices may be available on all operating systems.</span>
+<span class="c"># On Unix systems, a value of None will cause Django to use the same</span>
+<span class="c"># timezone as the operating system.</span>
+<span class="c"># If running in a Windows environment this must be set to the same as your</span>
+<span class="c"># system time zone.</span>
+<span class="n">TIME_ZONE</span> <span class="o">=</span> <span class="s">&#39;America/Chicago&#39;</span>
+
+<span class="c"># Language code for this installation. All choices can be found here:</span>
+<span class="c"># http://www.i18nguy.com/unicode/language-identifiers.html</span>
+<span class="n">LANGUAGE_CODE</span> <span class="o">=</span> <span class="s">&#39;en-us&#39;</span>
+
+<span class="n">SITE_ID</span> <span class="o">=</span> <span class="mi">1</span>
+
+<span class="c"># If you set this to False, Django will make some optimizations so as not</span>
+<span class="c"># to load the internationalization machinery.</span>
+<span class="n">USE_I18N</span> <span class="o">=</span> <span class="bp">True</span>
+
+<span class="c"># If you set this to False, Django will not format dates, numbers and</span>
+<span class="c"># calendars according to the current locale.</span>
+<span class="n">USE_L10N</span> <span class="o">=</span> <span class="bp">True</span>
+
+<span class="c"># If you set this to False, Django will not use timezone-aware datetimes.</span>
+<span class="n">USE_TZ</span> <span class="o">=</span> <span class="bp">True</span>
+
+<span class="c"># Absolute filesystem path to the directory that will hold user-uploaded files.</span>
+<span class="c"># Example: &quot;/home/media/media.lawrence.com/media/&quot;</span>
+<span class="n">MEDIA_ROOT</span> <span class="o">=</span> <span class="s">&#39;&#39;</span>
+
+<span class="c"># <span class="caps">URL</span> that handles the media served from MEDIA_ROOT. Make sure to use a</span>
+<span class="c"># trailing slash.</span>
+<span class="c"># Examples: &quot;http://media.lawrence.com/media/&quot;, &quot;http://example.com/media/&quot;</span>
+<span class="n">MEDIA_URL</span> <span class="o">=</span> <span class="s">&#39;&#39;</span>
+
+<span class="c"># Absolute path to the directory static files should be collected to.</span>
+<span class="c"># Don&#39;t put anything in this directory yourself; store your static files</span>
+<span class="c"># in apps&#39; &quot;static/&quot; subdirectories and in STATICFILES_DIRS.</span>
+<span class="c"># Example: &quot;/home/media/media.lawrence.com/static/&quot;</span>
+<span class="n">STATIC_ROOT</span> <span class="o">=</span> <span class="s">&#39;&#39;</span>
+
+<span class="c"># <span class="caps">URL</span> prefix for static files.</span>
+<span class="c"># Example: &quot;http://media.lawrence.com/static/&quot;</span>
+<span class="n">STATIC_URL</span> <span class="o">=</span> <span class="s">&#39;/static/&#39;</span>
+
+<span class="c"># Additional locations of static files</span>
+<span class="n">STATICFILES_DIRS</span> <span class="o">=</span> <span class="p">(</span>
+    <span class="c"># Put strings here, like &quot;/home/html/static&quot; or &quot;C:/www/django/static&quot;.</span>
+    <span class="c"># Always use forward slashes, even on Windows.</span>
+    <span class="c"># Don&#39;t forget to use absolute paths, not relative paths.</span>
+<span class="p">)</span>
+
+<span class="c"># List of finder classes that know how to find static files in</span>
+<span class="c"># various locations.</span>
+<span class="n">STATICFILES_FINDERS</span> <span class="o">=</span> <span class="p">(</span>
+    <span class="s">&#39;django.contrib.staticfiles.finders.FileSystemFinder&#39;</span><span class="p">,</span>
+    <span class="s">&#39;django.contrib.staticfiles.finders.AppDirectoriesFinder&#39;</span><span class="p">,</span>
+<span class="c">#    &#39;django.contrib.staticfiles.finders.DefaultStorageFinder&#39;,</span>
+<span class="p">)</span>
+
+<span class="c"># Make this unique, and don&#39;t share it with anybody.</span>
+<span class="n">SECRET_KEY</span> <span class="o">=</span> <span class="s">&#39;+&amp;^m#c0z7vb7#n@tca3fq(13u1)#b-6(=p=r=yu!a)-@5(4kx$&#39;</span>
+
+<span class="c"># List of callables that know how to import templates from various sources.</span>
+<span class="n">TEMPLATE_LOADERS</span> <span class="o">=</span> <span class="p">(</span>
+    <span class="s">&#39;django.template.loaders.filesystem.Loader&#39;</span><span class="p">,</span>
+    <span class="s">&#39;django.template.loaders.app_directories.Loader&#39;</span><span class="p">,</span>
+<span class="c">#     &#39;django.template.loaders.eggs.Loader&#39;,</span>
+<span class="p">)</span>
+
+<span class="n">MIDDLEWARE_CLASSES</span> <span class="o">=</span> <span class="p">(</span>
+    <span class="s">&#39;django.middleware.common.CommonMiddleware&#39;</span><span class="p">,</span>
+    <span class="s">&#39;django.contrib.sessions.middleware.SessionMiddleware&#39;</span><span class="p">,</span>
+    <span class="s">&#39;django.middleware.csrf.CsrfViewMiddleware&#39;</span><span class="p">,</span>
+    <span class="s">&#39;django.contrib.auth.middleware.AuthenticationMiddleware&#39;</span><span class="p">,</span>
+    <span class="s">&#39;django.contrib.messages.middleware.MessageMiddleware&#39;</span><span class="p">,</span>
+    <span class="c"># Uncomment the next line for simple clickjacking protection:</span>
+    <span class="c"># &#39;django.middleware.clickjacking.XFrameOptionsMiddleware&#39;,</span>
+<span class="p">)</span>
+
+<span class="n">ROOT_URLCONF</span> <span class="o">=</span> <span class="s">&#39;djangoders.urls&#39;</span>
+
+<span class="c"># Python dotted path to the <span class="caps">WSGI</span> application used by Django&#39;s runserver.</span>
+<span class="n">WSGI_APPLICATION</span> <span class="o">=</span> <span class="s">&#39;djangoders.wsgi.application&#39;</span>
+
+<span class="n">TEMPLATE_DIRS</span> <span class="o">=</span> <span class="p">(</span>
+    <span class="c"># Put strings here, like &quot;/home/html/django_templates&quot; or &quot;C:/www/django/templates&quot;.</span>
+    <span class="c"># Always use forward slashes, even on Windows.</span>
+    <span class="c"># Don&#39;t forget to use absolute paths, not relative paths.</span>
+<span class="p">)</span>
+
+<span class="n">INSTALLED_APPS</span> <span class="o">=</span> <span class="p">(</span>
+    <span class="s">&#39;django.contrib.auth&#39;</span><span class="p">,</span>
+    <span class="s">&#39;django.contrib.contenttypes&#39;</span><span class="p">,</span>
+    <span class="s">&#39;django.contrib.sessions&#39;</span><span class="p">,</span>
+    <span class="s">&#39;django.contrib.sites&#39;</span><span class="p">,</span>
+    <span class="s">&#39;django.contrib.messages&#39;</span><span class="p">,</span>
+    <span class="s">&#39;django.contrib.staticfiles&#39;</span><span class="p">,</span>
+    <span class="c"># Uncomment the next line to enable the admin:</span>
+    <span class="c"># &#39;django.contrib.admin&#39;,</span>
+    <span class="c"># Uncomment the next line to enable admin documentation:</span>
+    <span class="c"># &#39;django.contrib.admindocs&#39;,</span>
+<span class="p">)</span>
+
+<span class="c"># A sample logging configuration. The only tangible logging</span>
+<span class="c"># performed by this configuration is to send an email to</span>
+<span class="c"># the site admins on every <span class="caps">HTTP</span> 500 error when <span class="caps">DEBUG</span>=False.</span>
+<span class="c"># See http://docs.djangoproject.com/en/dev/topics/logging for</span>
+<span class="c"># more details on how to customize your logging configuration.</span>
+<span class="n"><span class="caps">LOGGING</span></span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s">&#39;version&#39;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+    <span class="s">&#39;disable_existing_loggers&#39;</span><span class="p">:</span> <span class="bp">False</span><span class="p">,</span>
+    <span class="s">&#39;filters&#39;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s">&#39;require_debug_false&#39;</span><span class="p">:</span> <span class="p">{</span>
+            <span class="s">&#39;()&#39;</span><span class="p">:</span> <span class="s">&#39;django.utils.log.RequireDebugFalse&#39;</span>
+        <span class="p">}</span>
+    <span class="p">},</span>
+    <span class="s">&#39;handlers&#39;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s">&#39;mail_admins&#39;</span><span class="p">:</span> <span class="p">{</span>
+            <span class="s">&#39;level&#39;</span><span class="p">:</span> <span class="s">&#39;<span class="caps">ERROR</span>&#39;</span><span class="p">,</span>
+            <span class="s">&#39;filters&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s">&#39;require_debug_false&#39;</span><span class="p">],</span>
+            <span class="s">&#39;class&#39;</span><span class="p">:</span> <span class="s">&#39;django.utils.log.AdminEmailHandler&#39;</span>
+        <span class="p">}</span>
+    <span class="p">},</span>
+    <span class="s">&#39;loggers&#39;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s">&#39;django.request&#39;</span><span class="p">:</span> <span class="p">{</span>
+            <span class="s">&#39;handlers&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s">&#39;mail_admins&#39;</span><span class="p">],</span>
+            <span class="s">&#39;level&#39;</span><span class="p">:</span> <span class="s">&#39;<span class="caps">ERROR</span>&#39;</span><span class="p">,</span>
+            <span class="s">&#39;propagate&#39;</span><span class="p">:</span> <span class="bp">True</span><span class="p">,</span>
+        <span class="p">},</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+
+
+<p>Burada en başta yer alan <strong><span class="caps">DEBUG</span></strong> satırı Django bir hata ile karşılaştığında ekrana hata ile ilgili teknik detayları mı basmasını yoksa hata sayfasını mı basmasına karar verir.Sitenizi deploy aşamasına gelene kadar <strong><span class="caps">TRUE</span> </strong>olarak kullanırsanız daha yararlı olur.Çunku başlarda çok fazla hata yapacaksınız.Bu hatanın kaynağını bu hata sayfalarından oğrenmeniz gerekecek.İlerleyen zamanlarda deploy aşamasına geldiğinizde <strong><span class="caps">FALSE</span></strong> değerini vermeniz guvenlik açısından gerekli&nbsp;olacak.</p>
+<p>Bir alt satırda yer alan <strong><span class="caps">ADMINS</span> </strong>satırı adı ustune site yoneticilerinin bilgilerini içeriyor.Eğer çok fazla admin olursa bir alt satıra inip eklemeye devam&nbsp;edebilirsiniz.</p>
+<p><strong><span class="caps">DATABASES</span> </strong>satırı onemli bir satırdır.Çunku buraya veritabanı bilgilerimizi gireceğiz.Başlangıç için sqlite idealdir.Bu yuzden sizde sqlite kullanın.<strong><span class="caps">ENGINE</span></strong> kısmına django.db.backends.<strong>sqlite3 </strong>yazarsak sqlite kullanacağımızı Djangoya bildirmiş oluruz.Bir altında yer alan <strong><span class="caps">NAME</span> </strong>satırına herhangi bir isim verebilirsiniz.Bu sizin ana klasorunuze oluşturulacak olan veritabanının adı olacak.Sqlite kullanmak için bu iki kısmı doldurmanız yeterli olacaktır.Diğer veritabanları için <strong><span class="caps">USER</span> </strong>ve <strong><span class="caps">PASSWORD</span> </strong>bolumlerini de doldurmanız&nbsp;lazım.</p>
+<p><strong>TIME_ZONE </strong>yerine <strong>Europe/Istanbul </strong>, <strong>LANGUAGE_CODE </strong>yerine de <strong>tr-<span class="caps">TR</span> </strong>yazmanız Django&#8217;nun dilinin Turkçe olacağına karar vermeniz anlamına&nbsp;gelir.</p>
+<p><strong>MEDIA_ROOT </strong>ile belirtiler yere medya dosyalarımızın bulunacağı dizini yazıyoruz.(Windows kullanıcıları \ yerine \ kullanması gerekmekte.Linux kullanıcıları direk olarak&nbsp;kullanabilirler.)</p>
+<p><strong>MEDIA_URL </strong>ile yukarıda belirttiğimiz medya dizinine hangi <span class="caps">URL</span> ile ulaşacağımızı&nbsp;kararlaştırırız.</p>
+<p><strong>STATIC_ROOT </strong> ve <strong>STATIC_URL </strong>de aynı medya dosyalarımız&nbsp;gibidir.</p>
+<p><strong>TEMPLATE_DIRS </strong>ile kullanacağımız temanın dizinini belirtiyoruz.(Windows kullanıcıları yukarıda yazdığım uyarıyı dikkate almaya burada da devam&nbsp;etmelidirler.)</p>
+<p>Geldik projemize ekleyeceğimiz uygulamalara.Django&#8217;nun en guzel yanlarından birisi de birden fazla uygulamayı bir projede çalıştırma imkanı vermesi. <strong>INSTALLED_APPS </strong>içine <strong>blogdeneme</strong> adlı az once oluşturduğumuz uygulamayı ekleyelim.Bu kısımda birde dikkat etmemiz gereken bir olay var.Djangoda eğer admin paneli kullanacaksak <strong>django.contrib.admin </strong>uygulamasının başındaki # sembolunu kaldıralım.Daha sonra admin panelimize direk /admin/ yazıp ulaşmak içinde <strong>djangoders/urls.py </strong>dosyası içindeki <strong>from django.contrib import admin</strong> , <strong>admin.autodiscover()</strong> ve <strong>url(r&#8217;^admin/&#8217;, include(admin.site.urls)),</strong> satırlarının başındaki # sembolunu kaldıralım.Bu şekilde yapınca admin panelimizi aktif etmiş&nbsp;oluyoruz.</p>
+<p>Settings.py ve admin panelimiz için yapacaklarımız bu kadar.Yukarıdakileri yaptıktan sonra yeni settings.py dosyamız aşağıdaki gibi olacak.Değişen yerlere dikkat&nbsp;edelim.</p>
+<div class="codehilite"><pre><span class="n"><span class="caps">DEBUG</span></span> <span class="o">=</span> <span class="bp">True</span>
+<span class="n">TEMPLATE_DEBUG</span> <span class="o">=</span> <span class="n"><span class="caps">DEBUG</span></span>
+
+<span class="n"><span class="caps">ADMINS</span></span> <span class="o">=</span> <span class="p">(</span>
+    <span class="c"># (&#39;Your Name&#39;, &#39;your_email@example.com&#39;),</span>
+<span class="p">)</span>
+
+<span class="n"><span class="caps">MANAGERS</span></span> <span class="o">=</span> <span class="n"><span class="caps">ADMINS</span></span>
+
+<span class="n"><span class="caps">DATABASES</span></span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s">&#39;default&#39;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s">&#39;<span class="caps">ENGINE</span>&#39;</span><span class="p">:</span> <span class="s">&#39;django.db.backends.sqlite3&#39;</span><span class="p">,</span> <span class="c"># Add &#39;postgresql_psycopg2&#39;, &#39;mysql&#39;, &#39;sqlite3&#39; or &#39;oracle&#39;.</span>
+        <span class="s">&#39;<span class="caps">NAME</span>&#39;</span><span class="p">:</span> <span class="s">&#39;veritabani.db&#39;</span><span class="p">,</span>                      <span class="c"># Or path to database file if using sqlite3.</span>
+        <span class="s">&#39;<span class="caps">USER</span>&#39;</span><span class="p">:</span> <span class="s">&#39;&#39;</span><span class="p">,</span>                      <span class="c"># Not used with sqlite3.</span>
+        <span class="s">&#39;<span class="caps">PASSWORD</span>&#39;</span><span class="p">:</span> <span class="s">&#39;&#39;</span><span class="p">,</span>                  <span class="c"># Not used with sqlite3.</span>
+        <span class="s">&#39;<span class="caps">HOST</span>&#39;</span><span class="p">:</span> <span class="s">&#39;&#39;</span><span class="p">,</span>                      <span class="c"># Set to empty string for localhost. Not used with sqlite3.</span>
+        <span class="s">&#39;<span class="caps">PORT</span>&#39;</span><span class="p">:</span> <span class="s">&#39;&#39;</span><span class="p">,</span>                      <span class="c"># Set to empty string for default. Not used with sqlite3.</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="c"># Local time zone for this installation. Choices can be found here:</span>
+<span class="c"># http://en.wikipedia.org/wiki/List_of_tz_zones_by_name</span>
+<span class="c"># although not all choices may be available on all operating systems.</span>
+<span class="c"># On Unix systems, a value of None will cause Django to use the same</span>
+<span class="c"># timezone as the operating system.</span>
+<span class="c"># If running in a Windows environment this must be set to the same as your</span>
+<span class="c"># system time zone.</span>
+<span class="n">TIME_ZONE</span> <span class="o">=</span> <span class="s">&#39;Europe/Istanbul&#39;</span>
+
+<span class="c"># Language code for this installation. All choices can be found here:</span>
+<span class="c"># http://www.i18nguy.com/unicode/language-identifiers.html</span>
+<span class="n">LANGUAGE_CODE</span> <span class="o">=</span> <span class="s">&#39;tr-<span class="caps">TR</span>&#39;</span>
+
+<span class="n">SITE_ID</span> <span class="o">=</span> <span class="mi">1</span>
+
+<span class="c"># If you set this to False, Django will make some optimizations so as not</span>
+<span class="c"># to load the internationalization machinery.</span>
+<span class="n">USE_I18N</span> <span class="o">=</span> <span class="bp">True</span>
+
+<span class="c"># If you set this to False, Django will not format dates, numbers and</span>
+<span class="c"># calendars according to the current locale.</span>
+<span class="n">USE_L10N</span> <span class="o">=</span> <span class="bp">True</span>
+
+<span class="c"># If you set this to False, Django will not use timezone-aware datetimes.</span>
+<span class="n">USE_TZ</span> <span class="o">=</span> <span class="bp">True</span>
+
+<span class="c"># Absolute filesystem path to the directory that will hold user-uploaded files.</span>
+<span class="c"># Example: &quot;/home/media/media.lawrence.com/media/&quot;</span>
+<span class="n">MEDIA_ROOT</span> <span class="o">=</span> <span class="s">&#39;C:\Users\<span class="caps">DELL</span>\Desktop\djangoders</span><span class="se">\\</span><span class="s">media&#39;</span>
+
+<span class="c"># <span class="caps">URL</span> that handles the media served from MEDIA_ROOT. Make sure to use a</span>
+<span class="c"># trailing slash.</span>
+<span class="c"># Examples: &quot;http://media.lawrence.com/media/&quot;, &quot;http://example.com/media/&quot;</span>
+<span class="n">MEDIA_URL</span> <span class="o">=</span> <span class="s">&#39;/media/&#39;</span>
+
+<span class="c"># Absolute path to the directory static files should be collected to.</span>
+<span class="c"># Don&#39;t put anything in this directory yourself; store your static files</span>
+<span class="c"># in apps&#39; &quot;static/&quot; subdirectories and in STATICFILES_DIRS.</span>
+<span class="c"># Example: &quot;/home/media/media.lawrence.com/static/&quot;</span>
+<span class="n">STATIC_ROOT</span> <span class="o">=</span> <span class="s">&#39;&#39;</span>
+
+<span class="c"># <span class="caps">URL</span> prefix for static files.</span>
+<span class="c"># Example: &quot;http://media.lawrence.com/static/&quot;</span>
+<span class="n">STATIC_URL</span> <span class="o">=</span> <span class="s">&#39;/static/&#39;</span>
+
+<span class="c"># Additional locations of static files</span>
+<span class="n">STATICFILES_DIRS</span> <span class="o">=</span> <span class="p">(</span>
+    <span class="c"># Put strings here, like &quot;/home/html/static&quot; or &quot;C:/www/django/static&quot;.</span>
+    <span class="c"># Always use forward slashes, even on Windows.</span>
+    <span class="c"># Don&#39;t forget to use absolute paths, not relative paths.</span>
+    <span class="s">&quot;C:\Users\<span class="caps">DELL</span>\Desktop\djangoders\static&quot;</span><span class="p">,</span>
+<span class="p">)</span>
+
+<span class="c"># List of finder classes that know how to find static files in</span>
+<span class="c"># various locations.</span>
+<span class="n">STATICFILES_FINDERS</span> <span class="o">=</span> <span class="p">(</span>
+    <span class="s">&#39;django.contrib.staticfiles.finders.FileSystemFinder&#39;</span><span class="p">,</span>
+    <span class="s">&#39;django.contrib.staticfiles.finders.AppDirectoriesFinder&#39;</span><span class="p">,</span>
+<span class="c">#    &#39;django.contrib.staticfiles.finders.DefaultStorageFinder&#39;,</span>
+<span class="p">)</span>
+
+<span class="c"># Make this unique, and don&#39;t share it with anybody.</span>
+<span class="n">SECRET_KEY</span> <span class="o">=</span> <span class="s">&#39;+&amp;^m#c0z7vb7#n@tca3fq(13u1)#b-6(=p=r=yu!a)-@5(4kx$&#39;</span>
+
+<span class="c"># List of callables that know how to import templates from various sources.</span>
+<span class="n">TEMPLATE_LOADERS</span> <span class="o">=</span> <span class="p">(</span>
+    <span class="s">&#39;django.template.loaders.filesystem.Loader&#39;</span><span class="p">,</span>
+    <span class="s">&#39;django.template.loaders.app_directories.Loader&#39;</span><span class="p">,</span>
+<span class="c">#     &#39;django.template.loaders.eggs.Loader&#39;,</span>
+<span class="p">)</span>
+
+<span class="n">MIDDLEWARE_CLASSES</span> <span class="o">=</span> <span class="p">(</span>
+    <span class="s">&#39;django.middleware.common.CommonMiddleware&#39;</span><span class="p">,</span>
+    <span class="s">&#39;django.contrib.sessions.middleware.SessionMiddleware&#39;</span><span class="p">,</span>
+    <span class="s">&#39;django.middleware.csrf.CsrfViewMiddleware&#39;</span><span class="p">,</span>
+    <span class="s">&#39;django.contrib.auth.middleware.AuthenticationMiddleware&#39;</span><span class="p">,</span>
+    <span class="s">&#39;django.contrib.messages.middleware.MessageMiddleware&#39;</span><span class="p">,</span>
+    <span class="c"># Uncomment the next line for simple clickjacking protection:</span>
+    <span class="c"># &#39;django.middleware.clickjacking.XFrameOptionsMiddleware&#39;,</span>
+<span class="p">)</span>
+
+<span class="n">ROOT_URLCONF</span> <span class="o">=</span> <span class="s">&#39;djangoders.urls&#39;</span>
+
+<span class="c"># Python dotted path to the <span class="caps">WSGI</span> application used by Django&#39;s runserver.</span>
+<span class="n">WSGI_APPLICATION</span> <span class="o">=</span> <span class="s">&#39;djangoders.wsgi.application&#39;</span>
+
+<span class="n">TEMPLATE_DIRS</span> <span class="o">=</span> <span class="p">(</span>
+    <span class="c"># Put strings here, like &quot;/home/html/django_templates&quot; or &quot;C:/www/django/templates&quot;.</span>
+    <span class="c"># Always use forward slashes, even on Windows.</span>
+    <span class="c"># Don&#39;t forget to use absolute paths, not relative paths.</span>
+<span class="p">)</span>
+
+<span class="n">INSTALLED_APPS</span> <span class="o">=</span> <span class="p">(</span>
+    <span class="s">&#39;django.contrib.auth&#39;</span><span class="p">,</span>
+    <span class="s">&#39;django.contrib.contenttypes&#39;</span><span class="p">,</span>
+    <span class="s">&#39;django.contrib.sessions&#39;</span><span class="p">,</span>
+    <span class="s">&#39;django.contrib.sites&#39;</span><span class="p">,</span>
+    <span class="s">&#39;django.contrib.messages&#39;</span><span class="p">,</span>
+    <span class="s">&#39;django.contrib.staticfiles&#39;</span><span class="p">,</span>
+    <span class="c"># Uncomment the next line to enable the admin:</span>
+    <span class="s">&#39;django.contrib.admin&#39;</span><span class="p">,</span>
+    <span class="s">&#39;blogdeneme&#39;</span><span class="p">,</span>
+    <span class="c"># Uncomment the next line to enable admin documentation:</span>
+    <span class="c"># &#39;django.contrib.admindocs&#39;,</span>
+<span class="p">)</span>
+
+<span class="c"># A sample logging configuration. The only tangible logging</span>
+<span class="c"># performed by this configuration is to send an email to</span>
+<span class="c"># the site admins on every <span class="caps">HTTP</span> 500 error when <span class="caps">DEBUG</span>=False.</span>
+<span class="c"># See http://docs.djangoproject.com/en/dev/topics/logging for</span>
+<span class="c"># more details on how to customize your logging configuration.</span>
+<span class="n"><span class="caps">LOGGING</span></span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s">&#39;version&#39;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+    <span class="s">&#39;disable_existing_loggers&#39;</span><span class="p">:</span> <span class="bp">False</span><span class="p">,</span>
+    <span class="s">&#39;filters&#39;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s">&#39;require_debug_false&#39;</span><span class="p">:</span> <span class="p">{</span>
+            <span class="s">&#39;()&#39;</span><span class="p">:</span> <span class="s">&#39;django.utils.log.RequireDebugFalse&#39;</span>
+        <span class="p">}</span>
+    <span class="p">},</span>
+    <span class="s">&#39;handlers&#39;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s">&#39;mail_admins&#39;</span><span class="p">:</span> <span class="p">{</span>
+            <span class="s">&#39;level&#39;</span><span class="p">:</span> <span class="s">&#39;<span class="caps">ERROR</span>&#39;</span><span class="p">,</span>
+            <span class="s">&#39;filters&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s">&#39;require_debug_false&#39;</span><span class="p">],</span>
+            <span class="s">&#39;class&#39;</span><span class="p">:</span> <span class="s">&#39;django.utils.log.AdminEmailHandler&#39;</span>
+        <span class="p">}</span>
+    <span class="p">},</span>
+    <span class="s">&#39;loggers&#39;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s">&#39;django.request&#39;</span><span class="p">:</span> <span class="p">{</span>
+            <span class="s">&#39;handlers&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s">&#39;mail_admins&#39;</span><span class="p">],</span>
+            <span class="s">&#39;level&#39;</span><span class="p">:</span> <span class="s">&#39;<span class="caps">ERROR</span>&#39;</span><span class="p">,</span>
+            <span class="s">&#39;propagate&#39;</span><span class="p">:</span> <span class="bp">True</span><span class="p">,</span>
+        <span class="p">},</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+
+
+<p>Ve daha sonra projemizin dizinine geçiyoruz ve veritabanı tablolarımızın oluşturulması için aşağıdaki komutu&nbsp;giriyoruz.</p>
+<div class="codehilite"><pre><span class="n">python</span> <span class="n">manage</span><span class="o">.</span><span class="n">py</span> <span class="n">syncdb</span>
+</pre></div>
+
+
+<p>Bu komutu girdikten sonra super kullanıcı oluşturmak isteyip istemediğinizi soracak. Ve sizden mail adresi ile şifre alacak.Bu bilgileri admin paneline girmek için&nbsp;kullanacağız.</p>
+<p><img alt="Django Admin Panel" src="http://www.halitalptekin.com/media/upload/django-admin.png" /></p>
+<p>Şimdi uygulamamızı çalıştıralım.Aşağıdaki komuttan sonra port numarası girerek istediğiniz bir portta açabilirsiniz.Eğer belirtmezseniz default olarak 8000&nbsp;açılacaktır.</p>
+<div class="codehilite"><pre><span class="n">python</span> <span class="n">manage</span><span class="o">.</span><span class="n">py</span> <span class="n">runserver</span>
+</pre></div>
+
+
+<p>Ekranda 0 errors found yazısını gorurseniz uygulamamız başarıyla çalıştırıldı demektir.Şimdi localhost:8000 adresimize girip 404 hatasını alalım.Bu hatayı alma sebebimiz index urlsini henuz tanımlamadığımızdır.Sadece admin urlsini&nbsp;tanımladık.</p>
+<p><img alt="Django 404" src="http://www.halitalptekin.com/media/upload/django-404.png" /></p>
+<p>Şimdi de <strong>/admin</strong> urlsine gidelim ve admin paneline giriş&nbsp;yapalım.</p>
+<p><img alt="Django Admin Panel Giris" src="http://www.halitalptekin.com/media/upload/django-admin-giris.png" /></p>
+<p>Eğer başarıyla giriş yaparsanız aşağıdaki gibi bir ekran&nbsp;goreceksiniz.</p>
+<p><img alt="Django Admin Panel Dashboard" src="http://www.halitalptekin.com/media/upload/django-admin-dashboard.png" /></p>
+<p>Bence bir sonraki yazımız olan Modellere kadar admin panelini iyice kurcalayın.Sitelerden yeni siteler ekleyip duzenleyin.Yeni guruplar kullanıcılar açın.Profilinizi doldurun.En azından eliniz ve gozunuz panele alışsın.Bir sonraki yazıda goruşmek&nbsp;uzere.</p></div>
+        <hr />
+    </div>
+		
+    
+        <div class="pagination">
+<ul>
+
+    <li class="prev disabled"><a href="#">&larr; Previous</a></li>
+
+
+
+    <li class="active"><a href=".././tag/django admin paneli.html">1</a></li>
+
+
+
+    <li class="next disabled"><a href="#">&rarr; Next</a></li>
+
+
+</ul>
+</div>
+    
+
+
+ 
+
+ 
+ 
+
+
+        </div>
+        
+        <div class="span3">
+
+            <div class="well" style="padding: 8px 0; background-color: #FBFBFB;">
+            <ul class="nav nav-list">
+                <li class="nav-header"> 
+                Site
+                </li>
+            
+                <li><a href=".././archives.html">Archives</a>
+                <li><a href=".././tags.html">Tags</a>
+                <li><a href=".././feeds/all.atom.xml" rel="alternate">Atom feed</a></li>
+                
+                <li><a href=".././feeds/all.rss.xml" rel="alternate">RSS feed</a></li>
+                
+                 <li><a href=".././sitemap.xml">Sitemap</a>
+            </ul>
+            </div>
+
+
+            
+            <div class="well" style="padding: 8px 0; background-color: #FBFBFB;">
+            <ul class="nav nav-list">
+                <li class="nav-header"> 
+                Categories
+                </li>
+                
+                
+                <li><a href=".././category/tasarim.html">tasarim</a></li>
+                
+                <li><a href=".././category/server.html">server</a></li>
+                
+                <li><a href=".././category/python.html">python</a></li>
+                
+                <li><a href=".././category/programlama.html">programlama</a></li>
+                
+                <li><a href=".././category/linux.html">linux</a></li>
+                
+                <li><a href=".././category/kisisel.html">kisisel</a></li>
+                
+                <li><a href=".././category/internet.html">internet</a></li>
+                
+                <li><a href=".././category/guvenlik.html">guvenlik</a></li>
+                
+                <li><a href=".././category/genel.html">genel</a></li>
+                
+                <li><a href=".././category/eglence.html">eglence</a></li>
+                
+                <li><a href=".././category/django.html">django</a></li>
+                
+                <li><a href=".././category/arduino.html">arduino</a></li>
+                                   
+            </ul>
+            </div>
+            
+
+
+            
+            <div class="well" style="padding: 8px 0; background-color: #FBFBFB;">
+            <ul class="nav nav-list">
+                <li class="nav-header"> 
+                Links
+                </li>
+            
+            
+                <li><a href="http://www.google.com">Google</a></li>
+            
+                <li><a href="http://www.python.org">Python</a></li>
+            
+            </ul>
+            </div>
+            
+
+
+            
+            <div class="social">
+            <div class="well" style="padding: 8px 0; background-color: #FBFBFB;">
+            <ul class="nav nav-list">
+                <li class="nav-header"> 
+                Social
+                </li>
+           
+                
+                <li><a href="http://twitter.com/halitalptekin">twitter</a></li>
+                
+                <li><a href="http://github.com/halitalptekin">github</a></li>
+                
+                <li><a href="http://stackoverflow.com/users/1151618/halit-alptekin">stackoverflow</a></li>
+                
+                <li><a href="http://tr.linkedin.com/in/halitalptekin">linkedin</a></li>
+                
+            </ul>
+            </div>
+            </div>
+            
+
+            
+            <div class="well" style="padding: 8px 0; background-color: #FBFBFB;">
+            <ul class="nav nav-list">
+                <li class="nav-header"> 
+                Ads
+                </li>
+
+                
+                <li><a href="http://www.tamindir.com" title="Program Indir"><img src="/media/reklam/tamindir.jpg" alt="Tamindir" title="Program Indir"></a>
+                </li>
+                
+                <li><a href="http://www.tatilbuldur.com" title="TatilBudur"><img src="/media/reklam/tatilbudur.png" alt="TatilBudur" title="TatilBudur"></a>
+                </li>
+                
+            </ul>
+            </div>
+            
+
+        </div>  
+    </div> 
+    </div> 
+
+<footer>
+	<hr>
+	<p><a href='http://www.halitalptekin.com'>Halit Alptekin Personal Blog</a> &copy; 2012</p>
+</footer>
+
+</div> <!-- /container -->
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+<script src="http://twitter.github.com/bootstrap/assets/js/bootstrap-collapse.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Halit Alptekin Personal Blog</title>
+    <meta name="description" content="Programming and Life Blog Of Halit Alptekin. Karadeniz Technical University Computer Engineering Student.">
+    <meta name="keywords" content="programlama, blog, personal blog, linux, python, django, php, bootstrap, seo, bilgisayar muhendisligi, ktu, karadeniz teknik universitesi, programming">
+    <meta name="author" content="halit">
+    <meta name="robots" content="index, follow, all"/>
+
+    <!-- Le HTML5 shim, for IE6-8 support of HTML elements -->
+    <!--[if lt IE 9]>
+    <script src=".././theme/html5.js"></script>
+    <![endif]-->
+
+    <!-- Le styles -->
+    <link href=".././theme/bootstrap.min.css" rel="stylesheet">
+    <link href=".././theme/bootstrap.min.responsive.css" rel="stylesheet">
+    <link href=".././theme/local.css" rel="stylesheet">
+    <link href=".././theme/pygments.css" rel="stylesheet">
+
+</head>
+
+<body>
+
+<div class="navbar">
+    <div class="navbar-inner">
+    <div class="container">
+
+         <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+             <span class="icon-bar"></span>
+             <span class="icon-bar"></span>
+             <span class="icon-bar"></span>
+         </a>
+
+        <a class="brand" href="../.">Halit Alptekin Personal Blog</a>
+
+        <div class="nav-collapse">
+        <ul class="nav">
+        
+            
+        <li><a href=".././pages/about-me.html">About Me</a></li>
+	    <li><a href=".././pages/contact.html">Contact</a></li>
+        </ul>
+        </div>
+        
+    </div>
+    </div>
+</div>
+
+<div class="container">
+    <div class="content">
+    <div class="row">
+
+        <div class="span9">
+                
+
+        
+
+
+
+    <div class='article'>
+        <div class="content-title">
+            <a href=".././facebooku-proxy-olarak-kullanma.html"><h1>Facebook&#8217;u Proxy Olarak&nbsp;Kullanma</h1></a>
+            Aug 21, 2012
+
+
+by <a class="url fn" href=".././author/halit.html">halit</a>
+ 
+
+in <a href=".././category/guvenlik.html">guvenlik</a>
+
+ 
+    tagged <a href=".././tag/facebook.html">facebook</a> <a href=".././tag/facebook-proxy.html">facebook proxy</a> <a href=".././tag/file-and-directory-crawling.html">file and directory crawling</a> <a href=".././tag/proxy.html">proxy</a> <a href=".././tag/tornado.html">tornado</a> <a href=".././tag/urllib2.html">urllib2</a> 
+ 
+        </div>
+        
+        <div><p>Geçenlerde Facebook&#8217;un siteler için kullandığı og tagı ile araştırma yaparken ilginç bir durumla karşılaştım.Facebook bu kodlar için ufak bir debugger yapmış.Bu araç ile og taglarını analiz edebiliyorsunuz.Buraya kadar herşey normal.Ancak bu debugger&#8217;ın bir ozelliği olan sayfayı tarama ozelliği maniple edilebilecek cinsten.Buna gore yazdığınız sitenin kaynak kodlarını Facebook sizin yerinize çekip ekranınıza basıyor.Boylelikle bu araç ufak amaçlar için proxy olarak kullanılabilir.Bunu duşundukten hemen sonra internete bu konu ile daha once çalışma yapılmış mı diye baktığımda sadece birkaç yerde bu konudan bahsedilmiş.Hatta ufak bir scrapper orneğide&nbsp;yazılmış.</p>
+<p><img alt="Facebook as a proxy" src="http://www.halitalptekin.com/media/upload/facebook-as-a-proxy.jpg" /></p>
+<p>Kullanılan araç <a href="https://developers.facebook.com/tools/debug">burası</a>.Siteye girip anonim olarak bakmak istediğiniz siteyi yazın.Daha sonra Debug butonuna basın.Gelen sayfanın en altına yer alan Scraped Url linkine bastığınızda o sayfanın kaynak kodlarını ekranda&nbsp;goreceksiniz.</p>
+<p>Yani bu aracı aşağıdaki linkteki www.halitalptekin.com yerine kullanmak istediğiniz sitenin adresini yazarak&nbsp;kullanabilirsiniz.</p>
+<div class="codehilite"><pre><span class="n">https:</span><span class="sr">//</span><span class="n">developers</span><span class="o">.</span><span class="n">facebook</span><span class="o">.</span><span class="n">com</span><span class="sr">/tools/</span><span class="n">debug</span><span class="sr">/og/</span><span class="n">echo</span><span class="p">?</span><span class="n">q</span><span class="o">=</span><span class="n">www</span><span class="o">.</span><span class="n">halitalptekin</span><span class="o">.</span><span class="n">com</span>
+</pre></div>
+
+
+<ul>
+<li>
+<p>Bu araç ile <span class="caps">GET</span> istekleri gonderip sayfaların <span class="caps">HTML</span> kodlarına bakabiliriz(Guvenliği olmadığını duşunduğunuz sitenin kaynak koduna bakıp daha sonra&nbsp;girebilirsiniz)</p>
+</li>
+<li>
+<p>Ufak kodlar yazarak istediğimiz sitenin dizin ve dosyalarını listeleyebiliriz.(File and Directory&nbsp;Crawling)</p>
+</li>
+<li>
+<p>Ama bu araç ile <span class="caps">POST</span> istekleri gonderemeyip, çerezler uzerinde değişiklik yapamayız.Bir de bu aracı kullanmak için giriş yapmak&nbsp;zorundayız.</p>
+</li>
+</ul>
+<p>Bu aracı direk olarak kodlarımıza ekleyerek kullanmanın yanında webserver(Tornado,Django vb) kurarak buradan çektiğimiz kodları tekrardan render edip sayfaya basabiliriz.Boylelikle gerçek bir proxy elde etmiş oluruz.Ben urllib2 kullanarak sayfadan veriyi çekip(cookie gondermeden olmaz) bunu parse ettim ve gereksiz kodlardan temizledim.Daha sonra da tornado web server kullanarak tekrardan render edip ekrana bastım.Şu anlık gayet guzel çalışıyor.Belki ileride bunun da paylaşımını&nbsp;yapabilirim.</p></div>
+        <hr />
+    </div>
+		
+    
+        <div class="pagination">
+<ul>
+
+    <li class="prev disabled"><a href="#">&larr; Previous</a></li>
+
+
+
+    <li class="active"><a href=".././tag/facebook proxy.html">1</a></li>
+
+
+
+    <li class="next disabled"><a href="#">&rarr; Next</a></li>
+
+
+</ul>
+</div>
+    
+
+
+ 
+
+ 
+ 
+
+
+        </div>
+        
+        <div class="span3">
+
+            <div class="well" style="padding: 8px 0; background-color: #FBFBFB;">
+            <ul class="nav nav-list">
+                <li class="nav-header"> 
+                Site
+                </li>
+            
+                <li><a href=".././archives.html">Archives</a>
+                <li><a href=".././tags.html">Tags</a>
+                <li><a href=".././feeds/all.atom.xml" rel="alternate">Atom feed</a></li>
+                
+                <li><a href=".././feeds/all.rss.xml" rel="alternate">RSS feed</a></li>
+                
+                 <li><a href=".././sitemap.xml">Sitemap</a>
+            </ul>
+            </div>
+
+
+            
+            <div class="well" style="padding: 8px 0; background-color: #FBFBFB;">
+            <ul class="nav nav-list">
+                <li class="nav-header"> 
+                Categories
+                </li>
+                
+                
+                <li><a href=".././category/tasarim.html">tasarim</a></li>
+                
+                <li><a href=".././category/server.html">server</a></li>
+                
+                <li><a href=".././category/python.html">python</a></li>
+                
+                <li><a href=".././category/programlama.html">programlama</a></li>
+                
+                <li><a href=".././category/linux.html">linux</a></li>
+                
+                <li><a href=".././category/kisisel.html">kisisel</a></li>
+                
+                <li><a href=".././category/internet.html">internet</a></li>
+                
+                <li><a href=".././category/guvenlik.html">guvenlik</a></li>
+                
+                <li><a href=".././category/genel.html">genel</a></li>
+                
+                <li><a href=".././category/eglence.html">eglence</a></li>
+                
+                <li><a href=".././category/django.html">django</a></li>
+                
+                <li><a href=".././category/arduino.html">arduino</a></li>
+                                   
+            </ul>
+            </div>
+            
+
+
+            
+            <div class="well" style="padding: 8px 0; background-color: #FBFBFB;">
+            <ul class="nav nav-list">
+                <li class="nav-header"> 
+                Links
+                </li>
+            
+            
+                <li><a href="http://www.google.com">Google</a></li>
+            
+                <li><a href="http://www.python.org">Python</a></li>
+            
+            </ul>
+            </div>
+            
+
+
+            
+            <div class="social">
+            <div class="well" style="padding: 8px 0; background-color: #FBFBFB;">
+            <ul class="nav nav-list">
+                <li class="nav-header"> 
+                Social
+                </li>
+           
+                
+                <li><a href="http://twitter.com/halitalptekin">twitter</a></li>
+                
+                <li><a href="http://github.com/halitalptekin">github</a></li>
+                
+                <li><a href="http://stackoverflow.com/users/1151618/halit-alptekin">stackoverflow</a></li>
+                
+                <li><a href="http://tr.linkedin.com/in/halitalptekin">linkedin</a></li>
+                
+            </ul>
+            </div>
+            </div>
+            
+
+            
+            <div class="well" style="padding: 8px 0; background-color: #FBFBFB;">
+            <ul class="nav nav-list">
+                <li class="nav-header"> 
+                Ads
+                </li>
+
+                
+                <li><a href="http://www.tamindir.com" title="Program Indir"><img src="/media/reklam/tamindir.jpg" alt="Tamindir" title="Program Indir"></a>
+                </li>
+                
+                <li><a href="http://www.tatilbuldur.com" title="TatilBudur"><img src="/media/reklam/tatilbudur.png" alt="TatilBudur" title="TatilBudur"></a>
+                </li>
+                
+            </ul>
+            </div>
+            
+
+        </div>  
+    </div> 
+    </div> 
+
+<footer>
+	<hr>
+	<p><a href='http://www.halitalptekin.com'>Halit Alptekin Personal Blog</a> &copy; 2012</p>
+</footer>
+
+</div> <!-- /container -->
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+<script src="http://twitter.github.com/bootstrap/assets/js/bootstrap-collapse.js"></script>
+
+</body>
+</html>

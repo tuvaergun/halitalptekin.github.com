@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Halit Alptekin Personal Blog</title>
+    <meta name="description" content="Programming and Life Blog Of Halit Alptekin. Karadeniz Technical University Computer Engineering Student.">
+    <meta name="keywords" content="programlama, blog, personal blog, linux, python, django, php, bootstrap, seo, bilgisayar muhendisligi, ktu, karadeniz teknik universitesi, programming">
+    <meta name="author" content="halit">
+    <meta name="robots" content="index, follow, all"/>
+
+    <!-- Le HTML5 shim, for IE6-8 support of HTML elements -->
+    <!--[if lt IE 9]>
+    <script src=".././theme/html5.js"></script>
+    <![endif]-->
+
+    <!-- Le styles -->
+    <link href=".././theme/bootstrap.min.css" rel="stylesheet">
+    <link href=".././theme/bootstrap.min.responsive.css" rel="stylesheet">
+    <link href=".././theme/local.css" rel="stylesheet">
+    <link href=".././theme/pygments.css" rel="stylesheet">
+
+</head>
+
+<body>
+
+<div class="navbar">
+    <div class="navbar-inner">
+    <div class="container">
+
+         <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+             <span class="icon-bar"></span>
+             <span class="icon-bar"></span>
+             <span class="icon-bar"></span>
+         </a>
+
+        <a class="brand" href="../.">Halit Alptekin Personal Blog</a>
+
+        <div class="nav-collapse">
+        <ul class="nav">
+        
+            
+        <li><a href=".././pages/about-me.html">About Me</a></li>
+	    <li><a href=".././pages/contact.html">Contact</a></li>
+        </ul>
+        </div>
+        
+    </div>
+    </div>
+</div>
+
+<div class="container">
+    <div class="content">
+    <div class="row">
+
+        <div class="span9">
+                
+
+        
+
+
+
+    <div class='article'>
+        <div class="content-title">
+            <a href=".././python-ve-couchdb.html"><h1>Python Ve&nbsp;Couchdb</h1></a>
+            Sep 03, 2012
+
+
+by <a class="url fn" href=".././author/halit.html">halit</a>
+ 
+
+in <a href=".././category/python.html">python</a>
+
+ 
+    tagged <a href=".././tag/couchdb.html">couchdb</a> <a href=".././tag/django.html">django</a> <a href=".././tag/django-couchdb.html">django couchdb</a> <a href=".././tag/django-nosql.html">django nosql</a> <a href=".././tag/nosql.html">nosql</a> <a href=".././tag/python.html">python</a> <a href=".././tag/python-couchdb.html">python couchdb</a> 
+ 
+        </div>
+        
+        <div><p>NoSQL veritabanı platformları son zamanlar gittikçe daha fazla ilgimi çekmeye başladı.Çunku artık MySql gibi veritabanları eskisi gibi yeterli gelmiyor.Yuksek veri girişlerinde veya çok fazla verinin olduğu veritabanlarında kasılmalar, şişmeler, donmalar gibi birçok sorun çıkarıyorlar.Bunların yanında hız olarak da bir zaman sonra insana gerçekten yeterli gelmiyor.Ben kişisel sitemi kodlarken aklımda hep hızlı bir db kullanma fikri vardı.Çunku MySql ile çok fazla problem yaşamıştım.Ve tekrardan yaşamak istemiyordum.Bu yuzden PostgreSQL&#8217;i denemek için seçtim.Şu anda işimi çok fazla goruyor.Ama bunu sadece denemek için yaptım ve aklımda yatan asıl fikir nosql platformlardan birisini kullanmak.Bu platformların başında MongoDB ile CouchDB geliyor.Ben bu yazımda CouchDB&#8217;yi python veya django uygulamalarınızda nasıl basitçe kullanacağınızı&nbsp;gostereceğim.</p>
+<p><img alt="Python Django NoSql CouchDb" src="http://www.halitalptekin.com/media/upload/nosql.png" /></p>
+<p>Öncelikle sizlerinde bir linux kullanıcısı olduğunu varsayıyorum ve direk gerekli paketlerimizin kurulumuna geçiyorum.Öncelikle bilgisayarımızda couchdb kurulu olmalı.Uygun paket yoneticinize gore couchdb uygulamasını bilgisayarınıza kurun.Ubuntuda couchdb-bin isimli uygulamayı kurduğumda hata ile karşılaştım.Bu yuzden synaptic paket yoneticisine girip couchdb ve couchdb-dev gibi paketleride&nbsp;kurdum.</p>
+<p>Eğer bilgisayarınızda couchdb başarı ile kuruldu ise couchdb&#8217;yi başlattığınızda aşağıdaki gibi bir ekran gelmesi lazım.(sudo couchdb komutuyla başlatırsanız hata&nbsp;almazsınız)</p>
+<div class="codehilite"><pre><span class="n">Apache</span> <span class="n">CouchDB</span> <span class="mf">1.0</span><span class="o">.</span><span class="mi">1</span> <span class="p">(</span><span class="n">LogLevel</span><span class="o">=</span><span class="n">info</span><span class="p">)</span> <span class="ow">is</span> <span class="n">starting</span><span class="o">.</span>
+<span class="n">Apache</span> <span class="n">CouchDB</span> <span class="n">has</span> <span class="n">started</span><span class="o">.</span> <span class="n">Time</span> <span class="n">to</span> <span class="n">relax</span><span class="o">.</span>
+<span class="p">[</span><span class="n">info</span><span class="p">]</span> <span class="p">[</span><span class="o">&lt;</span><span class="mf">0.32</span><span class="o">.</span><span class="mi">0</span><span class="o">&gt;</span><span class="p">]</span> <span class="n">Apache</span> <span class="n">CouchDB</span> <span class="n">has</span> <span class="n">started</span> <span class="n">on</span> <span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="mf">127.0</span><span class="o">.</span><span class="mf">0.1</span><span class="p">:</span><span class="mi">5984</span><span class="o">/</span>
+</pre></div>
+
+
+<p>Şimdide python içinde kullanabilmemiz için gerekli olan modulleri kuruyoruz.Bunun için pip ve easy_install kullanabilirsiniz.Ben favorim olan pip&#8217;i kullanıyorum ve size de onu&nbsp;oneriyorum.</p>
+<div class="codehilite"><pre><span class="n">sudo</span> <span class="n">pip</span> <span class="n">install</span> <span class="n">couchdb</span>
+</pre></div>
+
+
+<p>Şimdi de gerçekten başarıyla kurulmuş mu diye iPythondan kontrol&nbsp;edelim.</p>
+<div class="codehilite"><pre><span class="n">In</span> <span class="p">[</span><span class="mi">1</span><span class="p">]:</span> <span class="kn">from</span> <span class="nn">couchdb</span> <span class="kn">import</span> <span class="o">*</span>
+
+<span class="n">In</span> <span class="p">[</span><span class="mi">2</span><span class="p">]:</span> <span class="n">s</span> <span class="o">=</span> <span class="n">Server</span><span class="p">(</span><span class="s">&quot;http://127.0.0.1:5984/&quot;</span><span class="p">)</span>
+
+<span class="n">In</span> <span class="p">[</span><span class="mi">3</span><span class="p">]:</span> <span class="n">s</span>
+<span class="n">Out</span><span class="p">[</span><span class="mi">3</span><span class="p">]:</span>
+
+<span class="n">In</span> <span class="p">[</span><span class="mi">4</span><span class="p">]:</span> <span class="nb">len</span><span class="p">(</span><span class="n">s</span><span class="p">)</span>
+<span class="n">Out</span><span class="p">[</span><span class="mi">4</span><span class="p">]:</span> <span class="mi">1</span>
+
+<span class="n">In</span> <span class="p">[</span><span class="mi">5</span><span class="p">]:</span> <span class="n">s</span><span class="o">.</span>
+<span class="n">s</span><span class="o">.</span><span class="n">config</span>     <span class="n">s</span><span class="o">.</span><span class="n">delete</span>     <span class="n">s</span><span class="o">.</span><span class="n">resource</span>   <span class="n">s</span><span class="o">.</span><span class="n">tasks</span>      <span class="n">s</span><span class="o">.</span><span class="n">version</span>    
+<span class="n">s</span><span class="o">.</span><span class="n">create</span>     <span class="n">s</span><span class="o">.</span><span class="n">replicate</span>  <span class="n">s</span><span class="o">.</span><span class="n">stats</span>      <span class="n">s</span><span class="o">.</span><span class="n">uuids</span>
+</pre></div>
+
+
+<p>Gorduğunuz gibi once import ettik ve daha sonra serverımızı ayarladık.Couchdb on tanımlı olarak 5984 portunu kullanıyor.İsterseniz bunu /etc/couchdb içindeki ayar dosyasından(default.ini) değiştirebilirsiniz.Ayrıcana bu portun dışarıya açılması içinde gerekli olan ayarlar bu dosyada yer&nbsp;alıyor.</p>
+<p>len(s) komutuyla toplam kaç tane veritabanımız olduğunu kontrol ettik.Bizden once couchdb içine bir adet veritabanı eklemiş.Şimdi de biz bir tane ekleme&nbsp;yapalım.</p>
+<div class="codehilite"><pre><span class="n">In</span> <span class="p">[</span><span class="mi">6</span><span class="p">]:</span> <span class="n">s</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="s">&quot;dosyalar&quot;</span><span class="p">)</span>
+<span class="n">Out</span><span class="p">[</span><span class="mi">6</span><span class="p">]:</span>
+
+<span class="n">In</span> <span class="p">[</span><span class="mi">7</span><span class="p">]:</span> <span class="nb">len</span><span class="p">(</span><span class="n">s</span><span class="p">)</span>
+<span class="n">Out</span><span class="p">[</span><span class="mi">7</span><span class="p">]:</span> <span class="mi">2</span>
+</pre></div>
+
+
+<p>Dosyalar adında bir veritabanı ekledik ve kontrol ettik gerçekten eklenmiş mi diye.Şimdide butun veritabanlarımızı&nbsp;listeleyelim.</p>
+<div class="codehilite"><pre><span class="n">In</span> <span class="p">[</span><span class="mi">8</span><span class="p">]:</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">s</span><span class="p">:</span>
+   <span class="o">...</span><span class="p">:</span>     <span class="k">print</span> <span class="n">x</span>
+   <span class="o">...</span><span class="p">:</span>     
+<span class="n">dosyalar</span>
+<span class="n">_users</span>
+</pre></div>
+
+
+<p>Kayıtlı olan 2 veritabanımızı gorduğunuz gibi çektik.Şimdide en son eklediğimiz dosyalar veritabanımızı&nbsp;silelim.</p>
+<div class="codehilite"><pre><span class="n">In</span> <span class="p">[</span><span class="mi">9</span><span class="p">]:</span> <span class="k">del</span> <span class="n">s</span><span class="p">[</span><span class="s">&quot;dosyalar&quot;</span><span class="p">]</span>
+
+<span class="n">In</span> <span class="p">[</span><span class="mi">10</span><span class="p">]:</span> <span class="nb">len</span><span class="p">(</span><span class="n">s</span><span class="p">)</span>
+<span class="n">Out</span><span class="p">[</span><span class="mi">10</span><span class="p">]:</span> <span class="mi">1</span>
+</pre></div>
+
+
+<p>Python ve CouchDB kullanmak ne kadar da basit değil mi? Şimdi de veritabanımız içine bir tablo ekleyelim ve buna ilk verilerini&nbsp;girelim.</p>
+<div class="codehilite"><pre><span class="n">In</span> <span class="p">[</span><span class="mi">11</span><span class="p">]:</span> <span class="n">db</span> <span class="o">=</span> <span class="n">s</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="s">&quot;dosyalar&quot;</span><span class="p">)</span>
+
+<span class="n">In</span> <span class="p">[</span><span class="mi">12</span><span class="p">]:</span> <span class="nb">len</span><span class="p">(</span><span class="n">db</span><span class="p">)</span>
+<span class="n">Out</span><span class="p">[</span><span class="mi">12</span><span class="p">]:</span> <span class="mi">0</span>
+
+<span class="n">In</span> <span class="p">[</span><span class="mi">13</span><span class="p">]:</span> <span class="n">db</span><span class="o">.</span><span class="n">create</span><span class="p">({</span><span class="s">&#39;type&#39;</span><span class="p">:</span><span class="s">&#39;Dosya&#39;</span><span class="p">,</span><span class="s">&#39;baslik&#39;</span><span class="p">:</span><span class="s">&#39;Deneme Dosyasi&#39;</span><span class="p">,</span><span class="s">&#39;txt&#39;</span><span class="p">:</span><span class="s">&#39;Iste oyle bir sey&#39;</span><span class="p">})</span>
+<span class="n">Out</span><span class="p">[</span><span class="mi">13</span><span class="p">]:</span> <span class="s">&#39;97b270042933231539fb1ed07e000141&#39;</span>
+
+<span class="n">In</span> <span class="p">[</span><span class="mi">14</span><span class="p">]:</span> <span class="nb">len</span><span class="p">(</span><span class="n">db</span><span class="p">)</span>
+<span class="n">Out</span><span class="p">[</span><span class="mi">14</span><span class="p">]:</span> <span class="mi">1</span>
+</pre></div>
+
+
+<p>Evet tam duşunduğunuz gibi sozluk içerisinde ilk kısım kolon ikinci kısım ise o kolonlardaki veriler.Ve şimdi bir başka veri&nbsp;ekleyelim.</p>
+<div class="codehilite"><pre><span class="n">In</span> <span class="p">[</span><span class="mi">15</span><span class="p">]:</span> <span class="n">db</span><span class="p">[</span><span class="s">&#39;deneme&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span><span class="s">&#39;type&#39;</span><span class="p">:</span><span class="s">&#39;Dosya&#39;</span><span class="p">,</span><span class="s">&#39;baslik&#39;</span><span class="p">:</span><span class="s">&#39;diger deneme&#39;</span><span class="p">,</span><span class="s">&#39;txt&#39;</span><span class="p">:</span><span class="s">&#39;buraya guzel bisiler yaz&#39;</span><span class="p">}</span>
+
+<span class="n">In</span> <span class="p">[</span><span class="mi">16</span><span class="p">]:</span> <span class="n">db</span><span class="p">[</span><span class="s">&#39;deneme&#39;</span><span class="p">]</span>
+<span class="n">Out</span><span class="p">[</span><span class="mi">16</span><span class="p">]:</span>
+</pre></div>
+
+
+<p>Şimdi de bu eklediğimiz verileri nasıl çekeceğimize&nbsp;bakalım.</p>
+<div class="codehilite"><pre><span class="n">In</span> <span class="p">[</span><span class="mi">17</span><span class="p">]:</span> <span class="n">a</span> <span class="o">=</span> <span class="n">db</span><span class="p">[</span><span class="s">&#39;deneme&#39;</span><span class="p">]</span>
+
+<span class="n">In</span> <span class="p">[</span><span class="mi">18</span><span class="p">]:</span> <span class="n">a</span><span class="p">[</span><span class="s">&#39;baslik&#39;</span><span class="p">]</span>
+<span class="n">Out</span><span class="p">[</span><span class="mi">18</span><span class="p">]:</span> <span class="s">&#39;diger deneme&#39;</span>
+
+<span class="n">In</span> <span class="p">[</span><span class="mi">19</span><span class="p">]:</span> <span class="n">a</span>
+<span class="n">Out</span><span class="p">[</span><span class="mi">19</span><span class="p">]:</span>
+</pre></div>
+
+
+<p>Buraya kadar zaten Python bilginiz varsa olayın nasıl olduğunu ve nasıl kullanılacağı hakkında az çok bilgi edindiniz.Şimdi de bu veritabanlarında nasıl sorgu çalıştıracağımıza bakalım.Eskisi gibi <span class="caps">SQL</span> sorguları yerine javascript ile sorgular&nbsp;gerçekleştiriliyor.</p>
+<div class="codehilite"><pre><span class="n">In</span> <span class="p">[</span><span class="mi">20</span><span class="p">]:</span> <span class="n">fonksiyon</span> <span class="o">=</span> <span class="s">&quot;function(d) { if (d.baslik.length&gt;4) emit(d.baslik,null); }&quot;</span>
+
+<span class="n">In</span> <span class="p">[</span><span class="mi">21</span><span class="p">]:</span> <span class="k">for</span> <span class="n">sira</span> <span class="ow">in</span> <span class="n">db</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="n">fonksiyon</span><span class="p">):</span>
+   <span class="o">....</span><span class="p">:</span>     <span class="k">print</span> <span class="n">sira</span><span class="o">.</span><span class="n">key</span>
+   <span class="o">....</span><span class="p">:</span>     
+<span class="n">Deneme</span> <span class="n">Dosyasi</span>
+<span class="n">diger</span> <span class="n">deneme</span>
+</pre></div>
+
+
+<p>Kim derdi ki javascript ile <span class="caps">SQL</span> sorgusu gerçekleştirebileceğimizi.Ama işte zamanla ne kadar da gelişti.Eminim daha da gelişecektir.Şimdi bu butun yaptıklarımızı guzel bir ornek ile&nbsp;tamamlayalım.</p>
+<div class="codehilite"><pre><span class="n">In</span> <span class="p">[</span><span class="mi">1</span><span class="p">]:</span> <span class="kn">from</span> <span class="nn">couchdb</span> <span class="kn">import</span> <span class="o">*</span>
+
+<span class="n">In</span> <span class="p">[</span><span class="mi">2</span><span class="p">]:</span> <span class="n">s</span> <span class="o">=</span> <span class="n">Server</span><span class="p">(</span><span class="s">&#39;http://127.0.0.1:5984/&#39;</span><span class="p">)</span>
+
+<span class="n">In</span> <span class="p">[</span><span class="mi">3</span><span class="p">]:</span> <span class="n">db</span> <span class="o">=</span> <span class="n">s</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="s">&#39;yazilim&#39;</span><span class="p">)</span>
+
+<span class="n">In</span> <span class="p">[</span><span class="mi">4</span><span class="p">]:</span> <span class="n">db</span><span class="p">[</span><span class="s">&#39;Firefox&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span><span class="s">&#39;type&#39;</span><span class="p">:</span><span class="s">&#39;browser&#39;</span><span class="p">,</span><span class="s">&#39;baslik&#39;</span><span class="p">:</span><span class="s">&#39;FireFox&#39;</span><span class="p">}</span>
+
+<span class="n">In</span> <span class="p">[</span><span class="mi">5</span><span class="p">]:</span> <span class="n">db</span><span class="p">[</span><span class="s">&#39;Safari&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span><span class="s">&#39;type&#39;</span><span class="p">:</span><span class="s">&#39;browser&#39;</span><span class="p">,</span><span class="s">&#39;baslik&#39;</span><span class="p">:</span><span class="s">&#39;Safari&#39;</span><span class="p">}</span>
+
+<span class="n">In</span> <span class="p">[</span><span class="mi">6</span><span class="p">]:</span> <span class="n">db</span><span class="p">[</span><span class="s">&#39;Aquamacs&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span><span class="s">&#39;type&#39;</span><span class="p">:</span><span class="s">&#39;editor&#39;</span><span class="p">,</span><span class="s">&#39;baslik&#39;</span><span class="p">:</span><span class="s">&#39;Aquamacs&#39;</span><span class="p">}</span>
+
+<span class="n">In</span> <span class="p">[</span><span class="mi">7</span><span class="p">]:</span> <span class="nb">len</span><span class="p">(</span><span class="n">db</span><span class="p">)</span>
+<span class="n">Out</span><span class="p">[</span><span class="mi">7</span><span class="p">]:</span> <span class="mi">3</span>
+
+<span class="n">In</span> <span class="p">[</span><span class="mi">8</span><span class="p">]:</span> <span class="n">browserlar</span> <span class="o">=</span> <span class="s">&#39;function(d) { if (d.type == &quot;browser&quot;) emit(d.baslik,d); }&#39;</span>
+
+<span class="n">In</span> <span class="p">[</span><span class="mi">9</span><span class="p">]:</span> <span class="p">[</span> <span class="n">x</span><span class="o">.</span><span class="n">key</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">db</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="n">browserlar</span><span class="p">)</span> <span class="p">]</span>
+<span class="n">Out</span><span class="p">[</span><span class="mi">9</span><span class="p">]:</span> <span class="p">[</span><span class="s">&#39;FireFox&#39;</span><span class="p">,</span> <span class="s">&#39;Safari&#39;</span><span class="p">]</span>
+
+<span class="n">In</span> <span class="p">[</span><span class="mi">10</span><span class="p">]:</span> <span class="k">del</span> <span class="n">s</span><span class="p">[</span><span class="s">&#39;yazilim&#39;</span><span class="p">]</span>
+</pre></div>
+
+
+<p>Kodlarımızı satır satır incelersek once coucdb&#8217;yi import ettik daha sonra serverımızı tanımladık.Bu serverda yazilim adında bir veritabanı oluşturduk ve bunu db isimli değişkene atadık.Bu veritabanında Firefox, Safari ve Aquamacs isimlerinde tablolar oluşturduk ve içlerine birkaç veri ekledik.Daha sonra veritabanımızı len fonksiyonu ile olçtuk ve 3 değerini aldık.Bunun anlamı veritabanında 3 tablo var.Daha sonra ise browserlar isimle değişkende javascript komutuyla sadece type == browser olan verileri almayı sağladık.Ve bunu sorguyu veritabanımızda çalıştırdık.Gelen değerleri list comprehension(gerçekten turkçesini bilmiyorum) yontemiyle ekrana bastık.Son olarak da bu oluşturduğumuz veritabanını&nbsp;sildim.</p>
+<p>Bu anlattıklarım ile python uygulamarınızın veritabanı eksikliğinde kullanabilirsiniz.Ama bence CouchDB&#8217;yi Django ile birlikte kullanmak daha mantıklı.Bunun içinde birkaç değişiklik yapmamız yeterli.Zaten bu değişiklikleri views kısmında kullanacağız.Mesela settings.py dosyamıza COUCHDB_SERVER adında bir değişken atayıp hangi serverı kullanacağımızı ekleyelim.Daha sonra views dosyamızı aşağıdaki gibi bir hale&nbsp;getirelim.</p>
+<div class="codehilite"><pre><span class="kn">from</span> <span class="nn">django.http</span> <span class="kn">import</span> <span class="n">Http404</span><span class="p">,</span><span class="n">HttpResponseRedirect</span>
+<span class="kn">from</span> <span class="nn">django.shortcuts</span> <span class="kn">import</span> <span class="n">render_to_response</span>
+<span class="kn">from</span> <span class="nn">couchdb</span> <span class="kn">import</span> <span class="n">Server</span>
+<span class="kn">from</span> <span class="nn">couchdb.client</span> <span class="kn">import</span> <span class="n">ResourceNotFound</span>
+
+<span class="n"><span class="caps">SERVER</span></span> <span class="o">=</span> <span class="n">Server</span><span class="p">(</span><span class="s">&#39;http://127.0.0.1:5984&#39;</span><span class="p">)</span>
+<span class="k">if</span> <span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n"><span class="caps">SERVER</span></span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">):</span>
+    <span class="n"><span class="caps">SERVER</span></span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="s">&#39;yazilar&#39;</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">index</span><span class="p">(</span><span class="n">request</span><span class="p">):</span>
+    <span class="n">yazilar</span> <span class="o">=</span> <span class="n"><span class="caps">SERVER</span></span><span class="p">[</span><span class="s">&#39;yazilar&#39;</span><span class="p">]</span>
+    <span class="k">if</span> <span class="n">request</span><span class="o">.</span><span class="n">method</span> <span class="o">==</span> <span class="s">&quot;<span class="caps">POST</span>&quot;</span><span class="p">:</span>
+        <span class="n">baslik</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n"><span class="caps">POST</span></span><span class="p">[</span><span class="s">&#39;baslik&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s">&#39; &#39;</span><span class="p">,</span><span class="s">&#39;&#39;</span><span class="p">)</span>
+        <span class="n">yazilar</span><span class="p">[</span><span class="n">baslik</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span><span class="s">&#39;baslik&#39;</span><span class="p">:</span><span class="n">baslik</span><span class="p">,</span><span class="s">&#39;icerik&#39;</span><span class="p">:</span><span class="s">&quot;&quot;</span><span class="p">}</span>
+        <span class="k">return</span> <span class="n">HttpResponseRedirect</span><span class="p">(</span><span class="s">u&quot;/yazi/</span><span class="si">%s</span><span class="s">/&quot;</span> <span class="o">%</span> <span class="n">baslik</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">render_to_response</span><span class="p">(</span><span class="s">&#39;yazilar/index.html&#39;</span><span class="p">,{</span><span class="s">&#39;rows&#39;</span><span class="p">:</span><span class="n">yazilar</span><span class="p">})</span>
+</pre></div>
+
+
+<p>Djangodaki views mantığını biliyorsanız yukarıda tam olarak ne yaptığımı anlamış olmalısınız.Benim burada ufak bir onerim olacak ve hardcode&#8217;lardan uzak durmak için aşağıdaki gibi kullanabilirsiniz.(settings.py dosyası içinde tanımladığımız değişkeni aşağıdaki gibi alıp&nbsp;kullanabiliriz)</p>
+<div class="codehilite"><pre><span class="kn">from</span> <span class="nn">django.conf</span> <span class="kn">import</span> <span class="n">settings</span>
+<span class="n"><span class="caps">SERVER</span></span> <span class="o">=</span> <span class="n">Server</span><span class="p">(</span><span class="nb">getattr</span><span class="p">(</span><span class="n">settings</span><span class="p">,</span><span class="s">&#39;COUCHDB_SERVER&#39;</span><span class="p">,</span><span class="s">&#39;http://127.0.0.1:5984&#39;</span><span class="p">))</span>
+</pre></div>
+
+
+<p>Özetle NoSql guzel bir teknoloji.Kullanın, deneyin, test edin.Eğer gerçekten ihtiyaç hissederseniz kullanmanız size kalmış&nbsp;birşey.</p></div>
+        <hr />
+    </div>
+		
+    
+        <div class="pagination">
+<ul>
+
+    <li class="prev disabled"><a href="#">&larr; Previous</a></li>
+
+
+
+    <li class="active"><a href=".././tag/nosql.html">1</a></li>
+
+
+
+    <li class="next disabled"><a href="#">&rarr; Next</a></li>
+
+
+</ul>
+</div>
+    
+
+
+ 
+
+ 
+ 
+
+
+        </div>
+        
+        <div class="span3">
+
+            <div class="well" style="padding: 8px 0; background-color: #FBFBFB;">
+            <ul class="nav nav-list">
+                <li class="nav-header"> 
+                Site
+                </li>
+            
+                <li><a href=".././archives.html">Archives</a>
+                <li><a href=".././tags.html">Tags</a>
+                <li><a href=".././feeds/all.atom.xml" rel="alternate">Atom feed</a></li>
+                
+                <li><a href=".././feeds/all.rss.xml" rel="alternate">RSS feed</a></li>
+                
+                 <li><a href=".././sitemap.xml">Sitemap</a>
+            </ul>
+            </div>
+
+
+            
+            <div class="well" style="padding: 8px 0; background-color: #FBFBFB;">
+            <ul class="nav nav-list">
+                <li class="nav-header"> 
+                Categories
+                </li>
+                
+                
+                <li><a href=".././category/tasarim.html">tasarim</a></li>
+                
+                <li><a href=".././category/server.html">server</a></li>
+                
+                <li><a href=".././category/python.html">python</a></li>
+                
+                <li><a href=".././category/programlama.html">programlama</a></li>
+                
+                <li><a href=".././category/linux.html">linux</a></li>
+                
+                <li><a href=".././category/kisisel.html">kisisel</a></li>
+                
+                <li><a href=".././category/internet.html">internet</a></li>
+                
+                <li><a href=".././category/guvenlik.html">guvenlik</a></li>
+                
+                <li><a href=".././category/genel.html">genel</a></li>
+                
+                <li><a href=".././category/eglence.html">eglence</a></li>
+                
+                <li><a href=".././category/django.html">django</a></li>
+                
+                <li><a href=".././category/arduino.html">arduino</a></li>
+                                   
+            </ul>
+            </div>
+            
+
+
+            
+            <div class="well" style="padding: 8px 0; background-color: #FBFBFB;">
+            <ul class="nav nav-list">
+                <li class="nav-header"> 
+                Links
+                </li>
+            
+            
+                <li><a href="http://www.google.com">Google</a></li>
+            
+                <li><a href="http://www.python.org">Python</a></li>
+            
+            </ul>
+            </div>
+            
+
+
+            
+            <div class="social">
+            <div class="well" style="padding: 8px 0; background-color: #FBFBFB;">
+            <ul class="nav nav-list">
+                <li class="nav-header"> 
+                Social
+                </li>
+           
+                
+                <li><a href="http://twitter.com/halitalptekin">twitter</a></li>
+                
+                <li><a href="http://github.com/halitalptekin">github</a></li>
+                
+                <li><a href="http://stackoverflow.com/users/1151618/halit-alptekin">stackoverflow</a></li>
+                
+                <li><a href="http://tr.linkedin.com/in/halitalptekin">linkedin</a></li>
+                
+            </ul>
+            </div>
+            </div>
+            
+
+            
+            <div class="well" style="padding: 8px 0; background-color: #FBFBFB;">
+            <ul class="nav nav-list">
+                <li class="nav-header"> 
+                Ads
+                </li>
+
+                
+                <li><a href="http://www.tamindir.com" title="Program Indir"><img src="/media/reklam/tamindir.jpg" alt="Tamindir" title="Program Indir"></a>
+                </li>
+                
+                <li><a href="http://www.tatilbuldur.com" title="TatilBudur"><img src="/media/reklam/tatilbudur.png" alt="TatilBudur" title="TatilBudur"></a>
+                </li>
+                
+            </ul>
+            </div>
+            
+
+        </div>  
+    </div> 
+    </div> 
+
+<footer>
+	<hr>
+	<p><a href='http://www.halitalptekin.com'>Halit Alptekin Personal Blog</a> &copy; 2012</p>
+</footer>
+
+</div> <!-- /container -->
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+<script src="http://twitter.github.com/bootstrap/assets/js/bootstrap-collapse.js"></script>
+
+</body>
+</html>

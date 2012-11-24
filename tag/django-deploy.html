@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Halit Alptekin Personal Blog</title>
+    <meta name="description" content="Programming and Life Blog Of Halit Alptekin. Karadeniz Technical University Computer Engineering Student.">
+    <meta name="keywords" content="programlama, blog, personal blog, linux, python, django, php, bootstrap, seo, bilgisayar muhendisligi, ktu, karadeniz teknik universitesi, programming">
+    <meta name="author" content="halit">
+    <meta name="robots" content="index, follow, all"/>
+
+    <!-- Le HTML5 shim, for IE6-8 support of HTML elements -->
+    <!--[if lt IE 9]>
+    <script src=".././theme/html5.js"></script>
+    <![endif]-->
+
+    <!-- Le styles -->
+    <link href=".././theme/bootstrap.min.css" rel="stylesheet">
+    <link href=".././theme/bootstrap.min.responsive.css" rel="stylesheet">
+    <link href=".././theme/local.css" rel="stylesheet">
+    <link href=".././theme/pygments.css" rel="stylesheet">
+
+</head>
+
+<body>
+
+<div class="navbar">
+    <div class="navbar-inner">
+    <div class="container">
+
+         <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+             <span class="icon-bar"></span>
+             <span class="icon-bar"></span>
+             <span class="icon-bar"></span>
+         </a>
+
+        <a class="brand" href="../.">Halit Alptekin Personal Blog</a>
+
+        <div class="nav-collapse">
+        <ul class="nav">
+        
+            
+        <li><a href=".././pages/about-me.html">About Me</a></li>
+	    <li><a href=".././pages/contact.html">Contact</a></li>
+        </ul>
+        </div>
+        
+    </div>
+    </div>
+</div>
+
+<div class="container">
+    <div class="content">
+    <div class="row">
+
+        <div class="span9">
+                
+
+        
+
+
+
+    <div class='article'>
+        <div class="content-title">
+            <a href=".././django-uygulamalari-icin-heroku.html"><h1>Django Uygulamaları İçin&nbsp;Heroku</h1></a>
+            Sep 07, 2012
+
+
+by <a class="url fn" href=".././author/halit.html">halit</a>
+ 
+
+in <a href=".././category/django.html">django</a>
+
+ 
+    tagged <a href=".././tag/django-deploy.html">django deploy</a> <a href=".././tag/heroku.html">heroku</a> <a href=".././tag/heroku-django.html">heroku django</a> <a href=".././tag/python-turkiye.html">python türkiye</a> <a href=".././tag/pytr.html">pytr</a> 
+ 
+        </div>
+        
+        <div><p>Django uygulaması yazmak diğer birçok dil ve framework&#8217;a gore hem kolay hem de zevkli.Bu sayede çok kısa surede kendi blogunuzu veya hayalinizdeki scripti yazabiliyorsunuz.Bende en son pytr.org domaini için guzel bir blog çalışması yaptım.Tam olarak bitmemiş olsada bir blogta olması gereken en temel şeyleri ekledim.Zaten scripti de git uzerinde tuttuğum için belirli aralıklarla geliştirmeye devam ediyorum.İşte bir noktada artık bu uygulamanızı değploy etme zorunluğu duyacaksınız.Sonuçta bir yerde localhost&#8217;ta çalıştırmak size yetmeyecek.Ve kullandığınız domain uzerine kurmak isteyeceksiniz.İşte bu noktada ucretsiz alternatiflerin başında gelen Heroku&nbsp;kullanabilirsiniz.</p>
+<p><a href="http://www.halitalptekin.com/media/upload/django-heroku-deploy.png"><img alt="Django Heroku Deploy" src="http://www.halitalptekin.com/media/upload/django-heroku-deploy.png" /></a></p>
+<p>Öncelikle kendi uygulamanızı yazdığınızı varsayıyorum.Ben son kodladığım blog olan <a href="http://www.pytr.org">PyTr</a> nin kaynak kodlarını kullanacağım.Öncelikli olarak bilgisayarınıza heroku kurulumunu yapmanız gerekiyor.Debian ve Ubuntu kullanıcıları aşağıdaki komut ile kurabilirler.Windows kullanıcıları ise <a href="https://toolbelt.heroku.com/download/windows">bu</a> dosyayı indirip kurması lazım.Bu kurulumu yaptıktan sonra ilk çalıştırmanızda sizden bilgilerinizi isteyeceğinizi&nbsp;unutmayın.</p>
+<div class="codehilite"><pre><span class="n">wget</span> <span class="o">-</span><span class="n">qO</span><span class="o">-</span> <span class="n">https:</span><span class="sr">//</span><span class="n">toolbelt</span><span class="o">.</span><span class="n">heroku</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">install</span><span class="o">.</span><span class="n">sh</span> <span class="o">|</span> <span class="n">sh</span>
+</pre></div>
+
+
+<p>Uygulamanızı eğer virtualenv kullanarak yaparsanız çok daha rahat edersiniz.Mumkun olduğunca daha fazla kullanmaya çalışın.Eğer virtualenv kullanıyorsanız aşağıdaki komut ile gerekli olacak olan modulleri requirements.txt de toplayabilirsiniz.Yoksa bu dosyayı kendiniz oluşturup teker teker eklemeniz&nbsp;gerekecektir.</p>
+<div class="codehilite"><pre><span class="n">pip</span> <span class="n">freeze</span> <span class="o">&gt;</span> <span class="n">requirements</span><span class="o">.</span><span class="n">txt</span>
+</pre></div>
+
+
+<p>Gerekliliklerimizi tanımladıktan sonra django uygulamamızın veritabanını herokuya uygun hale getirmemiz lazım.Ben PostgreSQL kullanacağım.settings.py dosyamızın içindeki veritabanı bolgesini aşağıdaki gibi&nbsp;değiştiriyoruz.</p>
+<div class="codehilite"><pre><span class="kn">import</span> <span class="nn">dj_database_url</span>
+<span class="n"><span class="caps">DATABASES</span></span> <span class="o">=</span> <span class="p">{</span><span class="s">&#39;default&#39;</span><span class="p">:</span> <span class="n">dj_database_url</span><span class="o">.</span><span class="n">config</span><span class="p">(</span><span class="n">default</span><span class="o">=</span><span class="s">&#39;postgres://localhost&#39;</span><span class="p">)}</span>
+</pre></div>
+
+
+<p>Şimdi heroku açısından herşeyimiz hazır.Artık git kurulumunu yapalım ve dosyalarımızı&nbsp;ekleyelim.</p>
+<div class="codehilite"><pre><span class="n">git</span> <span class="n">init</span>
+<span class="n">git</span> <span class="n">add</span> <span class="o">.</span>
+<span class="n">git</span> <span class="n">commit</span> <span class="o">-</span><span class="n">m</span> <span class="s">&quot;pytr first upload&quot;</span>
+</pre></div>
+
+
+<p>Şimdi de heroku kurulumunu&nbsp;yapalım.</p>
+<div class="codehilite"><pre><span class="n">heroku</span> <span class="n">create</span> <span class="n">pytrdeploy</span>
+</pre></div>
+
+
+<p>Herşeyimiz hazır olduğuna gore pushlayabiliriz artık.Push işlemi başladıktan sonra otomatik olarak requirements.txt dosyası içindeki bağımlılıklarda kurulacak.Daha sonrada eklemeler yaparak bunları&nbsp;ekleyebilirsiniz.</p>
+<div class="codehilite"><pre><span class="n">git</span> <span class="nb">push</span> <span class="n">heroku</span> <span class="n">master</span>
+</pre></div>
+
+
+<p>Dosyalarımızı gonderdikten sonra ekrana gelen url&#8217;ye girdiğinizde django hatası alacaksınız çunku henuz veritabanı kurulumunu yapmadık.Bunun için aşağıdaki komutu çalıştırıyoruz.Zaten bunun mantığını anlayabilirsiniz.Buna gore bundan sonra istediğiniz komutu kendi bulutunuzda&nbsp;çalıştırabilirsiniz.</p>
+<div class="codehilite"><pre><span class="n">heroku</span> <span class="n">run</span> <span class="n">python</span> <span class="n">manage</span><span class="o">.</span><span class="n">py</span> <span class="n">syncdb</span>
+</pre></div>
+
+
+<p>Herhangibi bir hata almazsanız siteniz heroku uzerinde başarıyla deploy edilmiş olacak.Benim herokuyu seçme sebeplerim arasında git kullanması ve deploy kısmında çok fazla uğraştırmaması geliyor.Çunku kendi serverınızda nginx+uwsgi gibi kurulumları kendiniz yapacaksınız.Üstune postgresql kurup bunun guvenlik ayarlarını yapacaksınız.Heroku&#8217;da bu kısımla uğraşmıyoruz.Git kullandığı için de belirli aralıklarla geliştirmesine devam edebiliyoruz.Gerçekten çok harika.Çalışan uygulama orneği olarak <a href="http://www.pytr.org">PyTr</a>&nbsp;bakabilirsiniz.</p>
+<p>Neden google apps engine değil diyenler olabilir.Gerçeği soylemek gerekirse Google&#8217;ın fiyatlandırma politikasını çok fazla beğenmiyorum.Bunun yerine heroku veya dotcloud gayet&nbsp;idealdir.</p></div>
+        <hr />
+    </div>
+		
+    
+        <div class="pagination">
+<ul>
+
+    <li class="prev disabled"><a href="#">&larr; Previous</a></li>
+
+
+
+    <li class="active"><a href=".././tag/django deploy.html">1</a></li>
+
+
+
+    <li class="next disabled"><a href="#">&rarr; Next</a></li>
+
+
+</ul>
+</div>
+    
+
+
+ 
+
+ 
+ 
+
+
+        </div>
+        
+        <div class="span3">
+
+            <div class="well" style="padding: 8px 0; background-color: #FBFBFB;">
+            <ul class="nav nav-list">
+                <li class="nav-header"> 
+                Site
+                </li>
+            
+                <li><a href=".././archives.html">Archives</a>
+                <li><a href=".././tags.html">Tags</a>
+                <li><a href=".././feeds/all.atom.xml" rel="alternate">Atom feed</a></li>
+                
+                <li><a href=".././feeds/all.rss.xml" rel="alternate">RSS feed</a></li>
+                
+                 <li><a href=".././sitemap.xml">Sitemap</a>
+            </ul>
+            </div>
+
+
+            
+            <div class="well" style="padding: 8px 0; background-color: #FBFBFB;">
+            <ul class="nav nav-list">
+                <li class="nav-header"> 
+                Categories
+                </li>
+                
+                
+                <li><a href=".././category/tasarim.html">tasarim</a></li>
+                
+                <li><a href=".././category/server.html">server</a></li>
+                
+                <li><a href=".././category/python.html">python</a></li>
+                
+                <li><a href=".././category/programlama.html">programlama</a></li>
+                
+                <li><a href=".././category/linux.html">linux</a></li>
+                
+                <li><a href=".././category/kisisel.html">kisisel</a></li>
+                
+                <li><a href=".././category/internet.html">internet</a></li>
+                
+                <li><a href=".././category/guvenlik.html">guvenlik</a></li>
+                
+                <li><a href=".././category/genel.html">genel</a></li>
+                
+                <li><a href=".././category/eglence.html">eglence</a></li>
+                
+                <li><a href=".././category/django.html">django</a></li>
+                
+                <li><a href=".././category/arduino.html">arduino</a></li>
+                                   
+            </ul>
+            </div>
+            
+
+
+            
+            <div class="well" style="padding: 8px 0; background-color: #FBFBFB;">
+            <ul class="nav nav-list">
+                <li class="nav-header"> 
+                Links
+                </li>
+            
+            
+                <li><a href="http://www.google.com">Google</a></li>
+            
+                <li><a href="http://www.python.org">Python</a></li>
+            
+            </ul>
+            </div>
+            
+
+
+            
+            <div class="social">
+            <div class="well" style="padding: 8px 0; background-color: #FBFBFB;">
+            <ul class="nav nav-list">
+                <li class="nav-header"> 
+                Social
+                </li>
+           
+                
+                <li><a href="http://twitter.com/halitalptekin">twitter</a></li>
+                
+                <li><a href="http://github.com/halitalptekin">github</a></li>
+                
+                <li><a href="http://stackoverflow.com/users/1151618/halit-alptekin">stackoverflow</a></li>
+                
+                <li><a href="http://tr.linkedin.com/in/halitalptekin">linkedin</a></li>
+                
+            </ul>
+            </div>
+            </div>
+            
+
+            
+            <div class="well" style="padding: 8px 0; background-color: #FBFBFB;">
+            <ul class="nav nav-list">
+                <li class="nav-header"> 
+                Ads
+                </li>
+
+                
+                <li><a href="http://www.tamindir.com" title="Program Indir"><img src="/media/reklam/tamindir.jpg" alt="Tamindir" title="Program Indir"></a>
+                </li>
+                
+                <li><a href="http://www.tatilbuldur.com" title="TatilBudur"><img src="/media/reklam/tatilbudur.png" alt="TatilBudur" title="TatilBudur"></a>
+                </li>
+                
+            </ul>
+            </div>
+            
+
+        </div>  
+    </div> 
+    </div> 
+
+<footer>
+	<hr>
+	<p><a href='http://www.halitalptekin.com'>Halit Alptekin Personal Blog</a> &copy; 2012</p>
+</footer>
+
+</div> <!-- /container -->
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+<script src="http://twitter.github.com/bootstrap/assets/js/bootstrap-collapse.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Halit Alptekin Personal Blog</title>
+    <meta name="description" content="Programming and Life Blog Of Halit Alptekin. Karadeniz Technical University Computer Engineering Student.">
+    <meta name="keywords" content="programlama, blog, personal blog, linux, python, django, php, bootstrap, seo, bilgisayar muhendisligi, ktu, karadeniz teknik universitesi, programming">
+    <meta name="author" content="halit">
+    <meta name="robots" content="index, follow, all"/>
+
+    <!-- Le HTML5 shim, for IE6-8 support of HTML elements -->
+    <!--[if lt IE 9]>
+    <script src=".././theme/html5.js"></script>
+    <![endif]-->
+
+    <!-- Le styles -->
+    <link href=".././theme/bootstrap.min.css" rel="stylesheet">
+    <link href=".././theme/bootstrap.min.responsive.css" rel="stylesheet">
+    <link href=".././theme/local.css" rel="stylesheet">
+    <link href=".././theme/pygments.css" rel="stylesheet">
+
+</head>
+
+<body>
+
+<div class="navbar">
+    <div class="navbar-inner">
+    <div class="container">
+
+         <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+             <span class="icon-bar"></span>
+             <span class="icon-bar"></span>
+             <span class="icon-bar"></span>
+         </a>
+
+        <a class="brand" href="../.">Halit Alptekin Personal Blog</a>
+
+        <div class="nav-collapse">
+        <ul class="nav">
+        
+            
+        <li><a href=".././pages/about-me.html">About Me</a></li>
+	    <li><a href=".././pages/contact.html">Contact</a></li>
+        </ul>
+        </div>
+        
+    </div>
+    </div>
+</div>
+
+<div class="container">
+    <div class="content">
+    <div class="row">
+
+        <div class="span9">
+                
+
+        
+
+
+
+    <div class='article'>
+        <div class="content-title">
+            <a href=".././tc-kimlik-no-algoritmasi.html"><h1><span class="caps">TC</span> Kimlik No&nbsp;Algoritması</h1></a>
+            Aug 16, 2012
+
+
+by <a class="url fn" href=".././author/halit.html">halit</a>
+ 
+
+in <a href=".././category/programlama.html">programlama</a>
+
+ 
+    tagged <a href=".././tag/pyqt.html">pyqt</a> <a href=".././tag/tc-kimlik-akraba.html">tc kimlik akraba</a> <a href=".././tag/tc-kimlik-algoritmasi.html">tc kimlik algoritması</a> <a href=".././tag/tc-kimlik-no.html">tc kimlik no</a> 
+ 
+        </div>
+        
+        <div><p>Algoritma deyince aklıma ilk gelen nedense hep Tc Kimlik No algoritması oluyor.Bunun sebebi en başlarda çok ilginç gelmesi ve başlarda çok fazla ilgilenmem.Çunku bu algoritmayı oğrenince elinize bir kağıt kalem alıp başka kişilerin de Tc Kimlik numaralarının bilinmeyen 2 numarasını bulabiliyorsunuz.Tabi bu algoritma ile sadece kayıp numaralar bulunmuyor.Bir Tc Kimlikten yola çıkarak akrabalarınızın da Tc Kimlik Numaralarına&nbsp;ulaşabiliyorsunuz.</p>
+<p>Ben de son gunlerde bir hayli fazla bir şekilde PyQt ile ilgilendiğim için aklıma gelen her programı yapmaya çalışıyorum.Bazıları gerçekten işe yarayan şeyler olmasına rağmen bazılarında baya bi saçmalıyorum.Ama sonuç olarak kendimi bu alanda bir hayli&nbsp;geliştiriyorum.</p>
+<p>Yaptığım programa geçmeden once algoritmanın nasıl işlediğini anlatmak&nbsp;gerekirse:</p>
+<blockquote>
+<p><span class="caps">TC</span> Kimlik numaraları 11 basamaktan&nbsp;oluşmaktadır.</p>
+<p>İlk 9 basamak arasında kurulan bir algoritma bize 10. basmağı, ilk 10 basamak arasında kurulan algoritma ise bize 11. basamağı&nbsp;verir.</p>
+<p>11&nbsp;hanelidir.</p>
+<p>Her hanesi rakamsal değer&nbsp;içerir.</p>
+<p>İlk hane 0 olamaz. 1. 3. 5. 7. ve 9. hanelerin toplamının 7 katından, 2. 4. 6. ve 8. hanelerin toplamı çıkartıldığında, elde edilen sonucun 10&#8217;a bolumunden kalan, yani Mod10&#8217;u bize 10. haneyi&nbsp;verir.</p>
+<ol>
+<li>
+<ol>
+<li>
+<ol>
+<li>
+<ol>
+<li>
+<ol>
+<li>
+<ol>
+<li>
+<ol>
+<li>
+<ol>
+<li>
+<ol>
+<li>ve 10. hanelerin toplamından elde edilen sonucun 10&#8217;a bolumunden kalan, yani Mod10&#8217;u bize 11. haneyi&nbsp;verir.</li>
+</ol>
+</li>
+</ol>
+</li>
+</ol>
+</li>
+</ol>
+</li>
+</ol>
+</li>
+</ol>
+</li>
+</ol>
+</li>
+</ol>
+</li>
+</ol>
+</blockquote>
+<p>Bu Tc Kimliği doğrulama için kullanılacak olan algoritma.Bir de akraba algoritması var.Buda aynen şu&nbsp;şekilde.</p>
+<blockquote>
+<p>Rastgele bir tc no yazalım ( ilk 9 hane&nbsp;):342165846</p>
+<p>Bunu ilk 5 ve son 4 hane olacak şekilde&nbsp;parçalıyoruz.</p>
+<p>Sizden yaşca aşağı inmek için (Kardeş , Kuzen&nbsp;vs.)</p>
+<p>34216 =&gt; 5 basamaklı bu sayıyı 6&nbsp;azaltıyoruz.</p>
+<p>5846 =&gt; 4 basamaklı bu sayıyı 2&nbsp;artırıyoruz.</p>
+<p>Yeni ilk 9 hanemiz =&nbsp;342105848</p>
+<p>Sizden yaşca yukarı çıkmak için (Baba,amca&nbsp;vs.)</p>
+<p>34216 =&gt; 5 basamaklı bu sayıyı 6&nbsp;artırıyoruz.</p>
+<p>5846 =&gt; 4 basamaklı bu sayıyı 2&nbsp;azaltıyoruz.</p>
+<p>Yeni ilk 9 hanemiz =&nbsp;342225844</p>
+</blockquote>
+<p>İşte bizlere verilen Tc Kimlik Numaraları bu şekilde oluşturulmuş.Ben denediğim tum hepsinde gayet guzel çalıştı.Hatta kendi programımda tum ailenin tc kimlik numaralarını başarıyla&nbsp;buldu.</p>
+<div class="codehilite"><pre><span class="k">def</span> <span class="nf">tcno_checksum</span><span class="p">(</span><span class="n">tcno</span><span class="p">):</span>
+    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">tcno</span><span class="p">))</span> <span class="o">==</span> <span class="mi">9</span><span class="p">:</span>
+        <span class="n">tc</span>    <span class="o">=</span> <span class="s">&#39;</span><span class="si">%d</span><span class="s">&#39;</span> <span class="o">%</span> <span class="n">tcno</span>
+        <span class="n">tc10</span>  <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">tc</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span> <span class="o">%</span><span class="mi">2</span><span class="n">B</span> <span class="nb">int</span><span class="p">(</span><span class="n">tc</span><span class="p">[</span><span class="mi">2</span><span class="p">])</span> <span class="o">%</span><span class="mi">2</span><span class="n">B</span> <span class="nb">int</span><span class="p">(</span><span class="n">tc</span><span class="p">[</span><span class="mi">4</span><span class="p">])</span> <span class="o">%</span><span class="mi">2</span><span class="n">B</span> <span class="nb">int</span><span class="p">(</span><span class="n">tc</span><span class="p">[</span><span class="mi">6</span><span class="p">])</span> <span class="o">%</span><span class="mi">2</span><span class="n">B</span> <span class="nb">int</span><span class="p">(</span><span class="n">tc</span><span class="p">[</span><span class="mi">8</span><span class="p">])</span>
+        <span class="n">tc10</span> <span class="o">*=</span> <span class="mi">7</span>
+        <span class="n">tc10</span> <span class="o">-=</span> <span class="nb">int</span><span class="p">(</span><span class="n">tc</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span> <span class="o">%</span><span class="mi">2</span><span class="n">B</span> <span class="nb">int</span><span class="p">(</span><span class="n">tc</span><span class="p">[</span><span class="mi">3</span><span class="p">])</span> <span class="o">%</span><span class="mi">2</span><span class="n">B</span> <span class="nb">int</span><span class="p">(</span><span class="n">tc</span><span class="p">[</span><span class="mi">5</span><span class="p">])</span> <span class="o">%</span><span class="mi">2</span><span class="n">B</span> <span class="nb">int</span><span class="p">(</span><span class="n">tc</span><span class="p">[</span><span class="mi">7</span><span class="p">])</span>
+        <span class="n">tc10</span> <span class="o">%=</span> <span class="mi">10</span>
+        <span class="n">tc11</span>  <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">tc</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span> <span class="o">%</span><span class="mi">2</span><span class="n">B</span> <span class="nb">int</span><span class="p">(</span><span class="n">tc</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span> <span class="o">%</span><span class="mi">2</span><span class="n">B</span> <span class="nb">int</span><span class="p">(</span><span class="n">tc</span><span class="p">[</span><span class="mi">2</span><span class="p">])</span> <span class="o">%</span><span class="mi">2</span><span class="n">B</span> <span class="nb">int</span><span class="p">(</span><span class="n">tc</span><span class="p">[</span><span class="mi">3</span><span class="p">])</span> <span class="o">%</span><span class="mi">2</span><span class="n">B</span> <span class="nb">int</span><span class="p">(</span><span class="n">tc</span><span class="p">[</span><span class="mi">4</span><span class="p">])</span>
+        <span class="n">tc11</span> <span class="o">%</span><span class="mi">2</span><span class="n">B</span><span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">tc</span><span class="p">[</span><span class="mi">5</span><span class="p">])</span> <span class="o">%</span><span class="mi">2</span><span class="n">B</span> <span class="nb">int</span><span class="p">(</span><span class="n">tc</span><span class="p">[</span><span class="mi">6</span><span class="p">])</span> <span class="o">%</span><span class="mi">2</span><span class="n">B</span> <span class="nb">int</span><span class="p">(</span><span class="n">tc</span><span class="p">[</span><span class="mi">7</span><span class="p">])</span> <span class="o">%</span><span class="mi">2</span><span class="n">B</span> <span class="nb">int</span><span class="p">(</span><span class="n">tc</span><span class="p">[</span><span class="mi">8</span><span class="p">])</span> <span class="o">%</span><span class="mi">2</span><span class="n">B</span> <span class="nb">int</span><span class="p">(</span><span class="n">tc10</span><span class="p">)</span>
+        <span class="n">tc11</span> <span class="o">%=</span> <span class="mi">10</span>
+        <span class="k">return</span> <span class="s">&#39;</span><span class="si">%s%d%d</span><span class="s">&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">tc</span><span class="p">,</span> <span class="n">tc10</span><span class="p">,</span> <span class="n">tc11</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">return</span> <span class="mi">0</span>
+
+<span class="k">def</span> <span class="nf">akraba_tcno</span><span class="p">(</span><span class="n">tcno</span><span class="p">,</span> <span class="n">adet</span><span class="p">):</span>
+    <span class="n">akraba_liste</span> <span class="o">=</span> <span class="s">&#39;&#39;</span>
+    <span class="n">tc</span>   <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">tcno</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="o">-</span><span class="mi">2</span><span class="p">])</span>
+    <span class="n">t</span>    <span class="o">=</span> <span class="n">tc</span> <span class="o">-</span> <span class="mi">29999</span> <span class="o">*</span> <span class="p">(</span><span class="mi">1</span> <span class="o">%</span><span class="mi">2</span><span class="n">B</span> <span class="nb">int</span><span class="p">(</span><span class="n">adet</span> <span class="o">/</span> <span class="mi">2</span><span class="p">))</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">adet</span><span class="o">%</span><span class="mi">2</span><span class="n">B1</span><span class="p">):</span>
+        <span class="n">t</span> <span class="o">%</span><span class="mi">2</span><span class="n">B</span><span class="o">=</span> <span class="mi">29999</span>
+        <span class="n">atc</span> <span class="o">=</span> <span class="n">tcno_checksum</span><span class="p">(</span><span class="n">t</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">atc</span> <span class="o">==</span> <span class="n">tcno</span><span class="p">:</span>
+            <span class="k">pass</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">akraba_liste</span> <span class="o">%</span><span class="mi">2</span><span class="n">B</span><span class="o">=</span> <span class="s">&quot;&#39;</span><span class="si">%s</span><span class="s">&#39;,&quot;</span> <span class="o">%</span> <span class="n">atc</span>
+    <span class="k">return</span> <span class="n">akraba_liste</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+</pre></div>
+
+
+<p>Bu kullandığım python kodu.Tüm kodlara ve ui tasarımlarına <a href="https://github.com/halitalptekin/MyCodeBook/blob/master/tckimlik/">github</a> depomdan ulaşabilirsiniz.Bu algoritma için yazdığım PyQt programın ekran görüntüsü&nbsp;aşağıdadır.</p>
+<p><img alt="Tc Kimlik No Algoritmasi" src="http://www.halitalptekin.com/media/upload/tc-kimlik-no-algoritmasi-pyqt.png" /></p></div>
+        <hr />
+    </div>
+		
+    
+        <div class="pagination">
+<ul>
+
+    <li class="prev disabled"><a href="#">&larr; Previous</a></li>
+
+
+
+    <li class="active"><a href=".././tag/tc kimlik akraba.html">1</a></li>
+
+
+
+    <li class="next disabled"><a href="#">&rarr; Next</a></li>
+
+
+</ul>
+</div>
+    
+
+
+ 
+
+ 
+ 
+
+
+        </div>
+        
+        <div class="span3">
+
+            <div class="well" style="padding: 8px 0; background-color: #FBFBFB;">
+            <ul class="nav nav-list">
+                <li class="nav-header"> 
+                Site
+                </li>
+            
+                <li><a href=".././archives.html">Archives</a>
+                <li><a href=".././tags.html">Tags</a>
+                <li><a href=".././feeds/all.atom.xml" rel="alternate">Atom feed</a></li>
+                
+                <li><a href=".././feeds/all.rss.xml" rel="alternate">RSS feed</a></li>
+                
+                 <li><a href=".././sitemap.xml">Sitemap</a>
+            </ul>
+            </div>
+
+
+            
+            <div class="well" style="padding: 8px 0; background-color: #FBFBFB;">
+            <ul class="nav nav-list">
+                <li class="nav-header"> 
+                Categories
+                </li>
+                
+                
+                <li><a href=".././category/tasarim.html">tasarim</a></li>
+                
+                <li><a href=".././category/server.html">server</a></li>
+                
+                <li><a href=".././category/python.html">python</a></li>
+                
+                <li><a href=".././category/programlama.html">programlama</a></li>
+                
+                <li><a href=".././category/linux.html">linux</a></li>
+                
+                <li><a href=".././category/kisisel.html">kisisel</a></li>
+                
+                <li><a href=".././category/internet.html">internet</a></li>
+                
+                <li><a href=".././category/guvenlik.html">guvenlik</a></li>
+                
+                <li><a href=".././category/genel.html">genel</a></li>
+                
+                <li><a href=".././category/eglence.html">eglence</a></li>
+                
+                <li><a href=".././category/django.html">django</a></li>
+                
+                <li><a href=".././category/arduino.html">arduino</a></li>
+                                   
+            </ul>
+            </div>
+            
+
+
+            
+            <div class="well" style="padding: 8px 0; background-color: #FBFBFB;">
+            <ul class="nav nav-list">
+                <li class="nav-header"> 
+                Links
+                </li>
+            
+            
+                <li><a href="http://www.google.com">Google</a></li>
+            
+                <li><a href="http://www.python.org">Python</a></li>
+            
+            </ul>
+            </div>
+            
+
+
+            
+            <div class="social">
+            <div class="well" style="padding: 8px 0; background-color: #FBFBFB;">
+            <ul class="nav nav-list">
+                <li class="nav-header"> 
+                Social
+                </li>
+           
+                
+                <li><a href="http://twitter.com/halitalptekin">twitter</a></li>
+                
+                <li><a href="http://github.com/halitalptekin">github</a></li>
+                
+                <li><a href="http://stackoverflow.com/users/1151618/halit-alptekin">stackoverflow</a></li>
+                
+                <li><a href="http://tr.linkedin.com/in/halitalptekin">linkedin</a></li>
+                
+            </ul>
+            </div>
+            </div>
+            
+
+            
+            <div class="well" style="padding: 8px 0; background-color: #FBFBFB;">
+            <ul class="nav nav-list">
+                <li class="nav-header"> 
+                Ads
+                </li>
+
+                
+                <li><a href="http://www.tamindir.com" title="Program Indir"><img src="/media/reklam/tamindir.jpg" alt="Tamindir" title="Program Indir"></a>
+                </li>
+                
+                <li><a href="http://www.tatilbuldur.com" title="TatilBudur"><img src="/media/reklam/tatilbudur.png" alt="TatilBudur" title="TatilBudur"></a>
+                </li>
+                
+            </ul>
+            </div>
+            
+
+        </div>  
+    </div> 
+    </div> 
+
+<footer>
+	<hr>
+	<p><a href='http://www.halitalptekin.com'>Halit Alptekin Personal Blog</a> &copy; 2012</p>
+</footer>
+
+</div> <!-- /container -->
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+<script src="http://twitter.github.com/bootstrap/assets/js/bootstrap-collapse.js"></script>
+
+</body>
+</html>

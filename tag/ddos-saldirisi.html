@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Halit Alptekin Personal Blog</title>
+    <meta name="description" content="Programming and Life Blog Of Halit Alptekin. Karadeniz Technical University Computer Engineering Student.">
+    <meta name="keywords" content="programlama, blog, personal blog, linux, python, django, php, bootstrap, seo, bilgisayar muhendisligi, ktu, karadeniz teknik universitesi, programming">
+    <meta name="author" content="halit">
+    <meta name="robots" content="index, follow, all"/>
+
+    <!-- Le HTML5 shim, for IE6-8 support of HTML elements -->
+    <!--[if lt IE 9]>
+    <script src=".././theme/html5.js"></script>
+    <![endif]-->
+
+    <!-- Le styles -->
+    <link href=".././theme/bootstrap.min.css" rel="stylesheet">
+    <link href=".././theme/bootstrap.min.responsive.css" rel="stylesheet">
+    <link href=".././theme/local.css" rel="stylesheet">
+    <link href=".././theme/pygments.css" rel="stylesheet">
+
+</head>
+
+<body>
+
+<div class="navbar">
+    <div class="navbar-inner">
+    <div class="container">
+
+         <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+             <span class="icon-bar"></span>
+             <span class="icon-bar"></span>
+             <span class="icon-bar"></span>
+         </a>
+
+        <a class="brand" href="../.">Halit Alptekin Personal Blog</a>
+
+        <div class="nav-collapse">
+        <ul class="nav">
+        
+            
+        <li><a href=".././pages/about-me.html">About Me</a></li>
+	    <li><a href=".././pages/contact.html">Contact</a></li>
+        </ul>
+        </div>
+        
+    </div>
+    </div>
+</div>
+
+<div class="container">
+    <div class="content">
+    <div class="row">
+
+        <div class="span9">
+                
+
+        
+
+
+
+    <div class='article'>
+        <div class="content-title">
+            <a href=".././serveriniza-ddos-korumasi.html"><h1>Serverınıza Ddos&nbsp;Koruması</h1></a>
+            Jun 11, 2012
+
+
+by <a class="url fn" href=".././author/halit.html">halit</a>
+ 
+
+in <a href=".././category/guvenlik.html">guvenlik</a>
+
+ 
+    tagged <a href=".././tag/botnet-korumasi.html">botnet koruması</a> <a href=".././tag/ddos-korumasi.html">ddos koruması</a> <a href=".././tag/ddos-saldirisi.html">ddos saldırısı</a> <a href=".././tag/inetbase.html">inetbase</a> <a href=".././tag/server-guvenligi.html">server güvenliği</a> 
+ 
+        </div>
+        
+        <div><p>Dos saldırıları yıllardır olduğu gibi hala çok moda.Hiç beklemediğiniz ulkelerden saldırı alabiliyorsunuz.Bu yuzden tedbiri elden bırakmamak ve guvenliğimizi sağlamak zorundayız.Bunun için piyasa kullanabileceğimiz birçok ucretsiz script var.Bunların arasında en çok bilineni şuphesiz inetbase adlı ddos koruma scripti.Bu script serverda belirli zamanda çok fazla bağlantı açanları apf veya iptables kullanarak banlıyor.Çok buyuk saldırılar hariç ufak ve orta çaplı saldırıları onleyebilirsiniz.Kendi <span class="caps">VPS</span> veya <span class="caps">VDS</span>&#8217;nize kurmanızda fayda var diye&nbsp;duşunuyorum.</p>
+<p><a href="http://www.flickr.com/photos/tom-b/5547908627/" title="Wikipedia: Botnet by tom-b, on Flickr"><img alt="Wikipedia: Botnet" src="http://farm6.staticflickr.com/5052/5547908627_dc967fa7a3.jpg" /></a></p>
+<p>Öncelikle bilmeniz gereken bu script kesinlikle buyuk saldırıları engelleyemez.Bu tarz saldırılara donanım kaynaklarınız imkanlarıyla ortantılı olarak karşı koyabilirsiniz.Ki buyuk çaplı saldırılarda koskoca veri merkezleri zarar goruyor.Bir tane site niye gormesin.Ama birkaç site veya serverdan gelen saldırıları inetbase ile&nbsp;engelleyebilirsiniz.</p>
+<p>Serverımıza kurulum yapmak için oncelikle ssh ile root girişi yapıyoruz.Ve daha sonraki aşağıdaki 2 komutu çalıştırarak scripti&nbsp;kuruyoruz.</p>
+<div class="codehilite"><pre><span class="n">wget</span> <span class="n">http:</span><span class="sr">//</span><span class="n">www</span><span class="o">.</span><span class="n">inetbase</span><span class="o">.</span><span class="n">com</span><span class="sr">/scripts/</span><span class="n">ddos</span><span class="o">/</span><span class="n">install</span><span class="o">.</span><span class="n">sh</span>
+<span class="n">sh</span> <span class="n">install</span><span class="o">.</span><span class="n">sh</span>
+</pre></div>
+
+
+<p>Kurulumu yaptıktan sonra ayarlar için <strong>/usr/local/ddos/ddos.conf</strong> dosyasını&nbsp;açalım.</p>
+<p><strong>APF_BAN</strong>=0 (Eğer 0 olursa iptables ile 1 olursa apf ile banlar.)<br />
+<strong>NO_OF_CONNECTIONS</strong>=150 (150 bağlantıdan sonrasını banlar.Ben 75 kullanıyorum.)<br />
+<strong>BAN_PERIOD</strong>=600 (10 dakika içinde yukarıdaki sayı kadar bağlantı açanı banlar.)<br />
+<strong>EMAIL_TO</strong>=mail@siteadresi.com (Banlanma bilgilerinin gideceği mail&nbsp;adresi.)</p>
+<p>Bu ayarlardan sonra aşağıdaki komutu konsola girerek birkaç duzenleme&nbsp;yapıyoruz.</p>
+<div class="codehilite"><pre><span class="n">netstat</span> <span class="o">-</span><span class="n">tn</span> <span class="o">--</span><span class="n">inet</span> <span class="mi">2</span><span class="o">&gt;</span> <span class="sr">/dev/</span><span class="n">null</span><span class="o">|</span> <span class="nb">grep</span> <span class="s">&quot;:80&quot;</span> <span class="o">|</span> <span class="n">awk</span> <span class="s">&#39;/tcp[ ]*[0-9]+[ ]*[0-9]+[ ]+[^ ]+[ ]*[^ ]*/ { print $5; }&#39;</span> <span class="o">|</span> <span class="n">cut</span> <span class="o">-</span><span class="n">d</span><span class="s">&quot;:&quot;</span> <span class="o">-</span><span class="n">f1</span> <span class="o">|</span> <span class="nb">sort</span> <span class="o">|</span> <span class="n">uniq</span> <span class="o">-</span><span class="n">c</span> <span class="o">|</span> <span class="nb">sort</span> <span class="o">-</span><span class="n">n</span>
+</pre></div>
+
+
+<p>Ddos.conf dosyasının en altına gozardı edilecek ip adreslerini ekleyebiliriz.(Google botları,local ipler&nbsp;gibi)</p>
+<div class="codehilite"><pre><span class="n">PROTECTED_IPS</span><span class="o">=</span><span class="p">(</span> <span class="s">&quot;192.168.1.10&quot;</span> <span class="s">&quot;127.0.0.1&quot;</span> <span class="s">&quot;10.0.10.0&quot;</span> <span class="s">&quot;192.168.2.5&quot;</span> <span class="p">)</span>
+</pre></div>
+
+
+<p><strong>/usr/local/ddos/ddos.sh</strong> dosyası içinde aşağıdaki satırı&nbsp;bulun.</p>
+<div class="codehilite"><pre><span class="n">netstat</span> <span class="o">-</span><span class="n">ntu</span> <span class="o">|</span> <span class="n">awk</span> <span class="s">&#39;{print $5}&#39;</span> <span class="o">|</span> <span class="n">cut</span> <span class="o">-</span><span class="n">d:</span> <span class="o">-</span><span class="n">f1</span> <span class="o">|</span> <span class="nb">sort</span> <span class="o">|</span> <span class="n">uniq</span> <span class="o">-</span><span class="n">c</span> <span class="o">|</span> <span class="nb">sort</span> <span class="o">-</span><span class="n">nr</span> <span class="o">&gt;</span> <span class="nv">$BAD_IP_LIST</span>
+</pre></div>
+
+
+<p>Daha sonra bu satırın altındakileri silip aşağıdaki kodları&nbsp;ekleyelim.</p>
+<div class="codehilite"><pre>BAD_SYN_IP_LIST=`<span class="nv">$TMP_FILE</span>`
+netstat -np | grep SYN_RECV | awk &#39;{print $5}&#39; | cut -d: -f1 | cut -d: -f1 | sort | uniq -c | \
+sort -n| awk &#39;{if ($1 &gt; 4) print $2;}&#39; &gt; <span class="nv">$BAD_SYN_IP_LIST</span>
+cat <span class="nv">$BAD_SYN_IP_LIST</span>
+while read SYN_IP; do
+<span class="nv">$<span class="caps">IPT</span></span> -I <span class="caps">INPUT</span> -s <span class="nv">$SYN_IP</span> -j <span class="caps">DROP</span> ;
+echo <span class="nv">$SYN_IP</span>&gt;&gt; <span class="nv">$BANNED_IP_LIST</span>
+echo <span class="nv">$SYN_IP</span>&gt;&gt; <span class="nv">$IGNORE_IP_LIST</span>
+done <span class="err">&lt;</span> <span class="nv">$BAD_SYN_IP_LIST</span>
+
+#<span class="caps">DDOS</span> Bolumu
+netstat -ntu | awk &#39;{print $5}&#39; | cut -d: -f1 | sort | uniq -c | sort -nr &gt; <span class="nv">$BAD_IP_LIST</span>
+cat <span class="nv">$BAD_IP_LIST</span>
+if [ <span class="nv">$<span class="caps">KILL</span></span> -eq 1 ]; then
+IP_BAN_NOW=0
+while read line; do
+CURR_LINE_CONN=$(echo <span class="nv">$line</span> | cut -d&quot; &quot; -f1)
+CURR_LINE_IP=$(echo <span class="nv">$line</span> | cut -d&quot; &quot; -f2)
+if [ <span class="nv">$CURR_LINE_CONN</span> -lt <span class="nv">$NO_OF_CONNECTIONS</span> ]; then
+break
+fi
+IGNORE_BAN=`grep -c <span class="nv">$CURR_LINE_IP</span> <span class="nv">$IGNORE_IP_LIST</span>`
+if [ <span class="nv">$IGNORE_BAN</span> -ge 1 ]; then
+continue
+fi
+IP_BAN_NOW=1
+echo &quot;<span class="nv">$CURR_LINE_IP</span> with <span class="nv">$CURR_LINE_CONN</span> connections&quot; &gt;&gt; <span class="nv">$BANNED_IP_MAIL</span>
+echo <span class="nv">$CURR_LINE_IP</span> &gt;&gt; <span class="nv">$BANNED_IP_LIST</span>
+echo <span class="nv">$CURR_LINE_IP</span> &gt;&gt; <span class="nv">$IGNORE_IP_LIST</span>
+if [ <span class="nv">$APF_BAN</span> -eq 1 ]; then
+<span class="nv">$<span class="caps">APF</span></span> -d <span class="nv">$CURR_LINE_IP</span>
+else
+NOT_PROTECTED=1
+for u in &quot;<span class="cp">${</span><span class="n">PROTECTED_IPS</span><span class="p">[</span><span class="err">@</span><span class="p">]</span><span class="cp">}</span>&quot;; do
+if [ <span class="nv">$CURR_LINE_IP</span> = <span class="nv">$u</span> ]; then
+NOT_PROTECTED=0
+break
+fi
+done
+
+if [ <span class="nv">$NOT_PROTECTED</span> -eq 1 <span class="err">&amp;&amp;</span> <span class="nv">$CURR_LINE_IP</span> != &quot;&quot;]; then
+<span class="nv">$<span class="caps">IPT</span></span> -I <span class="caps">INPUT</span> -s <span class="nv">$CURR_LINE_IP</span> -j <span class="caps">DROP</span>
+fi
+
+fi
+done <span class="nt">&lt; </span><span class="nv">$BAD_IP_LIST</span><span class="nt"></span>
+<span class="nt">if</span> <span class="err">[</span> <span class="nv">$IP_BAN_NOW</span> <span class="na">-eq</span> <span class="na">1</span> <span class="err">];</span> <span class="na">then</span>
+<span class="na">dt=</span><span class="s">`date`</span>
+<span class="na">if</span> <span class="err">[</span> <span class="nv">$EMAIL_TO</span> <span class="err">!=</span> <span class="err">&quot;&quot;</span> <span class="err">];</span> <span class="na">then</span>
+<span class="na">cat</span> <span class="nv">$BANNED_IP_MAIL</span> <span class="err">|</span> <span class="na">mail</span> <span class="na">-s</span> <span class="err">&quot;</span><span class="na"><span class="caps">IP</span></span> <span class="na">addresses</span> <span class="na">banned</span> <span class="na">on</span> <span class="nv">$dt</span><span class="err">&quot;</span> <span class="nv">$EMAIL_TO</span>
+<span class="na">fi</span>
+<span class="na">unbanip</span>
+<span class="na">fi</span>
+<span class="na">fi</span>
+<span class="na">rm</span> <span class="na">-f</span> <span class="nv">$TMP_PREFIX.</span><span class="err">*</span>
+</pre></div>
+
+
+<p>Boylelikle arka arkaya 4 syn paketi gonderen ip adresini banlıyorsunuz.Bu banlanan ip adresleri sizlere mail olarak gelecek.Eğer banlanan tum ip adreslerini boşaltmak için aşağıdaki komutu&nbsp;kullanabilirsiniz.</p>
+<div class="codehilite"><pre><span class="n">iptables</span> <span class="o">-</span><span class="n">F</span>
+</pre></div>
+
+
+<p>Eğer inetbase kullanmak istemiyorsanız da aşağıdaki uninstall dosyasını indirip&nbsp;çalıştırabilirsiniz.</p>
+<div class="codehilite"><pre><span class="n">wget</span> <span class="n">http:</span><span class="sr">//</span><span class="n">www</span><span class="o">.</span><span class="n">inetbase</span><span class="o">.</span><span class="n">com</span><span class="sr">/scripts/</span><span class="n">ddos</span><span class="o">/</span><span class="n">uninstall</span><span class="o">.</span><span class="n">ddos</span>
+<span class="n">sh</span> <span class="n">uninstall</span><span class="o">.</span><span class="n">ddos</span>
+</pre></div></div>
+        <hr />
+    </div>
+		
+    
+        <div class="pagination">
+<ul>
+
+    <li class="prev disabled"><a href="#">&larr; Previous</a></li>
+
+
+
+    <li class="active"><a href=".././tag/ddos saldırısı.html">1</a></li>
+
+
+
+    <li class="next disabled"><a href="#">&rarr; Next</a></li>
+
+
+</ul>
+</div>
+    
+
+
+ 
+
+ 
+ 
+
+
+        </div>
+        
+        <div class="span3">
+
+            <div class="well" style="padding: 8px 0; background-color: #FBFBFB;">
+            <ul class="nav nav-list">
+                <li class="nav-header"> 
+                Site
+                </li>
+            
+                <li><a href=".././archives.html">Archives</a>
+                <li><a href=".././tags.html">Tags</a>
+                <li><a href=".././feeds/all.atom.xml" rel="alternate">Atom feed</a></li>
+                
+                <li><a href=".././feeds/all.rss.xml" rel="alternate">RSS feed</a></li>
+                
+                 <li><a href=".././sitemap.xml">Sitemap</a>
+            </ul>
+            </div>
+
+
+            
+            <div class="well" style="padding: 8px 0; background-color: #FBFBFB;">
+            <ul class="nav nav-list">
+                <li class="nav-header"> 
+                Categories
+                </li>
+                
+                
+                <li><a href=".././category/tasarim.html">tasarim</a></li>
+                
+                <li><a href=".././category/server.html">server</a></li>
+                
+                <li><a href=".././category/python.html">python</a></li>
+                
+                <li><a href=".././category/programlama.html">programlama</a></li>
+                
+                <li><a href=".././category/linux.html">linux</a></li>
+                
+                <li><a href=".././category/kisisel.html">kisisel</a></li>
+                
+                <li><a href=".././category/internet.html">internet</a></li>
+                
+                <li><a href=".././category/guvenlik.html">guvenlik</a></li>
+                
+                <li><a href=".././category/genel.html">genel</a></li>
+                
+                <li><a href=".././category/eglence.html">eglence</a></li>
+                
+                <li><a href=".././category/django.html">django</a></li>
+                
+                <li><a href=".././category/arduino.html">arduino</a></li>
+                                   
+            </ul>
+            </div>
+            
+
+
+            
+            <div class="well" style="padding: 8px 0; background-color: #FBFBFB;">
+            <ul class="nav nav-list">
+                <li class="nav-header"> 
+                Links
+                </li>
+            
+            
+                <li><a href="http://www.google.com">Google</a></li>
+            
+                <li><a href="http://www.python.org">Python</a></li>
+            
+            </ul>
+            </div>
+            
+
+
+            
+            <div class="social">
+            <div class="well" style="padding: 8px 0; background-color: #FBFBFB;">
+            <ul class="nav nav-list">
+                <li class="nav-header"> 
+                Social
+                </li>
+           
+                
+                <li><a href="http://twitter.com/halitalptekin">twitter</a></li>
+                
+                <li><a href="http://github.com/halitalptekin">github</a></li>
+                
+                <li><a href="http://stackoverflow.com/users/1151618/halit-alptekin">stackoverflow</a></li>
+                
+                <li><a href="http://tr.linkedin.com/in/halitalptekin">linkedin</a></li>
+                
+            </ul>
+            </div>
+            </div>
+            
+
+            
+            <div class="well" style="padding: 8px 0; background-color: #FBFBFB;">
+            <ul class="nav nav-list">
+                <li class="nav-header"> 
+                Ads
+                </li>
+
+                
+                <li><a href="http://www.tamindir.com" title="Program Indir"><img src="/media/reklam/tamindir.jpg" alt="Tamindir" title="Program Indir"></a>
+                </li>
+                
+                <li><a href="http://www.tatilbuldur.com" title="TatilBudur"><img src="/media/reklam/tatilbudur.png" alt="TatilBudur" title="TatilBudur"></a>
+                </li>
+                
+            </ul>
+            </div>
+            
+
+        </div>  
+    </div> 
+    </div> 
+
+<footer>
+	<hr>
+	<p><a href='http://www.halitalptekin.com'>Halit Alptekin Personal Blog</a> &copy; 2012</p>
+</footer>
+
+</div> <!-- /container -->
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+<script src="http://twitter.github.com/bootstrap/assets/js/bootstrap-collapse.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Halit Alptekin Personal Blog</title>
+    <meta name="description" content="Programming and Life Blog Of Halit Alptekin. Karadeniz Technical University Computer Engineering Student.">
+    <meta name="keywords" content="programlama, blog, personal blog, linux, python, django, php, bootstrap, seo, bilgisayar muhendisligi, ktu, karadeniz teknik universitesi, programming">
+    <meta name="author" content="halit">
+    <meta name="robots" content="index, follow, all"/>
+
+    <!-- Le HTML5 shim, for IE6-8 support of HTML elements -->
+    <!--[if lt IE 9]>
+    <script src=".././theme/html5.js"></script>
+    <![endif]-->
+
+    <!-- Le styles -->
+    <link href=".././theme/bootstrap.min.css" rel="stylesheet">
+    <link href=".././theme/bootstrap.min.responsive.css" rel="stylesheet">
+    <link href=".././theme/local.css" rel="stylesheet">
+    <link href=".././theme/pygments.css" rel="stylesheet">
+
+</head>
+
+<body>
+
+<div class="navbar">
+    <div class="navbar-inner">
+    <div class="container">
+
+         <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+             <span class="icon-bar"></span>
+             <span class="icon-bar"></span>
+             <span class="icon-bar"></span>
+         </a>
+
+        <a class="brand" href="../.">Halit Alptekin Personal Blog</a>
+
+        <div class="nav-collapse">
+        <ul class="nav">
+        
+            
+        <li><a href=".././pages/about-me.html">About Me</a></li>
+	    <li><a href=".././pages/contact.html">Contact</a></li>
+        </ul>
+        </div>
+        
+    </div>
+    </div>
+</div>
+
+<div class="container">
+    <div class="content">
+    <div class="row">
+
+        <div class="span9">
+                
+
+        
+
+
+
+    <div class='article'>
+        <div class="content-title">
+            <a href=".././elixir-ve-sqlalchemy.html"><h1>Elixir Ve&nbsp;Sqlalchemy</h1></a>
+            Aug 18, 2012
+
+
+by <a class="url fn" href=".././author/halit.html">halit</a>
+ 
+
+in <a href=".././category/python.html">python</a>
+
+ 
+    tagged <a href=".././tag/elixir.html">elixir</a> <a href=".././tag/elixir-kullanimi.html">elixir kullanımı</a> <a href=".././tag/orm.html">orm</a> <a href=".././tag/orm-nedir.html">orm nedir</a> <a href=".././tag/sqlalchemy.html">sqlalchemy</a> <a href=".././tag/sql-alchemy.html">sql alchemy</a> 
+ 
+        </div>
+        
+        <div><p><span class="caps">ORM</span> kavramı benim Django ile birlikte tanıştığım ve gerçekten çok hoşuma giden bir şey.<span class="caps">ORM</span> ile veritabanında işleyeceğimiz sorguları sınıflar olarak tanımlıyoruz ve code generator tekniği ile bunları sql sorgusuna dokuyoruz.Tabi biz bu sırada bu sorgular ile pek ilgilenmiyoruz.Bizim ilgilendiğimiz nokta sınıfları en uygun şekilde tanımlamak.Bunun getirdiği bence çok guzel sonuçlar var.Django <span class="caps">ORM</span> kavramını kullanan en guzel orneklerden birisi.Turkiyede&#8217;de <span class="caps">ORMAN</span> adında geliştirilim guzel bir framework var.Ancak benim bugun anlatacağım <span class="caps">ORM</span> Elixir ve SqlAlchemy ile ilgili.Bu ikisi python ile nasıl kullanabiliriz basitçe giriş&nbsp;yapacağım.</p>
+<p>Ben python uygulamalarımda virtualenv kullanıyorum.Çunku gerçekten dağınıklığını bir nebzede olsa onlemenizi sağlıyor.Eğer sizde bu guzel nimetten faydalanmak istiyorsanız bilgisayarınıza oncelikli olarak virtualenv yazılımını kurun.Bunun için komut satırına aşağıdaki komutu girmeniz yeterlidir.(Hangi linux dağıtımını kullanıyorsanız kullanın kesinlikle Python ile uğraşıyorsanız bilgisayarınıza pip&#8217;in kurulumunu&nbsp;yapınız.)</p>
+<div class="codehilite"><pre><span class="n">pip</span> <span class="n">install</span> <span class="n">virtualenv</span>
+</pre></div>
+
+
+<p>Kurulum bittikten sonra virtualenv dizin ismi şeklinde dizinimizi oluşturuyoruz.Ve daha sonra bu dizine girerek source&#8217;u aktif ediyoruz.Ve artık normal bilgisayarınızdan bağımsız bir sanal platforma sahip oldunuz.Şimdi de gerekli yazılımımız olan elixir&#8217;i kuralım.Pip virtualenv içinde kurulu olduğu için tekrardan kurmanız gerek&nbsp;yok.</p>
+<p><a href="http://www.halitalptekin.com/media/upload/virtualenv_pip_elixir_sql_alchemy.png"><img alt="Virtualenv Pip Elixir Sql Alchemy" src="http://www.halitalptekin.com/media/upload/virtualenv_pip_elixir_sql_alchemy.png" /></a></p>
+<p>Şimdi ise işin kodlama kısmına geçiyoruz.Öncelikle veritabanımızda olacak olan tablo ve kolonları sınıf içinde tanımlamak ile&nbsp;başlıyoruz.</p>
+<p><a href="http://www.halitalptekin.com/media/upload/elixir-sql-alchemy-model-tanimlama.png"><img alt="Elixir Sql Alchemy Model Tanımlama" src="http://www.halitalptekin.com/media/upload/elixir-sql-alchemy-model-tanimlama.png" /></a></p>
+<p>Satirlari bir bir anlatmak gerekirse once gerekli modulumuzu dosyamıza ekliyoruz.Ardından bu module ait metadata.bind komutu ile kullanacağımız veritabanını seçiyoruz.Aynı komutun bir diğer ozelliği olacak echo ile de birazdan yapılacak olan sorguların ekrana basılıp basılmamasını&nbsp;kararlaştırıyoruz.</p>
+<p>Asıl onemli olan kısım ise Siteler diye tanımladığımız Entity&#8217;den miras alan sınıf.Buranın altına veritabanımızda olmasını istediğimiz kolonları ekliyoruz.Malum tablomuz artık Siteler oldu.Kolon olarak ben baslik,site ve aciklama eklemeleri yapmışım.Burada farkettiğiniz gibi baslik kolonuna 30 hanelik bir sınır getirmişim.Bu kolona 30 haneden fazla veri girişi yapamayız.Ardından site kolonuna da baslik ile aynı ancak sınırlama olmaksızın kolon ataması yapmışız.En altta da aciklama kolonunu text olarak kullanacağımızı&nbsp;belirtmişiz.</p>
+<p>Daha sonrada bir nevi gereklilik olan <strong>repr</strong> fonksiyonumuzu uygun bir şekilde&nbsp;tanımlıyoruz.</p>
+<p>Butun bunların ardından veritabanına oluşacak olanlar buyuk oranda tamamlandı.Şimdi sıra bunları işlemeye ve tabloları oluşturmaya geldi.Yukarıdaki koda <a href="https://gist.github.com/3386356">buradan</a>&nbsp;ulaşabilirsiniz.</p>
+<p>Şimdi de yukarıdaki modelimizi uygun bir şekilde işleyelim.Bunun için ben veri adında yeni bir dosya açtım.(Aşağıdaki resme tıklarsanız tam boyutlu olarak daha net&nbsp;gorebilirsiniz)</p>
+<p><a href="http://www.halitalptekin.com/media/upload/elixir-sql-alchemy-veri-isleme.png"><img alt="Elixir Sql Alchemy Veri Isleme" src="http://www.halitalptekin.com/media/upload/elixir-sql-alchemy-veri-isleme.png" /></a></p>
+<p>veri.py kodumuza bakarsanız oncelikli olarak az once oluşturduğumuz model dosyamızı ekliyoruz.Daha sonra gerekli olan kurulum ve oluşturmaları yapıyoruz.Butun bunlardan sonra dbmiz veri eklemek için hazır.Şimdi gorduğunuz gibi model.py dosyamızda oluşturduğumuz sınıf Siteler artık bir tablo oldu.Ve ona resimdeki gibi veri girişi&nbsp;yapabiliyoruz.</p>
+<p>Kayit eklemelerin ardından all() fonksiyonu kullanarak tum kayıtları bir listeye atayabiliyoruz.Ve bu listeyi Python kullananların aşina olduğu teknik ile ekrana basıyoruz.Eğer kodumuz bu kadar olsaydı çalıştırdığınızda ekranınızda aşağıdaki gibi bir goruntu elde&nbsp;edeceksiniz.</p>
+<div class="codehilite"><pre><span class="o">--------------------</span>
+<span class="n">Halit</span> <span class="n">Alptekin</span>
+<span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">www</span><span class="o">.</span><span class="n">halitalptekin</span><span class="o">.</span><span class="n">com</span>
+<span class="n">Halit</span> <span class="n">Alptekin</span> <span class="n">Personal</span> <span class="n">Blog</span>
+<span class="o">--------------------</span>
+<span class="o">--------------------</span>
+<span class="n">Google</span>
+<span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">www</span><span class="o">.</span><span class="n">google</span><span class="o">.</span><span class="n">com</span>
+<span class="n">Arama</span> <span class="n">Motoru</span>
+<span class="o">--------------------</span>
+</pre></div>
+
+
+<p>Daha sonra kodumuzda gorduğunuz bir diğer kısımda kayıtlar arasında arama yapma.Burada başlığı &#8220;Halit Alptekin&#8221; e eşit olan kayitları tek değişkende topluyoruz.Ve bu kayıtlardan ilkini kayit değişkenine atıyoruz.Daha sonra bu değişkeni gene her zamanki gibi uygun bir şekilde ekrana&nbsp;basıyoruz.</p>
+<p>Biraz aşağıda ise bu bulduğumuz kayiti nasil sileceğimiz yer alıyor.Gayet basit bir şekilde delete() fonksiyonunu çağırarak kaydimizi siliyoruz ve bunu son satırdaki komut ile işliyoruz.Yukarıda yer alan koda <a href="https://gist.github.com/3386393">buradan</a>&nbsp;ulaşabilirsiniz.</p>
+<p>Python ile SqlAlchemy Elixir kullanmak işte yukarıda gorduğunuz kadar basit.Ben bu olayı kavradıktan sonra veritabanı gerektiren tum işlerimde kullanmaya başladım.Ve gerçekten de çok fazla faydasını goruyorum.(Sadece Sqlite değil mysql,postgresql vb diğer veritabanlarını da&nbsp;destekliyor)</p>
+<p>Eğer sizde bu konulara ilgi duyduysanız <a href="http://elixir.ematia.de/trac/">Elixir</a> ve <a href="http://sqlalchemy.org">SqlAlchemy</a> sitelerine giderek araştırmaya başlayabilirsiniz.Benim anlattıklarım başlangıç aşamasının da çok kuçuk bir kısmı.Ancak olayın temeli&nbsp;denilebilir.</p></div>
+        <hr />
+    </div>
+		
+    
+        <div class="pagination">
+<ul>
+
+    <li class="prev disabled"><a href="#">&larr; Previous</a></li>
+
+
+
+    <li class="active"><a href=".././tag/elixir.html">1</a></li>
+
+
+
+    <li class="next disabled"><a href="#">&rarr; Next</a></li>
+
+
+</ul>
+</div>
+    
+
+
+ 
+
+ 
+ 
+
+
+        </div>
+        
+        <div class="span3">
+
+            <div class="well" style="padding: 8px 0; background-color: #FBFBFB;">
+            <ul class="nav nav-list">
+                <li class="nav-header"> 
+                Site
+                </li>
+            
+                <li><a href=".././archives.html">Archives</a>
+                <li><a href=".././tags.html">Tags</a>
+                <li><a href=".././feeds/all.atom.xml" rel="alternate">Atom feed</a></li>
+                
+                <li><a href=".././feeds/all.rss.xml" rel="alternate">RSS feed</a></li>
+                
+                 <li><a href=".././sitemap.xml">Sitemap</a>
+            </ul>
+            </div>
+
+
+            
+            <div class="well" style="padding: 8px 0; background-color: #FBFBFB;">
+            <ul class="nav nav-list">
+                <li class="nav-header"> 
+                Categories
+                </li>
+                
+                
+                <li><a href=".././category/tasarim.html">tasarim</a></li>
+                
+                <li><a href=".././category/server.html">server</a></li>
+                
+                <li><a href=".././category/python.html">python</a></li>
+                
+                <li><a href=".././category/programlama.html">programlama</a></li>
+                
+                <li><a href=".././category/linux.html">linux</a></li>
+                
+                <li><a href=".././category/kisisel.html">kisisel</a></li>
+                
+                <li><a href=".././category/internet.html">internet</a></li>
+                
+                <li><a href=".././category/guvenlik.html">guvenlik</a></li>
+                
+                <li><a href=".././category/genel.html">genel</a></li>
+                
+                <li><a href=".././category/eglence.html">eglence</a></li>
+                
+                <li><a href=".././category/django.html">django</a></li>
+                
+                <li><a href=".././category/arduino.html">arduino</a></li>
+                                   
+            </ul>
+            </div>
+            
+
+
+            
+            <div class="well" style="padding: 8px 0; background-color: #FBFBFB;">
+            <ul class="nav nav-list">
+                <li class="nav-header"> 
+                Links
+                </li>
+            
+            
+                <li><a href="http://www.google.com">Google</a></li>
+            
+                <li><a href="http://www.python.org">Python</a></li>
+            
+            </ul>
+            </div>
+            
+
+
+            
+            <div class="social">
+            <div class="well" style="padding: 8px 0; background-color: #FBFBFB;">
+            <ul class="nav nav-list">
+                <li class="nav-header"> 
+                Social
+                </li>
+           
+                
+                <li><a href="http://twitter.com/halitalptekin">twitter</a></li>
+                
+                <li><a href="http://github.com/halitalptekin">github</a></li>
+                
+                <li><a href="http://stackoverflow.com/users/1151618/halit-alptekin">stackoverflow</a></li>
+                
+                <li><a href="http://tr.linkedin.com/in/halitalptekin">linkedin</a></li>
+                
+            </ul>
+            </div>
+            </div>
+            
+
+            
+            <div class="well" style="padding: 8px 0; background-color: #FBFBFB;">
+            <ul class="nav nav-list">
+                <li class="nav-header"> 
+                Ads
+                </li>
+
+                
+                <li><a href="http://www.tamindir.com" title="Program Indir"><img src="/media/reklam/tamindir.jpg" alt="Tamindir" title="Program Indir"></a>
+                </li>
+                
+                <li><a href="http://www.tatilbuldur.com" title="TatilBudur"><img src="/media/reklam/tatilbudur.png" alt="TatilBudur" title="TatilBudur"></a>
+                </li>
+                
+            </ul>
+            </div>
+            
+
+        </div>  
+    </div> 
+    </div> 
+
+<footer>
+	<hr>
+	<p><a href='http://www.halitalptekin.com'>Halit Alptekin Personal Blog</a> &copy; 2012</p>
+</footer>
+
+</div> <!-- /container -->
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+<script src="http://twitter.github.com/bootstrap/assets/js/bootstrap-collapse.js"></script>
+
+</body>
+</html>

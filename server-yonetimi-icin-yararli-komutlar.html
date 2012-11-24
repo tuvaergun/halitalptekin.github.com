@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Halit Alptekin Personal Blog - Server Yönetimi İçin Yararlı&nbsp;Komutlar</title>
+    <meta name="description" content="Kendi Serverınızda Kullanabileceğiniz Yararlı Bash Kodları">
+    <meta name="keywords" content="bash script, ddos koruması, server yönetimi, sistem yöneticiliği, hdblog">
+    <meta name="author" content="halit">
+    <meta name="robots" content="index, follow, all"/>
+
+    <!-- Le HTML5 shim, for IE6-8 support of HTML elements -->
+    <!--[if lt IE 9]>
+    <script src="./theme/html5.js"></script>
+    <![endif]-->
+
+    <!-- Le styles -->
+    <link href="./theme/bootstrap.min.css" rel="stylesheet">
+    <link href="./theme/bootstrap.min.responsive.css" rel="stylesheet">
+    <link href="./theme/local.css" rel="stylesheet">
+    <link href="./theme/pygments.css" rel="stylesheet">
+
+</head>
+
+<body>
+
+<div class="navbar">
+    <div class="navbar-inner">
+    <div class="container">
+
+         <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+             <span class="icon-bar"></span>
+             <span class="icon-bar"></span>
+             <span class="icon-bar"></span>
+         </a>
+
+        <a class="brand" href=".">Halit Alptekin Personal Blog</a>
+
+        <div class="nav-collapse">
+        <ul class="nav">
+        
+            
+        <li><a href="./pages/about-me.html">About Me</a></li>
+	    <li><a href="./pages/contact.html">Contact</a></li>
+        </ul>
+        </div>
+        
+    </div>
+    </div>
+</div>
+
+<div class="container">
+    <div class="content">
+    <div class="row">
+
+        <div class="span9">
+        
+    <div class='article'>
+        <div class="content-title">
+            <h1>Server Yönetimi İçin Yararlı&nbsp;Komutlar</h1>
+            Jun 05, 2012
+
+
+by <a class="url fn" href="./author/halit.html">halit</a>
+ 
+
+in <a href="./category/server.html">server</a>
+
+ 
+    tagged <a href="./tag/bash-script.html">bash script</a> <a href="./tag/ddos-korumasi.html">ddos koruması</a> <a href="./tag/server-yonetimi.html">server yönetimi</a> <a href="./tag/sistem-yoneticiligi.html">sistem yöneticiliği</a> 
+
+        </div>
+	
+        <div><p>Her ne kadar hala ulkemizde kişisel site ihtiyaçlarını hosting firmaları karşılasa da bir zamandan sonra bu size yeterli gelmeyebilir.Bu gibi durumlar kendi serverınıza geçme ihtiyacı duyabilirsiniz.Bu yuzden az da olsa server yonetimi konusunda bilgi sahibi olmanız lazım.Server yonetimi diğer birçok dala gore zordur.Çunku sorunun yanında birde getirdiği dar zamanda stres yonetimi vardır.Gerçekten buyuk firmalarda,serverlarda yoneticilik yapanlar işleri çok zordur.Ben bugun sizlere kendi serverımda surekli olarka kullandığım yararlı birkaç bash kodlarından bahsetmek istiyorum.Eminim sizinde işinize yarayacak kodlar olabilir.Kendi ihtiyaçlarınıza gore değiştirip&nbsp;kullanabilirsiniz.</p>
+<p>İstediğiniz bir ip adresini aşağıdaki Banlanacak_Ip_Adresi yerine yazarsanız o ip adresini serverdan banlamış&nbsp;olursunuz.</p>
+<div class="codehilite"><pre><span class="n">iptables</span> <span class="o">-</span><span class="n">A</span> <span class="n"><span class="caps">INPUT</span></span> <span class="o">-</span><span class="n">s</span> <span class="n">Banlanacak_Ip_Adresi</span> <span class="o">-</span><span class="n">j</span> <span class="n"><span class="caps">DROP</span></span>
+</pre></div>
+
+
+<p>Serverdaki bağlantı ve turlerini&nbsp;oğrenebilirsiniz.</p>
+<div class="codehilite"><pre><span class="n">netstat</span> <span class="o">-</span><span class="n">ntu</span> <span class="o">|</span> <span class="nb">grep</span> <span class="p">:</span><span class="mi">80</span> <span class="o">|</span> <span class="n">awk</span> <span class="s">&#39;{print $6}&#39;</span> <span class="o">|</span> <span class="n">cut</span> <span class="o">-</span><span class="n">f1</span> <span class="o">-</span><span class="n">d</span> <span class="s">&#39;:&#39;</span> <span class="o">|</span><span class="nb">sort</span><span class="o">|</span> <span class="n">uniq</span> <span class="o">-</span><span class="n">c</span> <span class="o">|</span> <span class="nb">sort</span> <span class="o">-</span><span class="n">n</span><span class="p">;</span>
+</pre></div>
+
+
+<p>Serverda fazla bağlantı açap ip adresleri.Buradan aldığınız ip adreslerini isteğiniz doğrultusunda ilk verdiğim komut ile serverdan&nbsp;uzaklaştırabilirsiniz.</p>
+<div class="codehilite"><pre><span class="n">netstat</span> <span class="o">-</span><span class="n">ntu</span> <span class="o">|</span> <span class="nb">grep</span> <span class="p">:</span><span class="mi">80</span> <span class="o">|</span> <span class="n">awk</span> <span class="s">&#39;{print $5}&#39;</span> <span class="o">|</span> <span class="n">cut</span> <span class="o">-</span><span class="n">f1</span> <span class="o">-</span><span class="n">d</span> <span class="s">&#39;:&#39;</span> <span class="o">|</span><span class="nb">sort</span><span class="o">|</span> <span class="n">uniq</span> <span class="o">-</span><span class="n">c</span> <span class="o">|</span> <span class="nb">sort</span> <span class="o">-</span><span class="n">n</span> <span class="o">|</span> <span class="n">awk</span> <span class="s">&#39;$1 &gt; 10 {print $1,$2}&#39;</span>
+</pre></div>
+
+
+<p>Sunucudaki toplam bağlantı sayısını aşağıdaki komut ile&nbsp;oğrenebilirsiniz.</p>
+<div class="codehilite"><pre><span class="n">echo</span> <span class="sb">`netstat -an|wc -l`</span>
+</pre></div>
+
+
+<p>Serverınızın uzerindeki yukunu yani sistem load durumunu oğrenmek için aşağıdaki kodu kullanabilirsiniz.Bunu ara ara tekrarlayıp durumu kontrol etmekte fayda var.Önemli bir&nbsp;koddur.</p>
+<div class="codehilite"><pre><span class="n">echo</span> <span class="sb">`uptime | awk -F &quot;load average: &quot; &#39;{ print $2 }&#39; | cut -d, -f1`</span>
+</pre></div>
+
+
+<p>Sunucudaki ping taleplerini ilk kodla kapatıp ikincisi ile açabilirsiniz.(1 kapatma 0&nbsp;açma)</p>
+<div class="codehilite"><pre><span class="n">sysctl</span> <span class="o">-</span><span class="n">w</span> <span class="n">net</span><span class="o">.</span><span class="n">ipv4</span><span class="o">.</span><span class="n">icmp_echo_ignore_all</span><span class="o">=</span><span class="mi">1</span>
+
+<span class="o">::</span><span class="p">:</span><span class="n">shell</span>
+<span class="n">sysctl</span> <span class="o">-</span><span class="n">w</span> <span class="n">net</span><span class="o">.</span><span class="n">ipv4</span><span class="o">.</span><span class="n">icmp_echo_ignore_all</span><span class="o">=</span><span class="mi">0</span>
+</pre></div>
+
+
+<p>Serverınızdaki <span class="caps">SYN</span> paketlerini listeler.DDos açısından onemlidir.Fazla ise dikkat etmeniz&nbsp;gerekebilir.</p>
+<div class="codehilite"><pre><span class="n">netstat</span> <span class="o">-</span><span class="n">ntu</span> <span class="o">|</span><span class="nb">grep</span> <span class="n"><span class="caps">SYN</span></span> <span class="o">|</span> <span class="n">awk</span> <span class="s">&#39;{print $5}&#39;</span> <span class="o">|</span> <span class="n">awk</span> <span class="s">&#39;{sub(&quot;::ffff:&quot;,&quot;&quot;);print}&#39;</span> <span class="o">|</span> <span class="n">cut</span> <span class="o">-</span><span class="n">f1</span> <span class="o">-</span><span class="n">d</span> <span class="s">&#39;:&#39;</span> <span class="o">|</span> <span class="nb">sort</span> <span class="o">|</span> <span class="n">uniq</span> <span class="o">-</span><span class="n">c</span> <span class="o">|</span> <span class="nb">sort</span> <span class="o">-</span><span class="n">n</span> <span class="o">|</span> <span class="nb">grep</span> <span class="o">-</span><span class="n">v</span> <span class="o">-</span><span class="n">e</span> <span class="n">server</span> <span class="o">-</span><span class="n">e</span> <span class="n">Address</span> <span class="o">-</span><span class="n">e</span> <span class="mf">127.0.0.1</span> <span class="o">-</span><span class="n">e</span> <span class="mf">0.0.0.0</span>
+</pre></div>
+
+
+<p>Aşağıdaki bash scripti bir forumda gormuştum.Aynen paylaşıyorum.Fazla <span class="caps">SYN</span> Paketi gelen ip adreslerini banlar.Ufak çaplı saldırıları&nbsp;onleyebilirsiniz.</p>
+<div class="codehilite"><pre><span class="c">#!/bin/sh</span>
+
+<span class="c"># Saldiri varmi ?</span>
+<span class="nv"><span class="caps">SYNCOUNT</span></span><span class="o">=</span><span class="sb">`</span>netstat -n | grep <span class="caps">SYN</span> | wc -l<span class="sb">`</span>
+
+<span class="k">if</span> <span class="o">[</span> <span class="nv">$<span class="caps">SYNCOUNT</span></span> -gt 20 <span class="o">]</span> ; <span class="k">then</span>
+
+<span class="nb">echo</span> <span class="s2">&quot;$<span class="caps">SYNCOUNT</span> <span class="caps">SYN</span> Bulundu! Banlama basliyor lutfen bekleyin.&quot;</span>
+
+<span class="c"># Sunucu iplerini beyaz liste alalim.</span>
+ip addr show|grep inet|grep -v 127.0.0.1|grep -v inet6|awk <span class="s1">&#39;{print $2}&#39;</span>|cut -d: -f9|cut -d/ -f1|while <span class="nb">read </span>ipler; <span class="k">do </span>touch /tmp/<span class="nv">$ipler</span>.tk; <span class="k">done</span>
+
+<span class="c"># Bloklanicak Paket Sayisi</span>
+<span class="c">#Default deger <span class="caps">BPAKET</span>=40</span>
+<span class="nv"><span class="caps">BPAKET</span></span><span class="o">=</span>40
+<span class="c"># Incelenecek Paket Sayisi</span>
+<span class="c"># Default deger <span class="caps">SPAKET</span>=5000</span>
+<span class="nv"><span class="caps">SPAKET</span></span><span class="o">=</span>5000
+<span class="c"># Inceleyelim.</span>
+tcpdump -n -q -c <span class="nv">$<span class="caps">SPAKET</span></span> <span class="s1">&#39;tcp[tcpflags] <span class="amp">&amp;</span> tcp-syn != 0 and dst port 80&#39;</span>| awk <span class="s1">&#39;{print $3}&#39;</span>|awk -F. -v <span class="nv">n</span><span class="o">=</span>. <span class="s1">&#39;{print $1 n $2 n $3 n $4}&#39;</span>|sort|uniq -c|sort -nr|awk <span class="s1">&#39;$1 &gt; $<span class="caps">PAKET</span>&#39;</span>|awk <span class="s1">&#39;{print $2}&#39;</span>|while <span class="nb">read </span>ipler;
+<span class="k">do if</span> <span class="o">[</span> ! -f /tmp/<span class="nv">$ipler</span>.tk <span class="o">]</span>; <span class="k">then</span>
+touch /tmp/<span class="nv">$ipler</span>.tk <span class="o">&amp;&amp;</span> iptables -A <span class="caps">INPUT</span> -s <span class="nv">$ipler</span> -j <span class="caps">DROP</span> <span class="o">&amp;&amp;</span> <span class="nb">echo</span> <span class="nv">$ipler</span> blokladim;
+<span class="k">fi</span>
+<span class="k">done</span>
+
+<span class="c"># Cikalim.</span>
+<span class="k">else</span>
+<span class="nb">echo</span> <span class="s2">&quot;$<span class="caps">SYNCOUNT</span> <span class="caps">SYN</span> Bulundu! Saldiri tespit edilmedi...&quot;</span>
+<span class="k">fi</span>
+<span class="nb">exit </span>0
+</pre></div>
+
+
+<p>Aşağıdaki script sistem loadın yukseldiği durumlar istediğiniz servislere rest atmanızı ve bunu mail ile size bildirmeye yarar.Gayet&nbsp;faydalıdır.</p>
+<div class="codehilite"><pre><span class="c1">#/usr/bin/!</span>
+<span class="c1"># Sistem Load Degeri load=&quot;&quot; arasindaki degeri astiginda program calisip servislerinize reset atacak</span>
+<span class="n">load</span><span class="o">=</span><span class="s">&quot;60&quot;</span>
+
+<span class="c1">######### Resetlenecek servisler baslar #########</span>
+<span class="n">loadkomutu</span><span class="o">=</span><span class="sb">`uptime | awk -F &quot;load average: &quot; &#39;{ print $2 }&#39; | cut -d, -f1 | cut -d. -f1`</span>
+<span class="n">mailload</span><span class="o">=</span><span class="sb">`uptime | awk -F &quot;load average: &quot; &#39;{ print $2 }&#39; | cut -d, -f1`</span>
+
+<span class="k">if</span> <span class="p">[</span> <span class="s">&quot;$loadkomutu&quot;</span> <span class="o">-</span><span class="ow">ge</span> <span class="s">&quot;$load&quot;</span> <span class="p">]</span>
+<span class="k">then</span>
+<span class="c1">######### Resetlenecek servisler baslar #########</span>
+<span class="n">pkill</span> <span class="o">-</span><span class="mi">9</span> <span class="n">httpd</span>
+<span class="c1">######### Resetlenecek servisler biter #########</span>
+
+<span class="n">zaman</span><span class="o">=</span><span class="sb">`date +&quot;%d.%m.%Y - %T&quot;`</span>
+<span class="n">echo</span> <span class="s">&quot;Servisler en son su tarihte yeniden baslatildi : $zaman&quot;</span> <span class="o">&gt;&gt;</span> <span class="sr">/var/</span><span class="nb">log</span><span class="o">/</span><span class="n">kontrol</span><span class="o">.</span><span class="n">load</span>
+
+<span class="n">TMP_PREFIX</span><span class="o">=</span><span class="s">&#39;/tmp/gidenmail&#39;</span>
+<span class="n">TMP_FILE</span><span class="o">=</span><span class="s">&quot;mktemp $TMP_PREFIX.<span class="caps">XXXXXXXX</span>&quot;</span>
+<span class="n">mailicerigi</span><span class="o">=</span><span class="sb">`$TMP_FILE`</span>
+
+<span class="n">echo</span> <span class="s">&quot;Tarih : $zaman&quot;</span> <span class="o">&gt;</span> <span class="nv">$mailicerigi</span>
+<span class="n">echo</span> <span class="s">&quot;Sistem Load Yuksek: $mailload&quot;</span> <span class="o">&gt;&gt;</span> <span class="nv">$mailicerigi</span>
+
+<span class="n">cat</span> <span class="s">&quot;$mailicerigi&quot;</span> <span class="o">|</span>  <span class="n">mail</span> <span class="o">-</span><span class="n">s</span> <span class="s">&quot;$zaman <span class="caps">UYARI</span>: Yuksek Load $mailload&quot;</span> <span class="nv">$1</span>
+
+<span class="k">else</span>
+<span class="n">echo</span> <span class="s">&quot;Sorun yok&quot;</span>
+<span class="sr">/etc/i</span><span class="n">nit</span><span class="o">.</span><span class="n">d</span><span class="o">/</span><span class="n">httpd</span> <span class="n">start</span>
+<span class="n">fi</span>
+</pre></div>
+
+
+<p>Hemen aşağıdaki scripti ben surekli olan kullanırım.Arka planda çalışan programların ne kadar işlemci ve ram kullandığını oğrenmemizi sağlar.Dosya ismini islem.sh olarak kaydederseniz ./islem.sh mem veya ./islem.sh cpu komutlarını kullanarak&nbsp;çalıştırabilirsiniz.</p>
+<div class="codehilite"><pre><span class="c">#! /bin/bash</span>
+<span class="c">#List processes based on %cpu and memory usage</span>
+
+<span class="nb">echo</span> <span class="s2">&quot;Start Time&quot;</span> <span class="sb">`</span>date<span class="sb">`</span>
+<span class="c"># By default, it display the list of processes based on the cpu and memory usage #</span>
+<span class="k">if</span> <span class="o">[</span> <span class="nv">$# </span>-eq 0 <span class="o">]</span>
+<span class="k">then</span>
+
+<span class="k">    </span><span class="nb">echo</span> <span class="s2">&quot;List of processes based on the %cpu Usage&quot;</span>
+    ps -e -o pcpu,cpu,nice,state,cputime,args -sort pcpu  <span class="c"># sorted based on %cpu</span>
+    <span class="nb">echo</span> <span class="s2">&quot;List of processes based on the memory Usage&quot;</span>
+    ps -e -orss<span class="o">=</span>,args<span class="o">=</span> | sort -b -k1,1n <span class="c"># sorted bases rss value</span>
+
+<span class="c"># If arguements are given (mem/cpu)</span>
+<span class="k">else</span>
+<span class="k">    case</span> <span class="s2">&quot;$1¨ in</span>
+<span class="s2">    mem)</span>
+<span class="s2">     echo &quot;</span>List of processes based on the memory Usage<span class="s2">&quot;</span>
+<span class="s2">      ps -e -orss=,args= | sort -b -k1,1n</span>
+<span class="s2">     ;;</span>
+<span class="s2">     cpu)</span>
+<span class="s2">     echo &quot;</span>List of processes based on the %cpu Usage<span class="s2">&quot;</span>
+<span class="s2">     ps -e -o pcpu,cpu,nice,state,cputime,args -sort pcpu</span>
+<span class="s2">     ;;</span>
+<span class="s2">     *)</span>
+<span class="s2">        echo &quot;</span>Invalid Argument Given <span class="se">\n</span><span class="s2">&quot;</span>
+<span class="s2">        echo &quot;</span>Usage : <span class="nv">$0</span> mem/cpu<span class="s2">&quot;</span>
+<span class="s2">        exit 1</span>
+<span class="s2">     esac</span>
+
+<span class="s2">fi</span>
+<span class="s2">echo &quot;</span>End Time<span class="err">&quot;</span> <span class="sb">`</span>date<span class="sb">`</span>
+<span class="nb">exit </span>0
+</pre></div>
+
+
+<p>Sisteme bağlı kullanıcıların ne kadar işlemci kullandıklarını gormek için aşağıdaki scripti&nbsp;çalıştırabilirsiniz.</p>
+<div class="codehilite"><pre><span class="c">#! /bin/bash</span>
+
+w &gt; /tmp/a
+
+<span class="nb">echo</span> <span class="s2">&quot;Total number of unique users logged in currently&quot;</span>
+cat /tmp/a|  sed <span class="s1">&#39;1,2d&#39;</span> | awk <span class="s1">&#39;{print $1}&#39;</span> | uniq | wc -l
+<span class="nb">echo</span> <span class="s2">&quot;&quot;</span>
+
+<span class="nb">echo</span> <span class="s2">&quot;List of unique users logged in currently&quot;</span>
+cat /tmp/a | sed <span class="s1">&#39;1,2d&#39;</span>|  awk <span class="s1">&#39;{print $1}&#39;</span> | uniq
+<span class="nb">echo</span> <span class="s2">&quot;&quot;</span>
+
+<span class="nb">echo</span> <span class="s2">&quot;The user who is using high %cpu&quot;</span>
+cat /tmp/a | sed <span class="s1">&#39;1,2d&#39;</span> | awk   <span class="s1">&#39;$7 &gt; maxuid { maxuid=$7; maxline=$0 }; <span class="caps">END</span> { print maxuid, maxline }&#39;</span>
+
+<span class="nb">echo</span> <span class="s2">&quot;&quot;</span>
+<span class="nb">echo</span> <span class="s2">&quot;List of users logged in and what they are doing&quot;</span>
+cat /tmp/a
+</pre></div>
+
+
+<p>Aşağıdaki script kullanılan ve kullanılmayan ram miktarını&nbsp;gosteriyor.</p>
+<div class="codehilite"><pre><span class="c">#! /bin/bash</span>
+
+<span class="c"># Total memory space details</span>
+
+<span class="nb">echo</span> <span class="s2">&quot;Memory Space Details&quot;</span>
+free -t -m | grep <span class="s2">&quot;Total&quot;</span> | awk <span class="s1">&#39;{ print &quot;Total Memory space : &quot;$2 &quot; <span class="caps">MB</span>&quot;;</span>
+<span class="s1">print &quot;Used Memory Space : &quot;$3¨ <span class="caps">MB</span>&quot;;</span>
+<span class="s1">print &quot;Free Memory : &quot;$4¨ <span class="caps">MB</span>&quot;;</span>
+<span class="s1">}&#39;</span>
+
+<span class="nb">echo</span> <span class="s2">&quot;Swap memory Details&quot;</span>
+free -t -m | grep <span class="s2">&quot;Swap&quot;</span> | awk <span class="s1">&#39;{ print &quot;Total Swap space : &quot;$2 &quot; <span class="caps">MB</span>&quot;;</span>
+<span class="s1">print &quot;Used Swap Space : &quot;$3¨ <span class="caps">MB</span>&quot;;</span>
+<span class="s1">print &quot;Free Swap : &quot;$4¨ <span class="caps">MB</span>&quot;;</span>
+<span class="s1">}&#39;</span>
+</pre></div>
+
+
+<p><strong>Not: </strong>Yukarıda yer olan komutları ve kodları isteğiniz doğrultusunda kullnabilir ve ozelleştirebilirsiniz.Bana sorarsanız birçoğuna cronjob atayıp duzenli olarak çalıştırabilirsiniz.Hepsi birbirinden faydalıdır.Zamanla daha fazla eklemeye çalışacağım.Yukardakilerden bazılarını direk komut satırına girerek bazılarını da sh dosyası olarak kaydederek&nbsp;kullanabilirsiniz.</p>
+<p><img alt="Sistem Yoneticiligi" src="http://www.halitalptekin.com/media/upload/adminspotting.med.jpg" /></p></div>
+	
+        <hr>
+        <div class="addthis_toolbox addthis_default_style addthis_32x32_style">
+            <a class="addthis_button_preferred_1"></a>
+            <a class="addthis_button_preferred_2"></a>
+            <a class="addthis_button_preferred_3"></a>
+            <a class="addthis_button_preferred_4"></a>
+            <a class="addthis_button_preferred_5"></a>
+            <a class="addthis_button_preferred_6"></a>
+            <a class="addthis_button_preferred_7"></a>
+            <a class="addthis_button_preferred_8"></a>
+            <a class="addthis_button_preferred_9"></a>
+            <a class="addthis_button_preferred_10"></a>
+            <a class="addthis_counter addthis_bubble_style"></a>
+        </div>
+        <script type="text/javascript" src="http://s7.addthis.com/js/250/addthis_widget.js#pubid=ra-504c6d593daec57a"></script>
+        <hr>   	   
+        <h2>Comments</h2>
+	
+	
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+    var disqus_shortname = 'halitalptekin'; 
+
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+    </div>
+
+        </div>
+        
+        <div class="span3">
+
+            <div class="well" style="padding: 8px 0; background-color: #FBFBFB;">
+            <ul class="nav nav-list">
+                <li class="nav-header"> 
+                Site
+                </li>
+            
+                <li><a href="./archives.html">Archives</a>
+                <li><a href="./tags.html">Tags</a>
+                <li><a href="./feeds/all.atom.xml" rel="alternate">Atom feed</a></li>
+                
+                <li><a href="./feeds/all.rss.xml" rel="alternate">RSS feed</a></li>
+                
+                 <li><a href="./sitemap.xml">Sitemap</a>
+            </ul>
+            </div>
+
+
+            
+            <div class="well" style="padding: 8px 0; background-color: #FBFBFB;">
+            <ul class="nav nav-list">
+                <li class="nav-header"> 
+                Categories
+                </li>
+                
+                
+                <li><a href="./category/tasarim.html">tasarim</a></li>
+                
+                <li><a href="./category/server.html">server</a></li>
+                
+                <li><a href="./category/python.html">python</a></li>
+                
+                <li><a href="./category/programlama.html">programlama</a></li>
+                
+                <li><a href="./category/linux.html">linux</a></li>
+                
+                <li><a href="./category/kisisel.html">kisisel</a></li>
+                
+                <li><a href="./category/internet.html">internet</a></li>
+                
+                <li><a href="./category/guvenlik.html">guvenlik</a></li>
+                
+                <li><a href="./category/genel.html">genel</a></li>
+                
+                <li><a href="./category/eglence.html">eglence</a></li>
+                
+                <li><a href="./category/django.html">django</a></li>
+                
+                <li><a href="./category/arduino.html">arduino</a></li>
+                                   
+            </ul>
+            </div>
+            
+
+
+            
+            <div class="well" style="padding: 8px 0; background-color: #FBFBFB;">
+            <ul class="nav nav-list">
+                <li class="nav-header"> 
+                Links
+                </li>
+            
+            
+                <li><a href="http://www.google.com">Google</a></li>
+            
+                <li><a href="http://www.python.org">Python</a></li>
+            
+            </ul>
+            </div>
+            
+
+
+            
+            <div class="social">
+            <div class="well" style="padding: 8px 0; background-color: #FBFBFB;">
+            <ul class="nav nav-list">
+                <li class="nav-header"> 
+                Social
+                </li>
+           
+                
+                <li><a href="http://twitter.com/halitalptekin">twitter</a></li>
+                
+                <li><a href="http://github.com/halitalptekin">github</a></li>
+                
+                <li><a href="http://stackoverflow.com/users/1151618/halit-alptekin">stackoverflow</a></li>
+                
+                <li><a href="http://tr.linkedin.com/in/halitalptekin">linkedin</a></li>
+                
+            </ul>
+            </div>
+            </div>
+            
+
+            
+            <div class="well" style="padding: 8px 0; background-color: #FBFBFB;">
+            <ul class="nav nav-list">
+                <li class="nav-header"> 
+                Ads
+                </li>
+
+                
+                <li><a href="http://www.tamindir.com" title="Program Indir"><img src="/media/reklam/tamindir.jpg" alt="Tamindir" title="Program Indir"></a>
+                </li>
+                
+                <li><a href="http://www.tatilbuldur.com" title="TatilBudur"><img src="/media/reklam/tatilbudur.png" alt="TatilBudur" title="TatilBudur"></a>
+                </li>
+                
+            </ul>
+            </div>
+            
+
+        </div>  
+    </div> 
+    </div> 
+
+<footer>
+	<hr>
+	<p><a href='http://www.halitalptekin.com'>Halit Alptekin Personal Blog</a> &copy; 2012</p>
+</footer>
+
+</div> <!-- /container -->
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+<script src="http://twitter.github.com/bootstrap/assets/js/bootstrap-collapse.js"></script>
+
+</body>
+</html>

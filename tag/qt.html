@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Halit Alptekin Personal Blog</title>
+    <meta name="description" content="Programming and Life Blog Of Halit Alptekin. Karadeniz Technical University Computer Engineering Student.">
+    <meta name="keywords" content="programlama, blog, personal blog, linux, python, django, php, bootstrap, seo, bilgisayar muhendisligi, ktu, karadeniz teknik universitesi, programming">
+    <meta name="author" content="halit">
+    <meta name="robots" content="index, follow, all"/>
+
+    <!-- Le HTML5 shim, for IE6-8 support of HTML elements -->
+    <!--[if lt IE 9]>
+    <script src=".././theme/html5.js"></script>
+    <![endif]-->
+
+    <!-- Le styles -->
+    <link href=".././theme/bootstrap.min.css" rel="stylesheet">
+    <link href=".././theme/bootstrap.min.responsive.css" rel="stylesheet">
+    <link href=".././theme/local.css" rel="stylesheet">
+    <link href=".././theme/pygments.css" rel="stylesheet">
+
+</head>
+
+<body>
+
+<div class="navbar">
+    <div class="navbar-inner">
+    <div class="container">
+
+         <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+             <span class="icon-bar"></span>
+             <span class="icon-bar"></span>
+             <span class="icon-bar"></span>
+         </a>
+
+        <a class="brand" href="../.">Halit Alptekin Personal Blog</a>
+
+        <div class="nav-collapse">
+        <ul class="nav">
+        
+            
+        <li><a href=".././pages/about-me.html">About Me</a></li>
+	    <li><a href=".././pages/contact.html">Contact</a></li>
+        </ul>
+        </div>
+        
+    </div>
+    </div>
+</div>
+
+<div class="container">
+    <div class="content">
+    <div class="row">
+
+        <div class="span9">
+                
+
+        
+
+
+
+    <div class='article'>
+        <div class="content-title">
+            <a href=".././qt-ve-python-maceralarim.html"><h1>Qt Ve Python&nbsp;Maceralarım</h1></a>
+            Aug 14, 2012
+
+
+by <a class="url fn" href=".././author/halit.html">halit</a>
+ 
+
+in <a href=".././category/programlama.html">programlama</a>
+
+ 
+    tagged <a href=".././tag/c.html">c++</a> <a href=".././tag/gtk.html">gtk</a> <a href=".././tag/gui.html">gui</a> <a href=".././tag/pyqt.html">pyqt</a> <a href=".././tag/pyqt-tutorials.html">pyqt tutorials</a> <a href=".././tag/python-qt4.html">python qt4</a> <a href=".././tag/qt.html">qt</a> <a href=".././tag/qt-framework.html">qt framework</a> <a href=".././tag/tkinter.html">tkinter</a> 
+ 
+        </div>
+        
+        <div><p>Ramazan dolayısıyla bloguma çok fazla yazı giremediğimin farkındayım.Bi tam başlarda başladığım Arduino tutkusu ile birlikte yazdığım yazılar var.Arduino tutkum tabikide geçmedi hatta daha da arttı diyebilirim.Ancak aklımda olan Arduino ile kullanabileceğim gui programlamarın nasıl yapılacağıydı.Python bana tamamen yeten bir dil olduğu için direk onunla başladım yola.Önceden beri gorduğum ama beni hiç içine çekmeyen Gtk,PyQt,Tkinter hepsine baktım.Örnekleri bir bir inceledim,karşılaştırmaları okudum.Ve sonunda kesinlikle doğru karar verdiğime inandığım Qt macerasına başladım.Python ile yazdığım kodlara artık guzel bir grafik arayuzu&nbsp;oluşturabiliyorum.</p>
+<p><a href="http://www.flickr.com/photos/nokia_fan/5072435170/" title="Qt Developer Days 2010 by nokia_fan, on Flickr"><img alt="PyQt Python" src="http://farm5.staticflickr.com/4107/5072435170_5ae309f93f_z.jpg" /></a></p>
+<p>Oluşturuğum Gui&#8217;lere Python ile seri porttan Arduino ile haberleşmesini sağlayabiliyorum.Hatta Django kullanarak bu verileri web arayuzlu olarakta yayınlayabiliyorum.Kısacası tam anlamıyor bir Python 3lusu kurdum.Web,Gui,Konsol.Hepsinde Python&#8217;un parmağı&nbsp;var.</p>
+<p>Aslında Python için gui arayışlarımın butun sebebi Arduino değildi.Çunku gerçekten bir zaman sonra sadece konsol uygulamaları yetmiyor.Biraz da goze hitap eden programlamar yazmak gerekiyor.Sonuçta şu anda bu satırları yazdığım webbrowser olan Firefox&#8217;ta bir grafik arayuzune sahip.Kullandığım masaustu ortamı Gnome&#8217;da bir grafik arayuzune sahip.Bu yuzden benimde bir yerden başlamam gerekiyordu.Aralarında yaptığım incelemelerde PyQt&#8217;ye karar kıldım.Ve bundan çok memnunum.Şu anda ufak çaplı uygulamalar yapıp kullanma alışkanlıklarımı&nbsp;arttırıyorum.</p>
+<p>Yıllar once Delphi,Visual Basic hatta Yunus adında(tam bir dil olmasada programlama motoru ve çok eski) birçok gui tasarımına yarayan araçla,programlama diliyle uğraşan biri olarak Qt Designer&#8217;ın arayuzu beni korkutmadı.Hatta bir hayli hoşuma gitti.Hemen C#&#8217;ın .Net&#8217;i ile kafam kıyaslama yaptım.Ve farkettiğim kadarıyla eksiği yok fazlası var&nbsp;:D</p>
+<p>İşte yaptığım ilk programın gui&nbsp;tasarımı.</p>
+<p><a href="http://www.halitalptekin.com/media/upload/pyqt-gui-qt-python-1.png"><img alt="Toplu Mail Sender Qt Tasarimi" src="http://www.halitalptekin.com/media/upload/pyqt-gui-qt-python-1.png" /></a></p>
+<p>Gui tasarımı yapmak bir hayli kolay ve hoş.Özellikle sinyal olayına baya bi hasta oldum.Sinyal moduna bastıktan ozellik atamak istediğinizi seçip uzatıyorsunuz.Ve istediğiniz yerde bırakıp ozellik&nbsp;seçiyorsunuz.</p>
+<p>Yukarıdaki gibi gui tasarımını yaptıktan sonra pyuic4 kullanarak bu ui tasarımını python diline çeviriyoruz.Bunun için vermemiz gereken&nbsp;komut.</p>
+<div class="codehilite"><pre><span class="n">pyuic4</span> <span class="o">-</span><span class="n">x</span> <span class="n">arayuz</span><span class="o">.</span><span class="n">ui</span> <span class="o">-</span><span class="n">o</span> <span class="n">arayuz</span><span class="o">.</span><span class="n">py</span>
+</pre></div>
+
+
+<p>Şimdi ise bu arayuze istediğimiz python kodunu entegre ediyoruz.Ve işin eğlenceli kısmı burada bitiyor.Artık bundan sonra sizin hayal gucunuz ve yetenekleriniz başlıyor.Aşağıda benim sadece işimi gormesi için yazdığım bir kod parçacığı var.Sadece komutların nasıl entegre edildiğini anlamanız için yararlı&nbsp;olacaktır.</p>
+<div class="codehilite"><pre><span class="c">#!/usr/bin/python</span>
+<span class="c"># -*- coding: utf-8 -*-</span>
+
+<span class="kn">from</span> <span class="nn">PyQt4</span> <span class="kn">import</span> <span class="n">QtCore</span>
+<span class="kn">from</span> <span class="nn">PyQt4</span> <span class="kn">import</span> <span class="n">QtGui</span>
+<span class="kn">from</span> <span class="nn">toplu_mail2</span> <span class="kn">import</span> <span class="n">Ui_MainWindow</span>
+<span class="kn">from</span> <span class="nn">mail</span> <span class="kn">import</span> <span class="n">mail</span>
+<span class="kn">import</span> <span class="nn">sys</span><span class="o">,</span> <span class="nn">re</span><span class="o">,</span> <span class="nn">time</span>
+
+<span class="k">def</span> <span class="nf">dogrula</span><span class="p">(</span><span class="n">email</span><span class="p">):</span>
+    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">email</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">7</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">re</span><span class="o">.</span><span class="n">match</span><span class="p">(</span><span class="s">&quot;^.+</span><span class="se">\\</span><span class="s">@(</span><span class="se">\\</span><span class="s">[?)[a-zA-Z0-9</span><span class="se">\\</span><span class="s">-</span><span class="se">\\</span><span class="s">.]+</span><span class="se">\\</span><span class="s">.([a-zA-Z]{2,3}|[0-9]{1,3})(</span><span class="se">\\</span><span class="s">]?)$&quot;</span><span class="p">,</span> <span class="n">email</span><span class="p">)</span> <span class="o">!=</span> <span class="bp">None</span><span class="p">:</span>
+            <span class="k">return</span> <span class="mi">0</span>
+    <span class="k">return</span> <span class="mi">1</span>
+
+<span class="k">class</span> <span class="nc">MainWindow</span><span class="p">(</span><span class="n">QtGui</span><span class="o">.</span><span class="n">QMainWindow</span><span class="p">,</span> <span class="n">Ui_MainWindow</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">QtGui</span><span class="o">.</span><span class="n">QMainWindow</span><span class="o">.</span><span class="n">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">setupUi</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">statusBar</span><span class="p">()</span><span class="o">.</span><span class="n">showMessage</span><span class="p">(</span><span class="nb">unicode</span><span class="p">(</span><span class="s">&quot;Hazir</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">))</span>
+
+    <span class="nd">@QtCore.pyqtSignature</span><span class="p">(</span><span class="s">&quot;bool&quot;</span><span class="p">)</span>
+        <span class="k">def</span> <span class="nf">on_pushButton_2_clicked</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+            <span class="n">liste</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">listWidget</span>
+            <span class="n">ekle</span>  <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">lineEdit_7</span><span class="o">.</span><span class="n">text</span><span class="p">())</span>
+            <span class="k">if</span><span class="p">(</span><span class="n">ekle</span> <span class="o">==</span> <span class="s">&quot;&quot;</span> <span class="ow">or</span> <span class="n">dogrula</span><span class="p">(</span><span class="n">ekle</span><span class="p">)):</span>
+                <span class="n">a</span> <span class="o">=</span> <span class="n">QtGui</span><span class="o">.</span><span class="n">QMessageBox</span><span class="p">()</span>
+                <span class="n">a</span><span class="o">.</span><span class="n">setWindowTitle</span><span class="p">(</span><span class="s">&quot;Bos veya hatali giris&quot;</span><span class="p">)</span>       
+                <span class="n">a</span><span class="o">.</span><span class="n">setText</span><span class="p">(</span><span class="s">&quot;Yanlis mail girisi yaptiniz!&quot;</span><span class="p">)</span>
+                <span class="n">a</span><span class="o">.</span><span class="n">setIcon</span><span class="p">(</span><span class="n">a</span><span class="o">.</span><span class="n">Information</span><span class="p">)</span>
+                <span class="n">a</span><span class="o">.</span><span class="n">exec_</span><span class="p">()</span>               
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">liste</span><span class="o">.</span><span class="n">addItem</span><span class="p">(</span><span class="n">ekle</span><span class="p">)</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">lineEdit_7</span><span class="o">.</span><span class="n">clear</span><span class="p">()</span>
+
+    <span class="nd">@QtCore.pyqtSignature</span><span class="p">(</span><span class="s">&quot;bool&quot;</span><span class="p">)</span>
+        <span class="k">def</span> <span class="nf">on_pushButton_3_clicked</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+            <span class="n">mailler</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s">&quot;mail.txt&quot;</span><span class="p">)</span>
+            <span class="n">liste</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">listWidget</span>
+            <span class="k">for</span> <span class="n">mail</span> <span class="ow">in</span> <span class="n">mailler</span><span class="p">:</span>
+                <span class="n">liste</span><span class="o">.</span><span class="n">addItem</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">mail</span><span class="p">)</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s">&quot;</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="s">&quot;&quot;</span><span class="p">))</span>
+
+    <span class="nd">@QtCore.pyqtSignature</span><span class="p">(</span><span class="s">&quot;bool&quot;</span><span class="p">)</span>
+        <span class="k">def</span> <span class="nf">on_pushButton_clicked</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+
+            <span class="n">gmail_user</span>  <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">lineEdit_4</span><span class="o">.</span><span class="n">text</span><span class="p">())</span>
+            <span class="n">gmail_pwd</span>   <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">lineEdit</span><span class="o">.</span><span class="n">text</span><span class="p">())</span>
+
+            <span class="n">konu</span>        <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">lineEdit_5</span><span class="o">.</span><span class="n">text</span><span class="p">())</span>
+            <span class="n">metin</span>       <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">textEdit</span><span class="o">.</span><span class="n">toPlainText</span><span class="p">())</span>
+
+            <span class="n">kimden</span>      <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">lineEdit_6</span><span class="o">.</span><span class="n">text</span><span class="p">())</span>
+
+            <span class="n">mserver</span>     <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">lineEdit_2</span><span class="o">.</span><span class="n">text</span><span class="p">())</span>
+            <span class="n">mport</span>       <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">lineEdit_3</span><span class="o">.</span><span class="n">text</span><span class="p">())</span>
+
+            <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span>
+            <span class="k">while</span><span class="p">(</span><span class="n">i</span> <span class="o">&lt;</span> <span class="bp">self</span><span class="o">.</span><span class="n">listWidget</span><span class="o">.</span><span class="n">count</span><span class="p">()):</span>
+                <span class="n">gonderilcek</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">listWidget</span><span class="o">.</span><span class="n">item</span><span class="p">(</span><span class="n">i</span><span class="p">)</span><span class="o">.</span><span class="n">text</span><span class="p">())</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">statusBar</span><span class="p">()</span><span class="o">.</span><span class="n">showMessage</span><span class="p">(</span><span class="nb">unicode</span><span class="p">(</span><span class="s">&quot;Gonderiliyor: </span><span class="si">%i</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">)</span><span class="o">%</span><span class="p">(</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">))</span>               
+                <span class="k">try</span><span class="p">:</span>
+                    <span class="n">mail</span><span class="p">(</span><span class="n">gonderilcek</span><span class="p">,</span> <span class="n">kimden</span><span class="p">,</span> <span class="n">konu</span><span class="p">,</span> <span class="n">metin</span><span class="p">,</span> <span class="n">gmail_user</span><span class="p">,</span> <span class="n">gmail_pwd</span><span class="p">,</span> <span class="n">mserver</span><span class="p">,</span> <span class="n">mport</span><span class="p">)</span>
+                <span class="k">except</span><span class="p">:</span>
+                    <span class="n">a</span> <span class="o">=</span> <span class="n">QtGui</span><span class="o">.</span><span class="n">QMessageBox</span><span class="p">()</span>
+                    <span class="n">a</span><span class="o">.</span><span class="n">setWindowTitle</span><span class="p">(</span><span class="s">&quot;Hata&quot;</span><span class="p">)</span>        
+                    <span class="n">a</span><span class="o">.</span><span class="n">setText</span><span class="p">(</span><span class="s">&quot;Bilgileri kontrol ediniz!&quot;</span><span class="p">)</span>
+                    <span class="n">a</span><span class="o">.</span><span class="n">setIcon</span><span class="p">(</span><span class="n">a</span><span class="o">.</span><span class="n">Warning</span><span class="p">)</span>
+                    <span class="n">a</span><span class="o">.</span><span class="n">exec_</span><span class="p">()</span>                                               
+                <span class="n">i</span> <span class="o">=</span> <span class="n">i</span> <span class="o">+</span><span class="mi">1</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">progressBar</span><span class="o">.</span><span class="n">setValue</span><span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="n">i</span><span class="o">/</span><span class="bp">self</span><span class="o">.</span><span class="n">listWidget</span><span class="o">.</span><span class="n">count</span><span class="p">())</span><span class="o">*</span><span class="mi">100</span><span class="p">)</span>
+                <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">statusBar</span><span class="p">()</span><span class="o">.</span><span class="n">showMessage</span><span class="p">(</span><span class="nb">unicode</span><span class="p">(</span><span class="s">&quot;Hazir</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">))</span>
+
+<span class="n">app</span> <span class="o">=</span> <span class="n">QtGui</span><span class="o">.</span><span class="n">QApplication</span><span class="p">(</span><span class="n">sys</span><span class="o">.</span><span class="n">argv</span><span class="p">)</span>
+<span class="n">window</span> <span class="o">=</span> <span class="n">MainWindow</span><span class="p">()</span>
+<span class="n">window</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+<span class="n">sys</span><span class="o">.</span><span class="n">exit</span><span class="p">(</span><span class="n">app</span><span class="o">.</span><span class="n">exec_</span><span class="p">())</span>
+</pre></div>
+
+
+<p>Bu ve birkaç tane daha çalışan PyQt çalışmasını koyduğum <a href="https://github.com/halitalptekin/MyCodeBook/">Github</a> depoma bakabilirsiniz.Widgetlerin nasıl kullanıldıklarını anlamak için faydalı&nbsp;olabilir.</p>
+<p>İşte bu kadar guzel bir dil ve bu kadar guzel bir gui için maalesef Turkçe kaynak kıtlığı var.Nette gorduğum en sağlam python kaynağı istihza&#8217;da bile PyQt yerine Gtk ve Tkinter&#8217;a ağırlık verilmiş.Eğer siz PyQt ile ilgileniyorsanız kesinlikle bakmanız gereken 2 site var.Bunlar <a href="http://www.ozgurlukicin.org/atolye/pyqt-dersleri-1/">Ozgurlukicin</a>(Giriş yaptıktan sonra sağ taraftan dersleri değiştirebilirsiniz) ve <a href="http://wiki.pardus-linux.org/index.php/PYQT_Denemeleri-1">Pardus Wiki</a>(Aynı şekilde alt kısımdan&nbsp;değiştirebilirsiniz).</p>
+<p>Bu iki site dışında ise genelde hep ufak çaplı konulara değinilmiş.Bazı forumlarda başlangıçlar yapılmış ama devamları gelmemiş.Eğer ciddi olarak ilgileniyorsanız yardım alabileceğiniz yerlerin başına orjinal sitesindeki <a href="http://www.riverbankcomputing.co.uk/static/Docs/PyQt4/html/classes.html">referans</a> sayfası.Ben bura ile irc.freenode.net #pyqt kanalından faydalanıyorum.Özellikle irc&#8217;ta sorduğunuz sorulara çok kısa surede cevap&nbsp;geliyor.</p>
+<p>Qt ile soylemek istediğim bir guzel nokta da C++ ile de kullanılıyor olması.Hatta o dil ile yazılıp Python&#8217;dan daha fazla onunla kullanılıyor.Benimde bildiğim ama çok uzun suredir uğraşmadığım C++ ile yaklaşık 1 sene sonra okulda uğraşmaya başlayacağım için C++ için gui olarak Qt kullanmayı duşunuyorum.Hem Qt hemde C++ guzelce&nbsp;pekişir.</p></div>
+        <hr />
+    </div>
+		
+    
+        <div class="pagination">
+<ul>
+
+    <li class="prev disabled"><a href="#">&larr; Previous</a></li>
+
+
+
+    <li class="active"><a href=".././tag/qt.html">1</a></li>
+
+
+
+    <li class="next disabled"><a href="#">&rarr; Next</a></li>
+
+
+</ul>
+</div>
+    
+
+
+ 
+
+ 
+ 
+
+
+        </div>
+        
+        <div class="span3">
+
+            <div class="well" style="padding: 8px 0; background-color: #FBFBFB;">
+            <ul class="nav nav-list">
+                <li class="nav-header"> 
+                Site
+                </li>
+            
+                <li><a href=".././archives.html">Archives</a>
+                <li><a href=".././tags.html">Tags</a>
+                <li><a href=".././feeds/all.atom.xml" rel="alternate">Atom feed</a></li>
+                
+                <li><a href=".././feeds/all.rss.xml" rel="alternate">RSS feed</a></li>
+                
+                 <li><a href=".././sitemap.xml">Sitemap</a>
+            </ul>
+            </div>
+
+
+            
+            <div class="well" style="padding: 8px 0; background-color: #FBFBFB;">
+            <ul class="nav nav-list">
+                <li class="nav-header"> 
+                Categories
+                </li>
+                
+                
+                <li><a href=".././category/tasarim.html">tasarim</a></li>
+                
+                <li><a href=".././category/server.html">server</a></li>
+                
+                <li><a href=".././category/python.html">python</a></li>
+                
+                <li><a href=".././category/programlama.html">programlama</a></li>
+                
+                <li><a href=".././category/linux.html">linux</a></li>
+                
+                <li><a href=".././category/kisisel.html">kisisel</a></li>
+                
+                <li><a href=".././category/internet.html">internet</a></li>
+                
+                <li><a href=".././category/guvenlik.html">guvenlik</a></li>
+                
+                <li><a href=".././category/genel.html">genel</a></li>
+                
+                <li><a href=".././category/eglence.html">eglence</a></li>
+                
+                <li><a href=".././category/django.html">django</a></li>
+                
+                <li><a href=".././category/arduino.html">arduino</a></li>
+                                   
+            </ul>
+            </div>
+            
+
+
+            
+            <div class="well" style="padding: 8px 0; background-color: #FBFBFB;">
+            <ul class="nav nav-list">
+                <li class="nav-header"> 
+                Links
+                </li>
+            
+            
+                <li><a href="http://www.google.com">Google</a></li>
+            
+                <li><a href="http://www.python.org">Python</a></li>
+            
+            </ul>
+            </div>
+            
+
+
+            
+            <div class="social">
+            <div class="well" style="padding: 8px 0; background-color: #FBFBFB;">
+            <ul class="nav nav-list">
+                <li class="nav-header"> 
+                Social
+                </li>
+           
+                
+                <li><a href="http://twitter.com/halitalptekin">twitter</a></li>
+                
+                <li><a href="http://github.com/halitalptekin">github</a></li>
+                
+                <li><a href="http://stackoverflow.com/users/1151618/halit-alptekin">stackoverflow</a></li>
+                
+                <li><a href="http://tr.linkedin.com/in/halitalptekin">linkedin</a></li>
+                
+            </ul>
+            </div>
+            </div>
+            
+
+            
+            <div class="well" style="padding: 8px 0; background-color: #FBFBFB;">
+            <ul class="nav nav-list">
+                <li class="nav-header"> 
+                Ads
+                </li>
+
+                
+                <li><a href="http://www.tamindir.com" title="Program Indir"><img src="/media/reklam/tamindir.jpg" alt="Tamindir" title="Program Indir"></a>
+                </li>
+                
+                <li><a href="http://www.tatilbuldur.com" title="TatilBudur"><img src="/media/reklam/tatilbudur.png" alt="TatilBudur" title="TatilBudur"></a>
+                </li>
+                
+            </ul>
+            </div>
+            
+
+        </div>  
+    </div> 
+    </div> 
+
+<footer>
+	<hr>
+	<p><a href='http://www.halitalptekin.com'>Halit Alptekin Personal Blog</a> &copy; 2012</p>
+</footer>
+
+</div> <!-- /container -->
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+<script src="http://twitter.github.com/bootstrap/assets/js/bootstrap-collapse.js"></script>
+
+</body>
+</html>

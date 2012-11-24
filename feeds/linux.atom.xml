@@ -1,0 +1,375 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Halit Alptekin Personal Blog</title><link href="http://www.halitalptekin.com/" rel="alternate"></link><link href="http://www.halitalptekin.com/feeds/linux.atom.xml" rel="self"></link><id>http://www.halitalptekin.com/</id><updated>2012-09-18T00:00:00+03:00</updated><entry><title>Ubuntu Ekran Kartı Ve Gnome Shell</title><link href="http://www.halitalptekin.com/ubuntu-ekran-karti-ve-gnome-shell.html" rel="alternate"></link><updated>2012-09-18T00:00:00+03:00</updated><author><name>halit</name></author><id>tag:www.halitalptekin.com,2012-09-18:ubuntu-ekran-karti-ve-gnome-shell.html</id><summary type="html">&lt;p&gt;Aslında Ubuntu bilgisayarımda uzunca bir suredir olmasına rağmen tamamen bir geçiş yapmamıştım. Bundan tam 3 ay once koklu bir şekilde Windows&amp;#8217;tan Ubuntu&amp;#8217;ya geçtim. Ve o gun bugundur hala kullanıyorum. Daha doğrusu kullandığımı sanıyordum. Çunku birçok grafik problemlerim vardı. Bunların başında ekran kartı surucusunun yuklenmemesi ve blenderin kurulmaması vardır. Ayrıcana firefoxta da birçok grafik sorunları vardı. Hepsinin çozumunun ekran kartı surucusunu yuklemeyle çozuleceğine inanıyordum ancak birçok ubuntu forumlarına sorduğum sorulardan gelen cevaplar yeterli değildi. En sonunda ciddi bir şekilde karar verdim ekran kartıyla ciddi ciddi uğraştım. Sonunda hem ekran kartını yukledim hem de gnome-shell ile yeni temalar&amp;nbsp;kurdum.&lt;/p&gt;
+&lt;p&gt;Tabi sadece bununla da kalmayıp wine ile çalıştıramadığım oyunlar ve blender gibi 3d programları da çalıştırmayı başardım. Yani artık Ubuntu&amp;#8217;yu tam olarak kullanmaya&amp;nbsp;başladım.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Hybrid Ekran Kartlarının&amp;nbsp;Kurulumu&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;Bu tabiri ubuntu forumlarında yazdığım soruya gelen cevapta gordum. Aşağıdaki sonucun çıktısı benimkine benzer şekilde 2 tane ekran kartı gozukuyorsa sizin de kartınız hybrid&amp;nbsp;olmalı.&lt;/p&gt;
+&lt;div class="codehilite"&gt;&lt;pre&gt;&lt;span class="n"&gt;lspci&lt;/span&gt; &lt;span class="o"&gt;|&lt;/span&gt; &lt;span class="nb"&gt;grep&lt;/span&gt; &lt;span class="n"&gt;&lt;span class="caps"&gt;VGA&lt;/span&gt;&lt;/span&gt;
+
+&lt;span class="mo"&gt;00&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="mo"&gt;02&lt;/span&gt;&lt;span class="mf"&gt;.0&lt;/span&gt; &lt;span class="n"&gt;&lt;span class="caps"&gt;VGA&lt;/span&gt;&lt;/span&gt; &lt;span class="n"&gt;compatible&lt;/span&gt; &lt;span class="n"&gt;controller:&lt;/span&gt; &lt;span class="n"&gt;Intel&lt;/span&gt; &lt;span class="n"&gt;Corporation&lt;/span&gt; &lt;span class="mi"&gt;2&lt;/span&gt;&lt;span class="n"&gt;nd&lt;/span&gt; &lt;span class="n"&gt;Generation&lt;/span&gt; &lt;span class="n"&gt;Core&lt;/span&gt; &lt;span class="n"&gt;Processor&lt;/span&gt; &lt;span class="n"&gt;Family&lt;/span&gt; &lt;span class="n"&gt;Integrated&lt;/span&gt; &lt;span class="n"&gt;Graphics&lt;/span&gt; &lt;span class="n"&gt;Controller&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;rev&lt;/span&gt; &lt;span class="mi"&gt;09&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="mo"&gt;01&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="mo"&gt;00&lt;/span&gt;&lt;span class="mf"&gt;.0&lt;/span&gt; &lt;span class="n"&gt;&lt;span class="caps"&gt;VGA&lt;/span&gt;&lt;/span&gt; &lt;span class="n"&gt;compatible&lt;/span&gt; &lt;span class="n"&gt;controller:&lt;/span&gt; &lt;span class="n"&gt;Advanced&lt;/span&gt; &lt;span class="n"&gt;Micro&lt;/span&gt; &lt;span class="n"&gt;Devices&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;&lt;span class="caps"&gt;AMD&lt;/span&gt;&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt; &lt;span class="n"&gt;nee&lt;/span&gt; &lt;span class="n"&gt;&lt;span class="caps"&gt;ATI&lt;/span&gt;&lt;/span&gt; &lt;span class="n"&gt;Seymour&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;Radeon&lt;/span&gt; &lt;span class="n"&gt;&lt;span class="caps"&gt;HD&lt;/span&gt;&lt;/span&gt; &lt;span class="mi"&gt;6400&lt;/span&gt;&lt;span class="n"&gt;M&lt;/span&gt; &lt;span class="n"&gt;Series&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Hybrid kartları anlamak için çift kameralı cep telefonlarını duşunun. Ön kamerası 1.3 arka kamerası 8.0 olsun. Ben bugune kadar hep 1.3luk kamerayı kullanmışım. 8.0&amp;#8217;lık kamerayı kullanmak için once Ubuntu -&amp;gt; Sistem ayarları bolumunden ek suruculer uygulamasını&amp;nbsp;çalıştırın. &lt;/p&gt;
+&lt;p&gt;&lt;img alt="Ubuntu Ek suruculer" src="http://www.halitalptekin.com/media/upload/ek-suruculer-ubuntu.png" /&gt;&lt;/p&gt;
+&lt;p&gt;Ben onceki deneyimlerimde yukarıda gozuken &lt;strong&gt;&lt;span class="caps"&gt;ATI&lt;/span&gt;/&lt;span class="caps"&gt;AMD&lt;/span&gt; için telifli &lt;span class="caps"&gt;FGLRX&lt;/span&gt; grafik surucusu &lt;/strong&gt;ve &lt;strong&gt;&lt;span class="caps"&gt;ATI&lt;/span&gt;/&lt;span class="caps"&gt;AMD&lt;/span&gt; için telifli &lt;span class="caps"&gt;FGLRX&lt;/span&gt; grafik surucusu(surum sonrası guncellemeler) &lt;/strong&gt;seçenklerinin ikisinide kurmama rağmen herhangibi bir değişiklik olmadı. Daha sonra anladığım kadarıyla sadece &lt;strong&gt;&lt;span class="caps"&gt;ATI&lt;/span&gt;/&lt;span class="caps"&gt;AMD&lt;/span&gt; için telifli &lt;span class="caps"&gt;FGLRX&lt;/span&gt; grafik surucusu &lt;/strong&gt;seçeneğini kurmak yeterli olacaktır. Ben diğerini kurduğumda sorun ile karşılaştım. Bu surucunun kurulumu biraz surecek bittikten hemen sonra bilgisayarınızı yeniden&amp;nbsp;başlatın.&lt;/p&gt;
+&lt;p&gt;Ben bunu da yaptıktan sonra bilgisayarım açıldığında ekran kartımın kurulumu olmasını hayal etmiştim. Ancak olmamıştı. Çunku eksik bir yer vardı. Bunu da saolsun Ubuntu&amp;#8217;nun resmi sitesinde dosyalar içinde gordum. Buna gore aşağıdaki komutu çalıştırıp driver kurulumunu tamamlamam&amp;nbsp;gerekliymiş.&lt;/p&gt;
+&lt;div class="codehilite"&gt;&lt;pre&gt;&lt;span class="n"&gt;sudo&lt;/span&gt; &lt;span class="n"&gt;aticonfig&lt;/span&gt; &lt;span class="o"&gt;--&lt;/span&gt;&lt;span class="n"&gt;initial&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Bilgisayarınızın ekranında kararma ve yeniden donuş olduktan sonra dosya oluşturuldu gibi bir yazı gorurseniz başarıyla kurmuş oldunuz. Artık rahatça diğer gorsel efektleri&amp;nbsp;kullanabilirsiniz.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Gnome ve Gnome Shell&amp;nbsp;Kurulumu&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;Bildiğiniz gibi Ubuntu Unity ile on tanımlı olarak geliyor. Ancak Ubuntu depolarından Gnome&amp;#8217;u da çekerek kurabilirsiniz. Sırasıyla aşağıdaki komutlar yeterli&amp;nbsp;olacaktır.&lt;/p&gt;
+&lt;div class="codehilite"&gt;&lt;pre&gt;&lt;span class="n"&gt;sudo&lt;/span&gt; &lt;span class="n"&gt;add&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;apt&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;repository&lt;/span&gt; &lt;span class="n"&gt;ppa:gnome3&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;team&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;gnome3&lt;/span&gt;
+&lt;span class="n"&gt;sudo&lt;/span&gt; &lt;span class="n"&gt;apt&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;get&lt;/span&gt; &lt;span class="n"&gt;update&lt;/span&gt;
+&lt;span class="n"&gt;sudo&lt;/span&gt; &lt;span class="n"&gt;apt&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;get&lt;/span&gt; &lt;span class="n"&gt;install&lt;/span&gt; &lt;span class="n"&gt;gnome&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;shell&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Veya;&lt;/p&gt;
+&lt;p&gt;&lt;a href="http://www.halitalptekin.com/media/upload/ubuntu-yazilim-merkezi-gnome-shell.png"&gt;&lt;img alt="Ubuntu Gnome Kurulumu" src="http://www.halitalptekin.com/media/upload/ubuntu-yazilim-merkezi-gnome-shell.png" /&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Gnome kurulumumuz başarıyla gerçekleştikten sonra birde gnome tweak tool aracımızı kuralım. Bunun&amp;nbsp;için;&lt;/p&gt;
+&lt;div class="codehilite"&gt;&lt;pre&gt;&lt;span class="n"&gt;sudo&lt;/span&gt; &lt;span class="n"&gt;apt&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;get&lt;/span&gt; &lt;span class="n"&gt;install&lt;/span&gt; &lt;span class="n"&gt;gnome&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;tweak&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;tool&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Komutunu çalıştırmanız yeterlidir. Artık oturumumuzu kapatıp yeniden açarken giriş ekranındaki logoya basarak Gnome&amp;#8217;u seçebiliriz. Eğer bir yanlış olmadıysa onunuze gorsel bir Gnome 3 gelecektir. Farenizi sol ust veya sağ alta goturduğunuzde gorsel efektlerin çalışması ekran kartımızın doğru çalıştığının da bir&amp;nbsp;gostergesi.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Gnome Shell&amp;nbsp;Kurulumu&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;Yukarıdaki resimde gorduğunuz gibi gnome shell eklentilerini kurabilirsiniz. Veya aşağıdaki komutları&amp;nbsp;çalıştırabilirsiniz.&lt;/p&gt;
+&lt;div class="codehilite"&gt;&lt;pre&gt;&lt;span class="n"&gt;sudo&lt;/span&gt; &lt;span class="n"&gt;apt&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;get&lt;/span&gt; &lt;span class="n"&gt;install&lt;/span&gt; &lt;span class="n"&gt;gnome&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;shell&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Burada dikkat etmeniz gereken nokta benim gibi ubuntu forumlarından aşağıdaki gibi bir cevap&amp;nbsp;alabilirsiniz.&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&lt;span class="dquo"&gt;&amp;#8220;&lt;/span&gt;ricotz&amp;#8221; kelimesini gordum ve yeniden yuklemek zorunda kaldığım Ubuntu sistemleri aklıma&amp;nbsp;geldi.&lt;/p&gt;
+&lt;p&gt;İleri gitsen gidemezsin, geri donmek istesen donemezsin hali diyebilirim&amp;nbsp;kısaca..&lt;/p&gt;
+&lt;p&gt;&lt;span class="dquo"&gt;&amp;#8220;&lt;/span&gt;ricotz&amp;#8221; kelimesini içeren &lt;span class="caps"&gt;PPA&lt;/span&gt; kaynaklarından yuklediğin paketleri kaldırıp Ubuntu depolarından sunulan paketleri yukleyebilirsen kurtardın, aksi halde yeni bir kuruluma hazır&amp;nbsp;olmalısın.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;Bu yuzden bu aşamaları dikkatli yaparak Ubuntu depolarını baz almanızı istiyorum. Sonra benim gibi&amp;nbsp;uğraşmayın.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Gnome Shell Temalar&amp;nbsp;Kurulumu&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;Öncelikle ana /home/user dizini altına .fonts ve .icons diye klasorlerimizi açalım. &lt;a href="http://gnome-look.org"&gt;Gnome-Look&lt;/a&gt; sitesinden de hoşunuza giden bir temayı veya icon paketini indirip bu dizin altına koyalım. Koyarken dikkat etmeniz gereken nokta temalarınızın /home/username/.themes/Tema İsmi/gnome-shell şeklinde bir dizin yapısına sahip olmasıdır. Daha sonra &lt;a href="https://extensions.gnome.org/extension/19/user-themes/"&gt;buradaki&lt;/a&gt; siteye girip eklentimizi aktifleştirelim. Bu arada değişikliklerin aktif olması için ctl+alt+f2 yazıp gelen kısma r yazıp entere basmak gerektiğini&amp;nbsp;unutmayalım.&lt;/p&gt;
+&lt;p&gt;&lt;img alt="Gnome Shell Theme" src="http://www.halitalptekin.com/media/upload/gnome-shell-theme.png" /&gt;&lt;/p&gt;
+&lt;p&gt;Kurulumu yaptıktan sonra komut satırından gnome-tweak-tool diyip aracımızı açalım. Bu açılış sırasında aşağıdaki gibi bir hata&amp;nbsp;alabilirsiniz.&lt;/p&gt;
+&lt;div class="codehilite"&gt;&lt;pre&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;gnome&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;tweak&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;tool:4506&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt; &lt;span class="n"&gt;GLib&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;&lt;span class="caps"&gt;GIO&lt;/span&gt;&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;&lt;span class="caps"&gt;ERROR&lt;/span&gt;&lt;/span&gt; &lt;span class="o"&gt;**&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="n"&gt;Settings&lt;/span&gt; &lt;span class="n"&gt;schema&lt;/span&gt; &lt;span class="s"&gt;&amp;#39;org.gnome.shell.extensions.user-theme&amp;#39;&lt;/span&gt; &lt;span class="n"&gt;is&lt;/span&gt; &lt;span class="ow"&gt;not&lt;/span&gt; &lt;span class="n"&gt;installed&lt;/span&gt;
+&lt;span class="n"&gt;Trace&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;breakpoint&lt;/span&gt; &lt;span class="n"&gt;trap&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;core&lt;/span&gt; &lt;span class="n"&gt;dumped&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Sorunun çozumu için sırayla aşağıdaki komutları&amp;nbsp;girin.&lt;/p&gt;
+&lt;div class="codehilite"&gt;&lt;pre&gt;&lt;span class="n"&gt;sudo&lt;/span&gt; &lt;span class="n"&gt;cp&lt;/span&gt; &lt;span class="nv"&gt;$&lt;span class="caps"&gt;HOME&lt;/span&gt;&lt;/span&gt;&lt;span class="sr"&gt;/.local/s&lt;/span&gt;&lt;span class="n"&gt;hare&lt;/span&gt;&lt;span class="sr"&gt;/gnome-shell/&lt;/span&gt;&lt;span class="n"&gt;extensions&lt;/span&gt;&lt;span class="sr"&gt;/user-theme@gnome-shell-extensions.gcampax.github.com/sc&lt;/span&gt;&lt;span class="n"&gt;hemas&lt;/span&gt;&lt;span class="sr"&gt;/org.gnome.shell.extensions.user-theme.gschema.xml /&lt;/span&gt;&lt;span class="n"&gt;usr&lt;/span&gt;&lt;span class="sr"&gt;/share/g&lt;/span&gt;&lt;span class="n"&gt;lib&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mf"&gt;2.0&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;schemas&lt;/span&gt;
+&lt;span class="n"&gt;sudo&lt;/span&gt; &lt;span class="n"&gt;glib&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;compile&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;schemas&lt;/span&gt; &lt;span class="sr"&gt;/usr/s&lt;/span&gt;&lt;span class="n"&gt;hare&lt;/span&gt;&lt;span class="sr"&gt;/glib-2.0/sc&lt;/span&gt;&lt;span class="n"&gt;hemas&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Şimdi tekrardan gnome-tweak-tool yazıp entere basalım ve uygulamamızı açalım. Daha sonra aşağıdaki kısma geçip temamızı&amp;nbsp;seçebiliyoruz.&lt;/p&gt;
+&lt;p&gt;&lt;img alt="Gnome Tweak Tool" src="http://www.halitalptekin.com/media/upload/gnome-tweak-tool.png" /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Font&amp;nbsp;Sorunu&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;Eğer girdiğiniz sitelerde fontlar gozunuze bakıyorsa oncelikli olarak ubuntu depolarından microsoft fontlarını&amp;nbsp;yuklemelisiniz.&lt;/p&gt;
+&lt;p&gt;&lt;a href="http://www.halitalptekin.com/media/upload/ubuntu-ms-fonts.png"&gt;&lt;img alt="Ubuntu Microsoft Font" src="http://www.halitalptekin.com/media/upload/ubuntu-ms-fonts.png" /&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Yukarıdaki kurulumu yaptıktan sonra eğer benim gibi Tahoma fontu sorun çıkarıyorsa(Facebook&amp;#8217;a girişte fark edersiniz) bunun için sırayla aşağıdaki komutları&amp;nbsp;vermelisiniz.&lt;/p&gt;
+&lt;div class="codehilite"&gt;&lt;pre&gt;&lt;span class="n"&gt;wget&lt;/span&gt; &lt;span class="n"&gt;http:&lt;/span&gt;&lt;span class="sr"&gt;//&lt;/span&gt;&lt;span class="n"&gt;download&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;microsoft&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;com&lt;/span&gt;&lt;span class="sr"&gt;/download/i&lt;/span&gt;&lt;span class="n"&gt;e6sp1&lt;/span&gt;&lt;span class="sr"&gt;/finrel/&lt;/span&gt;&lt;span class="mi"&gt;6&lt;/span&gt;&lt;span class="n"&gt;_sp1&lt;/span&gt;&lt;span class="sr"&gt;/W98NT42KMeXP/&lt;/span&gt;&lt;span class="n"&gt;&lt;span class="caps"&gt;EN&lt;/span&gt;&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;&lt;span class="caps"&gt;US&lt;/span&gt;&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;&lt;span class="caps"&gt;IELPKTH&lt;/span&gt;&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;&lt;span class="caps"&gt;CAB&lt;/span&gt;&lt;/span&gt;
+&lt;span class="n"&gt;cabextract&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;F&lt;/span&gt; &lt;span class="s"&gt;&amp;#39;tahoma*ttf&amp;#39;&lt;/span&gt; &lt;span class="n"&gt;&lt;span class="caps"&gt;IELPKTH&lt;/span&gt;&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;&lt;span class="caps"&gt;CAB&lt;/span&gt;&lt;/span&gt;
+&lt;span class="nb"&gt;mkdir&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;p&lt;/span&gt; &lt;span class="sr"&gt;/usr/s&lt;/span&gt;&lt;span class="n"&gt;hare&lt;/span&gt;&lt;span class="sr"&gt;/fonts/&lt;/span&gt;&lt;span class="n"&gt;truetype&lt;/span&gt;&lt;span class="sr"&gt;/msttcorefonts/&lt;/span&gt;
+&lt;span class="n"&gt;mv&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;f&lt;/span&gt; &lt;span class="n"&gt;tahoma&lt;/span&gt;&lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="n"&gt;ttf&lt;/span&gt; &lt;span class="sr"&gt;/usr/s&lt;/span&gt;&lt;span class="n"&gt;hare&lt;/span&gt;&lt;span class="sr"&gt;/fonts/&lt;/span&gt;&lt;span class="n"&gt;truetype&lt;/span&gt;&lt;span class="sr"&gt;/msttcorefonts/&lt;/span&gt;
+&lt;span class="nb"&gt;chmod&lt;/span&gt; &lt;span class="mi"&gt;644&lt;/span&gt; &lt;span class="sr"&gt;/usr/s&lt;/span&gt;&lt;span class="n"&gt;hare&lt;/span&gt;&lt;span class="sr"&gt;/fonts/&lt;/span&gt;&lt;span class="n"&gt;truetype&lt;/span&gt;&lt;span class="sr"&gt;/msttcorefonts/&lt;/span&gt;&lt;span class="n"&gt;tahoma&lt;/span&gt;&lt;span class="o"&gt;*&lt;/span&gt;
+&lt;span class="n"&gt;fc&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;cache&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;v&lt;/span&gt;
+&lt;span class="n"&gt;rm&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;f&lt;/span&gt; &lt;span class="n"&gt;&lt;span class="caps"&gt;IELPKTH&lt;/span&gt;&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;&lt;span class="caps"&gt;CAB&lt;/span&gt;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Artık problemsiz bir Ubuntunuz olması lazım :D Eğer gene bir sorununuz olursa &lt;a href="http://forum.ubuntu-tr.net/"&gt;Ubuntu Forumları&lt;/a&gt; sizin sorunuzu çozmek için uğraşacak insanlar ile&amp;nbsp;dolu.&lt;/p&gt;</summary><category term="gnome shell"></category><category term="gnome tema"></category><category term="microsoft font"></category><category term="ubuntu"></category><category term="ubuntu gnome"></category></entry><entry><title>Linux Kaynakları</title><link href="http://www.halitalptekin.com/linux-kaynaklari.html" rel="alternate"></link><updated>2012-06-03T00:00:00+03:00</updated><author><name>halit</name></author><id>tag:www.halitalptekin.com,2012-06-03:linux-kaynaklari.html</id><summary type="html">&lt;p&gt;Kuşkusuz Linux kullanıcıları Windows kullanıcılarına nazaran daha fazla kaynağa sahiptir.Bu kaynaklarda masaustu uygulamaları,oyunlar,eklentiler,temalar kısacası işletim sistemi için ne lazımsa vardır.Açık kaynak kodlu bir dunya olduğu için surekli olarakda gelişmeye devam ediyor.Github gibi siteler sayesinde yazılımcılar birbirlerinin yazılımlarını geliştirme fırsatı buluyorlar.Buda tabiki evinde Linux kullanan kişilere&amp;nbsp;yarıyor.&lt;/p&gt;
+&lt;p&gt;Bugun sizlere Linux kullanıcıları için olmazsa olmaz yazılarımların olduğu guzel linkler paylaşacağım.Her Linux severin kesinlikle aşağıdaki linkleri yer imlerine eklemesinde fayda vardır diye&amp;nbsp;duşunuyorum.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;1-)&lt;/strong&gt; &lt;a href="http://techcityinc.com/2009/02/top-10-free-video-editors-for-ubuntu-linux/"&gt;Ubuntu Linux İçin En İyi 10 Video&amp;nbsp;Duzenleyici&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;2-)&lt;/strong&gt; &lt;a href="http://www.foogazi.com/2006/11/24/20-must-read-howtos-and-guides-for-linux/"&gt;Kesin Okunması Gereken 20 Tane Linux&amp;nbsp;Yazısı&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;3-)&lt;/strong&gt; &lt;a href="http://www.linuxlinks.com/article/20090105114152803/Backup.html"&gt;Ücretsiz Linux Yedekleme&amp;nbsp;Araçları&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;4-) &lt;/strong&gt;&lt;a href="http://techcityinc.com/2009/02/top-5-gmail-notifiers-for-linux-2/"&gt;Linux İçin Gmail Bildiri&amp;nbsp;Araçları&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;5-)&lt;/strong&gt; &lt;a href="http://www.smashingapps.com/2008/09/09/11-free-windows-programs-alternatives-for-linux.html"&gt;Windows Program&amp;nbsp;Alternatifleri&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;6-)&lt;/strong&gt; &lt;a href="http://techcityinc.com/2009/03/10-best-image-viewers-for-linux/"&gt;En İyi Linux Resim&amp;nbsp;Goruntuleyiciler&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;7-) &lt;/strong&gt;&lt;a href="http://www.builderau.com.au/program/linux/soa/10-must-have-Linux-web-based-tools/0,339028299,339296024,00.htm"&gt;Linux Web&amp;nbsp;Uygulamaları&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;8-)&lt;/strong&gt; &lt;a href="http://tuxarena.blogspot.com/2009/05/top-10-kde4-applications.html"&gt;&lt;span class="caps"&gt;KDE&lt;/span&gt; 4&amp;nbsp;Uygulamaları&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;9-) &lt;/strong&gt;&lt;a href="http://lifehacker.com/5170138/five-best-linux-distributions"&gt;En İyi Linux&amp;nbsp;Dağıtımları&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;10-) &lt;/strong&gt;&lt;a href="http://techcityinc.com/2009/01/free-3d-graphic-design-applications-for-linux/"&gt;Muhteşem 3d Grafik&amp;nbsp;Uygulamaları&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;11-)&lt;/strong&gt; &lt;a href="http://degreedirectory.org/articles/13_Of_the_Best_Linux_Tutorials_and_OpenCourseWare_on_the_Web.html"&gt;Guzel Linux&amp;nbsp;Dersleri&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;12-)&lt;/strong&gt; &lt;a href="http://www.linuxlinks.com/article/20090507141503827/NewsAggregators.html"&gt;Linux Haber&amp;nbsp;Okuyucuları&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;13-) &lt;/strong&gt;&lt;a href="http://www.anewmorning.com/2008/05/21/10-best-linux-audio-players/"&gt;Muzik&amp;nbsp;Çalarlar&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;14-)&lt;/strong&gt; &lt;a href="http://techcityinc.com/2009/02/23-useful-system-applications-for-linux/"&gt;Linux Sistem&amp;nbsp;Uygulamaları&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;15-)&lt;/strong&gt; &lt;a href="http://www.linuxlinks.com/article/20080510052539217/Games.html"&gt;Ücretsiz Linux&amp;nbsp;Oyunları&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;16-)&lt;/strong&gt; &lt;a href="http://www.codefear.com/linux/5-best-free-antivirus-software-for-linux/"&gt;Ücretsiz Antivirus&amp;nbsp;Yazılımları&lt;/a&gt;&lt;/p&gt;</summary><category term="linux"></category><category term="linux kaynakları"></category><category term="linux sources"></category><category term="linux uygulamaları"></category></entry><entry><title>Linux Komutları</title><link href="http://www.halitalptekin.com/linux-komutlari.html" rel="alternate"></link><updated>2012-06-03T00:00:00+03:00</updated><author><name>halit</name></author><id>tag:www.halitalptekin.com,2012-06-03:linux-komutlari.html</id><summary type="html">&lt;p&gt;Linux aslında komut satırına bağımlı bir işletim sistemi değil.Ama sizde zamanla Linuxu kullandıkça komut satırının ne kadar daha rahat olduğunu anlıyacaksınız.Bir uygulama için klasor klasor dolaşmadan bir iki komutla işimizi halledebiliyoruz.Bunun yanında aradığımız bir dosyayı daha gelişmiş komutlar kullanarak saniyeler içinde bulabiliyoruz.Bunlar sadece bir kaç&amp;nbsp;ornek.&lt;/p&gt;
+&lt;p&gt;Linux Komutları Linux kullanıcılarının hayal gucune bağlı olarak surekli gelişiyor.İşte o gelişen komutları bir sitede toplamışlar.Gerçekten çok kaliteli Linux Komutlarını barındıran bir site.Ben herhangi bir komut aradığımda Google&amp;#8217;dan once burada arıyorum.Eğer bulamazsam ki çok nadir oluyor o zaman Google&amp;#8217;a başvuruyorum.Tum Linux kullanıcılarının arşivinde olması gereken bir&amp;nbsp;site.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Site :&lt;/strong&gt;&amp;nbsp;http://www.commandlinefu.com/commands/browse&lt;/p&gt;
+&lt;p&gt;Tabi yukarıdaki sitede komut aramadan once basit Linux Komutlarının temel olarak ne yaptıklarını oğrenmek gerekir.Ardından ustteki siteden gelişmiş komutları aramanız size daha faydalı&amp;nbsp;olacaktır.&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;a2ps : &lt;span class="caps"&gt;ASCII&lt;/span&gt; dosyalarini Postscript formatina cevir, mesela yazdiginiz bir program&amp;nbsp;kodunu&lt;/p&gt;
+&lt;p&gt;acroread : AcrobatReader, pdf-dosyalarini görebilmek icin gerekli olan&amp;nbsp;program&lt;/p&gt;
+&lt;p&gt;alias : Komuta baska bir isim&amp;nbsp;ver&lt;/p&gt;
+&lt;p&gt;apropos : Belli bir kelimeyi man sayfalarinda&amp;nbsp;ara&lt;/p&gt;
+&lt;p&gt;ar : Arsiv olusturmak, olusturulmus bir arsivi calismak ya da acmak&amp;nbsp;icin&lt;/p&gt;
+&lt;p&gt;arch : Processor’un yapisi hakkinda bilgi&amp;nbsp;ver&lt;/p&gt;
+&lt;p&gt;arp : Host ve &lt;span class="caps"&gt;IP&lt;/span&gt; numarasini göster. (arp = adress resolution&amp;nbsp;protocol)&lt;/p&gt;
+&lt;p&gt;at : Komutu ya da komutlari daha sonraki bir zamanda calistir (bak.&amp;nbsp;batch)&lt;/p&gt;
+&lt;p&gt;basename : Bir dosyanin gercek ismini ver (Üst dizinleri&amp;nbsp;göstermeden)&lt;/p&gt;
+&lt;p&gt;bash : Bourne Again Shell -&amp;gt; Linux’un standart&amp;nbsp;shell’i&lt;/p&gt;
+&lt;p&gt;batch : Komutu ya da komutlari daha sonra ki bir zamanda calistir(bak.&amp;nbsp;at)&lt;/p&gt;
+&lt;p&gt;bg : Bir programi Ön planda&amp;nbsp;calistir&lt;/p&gt;
+&lt;p&gt;break : Bir blogu belli bir kosuldan terk et (bak.&amp;nbsp;continue)&lt;/p&gt;
+&lt;p&gt;bunzip2 : (bak.&amp;nbsp;bzip2)&lt;/p&gt;
+&lt;p&gt;bzip2 : Bir arsivleme&amp;nbsp;programi&lt;/p&gt;
+&lt;p&gt;cal : Aktuel takvimi&amp;nbsp;göster&lt;/p&gt;
+&lt;p&gt;calender : Bir randevu hatirlatma&amp;nbsp;programi&lt;/p&gt;
+&lt;p&gt;case : Coklu seceneklere ayirma&amp;nbsp;komutu&lt;/p&gt;
+&lt;p&gt;cat : Dosyayi monitöre&amp;nbsp;ver&lt;/p&gt;
+&lt;p&gt;cc : C derleyicisi&amp;nbsp;(C-compiler)&lt;/p&gt;
+&lt;p&gt;cdrecord : &lt;span class="caps"&gt;CD&lt;/span&gt; kopyalama&amp;nbsp;tool’u&lt;/p&gt;
+&lt;p&gt;chfn : finger bilgilerinde degisiklik&amp;nbsp;yap&lt;/p&gt;
+&lt;p&gt;chgrp : Grup&amp;nbsp;degistir&lt;/p&gt;
+&lt;p&gt;chmod : Bir dosyanin haklarini&amp;nbsp;degistir&lt;/p&gt;
+&lt;p&gt;chown : Bir dosyanin sahiplerini&amp;nbsp;degistir&lt;/p&gt;
+&lt;p&gt;chroot : Bir komutu Özel bir root dizininde&amp;nbsp;calistir&lt;/p&gt;
+&lt;p&gt;chsh : Standart shell i&amp;nbsp;degistir&lt;/p&gt;
+&lt;p&gt;clear : Monitörü&amp;nbsp;temizle&lt;/p&gt;
+&lt;p&gt;continue : Bir bloku belli bir kosuldan sonra terk etme ve kaldigin yerden devam et. (bak.&amp;nbsp;break)&lt;/p&gt;
+&lt;p&gt;cmp : Iki dosyayi karsilastir (bak. comm,&amp;nbsp;diff)&lt;/p&gt;
+&lt;p&gt;comm : Iki dosyayi satir satir karsilastir (bak. cmp,&amp;nbsp;diff)&lt;/p&gt;
+&lt;p&gt;csh : C-Shell -&amp;gt; Yapisi biraz C diline benzeyen bir shell&amp;nbsp;programi&lt;/p&gt;
+&lt;p&gt;csplit : Bir dosyayi parcalara&amp;nbsp;ayir&lt;/p&gt;
+&lt;p&gt;cut : Bir dosyadan belli sütunlari&amp;nbsp;kes&lt;/p&gt;
+&lt;p&gt;date : Aktuel zamani&amp;nbsp;göster&lt;/p&gt;
+&lt;p&gt;deluser : Kullanici&amp;nbsp;sil&lt;/p&gt;
+&lt;p&gt;df : Bellekte ne kadar bos yer oldugunu&amp;nbsp;göster&lt;/p&gt;
+&lt;p&gt;diff : Iki dosya arasindaki farklari göster (bak. cmp,&amp;nbsp;comm)&lt;/p&gt;
+&lt;p&gt;do : Belli bir kosuldan sonra bir komutu ya da komut blogunu&amp;nbsp;calistir&lt;/p&gt;
+&lt;p&gt;done : do blogunun bitimi (bak.&amp;nbsp;do)&lt;/p&gt;
+&lt;p&gt;du : Bir dosyanin ya da dizinin bellekte ne kadar yer kapladigini&amp;nbsp;göster&lt;/p&gt;
+&lt;p&gt;echo : Harf dizisini monitöre&amp;nbsp;yaz&lt;/p&gt;
+&lt;p&gt;ed : Bir editör&amp;nbsp;programi&lt;/p&gt;
+&lt;p&gt;egrep : Bir dosyanin icinde belli bir harf dizisini ara(bak. fgrep.&amp;nbsp;grep)&lt;/p&gt;
+&lt;p&gt;eject : Medium’u disari ver, mesela&amp;nbsp;&lt;span class="caps"&gt;CDROM&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;emacs : Bir editör&amp;nbsp;programi&lt;/p&gt;
+&lt;p&gt;elif : if kosulunun saglanmadigi zaman devreye sokulan baska bir if&amp;nbsp;kosulu&lt;/p&gt;
+&lt;p&gt;else : if kosullarinin saglanmadigi zaman devreye sokulan baska&amp;nbsp;komutu&lt;/p&gt;
+&lt;p&gt;env : Bütün sistem degiskenlerini&amp;nbsp;göster&lt;/p&gt;
+&lt;p&gt;esac : case seceneklerinin bitimi (bak.&amp;nbsp;case)&lt;/p&gt;
+&lt;p&gt;exec : Komutu&amp;nbsp;calistir&lt;/p&gt;
+&lt;p&gt;exit : Shell’den cikma&amp;nbsp;komutu&lt;/p&gt;
+&lt;p&gt;export : Sistem degiskeninin&amp;nbsp;tanimlanmasi&lt;/p&gt;
+&lt;p&gt;expr : Matematik ifadesini&amp;nbsp;hesapla&lt;/p&gt;
+&lt;p&gt;false : Boolean tipinde &amp;#8220;yanlis&amp;#8221;&amp;nbsp;degeri&lt;/p&gt;
+&lt;p&gt;fdformat : Disket&amp;nbsp;formatla&lt;/p&gt;
+&lt;p&gt;fdisk : Bellegi bölme&amp;nbsp;programi&lt;/p&gt;
+&lt;p&gt;fg : Programi ön plana&amp;nbsp;al&lt;/p&gt;
+&lt;p&gt;fgrep : (bak. egrep,&amp;nbsp;grep)&lt;/p&gt;
+&lt;p&gt;fi : if kosulunun sonu (bak&amp;nbsp;if)&lt;/p&gt;
+&lt;p&gt;file : dosya hakkinda bilgi&amp;nbsp;ver&lt;/p&gt;
+&lt;p&gt;find : Belli bir dosyayi dizinlerde&amp;nbsp;ara&lt;/p&gt;
+&lt;p&gt;finger : Sisteme kayitli olan kullanciliari göster ya da kullanici hakkinda bilgi&amp;nbsp;ver&lt;/p&gt;
+&lt;p&gt;for : Belli komutlari belli bir kosula kadar döngü seklinde&amp;nbsp;calistir&lt;/p&gt;
+&lt;p&gt;ftp : Dosya transfer programi (ftp = file transfer&amp;nbsp;protocol)&lt;/p&gt;
+&lt;p&gt;fvwm : Linux icin yapilmis bir desktop programi (bak. fvwm2, gnome, kde&amp;nbsp;&amp;#8230;)&lt;/p&gt;
+&lt;p&gt;g++ : C++ derleyicisi (C++&amp;nbsp;compiler)&lt;/p&gt;
+&lt;p&gt;gcc : &lt;span class="caps"&gt;GNU&lt;/span&gt; C&amp;nbsp;derleyicisi&lt;/p&gt;
+&lt;p&gt;grep : (bak. egrep ,&amp;nbsp;fgrep)&lt;/p&gt;
+&lt;p&gt;groupadd : Yeni bir grup&amp;nbsp;olustur&lt;/p&gt;
+&lt;p&gt;groupmod : Grup üzerinde degisiklikler&amp;nbsp;yap&lt;/p&gt;
+&lt;p&gt;groups : Kullanicinin bagli oldugu gruplari&amp;nbsp;göster&lt;/p&gt;
+&lt;p&gt;grub : Bir cesit Linux Bootloader (bak.&amp;nbsp;lilo)&lt;/p&gt;
+&lt;p&gt;gvim : vi editörünün &lt;span class="caps"&gt;GUI&lt;/span&gt; (graphical user interface)&amp;nbsp;versiyonu&lt;/p&gt;
+&lt;p&gt;gzip : Bir arsivleme&amp;nbsp;programi&lt;/p&gt;
+&lt;p&gt;halt : Sistemi&amp;nbsp;durdur&lt;/p&gt;
+&lt;p&gt;head : Bir dosyanin ilk satirlarini göster (standart 10 satir) (bak.&amp;nbsp;tail)&lt;/p&gt;
+&lt;p&gt;help : Shell komutlarini&amp;nbsp;göster&lt;/p&gt;
+&lt;p&gt;history : Kullanicini o zamana kadar kullandigi komutlari&amp;nbsp;göster&lt;/p&gt;
+&lt;p&gt;host : Bir bilgisayarin adini&amp;nbsp;sor&lt;/p&gt;
+&lt;p&gt;hostid : sistemin host kimligini&amp;nbsp;göster&lt;/p&gt;
+&lt;p&gt;hostname : sistemin host adini&amp;nbsp;göster&lt;/p&gt;
+&lt;p&gt;httpd : Apache server’i&amp;nbsp;baslat&lt;/p&gt;
+&lt;p&gt;httpd2 : Apache 2 server’i&amp;nbsp;baslat&lt;/p&gt;
+&lt;p&gt;id : Kullanicini kullanici kodunu , bagli oldugu gruplarin kodunu&amp;nbsp;göster&lt;/p&gt;
+&lt;p&gt;ifconfig : Ag kartini&amp;nbsp;ayarla&lt;/p&gt;
+&lt;p&gt;init 0 : Sistemi kapat ( bak. halt, shutdown,&amp;nbsp;poweroff)&lt;/p&gt;
+&lt;p&gt;init 1 : Sistemi tek kullanicili modus’a gecir (bak. init S, init&amp;nbsp;s)&lt;/p&gt;
+&lt;p&gt;init 2 : Sistemi lokal cok kullanicili modus’a&amp;nbsp;gecir&lt;/p&gt;
+&lt;p&gt;init 3 : Sistemi tam aga bagli sekilde ve cok kullanicili modus’a&amp;nbsp;gecir&lt;/p&gt;
+&lt;p&gt;init 5 : Sistemi tam aga bagli sekilde, cok kullancili ve &lt;span class="caps"&gt;GUI&lt;/span&gt;’li modus’a&amp;nbsp;gecir&lt;/p&gt;
+&lt;p&gt;init 6 : Sistemi yeniden&amp;nbsp;baslat&lt;/p&gt;
+&lt;p&gt;init S : (bak. init&amp;nbsp;1)&lt;/p&gt;
+&lt;p&gt;init s : (bak. init&amp;nbsp;1)&lt;/p&gt;
+&lt;p&gt;java : Java Virtual Machine&amp;nbsp;(&lt;span class="caps"&gt;JVM&lt;/span&gt;)&lt;/p&gt;
+&lt;p&gt;javac : Java&amp;nbsp;Compiler&lt;/p&gt;
+&lt;p&gt;javadoc : Java dokumanlari&amp;nbsp;olustur&lt;/p&gt;
+&lt;p&gt;jikes : &lt;span class="caps"&gt;IBM&lt;/span&gt; tarafindan sunulan ve javac’tan daha hizli olan bir Java&amp;nbsp;Compiler&lt;/p&gt;
+&lt;p&gt;joe : Bir editör&amp;nbsp;programi&lt;/p&gt;
+&lt;p&gt;k3b : &lt;span class="caps"&gt;KDE&lt;/span&gt;’de &lt;span class="caps"&gt;GUI&lt;/span&gt;’li bir &lt;span class="caps"&gt;CD&lt;/span&gt; kopyalama&amp;nbsp;programi&lt;/p&gt;
+&lt;p&gt;kaffeine : &lt;span class="caps"&gt;KDE&lt;/span&gt; &lt;span class="caps"&gt;CD&lt;/span&gt;, &lt;span class="caps"&gt;VCD&lt;/span&gt;, &lt;span class="caps"&gt;DVD&lt;/span&gt; vs. oynatma&amp;nbsp;programi&lt;/p&gt;
+&lt;p&gt;kate : Bir &lt;span class="caps"&gt;KDE&lt;/span&gt; editör&amp;nbsp;programi&lt;/p&gt;
+&lt;p&gt;kbear : Bir &lt;span class="caps"&gt;KDE&lt;/span&gt; &lt;span class="caps"&gt;FTP&lt;/span&gt;&amp;nbsp;programi&lt;/p&gt;
+&lt;p&gt;kcalc : Bir &lt;span class="caps"&gt;KDE&lt;/span&gt; hesap makinesi&amp;nbsp;programi&lt;/p&gt;
+&lt;p&gt;kernelversion : Hangi kernel versiyonu kullanildigini&amp;nbsp;göster&lt;/p&gt;
+&lt;p&gt;kmail : &lt;span class="caps"&gt;KDE&lt;/span&gt; Mail&amp;nbsp;programi&lt;/p&gt;
+&lt;p&gt;konqueror : &lt;span class="caps"&gt;KDE&lt;/span&gt; internet&amp;nbsp;browser&lt;/p&gt;
+&lt;p&gt;konsole : Yeni bir konsol&amp;nbsp;ac&lt;/p&gt;
+&lt;p&gt;kopete : Bir &lt;span class="caps"&gt;KDE&lt;/span&gt; multiple messenger&amp;nbsp;programi&lt;/p&gt;
+&lt;p&gt;killall : Bütün process’leri&amp;nbsp;bitir&lt;/p&gt;
+&lt;p&gt;kwrite : Bir &lt;span class="caps"&gt;KDE&lt;/span&gt;&amp;nbsp;editörü&lt;/p&gt;
+&lt;p&gt;last : Sisteme son kayit olan kisileri&amp;nbsp;göster&lt;/p&gt;
+&lt;p&gt;less : Herhangi bir ciktiyi monitörde sayfa sayfa göster (bak.&amp;nbsp;more)&lt;/p&gt;
+&lt;p&gt;lilo : Bir Linux Bootloader (bak.&amp;nbsp;grub)&lt;/p&gt;
+&lt;p&gt;ln : Dosyalar ya da dizinler arasinda link&amp;nbsp;olustur&lt;/p&gt;
+&lt;p&gt;logname : login ismini&amp;nbsp;göster&lt;/p&gt;
+&lt;p&gt;logout : Sistemden ayril (eger login shell’le&amp;nbsp;girildiyse)&lt;/p&gt;
+&lt;p&gt;lpr : Dosyayi basilmasi icin yaziciya&amp;nbsp;gönder&lt;/p&gt;
+&lt;p&gt;lprm : Yaziciya gönderilen dokümanlari&amp;nbsp;sil&lt;/p&gt;
+&lt;p&gt;ls : Dizinde bulunan dosyalari&amp;nbsp;listele&lt;/p&gt;
+&lt;p&gt;lsmod : Yüklenmis modullari&amp;nbsp;listele&lt;/p&gt;
+&lt;p&gt;mail : Kullancillar arasinda mail yazmayi mümkün kilan mail&amp;nbsp;programi&lt;/p&gt;
+&lt;p&gt;make : C programini belli bir kurala göre derleyen&amp;nbsp;komut&lt;/p&gt;
+&lt;p&gt;man : Manual sayfalar&amp;nbsp;dokümanlari&lt;/p&gt;
+&lt;p&gt;mcedit : Bir editör&amp;nbsp;programi&lt;/p&gt;
+&lt;p&gt;mkdir : Yeni bir dizin&amp;nbsp;olustur&lt;/p&gt;
+&lt;p&gt;modprobe : Kernel’a bir module eklemek ya da ondan silmek&amp;nbsp;icin&lt;/p&gt;
+&lt;p&gt;mozilla : Netscape’in open source versiyonu ve gercekten harika bir web&amp;nbsp;browser&lt;/p&gt;
+&lt;p&gt;mount : Bir aleti&amp;nbsp;bagla&lt;/p&gt;
+&lt;p&gt;mv : Dosyayi kaydir ya da ismini degistir (dikkat: cok tehlikeli bir komut&amp;nbsp;bence)&lt;/p&gt;
+&lt;p&gt;mysql : MySQL veritabani&amp;nbsp;programi&lt;/p&gt;
+&lt;p&gt;nedit : Bir editör&amp;nbsp;programi&lt;/p&gt;
+&lt;p&gt;newgrp : Yeni bir gruba&amp;nbsp;gir&lt;/p&gt;
+&lt;p&gt;netstat : Ag baglantilarini&amp;nbsp;görüntüle&lt;/p&gt;
+&lt;p&gt;netscape : Bir web&amp;nbsp;browser&lt;/p&gt;
+&lt;p&gt;nl : Bir dosyayi satirlari numaralandirarak&amp;nbsp;göster&lt;/p&gt;
+&lt;p&gt;nslookup : &lt;span class="caps"&gt;DNS&lt;/span&gt; (domain name system)&amp;nbsp;sorgusu&lt;/p&gt;
+&lt;p&gt;opera : Hizli bir web&amp;nbsp;browser&lt;/p&gt;
+&lt;p&gt;passwd : Sifre&amp;nbsp;degistir&lt;/p&gt;
+&lt;p&gt;perl : &lt;span class="caps"&gt;PERL&lt;/span&gt;&amp;nbsp;interpreter&lt;/p&gt;
+&lt;p&gt;php : &lt;span class="caps"&gt;PHP&lt;/span&gt;&amp;nbsp;interpreter&lt;/p&gt;
+&lt;p&gt;pine : Bir mail&amp;nbsp;programi&lt;/p&gt;
+&lt;p&gt;ping : Baska bir bilgisayara ulasabilme&amp;nbsp;sorgusu&lt;/p&gt;
+&lt;p&gt;poweroff : Sistemi kapat (bak. init&amp;nbsp;0)&lt;/p&gt;
+&lt;p&gt;ps : Calisan process’leri&amp;nbsp;göster&lt;/p&gt;
+&lt;p&gt;pwd : Icinden bulunulan dizini&amp;nbsp;göster&lt;/p&gt;
+&lt;p&gt;quanta : Güzel bir &lt;span class="caps"&gt;HTML&lt;/span&gt;&amp;nbsp;editörü&lt;/p&gt;
+&lt;p&gt;read : Shell’de monitörde girilen girdiyi&amp;nbsp;oku&lt;/p&gt;
+&lt;p&gt;reboot : Sistemi yeniden baslat (bak. init&amp;nbsp;6)&lt;/p&gt;
+&lt;p&gt;reset : Shell ayarlarini eski ayarlara&amp;nbsp;getir&lt;/p&gt;
+&lt;p&gt;return : Bir fonksiyonun hesapladigi degeri geri vermesi icin gereken&amp;nbsp;komut&lt;/p&gt;
+&lt;p&gt;rlogin : Uzaktaki bir bilgisayara baglan (bak.&amp;nbsp;telnet)&lt;/p&gt;
+&lt;p&gt;rmdir : Dizini sil (dizinin bos olmasi sarti&amp;nbsp;ile)&lt;/p&gt;
+&lt;p&gt;rpm : Redhat Packet Manager (ama genelde bütün Linux distrolari tarafindan&amp;nbsp;desteklenir)&lt;/p&gt;
+&lt;p&gt;select : Secenek&amp;nbsp;secimi&lt;/p&gt;
+&lt;p&gt;shutdown : Sistemi kapat (bak. init&amp;nbsp;0)&lt;/p&gt;
+&lt;p&gt;sleep : Belli bir süre ara&amp;nbsp;ver&lt;/p&gt;
+&lt;p&gt;sort : Siralayarak&amp;nbsp;göster&lt;/p&gt;
+&lt;p&gt;split : Bir dosyayi parcalara&amp;nbsp;ayir&lt;/p&gt;
+&lt;p&gt;startx : X-Server&amp;nbsp;baslat&lt;/p&gt;
+&lt;p&gt;su : Baska bir kullanici adiyla gir ( option verilmezse root sifresi vermek&amp;nbsp;gerekir)&lt;/p&gt;
+&lt;p&gt;sudo : Bir komutu root gibi calistir (tabii &amp;#8220;sudoers&amp;#8221; dosyasi buna izin veriyorsa, normal bir kullanicinin sudoers’i okumaya hakki&amp;nbsp;yoktur).&lt;/p&gt;
+&lt;p&gt;tail : Bir dosyanin son satirlarini göster (standart 10 satir). (bak.&amp;nbsp;head)&lt;/p&gt;
+&lt;p&gt;talk : Sisteme kayitli olan baska bir kullanici ile sohbet&amp;nbsp;et&lt;/p&gt;
+&lt;p&gt;tcsh : Ilerletilmis bir&amp;nbsp;C-shell&lt;/p&gt;
+&lt;p&gt;telnet : Uzak bir bilgisayara&amp;nbsp;baglan&lt;/p&gt;
+&lt;p&gt;then : if kosulu saglaniyorsa bundan sonraki komutlari&amp;nbsp;calistir&lt;/p&gt;
+&lt;p&gt;time : Bir komutun ne kadar süre harcadigini&amp;nbsp;göster&lt;/p&gt;
+&lt;p&gt;test : Bir kosulu test&amp;nbsp;et&lt;/p&gt;
+&lt;p&gt;top : Process’leri&amp;nbsp;görüntüle&lt;/p&gt;
+&lt;p&gt;touch : Dosyanin degistirilme zamanini&amp;nbsp;degistir&lt;/p&gt;
+&lt;p&gt;traceroute : Router&amp;nbsp;takibi&lt;/p&gt;
+&lt;p&gt;true : Boolean tipindeki &amp;#8220;dogru&amp;#8221;&amp;nbsp;degeri&lt;/p&gt;
+&lt;p&gt;umask : Bir dosya icin standart haklar&amp;nbsp;belirle&lt;/p&gt;
+&lt;p&gt;uniq : Siralanmis bir dosya icinde birden fazal ayni satirlari&amp;nbsp;ele&lt;/p&gt;
+&lt;p&gt;umount : Baglanmis bir aleti sistemden geri cöz (hayir komutu yanlis yazmadim ;o) komutun ismi &amp;#8220;unmount&amp;#8221;&amp;nbsp;degil)&lt;/p&gt;
+&lt;p&gt;unalias : alias’la degistirilmis komut aliaslarini geri&amp;nbsp;cevir&lt;/p&gt;
+&lt;p&gt;unrar : Bir Arsivleme&amp;nbsp;programi&lt;/p&gt;
+&lt;p&gt;until : Bir komutlar blogunu belli bir kosula kadar&amp;nbsp;uygula&lt;/p&gt;
+&lt;p&gt;unzip : Arsiv&amp;nbsp;programi&lt;/p&gt;
+&lt;p&gt;useradd : Sisteme yeni bir kullanici&amp;nbsp;ekle&lt;/p&gt;
+&lt;p&gt;userdel : Sistemden bir kullanici&amp;nbsp;sil&lt;/p&gt;
+&lt;p&gt;users : Su anda sisteme kayitli olan kullanicilari&amp;nbsp;göster&lt;/p&gt;
+&lt;p&gt;vim : Bir editör&amp;nbsp;programi&lt;/p&gt;
+&lt;p&gt;visudo : sudoers dosyasi üzerinde&amp;nbsp;calis&lt;/p&gt;
+&lt;p&gt;w : Hangi kullanicinin o anda hangi komutu calistirdigini ya da hangi programi kullandigini&amp;nbsp;göster&lt;/p&gt;
+&lt;p&gt;wait : Belli bir process’i&amp;nbsp;bekle&lt;/p&gt;
+&lt;p&gt;wall : Bütün kullanicilara mesaj&amp;nbsp;yolla&lt;/p&gt;
+&lt;p&gt;wc : Harf, kelime ve satir sayma&amp;nbsp;komutu&lt;/p&gt;
+&lt;p&gt;wget : Belli bir sayfa icerigini agdan lokal &lt;span class="caps"&gt;PC&lt;/span&gt; ye&amp;nbsp;indir&lt;/p&gt;
+&lt;p&gt;whatis : Bir komutun ne ise yaradigini&amp;nbsp;göster&lt;/p&gt;
+&lt;p&gt;while : Komutlari belli bir kosula kadar döngü halinde&amp;nbsp;calistir&lt;/p&gt;
+&lt;p&gt;who : Sisteme kayitli olan kullanicilari göster (bak. finger,&amp;nbsp;w)&lt;/p&gt;
+&lt;p&gt;whoami : Kullanicinin kendisi hakkinda&amp;nbsp;bilgi&lt;/p&gt;
+&lt;p&gt;windowmaker : Bir&amp;nbsp;destkop&lt;/p&gt;
+&lt;p&gt;wine : Windows Emulator&amp;nbsp;programi&lt;/p&gt;
+&lt;p&gt;wish : Windowing&amp;nbsp;Shell&lt;/p&gt;
+&lt;p&gt;write : Bir kullaniciya mesaj&amp;nbsp;gönder&lt;/p&gt;
+&lt;p&gt;xanim : Bir media&amp;nbsp;player&lt;/p&gt;
+&lt;p&gt;yast (sadece SuSE) : Sistem ayarlari yapmak icin &lt;span class="caps"&gt;GUI&lt;/span&gt;’siz bir tool (yet another setup&amp;nbsp;tool)&lt;/p&gt;
+&lt;p&gt;yast2 (sadece SuSE) : Sistem ayarlari yapmak icin &lt;span class="caps"&gt;GUI&lt;/span&gt;’li bir&amp;nbsp;tool&lt;/p&gt;
+&lt;p&gt;you (sadece SuSE) : YaST online&amp;nbsp;update&lt;/p&gt;
+&lt;p&gt;zip : Arsivleme programi&lt;br /&gt;
+&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;Kaynak : &lt;a href="http://www.truvalinux.org.tr/"&gt;http://www.truvalinux.org.tr&lt;/a&gt;&lt;/p&gt;</summary><category term="konsol komutları"></category><category term="linux bash"></category><category term="linux komutları"></category><category term="linux konsol"></category><category term="unix komutları"></category></entry><entry><title>Ubuntu</title><link href="http://www.halitalptekin.com/ubuntu.html" rel="alternate"></link><updated>2012-06-03T00:00:00+03:00</updated><author><name>halit</name></author><id>tag:www.halitalptekin.com,2012-06-03:ubuntu.html</id><summary type="html">&lt;p&gt;Buyuk bir değişiklik yapıp Windowstan Ubuntuya geçtiniz.Ancak daha ısınamadınız.Çunku birçok şey eksik.Bazı şeyler yavaş.Bugun sizlere ubuntu konusunda kesin bilmeniz gereken bazı konulardan bahsedeceğim.Unutmayın linux ve açık kaynak kod dunyası o kadar geniş ki emin olun ne isterseniz fazlasıyla var.Eğer bir konuda umitsizliğe duştuğunuzde direk windowsa geçmeyi duşunmeyin.Biraz araştırmayla daha onceden aynı sorunla karşılaşmış insanların yazılarını bulabilirsiniz.Açık kaynak kod dunyasına hiçbirşey demiyorum zaten.Uçsuz bucaksız bir&amp;nbsp;dunya.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;1-) Depoları&amp;nbsp;Etkinleştirin &lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;Ubuntu her yeni kurduğumda yaptığım ilk işlerden birisi depoların tumunu açmaktır.Sizde boyle yaparak daha fazla programa ulaşabilirsiniz. Bunun için sırayla; &lt;strong&gt;System&amp;gt;Administration&amp;gt;Synaptic Package Manager&lt;/strong&gt; Girin. Ardından &lt;strong&gt;Settings&amp;gt;Repositories&lt;/strong&gt; kısmına tıklayın.Açılan pencerede tum kısımları işaretleyin.Son olarakta Third-Party Software Penceresine gidip orada da tum seçenekleri işaretleyiniz.Pencereleri kapayıp Reload tuşuna basarak depoları&amp;nbsp;guncelleyebilirsiniz.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;2-) Grub Menu&amp;nbsp;Editleme&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;Eğer sizde her açılışta Grub Menu&amp;#8217;nun o sıkıcı siyah ekranından sıkıldıysanız bu madde tam size gore.Bunun yanında Ubuntunun yanında başka işletim sistemide varsa Grub menuden çekeceğiniz vardır.Bu sorunları halletmek için Startup Manager tam size&amp;nbsp;gore.&lt;/p&gt;
+&lt;div class="codehilite"&gt;&lt;pre&gt;&lt;span class="n"&gt;sudo&lt;/span&gt; &lt;span class="n"&gt;apt&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;get&lt;/span&gt; &lt;span class="n"&gt;install&lt;/span&gt; &lt;span class="n"&gt;startupmanager&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Bu komut ile kuruyoruz.Kurduktan sonra çalıştırman hemen once grub dosyanızın yedeğini almakta fayda&amp;nbsp;var.&lt;/p&gt;
+&lt;div class="codehilite"&gt;&lt;pre&gt;&lt;span class="n"&gt;sudo&lt;/span&gt; &lt;span class="n"&gt;cp&lt;/span&gt; &lt;span class="sr"&gt;/boot/g&lt;/span&gt;&lt;span class="n"&gt;rub&lt;/span&gt;&lt;span class="sr"&gt;/menu.lst /&lt;/span&gt;&lt;span class="n"&gt;yedek&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;yedek&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;lst&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Program kurulduktan sonra Grub menuyu zevkinize gore duzenleyebilirsiniz.Zamanında işime çok&amp;nbsp;yaramıştı.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;3-) Guvenlik&amp;nbsp;Duvarı&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;Aslında linux guvenlik olarak tatmin edici de olsa.Genede eşeğinizi sağlam kazığa bağlayın.Sonra başınız yanmasın.Ubuntu için bu işi iyi yapan &lt;span class="caps"&gt;GUFW&lt;/span&gt; var.Sizde eğer lazım goruyorsanız&amp;nbsp;kurabilirsiniz.&lt;/p&gt;
+&lt;div class="codehilite"&gt;&lt;pre&gt;&lt;span class="n"&gt;sudo&lt;/span&gt; &lt;span class="n"&gt;apt&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;get&lt;/span&gt; &lt;span class="n"&gt;install&lt;/span&gt; &lt;span class="n"&gt;gufw&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Bunun yanında alternatif olarak aşağıdaki firewallı da&amp;nbsp;kullanabilirsiniz.&lt;/p&gt;
+&lt;div class="codehilite"&gt;&lt;pre&gt;&lt;span class="n"&gt;sudo&lt;/span&gt; &lt;span class="n"&gt;apt&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;get&lt;/span&gt; &lt;span class="n"&gt;install&lt;/span&gt; &lt;span class="n"&gt;firestarter&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;&lt;strong&gt;4-)&amp;nbsp;Wine &lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;Geldik linux için bugune kadarki belkide en yararlı yazılıma.Wine bir windows emulatorudur.Kısacası sanal bir windows ortamı yaparak .exe gibi windowsa ozgu dosyaları açmanızı sağlar.Her linux pcsinde bulunması gerekir.İlerde işiniz&amp;nbsp;duşebilir.&lt;/p&gt;
+&lt;div class="codehilite"&gt;&lt;pre&gt;&lt;span class="n"&gt;sudo&lt;/span&gt; &lt;span class="n"&gt;apt&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;get&lt;/span&gt; &lt;span class="n"&gt;install&lt;/span&gt; &lt;span class="n"&gt;wine&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;&lt;strong&gt;5-) Gerekli&amp;nbsp;Ekstralar&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;Çok gerekli hatta zorunludur.Kurduğunuz her Linuxa ilk bunu yapın desem yalan olmaz.Flash Player,Java,Codecler vs hepsi bunun&amp;nbsp;içindedir.&lt;/p&gt;
+&lt;div class="codehilite"&gt;&lt;pre&gt;&lt;span class="n"&gt;sudo&lt;/span&gt; &lt;span class="n"&gt;apt&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;get&lt;/span&gt; &lt;span class="n"&gt;install&lt;/span&gt; &lt;span class="n"&gt;ubuntu&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;restricted&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;extras&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;&lt;strong&gt;6-) Ubuntu&amp;nbsp;Tweak&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;Ubuntu için gorsel duzenlemeler,sistem ayarları gibi gerekli konularda değişiklik yapmamıza olanak sağlayan programdır. Kurulum için&amp;nbsp;once&lt;/p&gt;
+&lt;div class="codehilite"&gt;&lt;pre&gt;&lt;span class="n"&gt;gksu&lt;/span&gt; &lt;span class="n"&gt;gedit&lt;/span&gt; &lt;span class="sr"&gt;/etc/&lt;/span&gt;&lt;span class="n"&gt;apt&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;sources&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;list&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Komutunu çalıştırıp bu dosyanın içine aşağıdaki kodları&amp;nbsp;yapıştırın.&lt;/p&gt;
+&lt;div class="codehilite"&gt;&lt;pre&gt;&lt;span class="k"&gt;deb&lt;/span&gt; &lt;span class="s"&gt;http://ppa.launchpad.net/tualatrix/ubuntu&lt;/span&gt; &lt;span class="kp"&gt;jaunty&lt;/span&gt; &lt;span class="kp"&gt;main&lt;/span&gt; 
+&lt;span class="kp"&gt;deb-src&lt;/span&gt; &lt;span class="kp"&gt;http://ppa.launchpad.net/tualatrix/ubuntu&lt;/span&gt; &lt;span class="kp"&gt;jaunty&lt;/span&gt; &lt;span class="kp"&gt;main&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Son olarakta aşağıdaki komutlarla depoları guncelleyip ubuntu tweakı&amp;nbsp;kurun.&lt;/p&gt;
+&lt;div class="codehilite"&gt;&lt;pre&gt;&lt;span class="n"&gt;sudo&lt;/span&gt; &lt;span class="n"&gt;apt&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;get&lt;/span&gt; &lt;span class="n"&gt;update&lt;/span&gt;
+
+ &lt;span class="n"&gt;sudo&lt;/span&gt; &lt;span class="n"&gt;apt&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;get&lt;/span&gt; &lt;span class="n"&gt;install&lt;/span&gt; &lt;span class="n"&gt;ubuntu&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;tweak&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;&lt;strong&gt;7-)&amp;nbsp;&lt;span class="caps"&gt;VLC&lt;/span&gt;&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;Duymayan varmıdır bilmemde Linux platformların vazgeçilmez Media Playerıdır.Bu yuzden kurmakta fayda&amp;nbsp;var.&lt;/p&gt;
+&lt;div class="codehilite"&gt;&lt;pre&gt;&lt;span class="n"&gt;sudo&lt;/span&gt; &lt;span class="n"&gt;apt&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;get&lt;/span&gt; &lt;span class="n"&gt;install&lt;/span&gt; &lt;span class="n"&gt;vlc&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;&lt;strong&gt;8-) Gnome&amp;nbsp;Do&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;Çok hoşuma giden bir uygulamadır.Benim onerim kesin&amp;nbsp;kurun.&lt;/p&gt;
+&lt;div class="codehilite"&gt;&lt;pre&gt;&lt;span class="n"&gt;sudo&lt;/span&gt; &lt;span class="n"&gt;apt&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;get&lt;/span&gt; &lt;span class="n"&gt;install&lt;/span&gt; &lt;span class="n"&gt;gnome&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="k"&gt;do&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;</summary><category term="linux"></category><category term="ubuntu"></category><category term="ubuntu ayarları"></category><category term="ubuntu programlar"></category></entry></feed>
