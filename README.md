@@ -1,3 +1,3 @@
-Pelican powered Pythonic blog | www.halitalptekin.com
+Pelican powered Pythonic blog
 
 
