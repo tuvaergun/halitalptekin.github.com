@@ -61,8 +61,57 @@
 
     <div class='article'>
         <div class="content-title">
-            <a href="./ruya-dil.html"><h1>Rüya&nbsp;Dil</h1></a>
-            Nov 25, 2012
+            <a href="./djangodan-pelicana.html"><h1>Django&#8217;dan&nbsp;Pelicana</h1></a>
+            Nov 30, 2012
+
+
+by <a class="url fn" href="./author/halit.html">halit</a>
+ 
+
+in <a href="./category/django.html">django</a>
+
+ 
+    tagged <a href="./tag/django.html">django</a> <a href="./tag/pelican.html">pelican</a> <a href="./tag/markdown.html">markdown</a> <a href="./tag/markdownify.html">markdownify</a> <a href="./tag/read2text.html">read2text</a> 
+ 
+        </div>
+        
+        <div><p>Django sitemi Pelican&#8217;a taşırken öncelikle yazılarımı Markdown&#8217;a dönüştürmem gerekiyordu. Bunu ya PostgreSql ile boğuşup ya da views ve templates üzerinde değişiklikler yaparak yapacaktım. Ben tercihimi ikinci şıktan yana&nbsp;kullandım.</p>
+<p>Bunun için Django sitemin <strong>templates</strong> klasörü altındaki sayfalarda biraz değişiklik yaptım(biraz da viewste). Buna göre yazılarımı ve makalelerimi&nbsp;önce;</p>
+<div class="codehilite"><pre><span class="n">Date</span><span class="p">:</span> <span class="p">{{</span> <span class="n">tarih</span> <span class="p">}}</span>
+<span class="n">Title</span><span class="p">:</span> <span class="p">{{</span> <span class="n">title</span> <span class="p">}}</span>
+<span class="n">Tags</span><span class="p">:</span> <span class="p">{{</span> <span class="n">tags</span> <span class="p">}}</span>
+<span class="n">Category</span><span class="p">:</span> <span class="p">{{</span> <span class="n">category</span> <span class="p">}}</span>
+<span class="n">Description</span><span class="p">:</span> <span class="p">{{</span> <span class="n">description</span> <span class="p">}}</span>
+
+<span class="p">{{</span> <span class="n">post</span> <span class="p">}}</span>
+</pre></div>
+
+
+<p>gibi bir düzene koydum. Bu sayede yazıların Pelican&#8217;a eklenmesi sırasında çok uğraşmadım. Daha sonra <a href="http://brettterpstra.com/scripting-readability-markdownify-for-clipping-web-pages/">read2text</a> aracı ile bu çıktıdaki tüm yazılarımı aşağıdaki şekilde <strong>Markdown</strong>&#8216;a&nbsp;dönüştürdüm.</p>
+<div class="codehilite"><pre><span class="o">.</span><span class="sr">/read2text http:/</span><span class="o">/</span><span class="n">www</span><span class="o">.</span><span class="n">halitalptekin</span><span class="o">.</span><span class="n">com</span> <span class="o">&gt;&gt;</span> <span class="nb">index</span><span class="o">.</span><span class="n">md</span>
+</pre></div>
+
+
+<p>Eğer sitenizdeki yazılar çok fazla ise yukarıdaki işlemi tüm linklerinize basit bir <strong>Python</strong> betiği ile uygulayabilirsiniz. Tabi bunun içinde sitenizdeki tüm yazıların gene bir şekilde(yukarıdaki gibi) linklerinizi almanız&nbsp;gerekecek.</p>
+<p><strong>Read2Text</strong> aracı gerçekten yarasa ve %99&#8217;a varan bir başarı elde etse bile yazıları çevirirken bazı Türkçe karakterleri yutabiliyor. İlk karşılaştığımda dosya içindeki unicode,ascii gibi ayarlar ile oynayıp düzeltebileceğimi sandım. Hatta bir nebze başarılı da olsam tam olarak çözemedim. Sonunda da bu sorunu <a href="http://turkce-karakter.appspot.com">deasciifier</a> ile&nbsp;hallettim.</p>
+<p>Sitede yer alan araç ile ya da <a href="https://github.com/emres/turkish-deasciifier">buradaki</a> python kütüphanesini kullanarak yazılarınızda yer alan Türkçe karakter problemini çözebilirsiniz. İster manuel olarak isterseniz de basit birkaç kod ile tüm yazılarınıza&nbsp;uygulayabilirsiniz.</p>
+<p>Bu şekilde sitemdeki tüm yazıları çok büyük oranda sorunsuz bir şekilde pelican üzerine taşıdım. Şimdilik bu sistemden gayet memnun gibiyim. Eğer sizde Pelican&#8217;a geçip geçmeme konusunda kararsız iseniz kesinlikle denemenizi&nbsp;öneririm.</p></div>
+        <hr />
+    </div>
+		
+    
+
+
+ 
+
+        
+
+
+ 
+
+    <div class='article'>
+        <a href="./ruya-dil.html"><h2>Rüya&nbsp;Dil</h2></a>
+        <div class= "well small"> Nov 25, 2012
 
 
 by <a class="url fn" href="./author/halit.html">halit</a>
@@ -72,30 +121,11 @@ in <a href="./category/programlama.html">programlama</a>
 
  
     tagged <a href="./tag/ruya-dil.html">rüya dil</a> <a href="./tag/paul-graham.html">paul graham</a> <a href="./tag/hackers-painters.html">hackers painters</a> <a href="./tag/python.html">python</a> <a href="./tag/lisp.html">lisp</a> 
- 
-        </div>
-        
-        <div><p>Bugün önceden okumaya başladığım ancak son kısmını okumadığım <a href="http://www.amazon.com/Hackers-Painters-Big-Ideas-Computer/dp/1449389554/ref=sr_1_4?s=books&amp;ie=UTF8&amp;qid=1353841456&amp;sr=1-4">Hackers <span class="amp">&amp;</span> Painters</a> kitabını bitirdim. Özellikle en son kısmında yer alan <strong>Rüya Dil</strong> kısmı, benim kendi favori dilimi bir kez daha sorgulamamı sağladı. Ve farkettim ki Paul Graham sanki direk olarak Python&#8217;u anlatıyordu. Kitabın iç kısımlarında Python&#8217;u sevdiğini ve saygı duyduğunu birçok kısımda belirtmişti. Ancak daha fazla <strong>Lisp</strong> dilini savunuyordu. Son kısımdaki maddelerin Python&#8217;a işaret etmesi beni&nbsp;şaşırttı.</p>
-<p><img alt="I Dream of Love" src="static/media/ruya-dil.jpg" /></p>
-<p>Kendi yorumlarımı katmadan, aralarından beğendiğim Rüya Dil kriterlerini aşağıya sırayla yazıyorum. Siz de kendi favori dilinizin Rüya Dil kriteriyle uyuşup uyuşmadığını&nbsp;sınayabilirsiniz.</p>
-<ul>
-<li>Açık ve&nbsp;özdür.</li>
-<li>Hızlı başlayan, etkileşimli bir üst düzeyi&nbsp;vardır.</li>
-<li>Yaygın sorunları çok az kod yazarak çözecek programlar&nbsp;üretebilirsiniz.</li>
-<li>Dilin sözdizimi, hatalara meydan veremeyecek şekilde kısadır. Gereksiz bir karakter tuşlamanız veya Shift tuşunu fazlaca kullanmanız dahi&nbsp;gerekmez.</li>
-<li>Gözünüz kapalı, hızlı bir şekilde iç içe döngüler oluşturabilir, hatta gerekirse satır içi bayt kodları bile&nbsp;yazabilirsiniz.</li>
-<li>Dili öğrenebileceğiniz çok sayıda örnek vardır ve dil de onu nasıl kullanacağınızı örneklerden birkaç dakika içerisinde anlayabileceğiniz&nbsp;özelliktedir.</li>
-<li>Dilin küçük bir çekirdeği ve çekirdek dil kadar özenli bir şekilde tasarlanmış, güçlü kitaplıkları&nbsp;bulunur.</li>
-<li>Kitaplıklar birbiriyle gayet uyumlu çalışır; dilin bütün unsurları, hassas bir fotoğraf makinesinin parçaları gibi birbirine&nbsp;uyar.</li>
-<li>İşletim sistemiyle ve diğer dillerle yazılmış uygulamalarla iletişim kurmak&nbsp;kolaydır.</li>
-<li>Sözdizimleri de dahil olmak üzere, dilin her özelliği değiştirilebilir ve önceden tanımlanmış fonksiyonlarla aynı statüye sahiptir. Rüya dilin yalnızca kaynağı değil, aynı zamanda tasarımı da&nbsp;açıktır.</li>
-</ul>
-<p>Sanki herşey <strong>Python</strong>&#8216;a işaret ediyor değil mi? Yoksa ben çok mu önyargılıyım bilmiyorum. Belki Python&#8217;dan daha fazla bu kriterlere sahip bir dil vardır ve ben bu dile hala başlama fırsatı bulamamışımdır. (<strong>Ruby</strong>)</p></div>
-        <hr />
-    </div>
-		
+ </div>
+        <div class="summary"><p>Bugün önceden okumaya başladığım ancak son kısmını okumadığım <a href="http://www.amazon.com/Hackers-Painters-Big-Ideas-Computer/dp/1449389554/ref=sr_1_4?s=books&amp;ie=UTF8&amp;qid=1353841456&amp;sr=1-4">Hackers <span class="amp">&amp;</span> Painters</a> kitabını bitirdim. Özellikle en son kısmında yer alan <strong>Rüya Dil</strong> kısmı, benim kendi favori dilimi bir kez daha sorgulamamı sağladı. Ve farkettim ki Paul Graham sanki direk olarak Python&#8217;u anlatıyordu. Kitabın iç kısımlarında Python&#8217;u sevdiğini ve saygı duyduğunu ...</p> <a class="btn btn-info xsmall" href="./ruya-dil.html">read more</a></div>
+    </div>	
+				
     
-
 
  
 
@@ -293,31 +323,6 @@ in <a href="./category/python.html">python</a>
     tagged <a href="./tag/matlab.html">matlab</a> <a href="./tag/matplotlib.html">matplotlib</a> <a href="./tag/python.html">python</a> <a href="./tag/python-matlab.html">python matlab</a> <a href="./tag/python-matplotlib.html">python matplotlib</a> 
  </div>
         <div class="summary"><p>Python&#8217;un son gunlerde çok fazla kullanılmaya başladığı alanlardan birisi de kuşkusuz bilimsel araştırmalar oldu.Marsa gonderilen Curiosity&#8217;nin bile test kısımları Python ile yapılmıştı.Ben de bu yuzden onceden beri ilgili olduğum bu alana şoyle bir bakayım dedim.Kutuphaneler ile uğraştığımdan kendimi bir kaç çizim kutuphanesi aradım.Geçen yazımda ...</p> <a class="btn btn-info xsmall" href="./matplotlib-ile-gmail-analizi.html">read more</a></div>
-    </div>	
-				
-    
-
- 
-
-        
-
-
- 
-
-    <div class='article'>
-        <a href="./python-turtle-modulu.html"><h2>Python Turtle&nbsp;Modülü</h2></a>
-        <div class= "well small"> Sep 12, 2012
-
-
-by <a class="url fn" href="./author/halit.html">halit</a>
- 
-
-in <a href="./category/python.html">python</a>
-
- 
-    tagged <a href="./tag/python.html">python</a> <a href="./tag/python-kutuphanesi.html">python kütüphanesi</a> <a href="./tag/python-turtle.html">python turtle</a> <a href="./tag/python-turtle-lib.html">python turtle lib</a> 
- </div>
-        <div class="summary"><p>Son gunlerde Python ile birlikte gelen modullere daha yakından bakıyorum. Aralarında bazen çok guzel araçlar çıkabiliyor. Mesela benim bugun gostermek istediğim Turtle modulunu daha once hiç gormemiştim. Eminim birçok kişi de bu kutuphaneden habersizdir. Python ile birlikte gelen Turtle modulu ile ekrana istediğiniz yazıyı yazmanızdan tutunda birçok resim ve şekil ...</p> <a class="btn btn-info xsmall" href="./python-turtle-modulu.html">read more</a></div>
     </div>	
 				
     

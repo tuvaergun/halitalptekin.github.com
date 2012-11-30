@@ -2,9 +2,9 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>Halit Alptekin Personal Blog</title>
-    <meta name="description" content="Programming and Life Blog Of Halit Alptekin. Karadeniz Technical University Computer Engineering Student.">
-    <meta name="keywords" content="programlama, blog, personal blog, linux, python, django, php, bootstrap, seo, bilgisayar muhendisligi, ktu, karadeniz teknik universitesi, programming">
+    <title>Halit Alptekin Personal Blog - Django&#8217;dan&nbsp;Pelicana</title>
+    <meta name="description" content="Django Siteleri Pelicana Taşıma">
+    <meta name="keywords" content="django, pelican, markdown, markdownify, read2text, hdblog">
     <meta name="author" content="halit">
     <meta name="robots" content="index, follow, all"/>
 
@@ -53,95 +53,77 @@
     <div class="row">
 
         <div class="span9">
-                
-
         
-
-
- 
-
     <div class='article'>
-        <a href="./webmasterlar-icin-jquery-tools.html"><h2>Webmasterlar İçin Jquery&nbsp;Tools</h2></a>
-        <div class= "well small"> Jun 02, 2012
+        <div class="content-title">
+            <h1>Django&#8217;dan&nbsp;Pelicana</h1>
+            Nov 30, 2012
 
 
 by <a class="url fn" href="./author/halit.html">halit</a>
  
 
-in <a href="./category/programlama.html">programlama</a>
+in <a href="./category/django.html">django</a>
 
  
-    tagged <a href="./tag/jquery.html">jquery</a> <a href="./tag/jquery-ornekleri.html">jquery örnekleri</a> <a href="./tag/jquery-tools.html">jquery tools</a> <a href="./tag/jquery-uygulamalari.html">jquery uygulamaları</a> 
- </div>
-        <div class="summary"><p>Jquery çıktığı ilk gunden bugune hala çok populer.Birçok webmaster Jqueryden faydalanıyor.Benim siteminde birçok kısmında bu kodlardan var.Bende bugun sizlere jquerynin en işlevsel arayuzu bileşenlerinden oluşan Jquery Tools koleksiyonunu paylaşıcam.Tarih seçiciler (datepicker), ipucu balonları (tooltips), form kontrolleri, tablar gibi daha onlarca işe yarar ornek detaylı anlatımlarıyla birlikte ...</p> <a class="btn btn-info xsmall" href="./webmasterlar-icin-jquery-tools.html">read more</a></div>
-    </div>	
-				
-    
+    tagged <a href="./tag/django.html">django</a> <a href="./tag/pelican.html">pelican</a> <a href="./tag/markdown.html">markdown</a> <a href="./tag/markdownify.html">markdownify</a> <a href="./tag/read2text.html">read2text</a> 
 
- 
+        </div>
+	
+        <div><p>Django sitemi Pelican&#8217;a taşırken öncelikle yazılarımı Markdown&#8217;a dönüştürmem gerekiyordu. Bunu ya PostgreSql ile boğuşup ya da views ve templates üzerinde değişiklikler yaparak yapacaktım. Ben tercihimi ikinci şıktan yana&nbsp;kullandım.</p>
+<p>Bunun için Django sitemin <strong>templates</strong> klasörü altındaki sayfalarda biraz değişiklik yaptım(biraz da viewste). Buna göre yazılarımı ve makalelerimi&nbsp;önce;</p>
+<div class="codehilite"><pre><span class="n">Date</span><span class="p">:</span> <span class="p">{{</span> <span class="n">tarih</span> <span class="p">}}</span>
+<span class="n">Title</span><span class="p">:</span> <span class="p">{{</span> <span class="n">title</span> <span class="p">}}</span>
+<span class="n">Tags</span><span class="p">:</span> <span class="p">{{</span> <span class="n">tags</span> <span class="p">}}</span>
+<span class="n">Category</span><span class="p">:</span> <span class="p">{{</span> <span class="n">category</span> <span class="p">}}</span>
+<span class="n">Description</span><span class="p">:</span> <span class="p">{{</span> <span class="n">description</span> <span class="p">}}</span>
 
-        
-
-
- 
-
-    <div class='article'>
-        <a href="./yabanci-dil-ogrenme-siteleri.html"><h2>Yabancı Dil Öğrenme&nbsp;Siteleri</h2></a>
-        <div class= "well small"> Jun 02, 2012
+<span class="p">{{</span> <span class="n">post</span> <span class="p">}}</span>
+</pre></div>
 
 
-by <a class="url fn" href="./author/halit.html">halit</a>
- 
-
-in <a href="./category/genel.html">genel</a>
-
- 
-    tagged <a href="./tag/bedava-ingilizce.html">bedava ingilizce</a> <a href="./tag/ingilizce-kurslari.html">ingilizce kursları</a> <a href="./tag/ingilizce-ogren.html">ingilizce oğren</a> <a href="./tag/ingilizce-ogrenme.html">ingilizce oğrenme</a> <a href="./tag/kolay-ingilizce.html">kolay ingilizce</a> <a href="./tag/language-tools.html">language tools</a> <a href="./tag/yabanci-dil.html">yabancı dil</a> <a href="./tag/yabanci-dil-siteleri.html">yabancı dil siteleri</a> 
- </div>
-        <div class="summary"><p>Gunumuzde yabancı dil oğrenmek o kadar onemli bir konuma geldi ki iş başvurusu yaptığınızda ilk olarak bildiğiniz dillere bakılır durumda.Artık ana dilin dışında yeni bir dil bilmek bile çok onemli değil.Çunku oyle kişiler varki 5-6 dil biliyorlar.Sonuçta onlarda her alanda başarılı oluyorlar.E diceksiniz iyi guzelde kursları ...</p> <a class="btn btn-info xsmall" href="./yabanci-dil-ogrenme-siteleri.html">read more</a></div>
-    </div>	
-				
-    
-        <div class="pagination">
-<ul>
+<p>gibi bir düzene koydum. Bu sayede yazıların Pelican&#8217;a eklenmesi sırasında çok uğraşmadım. Daha sonra <a href="http://brettterpstra.com/scripting-readability-markdownify-for-clipping-web-pages/">read2text</a> aracı ile bu çıktıdaki tüm yazılarımı aşağıdaki şekilde <strong>Markdown</strong>&#8216;a&nbsp;dönüştürdüm.</p>
+<div class="codehilite"><pre><span class="o">.</span><span class="sr">/read2text http:/</span><span class="o">/</span><span class="n">www</span><span class="o">.</span><span class="n">halitalptekin</span><span class="o">.</span><span class="n">com</span> <span class="o">&gt;&gt;</span> <span class="nb">index</span><span class="o">.</span><span class="n">md</span>
+</pre></div>
 
 
-    <li class="prev"><a href="./index8.html">&larr; Previous</a></li>
+<p>Eğer sitenizdeki yazılar çok fazla ise yukarıdaki işlemi tüm linklerinize basit bir <strong>Python</strong> betiği ile uygulayabilirsiniz. Tabi bunun içinde sitenizdeki tüm yazıların gene bir şekilde(yukarıdaki gibi) linklerinizi almanız&nbsp;gerekecek.</p>
+<p><strong>Read2Text</strong> aracı gerçekten yarasa ve %99&#8217;a varan bir başarı elde etse bile yazıları çevirirken bazı Türkçe karakterleri yutabiliyor. İlk karşılaştığımda dosya içindeki unicode,ascii gibi ayarlar ile oynayıp düzeltebileceğimi sandım. Hatta bir nebze başarılı da olsam tam olarak çözemedim. Sonunda da bu sorunu <a href="http://turkce-karakter.appspot.com">deasciifier</a> ile&nbsp;hallettim.</p>
+<p>Sitede yer alan araç ile ya da <a href="https://github.com/emres/turkish-deasciifier">buradaki</a> python kütüphanesini kullanarak yazılarınızda yer alan Türkçe karakter problemini çözebilirsiniz. İster manuel olarak isterseniz de basit birkaç kod ile tüm yazılarınıza&nbsp;uygulayabilirsiniz.</p>
+<p>Bu şekilde sitemdeki tüm yazıları çok büyük oranda sorunsuz bir şekilde pelican üzerine taşıdım. Şimdilik bu sistemden gayet memnun gibiyim. Eğer sizde Pelican&#8217;a geçip geçmeme konusunda kararsız iseniz kesinlikle denemenizi&nbsp;öneririm.</p></div>
+	
+        <hr>
+        <div class="addthis_toolbox addthis_default_style addthis_32x32_style">
+            <a class="addthis_button_preferred_1"></a>
+            <a class="addthis_button_preferred_2"></a>
+            <a class="addthis_button_preferred_3"></a>
+            <a class="addthis_button_preferred_4"></a>
+            <a class="addthis_button_preferred_5"></a>
+            <a class="addthis_button_preferred_6"></a>
+            <a class="addthis_button_preferred_7"></a>
+            <a class="addthis_button_preferred_8"></a>
+            <a class="addthis_button_preferred_9"></a>
+            <a class="addthis_button_preferred_10"></a>
+            <a class="addthis_counter addthis_bubble_style"></a>
+        </div>
+        <script type="text/javascript" src="http://s7.addthis.com/js/250/addthis_widget.js#pubid=ra-504c6d593daec57a"></script>
+        <hr>   	   
+        <h2>Comments</h2>
+	
+	
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+    var disqus_shortname = 'halitalptekin'; 
 
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
 
-
-    <li class=""><a href="./index.html">1</a></li>
-
-    <li class=""><a href="./index2.html">2</a></li>
-
-    <li class=""><a href="./index3.html">3</a></li>
-
-    <li class=""><a href="./index4.html">4</a></li>
-
-    <li class=""><a href="./index5.html">5</a></li>
-
-    <li class=""><a href="./index6.html">6</a></li>
-
-    <li class=""><a href="./index7.html">7</a></li>
-
-    <li class=""><a href="./index8.html">8</a></li>
-
-    <li class="active"><a href="./index9.html">9</a></li>
-
-
-
-    <li class="next disabled"><a href="#">&rarr; Next</a></li>
-
-
-</ul>
-</div>
-    
-
- 
-
- 
- 
-
+    </div>
 
         </div>
         

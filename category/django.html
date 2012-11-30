@@ -61,8 +61,57 @@
 
     <div class='article'>
         <div class="content-title">
-            <a href=".././django-uygulamalari-icin-heroku.html"><h1>Django Uygulamaları İçin&nbsp;Heroku</h1></a>
-            Sep 07, 2012
+            <a href=".././djangodan-pelicana.html"><h1>Django&#8217;dan&nbsp;Pelicana</h1></a>
+            Nov 30, 2012
+
+
+by <a class="url fn" href=".././author/halit.html">halit</a>
+ 
+
+in <a href=".././category/django.html">django</a>
+
+ 
+    tagged <a href=".././tag/django.html">django</a> <a href=".././tag/pelican.html">pelican</a> <a href=".././tag/markdown.html">markdown</a> <a href=".././tag/markdownify.html">markdownify</a> <a href=".././tag/read2text.html">read2text</a> 
+ 
+        </div>
+        
+        <div><p>Django sitemi Pelican&#8217;a taşırken öncelikle yazılarımı Markdown&#8217;a dönüştürmem gerekiyordu. Bunu ya PostgreSql ile boğuşup ya da views ve templates üzerinde değişiklikler yaparak yapacaktım. Ben tercihimi ikinci şıktan yana&nbsp;kullandım.</p>
+<p>Bunun için Django sitemin <strong>templates</strong> klasörü altındaki sayfalarda biraz değişiklik yaptım(biraz da viewste). Buna göre yazılarımı ve makalelerimi&nbsp;önce;</p>
+<div class="codehilite"><pre><span class="n">Date</span><span class="p">:</span> <span class="p">{{</span> <span class="n">tarih</span> <span class="p">}}</span>
+<span class="n">Title</span><span class="p">:</span> <span class="p">{{</span> <span class="n">title</span> <span class="p">}}</span>
+<span class="n">Tags</span><span class="p">:</span> <span class="p">{{</span> <span class="n">tags</span> <span class="p">}}</span>
+<span class="n">Category</span><span class="p">:</span> <span class="p">{{</span> <span class="n">category</span> <span class="p">}}</span>
+<span class="n">Description</span><span class="p">:</span> <span class="p">{{</span> <span class="n">description</span> <span class="p">}}</span>
+
+<span class="p">{{</span> <span class="n">post</span> <span class="p">}}</span>
+</pre></div>
+
+
+<p>gibi bir düzene koydum. Bu sayede yazıların Pelican&#8217;a eklenmesi sırasında çok uğraşmadım. Daha sonra <a href="http://brettterpstra.com/scripting-readability-markdownify-for-clipping-web-pages/">read2text</a> aracı ile bu çıktıdaki tüm yazılarımı aşağıdaki şekilde <strong>Markdown</strong>&#8216;a&nbsp;dönüştürdüm.</p>
+<div class="codehilite"><pre><span class="o">.</span><span class="sr">/read2text http:/</span><span class="o">/</span><span class="n">www</span><span class="o">.</span><span class="n">halitalptekin</span><span class="o">.</span><span class="n">com</span> <span class="o">&gt;&gt;</span> <span class="nb">index</span><span class="o">.</span><span class="n">md</span>
+</pre></div>
+
+
+<p>Eğer sitenizdeki yazılar çok fazla ise yukarıdaki işlemi tüm linklerinize basit bir <strong>Python</strong> betiği ile uygulayabilirsiniz. Tabi bunun içinde sitenizdeki tüm yazıların gene bir şekilde(yukarıdaki gibi) linklerinizi almanız&nbsp;gerekecek.</p>
+<p><strong>Read2Text</strong> aracı gerçekten yarasa ve %99&#8217;a varan bir başarı elde etse bile yazıları çevirirken bazı Türkçe karakterleri yutabiliyor. İlk karşılaştığımda dosya içindeki unicode,ascii gibi ayarlar ile oynayıp düzeltebileceğimi sandım. Hatta bir nebze başarılı da olsam tam olarak çözemedim. Sonunda da bu sorunu <a href="http://turkce-karakter.appspot.com">deasciifier</a> ile&nbsp;hallettim.</p>
+<p>Sitede yer alan araç ile ya da <a href="https://github.com/emres/turkish-deasciifier">buradaki</a> python kütüphanesini kullanarak yazılarınızda yer alan Türkçe karakter problemini çözebilirsiniz. İster manuel olarak isterseniz de basit birkaç kod ile tüm yazılarınıza&nbsp;uygulayabilirsiniz.</p>
+<p>Bu şekilde sitemdeki tüm yazıları çok büyük oranda sorunsuz bir şekilde pelican üzerine taşıdım. Şimdilik bu sistemden gayet memnun gibiyim. Eğer sizde Pelican&#8217;a geçip geçmeme konusunda kararsız iseniz kesinlikle denemenizi&nbsp;öneririm.</p></div>
+        <hr />
+    </div>
+		
+    
+
+
+ 
+
+        
+
+
+ 
+
+    <div class='article'>
+        <a href=".././django-uygulamalari-icin-heroku.html"><h2>Django Uygulamaları İçin&nbsp;Heroku</h2></a>
+        <div class= "well small"> Sep 07, 2012
 
 
 by <a class="url fn" href=".././author/halit.html">halit</a>
@@ -72,56 +121,11 @@ in <a href=".././category/django.html">django</a>
 
  
     tagged <a href=".././tag/django-deploy.html">django deploy</a> <a href=".././tag/heroku.html">heroku</a> <a href=".././tag/heroku-django.html">heroku django</a> <a href=".././tag/python-turkiye.html">python türkiye</a> <a href=".././tag/pytr.html">pytr</a> 
- 
-        </div>
-        
-        <div><p>Django uygulaması yazmak diğer birçok dil ve framework&#8217;a gore hem kolay hem de zevkli.Bu sayede çok kısa surede kendi blogunuzu veya hayalinizdeki scripti yazabiliyorsunuz.Bende en son pytr.org domaini için guzel bir blog çalışması yaptım.Tam olarak bitmemiş olsada bir blogta olması gereken en temel şeyleri ekledim.Zaten scripti de git uzerinde tuttuğum için belirli aralıklarla geliştirmeye devam ediyorum.İşte bir noktada artık bu uygulamanızı değploy etme zorunluğu duyacaksınız.Sonuçta bir yerde localhost&#8217;ta çalıştırmak size yetmeyecek.Ve kullandığınız domain uzerine kurmak isteyeceksiniz.İşte bu noktada ucretsiz alternatiflerin başında gelen Heroku&nbsp;kullanabilirsiniz.</p>
-<p><a href="http://www.halitalptekin.com/media/upload/django-heroku-deploy.png"><img alt="Django Heroku Deploy" src="http://www.halitalptekin.com/media/upload/django-heroku-deploy.png" /></a></p>
-<p>Öncelikle kendi uygulamanızı yazdığınızı varsayıyorum.Ben son kodladığım blog olan <a href="http://www.pytr.org">PyTr</a> nin kaynak kodlarını kullanacağım.Öncelikli olarak bilgisayarınıza heroku kurulumunu yapmanız gerekiyor.Debian ve Ubuntu kullanıcıları aşağıdaki komut ile kurabilirler.Windows kullanıcıları ise <a href="https://toolbelt.heroku.com/download/windows">bu</a> dosyayı indirip kurması lazım.Bu kurulumu yaptıktan sonra ilk çalıştırmanızda sizden bilgilerinizi isteyeceğinizi&nbsp;unutmayın.</p>
-<div class="codehilite"><pre><span class="n">wget</span> <span class="o">-</span><span class="n">qO</span><span class="o">-</span> <span class="n">https:</span><span class="sr">//</span><span class="n">toolbelt</span><span class="o">.</span><span class="n">heroku</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">install</span><span class="o">.</span><span class="n">sh</span> <span class="o">|</span> <span class="n">sh</span>
-</pre></div>
-
-
-<p>Uygulamanızı eğer virtualenv kullanarak yaparsanız çok daha rahat edersiniz.Mumkun olduğunca daha fazla kullanmaya çalışın.Eğer virtualenv kullanıyorsanız aşağıdaki komut ile gerekli olacak olan modulleri requirements.txt de toplayabilirsiniz.Yoksa bu dosyayı kendiniz oluşturup teker teker eklemeniz&nbsp;gerekecektir.</p>
-<div class="codehilite"><pre><span class="n">pip</span> <span class="n">freeze</span> <span class="o">&gt;</span> <span class="n">requirements</span><span class="o">.</span><span class="n">txt</span>
-</pre></div>
-
-
-<p>Gerekliliklerimizi tanımladıktan sonra django uygulamamızın veritabanını herokuya uygun hale getirmemiz lazım.Ben PostgreSQL kullanacağım.settings.py dosyamızın içindeki veritabanı bolgesini aşağıdaki gibi&nbsp;değiştiriyoruz.</p>
-<div class="codehilite"><pre><span class="kn">import</span> <span class="nn">dj_database_url</span>
-<span class="n"><span class="caps">DATABASES</span></span> <span class="o">=</span> <span class="p">{</span><span class="s">&#39;default&#39;</span><span class="p">:</span> <span class="n">dj_database_url</span><span class="o">.</span><span class="n">config</span><span class="p">(</span><span class="n">default</span><span class="o">=</span><span class="s">&#39;postgres://localhost&#39;</span><span class="p">)}</span>
-</pre></div>
-
-
-<p>Şimdi heroku açısından herşeyimiz hazır.Artık git kurulumunu yapalım ve dosyalarımızı&nbsp;ekleyelim.</p>
-<div class="codehilite"><pre><span class="n">git</span> <span class="n">init</span>
-<span class="n">git</span> <span class="n">add</span> <span class="o">.</span>
-<span class="n">git</span> <span class="n">commit</span> <span class="o">-</span><span class="n">m</span> <span class="s">&quot;pytr first upload&quot;</span>
-</pre></div>
-
-
-<p>Şimdi de heroku kurulumunu&nbsp;yapalım.</p>
-<div class="codehilite"><pre><span class="n">heroku</span> <span class="n">create</span> <span class="n">pytrdeploy</span>
-</pre></div>
-
-
-<p>Herşeyimiz hazır olduğuna gore pushlayabiliriz artık.Push işlemi başladıktan sonra otomatik olarak requirements.txt dosyası içindeki bağımlılıklarda kurulacak.Daha sonrada eklemeler yaparak bunları&nbsp;ekleyebilirsiniz.</p>
-<div class="codehilite"><pre><span class="n">git</span> <span class="nb">push</span> <span class="n">heroku</span> <span class="n">master</span>
-</pre></div>
-
-
-<p>Dosyalarımızı gonderdikten sonra ekrana gelen url&#8217;ye girdiğinizde django hatası alacaksınız çunku henuz veritabanı kurulumunu yapmadık.Bunun için aşağıdaki komutu çalıştırıyoruz.Zaten bunun mantığını anlayabilirsiniz.Buna gore bundan sonra istediğiniz komutu kendi bulutunuzda&nbsp;çalıştırabilirsiniz.</p>
-<div class="codehilite"><pre><span class="n">heroku</span> <span class="n">run</span> <span class="n">python</span> <span class="n">manage</span><span class="o">.</span><span class="n">py</span> <span class="n">syncdb</span>
-</pre></div>
-
-
-<p>Herhangibi bir hata almazsanız siteniz heroku uzerinde başarıyla deploy edilmiş olacak.Benim herokuyu seçme sebeplerim arasında git kullanması ve deploy kısmında çok fazla uğraştırmaması geliyor.Çunku kendi serverınızda nginx+uwsgi gibi kurulumları kendiniz yapacaksınız.Üstune postgresql kurup bunun guvenlik ayarlarını yapacaksınız.Heroku&#8217;da bu kısımla uğraşmıyoruz.Git kullandığı için de belirli aralıklarla geliştirmesine devam edebiliyoruz.Gerçekten çok harika.Çalışan uygulama orneği olarak <a href="http://www.pytr.org">PyTr</a>&nbsp;bakabilirsiniz.</p>
-<p>Neden google apps engine değil diyenler olabilir.Gerçeği soylemek gerekirse Google&#8217;ın fiyatlandırma politikasını çok fazla beğenmiyorum.Bunun yerine heroku veya dotcloud gayet&nbsp;idealdir.</p></div>
-        <hr />
-    </div>
-		
+ </div>
+        <div class="summary"><p>Django uygulaması yazmak diğer birçok dil ve framework&#8217;a gore hem kolay hem de zevkli.Bu sayede çok kısa surede kendi blogunuzu veya hayalinizdeki scripti yazabiliyorsunuz.Bende en son pytr.org domaini için guzel bir blog çalışması yaptım.Tam olarak bitmemiş olsada bir blogta olması gereken en temel şeyleri ekledim ...</p> <a class="btn btn-info xsmall" href=".././django-uygulamalari-icin-heroku.html">read more</a></div>
+    </div>	
+				
     
-
 
  
 
