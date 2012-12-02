@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Halit Alptekin Personal Blog</title>
+    <meta name="description" content="Programming and Life Blog Of Halit Alptekin. Karadeniz Technical University Computer Engineering Student.">
+    <meta name="keywords" content="programlama, blog, personal blog, linux, python, django, php, bootstrap, seo, bilgisayar muhendisligi, ktu, karadeniz teknik universitesi, programming">
+    <meta name="author" content="halit">
+    <meta name="robots" content="index, follow, all"/>
+
+    <!-- Le HTML5 shim, for IE6-8 support of HTML elements -->
+    <!--[if lt IE 9]>
+    <script src=".././theme/html5.js"></script>
+    <![endif]-->
+
+    <!-- Le styles -->
+    <link href=".././theme/bootstrap.min.css" rel="stylesheet">
+    <link href=".././theme/bootstrap.min.responsive.css" rel="stylesheet">
+    <link href=".././theme/local.css" rel="stylesheet">
+    <link href=".././theme/pygments.css" rel="stylesheet">
+
+</head>
+
+<body>
+
+<div class="navbar">
+    <div class="navbar-inner">
+    <div class="container">
+
+         <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+             <span class="icon-bar"></span>
+             <span class="icon-bar"></span>
+             <span class="icon-bar"></span>
+         </a>
+
+        <a class="brand" href="../.">Halit Alptekin Personal Blog</a>
+
+        <div class="nav-collapse">
+        <ul class="nav">
+        
+            
+        <li><a href=".././pages/about-me.html">About Me</a></li>
+	    <li><a href=".././pages/contact.html">Contact</a></li>
+        </ul>
+        </div>
+        
+    </div>
+    </div>
+</div>
+
+<div class="container">
+    <div class="content">
+    <div class="row">
+
+        <div class="span9">
+                
+
+        
+
+
+
+    <div class='article'>
+        <div class="content-title">
+            <a href=".././floating-point-numbers.html"><h1>Floating Point&nbsp;Numbers</h1></a>
+            Dec 02, 2012
+
+
+by <a class="url fn" href=".././author/halit.html">halit</a>
+ 
+
+in <a href=".././category/compsci.html">compsci</a>
+
+ 
+    tagged <a href=".././tag/float-numbers.html">float numbers</a> <a href=".././tag/kayan-noktali-sayilar.html">kayan noktalı sayılar</a> <a href=".././tag/ieee754.html">ieee754</a> 
+ 
+        </div>
+        
+        <div><p>Bu sene aldığım <strong>Bilgisayarın Temelleri</strong> dersinde öğrendiğim güzel konulardan birisi de kayan noktalı sayıların bilgisayarda nasıl saklandığıdır. Aslında çok basit bir olay olmasına rağmen gerçekten de bana ilginç geldi. Yavaş yavaş bilgisayarın en temeline indikçe insan daha fazla&nbsp;etkileniyor.</p>
+<p><img alt="Floating Numbers" src="http://farm4.staticflickr.com/3282/2814104146_82fe66b2a7_z.jpg" /></p>
+<p>Kayan noktalı sayılar bilgisayarda single, double ve quad olmak üzere farklı duyarlıklarda saklanabiliyor. Ben önce <strong>single precision</strong>(tek duyarlıklı-32 bit) yöntemini göstermek&nbsp;istiyorum.</p>
+<p>Öncelikle elimizdeki sayıyı 10&#8217;luk tabandan 2&#8217;lik tabana dönüştürüyoruz. Bunu lisede öğrendiğimiz taban aritmetiği ile kolayca&nbsp;yapabilirsiniz.</p>
+<p>Örneğin elimizde <strong>21,25</strong> sayısı olsun. Bunu bildiğimiz taban aritmetiği ile <strong>10101.01</strong> ikilik sayısına&nbsp;çeviriyoruz.</p>
+<p>Şimdi bu elimizdeki sayıyı bilimsel gösterime göre düzenlememiz lazım. Bunun için sayıyı <strong>1.010101x2^4</strong> gibi bir hale getiriyoruz. Burada yaptığımız işlem onluk tabanda yaptığımız bilimsel gösterimin tam olarak&nbsp;aynısı.</p>
+<p><strong>Not:</strong> Okuduğum birkaç yazıda; sayıları bu hale getirdiğimizde bütün sayıların <strong>1.xxx</strong> gibi bir duruma geldiğini ve bunun da bit kazancı sağladığı&nbsp;yazıyordu.</p>
+<p>Şimdi elimizdeki sayıyı tek duyarlıklı olarak 32 bitte saklama kuralı olan <strong><span class="caps">IEEE754</span></strong>&#8216;e göre aşağıdaki şekilde düzenleyelim. 64 bitte saklama olayı da bizim yaptığımıza çok benzese de arada bazı farklar vardır. Resimde <strong>S</strong> işaret bitini, <strong>E</strong> üssü <strong>M</strong>&#8216;de mantissa yani değeri&nbsp;göstermekte.</p>
+<p><img alt="IEEE754" src="http://1.bp.blogspot.com/-7gLr_0Pxfps/T41xoHWw0KI/AAAAAAAABJk/T9UJa5Qh6VI/s1600/float.png" /></p>
+<p>Resme göre 1 bit işaret, 8 bit üs ve 23 bit sayının değeri için kullanmamız&nbsp;gerekiyor.</p>
+<p><strong>1 bit işaret;</strong> sayımız pozitif olduğu için direk olarak 0 değerini alıyor. Eğer negatif olsa 1 değerini&nbsp;alacaktı.</p>
+<p><strong>8 bit üs;</strong> Buraya az önce bilimsel hale getirdiğimiz sayının <strong>(1.010101x2^4</strong>) üssüne <strong>2^(w - 1) - 1</strong> ekleyip oluşan değeri yazacağız. Bizim 32 bitte w değerimiz 8&#8217;dir. Eğer farklı bir bit alanında saklasaydık o zaman bu değere göre ekleme yapmamız gerekecekti. Biz şimdi elimizdeki sayının üssü olan 4 değerine <strong>2^(8-1)</strong> den gelen değer olan <strong>127</strong> ekleyip oluşan 131 sayısını ikilik tabana çevirip 8 bitlik kısma yazıyoruz. <strong>10000011</strong></p>
+<p><strong>23 bit değer(mantissa);</strong> Bu kısma sayılar <strong>1.010101</strong> gibi bir durumda iken baştaki bir değerini atarak oluşan değeri yazıyoruz. Yani elimizdeki değere göre <strong>010101</strong> yazmamız gerekiyor. Kurala göre bu alan bize 23 bit sağladığı için geri kalan kısımları 23 bit olana kadar 0 ile dolduruyoruz. Sayımızın son durumu <strong>01010100000000000000000</strong>&nbsp;oluyor.</p>
+<p>Şimdi elimizdeki değerleri birleştirelim:<strong>0 10000011 01010100000000000000000</strong>. Artık bilgisayarımız <strong>21,25</strong> sayısını 32 bit&#8217;te <strong>01000001101010100000000000000000</strong> olarak&nbsp;saklıyor.</p>
+<p>Aslında olay temel olarak böyle olsa da işin içine girince çok fazla detay ile karşılaşıyorsunuz. Eğer bu konu sizinde ilginizi çektiyse veya ders/proje gibi gereklilikleriniz varsa aşağıya yazacağım kaynaklar ile araştırmanıza devam&nbsp;edebilirsiniz.</p>
+<p><strong>Buradan Devam</strong>: <a href="http://www.bilgisayarkavramlari.com/2008/11/30/kayan-nokta-sayilari-floating-point-numbers">[1]</a> <a href="http://www.cs.utah.edu/~zachary/isp/applets/FP/FP.html">[2]</a> <a href="http://babbage.cs.qc.cuny.edu/IEEE-754.old/Decimal.html">[3]</a> <a href="http://babbage.cs.qc.cuny.edu/IEEE-754/">[4]</a> <a href="http://www.madirish.net/240">[5]</a> <a href="http://www.cprogramming.com/tutorial/floating_point/understanding_floating_point_representation.html">[6]</a> <a href="http://class.ece.iastate.edu/arun/CprE281_F05/ieee754/ie5.html">[7]</a> <a href="http://grouper.ieee.org/groups/754/">[8]</a> <a href="http://en.wikipedia.org/wiki/IEEE_754-1985#Representation_of_numbers">[9]</a> <a href="http://www.eksisozluk.com/show.asp?t=floating+point">[10]</a> <a href="http://support.microsoft.com/kb/42980/en-us">[11]</a></p></div>
+        <hr />
+    </div>
+		
+    
+        <div class="pagination">
+<ul>
+
+    <li class="prev disabled"><a href="#">&larr; Previous</a></li>
+
+
+
+    <li class="active"><a href=".././tag/kayan noktalı sayılar.html">1</a></li>
+
+
+
+    <li class="next disabled"><a href="#">&rarr; Next</a></li>
+
+
+</ul>
+</div>
+    
+
+
+ 
+
+ 
+ 
+
+
+        </div>
+        
+        <div class="span3">
+
+            <div class="well" style="padding: 8px 0; background-color: #FBFBFB;">
+            <ul class="nav nav-list">
+                <li class="nav-header"> 
+                Site
+                </li>
+            
+                <li><a href=".././archives.html">Archives</a>
+                <li><a href=".././tags.html">Tags</a>
+                <li><a href=".././feeds/all.atom.xml" rel="alternate">Atom feed</a></li>
+                
+                <li><a href=".././feeds/all.rss.xml" rel="alternate">RSS feed</a></li>
+                
+                 <li><a href=".././sitemap.xml">Sitemap</a>
+            </ul>
+            </div>
+
+
+            
+            <div class="well" style="padding: 8px 0; background-color: #FBFBFB;">
+            <ul class="nav nav-list">
+                <li class="nav-header"> 
+                Categories
+                </li>
+                
+                
+                <li><a href=".././category/tasarim.html">tasarim</a></li>
+                
+                <li><a href=".././category/server.html">server</a></li>
+                
+                <li><a href=".././category/python.html">python</a></li>
+                
+                <li><a href=".././category/programlama.html">programlama</a></li>
+                
+                <li><a href=".././category/linux.html">linux</a></li>
+                
+                <li><a href=".././category/kisisel.html">kisisel</a></li>
+                
+                <li><a href=".././category/internet.html">internet</a></li>
+                
+                <li><a href=".././category/guvenlik.html">guvenlik</a></li>
+                
+                <li><a href=".././category/genel.html">genel</a></li>
+                
+                <li><a href=".././category/eglence.html">eglence</a></li>
+                
+                <li><a href=".././category/django.html">django</a></li>
+                
+                <li><a href=".././category/compsci.html">compsci</a></li>
+                
+                <li><a href=".././category/arduino.html">arduino</a></li>
+                                   
+            </ul>
+            </div>
+            
+
+
+            
+            <div class="well" style="padding: 8px 0; background-color: #FBFBFB;">
+            <ul class="nav nav-list">
+                <li class="nav-header"> 
+                Links
+                </li>
+            
+            
+                <li><a href="http://www.python.org">Python</a></li>
+            
+            </ul>
+            </div>
+            
+
+
+            
+            <div class="social">
+            <div class="well" style="padding: 8px 0; background-color: #FBFBFB;">
+            <ul class="nav nav-list">
+                <li class="nav-header"> 
+                Social
+                </li>
+           
+                
+                <li><a href="http://twitter.com/halitalptekin">twitter</a></li>
+                
+                <li><a href="http://github.com/halitalptekin">github</a></li>
+                
+                <li><a href="http://stackoverflow.com/users/1151618/halit-alptekin">stackoverflow</a></li>
+                
+                <li><a href="http://tr.linkedin.com/in/halitalptekin">linkedin</a></li>
+                
+            </ul>
+            </div>
+            </div>
+            
+
+            
+            <div class="well" style="padding: 8px 0; background-color: #FBFBFB;">
+            <ul class="nav nav-list">
+                <li class="nav-header"> 
+                Ads
+                </li>
+
+                
+                <li><a href="http://www.tamindir.com" title="Program Indir"><img src="/media/reklam/tamindir.jpg" alt="Tamindir" title="Program Indir"></a>
+                </li>
+                
+                <li><a href="http://www.tatilbuldur.com" title="TatilBudur"><img src="/media/reklam/tatilbudur.png" alt="TatilBudur" title="TatilBudur"></a>
+                </li>
+                
+            </ul>
+            </div>
+            
+
+        </div>  
+    </div> 
+    </div> 
+
+<footer>
+	<hr>
+	<p><a href='http://www.halitalptekin.com'>Halit Alptekin Personal Blog</a> &copy; 2012</p>
+</footer>
+
+</div> <!-- /container -->
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+<script src="http://twitter.github.com/bootstrap/assets/js/bootstrap-collapse.js"></script>
+
+<script>var _gaq=[['_setAccount','UA-24728900-1'],['_trackPageview']];(function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];g.src='//www.google-analytics.com/ga.js';s.parentNode.insertBefore(g,s)}(document,'script'))</script>
+
+</body>
+</html>

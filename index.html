@@ -61,8 +61,52 @@
 
     <div class='article'>
         <div class="content-title">
-            <a href="./djangodan-pelicana.html"><h1>Django&#8217;dan&nbsp;Pelicana</h1></a>
-            Nov 30, 2012
+            <a href="./floating-point-numbers.html"><h1>Floating Point&nbsp;Numbers</h1></a>
+            Dec 02, 2012
+
+
+by <a class="url fn" href="./author/halit.html">halit</a>
+ 
+
+in <a href="./category/compsci.html">compsci</a>
+
+ 
+    tagged <a href="./tag/float-numbers.html">float numbers</a> <a href="./tag/kayan-noktali-sayilar.html">kayan noktalı sayılar</a> <a href="./tag/ieee754.html">ieee754</a> 
+ 
+        </div>
+        
+        <div><p>Bu sene aldığım <strong>Bilgisayarın Temelleri</strong> dersinde öğrendiğim güzel konulardan birisi de kayan noktalı sayıların bilgisayarda nasıl saklandığıdır. Aslında çok basit bir olay olmasına rağmen gerçekten de bana ilginç geldi. Yavaş yavaş bilgisayarın en temeline indikçe insan daha fazla&nbsp;etkileniyor.</p>
+<p><img alt="Floating Numbers" src="http://farm4.staticflickr.com/3282/2814104146_82fe66b2a7_z.jpg" /></p>
+<p>Kayan noktalı sayılar bilgisayarda single, double ve quad olmak üzere farklı duyarlıklarda saklanabiliyor. Ben önce <strong>single precision</strong>(tek duyarlıklı-32 bit) yöntemini göstermek&nbsp;istiyorum.</p>
+<p>Öncelikle elimizdeki sayıyı 10&#8217;luk tabandan 2&#8217;lik tabana dönüştürüyoruz. Bunu lisede öğrendiğimiz taban aritmetiği ile kolayca&nbsp;yapabilirsiniz.</p>
+<p>Örneğin elimizde <strong>21,25</strong> sayısı olsun. Bunu bildiğimiz taban aritmetiği ile <strong>10101.01</strong> ikilik sayısına&nbsp;çeviriyoruz.</p>
+<p>Şimdi bu elimizdeki sayıyı bilimsel gösterime göre düzenlememiz lazım. Bunun için sayıyı <strong>1.010101x2^4</strong> gibi bir hale getiriyoruz. Burada yaptığımız işlem onluk tabanda yaptığımız bilimsel gösterimin tam olarak&nbsp;aynısı.</p>
+<p><strong>Not:</strong> Okuduğum birkaç yazıda; sayıları bu hale getirdiğimizde bütün sayıların <strong>1.xxx</strong> gibi bir duruma geldiğini ve bunun da bit kazancı sağladığı&nbsp;yazıyordu.</p>
+<p>Şimdi elimizdeki sayıyı tek duyarlıklı olarak 32 bitte saklama kuralı olan <strong><span class="caps">IEEE754</span></strong>&#8216;e göre aşağıdaki şekilde düzenleyelim. 64 bitte saklama olayı da bizim yaptığımıza çok benzese de arada bazı farklar vardır. Resimde <strong>S</strong> işaret bitini, <strong>E</strong> üssü <strong>M</strong>&#8216;de mantissa yani değeri&nbsp;göstermekte.</p>
+<p><img alt="IEEE754" src="http://1.bp.blogspot.com/-7gLr_0Pxfps/T41xoHWw0KI/AAAAAAAABJk/T9UJa5Qh6VI/s1600/float.png" /></p>
+<p>Resme göre 1 bit işaret, 8 bit üs ve 23 bit sayının değeri için kullanmamız&nbsp;gerekiyor.</p>
+<p><strong>1 bit işaret;</strong> sayımız pozitif olduğu için direk olarak 0 değerini alıyor. Eğer negatif olsa 1 değerini&nbsp;alacaktı.</p>
+<p><strong>8 bit üs;</strong> Buraya az önce bilimsel hale getirdiğimiz sayının <strong>(1.010101x2^4</strong>) üssüne <strong>2^(w - 1) - 1</strong> ekleyip oluşan değeri yazacağız. Bizim 32 bitte w değerimiz 8&#8217;dir. Eğer farklı bir bit alanında saklasaydık o zaman bu değere göre ekleme yapmamız gerekecekti. Biz şimdi elimizdeki sayının üssü olan 4 değerine <strong>2^(8-1)</strong> den gelen değer olan <strong>127</strong> ekleyip oluşan 131 sayısını ikilik tabana çevirip 8 bitlik kısma yazıyoruz. <strong>10000011</strong></p>
+<p><strong>23 bit değer(mantissa);</strong> Bu kısma sayılar <strong>1.010101</strong> gibi bir durumda iken baştaki bir değerini atarak oluşan değeri yazıyoruz. Yani elimizdeki değere göre <strong>010101</strong> yazmamız gerekiyor. Kurala göre bu alan bize 23 bit sağladığı için geri kalan kısımları 23 bit olana kadar 0 ile dolduruyoruz. Sayımızın son durumu <strong>01010100000000000000000</strong>&nbsp;oluyor.</p>
+<p>Şimdi elimizdeki değerleri birleştirelim:<strong>0 10000011 01010100000000000000000</strong>. Artık bilgisayarımız <strong>21,25</strong> sayısını 32 bit&#8217;te <strong>01000001101010100000000000000000</strong> olarak&nbsp;saklıyor.</p>
+<p>Aslında olay temel olarak böyle olsa da işin içine girince çok fazla detay ile karşılaşıyorsunuz. Eğer bu konu sizinde ilginizi çektiyse veya ders/proje gibi gereklilikleriniz varsa aşağıya yazacağım kaynaklar ile araştırmanıza devam&nbsp;edebilirsiniz.</p>
+<p><strong>Buradan Devam</strong>: <a href="http://www.bilgisayarkavramlari.com/2008/11/30/kayan-nokta-sayilari-floating-point-numbers">[1]</a> <a href="http://www.cs.utah.edu/~zachary/isp/applets/FP/FP.html">[2]</a> <a href="http://babbage.cs.qc.cuny.edu/IEEE-754.old/Decimal.html">[3]</a> <a href="http://babbage.cs.qc.cuny.edu/IEEE-754/">[4]</a> <a href="http://www.madirish.net/240">[5]</a> <a href="http://www.cprogramming.com/tutorial/floating_point/understanding_floating_point_representation.html">[6]</a> <a href="http://class.ece.iastate.edu/arun/CprE281_F05/ieee754/ie5.html">[7]</a> <a href="http://grouper.ieee.org/groups/754/">[8]</a> <a href="http://en.wikipedia.org/wiki/IEEE_754-1985#Representation_of_numbers">[9]</a> <a href="http://www.eksisozluk.com/show.asp?t=floating+point">[10]</a> <a href="http://support.microsoft.com/kb/42980/en-us">[11]</a></p></div>
+        <hr />
+    </div>
+		
+    
+
+
+ 
+
+        
+
+
+ 
+
+    <div class='article'>
+        <a href="./djangodan-pelicana.html"><h2>Django&#8217;dan&nbsp;Pelicana</h2></a>
+        <div class= "well small"> Nov 30, 2012
 
 
 by <a class="url fn" href="./author/halit.html">halit</a>
@@ -72,35 +116,12 @@ in <a href="./category/django.html">django</a>
 
  
     tagged <a href="./tag/django.html">django</a> <a href="./tag/pelican.html">pelican</a> <a href="./tag/markdown.html">markdown</a> <a href="./tag/markdownify.html">markdownify</a> <a href="./tag/read2text.html">read2text</a> 
- 
-        </div>
-        
-        <div><p>Django sitemi Pelican&#8217;a taşırken öncelikle yazılarımı Markdown&#8217;a dönüştürmem gerekiyordu. Bunu ya PostgreSql ile boğuşup ya da views ve templates üzerinde değişiklikler yaparak yapacaktım. Ben tercihimi ikinci şıktan yana&nbsp;kullandım.</p>
-<p>Bunun için Django sitemin <strong>templates</strong> klasörü altındaki sayfalarda biraz değişiklik yaptım(biraz da viewste). Buna göre yazılarımı ve makalelerimi&nbsp;önce;</p>
-<div class="codehilite"><pre><span class="n">Date</span><span class="p">:</span> <span class="p">{{</span> <span class="n">tarih</span> <span class="p">}}</span>
-<span class="n">Title</span><span class="p">:</span> <span class="p">{{</span> <span class="n">title</span> <span class="p">}}</span>
-<span class="n">Tags</span><span class="p">:</span> <span class="p">{{</span> <span class="n">tags</span> <span class="p">}}</span>
-<span class="n">Category</span><span class="p">:</span> <span class="p">{{</span> <span class="n">category</span> <span class="p">}}</span>
-<span class="n">Description</span><span class="p">:</span> <span class="p">{{</span> <span class="n">description</span> <span class="p">}}</span>
-
-<span class="p">{{</span> <span class="n">post</span> <span class="p">}}</span>
-</pre></div>
-
-
-<p>gibi bir düzene koydum. Bu sayede yazıların Pelican&#8217;a eklenmesi sırasında çok uğraşmadım. Daha sonra <a href="http://brettterpstra.com/scripting-readability-markdownify-for-clipping-web-pages/">read2text</a> aracı ile bu çıktıdaki tüm yazılarımı aşağıdaki şekilde <strong>Markdown</strong>&#8216;a&nbsp;dönüştürdüm.</p>
-<div class="codehilite"><pre><span class="o">.</span><span class="sr">/read2text http:/</span><span class="o">/</span><span class="n">www</span><span class="o">.</span><span class="n">halitalptekin</span><span class="o">.</span><span class="n">com</span> <span class="o">&gt;&gt;</span> <span class="nb">index</span><span class="o">.</span><span class="n">md</span>
-</pre></div>
-
-
-<p>Eğer sitenizdeki yazılar çok fazla ise yukarıdaki işlemi tüm linklerinize basit bir <strong>Python</strong> betiği ile uygulayabilirsiniz. Tabi bunun içinde sitenizdeki tüm yazıların gene bir şekilde(yukarıdaki gibi) linklerinizi almanız&nbsp;gerekecek.</p>
-<p><strong>Read2Text</strong> aracı gerçekten yarasa ve %99&#8217;a varan bir başarı elde etse bile yazıları çevirirken bazı Türkçe karakterleri yutabiliyor. İlk karşılaştığımda dosya içindeki unicode,ascii gibi ayarlar ile oynayıp düzeltebileceğimi sandım. Hatta bir nebze başarılı da olsam tam olarak çözemedim. Sonunda da bu sorunu <a href="http://turkce-karakter.appspot.com">deasciifier</a> ile&nbsp;hallettim.</p>
-<p>Sitede yer alan araç ile ya da <a href="https://github.com/emres/turkish-deasciifier">buradaki</a> python kütüphanesini kullanarak yazılarınızda yer alan Türkçe karakter problemini çözebilirsiniz. İster manuel olarak isterseniz de basit birkaç kod ile tüm yazılarınıza&nbsp;uygulayabilirsiniz.</p>
-<p>Bu şekilde sitemdeki tüm yazıları çok büyük oranda sorunsuz bir şekilde pelican üzerine taşıdım. Şimdilik bu sistemden gayet memnun gibiyim. Eğer sizde Pelican&#8217;a geçip geçmeme konusunda kararsız iseniz kesinlikle denemenizi&nbsp;öneririm.</p></div>
-        <hr />
-    </div>
-		
+ </div>
+        <div class="summary"><p>Django sitemi Pelican&#8217;a taşırken öncelikle yazılarımı Markdown&#8217;a dönüştürmem gerekiyordu. Bunu ya PostgreSql ile boğuşup ya da views ve templates üzerinde değişiklikler yaparak yapacaktım. Ben tercihimi ikinci şıktan yana&nbsp;kullandım.</p>
+<p>Bunun için Django sitemin <strong>templates</strong> klasörü altındaki sayfalarda biraz değişiklik yaptım(biraz da viewste). Buna göre yazılarımı ve makalelerimi ...</p> <a class="btn btn-info xsmall" href="./djangodan-pelicana.html">read more</a></div>
+    </div>	
+				
     
-
 
  
 
@@ -301,31 +322,6 @@ in <a href="./category/python.html">python</a>
     </div>	
 				
     
-
- 
-
-        
-
-
- 
-
-    <div class='article'>
-        <a href="./matplotlib-ile-gmail-analizi.html"><h2>Matplotlib İle Gmail&nbsp;Analizi</h2></a>
-        <div class= "well small"> Sep 12, 2012
-
-
-by <a class="url fn" href="./author/halit.html">halit</a>
- 
-
-in <a href="./category/python.html">python</a>
-
- 
-    tagged <a href="./tag/matlab.html">matlab</a> <a href="./tag/matplotlib.html">matplotlib</a> <a href="./tag/python.html">python</a> <a href="./tag/python-matlab.html">python matlab</a> <a href="./tag/python-matplotlib.html">python matplotlib</a> 
- </div>
-        <div class="summary"><p>Python&#8217;un son gunlerde çok fazla kullanılmaya başladığı alanlardan birisi de kuşkusuz bilimsel araştırmalar oldu.Marsa gonderilen Curiosity&#8217;nin bile test kısımları Python ile yapılmıştı.Ben de bu yuzden onceden beri ilgili olduğum bu alana şoyle bir bakayım dedim.Kutuphaneler ile uğraştığımdan kendimi bir kaç çizim kutuphanesi aradım.Geçen yazımda ...</p> <a class="btn btn-info xsmall" href="./matplotlib-ile-gmail-analizi.html">read more</a></div>
-    </div>	
-				
-    
         <div class="pagination">
 <ul>
 
@@ -416,6 +412,8 @@ in <a href="./category/python.html">python</a>
                 <li><a href="./category/eglence.html">eglence</a></li>
                 
                 <li><a href="./category/django.html">django</a></li>
+                
+                <li><a href="./category/compsci.html">compsci</a></li>
                 
                 <li><a href="./category/arduino.html">arduino</a></li>
                                    
