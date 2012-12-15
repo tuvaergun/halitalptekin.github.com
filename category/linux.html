@@ -61,8 +61,43 @@
 
     <div class='article'>
         <div class="content-title">
-            <a href=".././ubuntu-ekran-karti-ve-gnome-shell.html"><h1>Ubuntu Ekran Kartı Ve Gnome&nbsp;Shell</h1></a>
-            Sep 18, 2012
+            <a href=".././gizli-medya-dosyalarini-bulma.html"><h1>Gizli Medya Dosyalarını&nbsp;Bulma</h1></a>
+            Dec 15, 2012
+
+
+by <a class="url fn" href=".././author/halit.html">halit</a>
+ 
+
+in <a href=".././category/linux.html">linux</a>
+
+ 
+    tagged <a href=".././tag/firefox.html">firefox</a> <a href=".././tag/flash.html">flash</a> <a href=".././tag/flv.html">flv</a> <a href=".././tag/linux.html">linux</a> 
+ 
+        </div>
+        
+        <div><p>Çok sık olmasa da ara ara internet üzerinden dizi izliyorum. Bulunduğum yerdeki internetin aşırı yavaş olmasından dolayı genelde videoları açık bırakıp yüklenmesini beklerken ben başka işlerle uğraşıyorum. Bazen internetim o kadar yavaş oluyor ki 2-3 saate anca tamamlanıyor. İşte hal böyle olunca firefox&#8217;ta yaptığım işlemlerden dolayı kasıyor. Video&#8217;da donma ve seste takılmalara yol açıyor. Bende bu sorunu çözmek için izlediğim video dosyalarının bilgisayarım üzerinde saklandığı konumu bulup kaydetmeyi&nbsp;düşündüm.</p>
+<p>Bildiğiniz gibi internet üzerindeki izlediğiniz, dinlediğiniz tüm medyalar aslında bilgisayarınıza kaydediliyor ve siz izledikten sonra siliniyor. Firefox&#8217;ta bu dosyaları Linux üzerinde <strong>/tmp/</strong> dizini altına kaydediyor ve daha sonra&nbsp;siliyor.</p>
+<p>Eğer isterseniz bu silinen dosyaları gayet basit bir şekilde geri getirebilirsiniz. Öncelikle <strong>lsof</strong> komutu ile silinen dosyamız hakkında biraz bilgi edinmemiz lazım. Bu komutun çıktısı büyük olabileceği için <strong>lsof &gt; /home/cache.txt</strong> şeklinde bir metin dosyasına&nbsp;kaydedebilirsiniz.</p>
+<p><img alt="Firefox Cache" src="../static/media/linux-cache.png" /></p>
+<p>Daha sonra bu dosya içinden bizim işimize yarayacak olan kısmı bulmamız gerekiyor. Firefox medyaları <strong>/tmp/</strong> dizini altına genellikle <strong>Flash</strong> ile başlayan bir değer ile kaydediyor. Ve daha sonra bu dosyayı siliyor. Ancak biz bu dosyaya hala erişebiliriz. Öncelikle aradığımız dosya ile ilgili nitelikleri öğrenmemiz&nbsp;lazım.</p>
+<p>Yukardaki resimde işaretli olan satır benim aradığım medya dosyası. Bu dosyanın bize <strong>pid</strong> ve <strong>fd</strong> değerleri lazım. Bu dosyadaki satırlar <strong><span class="caps">COMMAND</span> <span class="caps">PID</span> <span class="caps">USER</span> <span class="caps">FD</span> <span class="caps">TYPE</span> <span class="caps">DEVICE</span> <span class="caps">SIZE</span>/<span class="caps">OFF</span> <span class="caps">NODE</span> <span class="caps">NAME</span></strong> şeklinde düzenlendiği için buradan yola çıkarak aradığımız değerleri bir yere not&nbsp;alalım.</p>
+<p>Daha sonra aradığımız dosyayı <strong>/proc/pid-degeri/fd/fd-degeri</strong> dizininde bulabiliriz. Benim dosyam <strong>/proc/2869/fd/20</strong> konumundaydı. Artık bu dosyayı istediğiniz bir dizine alıp uzantısını uygun bir hale getirip izleyebilirsiniz. Belki ilerleyen bir zamanda bunun ile ilgili güzel bir uygulama yapabilirim. O zaman tüm bu işlemleri otomatik yapmış&nbsp;olurum.</p></div>
+        <hr />
+    </div>
+		
+    
+
+
+ 
+
+        
+
+
+ 
+
+    <div class='article'>
+        <a href=".././ubuntu-ekran-karti-ve-gnome-shell.html"><h2>Ubuntu Ekran Kartı Ve Gnome&nbsp;Shell</h2></a>
+        <div class= "well small"> Sep 18, 2012
 
 
 by <a class="url fn" href=".././author/halit.html">halit</a>
@@ -72,95 +107,11 @@ in <a href=".././category/linux.html">linux</a>
 
  
     tagged <a href=".././tag/gnome-shell.html">gnome shell</a> <a href=".././tag/gnome-tema.html">gnome tema</a> <a href=".././tag/microsoft-font.html">microsoft font</a> <a href=".././tag/ubuntu.html">ubuntu</a> <a href=".././tag/ubuntu-gnome.html">ubuntu gnome</a> 
- 
-        </div>
-        
-        <div><p>Aslında Ubuntu bilgisayarımda uzunca bir suredir olmasına rağmen tamamen bir geçiş yapmamıştım. Bundan tam 3 ay once koklu bir şekilde Windows&#8217;tan Ubuntu&#8217;ya geçtim. Ve o gun bugundur hala kullanıyorum. Daha doğrusu kullandığımı sanıyordum. Çunku birçok grafik problemlerim vardı. Bunların başında ekran kartı surucusunun yuklenmemesi ve blenderin kurulmaması vardır. Ayrıcana firefoxta da birçok grafik sorunları vardı. Hepsinin çozumunun ekran kartı surucusunu yuklemeyle çozuleceğine inanıyordum ancak birçok ubuntu forumlarına sorduğum sorulardan gelen cevaplar yeterli değildi. En sonunda ciddi bir şekilde karar verdim ekran kartıyla ciddi ciddi uğraştım. Sonunda hem ekran kartını yukledim hem de gnome-shell ile yeni temalar&nbsp;kurdum.</p>
-<p>Tabi sadece bununla da kalmayıp wine ile çalıştıramadığım oyunlar ve blender gibi 3d programları da çalıştırmayı başardım. Yani artık Ubuntu&#8217;yu tam olarak kullanmaya&nbsp;başladım.</p>
-<p><strong>Hybrid Ekran Kartlarının&nbsp;Kurulumu</strong></p>
-<p>Bu tabiri ubuntu forumlarında yazdığım soruya gelen cevapta gordum. Aşağıdaki sonucun çıktısı benimkine benzer şekilde 2 tane ekran kartı gozukuyorsa sizin de kartınız hybrid&nbsp;olmalı.</p>
-<div class="codehilite"><pre><span class="n">lspci</span> <span class="o">|</span> <span class="nb">grep</span> <span class="n"><span class="caps">VGA</span></span>
-
-<span class="mo">00</span><span class="p">:</span><span class="mo">02</span><span class="mf">.0</span> <span class="n"><span class="caps">VGA</span></span> <span class="n">compatible</span> <span class="n">controller:</span> <span class="n">Intel</span> <span class="n">Corporation</span> <span class="mi">2</span><span class="n">nd</span> <span class="n">Generation</span> <span class="n">Core</span> <span class="n">Processor</span> <span class="n">Family</span> <span class="n">Integrated</span> <span class="n">Graphics</span> <span class="n">Controller</span> <span class="p">(</span><span class="n">rev</span> <span class="mi">09</span><span class="p">)</span>
-<span class="mo">01</span><span class="p">:</span><span class="mo">00</span><span class="mf">.0</span> <span class="n"><span class="caps">VGA</span></span> <span class="n">compatible</span> <span class="n">controller:</span> <span class="n">Advanced</span> <span class="n">Micro</span> <span class="n">Devices</span> <span class="p">[</span><span class="n"><span class="caps">AMD</span></span><span class="p">]</span> <span class="n">nee</span> <span class="n"><span class="caps">ATI</span></span> <span class="n">Seymour</span> <span class="p">[</span><span class="n">Radeon</span> <span class="n"><span class="caps">HD</span></span> <span class="mi">6400</span><span class="n">M</span> <span class="n">Series</span><span class="p">]</span>
-</pre></div>
-
-
-<p>Hybrid kartları anlamak için çift kameralı cep telefonlarını duşunun. Ön kamerası 1.3 arka kamerası 8.0 olsun. Ben bugune kadar hep 1.3luk kamerayı kullanmışım. 8.0&#8217;lık kamerayı kullanmak için once Ubuntu -&gt; Sistem ayarları bolumunden ek suruculer uygulamasını&nbsp;çalıştırın. </p>
-<p><img alt="Ubuntu Ek suruculer" src="http://www.halitalptekin.com/media/upload/ek-suruculer-ubuntu.png" /></p>
-<p>Ben onceki deneyimlerimde yukarıda gozuken <strong><span class="caps">ATI</span>/<span class="caps">AMD</span> için telifli <span class="caps">FGLRX</span> grafik surucusu </strong>ve <strong><span class="caps">ATI</span>/<span class="caps">AMD</span> için telifli <span class="caps">FGLRX</span> grafik surucusu(surum sonrası guncellemeler) </strong>seçenklerinin ikisinide kurmama rağmen herhangibi bir değişiklik olmadı. Daha sonra anladığım kadarıyla sadece <strong><span class="caps">ATI</span>/<span class="caps">AMD</span> için telifli <span class="caps">FGLRX</span> grafik surucusu </strong>seçeneğini kurmak yeterli olacaktır. Ben diğerini kurduğumda sorun ile karşılaştım. Bu surucunun kurulumu biraz surecek bittikten hemen sonra bilgisayarınızı yeniden&nbsp;başlatın.</p>
-<p>Ben bunu da yaptıktan sonra bilgisayarım açıldığında ekran kartımın kurulumu olmasını hayal etmiştim. Ancak olmamıştı. Çunku eksik bir yer vardı. Bunu da saolsun Ubuntu&#8217;nun resmi sitesinde dosyalar içinde gordum. Buna gore aşağıdaki komutu çalıştırıp driver kurulumunu tamamlamam&nbsp;gerekliymiş.</p>
-<div class="codehilite"><pre><span class="n">sudo</span> <span class="n">aticonfig</span> <span class="o">--</span><span class="n">initial</span>
-</pre></div>
-
-
-<p>Bilgisayarınızın ekranında kararma ve yeniden donuş olduktan sonra dosya oluşturuldu gibi bir yazı gorurseniz başarıyla kurmuş oldunuz. Artık rahatça diğer gorsel efektleri&nbsp;kullanabilirsiniz.</p>
-<p><strong>Gnome ve Gnome Shell&nbsp;Kurulumu</strong></p>
-<p>Bildiğiniz gibi Ubuntu Unity ile on tanımlı olarak geliyor. Ancak Ubuntu depolarından Gnome&#8217;u da çekerek kurabilirsiniz. Sırasıyla aşağıdaki komutlar yeterli&nbsp;olacaktır.</p>
-<div class="codehilite"><pre><span class="n">sudo</span> <span class="n">add</span><span class="o">-</span><span class="n">apt</span><span class="o">-</span><span class="n">repository</span> <span class="n">ppa:gnome3</span><span class="o">-</span><span class="n">team</span><span class="o">/</span><span class="n">gnome3</span>
-<span class="n">sudo</span> <span class="n">apt</span><span class="o">-</span><span class="n">get</span> <span class="n">update</span>
-<span class="n">sudo</span> <span class="n">apt</span><span class="o">-</span><span class="n">get</span> <span class="n">install</span> <span class="n">gnome</span><span class="o">-</span><span class="n">shell</span>
-</pre></div>
-
-
-<p>Veya;</p>
-<p><a href="http://www.halitalptekin.com/media/upload/ubuntu-yazilim-merkezi-gnome-shell.png"><img alt="Ubuntu Gnome Kurulumu" src="http://www.halitalptekin.com/media/upload/ubuntu-yazilim-merkezi-gnome-shell.png" /></a></p>
-<p>Gnome kurulumumuz başarıyla gerçekleştikten sonra birde gnome tweak tool aracımızı kuralım. Bunun&nbsp;için;</p>
-<div class="codehilite"><pre><span class="n">sudo</span> <span class="n">apt</span><span class="o">-</span><span class="n">get</span> <span class="n">install</span> <span class="n">gnome</span><span class="o">-</span><span class="n">tweak</span><span class="o">-</span><span class="n">tool</span>
-</pre></div>
-
-
-<p>Komutunu çalıştırmanız yeterlidir. Artık oturumumuzu kapatıp yeniden açarken giriş ekranındaki logoya basarak Gnome&#8217;u seçebiliriz. Eğer bir yanlış olmadıysa onunuze gorsel bir Gnome 3 gelecektir. Farenizi sol ust veya sağ alta goturduğunuzde gorsel efektlerin çalışması ekran kartımızın doğru çalıştığının da bir&nbsp;gostergesi.</p>
-<p><strong>Gnome Shell&nbsp;Kurulumu</strong></p>
-<p>Yukarıdaki resimde gorduğunuz gibi gnome shell eklentilerini kurabilirsiniz. Veya aşağıdaki komutları&nbsp;çalıştırabilirsiniz.</p>
-<div class="codehilite"><pre><span class="n">sudo</span> <span class="n">apt</span><span class="o">-</span><span class="n">get</span> <span class="n">install</span> <span class="n">gnome</span><span class="o">-</span><span class="n">shell</span>
-</pre></div>
-
-
-<p>Burada dikkat etmeniz gereken nokta benim gibi ubuntu forumlarından aşağıdaki gibi bir cevap&nbsp;alabilirsiniz.</p>
-<blockquote>
-<p><span class="dquo">&#8220;</span>ricotz&#8221; kelimesini gordum ve yeniden yuklemek zorunda kaldığım Ubuntu sistemleri aklıma&nbsp;geldi.</p>
-<p>İleri gitsen gidemezsin, geri donmek istesen donemezsin hali diyebilirim&nbsp;kısaca..</p>
-<p><span class="dquo">&#8220;</span>ricotz&#8221; kelimesini içeren <span class="caps">PPA</span> kaynaklarından yuklediğin paketleri kaldırıp Ubuntu depolarından sunulan paketleri yukleyebilirsen kurtardın, aksi halde yeni bir kuruluma hazır&nbsp;olmalısın.</p>
-</blockquote>
-<p>Bu yuzden bu aşamaları dikkatli yaparak Ubuntu depolarını baz almanızı istiyorum. Sonra benim gibi&nbsp;uğraşmayın.</p>
-<p><strong>Gnome Shell Temalar&nbsp;Kurulumu</strong></p>
-<p>Öncelikle ana /home/user dizini altına .fonts ve .icons diye klasorlerimizi açalım. <a href="http://gnome-look.org">Gnome-Look</a> sitesinden de hoşunuza giden bir temayı veya icon paketini indirip bu dizin altına koyalım. Koyarken dikkat etmeniz gereken nokta temalarınızın /home/username/.themes/Tema İsmi/gnome-shell şeklinde bir dizin yapısına sahip olmasıdır. Daha sonra <a href="https://extensions.gnome.org/extension/19/user-themes/">buradaki</a> siteye girip eklentimizi aktifleştirelim. Bu arada değişikliklerin aktif olması için ctl+alt+f2 yazıp gelen kısma r yazıp entere basmak gerektiğini&nbsp;unutmayalım.</p>
-<p><img alt="Gnome Shell Theme" src="http://www.halitalptekin.com/media/upload/gnome-shell-theme.png" /></p>
-<p>Kurulumu yaptıktan sonra komut satırından gnome-tweak-tool diyip aracımızı açalım. Bu açılış sırasında aşağıdaki gibi bir hata&nbsp;alabilirsiniz.</p>
-<div class="codehilite"><pre><span class="p">(</span><span class="n">gnome</span><span class="o">-</span><span class="n">tweak</span><span class="o">-</span><span class="n">tool:4506</span><span class="p">):</span> <span class="n">GLib</span><span class="o">-</span><span class="n"><span class="caps">GIO</span></span><span class="o">-</span><span class="n"><span class="caps">ERROR</span></span> <span class="o">**</span><span class="p">:</span> <span class="n">Settings</span> <span class="n">schema</span> <span class="s">&#39;org.gnome.shell.extensions.user-theme&#39;</span> <span class="n">is</span> <span class="ow">not</span> <span class="n">installed</span>
-<span class="n">Trace</span><span class="o">/</span><span class="n">breakpoint</span> <span class="n">trap</span> <span class="p">(</span><span class="n">core</span> <span class="n">dumped</span><span class="p">)</span>
-</pre></div>
-
-
-<p>Sorunun çozumu için sırayla aşağıdaki komutları&nbsp;girin.</p>
-<div class="codehilite"><pre><span class="n">sudo</span> <span class="n">cp</span> <span class="nv">$<span class="caps">HOME</span></span><span class="sr">/.local/s</span><span class="n">hare</span><span class="sr">/gnome-shell/</span><span class="n">extensions</span><span class="sr">/user-theme@gnome-shell-extensions.gcampax.github.com/sc</span><span class="n">hemas</span><span class="sr">/org.gnome.shell.extensions.user-theme.gschema.xml /</span><span class="n">usr</span><span class="sr">/share/g</span><span class="n">lib</span><span class="o">-</span><span class="mf">2.0</span><span class="o">/</span><span class="n">schemas</span>
-<span class="n">sudo</span> <span class="n">glib</span><span class="o">-</span><span class="n">compile</span><span class="o">-</span><span class="n">schemas</span> <span class="sr">/usr/s</span><span class="n">hare</span><span class="sr">/glib-2.0/sc</span><span class="n">hemas</span>
-</pre></div>
-
-
-<p>Şimdi tekrardan gnome-tweak-tool yazıp entere basalım ve uygulamamızı açalım. Daha sonra aşağıdaki kısma geçip temamızı&nbsp;seçebiliyoruz.</p>
-<p><img alt="Gnome Tweak Tool" src="http://www.halitalptekin.com/media/upload/gnome-tweak-tool.png" /></p>
-<p><strong>Font&nbsp;Sorunu</strong></p>
-<p>Eğer girdiğiniz sitelerde fontlar gozunuze bakıyorsa oncelikli olarak ubuntu depolarından microsoft fontlarını&nbsp;yuklemelisiniz.</p>
-<p><a href="http://www.halitalptekin.com/media/upload/ubuntu-ms-fonts.png"><img alt="Ubuntu Microsoft Font" src="http://www.halitalptekin.com/media/upload/ubuntu-ms-fonts.png" /></a></p>
-<p>Yukarıdaki kurulumu yaptıktan sonra eğer benim gibi Tahoma fontu sorun çıkarıyorsa(Facebook&#8217;a girişte fark edersiniz) bunun için sırayla aşağıdaki komutları&nbsp;vermelisiniz.</p>
-<div class="codehilite"><pre><span class="n">wget</span> <span class="n">http:</span><span class="sr">//</span><span class="n">download</span><span class="o">.</span><span class="n">microsoft</span><span class="o">.</span><span class="n">com</span><span class="sr">/download/i</span><span class="n">e6sp1</span><span class="sr">/finrel/</span><span class="mi">6</span><span class="n">_sp1</span><span class="sr">/W98NT42KMeXP/</span><span class="n"><span class="caps">EN</span></span><span class="o">-</span><span class="n"><span class="caps">US</span></span><span class="o">/</span><span class="n"><span class="caps">IELPKTH</span></span><span class="o">.</span><span class="n"><span class="caps">CAB</span></span>
-<span class="n">cabextract</span> <span class="o">-</span><span class="n">F</span> <span class="s">&#39;tahoma*ttf&#39;</span> <span class="n"><span class="caps">IELPKTH</span></span><span class="o">.</span><span class="n"><span class="caps">CAB</span></span>
-<span class="nb">mkdir</span> <span class="o">-</span><span class="n">p</span> <span class="sr">/usr/s</span><span class="n">hare</span><span class="sr">/fonts/</span><span class="n">truetype</span><span class="sr">/msttcorefonts/</span>
-<span class="n">mv</span> <span class="o">-</span><span class="n">f</span> <span class="n">tahoma</span><span class="o">*</span><span class="n">ttf</span> <span class="sr">/usr/s</span><span class="n">hare</span><span class="sr">/fonts/</span><span class="n">truetype</span><span class="sr">/msttcorefonts/</span>
-<span class="nb">chmod</span> <span class="mi">644</span> <span class="sr">/usr/s</span><span class="n">hare</span><span class="sr">/fonts/</span><span class="n">truetype</span><span class="sr">/msttcorefonts/</span><span class="n">tahoma</span><span class="o">*</span>
-<span class="n">fc</span><span class="o">-</span><span class="n">cache</span> <span class="o">-</span><span class="n">v</span>
-<span class="n">rm</span> <span class="o">-</span><span class="n">f</span> <span class="n"><span class="caps">IELPKTH</span></span><span class="o">.</span><span class="n"><span class="caps">CAB</span></span>
-</pre></div>
-
-
-<p>Artık problemsiz bir Ubuntunuz olması lazım :D Eğer gene bir sorununuz olursa <a href="http://forum.ubuntu-tr.net/">Ubuntu Forumları</a> sizin sorunuzu çozmek için uğraşacak insanlar ile&nbsp;dolu.</p></div>
-        <hr />
-    </div>
-		
+ </div>
+        <div class="summary"><p>Aslında Ubuntu bilgisayarımda uzunca bir suredir olmasına rağmen tamamen bir geçiş yapmamıştım. Bundan tam 3 ay once koklu bir şekilde Windows&#8217;tan Ubuntu&#8217;ya geçtim. Ve o gun bugundur hala kullanıyorum. Daha doğrusu kullandığımı sanıyordum. Çunku birçok grafik problemlerim vardı. Bunların başında ekran kartı surucusunun yuklenmemesi ve blenderin kurulmaması vardır ...</p> <a class="btn btn-info xsmall" href=".././ubuntu-ekran-karti-ve-gnome-shell.html">read more</a></div>
+    </div>	
+				
     
-
 
  
 

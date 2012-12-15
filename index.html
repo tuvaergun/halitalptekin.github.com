@@ -61,8 +61,43 @@
 
     <div class='article'>
         <div class="content-title">
-            <a href="./floating-point-numbers.html"><h1>Floating Point&nbsp;Numbers</h1></a>
-            Dec 02, 2012
+            <a href="./gizli-medya-dosyalarini-bulma.html"><h1>Gizli Medya Dosyalarını&nbsp;Bulma</h1></a>
+            Dec 15, 2012
+
+
+by <a class="url fn" href="./author/halit.html">halit</a>
+ 
+
+in <a href="./category/linux.html">linux</a>
+
+ 
+    tagged <a href="./tag/firefox.html">firefox</a> <a href="./tag/flash.html">flash</a> <a href="./tag/flv.html">flv</a> <a href="./tag/linux.html">linux</a> 
+ 
+        </div>
+        
+        <div><p>Çok sık olmasa da ara ara internet üzerinden dizi izliyorum. Bulunduğum yerdeki internetin aşırı yavaş olmasından dolayı genelde videoları açık bırakıp yüklenmesini beklerken ben başka işlerle uğraşıyorum. Bazen internetim o kadar yavaş oluyor ki 2-3 saate anca tamamlanıyor. İşte hal böyle olunca firefox&#8217;ta yaptığım işlemlerden dolayı kasıyor. Video&#8217;da donma ve seste takılmalara yol açıyor. Bende bu sorunu çözmek için izlediğim video dosyalarının bilgisayarım üzerinde saklandığı konumu bulup kaydetmeyi&nbsp;düşündüm.</p>
+<p>Bildiğiniz gibi internet üzerindeki izlediğiniz, dinlediğiniz tüm medyalar aslında bilgisayarınıza kaydediliyor ve siz izledikten sonra siliniyor. Firefox&#8217;ta bu dosyaları Linux üzerinde <strong>/tmp/</strong> dizini altına kaydediyor ve daha sonra&nbsp;siliyor.</p>
+<p>Eğer isterseniz bu silinen dosyaları gayet basit bir şekilde geri getirebilirsiniz. Öncelikle <strong>lsof</strong> komutu ile silinen dosyamız hakkında biraz bilgi edinmemiz lazım. Bu komutun çıktısı büyük olabileceği için <strong>lsof &gt; /home/cache.txt</strong> şeklinde bir metin dosyasına&nbsp;kaydedebilirsiniz.</p>
+<p><img alt="Firefox Cache" src="static/media/linux-cache.png" /></p>
+<p>Daha sonra bu dosya içinden bizim işimize yarayacak olan kısmı bulmamız gerekiyor. Firefox medyaları <strong>/tmp/</strong> dizini altına genellikle <strong>Flash</strong> ile başlayan bir değer ile kaydediyor. Ve daha sonra bu dosyayı siliyor. Ancak biz bu dosyaya hala erişebiliriz. Öncelikle aradığımız dosya ile ilgili nitelikleri öğrenmemiz&nbsp;lazım.</p>
+<p>Yukardaki resimde işaretli olan satır benim aradığım medya dosyası. Bu dosyanın bize <strong>pid</strong> ve <strong>fd</strong> değerleri lazım. Bu dosyadaki satırlar <strong><span class="caps">COMMAND</span> <span class="caps">PID</span> <span class="caps">USER</span> <span class="caps">FD</span> <span class="caps">TYPE</span> <span class="caps">DEVICE</span> <span class="caps">SIZE</span>/<span class="caps">OFF</span> <span class="caps">NODE</span> <span class="caps">NAME</span></strong> şeklinde düzenlendiği için buradan yola çıkarak aradığımız değerleri bir yere not&nbsp;alalım.</p>
+<p>Daha sonra aradığımız dosyayı <strong>/proc/pid-degeri/fd/fd-degeri</strong> dizininde bulabiliriz. Benim dosyam <strong>/proc/2869/fd/20</strong> konumundaydı. Artık bu dosyayı istediğiniz bir dizine alıp uzantısını uygun bir hale getirip izleyebilirsiniz. Belki ilerleyen bir zamanda bunun ile ilgili güzel bir uygulama yapabilirim. O zaman tüm bu işlemleri otomatik yapmış&nbsp;olurum.</p></div>
+        <hr />
+    </div>
+		
+    
+
+
+ 
+
+        
+
+
+ 
+
+    <div class='article'>
+        <a href="./floating-point-numbers.html"><h2>Floating Point&nbsp;Numbers</h2></a>
+        <div class= "well small"> Dec 02, 2012
 
 
 by <a class="url fn" href="./author/halit.html">halit</a>
@@ -72,30 +107,13 @@ in <a href="./category/compsci.html">compsci</a>
 
  
     tagged <a href="./tag/float-numbers.html">float numbers</a> <a href="./tag/kayan-noktali-sayilar.html">kayan noktalı sayılar</a> <a href="./tag/ieee754.html">ieee754</a> 
- 
-        </div>
-        
-        <div><p>Bu sene aldığım <strong>Bilgisayarın Temelleri</strong> dersinde öğrendiğim güzel konulardan birisi de kayan noktalı sayıların bilgisayarda nasıl saklandığıdır. Aslında çok basit bir olay olmasına rağmen gerçekten de bana ilginç geldi. Yavaş yavaş bilgisayarın en temeline indikçe insan daha fazla&nbsp;etkileniyor.</p>
+ </div>
+        <div class="summary"><p>Bu sene aldığım <strong>Bilgisayarın Temelleri</strong> dersinde öğrendiğim güzel konulardan birisi de kayan noktalı sayıların bilgisayarda nasıl saklandığıdır. Aslında çok basit bir olay olmasına rağmen gerçekten de bana ilginç geldi. Yavaş yavaş bilgisayarın en temeline indikçe insan daha fazla&nbsp;etkileniyor.</p>
 <p><img alt="Floating Numbers" src="http://farm4.staticflickr.com/3282/2814104146_82fe66b2a7_z.jpg" /></p>
-<p>Kayan noktalı sayılar bilgisayarda single, double ve quad olmak üzere farklı duyarlıklarda saklanabiliyor. Ben önce <strong>single precision</strong>(tek duyarlıklı-32 bit) yöntemini göstermek&nbsp;istiyorum.</p>
-<p>Öncelikle elimizdeki sayıyı 10&#8217;luk tabandan 2&#8217;lik tabana dönüştürüyoruz. Bunu lisede öğrendiğimiz taban aritmetiği ile kolayca&nbsp;yapabilirsiniz.</p>
-<p>Örneğin elimizde <strong>21,25</strong> sayısı olsun. Bunu bildiğimiz taban aritmetiği ile <strong>10101.01</strong> ikilik sayısına&nbsp;çeviriyoruz.</p>
-<p>Şimdi bu elimizdeki sayıyı bilimsel gösterime göre düzenlememiz lazım. Bunun için sayıyı <strong>1.010101x2^4</strong> gibi bir hale getiriyoruz. Burada yaptığımız işlem onluk tabanda yaptığımız bilimsel gösterimin tam olarak&nbsp;aynısı.</p>
-<p><strong>Not:</strong> Okuduğum birkaç yazıda; sayıları bu hale getirdiğimizde bütün sayıların <strong>1.xxx</strong> gibi bir duruma geldiğini ve bunun da bit kazancı sağladığı&nbsp;yazıyordu.</p>
-<p>Şimdi elimizdeki sayıyı tek duyarlıklı olarak 32 bitte saklama kuralı olan <strong><span class="caps">IEEE754</span></strong>&#8216;e göre aşağıdaki şekilde düzenleyelim. 64 bitte saklama olayı da bizim yaptığımıza çok benzese de arada bazı farklar vardır. Resimde <strong>S</strong> işaret bitini, <strong>E</strong> üssü <strong>M</strong>&#8216;de mantissa yani değeri&nbsp;göstermekte.</p>
-<p><img alt="IEEE754" src="http://1.bp.blogspot.com/-7gLr_0Pxfps/T41xoHWw0KI/AAAAAAAABJk/T9UJa5Qh6VI/s1600/float.png" /></p>
-<p>Resme göre 1 bit işaret, 8 bit üs ve 23 bit sayının değeri için kullanmamız&nbsp;gerekiyor.</p>
-<p><strong>1 bit işaret;</strong> sayımız pozitif olduğu için direk olarak 0 değerini alıyor. Eğer negatif olsa 1 değerini&nbsp;alacaktı.</p>
-<p><strong>8 bit üs;</strong> Buraya az önce bilimsel hale getirdiğimiz sayının <strong>(1.010101x2^4</strong>) üssüne <strong>2^(w - 1) - 1</strong> ekleyip oluşan değeri yazacağız. Bizim 32 bitte w değerimiz 8&#8217;dir. Eğer farklı bir bit alanında saklasaydık o zaman bu değere göre ekleme yapmamız gerekecekti. Biz şimdi elimizdeki sayının üssü olan 4 değerine <strong>2^(8-1)</strong> den gelen değer olan <strong>127</strong> ekleyip oluşan 131 sayısını ikilik tabana çevirip 8 bitlik kısma yazıyoruz. <strong>10000011</strong></p>
-<p><strong>23 bit değer(mantissa);</strong> Bu kısma sayılar <strong>1.010101</strong> gibi bir durumda iken baştaki bir değerini atarak oluşan değeri yazıyoruz. Yani elimizdeki değere göre <strong>010101</strong> yazmamız gerekiyor. Kurala göre bu alan bize 23 bit sağladığı için geri kalan kısımları 23 bit olana kadar 0 ile dolduruyoruz. Sayımızın son durumu <strong>01010100000000000000000</strong>&nbsp;oluyor.</p>
-<p>Şimdi elimizdeki değerleri birleştirelim:<strong>0 10000011 01010100000000000000000</strong>. Artık bilgisayarımız <strong>21,25</strong> sayısını 32 bit&#8217;te <strong>01000001101010100000000000000000</strong> olarak&nbsp;saklıyor.</p>
-<p>Aslında olay temel olarak böyle olsa da işin içine girince çok fazla detay ile karşılaşıyorsunuz. Eğer bu konu sizinde ilginizi çektiyse veya ders/proje gibi gereklilikleriniz varsa aşağıya yazacağım kaynaklar ile araştırmanıza devam&nbsp;edebilirsiniz.</p>
-<p><strong>Buradan Devam</strong>: <a href="http://www.bilgisayarkavramlari.com/2008/11/30/kayan-nokta-sayilari-floating-point-numbers">[1]</a> <a href="http://www.cs.utah.edu/~zachary/isp/applets/FP/FP.html">[2]</a> <a href="http://babbage.cs.qc.cuny.edu/IEEE-754.old/Decimal.html">[3]</a> <a href="http://babbage.cs.qc.cuny.edu/IEEE-754/">[4]</a> <a href="http://www.madirish.net/240">[5]</a> <a href="http://www.cprogramming.com/tutorial/floating_point/understanding_floating_point_representation.html">[6]</a> <a href="http://class.ece.iastate.edu/arun/CprE281_F05/ieee754/ie5.html">[7]</a> <a href="http://grouper.ieee.org/groups/754/">[8]</a> <a href="http://en.wikipedia.org/wiki/IEEE_754-1985#Representation_of_numbers">[9]</a> <a href="http://www.eksisozluk.com/show.asp?t=floating+point">[10]</a> <a href="http://support.microsoft.com/kb/42980/en-us">[11]</a></p></div>
-        <hr />
-    </div>
-		
+<p>Kayan noktalı sayılar bilgisayarda single, double ve quad olmak üzere farklı ...</p> <a class="btn btn-info xsmall" href="./floating-point-numbers.html">read more</a></div>
+    </div>	
+				
     
-
 
  
 
@@ -294,31 +312,6 @@ in <a href="./category/programlama.html">programlama</a>
     tagged <a href="./tag/git.html">git</a> <a href="./tag/github.html">github</a> <a href="./tag/git-pre-commit.html">git pre-commit</a> <a href="./tag/pep.html">pep</a> <a href="./tag/pyflakes.html">pyflakes</a> <a href="./tag/python.html">python</a> 
  </div>
         <div class="summary"><p>Git sistemi programcılar için gerçekten bulunmaz bir nimet. Hem yazdığınız hemde ilerde yazacağınız kodlar için size birçok olanak sağlıyor. Örneğin çok kullanıcılı bir uygulamaya başlayacaksanız herkes gun içinde yazdığı kodları birbirine mail ile gondermesi artık kabul edilebilir birşey değil. Bunun için versiyon kontrol sistemleri var. Tabi en bilinenleri de git ...</p> <a class="btn btn-info xsmall" href="./gite-commit-etmeden-once-kod-kontrolu.html">read more</a></div>
-    </div>	
-				
-    
-
- 
-
-        
-
-
- 
-
-    <div class='article'>
-        <a href="./scrapy-ile-arama-motoru.html"><h2>Scrapy İle Arama&nbsp;Motoru</h2></a>
-        <div class= "well small"> Sep 13, 2012
-
-
-by <a class="url fn" href="./author/halit.html">halit</a>
- 
-
-in <a href="./category/python.html">python</a>
-
- 
-    tagged <a href="./tag/python.html">python</a> <a href="./tag/python-bot.html">python bot</a> <a href="./tag/python-spider.html">python spider</a> <a href="./tag/python-web-crawler.html">python web crawler</a> <a href="./tag/scrapy.html">scrapy</a> 
- </div>
-        <div class="summary"><p>Bloglar ve siteler olduğundan beri bir siteden diğerine veri çekmek her zaman programcılar için onemli oldu. Kimi zaman sitelerin webmasterlar için verdiği araçları kullandık kimi zaman da kendimiz yazmak zorunda kaldık. Tabi zaman ilerleryince arama motoru tarafında da gelişmeler hızla ilerledi. Ciddi derece iyi motorlar ve botlar yazıldı. Ben <span class="caps">PHP ...</span></p> <a class="btn btn-info xsmall" href="./scrapy-ile-arama-motoru.html">read more</a></div>
     </div>	
 				
     
