@@ -61,8 +61,47 @@
 
     <div class='article'>
         <div class="content-title">
-            <a href="./gizli-medya-dosyalarini-bulma.html"><h1>Gizli Medya Dosyalarını&nbsp;Bulma</h1></a>
-            Dec 15, 2012
+            <a href="./the-seven-rules-of-technical-writing.html"><h1>The Seven Rules Of Technical&nbsp;Writing</h1></a>
+            Dec 16, 2012
+
+
+by <a class="url fn" href="./author/halit.html">halit</a>
+ 
+
+in <a href="./category/programlama.html">programlama</a>
+
+ 
+    tagged <a href="./tag/documentation.html">documentation</a> <a href="./tag/python.html">python</a> <a href="./tag/technical-writing.html">technical writing</a> <a href="./tag/programming.html">programming</a> 
+ 
+        </div>
+        
+        <div><p>I think good documentation is very hard like most developers. Code writing easier then documentation for it. But, I saw below lines when I was reading <strong>documenting your project</strong> section of <a href="http://www.amazon.com/Expert-Python-Programming-practices-distributing/dp/184719494X/ref=sr_1_1?s=books&amp;ie=UTF8&amp;qid=1355611279&amp;sr=1-1&amp;keywords=Expert+Python+Programming">Expert Python Programming</a> book and I liked them. These rules are currently hanging over my desk. Perhaps you would like it share&nbsp;exactly.</p>
+<ul>
+<li><strong>Write in two steps:</strong> Focus on ideas, and then on reviewing and shaping your&nbsp;text.</li>
+<li><strong>Target the readership:</strong> Who is going to read&nbsp;it?</li>
+<li><strong>Use a simple style:</strong> Keep it straight and simple. Use good&nbsp;grammar.</li>
+<li><strong>Limit the scope of the information:</strong> Introduce one concept at a&nbsp;time.</li>
+<li><strong>Use realistic code examples:</strong> Foos and bars should be&nbsp;dropped.</li>
+<li><strong>Use a light but sufficient approach:</strong> You are not writing a&nbsp;book!</li>
+<li><strong>Use templates:</strong> Help the readers to get&nbsp;habits.</li>
+</ul>
+<p>If you didn&#8217;t read this book, you really should read it. This book is not about just Python. Refers to many subjects related to programming. Even if you don&#8217;t Python programmer, you can learn so many&nbsp;things.</p></div>
+        <hr />
+    </div>
+		
+    
+
+
+ 
+
+        
+
+
+ 
+
+    <div class='article'>
+        <a href="./gizli-medya-dosyalarini-bulma.html"><h2>Gizli Medya Dosyalarını&nbsp;Bulma</h2></a>
+        <div class= "well small"> Dec 15, 2012
 
 
 by <a class="url fn" href="./author/halit.html">halit</a>
@@ -72,21 +111,11 @@ in <a href="./category/linux.html">linux</a>
 
  
     tagged <a href="./tag/firefox.html">firefox</a> <a href="./tag/flash.html">flash</a> <a href="./tag/flv.html">flv</a> <a href="./tag/linux.html">linux</a> 
- 
-        </div>
-        
-        <div><p>Çok sık olmasa da ara ara internet üzerinden dizi izliyorum. Bulunduğum yerdeki internetin aşırı yavaş olmasından dolayı genelde videoları açık bırakıp yüklenmesini beklerken ben başka işlerle uğraşıyorum. Bazen internetim o kadar yavaş oluyor ki 2-3 saate anca tamamlanıyor. İşte hal böyle olunca firefox&#8217;ta yaptığım işlemlerden dolayı kasıyor. Video&#8217;da donma ve seste takılmalara yol açıyor. Bende bu sorunu çözmek için izlediğim video dosyalarının bilgisayarım üzerinde saklandığı konumu bulup kaydetmeyi&nbsp;düşündüm.</p>
-<p>Bildiğiniz gibi internet üzerindeki izlediğiniz, dinlediğiniz tüm medyalar aslında bilgisayarınıza kaydediliyor ve siz izledikten sonra siliniyor. Firefox&#8217;ta bu dosyaları Linux üzerinde <strong>/tmp/</strong> dizini altına kaydediyor ve daha sonra&nbsp;siliyor.</p>
-<p>Eğer isterseniz bu silinen dosyaları gayet basit bir şekilde geri getirebilirsiniz. Öncelikle <strong>lsof</strong> komutu ile silinen dosyamız hakkında biraz bilgi edinmemiz lazım. Bu komutun çıktısı büyük olabileceği için <strong>lsof &gt; /home/cache.txt</strong> şeklinde bir metin dosyasına&nbsp;kaydedebilirsiniz.</p>
-<p><img alt="Firefox Cache" src="static/media/linux-cache.png" /></p>
-<p>Daha sonra bu dosya içinden bizim işimize yarayacak olan kısmı bulmamız gerekiyor. Firefox medyaları <strong>/tmp/</strong> dizini altına genellikle <strong>Flash</strong> ile başlayan bir değer ile kaydediyor. Ve daha sonra bu dosyayı siliyor. Ancak biz bu dosyaya hala erişebiliriz. Öncelikle aradığımız dosya ile ilgili nitelikleri öğrenmemiz&nbsp;lazım.</p>
-<p>Yukardaki resimde işaretli olan satır benim aradığım medya dosyası. Bu dosyanın bize <strong>pid</strong> ve <strong>fd</strong> değerleri lazım. Bu dosyadaki satırlar <strong><span class="caps">COMMAND</span> <span class="caps">PID</span> <span class="caps">USER</span> <span class="caps">FD</span> <span class="caps">TYPE</span> <span class="caps">DEVICE</span> <span class="caps">SIZE</span>/<span class="caps">OFF</span> <span class="caps">NODE</span> <span class="caps">NAME</span></strong> şeklinde düzenlendiği için buradan yola çıkarak aradığımız değerleri bir yere not&nbsp;alalım.</p>
-<p>Daha sonra aradığımız dosyayı <strong>/proc/pid-degeri/fd/fd-degeri</strong> dizininde bulabiliriz. Benim dosyam <strong>/proc/2869/fd/20</strong> konumundaydı. Artık bu dosyayı istediğiniz bir dizine alıp uzantısını uygun bir hale getirip izleyebilirsiniz. Belki ilerleyen bir zamanda bunun ile ilgili güzel bir uygulama yapabilirim. O zaman tüm bu işlemleri otomatik yapmış&nbsp;olurum.</p></div>
-        <hr />
-    </div>
-		
+ </div>
+        <div class="summary"><p>Çok sık olmasa da ara ara internet üzerinden dizi izliyorum. Bulunduğum yerdeki internetin aşırı yavaş olmasından dolayı genelde videoları açık bırakıp yüklenmesini beklerken ben başka işlerle uğraşıyorum. Bazen internetim o kadar yavaş oluyor ki 2-3 saate anca tamamlanıyor. İşte hal böyle olunca firefox&#8217;ta yaptığım işlemlerden dolayı kasıyor. Video&#8217;da ...</p> <a class="btn btn-info xsmall" href="./gizli-medya-dosyalarini-bulma.html">read more</a></div>
+    </div>	
+				
     
-
 
  
 
@@ -287,31 +316,6 @@ in <a href="./category/python.html">python</a>
     tagged <a href="./tag/arama-algoritmalari.html">arama algoritmaları</a> <a href="./tag/fuzzy.html">fuzzy</a> <a href="./tag/python.html">python</a> <a href="./tag/python-arama.html">python arama</a> 
  </div>
         <div class="summary"><p>İlk defa Yaşar Arabacı&#8217;nın blogunda okuduğum benzer yazı algoritmaları bana çok ilginç gelmişti. Çunku kuçuk kelimelerde veya cumlelerde kelimeleri parçalayıp oranlamak işe yarardı ancak boyutlar buyuyunce bu imkansızlaşmaya başladı. Paragrafları cumlelere, cumleleri kelimelere ayırdıktan sonra kelime bazlı kontrolde çok saçmaydı. Bu yuzden biraz daha farklı algoritma arayışlarına girdim. Bana ...</p> <a class="btn btn-info xsmall" href="./python-fuzzy-modulu.html">read more</a></div>
-    </div>	
-				
-    
-
- 
-
-        
-
-
- 
-
-    <div class='article'>
-        <a href="./gite-commit-etmeden-once-kod-kontrolu.html"><h2>Git&#8217;e Commit Etmeden Önce Kod&nbsp;Kontrolü</h2></a>
-        <div class= "well small"> Sep 14, 2012
-
-
-by <a class="url fn" href="./author/halit.html">halit</a>
- 
-
-in <a href="./category/programlama.html">programlama</a>
-
- 
-    tagged <a href="./tag/git.html">git</a> <a href="./tag/github.html">github</a> <a href="./tag/git-pre-commit.html">git pre-commit</a> <a href="./tag/pep.html">pep</a> <a href="./tag/pyflakes.html">pyflakes</a> <a href="./tag/python.html">python</a> 
- </div>
-        <div class="summary"><p>Git sistemi programcılar için gerçekten bulunmaz bir nimet. Hem yazdığınız hemde ilerde yazacağınız kodlar için size birçok olanak sağlıyor. Örneğin çok kullanıcılı bir uygulamaya başlayacaksanız herkes gun içinde yazdığı kodları birbirine mail ile gondermesi artık kabul edilebilir birşey değil. Bunun için versiyon kontrol sistemleri var. Tabi en bilinenleri de git ...</p> <a class="btn btn-info xsmall" href="./gite-commit-etmeden-once-kod-kontrolu.html">read more</a></div>
     </div>	
 				
     
