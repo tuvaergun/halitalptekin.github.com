@@ -10,14 +10,14 @@
 
     <!-- Le HTML5 shim, for IE6-8 support of HTML elements -->
     <!--[if lt IE 9]>
-    <script src=".././theme/html5.js"></script>
+    <script src="../theme/html5.js"></script>
     <![endif]-->
 
     <!-- Le styles -->
-    <link href=".././theme/bootstrap.min.css" rel="stylesheet">
-    <link href=".././theme/bootstrap.min.responsive.css" rel="stylesheet">
-    <link href=".././theme/local.css" rel="stylesheet">
-    <link href=".././theme/pygments.css" rel="stylesheet">
+    <link href="../theme/bootstrap.min.css" rel="stylesheet">
+    <link href="../theme/bootstrap.min.responsive.css" rel="stylesheet">
+    <link href="../theme/local.css" rel="stylesheet">
+    <link href="../theme/pygments.css" rel="stylesheet">
 
 </head>
 
@@ -33,14 +33,13 @@
              <span class="icon-bar"></span>
          </a>
 
-        <a class="brand" href="../.">Halit Alptekin Personal Blog</a>
+        <a class="brand" href="..">Halit Alptekin Personal Blog</a>
 
         <div class="nav-collapse">
         <ul class="nav">
-        
-            
-        <li><a href=".././pages/about-me.html">About Me</a></li>
-	    <li><a href=".././pages/contact.html">Contact</a></li>
+                    
+        <li><a href="../pages/about-me.html">About Me</a></li>
+	    <li><a href="../pages/contact.html">Contact</a></li>
         </ul>
         </div>
         
@@ -54,63 +53,44 @@
 
         <div class="span9">
                 
-
         
-
-
 
     <div class='article'>
         <div class="content-title">
-            <a href=".././gizli-medya-dosyalarini-bulma.html"><h1>Gizli Medya Dosyalarını&nbsp;Bulma</h1></a>
+            <a href="../gizli-medya-dosyalarini-bulma.html"><h1>Gizli Medya Dosyalarını Bulma</h1></a>
             Dec 15, 2012
 
-
-by <a class="url fn" href=".././author/halit.html">halit</a>
+by <a class="url fn" href="../author/halit.html">halit</a>
  
 
-in <a href=".././category/linux.html">linux</a>
+in <a href="../category/linux.html">linux</a>
 
  
-    tagged <a href=".././tag/firefox.html">firefox</a> <a href=".././tag/flash.html">flash</a> <a href=".././tag/flv.html">flv</a> <a href=".././tag/linux.html">linux</a> 
- 
+    tagged <a href="../tag/firefox.html">firefox</a> <a href="../tag/flash.html">flash</a> <a href="../tag/flv.html">flv</a> <a href="../tag/linux.html">linux</a>  
         </div>
         
-        <div><p>Çok sık olmasa da ara ara internet üzerinden dizi izliyorum. Bulunduğum yerdeki internetin aşırı yavaş olmasından dolayı genelde videoları açık bırakıp yüklenmesini beklerken ben başka işlerle uğraşıyorum. Bazen internetim o kadar yavaş oluyor ki 2-3 saate anca tamamlanıyor. İşte hal böyle olunca firefox&#8217;ta yaptığım işlemlerden dolayı kasıyor. Video&#8217;da donma ve seste takılmalara yol açıyor. Bende bu sorunu çözmek için izlediğim video dosyalarının bilgisayarım üzerinde saklandığı konumu bulup kaydetmeyi&nbsp;düşündüm.</p>
-<p>Bildiğiniz gibi internet üzerindeki izlediğiniz, dinlediğiniz tüm medyalar aslında bilgisayarınıza kaydediliyor ve siz izledikten sonra siliniyor. Firefox&#8217;ta bu dosyaları Linux üzerinde <strong>/tmp/</strong> dizini altına kaydediyor ve daha sonra&nbsp;siliyor.</p>
-<p>Eğer isterseniz bu silinen dosyaları gayet basit bir şekilde geri getirebilirsiniz. Öncelikle <strong>lsof</strong> komutu ile silinen dosyamız hakkında biraz bilgi edinmemiz lazım. Bu komutun çıktısı büyük olabileceği için <strong>lsof &gt; /home/cache.txt</strong> şeklinde bir metin dosyasına&nbsp;kaydedebilirsiniz.</p>
-<p><img alt="Firefox Cache" src="../static/media/linux-cache.png" /></p>
-<p>Daha sonra bu dosya içinden bizim işimize yarayacak olan kısmı bulmamız gerekiyor. Firefox medyaları <strong>/tmp/</strong> dizini altına genellikle <strong>Flash</strong> ile başlayan bir değer ile kaydediyor. Ve daha sonra bu dosyayı siliyor. Ancak biz bu dosyaya hala erişebiliriz. Öncelikle aradığımız dosya ile ilgili nitelikleri öğrenmemiz&nbsp;lazım.</p>
-<p>Yukardaki resimde işaretli olan satır benim aradığım medya dosyası. Bu dosyanın bize <strong>pid</strong> ve <strong>fd</strong> değerleri lazım. Bu dosyadaki satırlar <strong><span class="caps">COMMAND</span> <span class="caps">PID</span> <span class="caps">USER</span> <span class="caps">FD</span> <span class="caps">TYPE</span> <span class="caps">DEVICE</span> <span class="caps">SIZE</span>/<span class="caps">OFF</span> <span class="caps">NODE</span> <span class="caps">NAME</span></strong> şeklinde düzenlendiği için buradan yola çıkarak aradığımız değerleri bir yere not&nbsp;alalım.</p>
-<p>Daha sonra aradığımız dosyayı <strong>/proc/pid-degeri/fd/fd-degeri</strong> dizininde bulabiliriz. Benim dosyam <strong>/proc/2869/fd/20</strong> konumundaydı. Artık bu dosyayı istediğiniz bir dizine alıp uzantısını uygun bir hale getirip izleyebilirsiniz. Belki ilerleyen bir zamanda bunun ile ilgili güzel bir uygulama yapabilirim. O zaman tüm bu işlemleri otomatik yapmış&nbsp;olurum.</p></div>
+        <div><p>Çok sık olmasa da ara ara internet üzerinden dizi izliyorum. Bulunduğum yerdeki internetin aşırı yavaş olmasından dolayı genelde videoları açık bırakıp yüklenmesini beklerken ben başka işlerle uğraşıyorum. Bazen internetim o kadar yavaş oluyor ki 2-3 saate anca tamamlanıyor. İşte hal böyle olunca firefox'ta yaptığım işlemlerden dolayı kasıyor. Video'da donma ve seste takılmalara yol açıyor. Bende bu sorunu çözmek için izlediğim video dosyalarının bilgisayarım üzerinde saklandığı konumu bulup kaydetmeyi düşündüm.</p>
+<p>Bildiğiniz gibi internet üzerindeki izlediğiniz, dinlediğiniz tüm medyalar aslında bilgisayarınıza kaydediliyor ve siz izledikten sonra siliniyor. Firefox'ta bu dosyaları Linux üzerinde <strong>/tmp/</strong> dizini altına kaydediyor ve daha sonra siliyor.</p>
+<p>Eğer isterseniz bu silinen dosyaları gayet basit bir şekilde geri getirebilirsiniz. Öncelikle <strong>lsof</strong> komutu ile silinen dosyamız hakkında biraz bilgi edinmemiz lazım. Bu komutun çıktısı büyük olabileceği için <strong>lsof &gt; /home/cache.txt</strong> şeklinde bir metin dosyasına kaydedebilirsiniz.</p>
+<p><img alt="Firefox Cache" src="media/linux-cache.png" /></p>
+<p>Daha sonra bu dosya içinden bizim işimize yarayacak olan kısmı bulmamız gerekiyor. Firefox medyaları <strong>/tmp/</strong> dizini altına genellikle <strong>Flash</strong> ile başlayan bir değer ile kaydediyor. Ve daha sonra bu dosyayı siliyor. Ancak biz bu dosyaya hala erişebiliriz. Öncelikle aradığımız dosya ile ilgili nitelikleri öğrenmemiz lazım.</p>
+<p>Yukardaki resimde işaretli olan satır benim aradığım medya dosyası. Bu dosyanın bize <strong>pid</strong> ve <strong>fd</strong> değerleri lazım. Bu dosyadaki satırlar <strong>COMMAND PID USER FD TYPE DEVICE SIZE/OFF NODE NAME</strong> şeklinde düzenlendiği için buradan yola çıkarak aradığımız değerleri bir yere not alalım.</p>
+<p>Daha sonra aradığımız dosyayı <strong>/proc/pid-degeri/fd/fd-degeri</strong> dizininde bulabiliriz. Benim dosyam <strong>/proc/2869/fd/20</strong> konumundaydı. Artık bu dosyayı istediğiniz bir dizine alıp uzantısını uygun bir hale getirip izleyebilirsiniz. Belki ilerleyen bir zamanda bunun ile ilgili güzel bir uygulama yapabilirim. O zaman tüm bu işlemleri otomatik yapmış olurum.</p></div>
         <hr />
     </div>
 		
-    
-        <div class="pagination">
+            <div class="pagination">
 <ul>
-
     <li class="prev disabled"><a href="#">&larr; Previous</a></li>
 
-
-
-    <li class="active"><a href=".././tag/flash.html">1</a></li>
-
-
+    <li class="active"><a href="../tag/flash.html">1</a></li>
 
     <li class="next disabled"><a href="#">&rarr; Next</a></li>
 
-
 </ul>
-</div>
-    
-
-
+</div>    
  
-
- 
- 
-
-
+  
         </div>
         
         <div class="span3">
@@ -121,115 +101,68 @@ in <a href=".././category/linux.html">linux</a>
                 Site
                 </li>
             
-                <li><a href=".././archives.html">Archives</a>
-                <li><a href=".././tags.html">Tags</a>
-                <li><a href=".././feeds/all.atom.xml" rel="alternate">Atom feed</a></li>
-                
-                <li><a href=".././feeds/all.rss.xml" rel="alternate">RSS feed</a></li>
-                
-                 <li><a href=".././sitemap.xml">Sitemap</a>
+                <li><a href="../archives.html">Archives</a>
+                <li><a href="../tags.html">Tags</a>
+                <li><a href="../feeds/all.atom.xml" rel="alternate">Atom feed</a></li>
+                                <li><a href="../feeds/all.rss.xml" rel="alternate">RSS feed</a></li>
+                                 <li><a href="../sitemap.xml">Sitemap</a>
             </ul>
             </div>
 
 
-            
-            <div class="well" style="padding: 8px 0; background-color: #FBFBFB;">
+                        <div class="well" style="padding: 8px 0; background-color: #FBFBFB;">
             <ul class="nav nav-list">
                 <li class="nav-header"> 
                 Categories
                 </li>
                 
-                
-                <li><a href=".././category/tasarim.html">tasarim</a></li>
-                
-                <li><a href=".././category/server.html">server</a></li>
-                
-                <li><a href=".././category/python.html">python</a></li>
-                
-                <li><a href=".././category/programlama.html">programlama</a></li>
-                
-                <li><a href=".././category/linux.html">linux</a></li>
-                
-                <li><a href=".././category/kisisel.html">kisisel</a></li>
-                
-                <li><a href=".././category/internet.html">internet</a></li>
-                
-                <li><a href=".././category/guvenlik.html">guvenlik</a></li>
-                
-                <li><a href=".././category/genel.html">genel</a></li>
-                
-                <li><a href=".././category/eglence.html">eglence</a></li>
-                
-                <li><a href=".././category/django.html">django</a></li>
-                
-                <li><a href=".././category/compsci.html">compsci</a></li>
-                
-                <li><a href=".././category/arduino.html">arduino</a></li>
+                                <li><a href="../category/tasarim.html">tasarim</a></li>
+                                <li><a href="../category/server.html">server</a></li>
+                                <li><a href="../category/python.html">python</a></li>
+                                <li><a href="../category/programlama.html">programlama</a></li>
+                                <li><a href="../category/linux.html">linux</a></li>
+                                <li><a href="../category/kisisel.html">kisisel</a></li>
+                                <li><a href="../category/internet.html">internet</a></li>
+                                <li><a href="../category/guvenlik.html">guvenlik</a></li>
+                                <li><a href="../category/genel.html">genel</a></li>
+                                <li><a href="../category/eglence.html">eglence</a></li>
+                                <li><a href="../category/django.html">django</a></li>
+                                <li><a href="../category/compsci.html">compsci</a></li>
+                                <li><a href="../category/arduino.html">arduino</a></li>
                                    
             </ul>
             </div>
             
 
-
-            
-            <div class="well" style="padding: 8px 0; background-color: #FBFBFB;">
+                        <div class="well" style="padding: 8px 0; background-color: #FBFBFB;">
             <ul class="nav nav-list">
                 <li class="nav-header"> 
                 Links
                 </li>
             
-            
-                <li><a href="http://www.python.org">Python</a></li>
-            
-            </ul>
+                            <li><a href="http://www.python.org">Python</a></li>
+                        </ul>
             </div>
             
 
-
-            
-            <div class="social">
+                        <div class="social">
             <div class="well" style="padding: 8px 0; background-color: #FBFBFB;">
             <ul class="nav nav-list">
                 <li class="nav-header"> 
                 Social
                 </li>
            
-                
-                <li><a href="http://twitter.com/halitalptekin">twitter</a></li>
-                
-                <li><a href="http://github.com/halitalptekin">github</a></li>
-                
-                <li><a href="http://stackoverflow.com/users/1151618/halit-alptekin">stackoverflow</a></li>
-                
-                <li><a href="http://tr.linkedin.com/in/halitalptekin">linkedin</a></li>
-                
-            </ul>
+                                <li><a href="http://twitter.com/halitalptekin">twitter</a></li>
+                                <li><a href="http://github.com/halitalptekin">github</a></li>
+                                <li><a href="http://stackoverflow.com/users/1151618/halit-alptekin">stackoverflow</a></li>
+                                <li><a href="http://tr.linkedin.com/in/halitalptekin">linkedin</a></li>
+                            </ul>
             </div>
             </div>
             
-
             
-            <div class="well" style="padding: 8px 0; background-color: #FBFBFB;">
-            <ul class="nav nav-list">
-                <li class="nav-header"> 
-                Ads
-                </li>
-
-                
-                <li><a href="http://www.tamindir.com" title="Program Indir"><img src="/media/reklam/tamindir.jpg" alt="Tamindir" title="Program Indir"></a>
-                </li>
-                
-                <li><a href="http://www.tatilbuldur.com" title="TatilBudur"><img src="/media/reklam/tatilbudur.png" alt="TatilBudur" title="TatilBudur"></a>
-                </li>
-                
-            </ul>
-            </div>
-            
-
         </div>  
-    </div> 
-    </div> 
-
+    </div>     </div> 
 <footer>
 	<hr>
 	<p><a href='http://www.halitalptekin.com'>Halit Alptekin Personal Blog</a> &copy; 2012</p>
@@ -238,8 +171,6 @@ in <a href=".././category/linux.html">linux</a>
 </div> <!-- /container -->
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
 <script src="http://twitter.github.com/bootstrap/assets/js/bootstrap-collapse.js"></script>
-
 <script>var _gaq=[['_setAccount','UA-24728900-1'],['_trackPageview']];(function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];g.src='//www.google-analytics.com/ga.js';s.parentNode.insertBefore(g,s)}(document,'script'))</script>
-
 </body>
 </html>

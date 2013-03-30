@@ -10,14 +10,14 @@
 
     <!-- Le HTML5 shim, for IE6-8 support of HTML elements -->
     <!--[if lt IE 9]>
-    <script src=".././theme/html5.js"></script>
+    <script src="../theme/html5.js"></script>
     <![endif]-->
 
     <!-- Le styles -->
-    <link href=".././theme/bootstrap.min.css" rel="stylesheet">
-    <link href=".././theme/bootstrap.min.responsive.css" rel="stylesheet">
-    <link href=".././theme/local.css" rel="stylesheet">
-    <link href=".././theme/pygments.css" rel="stylesheet">
+    <link href="../theme/bootstrap.min.css" rel="stylesheet">
+    <link href="../theme/bootstrap.min.responsive.css" rel="stylesheet">
+    <link href="../theme/local.css" rel="stylesheet">
+    <link href="../theme/pygments.css" rel="stylesheet">
 
 </head>
 
@@ -33,14 +33,13 @@
              <span class="icon-bar"></span>
          </a>
 
-        <a class="brand" href="../.">Halit Alptekin Personal Blog</a>
+        <a class="brand" href="..">Halit Alptekin Personal Blog</a>
 
         <div class="nav-collapse">
         <ul class="nav">
-        
-            
-        <li><a href=".././pages/about-me.html">About Me</a></li>
-	    <li><a href=".././pages/contact.html">Contact</a></li>
+                    
+        <li><a href="../pages/about-me.html">About Me</a></li>
+	    <li><a href="../pages/contact.html">Contact</a></li>
         </ul>
         </div>
         
@@ -54,28 +53,23 @@
 
         <div class="span9">
                 
-
         
-
-
 
     <div class='article'>
         <div class="content-title">
-            <a href=".././python-multithread-kullanimi-ve-dosya-arama.html"><h1>Python Multithread Kullanımı Ve Dosya&nbsp;Arama</h1></a>
+            <a href="../python-multithread-kullanimi-ve-dosya-arama.html"><h1>Python Multithread Kullanımı Ve Dosya Arama</h1></a>
             Aug 16, 2012
 
-
-by <a class="url fn" href=".././author/halit.html">halit</a>
+by <a class="url fn" href="../author/halit.html">halit</a>
  
 
-in <a href=".././category/python.html">python</a>
+in <a href="../category/python.html">python</a>
 
  
-    tagged <a href=".././tag/araci.html">araci</a> <a href=".././tag/pyqt.html">pyqt</a> <a href=".././tag/python.html">python</a> <a href=".././tag/python-multi-thread.html">python multi thread</a> <a href=".././tag/python-thread-kullanimi.html">python thread kullanımı</a> 
- 
+    tagged <a href="../tag/araci.html">araci</a> <a href="../tag/pyqt.html">pyqt</a> <a href="../tag/python.html">python</a> <a href="../tag/python-multi-thread.html">python multi thread</a> <a href="../tag/python-thread-kullanimi.html">python thread kullanımı</a>  
         </div>
         
-        <div><p>Python ve PyQt maceralarımın son programı olan Araci için yeni bil algoritma yazmayı duşunuyordum.Çunku ilk versiyonda sadece belirttiğim klasorun altındaki dosyaların içinde kelime arıyordu.Benim yapmak istediğim ise belirttiğim dizinin altındaki dosyaların içine bakması ve diğer dizinlerinde yolunu rekursif olarak tekrar kendisine gondermesini istiyordum.Bu mantık doğruydu ve çalışıyordu.Ancak çok yuksek dizin ve klasore sahip yerlerde python hata verip kapanıyordu.Bende bunu çozmek için guzel bir async arama classı yazdım.Şimdilik işimi goruyor.Belki ilerde yeniden&nbsp;geliştirebilirim.</p>
+        <div><p>Python ve PyQt maceralarımın son programı olan Araci için yeni bil algoritma yazmayı duşunuyordum.Çunku ilk versiyonda sadece belirttiğim klasorun altındaki dosyaların içinde kelime arıyordu.Benim yapmak istediğim ise belirttiğim dizinin altındaki dosyaların içine bakması ve diğer dizinlerinde yolunu rekursif olarak tekrar kendisine gondermesini istiyordum.Bu mantık doğruydu ve çalışıyordu.Ancak çok yuksek dizin ve klasore sahip yerlerde python hata verip kapanıyordu.Bende bunu çozmek için guzel bir async arama classı yazdım.Şimdilik işimi goruyor.Belki ilerde yeniden geliştirebilirim.</p>
 <div class="codehilite"><pre><span class="k">class</span> <span class="nc">AsyncArama</span><span class="p">(</span><span class="n">threading</span><span class="o">.</span><span class="n">Thread</span><span class="p">):</span>
     <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">yer</span><span class="p">,</span> <span class="n">kelime</span><span class="p">,</span> <span class="n">uzanti</span><span class="p">):</span>
         <span class="n">threading</span><span class="o">.</span><span class="n">Thread</span><span class="o">.</span><span class="n">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
@@ -111,10 +105,10 @@ in <a href=".././category/python.html">python</a>
 </pre></div>
 
 
-<p>Bu kod uzerinden pythonda multi-thread mantığınıda gostermek istiyorum.Diğer dillere nazaran Python&#8217;da bu olay çok çok kolay.Öncelikle threading modulunu import ettikten sonra ondan yararlanarak bir class oluşturuyoruz.Daha sonra bu class içine arguman gondereceksek onlarıda kodda gorunduğu şekilde ayarlıyoruz.Daha sonra kullanırken bu şekilde arguman yollayacağız.init fonksiyonunda adı uzerine kurulum yapılıyor.Class&#8217;ın tumunde kullanacağımız değişkenkenleri&nbsp;tanımlıyoruz.</p>
-<p>Burada onemli olan run fonksiyonu.Çunku ilerde bu sınıfı kullanmak istediğimizde run fonksiyonu altındaki kodlar çalışacak.Ve daha sonra bu sınıfı kullanmak istediğimiz yere almaya&nbsp;geldi.</p>
+<p>Bu kod uzerinden pythonda multi-thread mantığınıda gostermek istiyorum.Diğer dillere nazaran Python'da bu olay çok çok kolay.Öncelikle threading modulunu import ettikten sonra ondan yararlanarak bir class oluşturuyoruz.Daha sonra bu class içine arguman gondereceksek onlarıda kodda gorunduğu şekilde ayarlıyoruz.Daha sonra kullanırken bu şekilde arguman yollayacağız.init fonksiyonunda adı uzerine kurulum yapılıyor.Class'ın tumunde kullanacağımız değişkenkenleri tanımlıyoruz.</p>
+<p>Burada onemli olan run fonksiyonu.Çunku ilerde bu sınıfı kullanmak istediğimizde run fonksiyonu altındaki kodlar çalışacak.Ve daha sonra bu sınıfı kullanmak istediğimiz yere almaya geldi.</p>
 <p><img alt="Araci v0.2" src="http://www.halitalptekin.com/media/upload/Araci_v0.2.png" /></p>
-<p>Ben PyQt ile oluşturduğum Araci isimli programımda aşağıdaki gibi&nbsp;kullandım.</p>
+<p>Ben PyQt ile oluşturduğum Araci isimli programımda aşağıdaki gibi kullandım.</p>
 <div class="codehilite"><pre><span class="n">aramath</span> <span class="o">=</span> <span class="n">AsyncArama</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">aramayeri</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">kelime</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">uzanti</span><span class="p">)</span>
 <span class="n">aramath</span><span class="o">.</span><span class="n">start</span><span class="p">()</span>
 
@@ -126,37 +120,23 @@ in <a href=".././category/python.html">python</a>
 </pre></div>
 
 
-<p>Bu kodların Turkçe açıklaması şoyle.Aramayeri değişkenine belirttiğimiz yer ve onu tum alt dizinlerinde belirttiğiniz uzantıya sahip dosyalarda belirttiğiniz kelimeyi arıyor.Eğer buna uyanlar varsa geri donuş değeri olarak bu dosyaların konumunu bildiren bir liste geliyor.Bende bu gelen sonuclara gore listWidget&#8217;ıma bunları ekliyorum.Olay gayet basit.Python ve PyQt&#8217;de yazdığınız programlarda donma oluyorsa yukarıda kullandığım multi-thread mantığını sizde kullanın.Bu sayede hem gui ekranı donmuyor hemde işiniz çok daha hızlı bir şekilde&nbsp;yapılıyor.</p>
-<p>Videoda gorduğunuz gibi program işimi gorecek seviyeye geldi.Tum kaynak kodları için <a href="https://github.com/halitalptekin/Araci">github</a> depoma&nbsp;bakabilirsiniz.</p></div>
+<p>Bu kodların Turkçe açıklaması şoyle.Aramayeri değişkenine belirttiğimiz yer ve onu tum alt dizinlerinde belirttiğiniz uzantıya sahip dosyalarda belirttiğiniz kelimeyi arıyor.Eğer buna uyanlar varsa geri donuş değeri olarak bu dosyaların konumunu bildiren bir liste geliyor.Bende bu gelen sonuclara gore listWidget'ıma bunları ekliyorum.Olay gayet basit.Python ve PyQt'de yazdığınız programlarda donma oluyorsa yukarıda kullandığım multi-thread mantığını sizde kullanın.Bu sayede hem gui ekranı donmuyor hemde işiniz çok daha hızlı bir şekilde yapılıyor.</p>
+<p>Videoda gorduğunuz gibi program işimi gorecek seviyeye geldi.Tum kaynak kodları için <a href="https://github.com/halitalptekin/Araci">github</a> depoma bakabilirsiniz.</p></div>
         <hr />
     </div>
 		
-    
-        <div class="pagination">
+            <div class="pagination">
 <ul>
-
     <li class="prev disabled"><a href="#">&larr; Previous</a></li>
 
-
-
-    <li class="active"><a href=".././tag/python multi thread.html">1</a></li>
-
-
+    <li class="active"><a href="../tag/python-multi-thread.html">1</a></li>
 
     <li class="next disabled"><a href="#">&rarr; Next</a></li>
 
-
 </ul>
-</div>
-    
-
-
+</div>    
  
-
- 
- 
-
-
+  
         </div>
         
         <div class="span3">
@@ -167,115 +147,68 @@ in <a href=".././category/python.html">python</a>
                 Site
                 </li>
             
-                <li><a href=".././archives.html">Archives</a>
-                <li><a href=".././tags.html">Tags</a>
-                <li><a href=".././feeds/all.atom.xml" rel="alternate">Atom feed</a></li>
-                
-                <li><a href=".././feeds/all.rss.xml" rel="alternate">RSS feed</a></li>
-                
-                 <li><a href=".././sitemap.xml">Sitemap</a>
+                <li><a href="../archives.html">Archives</a>
+                <li><a href="../tags.html">Tags</a>
+                <li><a href="../feeds/all.atom.xml" rel="alternate">Atom feed</a></li>
+                                <li><a href="../feeds/all.rss.xml" rel="alternate">RSS feed</a></li>
+                                 <li><a href="../sitemap.xml">Sitemap</a>
             </ul>
             </div>
 
 
-            
-            <div class="well" style="padding: 8px 0; background-color: #FBFBFB;">
+                        <div class="well" style="padding: 8px 0; background-color: #FBFBFB;">
             <ul class="nav nav-list">
                 <li class="nav-header"> 
                 Categories
                 </li>
                 
-                
-                <li><a href=".././category/tasarim.html">tasarim</a></li>
-                
-                <li><a href=".././category/server.html">server</a></li>
-                
-                <li><a href=".././category/python.html">python</a></li>
-                
-                <li><a href=".././category/programlama.html">programlama</a></li>
-                
-                <li><a href=".././category/linux.html">linux</a></li>
-                
-                <li><a href=".././category/kisisel.html">kisisel</a></li>
-                
-                <li><a href=".././category/internet.html">internet</a></li>
-                
-                <li><a href=".././category/guvenlik.html">guvenlik</a></li>
-                
-                <li><a href=".././category/genel.html">genel</a></li>
-                
-                <li><a href=".././category/eglence.html">eglence</a></li>
-                
-                <li><a href=".././category/django.html">django</a></li>
-                
-                <li><a href=".././category/compsci.html">compsci</a></li>
-                
-                <li><a href=".././category/arduino.html">arduino</a></li>
+                                <li><a href="../category/tasarim.html">tasarim</a></li>
+                                <li><a href="../category/server.html">server</a></li>
+                                <li><a href="../category/python.html">python</a></li>
+                                <li><a href="../category/programlama.html">programlama</a></li>
+                                <li><a href="../category/linux.html">linux</a></li>
+                                <li><a href="../category/kisisel.html">kisisel</a></li>
+                                <li><a href="../category/internet.html">internet</a></li>
+                                <li><a href="../category/guvenlik.html">guvenlik</a></li>
+                                <li><a href="../category/genel.html">genel</a></li>
+                                <li><a href="../category/eglence.html">eglence</a></li>
+                                <li><a href="../category/django.html">django</a></li>
+                                <li><a href="../category/compsci.html">compsci</a></li>
+                                <li><a href="../category/arduino.html">arduino</a></li>
                                    
             </ul>
             </div>
             
 
-
-            
-            <div class="well" style="padding: 8px 0; background-color: #FBFBFB;">
+                        <div class="well" style="padding: 8px 0; background-color: #FBFBFB;">
             <ul class="nav nav-list">
                 <li class="nav-header"> 
                 Links
                 </li>
             
-            
-                <li><a href="http://www.python.org">Python</a></li>
-            
-            </ul>
+                            <li><a href="http://www.python.org">Python</a></li>
+                        </ul>
             </div>
             
 
-
-            
-            <div class="social">
+                        <div class="social">
             <div class="well" style="padding: 8px 0; background-color: #FBFBFB;">
             <ul class="nav nav-list">
                 <li class="nav-header"> 
                 Social
                 </li>
            
-                
-                <li><a href="http://twitter.com/halitalptekin">twitter</a></li>
-                
-                <li><a href="http://github.com/halitalptekin">github</a></li>
-                
-                <li><a href="http://stackoverflow.com/users/1151618/halit-alptekin">stackoverflow</a></li>
-                
-                <li><a href="http://tr.linkedin.com/in/halitalptekin">linkedin</a></li>
-                
-            </ul>
+                                <li><a href="http://twitter.com/halitalptekin">twitter</a></li>
+                                <li><a href="http://github.com/halitalptekin">github</a></li>
+                                <li><a href="http://stackoverflow.com/users/1151618/halit-alptekin">stackoverflow</a></li>
+                                <li><a href="http://tr.linkedin.com/in/halitalptekin">linkedin</a></li>
+                            </ul>
             </div>
             </div>
             
-
             
-            <div class="well" style="padding: 8px 0; background-color: #FBFBFB;">
-            <ul class="nav nav-list">
-                <li class="nav-header"> 
-                Ads
-                </li>
-
-                
-                <li><a href="http://www.tamindir.com" title="Program Indir"><img src="/media/reklam/tamindir.jpg" alt="Tamindir" title="Program Indir"></a>
-                </li>
-                
-                <li><a href="http://www.tatilbuldur.com" title="TatilBudur"><img src="/media/reklam/tatilbudur.png" alt="TatilBudur" title="TatilBudur"></a>
-                </li>
-                
-            </ul>
-            </div>
-            
-
         </div>  
-    </div> 
-    </div> 
-
+    </div>     </div> 
 <footer>
 	<hr>
 	<p><a href='http://www.halitalptekin.com'>Halit Alptekin Personal Blog</a> &copy; 2012</p>
@@ -284,8 +217,6 @@ in <a href=".././category/python.html">python</a>
 </div> <!-- /container -->
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
 <script src="http://twitter.github.com/bootstrap/assets/js/bootstrap-collapse.js"></script>
-
 <script>var _gaq=[['_setAccount','UA-24728900-1'],['_trackPageview']];(function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];g.src='//www.google-analytics.com/ga.js';s.parentNode.insertBefore(g,s)}(document,'script'))</script>
-
 </body>
 </html>

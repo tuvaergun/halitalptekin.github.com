@@ -10,14 +10,14 @@
 
     <!-- Le HTML5 shim, for IE6-8 support of HTML elements -->
     <!--[if lt IE 9]>
-    <script src=".././theme/html5.js"></script>
+    <script src="../theme/html5.js"></script>
     <![endif]-->
 
     <!-- Le styles -->
-    <link href=".././theme/bootstrap.min.css" rel="stylesheet">
-    <link href=".././theme/bootstrap.min.responsive.css" rel="stylesheet">
-    <link href=".././theme/local.css" rel="stylesheet">
-    <link href=".././theme/pygments.css" rel="stylesheet">
+    <link href="../theme/bootstrap.min.css" rel="stylesheet">
+    <link href="../theme/bootstrap.min.responsive.css" rel="stylesheet">
+    <link href="../theme/local.css" rel="stylesheet">
+    <link href="../theme/pygments.css" rel="stylesheet">
 
 </head>
 
@@ -33,14 +33,13 @@
              <span class="icon-bar"></span>
          </a>
 
-        <a class="brand" href="../.">Halit Alptekin Personal Blog</a>
+        <a class="brand" href="..">Halit Alptekin Personal Blog</a>
 
         <div class="nav-collapse">
         <ul class="nav">
-        
-            
-        <li><a href=".././pages/about-me.html">About Me</a></li>
-	    <li><a href=".././pages/contact.html">Contact</a></li>
+                    
+        <li><a href="../pages/about-me.html">About Me</a></li>
+	    <li><a href="../pages/contact.html">Contact</a></li>
         </ul>
         </div>
         
@@ -54,297 +53,232 @@
 
         <div class="span9">
                 
-
         
-
-
 
     <div class='article'>
         <div class="content-title">
-            <a href=".././pelican-ile-static-dunyasi.html"><h1>Pelican İle Static&nbsp;Dünyası</h1></a>
+            <a href="../pelican-ile-static-dunyasi.html"><h1>Pelican İle Static Dünyası</h1></a>
             Nov 24, 2012
 
-
-by <a class="url fn" href=".././author/halit.html">halit</a>
+by <a class="url fn" href="../author/halit.html">halit</a>
  
 
-in <a href=".././category/python.html">python</a>
+in <a href="../category/python.html">python</a>
 
  
-    tagged <a href=".././tag/pelican.html">pelican</a> <a href=".././tag/python.html">python</a> <a href=".././tag/static-blog.html">static blog</a> <a href=".././tag/github.html">github</a> 
- 
+    tagged <a href="../tag/pelican.html">pelican</a> <a href="../tag/python.html">python</a> <a href="../tag/static-blog.html">static blog</a> <a href="../tag/github.html">github</a>  
         </div>
         
-        <div><p>Bir süredir aklımda olan sitemi <strong>Pelican</strong>&#8216;a dönüştürme fikrini sonunda yapabildim. Ancak bu dönüştürme işleminde <strong>Django</strong> gibi çok sevdiğim bir sistemi bırakmakda çok kolay olmadı. Aslında buna tam olarak bırakmak denmez. Sadece bir süre ara veriyorum. Çünkü şu anda okuldaki derslerimin sıklaşmasıyla siteme pek vakit ayıramıyordum. Bu yüzden de bir süre <strong>Django-Python</strong> siteme ara verip yola <strong>Pelican</strong> ile devam etmek istedim. Yaza doğru tekrardan hatta daha iyi bir şekilde dönüş yapmayı&nbsp;planlıyorum.</p>
-<p>Biraz da <strong>Django</strong>&#8216;dan <strong>Pelican</strong>&#8216;a dönüşüm kısmında yaptıklarımdan&nbsp;bahsedeyim.</p>
+        <div><p>Bir süredir aklımda olan sitemi <strong>Pelican</strong>'a dönüştürme fikrini sonunda yapabildim. Ancak bu dönüştürme işleminde <strong>Django</strong> gibi çok sevdiğim bir sistemi bırakmakda çok kolay olmadı. Aslında buna tam olarak bırakmak denmez. Sadece bir süre ara veriyorum. Çünkü şu anda okuldaki derslerimin sıklaşmasıyla siteme pek vakit ayıramıyordum. Bu yüzden de bir süre <strong>Django-Python</strong> siteme ara verip yola <strong>Pelican</strong> ile devam etmek istedim. Yaza doğru tekrardan hatta daha iyi bir şekilde dönüş yapmayı planlıyorum.</p>
+<p>Biraz da <strong>Django</strong>'dan <strong>Pelican</strong>'a dönüşüm kısmında yaptıklarımdan bahsedeyim.</p>
 <ul>
-<li>Django sitemde yer alan tüm yazıları markdown&#8217;a dönüştürme işlemi öncesi hafif bir çıktı haline&nbsp;getirdim.</li>
-<li>Tüm içeriği <strong>markdown</strong>&#8216;a&nbsp;dönüştürdüm.</li>
-<li>Dönüştürme işleminden sonra <strong>deasciify</strong> problemi ile karşılaştım ve bunun da çözümünü ufak bir araç ile&nbsp;buldum.</li>
-<li>Bazı yazılarda yer alan kod bloğundaki problemleri <strong>pygments</strong> üzerindeki değişiklikler ile&nbsp;hallettim.</li>
-<li>Site haritası ve birkaç ufak özellik&nbsp;ekledim.</li>
-<li>Deploy aşamasında <strong>fabric</strong> aracını&nbsp;kullandım.</li>
+<li>Django sitemde yer alan tüm yazıları markdown'a dönüştürme işlemi öncesi hafif bir çıktı haline getirdim.</li>
+<li>Tüm içeriği <strong>markdown</strong>'a dönüştürdüm.</li>
+<li>Dönüştürme işleminden sonra <strong>deasciify</strong> problemi ile karşılaştım ve bunun da çözümünü ufak bir araç ile buldum.</li>
+<li>Bazı yazılarda yer alan kod bloğundaki problemleri <strong>pygments</strong> üzerindeki değişiklikler ile hallettim.</li>
+<li>Site haritası ve birkaç ufak özellik ekledim.</li>
+<li>Deploy aşamasında <strong>fabric</strong> aracını kullandım.</li>
 </ul>
-<p>Yaşadığım problemleri ve aşamaları tek bir yazıda anlatmak yerine farklı birkaç yazıda anlatmayı düşünüyorum. Hatta bu yazılarından bazılarının ingilizce versiyonlarını da eklemeyi&nbsp;planlıyorum.</p>
-<p><img alt="Pelican ile static dunyasi" src="../static/media/pelican-ile-static-dunyasi.png" /></p>
-<p>Django&#8217;dan statik sisteme geçiş sırasında eski yazılarımda bazı linklerin bozuk olması, resimlerin gözükmemesi gibi problemler ortaya çıkabilir. Ben değer verdiğim ve önemli olduklarını düşündüğüm tüm yazıları yeniden gözden&nbsp;geçireceğim.</p>
-<p>Tabi Pelican&#8217;a geçişin yanında sitemin bir süredir kapalı olma durumuda var. Bunun sebebi serverı aldığım firmanın tüm dosyalarım ile birlikte sitemi farklı bir ipye taşımasıydı. Ben de zaten Pelican&#8217;a geçmek için bir bahane arıyordum. Bu olay ile birlikte ilk kurşunu attım ve deploy kısmını&nbsp;hallettim.</p></div>
+<p>Yaşadığım problemleri ve aşamaları tek bir yazıda anlatmak yerine farklı birkaç yazıda anlatmayı düşünüyorum. Hatta bu yazılarından bazılarının ingilizce versiyonlarını da eklemeyi planlıyorum.</p>
+<p><img alt="Pelican ile static dunyasi" src="media/pelican-ile-static-dunyasi.png" /></p>
+<p>Django'dan statik sisteme geçiş sırasında eski yazılarımda bazı linklerin bozuk olması, resimlerin gözükmemesi gibi problemler ortaya çıkabilir. Ben değer verdiğim ve önemli olduklarını düşündüğüm tüm yazıları yeniden gözden geçireceğim.</p>
+<p>Tabi Pelican'a geçişin yanında sitemin bir süredir kapalı olma durumuda var. Bunun sebebi serverı aldığım firmanın tüm dosyalarım ile birlikte sitemi farklı bir ipye taşımasıydı. Ben de zaten Pelican'a geçmek için bir bahane arıyordum. Bu olay ile birlikte ilk kurşunu attım ve deploy kısmını hallettim.</p></div>
         <hr />
     </div>
 		
     
-
-
  
-
         
-
 
  
 
     <div class='article'>
-        <a href=".././python-fuzzy-modulu.html"><h2>Python Fuzzy&nbsp;Modülü</h2></a>
+        <a href="../python-fuzzy-modulu.html"><h2>Python Fuzzy Modülü</h2></a>
         <div class= "well small"> Sep 16, 2012
 
-
-by <a class="url fn" href=".././author/halit.html">halit</a>
+by <a class="url fn" href="../author/halit.html">halit</a>
  
 
-in <a href=".././category/python.html">python</a>
+in <a href="../category/python.html">python</a>
 
  
-    tagged <a href=".././tag/arama-algoritmalari.html">arama algoritmaları</a> <a href=".././tag/fuzzy.html">fuzzy</a> <a href=".././tag/python.html">python</a> <a href=".././tag/python-arama.html">python arama</a> 
- </div>
-        <div class="summary"><p>İlk defa Yaşar Arabacı&#8217;nın blogunda okuduğum benzer yazı algoritmaları bana çok ilginç gelmişti. Çunku kuçuk kelimelerde veya cumlelerde kelimeleri parçalayıp oranlamak işe yarardı ancak boyutlar buyuyunce bu imkansızlaşmaya başladı. Paragrafları cumlelere, cumleleri kelimelere ayırdıktan sonra kelime bazlı kontrolde çok saçmaydı. Bu yuzden biraz daha farklı algoritma arayışlarına girdim. Bana ...</p> <a class="btn btn-info xsmall" href=".././python-fuzzy-modulu.html">read more</a></div>
+    tagged <a href="../tag/arama-algoritmalari.html">arama algoritmaları</a> <a href="../tag/fuzzy.html">fuzzy</a> <a href="../tag/python.html">python</a> <a href="../tag/python-arama.html">python arama</a>  </div>
+        <div class="summary"><p>İlk defa Yaşar Arabacı'nın blogunda okuduğum benzer yazı algoritmaları bana çok ilginç gelmişti. Çunku kuçuk kelimelerde veya cumlelerde kelimeleri parçalayıp oranlamak işe yarardı ancak boyutlar buyuyunce bu imkansızlaşmaya başladı. Paragrafları cumlelere, cumleleri kelimelere ayırdıktan sonra kelime bazlı kontrolde çok saçmaydı. Bu yuzden biraz daha farklı algoritma arayışlarına girdim. Bana ...</p> <a class="btn btn-info xsmall" href="../python-fuzzy-modulu.html">read more</a></div>
     </div>	
 				
     
-
  
-
         
-
 
  
 
     <div class='article'>
-        <a href=".././scrapy-ile-arama-motoru.html"><h2>Scrapy İle Arama&nbsp;Motoru</h2></a>
+        <a href="../scrapy-ile-arama-motoru.html"><h2>Scrapy İle Arama Motoru</h2></a>
         <div class= "well small"> Sep 13, 2012
 
-
-by <a class="url fn" href=".././author/halit.html">halit</a>
+by <a class="url fn" href="../author/halit.html">halit</a>
  
 
-in <a href=".././category/python.html">python</a>
+in <a href="../category/python.html">python</a>
 
  
-    tagged <a href=".././tag/python.html">python</a> <a href=".././tag/python-bot.html">python bot</a> <a href=".././tag/python-spider.html">python spider</a> <a href=".././tag/python-web-crawler.html">python web crawler</a> <a href=".././tag/scrapy.html">scrapy</a> 
- </div>
-        <div class="summary"><p>Bloglar ve siteler olduğundan beri bir siteden diğerine veri çekmek her zaman programcılar için onemli oldu. Kimi zaman sitelerin webmasterlar için verdiği araçları kullandık kimi zaman da kendimiz yazmak zorunda kaldık. Tabi zaman ilerleryince arama motoru tarafında da gelişmeler hızla ilerledi. Ciddi derece iyi motorlar ve botlar yazıldı. Ben <span class="caps">PHP ...</span></p> <a class="btn btn-info xsmall" href=".././scrapy-ile-arama-motoru.html">read more</a></div>
+    tagged <a href="../tag/python.html">python</a> <a href="../tag/python-bot.html">python bot</a> <a href="../tag/python-spider.html">python spider</a> <a href="../tag/python-web-crawler.html">python web crawler</a> <a href="../tag/scrapy.html">scrapy</a>  </div>
+        <div class="summary"><p>Bloglar ve siteler olduğundan beri bir siteden diğerine veri çekmek her zaman programcılar için onemli oldu. Kimi zaman sitelerin webmasterlar için verdiği araçları kullandık kimi zaman da kendimiz yazmak zorunda kaldık. Tabi zaman ilerleryince arama motoru tarafında da gelişmeler hızla ilerledi. Ciddi derece iyi motorlar ve botlar yazıldı. Ben PHP ...</p> <a class="btn btn-info xsmall" href="../scrapy-ile-arama-motoru.html">read more</a></div>
     </div>	
 				
     
-
  
-
         
-
 
  
 
     <div class='article'>
-        <a href=".././matplotlib-ile-gmail-analizi.html"><h2>Matplotlib İle Gmail&nbsp;Analizi</h2></a>
+        <a href="../matplotlib-ile-gmail-analizi.html"><h2>Matplotlib İle Gmail Analizi</h2></a>
         <div class= "well small"> Sep 12, 2012
 
-
-by <a class="url fn" href=".././author/halit.html">halit</a>
+by <a class="url fn" href="../author/halit.html">halit</a>
  
 
-in <a href=".././category/python.html">python</a>
+in <a href="../category/python.html">python</a>
 
  
-    tagged <a href=".././tag/matlab.html">matlab</a> <a href=".././tag/matplotlib.html">matplotlib</a> <a href=".././tag/python.html">python</a> <a href=".././tag/python-matlab.html">python matlab</a> <a href=".././tag/python-matplotlib.html">python matplotlib</a> 
- </div>
-        <div class="summary"><p>Python&#8217;un son gunlerde çok fazla kullanılmaya başladığı alanlardan birisi de kuşkusuz bilimsel araştırmalar oldu.Marsa gonderilen Curiosity&#8217;nin bile test kısımları Python ile yapılmıştı.Ben de bu yuzden onceden beri ilgili olduğum bu alana şoyle bir bakayım dedim.Kutuphaneler ile uğraştığımdan kendimi bir kaç çizim kutuphanesi aradım.Geçen yazımda ...</p> <a class="btn btn-info xsmall" href=".././matplotlib-ile-gmail-analizi.html">read more</a></div>
+    tagged <a href="../tag/matlab.html">matlab</a> <a href="../tag/matplotlib.html">matplotlib</a> <a href="../tag/python.html">python</a> <a href="../tag/python-matlab.html">python matlab</a> <a href="../tag/python-matplotlib.html">python matplotlib</a>  </div>
+        <div class="summary"><p>Python'un son gunlerde çok fazla kullanılmaya başladığı alanlardan birisi de kuşkusuz bilimsel araştırmalar oldu.Marsa gonderilen Curiosity'nin bile test kısımları Python ile yapılmıştı.Ben de bu yuzden onceden beri ilgili olduğum bu alana şoyle bir bakayım dedim.Kutuphaneler ile uğraştığımdan kendimi bir kaç çizim kutuphanesi aradım.Geçen yazımda ...</p> <a class="btn btn-info xsmall" href="../matplotlib-ile-gmail-analizi.html">read more</a></div>
     </div>	
 				
     
-
  
-
         
-
 
  
 
     <div class='article'>
-        <a href=".././python-turtle-modulu.html"><h2>Python Turtle&nbsp;Modülü</h2></a>
+        <a href="../python-turtle-modulu.html"><h2>Python Turtle Modülü</h2></a>
         <div class= "well small"> Sep 12, 2012
 
-
-by <a class="url fn" href=".././author/halit.html">halit</a>
+by <a class="url fn" href="../author/halit.html">halit</a>
  
 
-in <a href=".././category/python.html">python</a>
+in <a href="../category/python.html">python</a>
 
  
-    tagged <a href=".././tag/python.html">python</a> <a href=".././tag/python-kutuphanesi.html">python kütüphanesi</a> <a href=".././tag/python-turtle.html">python turtle</a> <a href=".././tag/python-turtle-lib.html">python turtle lib</a> 
- </div>
-        <div class="summary"><p>Son gunlerde Python ile birlikte gelen modullere daha yakından bakıyorum. Aralarında bazen çok guzel araçlar çıkabiliyor. Mesela benim bugun gostermek istediğim Turtle modulunu daha once hiç gormemiştim. Eminim birçok kişi de bu kutuphaneden habersizdir. Python ile birlikte gelen Turtle modulu ile ekrana istediğiniz yazıyı yazmanızdan tutunda birçok resim ve şekil ...</p> <a class="btn btn-info xsmall" href=".././python-turtle-modulu.html">read more</a></div>
+    tagged <a href="../tag/python.html">python</a> <a href="../tag/python-kutuphanesi.html">python kütüphanesi</a> <a href="../tag/python-turtle.html">python turtle</a> <a href="../tag/python-turtle-lib.html">python turtle lib</a>  </div>
+        <div class="summary"><p>Son gunlerde Python ile birlikte gelen modullere daha yakından bakıyorum. Aralarında bazen çok guzel araçlar çıkabiliyor. Mesela benim bugun gostermek istediğim Turtle modulunu daha once hiç gormemiştim. Eminim birçok kişi de bu kutuphaneden habersizdir. Python ile birlikte gelen Turtle modulu ile ekrana istediğiniz yazıyı yazmanızdan tutunda birçok resim ve şekil ...</p> <a class="btn btn-info xsmall" href="../python-turtle-modulu.html">read more</a></div>
     </div>	
 				
     
-
  
-
         
-
 
  
 
     <div class='article'>
-        <a href=".././python-ve-couchdb.html"><h2>Python Ve&nbsp;Couchdb</h2></a>
+        <a href="../python-ve-couchdb.html"><h2>Python Ve Couchdb</h2></a>
         <div class= "well small"> Sep 03, 2012
 
-
-by <a class="url fn" href=".././author/halit.html">halit</a>
+by <a class="url fn" href="../author/halit.html">halit</a>
  
 
-in <a href=".././category/python.html">python</a>
+in <a href="../category/python.html">python</a>
 
  
-    tagged <a href=".././tag/couchdb.html">couchdb</a> <a href=".././tag/django.html">django</a> <a href=".././tag/django-couchdb.html">django couchdb</a> <a href=".././tag/django-nosql.html">django nosql</a> <a href=".././tag/nosql.html">nosql</a> <a href=".././tag/python.html">python</a> <a href=".././tag/python-couchdb.html">python couchdb</a> 
- </div>
-        <div class="summary"><p>NoSQL veritabanı platformları son zamanlar gittikçe daha fazla ilgimi çekmeye başladı.Çunku artık MySql gibi veritabanları eskisi gibi yeterli gelmiyor.Yuksek veri girişlerinde veya çok fazla verinin olduğu veritabanlarında kasılmalar, şişmeler, donmalar gibi birçok sorun çıkarıyorlar.Bunların yanında hız olarak da bir zaman sonra insana gerçekten yeterli gelmiyor.Ben kişisel ...</p> <a class="btn btn-info xsmall" href=".././python-ve-couchdb.html">read more</a></div>
+    tagged <a href="../tag/couchdb.html">couchdb</a> <a href="../tag/django.html">django</a> <a href="../tag/django-couchdb.html">django couchdb</a> <a href="../tag/django-nosql.html">django nosql</a> <a href="../tag/nosql.html">nosql</a> <a href="../tag/python.html">python</a> <a href="../tag/python-couchdb.html">python couchdb</a>  </div>
+        <div class="summary"><p>NoSQL veritabanı platformları son zamanlar gittikçe daha fazla ilgimi çekmeye başladı.Çunku artık MySql gibi veritabanları eskisi gibi yeterli gelmiyor.Yuksek veri girişlerinde veya çok fazla verinin olduğu veritabanlarında kasılmalar, şişmeler, donmalar gibi birçok sorun çıkarıyorlar.Bunların yanında hız olarak da bir zaman sonra insana gerçekten yeterli gelmiyor.Ben kişisel ...</p> <a class="btn btn-info xsmall" href="../python-ve-couchdb.html">read more</a></div>
     </div>	
 				
     
-
  
-
         
-
 
  
 
     <div class='article'>
-        <a href=".././pythonic-kod-yazimi.html"><h2>Pythonic Kod&nbsp;Yazımı</h2></a>
+        <a href="../pythonic-kod-yazimi.html"><h2>Pythonic Kod Yazımı</h2></a>
         <div class= "well small"> Sep 01, 2012
 
-
-by <a class="url fn" href=".././author/halit.html">halit</a>
+by <a class="url fn" href="../author/halit.html">halit</a>
  
 
-in <a href=".././category/python.html">python</a>
+in <a href="../category/python.html">python</a>
 
  
-    tagged <a href=".././tag/django-framework.html">django framework</a> <a href=".././tag/pep-8.html">pep 8</a> <a href=".././tag/python.html">python</a> <a href=".././tag/python-dili.html">python dili</a> <a href=".././tag/pythonic-syntax.html">pythonic syntax</a> <a href=".././tag/python-kullanicisi.html">python kullanıcısı</a> <a href=".././tag/python-programlama.html">python programlama</a> 
- </div>
-        <div class="summary"><p>Python diğer tum dillerin aksine boşluklara ve girinti çıkıntılara çok fazla onem veren bir dil.Diğer birçok dilde donguleri başlattıktan sonra {} gibi parantez içine alırsınız.Ancak python&#8217;da bu yerine dongu içinde olduğunu belirtmek için boşluklar kullanılır.Haliyle bu da goze hoş gelen ve kolay okunan bir kod parçası ortaya ...</p> <a class="btn btn-info xsmall" href=".././pythonic-kod-yazimi.html">read more</a></div>
+    tagged <a href="../tag/django-framework.html">django framework</a> <a href="../tag/pep-8.html">pep 8</a> <a href="../tag/python.html">python</a> <a href="../tag/python-dili.html">python dili</a> <a href="../tag/pythonic-syntax.html">pythonic syntax</a> <a href="../tag/python-kullanicisi.html">python kullanıcısı</a> <a href="../tag/python-programlama.html">python programlama</a>  </div>
+        <div class="summary"><p>Python diğer tum dillerin aksine boşluklara ve girinti çıkıntılara çok fazla onem veren bir dil.Diğer birçok dilde donguleri başlattıktan sonra {} gibi parantez içine alırsınız.Ancak python'da bu yerine dongu içinde olduğunu belirtmek için boşluklar kullanılır.Haliyle bu da goze hoş gelen ve kolay okunan bir kod parçası ortaya ...</p> <a class="btn btn-info xsmall" href="../pythonic-kod-yazimi.html">read more</a></div>
     </div>	
 				
     
-
  
-
         
-
 
  
 
     <div class='article'>
-        <a href=".././modulleri-paketleyip-paylasmak.html"><h2>Modülleri Paketleyip&nbsp;Paylaşmak</h2></a>
+        <a href="../modulleri-paketleyip-paylasmak.html"><h2>Modülleri Paketleyip Paylaşmak</h2></a>
         <div class= "well small"> Aug 27, 2012
 
-
-by <a class="url fn" href=".././author/halit.html">halit</a>
+by <a class="url fn" href="../author/halit.html">halit</a>
  
 
-in <a href=".././category/python.html">python</a>
+in <a href="../category/python.html">python</a>
 
  
-    tagged <a href=".././tag/pycharm.html">pycharm</a> <a href=".././tag/pypi.html">pypi</a> <a href=".././tag/pypi-kayit.html">pypi kayıt</a> <a href=".././tag/python.html">python</a> <a href=".././tag/python-setup-dosyasi-hazirlama.html">python setup dosyası hazırlama</a> <a href=".././tag/python-setup-tools.html">python setup tools</a> 
- </div>
-        <div class="summary"><p>Python&#8217;u ilk başta duşunup koda doken adamlar onlardan sonraki gelecek nesilleri daha en baştan duşunmuşler.Yeni geliştiriciler kod yazsında diğer geliştiricilerle paylaşsın kendisini geliştirsin diye her turlu kolaylığı sağlamışlar.Benim Python&#8217;un sevdiğim en guzel yanlarından birisi de kesinlikle bu.Çunku yazdığım kodu setuptools araçları ile paketleyip diğer kullanıcılarında ...</p> <a class="btn btn-info xsmall" href=".././modulleri-paketleyip-paylasmak.html">read more</a></div>
+    tagged <a href="../tag/pycharm.html">pycharm</a> <a href="../tag/pypi.html">pypi</a> <a href="../tag/pypi-kayit.html">pypi kayıt</a> <a href="../tag/python.html">python</a> <a href="../tag/python-setup-dosyasi-hazirlama.html">python setup dosyası hazırlama</a> <a href="../tag/python-setup-tools.html">python setup tools</a>  </div>
+        <div class="summary"><p>Python'u ilk başta duşunup koda doken adamlar onlardan sonraki gelecek nesilleri daha en baştan duşunmuşler.Yeni geliştiriciler kod yazsında diğer geliştiricilerle paylaşsın kendisini geliştirsin diye her turlu kolaylığı sağlamışlar.Benim Python'un sevdiğim en guzel yanlarından birisi de kesinlikle bu.Çunku yazdığım kodu setuptools araçları ile paketleyip diğer kullanıcılarında ...</p> <a class="btn btn-info xsmall" href="../modulleri-paketleyip-paylasmak.html">read more</a></div>
     </div>	
 				
     
-
  
-
         
-
 
  
 
     <div class='article'>
-        <a href=".././elixir-ve-sqlalchemy.html"><h2>Elixir Ve&nbsp;Sqlalchemy</h2></a>
+        <a href="../elixir-ve-sqlalchemy.html"><h2>Elixir Ve Sqlalchemy</h2></a>
         <div class= "well small"> Aug 18, 2012
 
-
-by <a class="url fn" href=".././author/halit.html">halit</a>
+by <a class="url fn" href="../author/halit.html">halit</a>
  
 
-in <a href=".././category/python.html">python</a>
+in <a href="../category/python.html">python</a>
 
  
-    tagged <a href=".././tag/elixir.html">elixir</a> <a href=".././tag/elixir-kullanimi.html">elixir kullanımı</a> <a href=".././tag/orm.html">orm</a> <a href=".././tag/orm-nedir.html">orm nedir</a> <a href=".././tag/sqlalchemy.html">sqlalchemy</a> <a href=".././tag/sql-alchemy.html">sql alchemy</a> 
- </div>
-        <div class="summary"><p><span class="caps">ORM</span> kavramı benim Django ile birlikte tanıştığım ve gerçekten çok hoşuma giden bir şey.<span class="caps">ORM</span> ile veritabanında işleyeceğimiz sorguları sınıflar olarak tanımlıyoruz ve code generator tekniği ile bunları sql sorgusuna dokuyoruz.Tabi biz bu sırada bu sorgular ile pek ilgilenmiyoruz.Bizim ilgilendiğimiz nokta sınıfları en uygun şekilde tanımlamak.Bunun getirdiği ...</p> <a class="btn btn-info xsmall" href=".././elixir-ve-sqlalchemy.html">read more</a></div>
+    tagged <a href="../tag/elixir.html">elixir</a> <a href="../tag/elixir-kullanimi.html">elixir kullanımı</a> <a href="../tag/orm.html">orm</a> <a href="../tag/orm-nedir.html">orm nedir</a> <a href="../tag/sqlalchemy.html">sqlalchemy</a> <a href="../tag/sql-alchemy.html">sql alchemy</a>  </div>
+        <div class="summary"><p>ORM kavramı benim Django ile birlikte tanıştığım ve gerçekten çok hoşuma giden bir şey.ORM ile veritabanında işleyeceğimiz sorguları sınıflar olarak tanımlıyoruz ve code generator tekniği ile bunları sql sorgusuna dokuyoruz.Tabi biz bu sırada bu sorgular ile pek ilgilenmiyoruz.Bizim ilgilendiğimiz nokta sınıfları en uygun şekilde tanımlamak.Bunun getirdiği ...</p> <a class="btn btn-info xsmall" href="../elixir-ve-sqlalchemy.html">read more</a></div>
     </div>	
 				
     
-
  
-
         
-
 
  
 
     <div class='article'>
-        <a href=".././guvenlik-ile-ilgili-python-araclari.html"><h2>Güvenlik İle İlgili Python&nbsp;Araçları</h2></a>
+        <a href="../guvenlik-ile-ilgili-python-araclari.html"><h2>Güvenlik İle İlgili Python Araçları</h2></a>
         <div class= "well small"> Aug 17, 2012
 
-
-by <a class="url fn" href=".././author/halit.html">halit</a>
+by <a class="url fn" href="../author/halit.html">halit</a>
  
 
-in <a href=".././category/python.html">python</a>
+in <a href="../category/python.html">python</a>
 
  
-    tagged <a href=".././tag/ceh.html">ceh</a> <a href=".././tag/etik-hacker.html">etik hacker</a> <a href=".././tag/python.html">python</a> <a href=".././tag/python-araclari.html">python araçları</a> <a href=".././tag/reverse-engineering.html">reverse engineering</a> <a href=".././tag/sistem-guvenligi.html">sistem güvenliği</a> 
- </div>
-        <div class="summary"><p>Python akla hayale gelemeyecek kadar çok alanda kullanılıyor.Bunların arasında bilimsel araştırmalardan tutun da marsa gonderilen robotun test aşamlarında kullanılmasına kadar birçok alanda Python&#8217;a denk gelebilirsiniz.benimde uzun suredir severek her kutuphanesini frameworkunu kullandığım bu dilin aktif olduğu alanlardan biriside kesinlikle guvenliktir.Eğer sizde sistem guvenliği,tersine muhendislik,guvenlik ...</p> <a class="btn btn-info xsmall" href=".././guvenlik-ile-ilgili-python-araclari.html">read more</a></div>
+    tagged <a href="../tag/ceh.html">ceh</a> <a href="../tag/etik-hacker.html">etik hacker</a> <a href="../tag/python.html">python</a> <a href="../tag/python-araclari.html">python araçları</a> <a href="../tag/reverse-engineering.html">reverse engineering</a> <a href="../tag/sistem-guvenligi.html">sistem güvenliği</a>  </div>
+        <div class="summary"><p>Python akla hayale gelemeyecek kadar çok alanda kullanılıyor.Bunların arasında bilimsel araştırmalardan tutun da marsa gonderilen robotun test aşamlarında kullanılmasına kadar birçok alanda Python'a denk gelebilirsiniz.benimde uzun suredir severek her kutuphanesini frameworkunu kullandığım bu dilin aktif olduğu alanlardan biriside kesinlikle guvenliktir.Eğer sizde sistem guvenliği,tersine muhendislik,guvenlik ...</p> <a class="btn btn-info xsmall" href="../guvenlik-ile-ilgili-python-araclari.html">read more</a></div>
     </div>	
 				
-    
-        <div class="pagination">
+            <div class="pagination">
 <ul>
-
     <li class="prev disabled"><a href="#">&larr; Previous</a></li>
 
+    <li class="active"><a href="../category/python.html">1</a></li>
+    <li class=""><a href="../category/python2.html">2</a></li>
 
-
-    <li class="active"><a href=".././category/python.html">1</a></li>
-
-    <li class=""><a href=".././category/python2.html">2</a></li>
-
-
-
-    <li class="next"><a href=".././category/python2.html">Next &rarr;</a></li>
-
+    <li class="next"><a href="../category/python2.html">Next &rarr;</a></li>
 
 </ul>
-</div>
-    
-
+</div>    
  
-
- 
- 
-
-
+  
         </div>
         
         <div class="span3">
@@ -355,115 +289,68 @@ in <a href=".././category/python.html">python</a>
                 Site
                 </li>
             
-                <li><a href=".././archives.html">Archives</a>
-                <li><a href=".././tags.html">Tags</a>
-                <li><a href=".././feeds/all.atom.xml" rel="alternate">Atom feed</a></li>
-                
-                <li><a href=".././feeds/all.rss.xml" rel="alternate">RSS feed</a></li>
-                
-                 <li><a href=".././sitemap.xml">Sitemap</a>
+                <li><a href="../archives.html">Archives</a>
+                <li><a href="../tags.html">Tags</a>
+                <li><a href="../feeds/all.atom.xml" rel="alternate">Atom feed</a></li>
+                                <li><a href="../feeds/all.rss.xml" rel="alternate">RSS feed</a></li>
+                                 <li><a href="../sitemap.xml">Sitemap</a>
             </ul>
             </div>
 
 
-            
-            <div class="well" style="padding: 8px 0; background-color: #FBFBFB;">
+                        <div class="well" style="padding: 8px 0; background-color: #FBFBFB;">
             <ul class="nav nav-list">
                 <li class="nav-header"> 
                 Categories
                 </li>
                 
-                
-                <li><a href=".././category/tasarim.html">tasarim</a></li>
-                
-                <li><a href=".././category/server.html">server</a></li>
-                
-                <li><a href=".././category/python.html">python</a></li>
-                
-                <li><a href=".././category/programlama.html">programlama</a></li>
-                
-                <li><a href=".././category/linux.html">linux</a></li>
-                
-                <li><a href=".././category/kisisel.html">kisisel</a></li>
-                
-                <li><a href=".././category/internet.html">internet</a></li>
-                
-                <li><a href=".././category/guvenlik.html">guvenlik</a></li>
-                
-                <li><a href=".././category/genel.html">genel</a></li>
-                
-                <li><a href=".././category/eglence.html">eglence</a></li>
-                
-                <li><a href=".././category/django.html">django</a></li>
-                
-                <li><a href=".././category/compsci.html">compsci</a></li>
-                
-                <li><a href=".././category/arduino.html">arduino</a></li>
+                                <li><a href="../category/tasarim.html">tasarim</a></li>
+                                <li><a href="../category/server.html">server</a></li>
+                                <li><a href="../category/python.html">python</a></li>
+                                <li><a href="../category/programlama.html">programlama</a></li>
+                                <li><a href="../category/linux.html">linux</a></li>
+                                <li><a href="../category/kisisel.html">kisisel</a></li>
+                                <li><a href="../category/internet.html">internet</a></li>
+                                <li><a href="../category/guvenlik.html">guvenlik</a></li>
+                                <li><a href="../category/genel.html">genel</a></li>
+                                <li><a href="../category/eglence.html">eglence</a></li>
+                                <li><a href="../category/django.html">django</a></li>
+                                <li><a href="../category/compsci.html">compsci</a></li>
+                                <li><a href="../category/arduino.html">arduino</a></li>
                                    
             </ul>
             </div>
             
 
-
-            
-            <div class="well" style="padding: 8px 0; background-color: #FBFBFB;">
+                        <div class="well" style="padding: 8px 0; background-color: #FBFBFB;">
             <ul class="nav nav-list">
                 <li class="nav-header"> 
                 Links
                 </li>
             
-            
-                <li><a href="http://www.python.org">Python</a></li>
-            
-            </ul>
+                            <li><a href="http://www.python.org">Python</a></li>
+                        </ul>
             </div>
             
 
-
-            
-            <div class="social">
+                        <div class="social">
             <div class="well" style="padding: 8px 0; background-color: #FBFBFB;">
             <ul class="nav nav-list">
                 <li class="nav-header"> 
                 Social
                 </li>
            
-                
-                <li><a href="http://twitter.com/halitalptekin">twitter</a></li>
-                
-                <li><a href="http://github.com/halitalptekin">github</a></li>
-                
-                <li><a href="http://stackoverflow.com/users/1151618/halit-alptekin">stackoverflow</a></li>
-                
-                <li><a href="http://tr.linkedin.com/in/halitalptekin">linkedin</a></li>
-                
-            </ul>
+                                <li><a href="http://twitter.com/halitalptekin">twitter</a></li>
+                                <li><a href="http://github.com/halitalptekin">github</a></li>
+                                <li><a href="http://stackoverflow.com/users/1151618/halit-alptekin">stackoverflow</a></li>
+                                <li><a href="http://tr.linkedin.com/in/halitalptekin">linkedin</a></li>
+                            </ul>
             </div>
             </div>
             
-
             
-            <div class="well" style="padding: 8px 0; background-color: #FBFBFB;">
-            <ul class="nav nav-list">
-                <li class="nav-header"> 
-                Ads
-                </li>
-
-                
-                <li><a href="http://www.tamindir.com" title="Program Indir"><img src="/media/reklam/tamindir.jpg" alt="Tamindir" title="Program Indir"></a>
-                </li>
-                
-                <li><a href="http://www.tatilbuldur.com" title="TatilBudur"><img src="/media/reklam/tatilbudur.png" alt="TatilBudur" title="TatilBudur"></a>
-                </li>
-                
-            </ul>
-            </div>
-            
-
         </div>  
-    </div> 
-    </div> 
-
+    </div>     </div> 
 <footer>
 	<hr>
 	<p><a href='http://www.halitalptekin.com'>Halit Alptekin Personal Blog</a> &copy; 2012</p>
@@ -472,8 +359,6 @@ in <a href=".././category/python.html">python</a>
 </div> <!-- /container -->
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
 <script src="http://twitter.github.com/bootstrap/assets/js/bootstrap-collapse.js"></script>
-
 <script>var _gaq=[['_setAccount','UA-24728900-1'],['_trackPageview']];(function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];g.src='//www.google-analytics.com/ga.js';s.parentNode.insertBefore(g,s)}(document,'script'))</script>
-
 </body>
 </html>

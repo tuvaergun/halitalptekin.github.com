@@ -10,14 +10,14 @@
 
     <!-- Le HTML5 shim, for IE6-8 support of HTML elements -->
     <!--[if lt IE 9]>
-    <script src=".././theme/html5.js"></script>
+    <script src="../theme/html5.js"></script>
     <![endif]-->
 
     <!-- Le styles -->
-    <link href=".././theme/bootstrap.min.css" rel="stylesheet">
-    <link href=".././theme/bootstrap.min.responsive.css" rel="stylesheet">
-    <link href=".././theme/local.css" rel="stylesheet">
-    <link href=".././theme/pygments.css" rel="stylesheet">
+    <link href="../theme/bootstrap.min.css" rel="stylesheet">
+    <link href="../theme/bootstrap.min.responsive.css" rel="stylesheet">
+    <link href="../theme/local.css" rel="stylesheet">
+    <link href="../theme/pygments.css" rel="stylesheet">
 
 </head>
 
@@ -33,14 +33,13 @@
              <span class="icon-bar"></span>
          </a>
 
-        <a class="brand" href="../.">Halit Alptekin Personal Blog</a>
+        <a class="brand" href="..">Halit Alptekin Personal Blog</a>
 
         <div class="nav-collapse">
         <ul class="nav">
-        
-            
-        <li><a href=".././pages/about-me.html">About Me</a></li>
-	    <li><a href=".././pages/contact.html">Contact</a></li>
+                    
+        <li><a href="../pages/about-me.html">About Me</a></li>
+	    <li><a href="../pages/contact.html">Contact</a></li>
         </ul>
         </div>
         
@@ -54,107 +53,88 @@
 
         <div class="span9">
                 
-
         
-
-
 
     <div class='article'>
         <div class="content-title">
-            <a href=".././yeni-misafir-ile-ilk-tanisma.html"><h1>Yeni Misafir İle İlk&nbsp;Tanışma</h1></a>
+            <a href="../yeni-misafir-ile-ilk-tanisma.html"><h1>Yeni Misafir İle İlk Tanışma</h1></a>
             Jun 28, 2012
 
-
-by <a class="url fn" href=".././author/halit.html">halit</a>
+by <a class="url fn" href="../author/halit.html">halit</a>
  
 
-in <a href=".././category/arduino.html">arduino</a>
+in <a href="../category/arduino.html">arduino</a>
 
  
-    tagged <a href=".././tag/arduino.html">arduino</a> <a href=".././tag/arduino-uno.html">arduino uno</a> <a href=".././tag/breadboard.html">breadboard</a> <a href=".././tag/direnc.html">direnç</a> <a href=".././tag/pull-down-devre.html">pull-down devre</a> <a href=".././tag/seri-port.html">seri port</a> 
- 
+    tagged <a href="../tag/arduino.html">arduino</a> <a href="../tag/arduino-uno.html">arduino uno</a> <a href="../tag/breadboard.html">breadboard</a> <a href="../tag/direnc.html">direnç</a> <a href="../tag/pull-down-devre.html">pull-down devre</a> <a href="../tag/seri-port.html">seri port</a>  
         </div>
         
-        <div><p>Bir onceki yazımda Arduino siparişi verdiğimi ve beklemede olduğumu yazmıştım.Bugun oğlen saatlerimde yeni misafirim elime ulaştı ve hemen kurcalamaya başladım.Aldığım setin içinden çıkan Arduino kitabınada sert bir giriş yaptım.Ve hemen hızlıca okumaya başladım.Arduino&#8217;nun dilinin tam tahmin ettiğim gibi C tabanlı olduğunu gordum.Buda programlama kısmında pek uğraşmayacağım anlamına&nbsp;geliyor.</p>
-<p>Aldığım set ile birlikte birçok diyot,direnç,transistor,pil,pil başlıkları,display,led,lcd,motor vb elektronik devre elemanlarıda aldım.Bu sayede hemen kitaptaki projeleri yapmaya başladım.İlk projemi kitaptan bağımsız kendim yapmak&nbsp;istedim.</p>
-<p>Bu projede okuldayken robotik derslerinde gorduğum pull-up,pull-down devreleri ile birlikte led ve buton kullandım.Ve ledin açık veya kapalı olduğunu da seri haberleşme kullanarak bilgisayarıma bildirdim.Bence başlangıç için gayet iyi oldu.Zamanla butun elektronik devre elemanları ile ilgili guzel projeler yapacağım.Onlarıda paylaşırım&nbsp;artık.</p>
-<p>İlk yaptığım projenin kodları&nbsp;aşağıda.</p>
-<div class="codehilite"><pre><span class="o">/*</span>
-  <span class="n">Ilk</span> <span class="n">Arduino</span> <span class="n">Denemem</span><span class="p">(</span><span class="n">Pulldown</span><span class="p">,</span><span class="n"><span class="caps">LED</span></span> <span class="n">ve</span> <span class="n">Seri</span> <span class="n">haberlesme</span><span class="p">)</span>
+        <div><p>Bir onceki yazımda Arduino siparişi verdiğimi ve beklemede olduğumu yazmıştım.Bugun oğlen saatlerimde yeni misafirim elime ulaştı ve hemen kurcalamaya başladım.Aldığım setin içinden çıkan Arduino kitabınada sert bir giriş yaptım.Ve hemen hızlıca okumaya başladım.Arduino'nun dilinin tam tahmin ettiğim gibi C tabanlı olduğunu gordum.Buda programlama kısmında pek uğraşmayacağım anlamına geliyor.</p>
+<p>Aldığım set ile birlikte birçok diyot,direnç,transistor,pil,pil başlıkları,display,led,lcd,motor vb elektronik devre elemanlarıda aldım.Bu sayede hemen kitaptaki projeleri yapmaya başladım.İlk projemi kitaptan bağımsız kendim yapmak istedim.</p>
+<p>Bu projede okuldayken robotik derslerinde gorduğum pull-up,pull-down devreleri ile birlikte led ve buton kullandım.Ve ledin açık veya kapalı olduğunu da seri haberleşme kullanarak bilgisayarıma bildirdim.Bence başlangıç için gayet iyi oldu.Zamanla butun elektronik devre elemanları ile ilgili guzel projeler yapacağım.Onlarıda paylaşırım artık.</p>
+<p>İlk yaptığım projenin kodları aşağıda.</p>
+<div class="codehilite"><pre><span class="cm">/*</span>
+<span class="cm">  Ilk Arduino Denemem(Pulldown,LED ve Seri haberlesme)</span>
 
-  <span class="n">Halit</span> <span class="n">Alptekin</span> <span class="o">-</span> <span class="n">www</span><span class="o">.</span><span class="n">halitalptekin</span><span class="o">.</span><span class="n">com</span>
+<span class="cm">  Halit Alptekin - www.halitalptekin.com</span>
 
-<span class="o">*/</span>
+<span class="cm">*/</span>
 
-<span class="n">const</span> <span class="nb">int</span> <span class="n">butonPin</span>  <span class="o">=</span>  <span class="mi">12</span><span class="p">;</span>
-<span class="n">const</span> <span class="nb">int</span> <span class="n">ledPin</span>    <span class="o">=</span>  <span class="mi">13</span><span class="p">;</span>
+<span class="k">const</span> <span class="k">int</span> <span class="n">butonPin</span>  <span class="o">=</span>  <span class="mh">12</span><span class="p">;</span>
+<span class="k">const</span> <span class="k">int</span> <span class="n">ledPin</span>    <span class="o">=</span>  <span class="mh">13</span><span class="p">;</span>
 
-<span class="nb">int</span> <span class="n">butonDurumu</span>     <span class="o">=</span>  <span class="mi">0</span><span class="p">;</span>
+<span class="k">int</span> <span class="n">butonDurumu</span>     <span class="o">=</span>  <span class="mh">0</span><span class="p">;</span>
 
-<span class="n">void</span> <span class="n">setup</span><span class="p">()</span> <span class="p">{</span>
+<span class="k">void</span> <span class="n">setup</span><span class="p">()</span> <span class="p">{</span>
 
-  <span class="sr">//</span><span class="n">Butonu</span> <span class="n">giris</span> <span class="n">yapiyoruz</span>
-  <span class="n">pinMode</span><span class="p">(</span><span class="n">butonPin</span><span class="p">,</span> <span class="n"><span class="caps">INPUT</span></span><span class="p">);</span>
+  <span class="c1">//Butonu giris yapiyoruz</span>
+  <span class="n">pinMode</span><span class="p">(</span><span class="n">butonPin</span><span class="p">,</span> <span class="no">INPUT</span><span class="p">);</span>
 
-  <span class="sr">//</span><span class="n">Ledi</span> <span class="n">cikis</span> <span class="n">yapiyoruz</span>
-  <span class="n">pinMode</span><span class="p">(</span><span class="n">ledPin</span><span class="p">,</span> <span class="n"><span class="caps">OUTPUT</span></span><span class="p">);</span>
+  <span class="c1">//Ledi cikis yapiyoruz</span>
+  <span class="n">pinMode</span><span class="p">(</span><span class="n">ledPin</span><span class="p">,</span> <span class="no">OUTPUT</span><span class="p">);</span>
 
-  <span class="sr">//</span><span class="n">Seri</span> <span class="n">haberlesme</span>  
-  <span class="n">Serial</span><span class="o">.</span><span class="n">begin</span><span class="p">(</span><span class="mi">9600</span><span class="p">);</span>
+  <span class="c1">//Seri haberlesme  </span>
+  <span class="n">Serial</span><span class="p">.</span><span class="k">begin</span><span class="p">(</span><span class="mh">9600</span><span class="p">);</span>
 
 <span class="p">}</span>
 
-<span class="n">void</span> <span class="n">loop</span><span class="p">()</span> <span class="p">{</span>
-  <span class="sr">//</span> <span class="n">Butondan</span> <span class="n">veri</span> <span class="n">oku</span>
+<span class="k">void</span> <span class="n">loop</span><span class="p">()</span> <span class="p">{</span>
+  <span class="c1">// Butondan veri oku</span>
   <span class="n">butonDurumu</span>  <span class="o">=</span>  <span class="n">digitalRead</span><span class="p">(</span><span class="n">butonPin</span><span class="p">);</span>
 
-  <span class="k">if</span><span class="p">(</span><span class="n">butonDurumu</span> <span class="o">==</span> <span class="n"><span class="caps">HIGH</span></span><span class="p">){</span>
-    <span class="n">digitalWrite</span><span class="p">(</span><span class="n">ledPin</span><span class="p">,</span> <span class="n"><span class="caps">HIGH</span></span><span class="p">);</span>
-    <span class="n">Serial</span><span class="o">.</span><span class="n">println</span><span class="p">(</span><span class="s">&quot;Led Acik&quot;</span><span class="p">);</span>
-    <span class="n">delay</span><span class="p">(</span><span class="mi">1000</span><span class="p">);</span>
+  <span class="k">if</span><span class="p">(</span><span class="n">butonDurumu</span> <span class="o">==</span> <span class="no">HIGH</span><span class="p">){</span>
+    <span class="n">digitalWrite</span><span class="p">(</span><span class="n">ledPin</span><span class="p">,</span> <span class="no">HIGH</span><span class="p">);</span>
+    <span class="n">Serial</span><span class="p">.</span><span class="n">println</span><span class="p">(</span><span class="s">&quot;Led Acik&quot;</span><span class="p">);</span>
+    <span class="n">delay</span><span class="p">(</span><span class="mh">1000</span><span class="p">);</span>
   <span class="p">}</span><span class="k">else</span><span class="p">{</span>
-    <span class="n">digitalWrite</span><span class="p">(</span><span class="n">ledPin</span><span class="p">,</span> <span class="n"><span class="caps">LOW</span></span><span class="p">);</span>
-    <span class="n">Serial</span><span class="o">.</span><span class="n">println</span><span class="p">(</span><span class="s">&quot;Led Kapali&quot;</span><span class="p">);</span>
-    <span class="n">delay</span><span class="p">(</span><span class="mi">1000</span><span class="p">);</span>
+    <span class="n">digitalWrite</span><span class="p">(</span><span class="n">ledPin</span><span class="p">,</span> <span class="no">LOW</span><span class="p">);</span>
+    <span class="n">Serial</span><span class="p">.</span><span class="n">println</span><span class="p">(</span><span class="s">&quot;Led Kapali&quot;</span><span class="p">);</span>
+    <span class="n">delay</span><span class="p">(</span><span class="mh">1000</span><span class="p">);</span>
   <span class="p">}</span>  
 <span class="p">}</span>
 </pre></div>
 
 
-<p>Devre için Arduino&#8217;nun aşağıdaki gorduğunuz gibi 13. pinine ledi,12. pinine butonu bağladım.Buton Pull-Down devresi için 10 kohm direnç ve led ile seri bağlı 470 ohm dirençten faydalandım.Devreyi aşağıda&nbsp;gorebilirsiniz.</p>
+<p>Devre için Arduino'nun aşağıdaki gorduğunuz gibi 13. pinine ledi,12. pinine butonu bağladım.Buton Pull-Down devresi için 10 kohm direnç ve led ile seri bağlı 470 ohm dirençten faydalandım.Devreyi aşağıda gorebilirsiniz.</p>
 <p><img alt="Arduino Proje 1" src="http://www.halitalptekin.com/media/upload/arduino-proje-1.jpg" /></p>
-<p>Ve butona bastığımızda aşağıdaki gibi bir goruntu oluşuyor.Bunun yanında Arduino <span class="caps">IDE</span>&#8217;si içindeki Serial Monitoru açtığımızda da Led Acik veya Led Kapali yazilarini gorebilirsiniz.Araya koyduğum 1 saniyelik delay ile butona basmanızdan 1 saniye sonra led yanıyor cekmenizden 1 saniye sonra sonuyor.Bunuda Serial Monitordeki yazı karmasasını onlemek için&nbsp;yaptım.</p>
+<p>Ve butona bastığımızda aşağıdaki gibi bir goruntu oluşuyor.Bunun yanında Arduino IDE'si içindeki Serial Monitoru açtığımızda da Led Acik veya Led Kapali yazilarini gorebilirsiniz.Araya koyduğum 1 saniyelik delay ile butona basmanızdan 1 saniye sonra led yanıyor cekmenizden 1 saniye sonra sonuyor.Bunuda Serial Monitordeki yazı karmasasını onlemek için yaptım.</p>
 <p><img alt="Arduino Proje 2" src="http://www.halitalptekin.com/media/upload/arduino-proje-2.jpg" /></p>
-<p>İlk deneme için bence gayet başarılı bir uygulama oldu.Zamanla daha fazla karmaşaya gireceğimi hissediyorum.Buda bana ayrı bir gaz veriyor.İnşallah hepiniz bir gun Arduino ile tanışma fırsatı&nbsp;bulursunuz.</p></div>
+<p>İlk deneme için bence gayet başarılı bir uygulama oldu.Zamanla daha fazla karmaşaya gireceğimi hissediyorum.Buda bana ayrı bir gaz veriyor.İnşallah hepiniz bir gun Arduino ile tanışma fırsatı bulursunuz.</p></div>
         <hr />
     </div>
 		
-    
-        <div class="pagination">
+            <div class="pagination">
 <ul>
-
     <li class="prev disabled"><a href="#">&larr; Previous</a></li>
 
-
-
-    <li class="active"><a href=".././tag/direnç.html">1</a></li>
-
-
+    <li class="active"><a href="../tag/direnc.html">1</a></li>
 
     <li class="next disabled"><a href="#">&rarr; Next</a></li>
 
-
 </ul>
-</div>
-    
-
-
+</div>    
  
-
- 
- 
-
-
+  
         </div>
         
         <div class="span3">
@@ -165,115 +145,68 @@ in <a href=".././category/arduino.html">arduino</a>
                 Site
                 </li>
             
-                <li><a href=".././archives.html">Archives</a>
-                <li><a href=".././tags.html">Tags</a>
-                <li><a href=".././feeds/all.atom.xml" rel="alternate">Atom feed</a></li>
-                
-                <li><a href=".././feeds/all.rss.xml" rel="alternate">RSS feed</a></li>
-                
-                 <li><a href=".././sitemap.xml">Sitemap</a>
+                <li><a href="../archives.html">Archives</a>
+                <li><a href="../tags.html">Tags</a>
+                <li><a href="../feeds/all.atom.xml" rel="alternate">Atom feed</a></li>
+                                <li><a href="../feeds/all.rss.xml" rel="alternate">RSS feed</a></li>
+                                 <li><a href="../sitemap.xml">Sitemap</a>
             </ul>
             </div>
 
 
-            
-            <div class="well" style="padding: 8px 0; background-color: #FBFBFB;">
+                        <div class="well" style="padding: 8px 0; background-color: #FBFBFB;">
             <ul class="nav nav-list">
                 <li class="nav-header"> 
                 Categories
                 </li>
                 
-                
-                <li><a href=".././category/tasarim.html">tasarim</a></li>
-                
-                <li><a href=".././category/server.html">server</a></li>
-                
-                <li><a href=".././category/python.html">python</a></li>
-                
-                <li><a href=".././category/programlama.html">programlama</a></li>
-                
-                <li><a href=".././category/linux.html">linux</a></li>
-                
-                <li><a href=".././category/kisisel.html">kisisel</a></li>
-                
-                <li><a href=".././category/internet.html">internet</a></li>
-                
-                <li><a href=".././category/guvenlik.html">guvenlik</a></li>
-                
-                <li><a href=".././category/genel.html">genel</a></li>
-                
-                <li><a href=".././category/eglence.html">eglence</a></li>
-                
-                <li><a href=".././category/django.html">django</a></li>
-                
-                <li><a href=".././category/compsci.html">compsci</a></li>
-                
-                <li><a href=".././category/arduino.html">arduino</a></li>
+                                <li><a href="../category/tasarim.html">tasarim</a></li>
+                                <li><a href="../category/server.html">server</a></li>
+                                <li><a href="../category/python.html">python</a></li>
+                                <li><a href="../category/programlama.html">programlama</a></li>
+                                <li><a href="../category/linux.html">linux</a></li>
+                                <li><a href="../category/kisisel.html">kisisel</a></li>
+                                <li><a href="../category/internet.html">internet</a></li>
+                                <li><a href="../category/guvenlik.html">guvenlik</a></li>
+                                <li><a href="../category/genel.html">genel</a></li>
+                                <li><a href="../category/eglence.html">eglence</a></li>
+                                <li><a href="../category/django.html">django</a></li>
+                                <li><a href="../category/compsci.html">compsci</a></li>
+                                <li><a href="../category/arduino.html">arduino</a></li>
                                    
             </ul>
             </div>
             
 
-
-            
-            <div class="well" style="padding: 8px 0; background-color: #FBFBFB;">
+                        <div class="well" style="padding: 8px 0; background-color: #FBFBFB;">
             <ul class="nav nav-list">
                 <li class="nav-header"> 
                 Links
                 </li>
             
-            
-                <li><a href="http://www.python.org">Python</a></li>
-            
-            </ul>
+                            <li><a href="http://www.python.org">Python</a></li>
+                        </ul>
             </div>
             
 
-
-            
-            <div class="social">
+                        <div class="social">
             <div class="well" style="padding: 8px 0; background-color: #FBFBFB;">
             <ul class="nav nav-list">
                 <li class="nav-header"> 
                 Social
                 </li>
            
-                
-                <li><a href="http://twitter.com/halitalptekin">twitter</a></li>
-                
-                <li><a href="http://github.com/halitalptekin">github</a></li>
-                
-                <li><a href="http://stackoverflow.com/users/1151618/halit-alptekin">stackoverflow</a></li>
-                
-                <li><a href="http://tr.linkedin.com/in/halitalptekin">linkedin</a></li>
-                
-            </ul>
+                                <li><a href="http://twitter.com/halitalptekin">twitter</a></li>
+                                <li><a href="http://github.com/halitalptekin">github</a></li>
+                                <li><a href="http://stackoverflow.com/users/1151618/halit-alptekin">stackoverflow</a></li>
+                                <li><a href="http://tr.linkedin.com/in/halitalptekin">linkedin</a></li>
+                            </ul>
             </div>
             </div>
             
-
             
-            <div class="well" style="padding: 8px 0; background-color: #FBFBFB;">
-            <ul class="nav nav-list">
-                <li class="nav-header"> 
-                Ads
-                </li>
-
-                
-                <li><a href="http://www.tamindir.com" title="Program Indir"><img src="/media/reklam/tamindir.jpg" alt="Tamindir" title="Program Indir"></a>
-                </li>
-                
-                <li><a href="http://www.tatilbuldur.com" title="TatilBudur"><img src="/media/reklam/tatilbudur.png" alt="TatilBudur" title="TatilBudur"></a>
-                </li>
-                
-            </ul>
-            </div>
-            
-
         </div>  
-    </div> 
-    </div> 
-
+    </div>     </div> 
 <footer>
 	<hr>
 	<p><a href='http://www.halitalptekin.com'>Halit Alptekin Personal Blog</a> &copy; 2012</p>
@@ -282,8 +215,6 @@ in <a href=".././category/arduino.html">arduino</a>
 </div> <!-- /container -->
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
 <script src="http://twitter.github.com/bootstrap/assets/js/bootstrap-collapse.js"></script>
-
 <script>var _gaq=[['_setAccount','UA-24728900-1'],['_trackPageview']];(function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];g.src='//www.google-analytics.com/ga.js';s.parentNode.insertBefore(g,s)}(document,'script'))</script>
-
 </body>
 </html>

@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>Halit Alptekin Personal Blog - Optik Mouse İle Arduino&nbsp;Kullanımı</title>
+    <title>Halit Alptekin Personal Blog - Optik Mouse İle Arduino Kullanımı</title>
     <meta name="description" content="Arduino Kullanarak Optik Mouse'tan Bilgi Alma">
     <meta name="keywords" content="arduino, arduino uno, optical mouse hack, optik mouse hack, hdblog">
     <meta name="author" content="halit">
@@ -37,8 +37,7 @@
 
         <div class="nav-collapse">
         <ul class="nav">
-        
-            
+                    
         <li><a href="./pages/about-me.html">About Me</a></li>
 	    <li><a href="./pages/contact.html">Contact</a></li>
         </ul>
@@ -53,12 +52,10 @@
     <div class="row">
 
         <div class="span9">
-        
-    <div class='article'>
+            <div class='article'>
         <div class="content-title">
-            <h1>Optik Mouse İle Arduino&nbsp;Kullanımı</h1>
+            <h1>Optik Mouse İle Arduino Kullanımı</h1>
             Jul 04, 2012
-
 
 by <a class="url fn" href="./author/halit.html">halit</a>
  
@@ -66,22 +63,20 @@ by <a class="url fn" href="./author/halit.html">halit</a>
 in <a href="./category/arduino.html">arduino</a>
 
  
-    tagged <a href="./tag/arduino.html">arduino</a> <a href="./tag/arduino-uno.html">arduino uno</a> <a href="./tag/optical-mouse-hack.html">optical mouse hack</a> <a href="./tag/optik-mouse-hack.html">optik mouse hack</a> 
-
-        </div>
+    tagged <a href="./tag/arduino.html">arduino</a> <a href="./tag/arduino-uno.html">arduino uno</a> <a href="./tag/optical-mouse-hack.html">optical mouse hack</a> <a href="./tag/optik-mouse-hack.html">optik mouse hack</a>         </div>
 	
-        <div><p>Bugunlerde aklıma ne geldiyse hep başkaları tarafından yapılmış olduğunu gordum.Bu beni hem uzdu hemde sevindirdi.Hiç internette olmayan birşey yapamadığım için uzuldum ama benimle aynı şekilde duşunen insanların olmasıda beni sevindirdi.Bu şekilde olan son olaylardan birisi de optik mouse&#8217;un Arduino ile kullanılmasaydı.Geçenlerde evin içinde sensor ararken aklıma gelen optik mouse&#8217;ın içini açıp iyice bir inceledim.Olay gayet basitti.<span class="caps">ADNS</span>-x serisi bir entegre kullanılarak optik lazer yonetiliyordu.İnternetteki ufak araştırmadan sonra da datasheetine ulaştım.Hemen uğraşmaya başlamadan once de daha once boyle birşeyin yapılıp yapılmadığını oğrenmek istedim.Ve tam tahmin ettiğim gibi 2-3 kişi bunu daha onceden&nbsp;yapmıştı.</p>
-<p>Bu beni genede uzmedi.Ben bunu yapmaya karar vermiştim bu yuzden optiği uygun bir şekilde lehimledim ve Arduino&#8217;ya bağladım.Genelde optik mouseların bağlantı şekilleri aynı olduğu için aşağıdaki şekilde sizde bağlayabilirsiniz.(Hepsi bir değil bu yuzden datasheetine bakmakta fayda&nbsp;var)</p>
+        <div><p>Bugunlerde aklıma ne geldiyse hep başkaları tarafından yapılmış olduğunu gordum.Bu beni hem uzdu hemde sevindirdi.Hiç internette olmayan birşey yapamadığım için uzuldum ama benimle aynı şekilde duşunen insanların olmasıda beni sevindirdi.Bu şekilde olan son olaylardan birisi de optik mouse'un Arduino ile kullanılmasaydı.Geçenlerde evin içinde sensor ararken aklıma gelen optik mouse'ın içini açıp iyice bir inceledim.Olay gayet basitti.ADNS-x serisi bir entegre kullanılarak optik lazer yonetiliyordu.İnternetteki ufak araştırmadan sonra da datasheetine ulaştım.Hemen uğraşmaya başlamadan once de daha once boyle birşeyin yapılıp yapılmadığını oğrenmek istedim.Ve tam tahmin ettiğim gibi 2-3 kişi bunu daha onceden yapmıştı.</p>
+<p>Bu beni genede uzmedi.Ben bunu yapmaya karar vermiştim bu yuzden optiği uygun bir şekilde lehimledim ve Arduino'ya bağladım.Genelde optik mouseların bağlantı şekilleri aynı olduğu için aşağıdaki şekilde sizde bağlayabilirsiniz.(Hepsi bir değil bu yuzden datasheetine bakmakta fayda var)</p>
 <p><img alt="Optic Mouse Hack" src="http://farm3.static.flickr.com/2005/2314791226_8942d560fe.jpg" /></p>
-<p>Yukarırda gorduğunuz beyaz kablo <strong>clock</strong>, turkuza olan <strong>data</strong>,turuncu olan <strong>+</strong> ve mor olan ise <strong>-</strong> .Benim optik mouse&#8217;ım içindekide aynı yukardaki gibi.Genelde de aynı oluyorlar.Optiğin çalışıp çalışmadığını + ve - uçlarına 3v vererek kontrol edebilirsiniz.Mumkunse çok uzun sureli tutmayın çunku devreye zararı&nbsp;oluyor.</p>
-<p>Optik mouse işini yukarıdaki gibi hallettiksen son iş bunları Arduino&#8217;ya bağlamaya geliyor.Clock kablosunu digital 2,data kablosunu da digital 3 kablosuna bağlayabilirsiniz.Bunun sebebi internetteki tum kaynaklarda bu şekilde yapılmış.Siz farklı yerlere bağlarsanız kodların hemen ustundeki kısımları değiştirmeniz gerekir.Bunu&nbsp;unutmayınız.</p>
-<p>Mouse&#8217;un + kısmına 5v ve - kısmına da toprağı bağladıktan sonra Arduinoyu açabilirsiniz.Eğer herhangibi bir yanlış yoksa mouse&#8217;un çalıştığını&nbsp;goreceksiniz.</p>
-<p>Asıl iş bundan sonra başlıyor.Bu optik mouse ile webcam yapma şansınızın olduğu gibi mouse&#8217;un hızını ve kordinatlarınıda bulabilirsiniz.Bundan sonrası sizin tercihiniz.Ben 3unude denedim ve hepsine başarılı oldum.Aralarında birtek webcam ubuntu 64 bit olduğu için çok uğraştırdı.Diğerleri için pek&nbsp;uğraşmadım.</p>
-<p>Şimdi sıra Arduinomuzu programlamada.Öncelikle <a href="https://github.com/halitalptekin/IRduino">buradaki</a> dosyamızı indirip açıyoruz.Ben bunu yabancı bir siteden aldım ancak çalıştıramadım.Çunku içinde birçok hata vardı.Bazı duzeltmeler ile çalışır duruma getirdim.Aldığım kişiye de duzeltmeleri&nbsp;bildirdim.</p>
-<p>Sizin Ubuntu kullandığınızı varsayıyorum.Bu yuzden indirdiğiniz dosyaları /usr/share/arduino/ dizinine atmanız gerekli.Windows kullanıcılarının ne yapması konusunda tam bir fikrim yok.Ancak onlarda buyuk ihtimal program files klasorune atmaları&nbsp;gerekiyor.</p>
-<p>Bu işlemi yaptıktan sonra Arduino <span class="caps">IDE</span>&#8217;sini yeniden başlatın.Tekrardan açıldığında <strong>File-&gt;Examples</strong> seçeneği altındaki <strong>OptiMouse</strong> dizininden <strong>Coordinates</strong> veya <strong>Speed</strong> uygulamasını açabilirsiniz.Açtıktan sonra direk Arduino içine yukleme yapmayınız.Uygulama içerisinde Serial Port hızını kendinize gore ayarlayınız ve upload&nbsp;ediniz.</p>
-<p>Eğer herşey yerli yerinde ise serial monitoru açtığınızda(Coordinates uygulamasını açtığını farz ediyorum) onunuze mouse&#8217;tan gelen kordinat bilgileri gorunmesi&nbsp;lazım.</p>
-<p>Bu şekilde bir kullanım sizin için yeterli değilse <a href="http://www.bidouille.org/hack/mousecam">buradaki</a> veya <a href="http://conorpeterson.wordpress.com/2010/06/04/optical-mouse-hacking-part-1/">buradaki</a> kamera yapımlarına bakabilirsiniz.Ubuntu 64 bitte java dosyasının sorun çıkardığını soyleyim.Bu yuzden Windows uzerinde deneyiniz.Processing ile yazılmış olanda herhangibi bir sıkıntı&nbsp;çıkmıyor.</p></div>
+<p>Yukarırda gorduğunuz beyaz kablo <strong>clock</strong>, turkuza olan <strong>data</strong>,turuncu olan <strong>+</strong> ve mor olan ise <strong>-</strong> .Benim optik mouse'ım içindekide aynı yukardaki gibi.Genelde de aynı oluyorlar.Optiğin çalışıp çalışmadığını + ve - uçlarına 3v vererek kontrol edebilirsiniz.Mumkunse çok uzun sureli tutmayın çunku devreye zararı oluyor.</p>
+<p>Optik mouse işini yukarıdaki gibi hallettiksen son iş bunları Arduino'ya bağlamaya geliyor.Clock kablosunu digital 2,data kablosunu da digital 3 kablosuna bağlayabilirsiniz.Bunun sebebi internetteki tum kaynaklarda bu şekilde yapılmış.Siz farklı yerlere bağlarsanız kodların hemen ustundeki kısımları değiştirmeniz gerekir.Bunu unutmayınız.</p>
+<p>Mouse'un + kısmına 5v ve - kısmına da toprağı bağladıktan sonra Arduinoyu açabilirsiniz.Eğer herhangibi bir yanlış yoksa mouse'un çalıştığını goreceksiniz.</p>
+<p>Asıl iş bundan sonra başlıyor.Bu optik mouse ile webcam yapma şansınızın olduğu gibi mouse'un hızını ve kordinatlarınıda bulabilirsiniz.Bundan sonrası sizin tercihiniz.Ben 3unude denedim ve hepsine başarılı oldum.Aralarında birtek webcam ubuntu 64 bit olduğu için çok uğraştırdı.Diğerleri için pek uğraşmadım.</p>
+<p>Şimdi sıra Arduinomuzu programlamada.Öncelikle <a href="https://github.com/halitalptekin/IRduino">buradaki</a> dosyamızı indirip açıyoruz.Ben bunu yabancı bir siteden aldım ancak çalıştıramadım.Çunku içinde birçok hata vardı.Bazı duzeltmeler ile çalışır duruma getirdim.Aldığım kişiye de duzeltmeleri bildirdim.</p>
+<p>Sizin Ubuntu kullandığınızı varsayıyorum.Bu yuzden indirdiğiniz dosyaları /usr/share/arduino/ dizinine atmanız gerekli.Windows kullanıcılarının ne yapması konusunda tam bir fikrim yok.Ancak onlarda buyuk ihtimal program files klasorune atmaları gerekiyor.</p>
+<p>Bu işlemi yaptıktan sonra Arduino IDE'sini yeniden başlatın.Tekrardan açıldığında <strong>File-&gt;Examples</strong> seçeneği altındaki <strong>OptiMouse</strong> dizininden <strong>Coordinates</strong> veya <strong>Speed</strong> uygulamasını açabilirsiniz.Açtıktan sonra direk Arduino içine yukleme yapmayınız.Uygulama içerisinde Serial Port hızını kendinize gore ayarlayınız ve upload ediniz.</p>
+<p>Eğer herşey yerli yerinde ise serial monitoru açtığınızda(Coordinates uygulamasını açtığını farz ediyorum) onunuze mouse'tan gelen kordinat bilgileri gorunmesi lazım.</p>
+<p>Bu şekilde bir kullanım sizin için yeterli değilse <a href="http://www.bidouille.org/hack/mousecam">buradaki</a> veya <a href="http://conorpeterson.wordpress.com/2010/06/04/optical-mouse-hacking-part-1/">buradaki</a> kamera yapımlarına bakabilirsiniz.Ubuntu 64 bitte java dosyasının sorun çıkardığını soyleyim.Bu yuzden Windows uzerinde deneyiniz.Processing ile yazılmış olanda herhangibi bir sıkıntı çıkmıyor.</p></div>
 	
         <hr>
         <div class="addthis_toolbox addthis_default_style addthis_32x32_style">
@@ -100,9 +95,7 @@ in <a href="./category/arduino.html">arduino</a>
         <script type="text/javascript" src="http://s7.addthis.com/js/250/addthis_widget.js#pubid=ra-504c6d593daec57a"></script>
         <hr>   	   
         <h2>Comments</h2>
-	
-	
-<div id="disqus_thread"></div>
+		<div id="disqus_thread"></div>
 <script type="text/javascript">
     var disqus_shortname = 'halitalptekin'; 
 
@@ -113,9 +106,7 @@ in <a href="./category/arduino.html">arduino</a>
     })();
 </script>
 <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-
     </div>
-
         </div>
         
         <div class="span3">
@@ -129,112 +120,65 @@ in <a href="./category/arduino.html">arduino</a>
                 <li><a href="./archives.html">Archives</a>
                 <li><a href="./tags.html">Tags</a>
                 <li><a href="./feeds/all.atom.xml" rel="alternate">Atom feed</a></li>
-                
-                <li><a href="./feeds/all.rss.xml" rel="alternate">RSS feed</a></li>
-                
-                 <li><a href="./sitemap.xml">Sitemap</a>
+                                <li><a href="./feeds/all.rss.xml" rel="alternate">RSS feed</a></li>
+                                 <li><a href="./sitemap.xml">Sitemap</a>
             </ul>
             </div>
 
 
-            
-            <div class="well" style="padding: 8px 0; background-color: #FBFBFB;">
+                        <div class="well" style="padding: 8px 0; background-color: #FBFBFB;">
             <ul class="nav nav-list">
                 <li class="nav-header"> 
                 Categories
                 </li>
                 
-                
-                <li><a href="./category/tasarim.html">tasarim</a></li>
-                
-                <li><a href="./category/server.html">server</a></li>
-                
-                <li><a href="./category/python.html">python</a></li>
-                
-                <li><a href="./category/programlama.html">programlama</a></li>
-                
-                <li><a href="./category/linux.html">linux</a></li>
-                
-                <li><a href="./category/kisisel.html">kisisel</a></li>
-                
-                <li><a href="./category/internet.html">internet</a></li>
-                
-                <li><a href="./category/guvenlik.html">guvenlik</a></li>
-                
-                <li><a href="./category/genel.html">genel</a></li>
-                
-                <li><a href="./category/eglence.html">eglence</a></li>
-                
-                <li><a href="./category/django.html">django</a></li>
-                
-                <li><a href="./category/compsci.html">compsci</a></li>
-                
-                <li><a href="./category/arduino.html">arduino</a></li>
+                                <li><a href="./category/tasarim.html">tasarim</a></li>
+                                <li><a href="./category/server.html">server</a></li>
+                                <li><a href="./category/python.html">python</a></li>
+                                <li><a href="./category/programlama.html">programlama</a></li>
+                                <li><a href="./category/linux.html">linux</a></li>
+                                <li><a href="./category/kisisel.html">kisisel</a></li>
+                                <li><a href="./category/internet.html">internet</a></li>
+                                <li><a href="./category/guvenlik.html">guvenlik</a></li>
+                                <li><a href="./category/genel.html">genel</a></li>
+                                <li><a href="./category/eglence.html">eglence</a></li>
+                                <li><a href="./category/django.html">django</a></li>
+                                <li><a href="./category/compsci.html">compsci</a></li>
+                                <li><a href="./category/arduino.html">arduino</a></li>
                                    
             </ul>
             </div>
             
 
-
-            
-            <div class="well" style="padding: 8px 0; background-color: #FBFBFB;">
+                        <div class="well" style="padding: 8px 0; background-color: #FBFBFB;">
             <ul class="nav nav-list">
                 <li class="nav-header"> 
                 Links
                 </li>
             
-            
-                <li><a href="http://www.python.org">Python</a></li>
-            
-            </ul>
+                            <li><a href="http://www.python.org">Python</a></li>
+                        </ul>
             </div>
             
 
-
-            
-            <div class="social">
+                        <div class="social">
             <div class="well" style="padding: 8px 0; background-color: #FBFBFB;">
             <ul class="nav nav-list">
                 <li class="nav-header"> 
                 Social
                 </li>
            
-                
-                <li><a href="http://twitter.com/halitalptekin">twitter</a></li>
-                
-                <li><a href="http://github.com/halitalptekin">github</a></li>
-                
-                <li><a href="http://stackoverflow.com/users/1151618/halit-alptekin">stackoverflow</a></li>
-                
-                <li><a href="http://tr.linkedin.com/in/halitalptekin">linkedin</a></li>
-                
-            </ul>
+                                <li><a href="http://twitter.com/halitalptekin">twitter</a></li>
+                                <li><a href="http://github.com/halitalptekin">github</a></li>
+                                <li><a href="http://stackoverflow.com/users/1151618/halit-alptekin">stackoverflow</a></li>
+                                <li><a href="http://tr.linkedin.com/in/halitalptekin">linkedin</a></li>
+                            </ul>
             </div>
             </div>
             
-
             
-            <div class="well" style="padding: 8px 0; background-color: #FBFBFB;">
-            <ul class="nav nav-list">
-                <li class="nav-header"> 
-                Ads
-                </li>
-
-                
-                <li><a href="http://www.tamindir.com" title="Program Indir"><img src="/media/reklam/tamindir.jpg" alt="Tamindir" title="Program Indir"></a>
-                </li>
-                
-                <li><a href="http://www.tatilbuldur.com" title="TatilBudur"><img src="/media/reklam/tatilbudur.png" alt="TatilBudur" title="TatilBudur"></a>
-                </li>
-                
-            </ul>
-            </div>
-            
-
         </div>  
-    </div> 
-    </div> 
-
+    </div>     </div> 
 <footer>
 	<hr>
 	<p><a href='http://www.halitalptekin.com'>Halit Alptekin Personal Blog</a> &copy; 2012</p>
@@ -243,8 +187,6 @@ in <a href="./category/arduino.html">arduino</a>
 </div> <!-- /container -->
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
 <script src="http://twitter.github.com/bootstrap/assets/js/bootstrap-collapse.js"></script>
-
 <script>var _gaq=[['_setAccount','UA-24728900-1'],['_trackPageview']];(function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];g.src='//www.google-analytics.com/ga.js';s.parentNode.insertBefore(g,s)}(document,'script'))</script>
-
 </body>
 </html>

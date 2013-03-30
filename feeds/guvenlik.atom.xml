@@ -1,27 +1,27 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>Halit Alptekin Personal Blog</title><link href="http://www.halitalptekin.com/" rel="alternate"></link><link href="http://www.halitalptekin.com/feeds/guvenlik.atom.xml" rel="self"></link><id>http://www.halitalptekin.com/</id><updated>2012-08-21T00:00:00+03:00</updated><entry><title>Facebook’u Proxy Olarak Kullanma</title><link href="http://www.halitalptekin.com/facebooku-proxy-olarak-kullanma.html" rel="alternate"></link><updated>2012-08-21T00:00:00+03:00</updated><author><name>halit</name></author><id>tag:www.halitalptekin.com,2012-08-21:facebooku-proxy-olarak-kullanma.html</id><summary type="html">&lt;p&gt;Geçenlerde Facebook&amp;#8217;un siteler için kullandığı og tagı ile araştırma yaparken ilginç bir durumla karşılaştım.Facebook bu kodlar için ufak bir debugger yapmış.Bu araç ile og taglarını analiz edebiliyorsunuz.Buraya kadar herşey normal.Ancak bu debugger&amp;#8217;ın bir ozelliği olan sayfayı tarama ozelliği maniple edilebilecek cinsten.Buna gore yazdığınız sitenin kaynak kodlarını Facebook sizin yerinize çekip ekranınıza basıyor.Boylelikle bu araç ufak amaçlar için proxy olarak kullanılabilir.Bunu duşundukten hemen sonra internete bu konu ile daha once çalışma yapılmış mı diye baktığımda sadece birkaç yerde bu konudan bahsedilmiş.Hatta ufak bir scrapper orneğide&amp;nbsp;yazılmış.&lt;/p&gt;
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Halit Alptekin Personal Blog</title><link href="http://www.halitalptekin.com/" rel="alternate"></link><link href="http://www.halitalptekin.com/feeds/guvenlik.atom.xml" rel="self"></link><id>http://www.halitalptekin.com/</id><updated>2012-08-21T00:00:00+03:00</updated><entry><title>Facebook'u Proxy Olarak Kullanma</title><link href="http://www.halitalptekin.com/facebooku-proxy-olarak-kullanma.html" rel="alternate"></link><updated>2012-08-21T00:00:00+03:00</updated><author><name>halit</name></author><id>tag:www.halitalptekin.com,2012-08-21:facebooku-proxy-olarak-kullanma.html</id><summary type="html">&lt;p&gt;Geçenlerde Facebook'un siteler için kullandığı og tagı ile araştırma yaparken ilginç bir durumla karşılaştım.Facebook bu kodlar için ufak bir debugger yapmış.Bu araç ile og taglarını analiz edebiliyorsunuz.Buraya kadar herşey normal.Ancak bu debugger'ın bir ozelliği olan sayfayı tarama ozelliği maniple edilebilecek cinsten.Buna gore yazdığınız sitenin kaynak kodlarını Facebook sizin yerinize çekip ekranınıza basıyor.Boylelikle bu araç ufak amaçlar için proxy olarak kullanılabilir.Bunu duşundukten hemen sonra internete bu konu ile daha once çalışma yapılmış mı diye baktığımda sadece birkaç yerde bu konudan bahsedilmiş.Hatta ufak bir scrapper orneğide yazılmış.&lt;/p&gt;
 &lt;p&gt;&lt;img alt="Facebook as a proxy" src="http://www.halitalptekin.com/media/upload/facebook-as-a-proxy.jpg" /&gt;&lt;/p&gt;
-&lt;p&gt;Kullanılan araç &lt;a href="https://developers.facebook.com/tools/debug"&gt;burası&lt;/a&gt;.Siteye girip anonim olarak bakmak istediğiniz siteyi yazın.Daha sonra Debug butonuna basın.Gelen sayfanın en altına yer alan Scraped Url linkine bastığınızda o sayfanın kaynak kodlarını ekranda&amp;nbsp;goreceksiniz.&lt;/p&gt;
-&lt;p&gt;Yani bu aracı aşağıdaki linkteki www.halitalptekin.com yerine kullanmak istediğiniz sitenin adresini yazarak&amp;nbsp;kullanabilirsiniz.&lt;/p&gt;
-&lt;div class="codehilite"&gt;&lt;pre&gt;&lt;span class="n"&gt;https:&lt;/span&gt;&lt;span class="sr"&gt;//&lt;/span&gt;&lt;span class="n"&gt;developers&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;facebook&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;com&lt;/span&gt;&lt;span class="sr"&gt;/tools/&lt;/span&gt;&lt;span class="n"&gt;debug&lt;/span&gt;&lt;span class="sr"&gt;/og/&lt;/span&gt;&lt;span class="n"&gt;echo&lt;/span&gt;&lt;span class="p"&gt;?&lt;/span&gt;&lt;span class="n"&gt;q&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;www&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;halitalptekin&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;com&lt;/span&gt;
+&lt;p&gt;Kullanılan araç &lt;a href="https://developers.facebook.com/tools/debug"&gt;burası&lt;/a&gt;.Siteye girip anonim olarak bakmak istediğiniz siteyi yazın.Daha sonra Debug butonuna basın.Gelen sayfanın en altına yer alan Scraped Url linkine bastığınızda o sayfanın kaynak kodlarını ekranda goreceksiniz.&lt;/p&gt;
+&lt;p&gt;Yani bu aracı aşağıdaki linkteki www.halitalptekin.com yerine kullanmak istediğiniz sitenin adresini yazarak kullanabilirsiniz.&lt;/p&gt;
+&lt;div class="codehilite"&gt;&lt;pre&gt;&lt;span class="nl"&gt;https:&lt;/span&gt;&lt;span class="c1"&gt;//developers.facebook.com/tools/debug/og/echo?q=www.halitalptekin.com&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;ul&gt;
 &lt;li&gt;
-&lt;p&gt;Bu araç ile &lt;span class="caps"&gt;GET&lt;/span&gt; istekleri gonderip sayfaların &lt;span class="caps"&gt;HTML&lt;/span&gt; kodlarına bakabiliriz(Guvenliği olmadığını duşunduğunuz sitenin kaynak koduna bakıp daha sonra&amp;nbsp;girebilirsiniz)&lt;/p&gt;
+&lt;p&gt;Bu araç ile GET istekleri gonderip sayfaların HTML kodlarına bakabiliriz(Guvenliği olmadığını duşunduğunuz sitenin kaynak koduna bakıp daha sonra girebilirsiniz)&lt;/p&gt;
 &lt;/li&gt;
 &lt;li&gt;
-&lt;p&gt;Ufak kodlar yazarak istediğimiz sitenin dizin ve dosyalarını listeleyebiliriz.(File and Directory&amp;nbsp;Crawling)&lt;/p&gt;
+&lt;p&gt;Ufak kodlar yazarak istediğimiz sitenin dizin ve dosyalarını listeleyebiliriz.(File and Directory Crawling)&lt;/p&gt;
 &lt;/li&gt;
 &lt;li&gt;
-&lt;p&gt;Ama bu araç ile &lt;span class="caps"&gt;POST&lt;/span&gt; istekleri gonderemeyip, çerezler uzerinde değişiklik yapamayız.Bir de bu aracı kullanmak için giriş yapmak&amp;nbsp;zorundayız.&lt;/p&gt;
+&lt;p&gt;Ama bu araç ile POST istekleri gonderemeyip, çerezler uzerinde değişiklik yapamayız.Bir de bu aracı kullanmak için giriş yapmak zorundayız.&lt;/p&gt;
 &lt;/li&gt;
 &lt;/ul&gt;
-&lt;p&gt;Bu aracı direk olarak kodlarımıza ekleyerek kullanmanın yanında webserver(Tornado,Django vb) kurarak buradan çektiğimiz kodları tekrardan render edip sayfaya basabiliriz.Boylelikle gerçek bir proxy elde etmiş oluruz.Ben urllib2 kullanarak sayfadan veriyi çekip(cookie gondermeden olmaz) bunu parse ettim ve gereksiz kodlardan temizledim.Daha sonra da tornado web server kullanarak tekrardan render edip ekrana bastım.Şu anlık gayet guzel çalışıyor.Belki ileride bunun da paylaşımını&amp;nbsp;yapabilirim.&lt;/p&gt;</summary><category term="facebook"></category><category term="facebook proxy"></category><category term="file and directory crawling"></category><category term="proxy"></category><category term="tornado"></category><category term="urllib2"></category></entry><entry><title>Linkedin Raporu</title><link href="http://www.halitalptekin.com/linkedin-raporu.html" rel="alternate"></link><updated>2012-06-13T00:00:00+03:00</updated><author><name>halit</name></author><id>tag:www.halitalptekin.com,2012-06-13:linkedin-raporu.html</id><summary type="html">&lt;p&gt;Bundan tam bir hafta once buyuk yankı uyandıran Linkedin sızıntısının hasar raporu yavaş yavaş çıkıyor.Tabi herkes şifreleri çalıp paylaşanlar kadar kotu niyetli değil.Bazı kesimlerde bu şifreleri kırıp çoğunlukla kullanılan şifreler ve bunlarla ilgili verileri paylaştı.Bu sayede insanların hala guvenli şifre kullanımı hakkında çok fazla  yol kat etmediğini anladık.Çalınan 6.5 milyon şifreden 1.3 milyon tanesi kırıldı ve raporu&amp;nbsp;paylaşıldı.&lt;/p&gt;
+&lt;p&gt;Bu aracı direk olarak kodlarımıza ekleyerek kullanmanın yanında webserver(Tornado,Django vb) kurarak buradan çektiğimiz kodları tekrardan render edip sayfaya basabiliriz.Boylelikle gerçek bir proxy elde etmiş oluruz.Ben urllib2 kullanarak sayfadan veriyi çekip(cookie gondermeden olmaz) bunu parse ettim ve gereksiz kodlardan temizledim.Daha sonra da tornado web server kullanarak tekrardan render edip ekrana bastım.Şu anlık gayet guzel çalışıyor.Belki ileride bunun da paylaşımını yapabilirim.&lt;/p&gt;</summary><category term="facebook"></category><category term="facebook proxy"></category><category term="file and directory crawling"></category><category term="proxy"></category><category term="tornado"></category><category term="urllib2"></category></entry><entry><title>Linkedin Raporu</title><link href="http://www.halitalptekin.com/linkedin-raporu.html" rel="alternate"></link><updated>2012-06-13T00:00:00+03:00</updated><author><name>halit</name></author><id>tag:www.halitalptekin.com,2012-06-13:linkedin-raporu.html</id><summary type="html">&lt;p&gt;Bundan tam bir hafta once buyuk yankı uyandıran Linkedin sızıntısının hasar raporu yavaş yavaş çıkıyor.Tabi herkes şifreleri çalıp paylaşanlar kadar kotu niyetli değil.Bazı kesimlerde bu şifreleri kırıp çoğunlukla kullanılan şifreler ve bunlarla ilgili verileri paylaştı.Bu sayede insanların hala guvenli şifre kullanımı hakkında çok fazla  yol kat etmediğini anladık.Çalınan 6.5 milyon şifreden 1.3 milyon tanesi kırıldı ve raporu paylaşıldı.&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;English Report: &lt;/strong&gt;&lt;a href="http://pastebin.com/W2TRejGV"&gt;http://pastebin.com/W2TRejGV&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;&lt;a href="http://www.flickr.com/photos/weknowmore/5621770696/" title="LinkedIn Training by weknowmore.org, on Flickr"&gt;&lt;img alt="LinkedIn Training" src="http://farm6.staticflickr.com/5106/5621770696_61425f7805.jpg" /&gt;&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;Toplam kırılan şifre&lt;/strong&gt; =&amp;nbsp;1354946&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Toplam kırılan şifre&lt;/strong&gt; = 1354946&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;En çok kullanılan kelimeler&lt;/strong&gt;&lt;br /&gt;
 link = 1808 (0.13%)&lt;br /&gt;
 alex = 1215 (0.09%)&lt;br /&gt;
@@ -32,8 +32,7 @@ john = 882 (0.07%)&lt;br /&gt;
 chris = 766 (0.06%)&lt;br /&gt;
 love = 749 (0.06%)&lt;br /&gt;
 april = 725 (0.05%)&lt;br /&gt;
-mark = 669 (0.05%)&lt;br /&gt;
-&lt;/p&gt;
+mark = 669 (0.05%)  &lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;Şifre uzunluğu&lt;/strong&gt;&lt;br /&gt;
 6 = 281193 (20.75%)&lt;br /&gt;
 7 = 211946 (15.64%)&lt;br /&gt;
@@ -56,8 +55,7 @@ mark = 669 (0.05%)&lt;br /&gt;
 24 = 2 (0.0%)&lt;br /&gt;
 27 = 2 (0.0%)&lt;br /&gt;
 34 = 2 (0.0%)&lt;br /&gt;
-40 = 2 (0.0%)&lt;br /&gt;
-&lt;/p&gt;
+40 = 2 (0.0%)  &lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;Şifre uzunluğu(en çok kullanılanlar)&lt;/strong&gt;&lt;br /&gt;
 8 = 444338 (32.79%)&lt;br /&gt;
 6 = 281193 (20.75%)&lt;br /&gt;
@@ -80,7 +78,7 @@ mark = 669 (0.05%)&lt;br /&gt;
 34 = 2 (0.0%)&lt;br /&gt;
 24 = 2 (0.0%)&lt;br /&gt;
 27 = 2 (0.0%)&lt;br /&gt;
-40 = 2&amp;nbsp;(0.0%)&lt;/p&gt;
+40 = 2 (0.0%)&lt;/p&gt;
 &lt;div class="codehilite"&gt;&lt;pre&gt;    &lt;span class="o"&gt;|&lt;/span&gt;                                                                 
     &lt;span class="o"&gt;|&lt;/span&gt;                                                                 
     &lt;span class="o"&gt;|&lt;/span&gt;                                                                 
@@ -100,14 +98,15 @@ mark = 669 (0.05%)&lt;br /&gt;
 
 
 &lt;p&gt;|||||||||||||||||||||||||||||||||||||||||                               &lt;br /&gt;
-00000000001111111111222222222233333333334&lt;br /&gt;&amp;nbsp;01234567890123456789012345678901234567890&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;Sadece 6 karakter &lt;/strong&gt;= 281192&amp;nbsp;(20.75%)&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;Sadece 8 karakter &lt;/strong&gt;= 937474&amp;nbsp;(69.19%)&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;8 karakterden fazla &lt;/strong&gt;= 417472&amp;nbsp;(30.81%)&lt;/p&gt;
+00000000001111111111222222222233333333334&lt;br /&gt;
+01234567890123456789012345678901234567890&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Sadece 6 karakter &lt;/strong&gt;= 281192 (20.75%)&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Sadece 8 karakter &lt;/strong&gt;= 937474 (69.19%)&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;8 karakterden fazla &lt;/strong&gt;= 417472 (30.81%)&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;Sadece kucuk harflerden olusan kelime&lt;/strong&gt; = 411302 (30.36%)&lt;br /&gt;
 &lt;strong&gt;Sadece buyuk harflerden olusan kelime&lt;/strong&gt; = 9809 (0.72%)&lt;br /&gt;
 &lt;strong&gt;Sadece kelime &lt;/strong&gt;= 421111 (31.08%)&lt;br /&gt;
-&lt;strong&gt;Sadece sayı&lt;/strong&gt; = 122094&amp;nbsp;(9.01%)&lt;/p&gt;
+&lt;strong&gt;Sadece sayı&lt;/strong&gt; = 122094 (9.01%)&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;Aylar&lt;/strong&gt;&lt;br /&gt;
 january = 243 (0.02%)&lt;br /&gt;
 february = 101 (0.01%)&lt;br /&gt;
@@ -120,8 +119,7 @@ august = 500 (0.04%)&lt;br /&gt;
 september = 142 (0.01%)&lt;br /&gt;
 october = 249 (0.02%)&lt;br /&gt;
 november = 204 (0.02%)&lt;br /&gt;
-december = 208 (0.02%)&lt;br /&gt;
-&lt;/p&gt;
+december = 208 (0.02%)  &lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;Gunler&lt;/strong&gt;&lt;br /&gt;
 monday = 239 (0.02%)&lt;br /&gt;
 tuesday = 54 (0.0%)&lt;br /&gt;
@@ -129,8 +127,7 @@ wednesday = 15 (0.0%)&lt;br /&gt;
 thursday = 41 (0.0%)&lt;br /&gt;
 friday = 217 (0.02%)&lt;br /&gt;
 saturday = 23 (0.0%)&lt;br /&gt;
-sunday = 109 (0.01%)&lt;br /&gt;
-&lt;/p&gt;
+sunday = 109 (0.01%)  &lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;Aylar (Kisaltma)&lt;/strong&gt;&lt;br /&gt;
 jan = 4400 (0.32%)&lt;br /&gt;
 feb = 719 (0.05%)&lt;br /&gt;
@@ -143,8 +140,7 @@ aug = 1391 (0.1%)&lt;br /&gt;
 sept = 469 (0.03%)&lt;br /&gt;
 oct = 993 (0.07%)&lt;br /&gt;
 nov = 1539 (0.11%)&lt;br /&gt;
-dec = 1112 (0.08%)&lt;br /&gt;
-&lt;/p&gt;
+dec = 1112 (0.08%)  &lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;Gunler (Kisaltma)&lt;/strong&gt;&lt;br /&gt;
 mon = 11372 (0.84%)&lt;br /&gt;
 tues = 62 (0.0%)&lt;br /&gt;
@@ -152,8 +148,7 @@ wed = 439 (0.03%)&lt;br /&gt;
 thurs = 82 (0.01%)&lt;br /&gt;
 fri = 2268 (0.17%)&lt;br /&gt;
 sat = 1226 (0.09%)&lt;br /&gt;
-sun = 4036 (0.3%)&lt;br /&gt;
-&lt;/p&gt;
+sun = 4036 (0.3%)  &lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;Tarih&lt;/strong&gt;&lt;br /&gt;
 1975 = 1528 (0.11%)&lt;br /&gt;
 1976 = 1544 (0.11%)&lt;br /&gt;
@@ -200,8 +195,7 @@ sun = 4036 (0.3%)&lt;br /&gt;
 2017 = 87 (0.01%)&lt;br /&gt;
 2018 = 110 (0.01%)&lt;br /&gt;
 2019 = 278 (0.02%)&lt;br /&gt;
-2020 = 422 (0.03%)&lt;br /&gt;
-&lt;/p&gt;
+2020 = 422 (0.03%)  &lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;Yıllar (Top 10)&lt;/strong&gt;&lt;br /&gt;
 2008 = 4539 (0.33%)&lt;br /&gt;
 2000 = 4232 (0.31%)&lt;br /&gt;
@@ -212,12 +206,10 @@ sun = 4036 (0.3%)&lt;br /&gt;
 2009 = 2597 (0.19%)&lt;br /&gt;
 2004 = 2316 (0.17%)&lt;br /&gt;
 2001 = 2211 (0.16%)&lt;br /&gt;
-2002 = 2153 (0.16%)&lt;br /&gt;
-&lt;/p&gt;
+2002 = 2153 (0.16%)  &lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;Tek rakamla biten şifre&lt;/strong&gt; = 154193 (11.38%)&lt;br /&gt;
 &lt;strong&gt;İki rakamla biten şifre&lt;/strong&gt; = 290697 (21.45%)&lt;br /&gt;
-&lt;strong&gt;Üç rakamla biten şifre &lt;/strong&gt;= 88177 (6.51%)&lt;br /&gt;
-&lt;/p&gt;
+&lt;strong&gt;Üç rakamla biten şifre &lt;/strong&gt;= 88177 (6.51%)  &lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;Son rakam&lt;/strong&gt;&lt;br /&gt;
 0 = 73928 (5.46%)&lt;br /&gt;
 1 = 165758 (12.23%)&lt;br /&gt;
@@ -228,8 +220,7 @@ sun = 4036 (0.3%)&lt;br /&gt;
 6 = 54534 (4.02%)&lt;br /&gt;
 7 = 65528 (4.84%)&lt;br /&gt;
 8 = 59336 (4.38%)&lt;br /&gt;
-9 = 62124 (4.58%)&lt;br /&gt;
-&lt;/p&gt;
+9 = 62124 (4.58%)  &lt;/p&gt;
 &lt;p&gt;|                                                                      &lt;br /&gt;
  |                                                                      &lt;br /&gt;
  |                                                                      &lt;br /&gt;
@@ -246,8 +237,7 @@ sun = 4036 (0.3%)&lt;br /&gt;
 ||||||||||                                                              &lt;br /&gt;
 ||||||||||                                                              &lt;br /&gt;
 ||||||||||                                                              &lt;br /&gt;
-0123456789&lt;br /&gt;
-&lt;/p&gt;
+0123456789  &lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;Son rakam&lt;/strong&gt;&lt;br /&gt;
 1 = 165758 (12.23%)&lt;br /&gt;
 3 = 95455 (7.04%)&lt;br /&gt;
@@ -258,8 +248,7 @@ sun = 4036 (0.3%)&lt;br /&gt;
 4 = 61897 (4.57%)&lt;br /&gt;
 5 = 60411 (4.46%)&lt;br /&gt;
 8 = 59336 (4.38%)&lt;br /&gt;
-6 = 54534 (4.02%)&lt;br /&gt;
-&lt;/p&gt;
+6 = 54534 (4.02%)  &lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;Son iki rakam (Top 10)&lt;/strong&gt;&lt;br /&gt;
 23 = 36967 (2.73%)&lt;br /&gt;
 01 = 26401 (1.95%)&lt;br /&gt;
@@ -270,8 +259,7 @@ sun = 4036 (0.3%)&lt;br /&gt;
 07 = 12740 (0.94%)&lt;br /&gt;
 99 = 12397 (0.91%)&lt;br /&gt;
 08 = 11818 (0.87%)&lt;br /&gt;
-22 = 11775 (0.87%)&lt;br /&gt;
-&lt;/p&gt;
+22 = 11775 (0.87%)  &lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;Son 3 rakam (Top 10)&lt;/strong&gt;&lt;br /&gt;
 123 = 27827 (2.05%)&lt;br /&gt;
 234 = 7611 (0.56%)&lt;br /&gt;
@@ -282,8 +270,7 @@ sun = 4036 (0.3%)&lt;br /&gt;
 010 = 3762 (0.28%)&lt;br /&gt;
 111 = 3539 (0.26%)&lt;br /&gt;
 006 = 2892 (0.21%)&lt;br /&gt;
-009 = 2739 (0.2%)&lt;br /&gt;
-&lt;/p&gt;
+009 = 2739 (0.2%)  &lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;Son 4 rakam(Top 10)&lt;/strong&gt;&lt;br /&gt;
 1234 = 7123 (0.53%)&lt;br /&gt;
 2008 = 4219 (0.31%)&lt;br /&gt;
@@ -294,8 +281,7 @@ sun = 4036 (0.3%)&lt;br /&gt;
 2009 = 2396 (0.18%)&lt;br /&gt;
 2005 = 2371 (0.17%)&lt;br /&gt;
 2004 = 2065 (0.15%)&lt;br /&gt;
-2001 = 1884 (0.14%)&lt;br /&gt;
-&lt;/p&gt;
+2001 = 1884 (0.14%)  &lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;Son 5 rakam (Top 10)&lt;/strong&gt;&lt;br /&gt;
 12345 = 1785 (0.13%)&lt;br /&gt;
 23456 = 926 (0.07%)&lt;br /&gt;
@@ -306,7 +292,7 @@ sun = 4036 (0.3%)&lt;br /&gt;
 45678 = 89 (0.01%)&lt;br /&gt;
 21982 = 88 (0.01%)&lt;br /&gt;
 21980 = 85 (0.01%)&lt;br /&gt;
-11982 = 84&amp;nbsp;(0.01%)&lt;/p&gt;
+11982 = 84 (0.01%)&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;Karakter setleri&lt;/strong&gt;&lt;br /&gt;
 loweralphanum: 612169 (45.18%)&lt;br /&gt;
 loweralpha: 411302 (30.36%)&lt;br /&gt;
@@ -322,7 +308,7 @@ mixedalphaspecial: 3010 (0.22%)&lt;br /&gt;
 specialnum: 528 (0.04%)&lt;br /&gt;
 upperalphaspecialnum: 433 (0.03%)&lt;br /&gt;
 upperalphaspecial: 154 (0.01%)&lt;br /&gt;
-special: 61&amp;nbsp;(0.0%)&lt;/p&gt;
+special: 61 (0.0%)&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;Karakter seti sıralaması&lt;/strong&gt;&lt;br /&gt;
 stringdigit: 618995 (45.68%)&lt;br /&gt;
 allstring: 448995 (33.14%)&lt;br /&gt;
@@ -336,8 +322,7 @@ stringspecialstring: 5001 (0.37%)&lt;br /&gt;
 stringspecial: 3809 (0.28%)&lt;br /&gt;
 specialstring: 516 (0.04%)&lt;br /&gt;
 specialstringspecial: 287 (0.02%)&lt;br /&gt;
-allspecial: 61 (0.0%)&lt;br /&gt;
-&lt;/p&gt;
+allspecial: 61 (0.0%)  &lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;Hashcat maskeleri(Top 10)&lt;/strong&gt;&lt;br /&gt;
 ?l?l?l?l?l?l?l?l: 106882 (7.89%)&lt;br /&gt;
 ?l?l?l?l?l?l?d?d: 96270 (7.11%)&lt;br /&gt;
@@ -348,50 +333,50 @@ allspecial: 61 (0.0%)&lt;br /&gt;
 ?l?l?l?l?l?d?d: 41317 (3.05%)&lt;br /&gt;
 ?l?l?l?l?l?l?l?l?l?l: 40222 (2.97%)&lt;br /&gt;
 ?l?l?l?l?l?l?l?d?d: 37483 (2.77%)&lt;br /&gt;
-?l?l?l?l?l?l?l?d: 32948&amp;nbsp;(2.43%)&lt;/p&gt;</summary><category term="cracking"></category><category term="hashcat"></category><category term="linkedin"></category><category term="linkedin şifreleri"></category><category term="şifre kırma"></category><category term="şifreleme"></category></entry><entry><title>Serverınıza Ddos Koruması</title><link href="http://www.halitalptekin.com/serveriniza-ddos-korumasi.html" rel="alternate"></link><updated>2012-06-11T00:00:00+03:00</updated><author><name>halit</name></author><id>tag:www.halitalptekin.com,2012-06-11:serveriniza-ddos-korumasi.html</id><summary type="html">&lt;p&gt;Dos saldırıları yıllardır olduğu gibi hala çok moda.Hiç beklemediğiniz ulkelerden saldırı alabiliyorsunuz.Bu yuzden tedbiri elden bırakmamak ve guvenliğimizi sağlamak zorundayız.Bunun için piyasa kullanabileceğimiz birçok ucretsiz script var.Bunların arasında en çok bilineni şuphesiz inetbase adlı ddos koruma scripti.Bu script serverda belirli zamanda çok fazla bağlantı açanları apf veya iptables kullanarak banlıyor.Çok buyuk saldırılar hariç ufak ve orta çaplı saldırıları onleyebilirsiniz.Kendi &lt;span class="caps"&gt;VPS&lt;/span&gt; veya &lt;span class="caps"&gt;VDS&lt;/span&gt;&amp;#8217;nize kurmanızda fayda var diye&amp;nbsp;duşunuyorum.&lt;/p&gt;
+?l?l?l?l?l?l?l?d: 32948 (2.43%)&lt;/p&gt;</summary><category term="cracking"></category><category term="hashcat"></category><category term="linkedin"></category><category term="linkedin şifreleri"></category><category term="şifre kırma"></category><category term="şifreleme"></category></entry><entry><title>Serverınıza Ddos Koruması</title><link href="http://www.halitalptekin.com/serveriniza-ddos-korumasi.html" rel="alternate"></link><updated>2012-06-11T00:00:00+03:00</updated><author><name>halit</name></author><id>tag:www.halitalptekin.com,2012-06-11:serveriniza-ddos-korumasi.html</id><summary type="html">&lt;p&gt;Dos saldırıları yıllardır olduğu gibi hala çok moda.Hiç beklemediğiniz ulkelerden saldırı alabiliyorsunuz.Bu yuzden tedbiri elden bırakmamak ve guvenliğimizi sağlamak zorundayız.Bunun için piyasa kullanabileceğimiz birçok ucretsiz script var.Bunların arasında en çok bilineni şuphesiz inetbase adlı ddos koruma scripti.Bu script serverda belirli zamanda çok fazla bağlantı açanları apf veya iptables kullanarak banlıyor.Çok buyuk saldırılar hariç ufak ve orta çaplı saldırıları onleyebilirsiniz.Kendi VPS veya VDS'nize kurmanızda fayda var diye duşunuyorum.&lt;/p&gt;
 &lt;p&gt;&lt;a href="http://www.flickr.com/photos/tom-b/5547908627/" title="Wikipedia: Botnet by tom-b, on Flickr"&gt;&lt;img alt="Wikipedia: Botnet" src="http://farm6.staticflickr.com/5052/5547908627_dc967fa7a3.jpg" /&gt;&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;Öncelikle bilmeniz gereken bu script kesinlikle buyuk saldırıları engelleyemez.Bu tarz saldırılara donanım kaynaklarınız imkanlarıyla ortantılı olarak karşı koyabilirsiniz.Ki buyuk çaplı saldırılarda koskoca veri merkezleri zarar goruyor.Bir tane site niye gormesin.Ama birkaç site veya serverdan gelen saldırıları inetbase ile&amp;nbsp;engelleyebilirsiniz.&lt;/p&gt;
-&lt;p&gt;Serverımıza kurulum yapmak için oncelikle ssh ile root girişi yapıyoruz.Ve daha sonraki aşağıdaki 2 komutu çalıştırarak scripti&amp;nbsp;kuruyoruz.&lt;/p&gt;
-&lt;div class="codehilite"&gt;&lt;pre&gt;&lt;span class="n"&gt;wget&lt;/span&gt; &lt;span class="n"&gt;http:&lt;/span&gt;&lt;span class="sr"&gt;//&lt;/span&gt;&lt;span class="n"&gt;www&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;inetbase&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;com&lt;/span&gt;&lt;span class="sr"&gt;/scripts/&lt;/span&gt;&lt;span class="n"&gt;ddos&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;install&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;sh&lt;/span&gt;
-&lt;span class="n"&gt;sh&lt;/span&gt; &lt;span class="n"&gt;install&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;sh&lt;/span&gt;
+&lt;p&gt;Öncelikle bilmeniz gereken bu script kesinlikle buyuk saldırıları engelleyemez.Bu tarz saldırılara donanım kaynaklarınız imkanlarıyla ortantılı olarak karşı koyabilirsiniz.Ki buyuk çaplı saldırılarda koskoca veri merkezleri zarar goruyor.Bir tane site niye gormesin.Ama birkaç site veya serverdan gelen saldırıları inetbase ile engelleyebilirsiniz.&lt;/p&gt;
+&lt;p&gt;Serverımıza kurulum yapmak için oncelikle ssh ile root girişi yapıyoruz.Ve daha sonraki aşağıdaki 2 komutu çalıştırarak scripti kuruyoruz.&lt;/p&gt;
+&lt;div class="codehilite"&gt;&lt;pre&gt;&lt;span class="n"&gt;wget&lt;/span&gt; &lt;span class="n"&gt;http&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="c1"&gt;//www.inetbase.com/scripts/ddos/install.sh&lt;/span&gt;
+&lt;span class="n"&gt;sh&lt;/span&gt; &lt;span class="n"&gt;install&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;sh&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
-&lt;p&gt;Kurulumu yaptıktan sonra ayarlar için &lt;strong&gt;/usr/local/ddos/ddos.conf&lt;/strong&gt; dosyasını&amp;nbsp;açalım.&lt;/p&gt;
+&lt;p&gt;Kurulumu yaptıktan sonra ayarlar için &lt;strong&gt;/usr/local/ddos/ddos.conf&lt;/strong&gt; dosyasını açalım.&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;APF_BAN&lt;/strong&gt;=0 (Eğer 0 olursa iptables ile 1 olursa apf ile banlar.)&lt;br /&gt;
 &lt;strong&gt;NO_OF_CONNECTIONS&lt;/strong&gt;=150 (150 bağlantıdan sonrasını banlar.Ben 75 kullanıyorum.)&lt;br /&gt;
 &lt;strong&gt;BAN_PERIOD&lt;/strong&gt;=600 (10 dakika içinde yukarıdaki sayı kadar bağlantı açanı banlar.)&lt;br /&gt;
-&lt;strong&gt;EMAIL_TO&lt;/strong&gt;=mail@siteadresi.com (Banlanma bilgilerinin gideceği mail&amp;nbsp;adresi.)&lt;/p&gt;
-&lt;p&gt;Bu ayarlardan sonra aşağıdaki komutu konsola girerek birkaç duzenleme&amp;nbsp;yapıyoruz.&lt;/p&gt;
-&lt;div class="codehilite"&gt;&lt;pre&gt;&lt;span class="n"&gt;netstat&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;tn&lt;/span&gt; &lt;span class="o"&gt;--&lt;/span&gt;&lt;span class="n"&gt;inet&lt;/span&gt; &lt;span class="mi"&gt;2&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt; &lt;span class="sr"&gt;/dev/&lt;/span&gt;&lt;span class="n"&gt;null&lt;/span&gt;&lt;span class="o"&gt;|&lt;/span&gt; &lt;span class="nb"&gt;grep&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;:80&amp;quot;&lt;/span&gt; &lt;span class="o"&gt;|&lt;/span&gt; &lt;span class="n"&gt;awk&lt;/span&gt; &lt;span class="s"&gt;&amp;#39;/tcp[ ]*[0-9]+[ ]*[0-9]+[ ]+[^ ]+[ ]*[^ ]*/ { print $5; }&amp;#39;&lt;/span&gt; &lt;span class="o"&gt;|&lt;/span&gt; &lt;span class="n"&gt;cut&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;d&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;:&amp;quot;&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;f1&lt;/span&gt; &lt;span class="o"&gt;|&lt;/span&gt; &lt;span class="nb"&gt;sort&lt;/span&gt; &lt;span class="o"&gt;|&lt;/span&gt; &lt;span class="n"&gt;uniq&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;c&lt;/span&gt; &lt;span class="o"&gt;|&lt;/span&gt; &lt;span class="nb"&gt;sort&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;n&lt;/span&gt;
+&lt;strong&gt;EMAIL_TO&lt;/strong&gt;=mail@siteadresi.com (Banlanma bilgilerinin gideceği mail adresi.)&lt;/p&gt;
+&lt;p&gt;Bu ayarlardan sonra aşağıdaki komutu konsola girerek birkaç duzenleme yapıyoruz.&lt;/p&gt;
+&lt;div class="codehilite"&gt;&lt;pre&gt;&lt;span class="n"&gt;netstat&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;tn&lt;/span&gt; &lt;span class="o"&gt;--&lt;/span&gt;&lt;span class="n"&gt;inet&lt;/span&gt; &lt;span class="mi"&gt;2&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt; &lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;dev&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;null&lt;/span&gt;&lt;span class="o"&gt;|&lt;/span&gt; &lt;span class="n"&gt;grep&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;:80&amp;quot;&lt;/span&gt; &lt;span class="o"&gt;|&lt;/span&gt; &lt;span class="n"&gt;awk&lt;/span&gt; &lt;span class="err"&gt;&amp;#39;&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;tcp&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt; &lt;span class="p"&gt;]&lt;/span&gt;&lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mi"&gt;9&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;&lt;span class="o"&gt;+&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt; &lt;span class="p"&gt;]&lt;/span&gt;&lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mi"&gt;9&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;&lt;span class="o"&gt;+&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt; &lt;span class="p"&gt;]&lt;/span&gt;&lt;span class="o"&gt;+&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="o"&gt;^&lt;/span&gt; &lt;span class="p"&gt;]&lt;/span&gt;&lt;span class="o"&gt;+&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt; &lt;span class="p"&gt;]&lt;/span&gt;&lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="o"&gt;^&lt;/span&gt; &lt;span class="p"&gt;]&lt;/span&gt;&lt;span class="err"&gt;*/&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt; &lt;span class="n"&gt;print&lt;/span&gt; &lt;span class="err"&gt;$&lt;/span&gt;&lt;span class="mi"&gt;5&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt; &lt;span class="p"&gt;}&lt;/span&gt;&lt;span class="err"&gt;&amp;#39;&lt;/span&gt; &lt;span class="o"&gt;|&lt;/span&gt; &lt;span class="n"&gt;cut&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;d&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;:&amp;quot;&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;f1&lt;/span&gt; &lt;span class="o"&gt;|&lt;/span&gt; &lt;span class="n"&gt;sort&lt;/span&gt; &lt;span class="o"&gt;|&lt;/span&gt; &lt;span class="n"&gt;uniq&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;c&lt;/span&gt; &lt;span class="o"&gt;|&lt;/span&gt; &lt;span class="n"&gt;sort&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;n&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
-&lt;p&gt;Ddos.conf dosyasının en altına gozardı edilecek ip adreslerini ekleyebiliriz.(Google botları,local ipler&amp;nbsp;gibi)&lt;/p&gt;
+&lt;p&gt;Ddos.conf dosyasının en altına gozardı edilecek ip adreslerini ekleyebiliriz.(Google botları,local ipler gibi)&lt;/p&gt;
 &lt;div class="codehilite"&gt;&lt;pre&gt;&lt;span class="n"&gt;PROTECTED_IPS&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;192.168.1.10&amp;quot;&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;127.0.0.1&amp;quot;&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;10.0.10.0&amp;quot;&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;192.168.2.5&amp;quot;&lt;/span&gt; &lt;span class="p"&gt;)&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
-&lt;p&gt;&lt;strong&gt;/usr/local/ddos/ddos.sh&lt;/strong&gt; dosyası içinde aşağıdaki satırı&amp;nbsp;bulun.&lt;/p&gt;
-&lt;div class="codehilite"&gt;&lt;pre&gt;&lt;span class="n"&gt;netstat&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;ntu&lt;/span&gt; &lt;span class="o"&gt;|&lt;/span&gt; &lt;span class="n"&gt;awk&lt;/span&gt; &lt;span class="s"&gt;&amp;#39;{print $5}&amp;#39;&lt;/span&gt; &lt;span class="o"&gt;|&lt;/span&gt; &lt;span class="n"&gt;cut&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;d:&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;f1&lt;/span&gt; &lt;span class="o"&gt;|&lt;/span&gt; &lt;span class="nb"&gt;sort&lt;/span&gt; &lt;span class="o"&gt;|&lt;/span&gt; &lt;span class="n"&gt;uniq&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;c&lt;/span&gt; &lt;span class="o"&gt;|&lt;/span&gt; &lt;span class="nb"&gt;sort&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;nr&lt;/span&gt; &lt;span class="o"&gt;&amp;gt;&lt;/span&gt; &lt;span class="nv"&gt;$BAD_IP_LIST&lt;/span&gt;
+&lt;p&gt;&lt;strong&gt;/usr/local/ddos/ddos.sh&lt;/strong&gt; dosyası içinde aşağıdaki satırı bulun.&lt;/p&gt;
+&lt;div class="codehilite"&gt;&lt;pre&gt;&lt;span class="n"&gt;netstat&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;ntu&lt;/span&gt; &lt;span class="o"&gt;|&lt;/span&gt; &lt;span class="n"&gt;awk&lt;/span&gt; &lt;span class="err"&gt;&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;{&lt;/span&gt;&lt;span class="n"&gt;print&lt;/span&gt; &lt;span class="err"&gt;$&lt;/span&gt;&lt;span class="mi"&gt;5&lt;/span&gt;&lt;span class="p"&gt;}&lt;/span&gt;&lt;span class="err"&gt;&amp;#39;&lt;/span&gt; &lt;span class="o"&gt;|&lt;/span&gt; &lt;span class="n"&gt;cut&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;d&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;f1&lt;/span&gt; &lt;span class="o"&gt;|&lt;/span&gt; &lt;span class="n"&gt;sort&lt;/span&gt; &lt;span class="o"&gt;|&lt;/span&gt; &lt;span class="n"&gt;uniq&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;c&lt;/span&gt; &lt;span class="o"&gt;|&lt;/span&gt; &lt;span class="n"&gt;sort&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;nr&lt;/span&gt; &lt;span class="o"&gt;&amp;gt;&lt;/span&gt; &lt;span class="err"&gt;$&lt;/span&gt;&lt;span class="n"&gt;BAD_IP_LIST&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
-&lt;p&gt;Daha sonra bu satırın altındakileri silip aşağıdaki kodları&amp;nbsp;ekleyelim.&lt;/p&gt;
+&lt;p&gt;Daha sonra bu satırın altındakileri silip aşağıdaki kodları ekleyelim.&lt;/p&gt;
 &lt;div class="codehilite"&gt;&lt;pre&gt;BAD_SYN_IP_LIST=`&lt;span class="nv"&gt;$TMP_FILE&lt;/span&gt;`
 netstat -np | grep SYN_RECV | awk &amp;#39;{print $5}&amp;#39; | cut -d: -f1 | cut -d: -f1 | sort | uniq -c | \
 sort -n| awk &amp;#39;{if ($1 &amp;gt; 4) print $2;}&amp;#39; &amp;gt; &lt;span class="nv"&gt;$BAD_SYN_IP_LIST&lt;/span&gt;
 cat &lt;span class="nv"&gt;$BAD_SYN_IP_LIST&lt;/span&gt;
 while read SYN_IP; do
-&lt;span class="nv"&gt;$&lt;span class="caps"&gt;IPT&lt;/span&gt;&lt;/span&gt; -I &lt;span class="caps"&gt;INPUT&lt;/span&gt; -s &lt;span class="nv"&gt;$SYN_IP&lt;/span&gt; -j &lt;span class="caps"&gt;DROP&lt;/span&gt; ;
+&lt;span class="nv"&gt;$IPT&lt;/span&gt; -I INPUT -s &lt;span class="nv"&gt;$SYN_IP&lt;/span&gt; -j DROP ;
 echo &lt;span class="nv"&gt;$SYN_IP&lt;/span&gt;&amp;gt;&amp;gt; &lt;span class="nv"&gt;$BANNED_IP_LIST&lt;/span&gt;
 echo &lt;span class="nv"&gt;$SYN_IP&lt;/span&gt;&amp;gt;&amp;gt; &lt;span class="nv"&gt;$IGNORE_IP_LIST&lt;/span&gt;
 done &lt;span class="err"&gt;&amp;lt;&lt;/span&gt; &lt;span class="nv"&gt;$BAD_SYN_IP_LIST&lt;/span&gt;
 
-#&lt;span class="caps"&gt;DDOS&lt;/span&gt; Bolumu
+#DDOS Bolumu
 netstat -ntu | awk &amp;#39;{print $5}&amp;#39; | cut -d: -f1 | sort | uniq -c | sort -nr &amp;gt; &lt;span class="nv"&gt;$BAD_IP_LIST&lt;/span&gt;
 cat &lt;span class="nv"&gt;$BAD_IP_LIST&lt;/span&gt;
-if [ &lt;span class="nv"&gt;$&lt;span class="caps"&gt;KILL&lt;/span&gt;&lt;/span&gt; -eq 1 ]; then
+if [ &lt;span class="nv"&gt;$KILL&lt;/span&gt; -eq 1 ]; then
 IP_BAN_NOW=0
 while read line; do
 CURR_LINE_CONN=$(echo &lt;span class="nv"&gt;$line&lt;/span&gt; | cut -d&amp;quot; &amp;quot; -f1)
@@ -408,7 +393,7 @@ echo &amp;quot;&lt;span class="nv"&gt;$CURR_LINE_IP&lt;/span&gt; with &lt;span c
 echo &lt;span class="nv"&gt;$CURR_LINE_IP&lt;/span&gt; &amp;gt;&amp;gt; &lt;span class="nv"&gt;$BANNED_IP_LIST&lt;/span&gt;
 echo &lt;span class="nv"&gt;$CURR_LINE_IP&lt;/span&gt; &amp;gt;&amp;gt; &lt;span class="nv"&gt;$IGNORE_IP_LIST&lt;/span&gt;
 if [ &lt;span class="nv"&gt;$APF_BAN&lt;/span&gt; -eq 1 ]; then
-&lt;span class="nv"&gt;$&lt;span class="caps"&gt;APF&lt;/span&gt;&lt;/span&gt; -d &lt;span class="nv"&gt;$CURR_LINE_IP&lt;/span&gt;
+&lt;span class="nv"&gt;$APF&lt;/span&gt; -d &lt;span class="nv"&gt;$CURR_LINE_IP&lt;/span&gt;
 else
 NOT_PROTECTED=1
 for u in &amp;quot;&lt;span class="cp"&gt;${&lt;/span&gt;&lt;span class="n"&gt;PROTECTED_IPS&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="err"&gt;@&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;&lt;span class="cp"&gt;}&lt;/span&gt;&amp;quot;; do
@@ -419,49 +404,49 @@ fi
 done
 
 if [ &lt;span class="nv"&gt;$NOT_PROTECTED&lt;/span&gt; -eq 1 &lt;span class="err"&gt;&amp;amp;&amp;amp;&lt;/span&gt; &lt;span class="nv"&gt;$CURR_LINE_IP&lt;/span&gt; != &amp;quot;&amp;quot;]; then
-&lt;span class="nv"&gt;$&lt;span class="caps"&gt;IPT&lt;/span&gt;&lt;/span&gt; -I &lt;span class="caps"&gt;INPUT&lt;/span&gt; -s &lt;span class="nv"&gt;$CURR_LINE_IP&lt;/span&gt; -j &lt;span class="caps"&gt;DROP&lt;/span&gt;
+&lt;span class="nv"&gt;$IPT&lt;/span&gt; -I INPUT -s &lt;span class="nv"&gt;$CURR_LINE_IP&lt;/span&gt; -j DROP
 fi
 
 fi
 done &lt;span class="nt"&gt;&amp;lt; &lt;/span&gt;&lt;span class="nv"&gt;$BAD_IP_LIST&lt;/span&gt;&lt;span class="nt"&gt;&lt;/span&gt;
-&lt;span class="nt"&gt;if&lt;/span&gt; &lt;span class="err"&gt;[&lt;/span&gt; &lt;span class="nv"&gt;$IP_BAN_NOW&lt;/span&gt; &lt;span class="na"&gt;-eq&lt;/span&gt; &lt;span class="na"&gt;1&lt;/span&gt; &lt;span class="err"&gt;];&lt;/span&gt; &lt;span class="na"&gt;then&lt;/span&gt;
+&lt;span class="nt"&gt;if&lt;/span&gt; &lt;span class="err"&gt;[&lt;/span&gt; &lt;span class="nv"&gt;$IP_BAN_NOW&lt;/span&gt; &lt;span class="err"&gt;-eq&lt;/span&gt; &lt;span class="err"&gt;1&lt;/span&gt; &lt;span class="err"&gt;];&lt;/span&gt; &lt;span class="err"&gt;then&lt;/span&gt;
 &lt;span class="na"&gt;dt=&lt;/span&gt;&lt;span class="s"&gt;`date`&lt;/span&gt;
-&lt;span class="na"&gt;if&lt;/span&gt; &lt;span class="err"&gt;[&lt;/span&gt; &lt;span class="nv"&gt;$EMAIL_TO&lt;/span&gt; &lt;span class="err"&gt;!=&lt;/span&gt; &lt;span class="err"&gt;&amp;quot;&amp;quot;&lt;/span&gt; &lt;span class="err"&gt;];&lt;/span&gt; &lt;span class="na"&gt;then&lt;/span&gt;
-&lt;span class="na"&gt;cat&lt;/span&gt; &lt;span class="nv"&gt;$BANNED_IP_MAIL&lt;/span&gt; &lt;span class="err"&gt;|&lt;/span&gt; &lt;span class="na"&gt;mail&lt;/span&gt; &lt;span class="na"&gt;-s&lt;/span&gt; &lt;span class="err"&gt;&amp;quot;&lt;/span&gt;&lt;span class="na"&gt;&lt;span class="caps"&gt;IP&lt;/span&gt;&lt;/span&gt; &lt;span class="na"&gt;addresses&lt;/span&gt; &lt;span class="na"&gt;banned&lt;/span&gt; &lt;span class="na"&gt;on&lt;/span&gt; &lt;span class="nv"&gt;$dt&lt;/span&gt;&lt;span class="err"&gt;&amp;quot;&lt;/span&gt; &lt;span class="nv"&gt;$EMAIL_TO&lt;/span&gt;
-&lt;span class="na"&gt;fi&lt;/span&gt;
-&lt;span class="na"&gt;unbanip&lt;/span&gt;
-&lt;span class="na"&gt;fi&lt;/span&gt;
-&lt;span class="na"&gt;fi&lt;/span&gt;
-&lt;span class="na"&gt;rm&lt;/span&gt; &lt;span class="na"&gt;-f&lt;/span&gt; &lt;span class="nv"&gt;$TMP_PREFIX.&lt;/span&gt;&lt;span class="err"&gt;*&lt;/span&gt;
+&lt;span class="err"&gt;if&lt;/span&gt; &lt;span class="err"&gt;[&lt;/span&gt; &lt;span class="nv"&gt;$EMAIL_TO&lt;/span&gt; &lt;span class="err"&gt;!=&lt;/span&gt; &lt;span class="err"&gt;&amp;quot;&amp;quot;&lt;/span&gt; &lt;span class="err"&gt;];&lt;/span&gt; &lt;span class="err"&gt;then&lt;/span&gt;
+&lt;span class="err"&gt;cat&lt;/span&gt; &lt;span class="nv"&gt;$BANNED_IP_MAIL&lt;/span&gt; &lt;span class="err"&gt;|&lt;/span&gt; &lt;span class="err"&gt;mail&lt;/span&gt; &lt;span class="err"&gt;-s&lt;/span&gt; &lt;span class="err"&gt;&amp;quot;IP&lt;/span&gt; &lt;span class="err"&gt;addresses&lt;/span&gt; &lt;span class="err"&gt;banned&lt;/span&gt; &lt;span class="err"&gt;on&lt;/span&gt; &lt;span class="nv"&gt;$dt&lt;/span&gt;&lt;span class="err"&gt;&amp;quot;&lt;/span&gt; &lt;span class="nv"&gt;$EMAIL_TO&lt;/span&gt;
+&lt;span class="err"&gt;fi&lt;/span&gt;
+&lt;span class="err"&gt;unbanip&lt;/span&gt;
+&lt;span class="err"&gt;fi&lt;/span&gt;
+&lt;span class="err"&gt;fi&lt;/span&gt;
+&lt;span class="err"&gt;rm&lt;/span&gt; &lt;span class="err"&gt;-f&lt;/span&gt; &lt;span class="nv"&gt;$TMP_PREFIX.&lt;/span&gt;&lt;span class="err"&gt;*&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
-&lt;p&gt;Boylelikle arka arkaya 4 syn paketi gonderen ip adresini banlıyorsunuz.Bu banlanan ip adresleri sizlere mail olarak gelecek.Eğer banlanan tum ip adreslerini boşaltmak için aşağıdaki komutu&amp;nbsp;kullanabilirsiniz.&lt;/p&gt;
+&lt;p&gt;Boylelikle arka arkaya 4 syn paketi gonderen ip adresini banlıyorsunuz.Bu banlanan ip adresleri sizlere mail olarak gelecek.Eğer banlanan tum ip adreslerini boşaltmak için aşağıdaki komutu kullanabilirsiniz.&lt;/p&gt;
 &lt;div class="codehilite"&gt;&lt;pre&gt;&lt;span class="n"&gt;iptables&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;F&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
-&lt;p&gt;Eğer inetbase kullanmak istemiyorsanız da aşağıdaki uninstall dosyasını indirip&amp;nbsp;çalıştırabilirsiniz.&lt;/p&gt;
-&lt;div class="codehilite"&gt;&lt;pre&gt;&lt;span class="n"&gt;wget&lt;/span&gt; &lt;span class="n"&gt;http:&lt;/span&gt;&lt;span class="sr"&gt;//&lt;/span&gt;&lt;span class="n"&gt;www&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;inetbase&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;com&lt;/span&gt;&lt;span class="sr"&gt;/scripts/&lt;/span&gt;&lt;span class="n"&gt;ddos&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;uninstall&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;ddos&lt;/span&gt;
-&lt;span class="n"&gt;sh&lt;/span&gt; &lt;span class="n"&gt;uninstall&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;ddos&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;</summary><category term="botnet koruması"></category><category term="ddos koruması"></category><category term="ddos saldırısı"></category><category term="inetbase"></category><category term="server güvenliği"></category></entry><entry><title>Linkedin Sızıntısı</title><link href="http://www.halitalptekin.com/linkedin-sizintisi.html" rel="alternate"></link><updated>2012-06-06T00:00:00+03:00</updated><author><name>halit</name></author><id>tag:www.halitalptekin.com,2012-06-06:linkedin-sizintisi.html</id><summary type="html">&lt;p&gt;Birçok buyuk şirketin başına gelen zor durumlardan birisi bu seferde Linkedin&amp;#8217;in başına geldi.Rus hackerlar siteden tam 6.458.020 adet sha1 ile şifrelenmiş hashı çaldılar.Çalmakla da kalmayıp forum sitelerinde paylaştılar.Bundan sonra da forum uyeleriyle birlik olup şifre kırma çalışmalarına başladılar.Şu ana kadar 500.000 den fazla hash kırıldı.Surekli olarakta kırılıp birbirleriyle paylaşıyorlar.Dunya uzerinde 160 milyon,Turkiye&amp;#8217;de 1 milyon uyesi olduğunu duşunursek yaklaşık %4luk bir kesimin şifresi çalınmış&amp;nbsp;durumda.&lt;/p&gt;
+&lt;p&gt;Eğer inetbase kullanmak istemiyorsanız da aşağıdaki uninstall dosyasını indirip çalıştırabilirsiniz.&lt;/p&gt;
+&lt;div class="codehilite"&gt;&lt;pre&gt;&lt;span class="n"&gt;wget&lt;/span&gt; &lt;span class="n"&gt;http&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="c1"&gt;//www.inetbase.com/scripts/ddos/uninstall.ddos&lt;/span&gt;
+&lt;span class="n"&gt;sh&lt;/span&gt; &lt;span class="n"&gt;uninstall&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;ddos&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;</summary><category term="botnet koruması"></category><category term="ddos koruması"></category><category term="ddos saldırısı"></category><category term="inetbase"></category><category term="server güvenliği"></category></entry><entry><title>Linkedin Sızıntısı</title><link href="http://www.halitalptekin.com/linkedin-sizintisi.html" rel="alternate"></link><updated>2012-06-06T00:00:00+03:00</updated><author><name>halit</name></author><id>tag:www.halitalptekin.com,2012-06-06:linkedin-sizintisi.html</id><summary type="html">&lt;p&gt;Birçok buyuk şirketin başına gelen zor durumlardan birisi bu seferde Linkedin'in başına geldi.Rus hackerlar siteden tam 6.458.020 adet sha1 ile şifrelenmiş hashı çaldılar.Çalmakla da kalmayıp forum sitelerinde paylaştılar.Bundan sonra da forum uyeleriyle birlik olup şifre kırma çalışmalarına başladılar.Şu ana kadar 500.000 den fazla hash kırıldı.Surekli olarakta kırılıp birbirleriyle paylaşıyorlar.Dunya uzerinde 160 milyon,Turkiye'de 1 milyon uyesi olduğunu duşunursek yaklaşık %4luk bir kesimin şifresi çalınmış durumda.&lt;/p&gt;
 &lt;p&gt;&lt;img alt="Linkedin Sizinti" src="http://www.halitalptekin.com/media/upload/linkedin-sizinti.jpg" /&gt;&lt;/p&gt;
-&lt;p&gt;Bu haber teknoloji sitelerine duşunce en başta kimse inanmadı.Ancak ilerleyen zamanlarda Linkedin&amp;#8217;in twitter sayfasından bu olay doğrulandığı için uyeleri ufak bir endişe kapladı.Şu anda Linkedin gorevlileri olay ile ilgili soruşturma yapıyorlar.Çok yakın surede konu hakkında detaylı açıklama yapacaklarını&amp;nbsp;duşunuyorum.&lt;/p&gt;
+&lt;p&gt;Bu haber teknoloji sitelerine duşunce en başta kimse inanmadı.Ancak ilerleyen zamanlarda Linkedin'in twitter sayfasından bu olay doğrulandığı için uyeleri ufak bir endişe kapladı.Şu anda Linkedin gorevlileri olay ile ilgili soruşturma yapıyorlar.Çok yakın surede konu hakkında detaylı açıklama yapacaklarını duşunuyorum.&lt;/p&gt;
 &lt;blockquote&gt;
-&lt;p&gt;Our team continues to investigate, but at this time, we&amp;#8217;re still unable to confirm that any security breach has occurred. Stay tuned&amp;nbsp;here.&lt;/p&gt;
-&lt;p&gt;&amp;#8212; LinkedIn (@LinkedIn) &lt;a href="https://twitter.com/LinkedIn/status/210390233076875264"&gt;Haziran 6,&amp;nbsp;2012&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Our team continues to investigate, but at this time, we're still unable to confirm that any security breach has occurred. Stay tuned here.&lt;/p&gt;
+&lt;p&gt;-- LinkedIn (@LinkedIn) &lt;a href="https://twitter.com/LinkedIn/status/210390233076875264"&gt;Haziran 6, 2012&lt;/a&gt;&lt;/p&gt;
 &lt;/blockquote&gt;
-&lt;p&gt;Bunun yanında 1-2 saat once de Linkedin&amp;#8217;den şifre sıfırla mesajı geldi.En azından şimdilik sorunu çozmuş gibi goruyorlar.Ancak hala kırılmış ve kırılmaya devam eden şifreler var.Biran once şifre değişimi yapmazsanız hesaplarınızı kaybetmeniz olası.Bu yuzden sizde bir an once linkedin şifrenizi&amp;nbsp;değiştiriniz.&lt;/p&gt;</summary><category term="linkedin"></category><category term="linkedin leaks"></category><category term="linkedin passwords"></category><category term="linkedin şifreleri"></category><category term="rus hackerlar"></category></entry><entry><title>Stuxnet Virüsü</title><link href="http://www.halitalptekin.com/stuxnet-virusu.html" rel="alternate"></link><updated>2012-06-03T00:00:00+03:00</updated><author><name>halit</name></author><id>tag:www.halitalptekin.com,2012-06-03:stuxnet-virusu.html</id><summary type="html">&lt;p&gt;Stuxnet virusu bu aralar guvenlik uzmanları tarafından en fazla konuşulan konulardan birisi.Çunku diğer viruslere benzemeyen amacı tamamen siber savaş olan bir bir virus.Diğer virus turlerinin amacı daha fazla bilgisayara yayılıp daha fazla bilgisayara zarar vermek.Ama Stuxnet&amp;#8217;i diğer viruslerden ayıran nokta da bu.O daha fazla sisteme yayılmak yerine endustriyel sistemleri gizlice gozetliyor ve yeniden programlayabiliyor.Kısacası tam bir siber savaş&amp;nbsp;askeri.&lt;/p&gt;
-&lt;p&gt;İran bu Stuxnet virusunden zarar gorduğunu resmi olarak açıkladı.Natanz&amp;#8217;daki Uranyum zenginleştirme tesisi kapasitesi %15 dolayında duştu.Bunlar aslında çok ciddi olaylar.Artık sanal alemin reel alem uzerinde ne kadar etkili olduğunun birer kanıtları.Her zaman soylendiği gibi fiziksel savaşların yerine siber savaşlar gelicek.Bunun da ilk temsilcilerinden birisi Stuxnet&amp;nbsp;oldu.&lt;/p&gt;
-&lt;p&gt;Stuxnet ilk defa haziran ayının ortalarında Beyaz Rusya&amp;#8217;daki kuçuk bir firma olan VirusBlokAda tarafından tespit edildi. İlk incelemeler virusun standart bir solucan olmadığını zaten gosteriyordu fakat karmaşık yapısı yuzunden uzayan incelemeler devam ettikçe işin boyutu gittikçe değişti. Özellikle solucanın çok karmaşık yapısı, kullandığı taktikler ve hedefi goz onune alınınca, siber savaş adı altında yıllarca dillendirilen senaryoların aslında çok da gerçek dışı olmadığı ortaya&amp;nbsp;çıktı.&lt;/p&gt;
-&lt;p&gt;Stuxneti inceleyen ilk uzmanlar zaten incelemeye başladıkları ilk andan itibaren bu virusun çok karmaşık bir yapıda olduğunu ve tek bir kişi tarafından değilde arkasında buyuk devletlerin olduğu bir grup tarafından oluşturulduğu fikri oluştu.Çunku virusun amacı tamamen devletlerin onemli yerlerini etkilemekti.Boyle birşeyi de rakip devletler&amp;nbsp;isteyebilirdi.&lt;/p&gt;
-&lt;p&gt;Stuxneti onemli yapan bir konuda 4 tane 0-day açığı ile birlikte gelmesi.Bazı virusler yayılmadan once 1-2 tane 0day açığı ile birlikte piyasa surulurdu.Ama Stuxnet bu kuralı bozdu.İlginç olan ise bu açıklardan 2 tanesinin bulunup diğer 2 tanesinin hala bulunamamış olması.Bulunan açıklar aşağıdadır.Bunların yanında geri kalan 2 açık ise Windows sistemler yetki yukseltme açığı.Bana gore de en tehlikeli&amp;nbsp;olanlar.&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;&lt;span class="caps"&gt;MS10&lt;/span&gt;-046, Microsoft Windows Shell Kısayol İşleme Açıklığı:&lt;/strong&gt; Asıl olarak işletim sistemindeki bir dizayn hatasından kaynaklanan bu açıklık sayesinde autorun açık olmasa bile bilgisayara takılan bir taşınabilir depolama aygıtındaki dosyaların ikonlarını gostermeye çalışan Windows Gezgini ve benzeri bir programın zararlı bir kodu çalıştırması sağlanabiliyor. Stuxnet&amp;#8217;in de asıl olarak bu yontemle birçok yere bulaştırıldığı duşunuluyor. Ayrıca kendini guncelleme yeteneğine sahip olan stuxnet&amp;#8217;e bu ozelliğin mart ayında eklendiği ve daha onceden solucanın taşınabilir cihazlardaki autorun ozelliği ile bilgisayara bulaştığı&amp;nbsp;duşunulmekte.&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;&lt;span class="caps"&gt;MS10&lt;/span&gt;-061, Microsoft Windows Yazdırma Kuyruklayıcısı Açıklığı:&lt;/strong&gt; Bu açıklığı kullandığı, stuxnet&amp;#8217;in daha sonraki detaylı incelemelerinde açığa çıktı. Bu açıklığı kullanarak stuxnet bulaşmış olduğu bir bilgisayardan diğerine atlamayı başarabilmekte. Basitçe bu açıklık bir bilgisayara uzaktan yuksek yetkilerle dosya yuklenilmesine olanak sağlamakta. Daha sonra da bu dosya &lt;span class="caps"&gt;WBEM&lt;/span&gt;&amp;#8217;in bir ozelliği ile çalıştırılabilmekte. Önce şunu belirtmek gerekir ki bu açıklık yukarıdaki açıklık gibi bir taşınabilir aygıtın takılmasını gerektirmese de açıklıktan yararlanılabilmesi için gereken birçok şartın beraber bulunmasını gerektiği için kullanılabilmesi daha zor olan bir&amp;nbsp;açıklık.&lt;/p&gt;
-&lt;p&gt;Peki, bu kadar hazırlık ve çabanın sonucunda yapılmak istenen ne? Stuxnet&amp;#8217;in hedefi halihazırda piyasa da bulunan virusler gibi banka veya online oyun hesap bilgilerinin çalınması, &lt;span class="caps"&gt;DDOS&lt;/span&gt; saldırıları gerçekleştirmek veya spam mail atabilmek için zombi bilgisayar ordusu kurmak ve kiralamak değil. Bunların hepsinden farklı olarak; su kaynakları, petrol platformları, enerji santralleri ve diğer sanayi tesislerinin kontrolu için kullanılan &lt;span class="caps"&gt;SCADA&lt;/span&gt; (Siemens supervisory control and data acquisition) sistemlerini ele geçirip fiziksel kontrol sistemlerinin çalışmasını değiştirmek. Stuxnet eğer bulaştığı bilgisayarda bir &lt;span class="caps"&gt;SCADA&lt;/span&gt; sistemi mevcutsa ilk once mevcut projelerin kod ve dizaynlarını çalmaya çalışıyor, onun dışında asıl ilginç olan nokta ise stuxnet&amp;#8217;in programlama yazılım ara yuzu vasıtasıyla &lt;span class="caps"&gt;PLC&lt;/span&gt;&amp;#8217;lere (Programmable Logic Controllers) kendi kodlarını yuklemesi. Ayrıca yuklenen bu kodlar, stuxnet&amp;#8217;in bulaşmış olduğu bir bilgisayardan &lt;span class="caps"&gt;PLC&lt;/span&gt;&amp;#8217;lerdeki butun kodlar incelenmek istendiğinde dahi gorulemiyor. Boylelikle stuxnet &lt;span class="caps"&gt;PLC&lt;/span&gt; lere enjekte edilen kodları saklayabilen bilinen ilk rootkit unvanına da sahip&amp;nbsp;oluyor.&lt;/p&gt;
-&lt;p&gt;Birçok medya raporunda kodlar arasında &lt;span class="caps"&gt;MYRTUS&lt;/span&gt; sozcuğunun geçmesi Stuxnet&amp;#8217;in İsrail tarafından oluşturulduğu iddialarına neden oldu. İddiaya gore &lt;span class="caps"&gt;MYRTUS&lt;/span&gt; &amp;#8220;Myrtle&amp;#8221; yani İbranice&amp;#8217;de &amp;#8220;Hadassah&amp;#8221; olarak geçen mersin ağacına gondermeydi ve Yahudi İran kraliçesi Esther&amp;#8217;in doğum adı da Hadassah&amp;#8217;tı. Yine kodlar arasında geçen 19790509 sayısının 9 Mayıs 1979 olduğu ve bir başka İranlı Yahudi olan işadamı Habib Elghanian&amp;#8217;ın Tahran&amp;#8217;da idam edildiği tarih olarak yorumlandı. Öte yandan &lt;span class="caps"&gt;MYRTUS&lt;/span&gt;&amp;#8217;un yanlış algılanmış olabileceği, ifadenin sadece &amp;#8220;My RTUs&amp;#8221; olduğu da iddialar arasında. RTUs &amp;#8220;Remote Terminal Units&amp;#8221; anlamına gelen &lt;span class="caps"&gt;SCADA&lt;/span&gt; bileşenlerinin kısaltması. İsrail bu konuda açıklama yapmasa da konunun takibi için askeri haberalma birimi kurması siber-savaşın başladığını&amp;nbsp;doğruluyor.&lt;/p&gt;
-&lt;p&gt;İran&amp;#8217;da ise 30bin &lt;span class="caps"&gt;IP&lt;/span&gt; adresinin saldırıdan etkilendiği ve saldırıların Stuxnet&amp;#8217;in farklı surumleriyle devam ettiği bildirildi. İran Siemens&amp;#8217;in antivirus yazılımının solucanı silmek yerine guncellediğinden kuşkulandığını belirterek kendi temizleme programlarını oluşturacağını&amp;nbsp;açıkladı&lt;/p&gt;
-&lt;p&gt;Kasım ayı sonunda nukleer programda çalışan iki İranlı bilimadamının bombalı suikaste kurban gitmesi Stuxnet&amp;#8217;in arkasında olanların nukleer programı durdurmakla yetinmeyeceği yorumlarını getirdi. &lt;span class="caps"&gt;BKZ&lt;/span&gt;: &lt;a href="http://www.sabah.com.tr/Dunya/2011/11/20/iranli-uzmanlari-stuxnet-oldurdu"&gt;http://www.sabah.com.tr/Dunya/2011/11/20/iranli-uzmanlari-stuxnet-oldurdu&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Bunun yanında 1-2 saat once de Linkedin'den şifre sıfırla mesajı geldi.En azından şimdilik sorunu çozmuş gibi goruyorlar.Ancak hala kırılmış ve kırılmaya devam eden şifreler var.Biran once şifre değişimi yapmazsanız hesaplarınızı kaybetmeniz olası.Bu yuzden sizde bir an once linkedin şifrenizi değiştiriniz.&lt;/p&gt;</summary><category term="linkedin"></category><category term="linkedin leaks"></category><category term="linkedin passwords"></category><category term="linkedin şifreleri"></category><category term="rus hackerlar"></category></entry><entry><title>Stuxnet Virüsü</title><link href="http://www.halitalptekin.com/stuxnet-virusu.html" rel="alternate"></link><updated>2012-06-03T00:00:00+03:00</updated><author><name>halit</name></author><id>tag:www.halitalptekin.com,2012-06-03:stuxnet-virusu.html</id><summary type="html">&lt;p&gt;Stuxnet virusu bu aralar guvenlik uzmanları tarafından en fazla konuşulan konulardan birisi.Çunku diğer viruslere benzemeyen amacı tamamen siber savaş olan bir bir virus.Diğer virus turlerinin amacı daha fazla bilgisayara yayılıp daha fazla bilgisayara zarar vermek.Ama Stuxnet'i diğer viruslerden ayıran nokta da bu.O daha fazla sisteme yayılmak yerine endustriyel sistemleri gizlice gozetliyor ve yeniden programlayabiliyor.Kısacası tam bir siber savaş askeri.&lt;/p&gt;
+&lt;p&gt;İran bu Stuxnet virusunden zarar gorduğunu resmi olarak açıkladı.Natanz'daki Uranyum zenginleştirme tesisi kapasitesi %15 dolayında duştu.Bunlar aslında çok ciddi olaylar.Artık sanal alemin reel alem uzerinde ne kadar etkili olduğunun birer kanıtları.Her zaman soylendiği gibi fiziksel savaşların yerine siber savaşlar gelicek.Bunun da ilk temsilcilerinden birisi Stuxnet oldu.&lt;/p&gt;
+&lt;p&gt;Stuxnet ilk defa haziran ayının ortalarında Beyaz Rusya'daki kuçuk bir firma olan VirusBlokAda tarafından tespit edildi. İlk incelemeler virusun standart bir solucan olmadığını zaten gosteriyordu fakat karmaşık yapısı yuzunden uzayan incelemeler devam ettikçe işin boyutu gittikçe değişti. Özellikle solucanın çok karmaşık yapısı, kullandığı taktikler ve hedefi goz onune alınınca, siber savaş adı altında yıllarca dillendirilen senaryoların aslında çok da gerçek dışı olmadığı ortaya çıktı.&lt;/p&gt;
+&lt;p&gt;Stuxneti inceleyen ilk uzmanlar zaten incelemeye başladıkları ilk andan itibaren bu virusun çok karmaşık bir yapıda olduğunu ve tek bir kişi tarafından değilde arkasında buyuk devletlerin olduğu bir grup tarafından oluşturulduğu fikri oluştu.Çunku virusun amacı tamamen devletlerin onemli yerlerini etkilemekti.Boyle birşeyi de rakip devletler isteyebilirdi.&lt;/p&gt;
+&lt;p&gt;Stuxneti onemli yapan bir konuda 4 tane 0-day açığı ile birlikte gelmesi.Bazı virusler yayılmadan once 1-2 tane 0day açığı ile birlikte piyasa surulurdu.Ama Stuxnet bu kuralı bozdu.İlginç olan ise bu açıklardan 2 tanesinin bulunup diğer 2 tanesinin hala bulunamamış olması.Bulunan açıklar aşağıdadır.Bunların yanında geri kalan 2 açık ise Windows sistemler yetki yukseltme açığı.Bana gore de en tehlikeli olanlar.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;MS10-046, Microsoft Windows Shell Kısayol İşleme Açıklığı:&lt;/strong&gt; Asıl olarak işletim sistemindeki bir dizayn hatasından kaynaklanan bu açıklık sayesinde autorun açık olmasa bile bilgisayara takılan bir taşınabilir depolama aygıtındaki dosyaların ikonlarını gostermeye çalışan Windows Gezgini ve benzeri bir programın zararlı bir kodu çalıştırması sağlanabiliyor. Stuxnet'in de asıl olarak bu yontemle birçok yere bulaştırıldığı duşunuluyor. Ayrıca kendini guncelleme yeteneğine sahip olan stuxnet'e bu ozelliğin mart ayında eklendiği ve daha onceden solucanın taşınabilir cihazlardaki autorun ozelliği ile bilgisayara bulaştığı duşunulmekte.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;MS10-061, Microsoft Windows Yazdırma Kuyruklayıcısı Açıklığı:&lt;/strong&gt; Bu açıklığı kullandığı, stuxnet'in daha sonraki detaylı incelemelerinde açığa çıktı. Bu açıklığı kullanarak stuxnet bulaşmış olduğu bir bilgisayardan diğerine atlamayı başarabilmekte. Basitçe bu açıklık bir bilgisayara uzaktan yuksek yetkilerle dosya yuklenilmesine olanak sağlamakta. Daha sonra da bu dosya WBEM'in bir ozelliği ile çalıştırılabilmekte. Önce şunu belirtmek gerekir ki bu açıklık yukarıdaki açıklık gibi bir taşınabilir aygıtın takılmasını gerektirmese de açıklıktan yararlanılabilmesi için gereken birçok şartın beraber bulunmasını gerektiği için kullanılabilmesi daha zor olan bir açıklık.&lt;/p&gt;
+&lt;p&gt;Peki, bu kadar hazırlık ve çabanın sonucunda yapılmak istenen ne? Stuxnet'in hedefi halihazırda piyasa da bulunan virusler gibi banka veya online oyun hesap bilgilerinin çalınması, DDOS saldırıları gerçekleştirmek veya spam mail atabilmek için zombi bilgisayar ordusu kurmak ve kiralamak değil. Bunların hepsinden farklı olarak; su kaynakları, petrol platformları, enerji santralleri ve diğer sanayi tesislerinin kontrolu için kullanılan SCADA (Siemens supervisory control and data acquisition) sistemlerini ele geçirip fiziksel kontrol sistemlerinin çalışmasını değiştirmek. Stuxnet eğer bulaştığı bilgisayarda bir SCADA sistemi mevcutsa ilk once mevcut projelerin kod ve dizaynlarını çalmaya çalışıyor, onun dışında asıl ilginç olan nokta ise stuxnet'in programlama yazılım ara yuzu vasıtasıyla PLC'lere (Programmable Logic Controllers) kendi kodlarını yuklemesi. Ayrıca yuklenen bu kodlar, stuxnet'in bulaşmış olduğu bir bilgisayardan PLC'lerdeki butun kodlar incelenmek istendiğinde dahi gorulemiyor. Boylelikle stuxnet PLC lere enjekte edilen kodları saklayabilen bilinen ilk rootkit unvanına da sahip oluyor.&lt;/p&gt;
+&lt;p&gt;Birçok medya raporunda kodlar arasında MYRTUS sozcuğunun geçmesi Stuxnet'in İsrail tarafından oluşturulduğu iddialarına neden oldu. İddiaya gore MYRTUS "Myrtle" yani İbranice'de "Hadassah" olarak geçen mersin ağacına gondermeydi ve Yahudi İran kraliçesi Esther'in doğum adı da Hadassah'tı. Yine kodlar arasında geçen 19790509 sayısının 9 Mayıs 1979 olduğu ve bir başka İranlı Yahudi olan işadamı Habib Elghanian'ın Tahran'da idam edildiği tarih olarak yorumlandı. Öte yandan MYRTUS'un yanlış algılanmış olabileceği, ifadenin sadece "My RTUs" olduğu da iddialar arasında. RTUs "Remote Terminal Units" anlamına gelen SCADA bileşenlerinin kısaltması. İsrail bu konuda açıklama yapmasa da konunun takibi için askeri haberalma birimi kurması siber-savaşın başladığını doğruluyor.&lt;/p&gt;
+&lt;p&gt;İran'da ise 30bin IP adresinin saldırıdan etkilendiği ve saldırıların Stuxnet'in farklı surumleriyle devam ettiği bildirildi. İran Siemens'in antivirus yazılımının solucanı silmek yerine guncellediğinden kuşkulandığını belirterek kendi temizleme programlarını oluşturacağını açıkladı&lt;/p&gt;
+&lt;p&gt;Kasım ayı sonunda nukleer programda çalışan iki İranlı bilimadamının bombalı suikaste kurban gitmesi Stuxnet'in arkasında olanların nukleer programı durdurmakla yetinmeyeceği yorumlarını getirdi. BKZ: &lt;a href="http://www.sabah.com.tr/Dunya/2011/11/20/iranli-uzmanlari-stuxnet-oldurdu"&gt;http://www.sabah.com.tr/Dunya/2011/11/20/iranli-uzmanlari-stuxnet-oldurdu&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;Peki biz ne yapacağız diye duşunuyorsanız bizim yapacağımız pek birşey yok.Antivurusumuzu guncellemek(!) ve birazcık dikkatli olmak yeter gibi gozukuyor.Zaten Stuxnetin işi gucu yokta bize mi gelecek.O yuzden biraz rahat olabiliriz.Tutunki geldi o zaman &lt;a href="http://www.malwarecity.com/community/index.php?app=downloads&amp;amp;showfile=12"&gt;buradaki&lt;/a&gt; araç ile temizleyebilirsiniz.Ama eğer kurumsal bir ağınız varsa aşağıdaki yazıyı okumanızda fayda var. &lt;a href="http://www.eyupcelik.com.tr/ceh/kurumsal-aglarda-stuxnet-virusunu-tespit-etme"&gt;http://www.eyupcelik.com.tr/ceh/kurumsal-aglarda-stuxnet-virusunu-tespit-etme&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;Kaynaklar: &lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;&lt;a href="http://blogs.technet.com/b/mmpc/archive/2010/07/16/the-stuxnet-sting.aspx"&gt;http://blogs.technet.com/b/mmpc/archive/2010/07/16/the-stuxnet-sting.aspx &lt;/a&gt;&lt;/p&gt;

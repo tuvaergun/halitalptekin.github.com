@@ -10,14 +10,14 @@
 
     <!-- Le HTML5 shim, for IE6-8 support of HTML elements -->
     <!--[if lt IE 9]>
-    <script src=".././theme/html5.js"></script>
+    <script src="../theme/html5.js"></script>
     <![endif]-->
 
     <!-- Le styles -->
-    <link href=".././theme/bootstrap.min.css" rel="stylesheet">
-    <link href=".././theme/bootstrap.min.responsive.css" rel="stylesheet">
-    <link href=".././theme/local.css" rel="stylesheet">
-    <link href=".././theme/pygments.css" rel="stylesheet">
+    <link href="../theme/bootstrap.min.css" rel="stylesheet">
+    <link href="../theme/bootstrap.min.responsive.css" rel="stylesheet">
+    <link href="../theme/local.css" rel="stylesheet">
+    <link href="../theme/pygments.css" rel="stylesheet">
 
 </head>
 
@@ -33,14 +33,13 @@
              <span class="icon-bar"></span>
          </a>
 
-        <a class="brand" href="../.">Halit Alptekin Personal Blog</a>
+        <a class="brand" href="..">Halit Alptekin Personal Blog</a>
 
         <div class="nav-collapse">
         <ul class="nav">
-        
-            
-        <li><a href=".././pages/about-me.html">About Me</a></li>
-	    <li><a href=".././pages/contact.html">Contact</a></li>
+                    
+        <li><a href="../pages/about-me.html">About Me</a></li>
+	    <li><a href="../pages/contact.html">Contact</a></li>
         </ul>
         </div>
         
@@ -54,103 +53,84 @@
 
         <div class="span9">
                 
-
         
-
-
 
     <div class='article'>
         <div class="content-title">
-            <a href=".././django-ile-tanisma.html"><h1>Django İle&nbsp;Tanışma</h1></a>
+            <a href="../django-ile-tanisma.html"><h1>Django İle Tanışma</h1></a>
             Jun 06, 2012
 
-
-by <a class="url fn" href=".././author/halit.html">halit</a>
+by <a class="url fn" href="../author/halit.html">halit</a>
  
 
-in <a href=".././category/django.html">django</a>
+in <a href="../category/django.html">django</a>
 
  
-    tagged <a href=".././tag/django.html">django</a> <a href=".././tag/django-kurulumu.html">django kurulumu</a> <a href=".././tag/django-nedir.html">django nedir</a> <a href=".././tag/django-proje.html">django proje</a> <a href=".././tag/djangoya-giris.html">djangoya giriş</a> <a href=".././tag/neden-django.html">neden django</a> <a href=".././tag/python.html">python</a> 
- 
+    tagged <a href="../tag/django.html">django</a> <a href="../tag/django-kurulumu.html">django kurulumu</a> <a href="../tag/django-nedir.html">django nedir</a> <a href="../tag/django-proje.html">django proje</a> <a href="../tag/djangoya-giris.html">djangoya giriş</a> <a href="../tag/neden-django.html">neden django</a> <a href="../tag/python.html">python</a>  
         </div>
         
-        <div><p>Bugunlerde neredeyse her 3 lafımdan birisi python diğeri django ile ilgili.Hal boyle olunca insanlar haliyle Djangoyu merak ediyor.Python hakkında azda olsa bilgi sahibi olsalar bile Djangoyu ilk kez duyanlar var.Bu yuzden oncelikle Django&#8217;nun ne olduğuyla ve bize getirdiği yeniliklerle ilgili bir yazı yazmak istedim.Bu yazıda Django ile ilgili ufak çaplı bilgi sahibi olup bilgisayarınıza nasıl kurulacağını oğreneceksiniz.İlerleyen yazılarımda ise kendi sitenizi yapmanız için gereken konulardan&nbsp;bahsedeceğim.</p>
+        <div><p>Bugunlerde neredeyse her 3 lafımdan birisi python diğeri django ile ilgili.Hal boyle olunca insanlar haliyle Djangoyu merak ediyor.Python hakkında azda olsa bilgi sahibi olsalar bile Djangoyu ilk kez duyanlar var.Bu yuzden oncelikle Django'nun ne olduğuyla ve bize getirdiği yeniliklerle ilgili bir yazı yazmak istedim.Bu yazıda Django ile ilgili ufak çaplı bilgi sahibi olup bilgisayarınıza nasıl kurulacağını oğreneceksiniz.İlerleyen yazılarımda ise kendi sitenizi yapmanız için gereken konulardan bahsedeceğim.</p>
 <p><img alt="Django Web Framework" src="http://www.halitalptekin.com/media/upload/django-logo-positive.png" /></p>
-<p><strong>Django&nbsp;Nedir?</strong></p>
-<p>Django Python alt yapısını kullanan,çok hızlı ve guvenli bir şekilde,sonuç odaklı web uygulamaları geliştirme platformudur.Kullandığı <span class="caps">DRY</span>(Don&#8217;t Repeat Yourself) prensibi ile işlemlerinizi mumkun olduğunca otomatikleştirir.Bunların yanında diğer birçok web frameworkte olduğu gibi <span class="caps">MVC</span>(Model-View-Controller) yapısını&nbsp;kullanır.</p>
-<p><strong>Neden Django&nbsp;Kullanalım?</strong></p>
-<p>Django kendi içerisinde geliştirilmiş bir admin paneli ile birlikte gelir.Bu sayede diğer dillerde admin panelini oluşturmak için harcadığınız sureyi Django&#8217;da harcamazsınız.Zamanın yanında kaynak tasarufuda sağlar.Yani sitenizi barındıracağınız serverın kaynaklarını mumkun olduğunca az kullanmaya çalışır.Ki bunuda gayet başarılı bir şekilde&nbsp;yapar.</p>
-<p>Kendi içerisinde gelen gelişmiş cache yapısı ile birlikte buyuk trafikleri çok rahat bir şekilde kaldırmanızı sağlar.Bu yuzden yuksek trafiğe sahip sitelerin birçoğunda kullanılır.(Yabancı gazete siteleri,Video siteleri&nbsp;vb)</p>
-<p>Zarif <span class="caps">URL</span> tasarımına sahip olduğu için kullanmak istediğiniz <span class="caps">URL</span>&#8217;yi çok kısa surede tam istediğiniz şekilde&nbsp;oluşturabilirsiniz.</p>
-<p>Kendine has template sistemi tamamen kullanıcı dostudur.Kolayca genişletilip&nbsp;ozelleştirilebilir.</p>
-<p>Çoklu dil desteğine sahip olduğu için oluşturduğunuz uygulamayı birçok dilde farklı ulkelerde&nbsp;kullanabilirsiniz.</p>
-<p>Tabi bunların yanında Django&#8217;yu kullanmak için çok fazla sebebiniz var.Bunların hepsini zamanla kullanmaya başladıkça sizde farkedeceksiniz.Bu yuzden Dajngo ile ne kadar erken tanışırsanız sizin için o kadar yararlı&nbsp;olacaktır.</p>
-<p><strong>Django&nbsp;Kurulumu</strong></p>
-<p>Djangoyu kurmak için oncelikle bilgisayarımızda Python kurulu olması lazım.Bu yuzden once onu kuralım.Eğer bilgisayarınızda linux yuklu ise dağıtımına gore herhangi bir paket yoneticisi ile kurabilirsiniz.(Centos: yum install python , Ubuntu: apt-get install python vb) Kurulu olup olmadığını anlamak için konsola python yazmanız yeterlidir.Eğer python uygulaması açılmadıysa kurulu değildir.Ayrıcana girdiğiniz python&#8217;un interaktif yorumlayıcısından çıkmak için exit() yazıp entere basmanız yeterlidir.Windows kullanıcılarıda <a href="http://www.python.org/download/">buradaki</a> sayfadan sistemine en uygun olan surumunu indirip&nbsp;kurabilir.</p>
-<p>Artık bilgisayarınızda python&#8217;un yuklu olduğunu kabul ediyorum.(Ek olarak pythonu <span class="caps">PATH</span> yolunuza eklemeniz sizin için ileride çok yararlı olacaktır.)Bundan sonra django kurulumu yapmalıyız.Öncelikle Django&#8217;nun sitesinden <a href="https://www.djangoproject.com/download/1.4/tarball/">son surumu</a> indirelim.Ve daha sonra aşağıdaki şekilde kurulumu gerçekleştirelim.(Windows kullanıcıları kurulum sırasında hata alırsa bilgisayarına <a href="http://pypi.python.org/pypi/setuptools">python setup tools</a> kurup sonra tekrardan&nbsp;denemelidirler.)</p>
-<p><strong>Linux&nbsp;kullanıcıları</strong></p>
-<div class="codehilite"><pre><span class="n">tar</span> <span class="n">xzvf</span> <span class="n">Django</span><span class="o">-</span><span class="mf">1.4</span><span class="o">.</span><span class="n">tar</span><span class="o">.</span><span class="n">gz</span>
+<p><strong>Django Nedir?</strong></p>
+<p>Django Python alt yapısını kullanan,çok hızlı ve guvenli bir şekilde,sonuç odaklı web uygulamaları geliştirme platformudur.Kullandığı DRY(Don't Repeat Yourself) prensibi ile işlemlerinizi mumkun olduğunca otomatikleştirir.Bunların yanında diğer birçok web frameworkte olduğu gibi MVC(Model-View-Controller) yapısını kullanır.</p>
+<p><strong>Neden Django Kullanalım?</strong></p>
+<p>Django kendi içerisinde geliştirilmiş bir admin paneli ile birlikte gelir.Bu sayede diğer dillerde admin panelini oluşturmak için harcadığınız sureyi Django'da harcamazsınız.Zamanın yanında kaynak tasarufuda sağlar.Yani sitenizi barındıracağınız serverın kaynaklarını mumkun olduğunca az kullanmaya çalışır.Ki bunuda gayet başarılı bir şekilde yapar.</p>
+<p>Kendi içerisinde gelen gelişmiş cache yapısı ile birlikte buyuk trafikleri çok rahat bir şekilde kaldırmanızı sağlar.Bu yuzden yuksek trafiğe sahip sitelerin birçoğunda kullanılır.(Yabancı gazete siteleri,Video siteleri vb)</p>
+<p>Zarif URL tasarımına sahip olduğu için kullanmak istediğiniz URL'yi çok kısa surede tam istediğiniz şekilde oluşturabilirsiniz.</p>
+<p>Kendine has template sistemi tamamen kullanıcı dostudur.Kolayca genişletilip ozelleştirilebilir.</p>
+<p>Çoklu dil desteğine sahip olduğu için oluşturduğunuz uygulamayı birçok dilde farklı ulkelerde kullanabilirsiniz.</p>
+<p>Tabi bunların yanında Django'yu kullanmak için çok fazla sebebiniz var.Bunların hepsini zamanla kullanmaya başladıkça sizde farkedeceksiniz.Bu yuzden Dajngo ile ne kadar erken tanışırsanız sizin için o kadar yararlı olacaktır.</p>
+<p><strong>Django Kurulumu</strong></p>
+<p>Djangoyu kurmak için oncelikle bilgisayarımızda Python kurulu olması lazım.Bu yuzden once onu kuralım.Eğer bilgisayarınızda linux yuklu ise dağıtımına gore herhangi bir paket yoneticisi ile kurabilirsiniz.(Centos: yum install python , Ubuntu: apt-get install python vb) Kurulu olup olmadığını anlamak için konsola python yazmanız yeterlidir.Eğer python uygulaması açılmadıysa kurulu değildir.Ayrıcana girdiğiniz python'un interaktif yorumlayıcısından çıkmak için exit() yazıp entere basmanız yeterlidir.Windows kullanıcılarıda <a href="http://www.python.org/download/">buradaki</a> sayfadan sistemine en uygun olan surumunu indirip kurabilir.</p>
+<p>Artık bilgisayarınızda python'un yuklu olduğunu kabul ediyorum.(Ek olarak pythonu PATH yolunuza eklemeniz sizin için ileride çok yararlı olacaktır.)Bundan sonra django kurulumu yapmalıyız.Öncelikle Django'nun sitesinden <a href="https://www.djangoproject.com/download/1.4/tarball/">son surumu</a> indirelim.Ve daha sonra aşağıdaki şekilde kurulumu gerçekleştirelim.(Windows kullanıcıları kurulum sırasında hata alırsa bilgisayarına <a href="http://pypi.python.org/pypi/setuptools">python setup tools</a> kurup sonra tekrardan denemelidirler.)</p>
+<p><strong>Linux kullanıcıları</strong></p>
+<div class="codehilite"><pre><span class="n">tar</span> <span class="n">xzvf</span> <span class="n">Django</span><span class="o">-</span><span class="mf">1.4</span><span class="p">.</span><span class="n">tar</span><span class="p">.</span><span class="n">gz</span>
 <span class="n">cd</span> <span class="n">Django</span><span class="o">-</span><span class="mf">1.4</span>
-<span class="n">python</span> <span class="n">setup</span><span class="o">.</span><span class="n">py</span> <span class="n">install</span>
+<span class="n">python</span> <span class="n">setup</span><span class="p">.</span><span class="n">py</span> <span class="n">install</span>
 </pre></div>
 
 
-<p>Windows Kullanıcıları Winrar veya herhangi bir arşiv yoneticisi ile birlikte klasore çıkarın.Daha sonra komut satırından ilgili dizine geçin.(Başlat-&gt;Çalıştır-&gt;cmd ile komut satırını açıp cd komutu ile ilgili dizine geçebilirsiniz)Daha sonra aynı şekilde python setup.py install komutu ile kurulumu&nbsp;tamamlayabilirsiniz.</p>
-<p><strong>Django İle Veritabanı&nbsp;Kurulumu</strong></p>
-<p>Django ile ilk tanışmanız sırasında SQLite kullanmanızı oneririm.Kolay kurulumu ve kullanımı ile başlangıç için gayet idealdir.Kodlamanız bittiği zaman deploy aşamasından hemen once kullanmak istediğiniz veritabanına geçiş yapabilirsiniz.Django&#8217;nun en guzel yanlarından birisi de budur.Diğer veritabanı sistemlerine geçmek için ufak bir paket kurmak ve settings.py içinde bir satırı duzenlemek yetiyor.Bu paketler MySQL için <a href="http://sourceforge.net/projects/mysql-python">MySQLdb</a> ,PostgreSQL için <a href="http://initd.org/pub/software/psycopg/">psycopg</a> , Oracle için <a href="http://cx-oracle.sourceforge.net/">cx_Oracle</a> dir.Bunlara ilerleyen zamanlarda daha ayrıntılı giriş yapacağım.Şimdilik sadece bunları bilmemiz&nbsp;yeterlidir.</p>
-<p><strong>Django İle İlk&nbsp;Projemiz</strong></p>
-<p>Dajngo ile ilk projemizi başlatmak için linux ortamında django-admin komutu yeterli olacaktır.Windows kullanıcıları ise python kurulumunun yapıldığı yerde django-admin.py dosyasını arayıp istediği bir dizine kopyalayarak veya <span class="caps">PATH</span> dizinine bu dosyayı ekleyerek kullanabilir.Ben bu dosyayı masaustume aldım.O şekilde&nbsp;kullanıyorum.</p>
+<p>Windows Kullanıcıları Winrar veya herhangi bir arşiv yoneticisi ile birlikte klasore çıkarın.Daha sonra komut satırından ilgili dizine geçin.(Başlat-&gt;Çalıştır-&gt;cmd ile komut satırını açıp cd komutu ile ilgili dizine geçebilirsiniz)Daha sonra aynı şekilde python setup.py install komutu ile kurulumu tamamlayabilirsiniz.</p>
+<p><strong>Django İle Veritabanı Kurulumu</strong></p>
+<p>Django ile ilk tanışmanız sırasında SQLite kullanmanızı oneririm.Kolay kurulumu ve kullanımı ile başlangıç için gayet idealdir.Kodlamanız bittiği zaman deploy aşamasından hemen once kullanmak istediğiniz veritabanına geçiş yapabilirsiniz.Django'nun en guzel yanlarından birisi de budur.Diğer veritabanı sistemlerine geçmek için ufak bir paket kurmak ve settings.py içinde bir satırı duzenlemek yetiyor.Bu paketler MySQL için <a href="http://sourceforge.net/projects/mysql-python">MySQLdb</a> ,PostgreSQL için <a href="http://initd.org/pub/software/psycopg/">psycopg</a> , Oracle için <a href="http://cx-oracle.sourceforge.net/">cx_Oracle</a> dir.Bunlara ilerleyen zamanlarda daha ayrıntılı giriş yapacağım.Şimdilik sadece bunları bilmemiz yeterlidir.</p>
+<p><strong>Django İle İlk Projemiz</strong></p>
+<p>Dajngo ile ilk projemizi başlatmak için linux ortamında django-admin komutu yeterli olacaktır.Windows kullanıcıları ise python kurulumunun yapıldığı yerde django-admin.py dosyasını arayıp istediği bir dizine kopyalayarak veya PATH dizinine bu dosyayı ekleyerek kullanabilir.Ben bu dosyayı masaustume aldım.O şekilde kullanıyorum.</p>
 <div class="codehilite"><pre><span class="n">django</span><span class="o">-</span><span class="n">admin</span> <span class="n">startproject</span> <span class="n">denemedjango</span>
 </pre></div>
 
 
-<p>Yukarıdaki komut ile ilk django projemizi başlatmış oluyoruz.Bundan sonra o dizin içinde denemedjango adında bir klasor oluşturulcak ve içinde gene denemedjango klasoru ve manage.py dosyası olacak.Burdaki denemedjango klasoru içinde ise <strong>init</strong>.py,settings.py,urls.py,wsgi.py dosyaları olması lazım.Eğer bu dosyaları gorduyseniz ilk projeniz başarıyla oluşturulmuş&nbsp;demektir.</p>
-<p>Şimdi bunlardan sonra projemizi çalıştırıp test edebiliriz.Bunun için proje klasorunun içine(yani içinde manage.py olan klasor) girelim.Daha sonra aşağıdaki komut ile&nbsp;çalıştıralım.</p>
+<p>Yukarıdaki komut ile ilk django projemizi başlatmış oluyoruz.Bundan sonra o dizin içinde denemedjango adında bir klasor oluşturulcak ve içinde gene denemedjango klasoru ve manage.py dosyası olacak.Burdaki denemedjango klasoru içinde ise <strong>init</strong>.py,settings.py,urls.py,wsgi.py dosyaları olması lazım.Eğer bu dosyaları gorduyseniz ilk projeniz başarıyla oluşturulmuş demektir.</p>
+<p>Şimdi bunlardan sonra projemizi çalıştırıp test edebiliriz.Bunun için proje klasorunun içine(yani içinde manage.py olan klasor) girelim.Daha sonra aşağıdaki komut ile çalıştıralım.</p>
 <div class="codehilite"><pre><span class="n">python</span> <span class="n">manage</span><span class="o">.</span><span class="n">py</span> <span class="n">runserver</span>
 </pre></div>
 
 
-<p>Şu anda konsol ekranınızda aşağıdaki yazıları gormeniz lazım.Daha sonra da browserınıza geçip localhost:8000 veya 127.0.0.1:8000 yapmanız yeterli olacaktır.Girdiğinizde ise Djangoya hoş geldiniz mesajını&nbsp;goreceksiniz.</p>
-<div class="codehilite"><pre><span class="n">Validating</span> <span class="n">models</span><span class="o">...</span>
+<p>Şu anda konsol ekranınızda aşağıdaki yazıları gormeniz lazım.Daha sonra da browserınıza geçip localhost:8000 veya 127.0.0.1:8000 yapmanız yeterli olacaktır.Girdiğinizde ise Djangoya hoş geldiniz mesajını goreceksiniz.</p>
+<div class="codehilite"><pre><span class="n">Validating</span> <span class="n">models</span><span class="p">...</span>
 
 <span class="mi">0</span> <span class="n">errors</span> <span class="n">found</span>
-<span class="n">Django</span> <span class="n">version</span> <span class="mf">1.4</span><span class="p">,</span> <span class="n">using</span> <span class="n">settings</span> <span class="s">&#39;denemedjango.settings&#39;</span>
-<span class="n">Development</span> <span class="n">server</span> <span class="n">is</span> <span class="n">running</span> <span class="n">at</span> <span class="n">http:</span><span class="sr">//</span><span class="mf">127.0.0.1</span><span class="p">:</span><span class="mi">8000</span><span class="o">/</span>
-<span class="n">Quit</span> <span class="n">the</span> <span class="n">server</span> <span class="n">with</span> <span class="n"><span class="caps">CTRL</span></span><span class="o">-</span><span class="n"><span class="caps">BREAK</span></span><span class="o">.</span><span class="p">;</span>
+<span class="n">Django</span> <span class="n">version</span> <span class="mf">1.4</span><span class="p">,</span> <span class="n">using</span> <span class="n">settings</span> <span class="err">&#39;</span><span class="n">denemedjango</span><span class="p">.</span><span class="n">settings</span><span class="err">&#39;</span>
+<span class="n">Development</span> <span class="n">server</span> <span class="n">is</span> <span class="n">running</span> <span class="n">at</span> <span class="n">http</span><span class="o">:</span><span class="c1">//127.0.0.1:8000/</span>
+<span class="n">Quit</span> <span class="n">the</span> <span class="n">server</span> <span class="n">with</span> <span class="n">CTRL</span><span class="o">-</span><span class="n">BREAK</span><span class="p">.;</span>
 </pre></div>
 
 
-<p>Şimdilik django ile ilk projemizi yaptık ve çalıştırdık.Artık bir django projemiz var.Bir sonraki yazımda projemize uygulama ekleyip ufak ayarlar yapacağız.Tanışma faslını mumkun olduğunca kısa tutmakta fayda var diye duşunuyorum.En sonuna doğru django&#8217;nun deploy edilip server uzerinde çalıştırılmasına kadar tum konulardan bahsetmek istiyorum.Takipte kalmanızda fayda&nbsp;var.</p></div>
+<p>Şimdilik django ile ilk projemizi yaptık ve çalıştırdık.Artık bir django projemiz var.Bir sonraki yazımda projemize uygulama ekleyip ufak ayarlar yapacağız.Tanışma faslını mumkun olduğunca kısa tutmakta fayda var diye duşunuyorum.En sonuna doğru django'nun deploy edilip server uzerinde çalıştırılmasına kadar tum konulardan bahsetmek istiyorum.Takipte kalmanızda fayda var.</p></div>
         <hr />
     </div>
 		
-    
-        <div class="pagination">
+            <div class="pagination">
 <ul>
-
     <li class="prev disabled"><a href="#">&larr; Previous</a></li>
 
-
-
-    <li class="active"><a href=".././tag/neden django.html">1</a></li>
-
-
+    <li class="active"><a href="../tag/neden-django.html">1</a></li>
 
     <li class="next disabled"><a href="#">&rarr; Next</a></li>
 
-
 </ul>
-</div>
-    
-
-
+</div>    
  
-
- 
- 
-
-
+  
         </div>
         
         <div class="span3">
@@ -161,115 +141,68 @@ in <a href=".././category/django.html">django</a>
                 Site
                 </li>
             
-                <li><a href=".././archives.html">Archives</a>
-                <li><a href=".././tags.html">Tags</a>
-                <li><a href=".././feeds/all.atom.xml" rel="alternate">Atom feed</a></li>
-                
-                <li><a href=".././feeds/all.rss.xml" rel="alternate">RSS feed</a></li>
-                
-                 <li><a href=".././sitemap.xml">Sitemap</a>
+                <li><a href="../archives.html">Archives</a>
+                <li><a href="../tags.html">Tags</a>
+                <li><a href="../feeds/all.atom.xml" rel="alternate">Atom feed</a></li>
+                                <li><a href="../feeds/all.rss.xml" rel="alternate">RSS feed</a></li>
+                                 <li><a href="../sitemap.xml">Sitemap</a>
             </ul>
             </div>
 
 
-            
-            <div class="well" style="padding: 8px 0; background-color: #FBFBFB;">
+                        <div class="well" style="padding: 8px 0; background-color: #FBFBFB;">
             <ul class="nav nav-list">
                 <li class="nav-header"> 
                 Categories
                 </li>
                 
-                
-                <li><a href=".././category/tasarim.html">tasarim</a></li>
-                
-                <li><a href=".././category/server.html">server</a></li>
-                
-                <li><a href=".././category/python.html">python</a></li>
-                
-                <li><a href=".././category/programlama.html">programlama</a></li>
-                
-                <li><a href=".././category/linux.html">linux</a></li>
-                
-                <li><a href=".././category/kisisel.html">kisisel</a></li>
-                
-                <li><a href=".././category/internet.html">internet</a></li>
-                
-                <li><a href=".././category/guvenlik.html">guvenlik</a></li>
-                
-                <li><a href=".././category/genel.html">genel</a></li>
-                
-                <li><a href=".././category/eglence.html">eglence</a></li>
-                
-                <li><a href=".././category/django.html">django</a></li>
-                
-                <li><a href=".././category/compsci.html">compsci</a></li>
-                
-                <li><a href=".././category/arduino.html">arduino</a></li>
+                                <li><a href="../category/tasarim.html">tasarim</a></li>
+                                <li><a href="../category/server.html">server</a></li>
+                                <li><a href="../category/python.html">python</a></li>
+                                <li><a href="../category/programlama.html">programlama</a></li>
+                                <li><a href="../category/linux.html">linux</a></li>
+                                <li><a href="../category/kisisel.html">kisisel</a></li>
+                                <li><a href="../category/internet.html">internet</a></li>
+                                <li><a href="../category/guvenlik.html">guvenlik</a></li>
+                                <li><a href="../category/genel.html">genel</a></li>
+                                <li><a href="../category/eglence.html">eglence</a></li>
+                                <li><a href="../category/django.html">django</a></li>
+                                <li><a href="../category/compsci.html">compsci</a></li>
+                                <li><a href="../category/arduino.html">arduino</a></li>
                                    
             </ul>
             </div>
             
 
-
-            
-            <div class="well" style="padding: 8px 0; background-color: #FBFBFB;">
+                        <div class="well" style="padding: 8px 0; background-color: #FBFBFB;">
             <ul class="nav nav-list">
                 <li class="nav-header"> 
                 Links
                 </li>
             
-            
-                <li><a href="http://www.python.org">Python</a></li>
-            
-            </ul>
+                            <li><a href="http://www.python.org">Python</a></li>
+                        </ul>
             </div>
             
 
-
-            
-            <div class="social">
+                        <div class="social">
             <div class="well" style="padding: 8px 0; background-color: #FBFBFB;">
             <ul class="nav nav-list">
                 <li class="nav-header"> 
                 Social
                 </li>
            
-                
-                <li><a href="http://twitter.com/halitalptekin">twitter</a></li>
-                
-                <li><a href="http://github.com/halitalptekin">github</a></li>
-                
-                <li><a href="http://stackoverflow.com/users/1151618/halit-alptekin">stackoverflow</a></li>
-                
-                <li><a href="http://tr.linkedin.com/in/halitalptekin">linkedin</a></li>
-                
-            </ul>
+                                <li><a href="http://twitter.com/halitalptekin">twitter</a></li>
+                                <li><a href="http://github.com/halitalptekin">github</a></li>
+                                <li><a href="http://stackoverflow.com/users/1151618/halit-alptekin">stackoverflow</a></li>
+                                <li><a href="http://tr.linkedin.com/in/halitalptekin">linkedin</a></li>
+                            </ul>
             </div>
             </div>
             
-
             
-            <div class="well" style="padding: 8px 0; background-color: #FBFBFB;">
-            <ul class="nav nav-list">
-                <li class="nav-header"> 
-                Ads
-                </li>
-
-                
-                <li><a href="http://www.tamindir.com" title="Program Indir"><img src="/media/reklam/tamindir.jpg" alt="Tamindir" title="Program Indir"></a>
-                </li>
-                
-                <li><a href="http://www.tatilbuldur.com" title="TatilBudur"><img src="/media/reklam/tatilbudur.png" alt="TatilBudur" title="TatilBudur"></a>
-                </li>
-                
-            </ul>
-            </div>
-            
-
         </div>  
-    </div> 
-    </div> 
-
+    </div>     </div> 
 <footer>
 	<hr>
 	<p><a href='http://www.halitalptekin.com'>Halit Alptekin Personal Blog</a> &copy; 2012</p>
@@ -278,8 +211,6 @@ in <a href=".././category/django.html">django</a>
 </div> <!-- /container -->
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
 <script src="http://twitter.github.com/bootstrap/assets/js/bootstrap-collapse.js"></script>
-
 <script>var _gaq=[['_setAccount','UA-24728900-1'],['_trackPageview']];(function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];g.src='//www.google-analytics.com/ga.js';s.parentNode.insertBefore(g,s)}(document,'script'))</script>
-
 </body>
 </html>

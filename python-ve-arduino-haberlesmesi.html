@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>Halit Alptekin Personal Blog - Python Ve Arduino&nbsp;Haberleşmesi</title>
+    <title>Halit Alptekin Personal Blog - Python Ve Arduino Haberleşmesi</title>
     <meta name="description" content="Rss Kaynaklarındaki Veriyi Python Ve Arduino Kullanarak Okuma">
     <meta name="keywords" content="arduino lcd, arduino python, python, python ve arduino, seri haberleşme, seri port, hdblog">
     <meta name="author" content="halit">
@@ -37,8 +37,7 @@
 
         <div class="nav-collapse">
         <ul class="nav">
-        
-            
+                    
         <li><a href="./pages/about-me.html">About Me</a></li>
 	    <li><a href="./pages/contact.html">Contact</a></li>
         </ul>
@@ -53,12 +52,10 @@
     <div class="row">
 
         <div class="span9">
-        
-    <div class='article'>
+            <div class='article'>
         <div class="content-title">
-            <h1>Python Ve Arduino&nbsp;Haberleşmesi</h1>
+            <h1>Python Ve Arduino Haberleşmesi</h1>
             Jun 30, 2012
-
 
 by <a class="url fn" href="./author/halit.html">halit</a>
  
@@ -66,13 +63,11 @@ by <a class="url fn" href="./author/halit.html">halit</a>
 in <a href="./category/arduino.html">arduino</a>
 
  
-    tagged <a href="./tag/arduino-lcd.html">arduino lcd</a> <a href="./tag/arduino-python.html">arduino python</a> <a href="./tag/python.html">python</a> <a href="./tag/python-ve-arduino.html">python ve arduino</a> <a href="./tag/seri-haberlesme.html">seri haberleşme</a> <a href="./tag/seri-port.html">seri port</a> 
-
-        </div>
+    tagged <a href="./tag/arduino-lcd.html">arduino lcd</a> <a href="./tag/arduino-python.html">arduino python</a> <a href="./tag/python.html">python</a> <a href="./tag/python-ve-arduino.html">python ve arduino</a> <a href="./tag/seri-haberlesme.html">seri haberleşme</a> <a href="./tag/seri-port.html">seri port</a>         </div>
 	
-        <div><p>Son birkaç gundur kendimi tamamen Arduino&#8217;ya atadım.Elimde olan tum elektronik devre elemanlarını Arduino ile kullanmaya çalışıyorum.Bunlar cd-romdan çıkan lazerden tutunda,uzak kumanda devreleri,dc motorlar vb olabiliyor.Bunların yanında surekli aklımda olan birşey de Arduino ile internet kullanımı idi.Bunun yapılması için birçok yerde ethernet shield satıldığını gordum.Ben yeniden para harcamak yerine sadece ufak bir beyin fırtınası yaptım ve Arduino ile pc seri haberleşiyorsa bu haberleşme sırasında Pythonuda devreye sokarak internete erişebilirim dedim.Bunun hakkında yaptığım araştırmada benim gibi duşunen insanları gordum ve kodları inceledim.Sonuç olarak <span class="caps">RSS</span> kaynaklarından verileri çekip bunları seri porttan Arduino&#8217;ya gonderdim ve onunda bu verileri <span class="caps">LCD</span>&#8217;ye basmasını sağladım.Şimdilik masamda son haberleri gosteren bir <span class="caps">LCD</span>&#8217;nin olması beni çok mutlu&nbsp;etti.</p>
-<p>Eğer sizde Arduino&#8217;nuz ile internete erişmek istiyorsanız oncelikle <strong>Seri Haberleşme</strong> ve <strong><span class="caps">LCD</span> Kullanımı</strong> kavramlarını iyice oğrenmeniz gerekli.Zaten bunlar gayet basit konular.Bir goruşte oğrenebilirsiniz.Şimdi ben bu konuları oğrendiğinizi varsayıyorum ve kuruluma&nbsp;geçiyorum.</p>
-<p>Öncelikle olayın mantığını iyice anlayalım.Python&#8217;un içindeki <span class="caps">RSS</span> parser ile <span class="caps">RSS</span> kaynağından verileri çekiyoruz.Ve bu verileri <span class="caps">LCD</span>&#8217;de gozukurken sorun çıkmaması için Turkçe karakterlerden arındırıyoruz.Daha sonra bu verileri seri haberleşme portundan Arduino&#8217;ya gonderiyoruz.Bu kısım olayın Python bolgesi.Burada kullandığım kod aşağıdaki&nbsp;gibi.</p>
+        <div><p>Son birkaç gundur kendimi tamamen Arduino'ya atadım.Elimde olan tum elektronik devre elemanlarını Arduino ile kullanmaya çalışıyorum.Bunlar cd-romdan çıkan lazerden tutunda,uzak kumanda devreleri,dc motorlar vb olabiliyor.Bunların yanında surekli aklımda olan birşey de Arduino ile internet kullanımı idi.Bunun yapılması için birçok yerde ethernet shield satıldığını gordum.Ben yeniden para harcamak yerine sadece ufak bir beyin fırtınası yaptım ve Arduino ile pc seri haberleşiyorsa bu haberleşme sırasında Pythonuda devreye sokarak internete erişebilirim dedim.Bunun hakkında yaptığım araştırmada benim gibi duşunen insanları gordum ve kodları inceledim.Sonuç olarak RSS kaynaklarından verileri çekip bunları seri porttan Arduino'ya gonderdim ve onunda bu verileri LCD'ye basmasını sağladım.Şimdilik masamda son haberleri gosteren bir LCD'nin olması beni çok mutlu etti.</p>
+<p>Eğer sizde Arduino'nuz ile internete erişmek istiyorsanız oncelikle <strong>Seri Haberleşme</strong> ve <strong>LCD Kullanımı</strong> kavramlarını iyice oğrenmeniz gerekli.Zaten bunlar gayet basit konular.Bir goruşte oğrenebilirsiniz.Şimdi ben bu konuları oğrendiğinizi varsayıyorum ve kuruluma geçiyorum.</p>
+<p>Öncelikle olayın mantığını iyice anlayalım.Python'un içindeki RSS parser ile RSS kaynağından verileri çekiyoruz.Ve bu verileri LCD'de gozukurken sorun çıkmaması için Turkçe karakterlerden arındırıyoruz.Daha sonra bu verileri seri haberleşme portundan Arduino'ya gonderiyoruz.Bu kısım olayın Python bolgesi.Burada kullandığım kod aşağıdaki gibi.</p>
 <table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
  2
  3
@@ -125,36 +120,36 @@ in <a href="./category/arduino.html">arduino</a>
 </pre></div>
 </td></tr></table>
 
-<p>Yukarıdaki kodda değiştirmeniz gereken 2 yer var.Bunlardan ilki  hltalptkn değişkenindeki <span class="caps">RSS</span> adresi ve onun hemen ustundeki serialport değişkenindeki serial port adresi.Bu ikisini kendinize gore ayarladıktan sonra kodu çalıştırabiliriz.Zaten kod sonsuz dongude olduğu için surekli olarak yazıları çekip size&nbsp;gosterecektir.</p>
-<p>Şimdi gelelim işin Arduino kısmına.<span class="caps">LCD</span>&#8217;mizi aşağıdaki gibi bağladığınızı duşunuyorum.(Her <span class="caps">LCD</span>&#8217;nin bağlanma şekli datasheetlerinde gosterilir.Bunu dikkate&nbsp;alınız)</p>
+<p>Yukarıdaki kodda değiştirmeniz gereken 2 yer var.Bunlardan ilki  hltalptkn değişkenindeki RSS adresi ve onun hemen ustundeki serialport değişkenindeki serial port adresi.Bu ikisini kendinize gore ayarladıktan sonra kodu çalıştırabiliriz.Zaten kod sonsuz dongude olduğu için surekli olarak yazıları çekip size gosterecektir.</p>
+<p>Şimdi gelelim işin Arduino kısmına.LCD'mizi aşağıdaki gibi bağladığınızı duşunuyorum.(Her LCD'nin bağlanma şekli datasheetlerinde gosterilir.Bunu dikkate alınız)</p>
 <p><img alt="Arduino LCD" src="http://www.halitalptekin.com/media/upload/arduino-lcd.png" /></p>
-<p>Potansiyometremiz ile uygun kontrast değerini buluyoruz.Bundan sonra aşağıdaki kodumuzu Arduino&#8217;ya gonderiyoruz ve&nbsp;programlıyoruz.</p>
-<div class="codehilite"><pre><span class="c1">#include liquidcrystal.h</span>
+<p>Potansiyometremiz ile uygun kontrast değerini buluyoruz.Bundan sonra aşağıdaki kodumuzu Arduino'ya gonderiyoruz ve programlıyoruz.</p>
+<div class="codehilite"><pre><span class="cp">#include liquidcrystal.h</span>
 
 <span class="n">String</span> <span class="n">mesaj</span>  <span class="o">=</span>  <span class="s">&quot;&quot;</span><span class="p">;</span>
-<span class="n">LiquidCrystal</span> <span class="n">lcd</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="mi">11</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">2</span><span class="p">);</span>
+<span class="n">LiquidCrystal</span> <span class="nf">lcd</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="mi">11</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">2</span><span class="p">);</span>
 
-<span class="n">void</span> <span class="n">setup</span><span class="p">()</span> <span class="p">{</span>
-  <span class="n">Serial</span><span class="o">.</span><span class="n">begin</span><span class="p">(</span><span class="mi">9600</span><span class="p">);</span>
-  <span class="n">lcd</span><span class="o">.</span><span class="n">begin</span><span class="p">(</span><span class="mi">16</span><span class="p">,</span> <span class="mi">2</span><span class="p">);</span>
+<span class="kt">void</span> <span class="nf">setup</span><span class="p">()</span> <span class="p">{</span>
+  <span class="n">Serial</span><span class="p">.</span><span class="n">begin</span><span class="p">(</span><span class="mi">9600</span><span class="p">);</span>
+  <span class="n">lcd</span><span class="p">.</span><span class="n">begin</span><span class="p">(</span><span class="mi">16</span><span class="p">,</span> <span class="mi">2</span><span class="p">);</span>
 
 <span class="p">}</span>
-<span class="n">void</span> <span class="n">loop</span><span class="p">()</span> <span class="p">{</span>
-  <span class="k">while</span><span class="p">(</span><span class="n">Serial</span><span class="o">.</span><span class="n">available</span><span class="p">()</span><span class="o">==</span><span class="mi">0</span><span class="p">){</span>
+<span class="kt">void</span> <span class="nf">loop</span><span class="p">()</span> <span class="p">{</span>
+  <span class="k">while</span><span class="p">(</span><span class="n">Serial</span><span class="p">.</span><span class="n">available</span><span class="p">()</span><span class="o">==</span><span class="mi">0</span><span class="p">){</span>
   <span class="p">}</span>
-  <span class="n">lcd</span><span class="o">.</span><span class="n">clear</span><span class="p">();</span>
-  <span class="k">if</span><span class="p">(</span><span class="n">Serial</span><span class="o">.</span><span class="n">available</span><span class="p">()</span><span class="o">&gt;</span><span class="mi">0</span><span class="p">){</span>
-    <span class="k">while</span><span class="p">(</span><span class="n">Serial</span><span class="o">.</span><span class="n">available</span><span class="p">()</span><span class="o">&gt;</span><span class="mi">0</span><span class="p">){</span>
-      <span class="n">mesaj</span>  <span class="o">+=</span>  <span class="n">char</span><span class="p">(</span><span class="n">Serial</span><span class="o">.</span><span class="nb">read</span><span class="p">());</span>
+  <span class="n">lcd</span><span class="p">.</span><span class="n">clear</span><span class="p">();</span>
+  <span class="k">if</span><span class="p">(</span><span class="n">Serial</span><span class="p">.</span><span class="n">available</span><span class="p">()</span><span class="o">&gt;</span><span class="mi">0</span><span class="p">){</span>
+    <span class="k">while</span><span class="p">(</span><span class="n">Serial</span><span class="p">.</span><span class="n">available</span><span class="p">()</span><span class="o">&gt;</span><span class="mi">0</span><span class="p">){</span>
+      <span class="n">mesaj</span>  <span class="o">+=</span>  <span class="kt">char</span><span class="p">(</span><span class="n">Serial</span><span class="p">.</span><span class="n">read</span><span class="p">());</span>
       <span class="n">delay</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span>
     <span class="p">}</span>
-    <span class="n">Serial</span><span class="o">.</span><span class="n">println</span><span class="p">(</span><span class="n">mesaj</span><span class="p">);</span>
+    <span class="n">Serial</span><span class="p">.</span><span class="n">println</span><span class="p">(</span><span class="n">mesaj</span><span class="p">);</span>
   <span class="p">}</span>
 
-  <span class="n">lcd</span><span class="o">.</span><span class="n">setCursor</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">);</span>
-  <span class="n">lcd</span><span class="o">.</span><span class="k">print</span><span class="p">(</span><span class="n">mesaj</span><span class="o">.</span><span class="n">substring</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">16</span><span class="p">));</span>
-  <span class="n">lcd</span><span class="o">.</span><span class="n">setCursor</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">);</span>
-  <span class="n">lcd</span><span class="o">.</span><span class="k">print</span><span class="p">(</span><span class="n">mesaj</span><span class="o">.</span><span class="n">substring</span><span class="p">(</span><span class="mi">16</span><span class="p">));</span>
+  <span class="n">lcd</span><span class="p">.</span><span class="n">setCursor</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">);</span>
+  <span class="n">lcd</span><span class="p">.</span><span class="n">print</span><span class="p">(</span><span class="n">mesaj</span><span class="p">.</span><span class="n">substring</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">16</span><span class="p">));</span>
+  <span class="n">lcd</span><span class="p">.</span><span class="n">setCursor</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">);</span>
+  <span class="n">lcd</span><span class="p">.</span><span class="n">print</span><span class="p">(</span><span class="n">mesaj</span><span class="p">.</span><span class="n">substring</span><span class="p">(</span><span class="mi">16</span><span class="p">));</span>
 
   <span class="n">mesaj</span>  <span class="o">=</span>  <span class="s">&quot;&quot;</span><span class="p">;</span>
 
@@ -162,16 +157,16 @@ in <a href="./category/arduino.html">arduino</a>
 </pre></div>
 
 
-<p>Yukarıdaki kodun mantığıda belli.Seri porttan gelen verileri kontrol ediyor.Eğer veri varsa bunların ilk 16sını uste diğer kısmını alta yazıyor.daha fazla ise şimdilik gostermiyor.Bir ilerki versiyonda kayarak gostericem.Bu haliyle işinizi gorur ama.Zaten amaç Arduino&#8217;yu internete Ethernet Shield olmadan&nbsp;bağlamak.</p>
-<p>Eğer başarı ile yaptıysanız <span class="caps">LCD</span>&#8217;de aşağıdaki gibi bir goruntu&nbsp;goreceksiniz.</p>
+<p>Yukarıdaki kodun mantığıda belli.Seri porttan gelen verileri kontrol ediyor.Eğer veri varsa bunların ilk 16sını uste diğer kısmını alta yazıyor.daha fazla ise şimdilik gostermiyor.Bir ilerki versiyonda kayarak gostericem.Bu haliyle işinizi gorur ama.Zaten amaç Arduino'yu internete Ethernet Shield olmadan bağlamak.</p>
+<p>Eğer başarı ile yaptıysanız LCD'de aşağıdaki gibi bir goruntu goreceksiniz.</p>
 <p><img alt="Arduino ve Python 1" src="http://www.halitalptekin.com/media/upload/2012-06-30_23.31.52.jpg" /></p>
-<p><span class="caps">RSS</span> kaynağından yazılar 10 saniyede bir çekilecek ve ekrana&nbsp;basılacak.</p>
+<p>RSS kaynağından yazılar 10 saniyede bir çekilecek ve ekrana basılacak.</p>
 <p><img alt="Python ve Arduino" src="http://www.halitalptekin.com/media/upload/2012-06-30_23.32.10.jpg" /></p>
-<p>Uygun kontrast değerini potansiyometre ile ayarlayacağınızı&nbsp;unutmayın.</p>
+<p>Uygun kontrast değerini potansiyometre ile ayarlayacağınızı unutmayın.</p>
 <p><img alt="Python ve Arduino 3" src="http://www.halitalptekin.com/media/upload/2012-06-30_23.33.00.jpg" /></p>
-<p><span class="caps">LCD</span>&#8217;nin pinlerini lehimlemek için az uğraşmadım ha&nbsp;:D</p>
+<p>LCD'nin pinlerini lehimlemek için az uğraşmadım ha :D</p>
 <p><img alt="Python ve Arduino" src="http://www.halitalptekin.com/media/upload/2012-06-30_23.33.08.jpg" /></p>
-<p>Hangi yazıların ekrana basılacağını çalıştırdığınız python dosyasında ve serial monitorde gorebilirsiniz.Farklı uygulamalarda kullanmanız&nbsp;dileğiyle.</p></div>
+<p>Hangi yazıların ekrana basılacağını çalıştırdığınız python dosyasında ve serial monitorde gorebilirsiniz.Farklı uygulamalarda kullanmanız dileğiyle.</p></div>
 	
         <hr>
         <div class="addthis_toolbox addthis_default_style addthis_32x32_style">
@@ -190,9 +185,7 @@ in <a href="./category/arduino.html">arduino</a>
         <script type="text/javascript" src="http://s7.addthis.com/js/250/addthis_widget.js#pubid=ra-504c6d593daec57a"></script>
         <hr>   	   
         <h2>Comments</h2>
-	
-	
-<div id="disqus_thread"></div>
+		<div id="disqus_thread"></div>
 <script type="text/javascript">
     var disqus_shortname = 'halitalptekin'; 
 
@@ -203,9 +196,7 @@ in <a href="./category/arduino.html">arduino</a>
     })();
 </script>
 <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-
     </div>
-
         </div>
         
         <div class="span3">
@@ -219,112 +210,65 @@ in <a href="./category/arduino.html">arduino</a>
                 <li><a href="./archives.html">Archives</a>
                 <li><a href="./tags.html">Tags</a>
                 <li><a href="./feeds/all.atom.xml" rel="alternate">Atom feed</a></li>
-                
-                <li><a href="./feeds/all.rss.xml" rel="alternate">RSS feed</a></li>
-                
-                 <li><a href="./sitemap.xml">Sitemap</a>
+                                <li><a href="./feeds/all.rss.xml" rel="alternate">RSS feed</a></li>
+                                 <li><a href="./sitemap.xml">Sitemap</a>
             </ul>
             </div>
 
 
-            
-            <div class="well" style="padding: 8px 0; background-color: #FBFBFB;">
+                        <div class="well" style="padding: 8px 0; background-color: #FBFBFB;">
             <ul class="nav nav-list">
                 <li class="nav-header"> 
                 Categories
                 </li>
                 
-                
-                <li><a href="./category/tasarim.html">tasarim</a></li>
-                
-                <li><a href="./category/server.html">server</a></li>
-                
-                <li><a href="./category/python.html">python</a></li>
-                
-                <li><a href="./category/programlama.html">programlama</a></li>
-                
-                <li><a href="./category/linux.html">linux</a></li>
-                
-                <li><a href="./category/kisisel.html">kisisel</a></li>
-                
-                <li><a href="./category/internet.html">internet</a></li>
-                
-                <li><a href="./category/guvenlik.html">guvenlik</a></li>
-                
-                <li><a href="./category/genel.html">genel</a></li>
-                
-                <li><a href="./category/eglence.html">eglence</a></li>
-                
-                <li><a href="./category/django.html">django</a></li>
-                
-                <li><a href="./category/compsci.html">compsci</a></li>
-                
-                <li><a href="./category/arduino.html">arduino</a></li>
+                                <li><a href="./category/tasarim.html">tasarim</a></li>
+                                <li><a href="./category/server.html">server</a></li>
+                                <li><a href="./category/python.html">python</a></li>
+                                <li><a href="./category/programlama.html">programlama</a></li>
+                                <li><a href="./category/linux.html">linux</a></li>
+                                <li><a href="./category/kisisel.html">kisisel</a></li>
+                                <li><a href="./category/internet.html">internet</a></li>
+                                <li><a href="./category/guvenlik.html">guvenlik</a></li>
+                                <li><a href="./category/genel.html">genel</a></li>
+                                <li><a href="./category/eglence.html">eglence</a></li>
+                                <li><a href="./category/django.html">django</a></li>
+                                <li><a href="./category/compsci.html">compsci</a></li>
+                                <li><a href="./category/arduino.html">arduino</a></li>
                                    
             </ul>
             </div>
             
 
-
-            
-            <div class="well" style="padding: 8px 0; background-color: #FBFBFB;">
+                        <div class="well" style="padding: 8px 0; background-color: #FBFBFB;">
             <ul class="nav nav-list">
                 <li class="nav-header"> 
                 Links
                 </li>
             
-            
-                <li><a href="http://www.python.org">Python</a></li>
-            
-            </ul>
+                            <li><a href="http://www.python.org">Python</a></li>
+                        </ul>
             </div>
             
 
-
-            
-            <div class="social">
+                        <div class="social">
             <div class="well" style="padding: 8px 0; background-color: #FBFBFB;">
             <ul class="nav nav-list">
                 <li class="nav-header"> 
                 Social
                 </li>
            
-                
-                <li><a href="http://twitter.com/halitalptekin">twitter</a></li>
-                
-                <li><a href="http://github.com/halitalptekin">github</a></li>
-                
-                <li><a href="http://stackoverflow.com/users/1151618/halit-alptekin">stackoverflow</a></li>
-                
-                <li><a href="http://tr.linkedin.com/in/halitalptekin">linkedin</a></li>
-                
-            </ul>
+                                <li><a href="http://twitter.com/halitalptekin">twitter</a></li>
+                                <li><a href="http://github.com/halitalptekin">github</a></li>
+                                <li><a href="http://stackoverflow.com/users/1151618/halit-alptekin">stackoverflow</a></li>
+                                <li><a href="http://tr.linkedin.com/in/halitalptekin">linkedin</a></li>
+                            </ul>
             </div>
             </div>
             
-
             
-            <div class="well" style="padding: 8px 0; background-color: #FBFBFB;">
-            <ul class="nav nav-list">
-                <li class="nav-header"> 
-                Ads
-                </li>
-
-                
-                <li><a href="http://www.tamindir.com" title="Program Indir"><img src="/media/reklam/tamindir.jpg" alt="Tamindir" title="Program Indir"></a>
-                </li>
-                
-                <li><a href="http://www.tatilbuldur.com" title="TatilBudur"><img src="/media/reklam/tatilbudur.png" alt="TatilBudur" title="TatilBudur"></a>
-                </li>
-                
-            </ul>
-            </div>
-            
-
         </div>  
-    </div> 
-    </div> 
-
+    </div>     </div> 
 <footer>
 	<hr>
 	<p><a href='http://www.halitalptekin.com'>Halit Alptekin Personal Blog</a> &copy; 2012</p>
@@ -333,8 +277,6 @@ in <a href="./category/arduino.html">arduino</a>
 </div> <!-- /container -->
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
 <script src="http://twitter.github.com/bootstrap/assets/js/bootstrap-collapse.js"></script>
-
 <script>var _gaq=[['_setAccount','UA-24728900-1'],['_trackPageview']];(function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];g.src='//www.google-analytics.com/ga.js';s.parentNode.insertBefore(g,s)}(document,'script'))</script>
-
 </body>
 </html>

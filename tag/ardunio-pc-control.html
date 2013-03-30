@@ -10,14 +10,14 @@
 
     <!-- Le HTML5 shim, for IE6-8 support of HTML elements -->
     <!--[if lt IE 9]>
-    <script src=".././theme/html5.js"></script>
+    <script src="../theme/html5.js"></script>
     <![endif]-->
 
     <!-- Le styles -->
-    <link href=".././theme/bootstrap.min.css" rel="stylesheet">
-    <link href=".././theme/bootstrap.min.responsive.css" rel="stylesheet">
-    <link href=".././theme/local.css" rel="stylesheet">
-    <link href=".././theme/pygments.css" rel="stylesheet">
+    <link href="../theme/bootstrap.min.css" rel="stylesheet">
+    <link href="../theme/bootstrap.min.responsive.css" rel="stylesheet">
+    <link href="../theme/local.css" rel="stylesheet">
+    <link href="../theme/pygments.css" rel="stylesheet">
 
 </head>
 
@@ -33,14 +33,13 @@
              <span class="icon-bar"></span>
          </a>
 
-        <a class="brand" href="../.">Halit Alptekin Personal Blog</a>
+        <a class="brand" href="..">Halit Alptekin Personal Blog</a>
 
         <div class="nav-collapse">
         <ul class="nav">
-        
-            
-        <li><a href=".././pages/about-me.html">About Me</a></li>
-	    <li><a href=".././pages/contact.html">Contact</a></li>
+                    
+        <li><a href="../pages/about-me.html">About Me</a></li>
+	    <li><a href="../pages/contact.html">Contact</a></li>
         </ul>
         </div>
         
@@ -54,32 +53,27 @@
 
         <div class="span9">
                 
-
         
-
-
 
     <div class='article'>
         <div class="content-title">
-            <a href=".././arduino-ile-basit-pc-kontrolu.html"><h1>Arduino İle Basit Pc&nbsp;Kontrolü</h1></a>
+            <a href="../arduino-ile-basit-pc-kontrolu.html"><h1>Arduino İle Basit Pc Kontrolü</h1></a>
             Jul 02, 2012
 
-
-by <a class="url fn" href=".././author/halit.html">halit</a>
+by <a class="url fn" href="../author/halit.html">halit</a>
  
 
-in <a href=".././category/arduino.html">arduino</a>
+in <a href="../category/arduino.html">arduino</a>
 
  
-    tagged <a href=".././tag/arduino.html">arduino</a> <a href=".././tag/ardunio-pc-control.html">ardunio pc control</a> <a href=".././tag/python-ve-arduino.html">python ve arduino</a> <a href=".././tag/remote-pc-control.html">remote pc control</a> <a href=".././tag/xdotool.html">xdotool</a> 
- 
+    tagged <a href="../tag/arduino.html">arduino</a> <a href="../tag/ardunio-pc-control.html">ardunio pc control</a> <a href="../tag/python-ve-arduino.html">python ve arduino</a> <a href="../tag/remote-pc-control.html">remote pc control</a> <a href="../tag/xdotool.html">xdotool</a>  
         </div>
         
-        <div><p>Bu aralar farkettiğiniz gibi kendimi baya bi Arduino&#8217;ya kaptırdım.Surekli kendimi Arduino,Elektronik ve Processing dilinde geliştirmeye çalışıyorum.Bunu bir gorev olarak değil de hobi olarak yapıyorum.Gerçekten Arduino insanın ufkunu açıyor.Yapılmış harika projeleri gordukçe insanın yapası geliyor.Geçenlerde Arduino ile olmasada gene ona benzer bir geliştirme kitinde butonlar ile sayfada inip çıkıyordu.Çok hoşuma gitti ve bende bunu Python+Arduino kullanarak yaparım dedim.Mantığını kafamda da Arduino ile seri porttan hangi butona basıldığı bilgisini Python ile alıp xdotool kullanıp sayfada inmek veya çıkmak diye&nbsp;kurdum.</p>
-<p>Ufak bir çalışmanın ardından çalıştırmayı başardım.İlerleyen zamanlarda çok daha gelişmişleri yapılabilir.Örneğin benim oyun kolu yapıp <span class="caps">PES</span> oynama fikrim var.Onun için bozuk bir oyun kolu arıyorum.Eğer bulamasam da kendim birşeyler&nbsp;yapacağım.</p>
+        <div><p>Bu aralar farkettiğiniz gibi kendimi baya bi Arduino'ya kaptırdım.Surekli kendimi Arduino,Elektronik ve Processing dilinde geliştirmeye çalışıyorum.Bunu bir gorev olarak değil de hobi olarak yapıyorum.Gerçekten Arduino insanın ufkunu açıyor.Yapılmış harika projeleri gordukçe insanın yapası geliyor.Geçenlerde Arduino ile olmasada gene ona benzer bir geliştirme kitinde butonlar ile sayfada inip çıkıyordu.Çok hoşuma gitti ve bende bunu Python+Arduino kullanarak yaparım dedim.Mantığını kafamda da Arduino ile seri porttan hangi butona basıldığı bilgisini Python ile alıp xdotool kullanıp sayfada inmek veya çıkmak diye kurdum.</p>
+<p>Ufak bir çalışmanın ardından çalıştırmayı başardım.İlerleyen zamanlarda çok daha gelişmişleri yapılabilir.Örneğin benim oyun kolu yapıp PES oynama fikrim var.Onun için bozuk bir oyun kolu arıyorum.Eğer bulamasam da kendim birşeyler yapacağım.</p>
 <p><a href="http://www.flickr.com/photos/jase_mk/6952425476/" title="Arduino by Jase_MK, on Flickr"><img alt="Arduino" src="http://farm6.staticflickr.com/5156/6952425476_eeca7a8c0f.jpg" /></a></p>
-<p>Öncelikle bu projeyi yapmak için devremizi kuruyoruz.Butonlarımızı pull-down veya pull-up şeklinde digital 12 ve 13.pine bağlıyoruz.Bu devre kısmımız oluyor.Daha sonrada işin Arduino tarafına geçiyoruz.Burada ise 12 ve 13.pinimizi giriş kabul ediyoruz.Ve seri iletişimi başlatıyoruz.Butonlardan gelen bilgiye gore de seri porttan 1 veya 2 değerini gonderiyoruz.Bu bize hangi butona basıldığını oğrenmemizi&nbsp;sağlıyacak.</p>
-<p>Bu kısımdan sonra Python tarafına geçiyoruz.Ben burada gayet basit ve amator bir şekilde aşağıdaki kodu kullandım.Bu kod ile seri porttan veriye gore xdotool uzerinden komut&nbsp;çalıştırıyoruz.</p>
+<p>Öncelikle bu projeyi yapmak için devremizi kuruyoruz.Butonlarımızı pull-down veya pull-up şeklinde digital 12 ve 13.pine bağlıyoruz.Bu devre kısmımız oluyor.Daha sonrada işin Arduino tarafına geçiyoruz.Burada ise 12 ve 13.pinimizi giriş kabul ediyoruz.Ve seri iletişimi başlatıyoruz.Butonlardan gelen bilgiye gore de seri porttan 1 veya 2 değerini gonderiyoruz.Bu bize hangi butona basıldığını oğrenmemizi sağlıyacak.</p>
+<p>Bu kısımdan sonra Python tarafına geçiyoruz.Ben burada gayet basit ve amator bir şekilde aşağıdaki kodu kullandım.Bu kod ile seri porttan veriye gore xdotool uzerinden komut çalıştırıyoruz.</p>
 <div class="codehilite"><pre><span class="c">#!/usr/bin/env python</span>
 <span class="kn">import</span> <span class="nn">os</span>
 <span class="kn">import</span> <span class="nn">serial</span>
@@ -120,38 +114,24 @@ in <a href=".././category/arduino.html">arduino</a>
 </pre></div>
 
 
-<p>Yukarıdaki fark ettiğiniz gibi seri portunuzu değiştirmeniz gerekiyor.Daha sonra python uygulamasını açık bırakıp gezmek istediğiniz sayfaya geçiyorsunuz.Ve aşağıdaki goruntu ortaya&nbsp;çıkıyor.</p>
-<p>Ben sadece aklınızda bir fikir oluşması için boyle yaptım.Siz processing kullanarak daha kaliteli projeler yapabilirsiniz.Veya benim burada kullandığım xdotool programının diğer fonksiyonlarını kullanarak klavyenize de erişebilirsiniz.Bundan sonrası sizin hayal gucunuze&nbsp;kalıyor.</p>
-<p>Bu arada ekstra yeni bir yazı yazmak yerine buradan paylaşayım dedim.Eğer Arduino ile uğraşıyorsanız <a href="http://www.halitalptekin.com/dosya/arduino-kutuphaneleri/">buradaki </a>kutuphanelere iyice bakmanızı oneririm.Özellikle 7 segment display için yazılmış olanı aktif olarak kullanıyorum ve gerçekten çok&nbsp;başarılı.</p></div>
+<p>Yukarıdaki fark ettiğiniz gibi seri portunuzu değiştirmeniz gerekiyor.Daha sonra python uygulamasını açık bırakıp gezmek istediğiniz sayfaya geçiyorsunuz.Ve aşağıdaki goruntu ortaya çıkıyor.</p>
+<p>Ben sadece aklınızda bir fikir oluşması için boyle yaptım.Siz processing kullanarak daha kaliteli projeler yapabilirsiniz.Veya benim burada kullandığım xdotool programının diğer fonksiyonlarını kullanarak klavyenize de erişebilirsiniz.Bundan sonrası sizin hayal gucunuze kalıyor.</p>
+<p>Bu arada ekstra yeni bir yazı yazmak yerine buradan paylaşayım dedim.Eğer Arduino ile uğraşıyorsanız <a href="http://www.halitalptekin.com/dosya/arduino-kutuphaneleri/">buradaki </a>kutuphanelere iyice bakmanızı oneririm.Özellikle 7 segment display için yazılmış olanı aktif olarak kullanıyorum ve gerçekten çok başarılı.</p></div>
         <hr />
     </div>
 		
-    
-        <div class="pagination">
+            <div class="pagination">
 <ul>
-
     <li class="prev disabled"><a href="#">&larr; Previous</a></li>
 
-
-
-    <li class="active"><a href=".././tag/ardunio pc control.html">1</a></li>
-
-
+    <li class="active"><a href="../tag/ardunio-pc-control.html">1</a></li>
 
     <li class="next disabled"><a href="#">&rarr; Next</a></li>
 
-
 </ul>
-</div>
-    
-
-
+</div>    
  
-
- 
- 
-
-
+  
         </div>
         
         <div class="span3">
@@ -162,115 +142,68 @@ in <a href=".././category/arduino.html">arduino</a>
                 Site
                 </li>
             
-                <li><a href=".././archives.html">Archives</a>
-                <li><a href=".././tags.html">Tags</a>
-                <li><a href=".././feeds/all.atom.xml" rel="alternate">Atom feed</a></li>
-                
-                <li><a href=".././feeds/all.rss.xml" rel="alternate">RSS feed</a></li>
-                
-                 <li><a href=".././sitemap.xml">Sitemap</a>
+                <li><a href="../archives.html">Archives</a>
+                <li><a href="../tags.html">Tags</a>
+                <li><a href="../feeds/all.atom.xml" rel="alternate">Atom feed</a></li>
+                                <li><a href="../feeds/all.rss.xml" rel="alternate">RSS feed</a></li>
+                                 <li><a href="../sitemap.xml">Sitemap</a>
             </ul>
             </div>
 
 
-            
-            <div class="well" style="padding: 8px 0; background-color: #FBFBFB;">
+                        <div class="well" style="padding: 8px 0; background-color: #FBFBFB;">
             <ul class="nav nav-list">
                 <li class="nav-header"> 
                 Categories
                 </li>
                 
-                
-                <li><a href=".././category/tasarim.html">tasarim</a></li>
-                
-                <li><a href=".././category/server.html">server</a></li>
-                
-                <li><a href=".././category/python.html">python</a></li>
-                
-                <li><a href=".././category/programlama.html">programlama</a></li>
-                
-                <li><a href=".././category/linux.html">linux</a></li>
-                
-                <li><a href=".././category/kisisel.html">kisisel</a></li>
-                
-                <li><a href=".././category/internet.html">internet</a></li>
-                
-                <li><a href=".././category/guvenlik.html">guvenlik</a></li>
-                
-                <li><a href=".././category/genel.html">genel</a></li>
-                
-                <li><a href=".././category/eglence.html">eglence</a></li>
-                
-                <li><a href=".././category/django.html">django</a></li>
-                
-                <li><a href=".././category/compsci.html">compsci</a></li>
-                
-                <li><a href=".././category/arduino.html">arduino</a></li>
+                                <li><a href="../category/tasarim.html">tasarim</a></li>
+                                <li><a href="../category/server.html">server</a></li>
+                                <li><a href="../category/python.html">python</a></li>
+                                <li><a href="../category/programlama.html">programlama</a></li>
+                                <li><a href="../category/linux.html">linux</a></li>
+                                <li><a href="../category/kisisel.html">kisisel</a></li>
+                                <li><a href="../category/internet.html">internet</a></li>
+                                <li><a href="../category/guvenlik.html">guvenlik</a></li>
+                                <li><a href="../category/genel.html">genel</a></li>
+                                <li><a href="../category/eglence.html">eglence</a></li>
+                                <li><a href="../category/django.html">django</a></li>
+                                <li><a href="../category/compsci.html">compsci</a></li>
+                                <li><a href="../category/arduino.html">arduino</a></li>
                                    
             </ul>
             </div>
             
 
-
-            
-            <div class="well" style="padding: 8px 0; background-color: #FBFBFB;">
+                        <div class="well" style="padding: 8px 0; background-color: #FBFBFB;">
             <ul class="nav nav-list">
                 <li class="nav-header"> 
                 Links
                 </li>
             
-            
-                <li><a href="http://www.python.org">Python</a></li>
-            
-            </ul>
+                            <li><a href="http://www.python.org">Python</a></li>
+                        </ul>
             </div>
             
 
-
-            
-            <div class="social">
+                        <div class="social">
             <div class="well" style="padding: 8px 0; background-color: #FBFBFB;">
             <ul class="nav nav-list">
                 <li class="nav-header"> 
                 Social
                 </li>
            
-                
-                <li><a href="http://twitter.com/halitalptekin">twitter</a></li>
-                
-                <li><a href="http://github.com/halitalptekin">github</a></li>
-                
-                <li><a href="http://stackoverflow.com/users/1151618/halit-alptekin">stackoverflow</a></li>
-                
-                <li><a href="http://tr.linkedin.com/in/halitalptekin">linkedin</a></li>
-                
-            </ul>
+                                <li><a href="http://twitter.com/halitalptekin">twitter</a></li>
+                                <li><a href="http://github.com/halitalptekin">github</a></li>
+                                <li><a href="http://stackoverflow.com/users/1151618/halit-alptekin">stackoverflow</a></li>
+                                <li><a href="http://tr.linkedin.com/in/halitalptekin">linkedin</a></li>
+                            </ul>
             </div>
             </div>
             
-
             
-            <div class="well" style="padding: 8px 0; background-color: #FBFBFB;">
-            <ul class="nav nav-list">
-                <li class="nav-header"> 
-                Ads
-                </li>
-
-                
-                <li><a href="http://www.tamindir.com" title="Program Indir"><img src="/media/reklam/tamindir.jpg" alt="Tamindir" title="Program Indir"></a>
-                </li>
-                
-                <li><a href="http://www.tatilbuldur.com" title="TatilBudur"><img src="/media/reklam/tatilbudur.png" alt="TatilBudur" title="TatilBudur"></a>
-                </li>
-                
-            </ul>
-            </div>
-            
-
         </div>  
-    </div> 
-    </div> 
-
+    </div>     </div> 
 <footer>
 	<hr>
 	<p><a href='http://www.halitalptekin.com'>Halit Alptekin Personal Blog</a> &copy; 2012</p>
@@ -279,8 +212,6 @@ in <a href=".././category/arduino.html">arduino</a>
 </div> <!-- /container -->
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
 <script src="http://twitter.github.com/bootstrap/assets/js/bootstrap-collapse.js"></script>
-
 <script>var _gaq=[['_setAccount','UA-24728900-1'],['_trackPageview']];(function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];g.src='//www.google-analytics.com/ga.js';s.parentNode.insertBefore(g,s)}(document,'script'))</script>
-
 </body>
 </html>

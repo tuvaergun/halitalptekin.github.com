@@ -10,14 +10,14 @@
 
     <!-- Le HTML5 shim, for IE6-8 support of HTML elements -->
     <!--[if lt IE 9]>
-    <script src=".././theme/html5.js"></script>
+    <script src="../theme/html5.js"></script>
     <![endif]-->
 
     <!-- Le styles -->
-    <link href=".././theme/bootstrap.min.css" rel="stylesheet">
-    <link href=".././theme/bootstrap.min.responsive.css" rel="stylesheet">
-    <link href=".././theme/local.css" rel="stylesheet">
-    <link href=".././theme/pygments.css" rel="stylesheet">
+    <link href="../theme/bootstrap.min.css" rel="stylesheet">
+    <link href="../theme/bootstrap.min.responsive.css" rel="stylesheet">
+    <link href="../theme/local.css" rel="stylesheet">
+    <link href="../theme/pygments.css" rel="stylesheet">
 
 </head>
 
@@ -33,14 +33,13 @@
              <span class="icon-bar"></span>
          </a>
 
-        <a class="brand" href="../.">Halit Alptekin Personal Blog</a>
+        <a class="brand" href="..">Halit Alptekin Personal Blog</a>
 
         <div class="nav-collapse">
         <ul class="nav">
-        
-            
-        <li><a href=".././pages/about-me.html">About Me</a></li>
-	    <li><a href=".././pages/contact.html">Contact</a></li>
+                    
+        <li><a href="../pages/about-me.html">About Me</a></li>
+	    <li><a href="../pages/contact.html">Contact</a></li>
         </ul>
         </div>
         
@@ -54,29 +53,24 @@
 
         <div class="span9">
                 
-
         
-
-
 
     <div class='article'>
         <div class="content-title">
-            <a href=".././djangodan-pelicana.html"><h1>Django&#8217;dan&nbsp;Pelicana</h1></a>
+            <a href="../djangodan-pelicana.html"><h1>Django'dan Pelicana</h1></a>
             Nov 30, 2012
 
-
-by <a class="url fn" href=".././author/halit.html">halit</a>
+by <a class="url fn" href="../author/halit.html">halit</a>
  
 
-in <a href=".././category/django.html">django</a>
+in <a href="../category/django.html">django</a>
 
  
-    tagged <a href=".././tag/django.html">django</a> <a href=".././tag/pelican.html">pelican</a> <a href=".././tag/markdown.html">markdown</a> <a href=".././tag/markdownify.html">markdownify</a> <a href=".././tag/read2text.html">read2text</a> 
- 
+    tagged <a href="../tag/django.html">django</a> <a href="../tag/pelican.html">pelican</a> <a href="../tag/markdown.html">markdown</a> <a href="../tag/markdownify.html">markdownify</a> <a href="../tag/read2text.html">read2text</a>  
         </div>
         
-        <div><p>Django sitemi Pelican&#8217;a taşırken öncelikle yazılarımı Markdown&#8217;a dönüştürmem gerekiyordu. Bunu ya PostgreSql ile boğuşup ya da views ve templates üzerinde değişiklikler yaparak yapacaktım. Ben tercihimi ikinci şıktan yana&nbsp;kullandım.</p>
-<p>Bunun için Django sitemin <strong>templates</strong> klasörü altındaki sayfalarda biraz değişiklik yaptım(biraz da viewste). Buna göre yazılarımı ve makalelerimi&nbsp;önce;</p>
+        <div><p>Django sitemi Pelican'a taşırken öncelikle yazılarımı Markdown'a dönüştürmem gerekiyordu. Bunu ya PostgreSql ile boğuşup ya da views ve templates üzerinde değişiklikler yaparak yapacaktım. Ben tercihimi ikinci şıktan yana kullandım.</p>
+<p>Bunun için Django sitemin <strong>templates</strong> klasörü altındaki sayfalarda biraz değişiklik yaptım(biraz da viewste). Buna göre yazılarımı ve makalelerimi önce;</p>
 <div class="codehilite"><pre><span class="n">Date</span><span class="p">:</span> <span class="p">{{</span> <span class="n">tarih</span> <span class="p">}}</span>
 <span class="n">Title</span><span class="p">:</span> <span class="p">{{</span> <span class="n">title</span> <span class="p">}}</span>
 <span class="n">Tags</span><span class="p">:</span> <span class="p">{{</span> <span class="n">tags</span> <span class="p">}}</span>
@@ -87,144 +81,110 @@ in <a href=".././category/django.html">django</a>
 </pre></div>
 
 
-<p>gibi bir düzene koydum. Bu sayede yazıların Pelican&#8217;a eklenmesi sırasında çok uğraşmadım. Daha sonra <a href="http://brettterpstra.com/scripting-readability-markdownify-for-clipping-web-pages/">read2text</a> aracı ile bu çıktıdaki tüm yazılarımı aşağıdaki şekilde <strong>Markdown</strong>&#8216;a&nbsp;dönüştürdüm.</p>
-<div class="codehilite"><pre><span class="o">.</span><span class="sr">/read2text http:/</span><span class="o">/</span><span class="n">www</span><span class="o">.</span><span class="n">halitalptekin</span><span class="o">.</span><span class="n">com</span> <span class="o">&gt;&gt;</span> <span class="nb">index</span><span class="o">.</span><span class="n">md</span>
+<p>gibi bir düzene koydum. Bu sayede yazıların Pelican'a eklenmesi sırasında çok uğraşmadım. Daha sonra <a href="http://brettterpstra.com/scripting-readability-markdownify-for-clipping-web-pages/">read2text</a> aracı ile bu çıktıdaki tüm yazılarımı aşağıdaki şekilde <strong>Markdown</strong>'a dönüştürdüm.</p>
+<div class="codehilite"><pre><span class="p">.</span><span class="o">/</span><span class="n">read2text</span> <span class="n">http</span><span class="o">:</span><span class="c1">//www.halitalptekin.com &gt;&gt; index.md</span>
 </pre></div>
 
 
-<p>Eğer sitenizdeki yazılar çok fazla ise yukarıdaki işlemi tüm linklerinize basit bir <strong>Python</strong> betiği ile uygulayabilirsiniz. Tabi bunun içinde sitenizdeki tüm yazıların gene bir şekilde(yukarıdaki gibi) linklerinizi almanız&nbsp;gerekecek.</p>
-<p><strong>Read2Text</strong> aracı gerçekten yarasa ve %99&#8217;a varan bir başarı elde etse bile yazıları çevirirken bazı Türkçe karakterleri yutabiliyor. İlk karşılaştığımda dosya içindeki unicode,ascii gibi ayarlar ile oynayıp düzeltebileceğimi sandım. Hatta bir nebze başarılı da olsam tam olarak çözemedim. Sonunda da bu sorunu <a href="http://turkce-karakter.appspot.com">deasciifier</a> ile&nbsp;hallettim.</p>
-<p>Sitede yer alan araç ile ya da <a href="https://github.com/emres/turkish-deasciifier">buradaki</a> python kütüphanesini kullanarak yazılarınızda yer alan Türkçe karakter problemini çözebilirsiniz. İster manuel olarak isterseniz de basit birkaç kod ile tüm yazılarınıza&nbsp;uygulayabilirsiniz.</p>
-<p>Bu şekilde sitemdeki tüm yazıları çok büyük oranda sorunsuz bir şekilde pelican üzerine taşıdım. Şimdilik bu sistemden gayet memnun gibiyim. Eğer sizde Pelican&#8217;a geçip geçmeme konusunda kararsız iseniz kesinlikle denemenizi&nbsp;öneririm.</p></div>
+<p>Eğer sitenizdeki yazılar çok fazla ise yukarıdaki işlemi tüm linklerinize basit bir <strong>Python</strong> betiği ile uygulayabilirsiniz. Tabi bunun içinde sitenizdeki tüm yazıların gene bir şekilde(yukarıdaki gibi) linklerinizi almanız gerekecek.</p>
+<p><strong>Read2Text</strong> aracı gerçekten yarasa ve %99'a varan bir başarı elde etse bile yazıları çevirirken bazı Türkçe karakterleri yutabiliyor. İlk karşılaştığımda dosya içindeki unicode,ascii gibi ayarlar ile oynayıp düzeltebileceğimi sandım. Hatta bir nebze başarılı da olsam tam olarak çözemedim. Sonunda da bu sorunu <a href="http://turkce-karakter.appspot.com">deasciifier</a> ile hallettim.</p>
+<p>Sitede yer alan araç ile ya da <a href="https://github.com/emres/turkish-deasciifier">buradaki</a> python kütüphanesini kullanarak yazılarınızda yer alan Türkçe karakter problemini çözebilirsiniz. İster manuel olarak isterseniz de basit birkaç kod ile tüm yazılarınıza uygulayabilirsiniz.</p>
+<p>Bu şekilde sitemdeki tüm yazıları çok büyük oranda sorunsuz bir şekilde pelican üzerine taşıdım. Şimdilik bu sistemden gayet memnun gibiyim. Eğer sizde Pelican'a geçip geçmeme konusunda kararsız iseniz kesinlikle denemenizi öneririm.</p></div>
         <hr />
     </div>
 		
     
-
-
  
-
         
-
 
  
 
     <div class='article'>
-        <a href=".././django-uygulamalari-icin-heroku.html"><h2>Django Uygulamaları İçin&nbsp;Heroku</h2></a>
+        <a href="../django-uygulamalari-icin-heroku.html"><h2>Django Uygulamaları İçin Heroku</h2></a>
         <div class= "well small"> Sep 07, 2012
 
-
-by <a class="url fn" href=".././author/halit.html">halit</a>
+by <a class="url fn" href="../author/halit.html">halit</a>
  
 
-in <a href=".././category/django.html">django</a>
+in <a href="../category/django.html">django</a>
 
  
-    tagged <a href=".././tag/django-deploy.html">django deploy</a> <a href=".././tag/heroku.html">heroku</a> <a href=".././tag/heroku-django.html">heroku django</a> <a href=".././tag/python-turkiye.html">python türkiye</a> <a href=".././tag/pytr.html">pytr</a> 
- </div>
-        <div class="summary"><p>Django uygulaması yazmak diğer birçok dil ve framework&#8217;a gore hem kolay hem de zevkli.Bu sayede çok kısa surede kendi blogunuzu veya hayalinizdeki scripti yazabiliyorsunuz.Bende en son pytr.org domaini için guzel bir blog çalışması yaptım.Tam olarak bitmemiş olsada bir blogta olması gereken en temel şeyleri ekledim ...</p> <a class="btn btn-info xsmall" href=".././django-uygulamalari-icin-heroku.html">read more</a></div>
+    tagged <a href="../tag/django-deploy.html">django deploy</a> <a href="../tag/heroku.html">heroku</a> <a href="../tag/heroku-django.html">heroku django</a> <a href="../tag/python-turkiye.html">python türkiye</a> <a href="../tag/pytr.html">pytr</a>  </div>
+        <div class="summary"><p>Django uygulaması yazmak diğer birçok dil ve framework'a gore hem kolay hem de zevkli.Bu sayede çok kısa surede kendi blogunuzu veya hayalinizdeki scripti yazabiliyorsunuz.Bende en son pytr.org domaini için guzel bir blog çalışması yaptım.Tam olarak bitmemiş olsada bir blogta olması gereken en temel şeyleri ekledim ...</p> <a class="btn btn-info xsmall" href="../django-uygulamalari-icin-heroku.html">read more</a></div>
     </div>	
 				
     
-
  
-
         
-
 
  
 
     <div class='article'>
-        <a href=".././djangoda-modellere-giris.html"><h2>Django&#8217;da Modellere&nbsp;Giriş</h2></a>
+        <a href="../djangoda-modellere-giris.html"><h2>Django'da Modellere Giriş</h2></a>
         <div class= "well small"> Jun 19, 2012
 
-
-by <a class="url fn" href=".././author/halit.html">halit</a>
+by <a class="url fn" href="../author/halit.html">halit</a>
  
 
-in <a href=".././category/django.html">django</a>
+in <a href="../category/django.html">django</a>
 
  
-    tagged <a href=".././tag/dajango-veritabani.html">dajango veritabanı</a> <a href=".././tag/django.html">django</a> <a href=".././tag/django-modeller.html">django modeller</a> <a href=".././tag/django-models.html">django models</a> <a href=".././tag/model-fields.html">model fields</a> 
- </div>
-        <div class="summary"><p>Django&#8217;ya bir sure ara verdikten sonra bana gore Django&#8217;nun temelini oluşturan model kavramından bahsetmek istiyorum.Modeller Django&#8217;nun veritabanı ile bağlantısı oluşturan kısımlar diye duşunebiliriz.Yani veritabanında oluşmasını istediğimiz tabloları,kolonları model olarak tanımlayacağız ve Django bunları direk olarak veritabanına ekleme yapıcak.Bu sayede bir daha veritabanında sql ...</p> <a class="btn btn-info xsmall" href=".././djangoda-modellere-giris.html">read more</a></div>
+    tagged <a href="../tag/dajango-veritabani.html">dajango veritabanı</a> <a href="../tag/django.html">django</a> <a href="../tag/django-modeller.html">django modeller</a> <a href="../tag/django-models.html">django models</a> <a href="../tag/model-fields.html">model fields</a>  </div>
+        <div class="summary"><p>Django'ya bir sure ara verdikten sonra bana gore Django'nun temelini oluşturan model kavramından bahsetmek istiyorum.Modeller Django'nun veritabanı ile bağlantısı oluşturan kısımlar diye duşunebiliriz.Yani veritabanında oluşmasını istediğimiz tabloları,kolonları model olarak tanımlayacağız ve Django bunları direk olarak veritabanına ekleme yapıcak.Bu sayede bir daha veritabanında sql ...</p> <a class="btn btn-info xsmall" href="../djangoda-modellere-giris.html">read more</a></div>
     </div>	
 				
     
-
  
-
         
-
 
  
 
     <div class='article'>
-        <a href=".././django-admin-paneli-ve-ayarlar.html"><h2>Django Admin Paneli Ve&nbsp;Ayarlar</h2></a>
+        <a href="../django-admin-paneli-ve-ayarlar.html"><h2>Django Admin Paneli Ve Ayarlar</h2></a>
         <div class= "well small"> Jun 08, 2012
 
-
-by <a class="url fn" href=".././author/halit.html">halit</a>
+by <a class="url fn" href="../author/halit.html">halit</a>
  
 
-in <a href=".././category/django.html">django</a>
+in <a href="../category/django.html">django</a>
 
  
-    tagged <a href=".././tag/django.html">django</a> <a href=".././tag/django-admin-paneli.html">django admin paneli</a> <a href=".././tag/django-ayarlari.html">django ayarları</a> <a href=".././tag/django-dersleri.html">django dersleri</a> <a href=".././tag/django-settings.html">django settings</a> <a href=".././tag/django-veritabani.html">django veritabanı</a> 
- </div>
-        <div class="summary"><p>Bir onceki <a href="http://www.halitalptekin.com/makale/django/django-ile-tanisma/">yazımda</a> ilk projemizi başlatıp Django&#8217;ya kısa bir giriş yapmıştık.Şimdi de modellere geçmeden hemen once admin panelimizi kurup settings.py dosyamız içinde ufak ayarlar yapacağız.Bu yazıdan hemen sonra da Django&#8217;da modellere giriş yapacağız.Modeller konusunu yeniden yazmak yerine HDBlog&#8217;un kodlarından anlatarak devam edeceğim.Boylelikle ...</p> <a class="btn btn-info xsmall" href=".././django-admin-paneli-ve-ayarlar.html">read more</a></div>
+    tagged <a href="../tag/django.html">django</a> <a href="../tag/django-admin-paneli.html">django admin paneli</a> <a href="../tag/django-ayarlari.html">django ayarları</a> <a href="../tag/django-dersleri.html">django dersleri</a> <a href="../tag/django-settings.html">django settings</a> <a href="../tag/django-veritabani.html">django veritabanı</a>  </div>
+        <div class="summary"><p>Bir onceki <a href="http://www.halitalptekin.com/makale/django/django-ile-tanisma/">yazımda</a> ilk projemizi başlatıp Django'ya kısa bir giriş yapmıştık.Şimdi de modellere geçmeden hemen once admin panelimizi kurup settings.py dosyamız içinde ufak ayarlar yapacağız.Bu yazıdan hemen sonra da Django'da modellere giriş yapacağız.Modeller konusunu yeniden yazmak yerine HDBlog'un kodlarından anlatarak devam edeceğim.Boylelikle ...</p> <a class="btn btn-info xsmall" href="../django-admin-paneli-ve-ayarlar.html">read more</a></div>
     </div>	
 				
     
-
  
-
         
-
 
  
 
     <div class='article'>
-        <a href=".././django-ile-tanisma.html"><h2>Django İle&nbsp;Tanışma</h2></a>
+        <a href="../django-ile-tanisma.html"><h2>Django İle Tanışma</h2></a>
         <div class= "well small"> Jun 06, 2012
 
-
-by <a class="url fn" href=".././author/halit.html">halit</a>
+by <a class="url fn" href="../author/halit.html">halit</a>
  
 
-in <a href=".././category/django.html">django</a>
+in <a href="../category/django.html">django</a>
 
  
-    tagged <a href=".././tag/django.html">django</a> <a href=".././tag/django-kurulumu.html">django kurulumu</a> <a href=".././tag/django-nedir.html">django nedir</a> <a href=".././tag/django-proje.html">django proje</a> <a href=".././tag/djangoya-giris.html">djangoya giriş</a> <a href=".././tag/neden-django.html">neden django</a> <a href=".././tag/python.html">python</a> 
- </div>
-        <div class="summary"><p>Bugunlerde neredeyse her 3 lafımdan birisi python diğeri django ile ilgili.Hal boyle olunca insanlar haliyle Djangoyu merak ediyor.Python hakkında azda olsa bilgi sahibi olsalar bile Djangoyu ilk kez duyanlar var.Bu yuzden oncelikle Django&#8217;nun ne olduğuyla ve bize getirdiği yeniliklerle ilgili bir yazı yazmak istedim.Bu yazıda ...</p> <a class="btn btn-info xsmall" href=".././django-ile-tanisma.html">read more</a></div>
+    tagged <a href="../tag/django.html">django</a> <a href="../tag/django-kurulumu.html">django kurulumu</a> <a href="../tag/django-nedir.html">django nedir</a> <a href="../tag/django-proje.html">django proje</a> <a href="../tag/djangoya-giris.html">djangoya giriş</a> <a href="../tag/neden-django.html">neden django</a> <a href="../tag/python.html">python</a>  </div>
+        <div class="summary"><p>Bugunlerde neredeyse her 3 lafımdan birisi python diğeri django ile ilgili.Hal boyle olunca insanlar haliyle Djangoyu merak ediyor.Python hakkında azda olsa bilgi sahibi olsalar bile Djangoyu ilk kez duyanlar var.Bu yuzden oncelikle Django'nun ne olduğuyla ve bize getirdiği yeniliklerle ilgili bir yazı yazmak istedim.Bu yazıda ...</p> <a class="btn btn-info xsmall" href="../django-ile-tanisma.html">read more</a></div>
     </div>	
 				
-    
-        <div class="pagination">
+            <div class="pagination">
 <ul>
-
     <li class="prev disabled"><a href="#">&larr; Previous</a></li>
 
-
-
-    <li class="active"><a href=".././category/django.html">1</a></li>
-
-
+    <li class="active"><a href="../category/django.html">1</a></li>
 
     <li class="next disabled"><a href="#">&rarr; Next</a></li>
 
-
 </ul>
-</div>
-    
-
+</div>    
  
-
- 
- 
-
-
+  
         </div>
         
         <div class="span3">
@@ -235,115 +195,68 @@ in <a href=".././category/django.html">django</a>
                 Site
                 </li>
             
-                <li><a href=".././archives.html">Archives</a>
-                <li><a href=".././tags.html">Tags</a>
-                <li><a href=".././feeds/all.atom.xml" rel="alternate">Atom feed</a></li>
-                
-                <li><a href=".././feeds/all.rss.xml" rel="alternate">RSS feed</a></li>
-                
-                 <li><a href=".././sitemap.xml">Sitemap</a>
+                <li><a href="../archives.html">Archives</a>
+                <li><a href="../tags.html">Tags</a>
+                <li><a href="../feeds/all.atom.xml" rel="alternate">Atom feed</a></li>
+                                <li><a href="../feeds/all.rss.xml" rel="alternate">RSS feed</a></li>
+                                 <li><a href="../sitemap.xml">Sitemap</a>
             </ul>
             </div>
 
 
-            
-            <div class="well" style="padding: 8px 0; background-color: #FBFBFB;">
+                        <div class="well" style="padding: 8px 0; background-color: #FBFBFB;">
             <ul class="nav nav-list">
                 <li class="nav-header"> 
                 Categories
                 </li>
                 
-                
-                <li><a href=".././category/tasarim.html">tasarim</a></li>
-                
-                <li><a href=".././category/server.html">server</a></li>
-                
-                <li><a href=".././category/python.html">python</a></li>
-                
-                <li><a href=".././category/programlama.html">programlama</a></li>
-                
-                <li><a href=".././category/linux.html">linux</a></li>
-                
-                <li><a href=".././category/kisisel.html">kisisel</a></li>
-                
-                <li><a href=".././category/internet.html">internet</a></li>
-                
-                <li><a href=".././category/guvenlik.html">guvenlik</a></li>
-                
-                <li><a href=".././category/genel.html">genel</a></li>
-                
-                <li><a href=".././category/eglence.html">eglence</a></li>
-                
-                <li><a href=".././category/django.html">django</a></li>
-                
-                <li><a href=".././category/compsci.html">compsci</a></li>
-                
-                <li><a href=".././category/arduino.html">arduino</a></li>
+                                <li><a href="../category/tasarim.html">tasarim</a></li>
+                                <li><a href="../category/server.html">server</a></li>
+                                <li><a href="../category/python.html">python</a></li>
+                                <li><a href="../category/programlama.html">programlama</a></li>
+                                <li><a href="../category/linux.html">linux</a></li>
+                                <li><a href="../category/kisisel.html">kisisel</a></li>
+                                <li><a href="../category/internet.html">internet</a></li>
+                                <li><a href="../category/guvenlik.html">guvenlik</a></li>
+                                <li><a href="../category/genel.html">genel</a></li>
+                                <li><a href="../category/eglence.html">eglence</a></li>
+                                <li><a href="../category/django.html">django</a></li>
+                                <li><a href="../category/compsci.html">compsci</a></li>
+                                <li><a href="../category/arduino.html">arduino</a></li>
                                    
             </ul>
             </div>
             
 
-
-            
-            <div class="well" style="padding: 8px 0; background-color: #FBFBFB;">
+                        <div class="well" style="padding: 8px 0; background-color: #FBFBFB;">
             <ul class="nav nav-list">
                 <li class="nav-header"> 
                 Links
                 </li>
             
-            
-                <li><a href="http://www.python.org">Python</a></li>
-            
-            </ul>
+                            <li><a href="http://www.python.org">Python</a></li>
+                        </ul>
             </div>
             
 
-
-            
-            <div class="social">
+                        <div class="social">
             <div class="well" style="padding: 8px 0; background-color: #FBFBFB;">
             <ul class="nav nav-list">
                 <li class="nav-header"> 
                 Social
                 </li>
            
-                
-                <li><a href="http://twitter.com/halitalptekin">twitter</a></li>
-                
-                <li><a href="http://github.com/halitalptekin">github</a></li>
-                
-                <li><a href="http://stackoverflow.com/users/1151618/halit-alptekin">stackoverflow</a></li>
-                
-                <li><a href="http://tr.linkedin.com/in/halitalptekin">linkedin</a></li>
-                
-            </ul>
+                                <li><a href="http://twitter.com/halitalptekin">twitter</a></li>
+                                <li><a href="http://github.com/halitalptekin">github</a></li>
+                                <li><a href="http://stackoverflow.com/users/1151618/halit-alptekin">stackoverflow</a></li>
+                                <li><a href="http://tr.linkedin.com/in/halitalptekin">linkedin</a></li>
+                            </ul>
             </div>
             </div>
             
-
             
-            <div class="well" style="padding: 8px 0; background-color: #FBFBFB;">
-            <ul class="nav nav-list">
-                <li class="nav-header"> 
-                Ads
-                </li>
-
-                
-                <li><a href="http://www.tamindir.com" title="Program Indir"><img src="/media/reklam/tamindir.jpg" alt="Tamindir" title="Program Indir"></a>
-                </li>
-                
-                <li><a href="http://www.tatilbuldur.com" title="TatilBudur"><img src="/media/reklam/tatilbudur.png" alt="TatilBudur" title="TatilBudur"></a>
-                </li>
-                
-            </ul>
-            </div>
-            
-
         </div>  
-    </div> 
-    </div> 
-
+    </div>     </div> 
 <footer>
 	<hr>
 	<p><a href='http://www.halitalptekin.com'>Halit Alptekin Personal Blog</a> &copy; 2012</p>
@@ -352,8 +265,6 @@ in <a href=".././category/django.html">django</a>
 </div> <!-- /container -->
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
 <script src="http://twitter.github.com/bootstrap/assets/js/bootstrap-collapse.js"></script>
-
 <script>var _gaq=[['_setAccount','UA-24728900-1'],['_trackPageview']];(function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];g.src='//www.google-analytics.com/ga.js';s.parentNode.insertBefore(g,s)}(document,'script'))</script>
-
 </body>
 </html>

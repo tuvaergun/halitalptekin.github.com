@@ -10,14 +10,14 @@
 
     <!-- Le HTML5 shim, for IE6-8 support of HTML elements -->
     <!--[if lt IE 9]>
-    <script src=".././theme/html5.js"></script>
+    <script src="../theme/html5.js"></script>
     <![endif]-->
 
     <!-- Le styles -->
-    <link href=".././theme/bootstrap.min.css" rel="stylesheet">
-    <link href=".././theme/bootstrap.min.responsive.css" rel="stylesheet">
-    <link href=".././theme/local.css" rel="stylesheet">
-    <link href=".././theme/pygments.css" rel="stylesheet">
+    <link href="../theme/bootstrap.min.css" rel="stylesheet">
+    <link href="../theme/bootstrap.min.responsive.css" rel="stylesheet">
+    <link href="../theme/local.css" rel="stylesheet">
+    <link href="../theme/pygments.css" rel="stylesheet">
 
 </head>
 
@@ -33,14 +33,13 @@
              <span class="icon-bar"></span>
          </a>
 
-        <a class="brand" href="../.">Halit Alptekin Personal Blog</a>
+        <a class="brand" href="..">Halit Alptekin Personal Blog</a>
 
         <div class="nav-collapse">
         <ul class="nav">
-        
-            
-        <li><a href=".././pages/about-me.html">About Me</a></li>
-	    <li><a href=".././pages/contact.html">Contact</a></li>
+                    
+        <li><a href="../pages/about-me.html">About Me</a></li>
+	    <li><a href="../pages/contact.html">Contact</a></li>
         </ul>
         </div>
         
@@ -54,34 +53,29 @@
 
         <div class="span9">
                 
-
         
-
-
 
     <div class='article'>
         <div class="content-title">
-            <a href=".././djangoda-modellere-giris.html"><h1>Django&#8217;da Modellere&nbsp;Giriş</h1></a>
+            <a href="../djangoda-modellere-giris.html"><h1>Django'da Modellere Giriş</h1></a>
             Jun 19, 2012
 
-
-by <a class="url fn" href=".././author/halit.html">halit</a>
+by <a class="url fn" href="../author/halit.html">halit</a>
  
 
-in <a href=".././category/django.html">django</a>
+in <a href="../category/django.html">django</a>
 
  
-    tagged <a href=".././tag/dajango-veritabani.html">dajango veritabanı</a> <a href=".././tag/django.html">django</a> <a href=".././tag/django-modeller.html">django modeller</a> <a href=".././tag/django-models.html">django models</a> <a href=".././tag/model-fields.html">model fields</a> 
- 
+    tagged <a href="../tag/dajango-veritabani.html">dajango veritabanı</a> <a href="../tag/django.html">django</a> <a href="../tag/django-modeller.html">django modeller</a> <a href="../tag/django-models.html">django models</a> <a href="../tag/model-fields.html">model fields</a>  
         </div>
         
-        <div><p>Django&#8217;ya bir sure ara verdikten sonra bana gore Django&#8217;nun temelini oluşturan model kavramından bahsetmek istiyorum.Modeller Django&#8217;nun veritabanı ile bağlantısı oluşturan kısımlar diye duşunebiliriz.Yani veritabanında oluşmasını istediğimiz tabloları,kolonları model olarak tanımlayacağız ve Django bunları direk olarak veritabanına ekleme yapıcak.Bu sayede bir daha veritabanında sql sorgusu ile veritabanı oluşturmaktak kurtulacağız.Bu <span class="caps">MVC</span> yapısının bize getirdiği buyuk kolaylıklardan sadece&nbsp;birisi.</p>
+        <div><p>Django'ya bir sure ara verdikten sonra bana gore Django'nun temelini oluşturan model kavramından bahsetmek istiyorum.Modeller Django'nun veritabanı ile bağlantısı oluşturan kısımlar diye duşunebiliriz.Yani veritabanında oluşmasını istediğimiz tabloları,kolonları model olarak tanımlayacağız ve Django bunları direk olarak veritabanına ekleme yapıcak.Bu sayede bir daha veritabanında sql sorgusu ile veritabanı oluşturmaktak kurtulacağız.Bu MVC yapısının bize getirdiği buyuk kolaylıklardan sadece birisi.</p>
 <p><a href="http://www.flickr.com/photos/hoerner_brett/2901426375/" title="django cake by hoerner_brett, on Flickr"><img alt="django cake" src="http://farm4.staticflickr.com/3160/2901426375_02257206aa.jpg" /></a></p>
-<p>Şimdi daha onceleri oluşturduğumuz uygulamanın içinde oluşan models.py dosyasını açarak buranın içerisine modellerimizi ekleyeceğiz.Ben sıfırdan model yazmak yerine sitemde kullandığım modeller uzerinden gideceğim.Zaten klasik bir blog sisteminde ortalama aynı şeyler&nbsp;olur.</p>
-<p>Mesela blog sitemizde Kategoriler ve Yazilar adında iki tablomuz olacak ve bu tabloların içinde aşağıdaki gibi kolonlarımız&nbsp;olacak.</p>
-<p>Kategoriler -&gt;&nbsp;baslik,sef_baslik,slug,aciklama,aciklama_sef</p>
-<p>Yazilar -&gt;&nbsp;baslik,sef_baslik,slug,aciklama,aciklama_sef,kategori,icerik_anasayfa,icerik,yayindami,etiketler,olusturulma,degistirilme,yazar</p>
-<p>Ben biraz fazla kolon kullanmış olabilirim ama siz ihtiyaçlarınız doğrultusunda eklemeler veya çıkartmalar yapabilirsiniz.Zaten aşağıdaki ornek ile eminim kafanızda bir parlama meydana gelecek ve olayı sokeceksiniz.Daha sonra da kendi modellerinizi&nbsp;yazacaksınız.</p>
+<p>Şimdi daha onceleri oluşturduğumuz uygulamanın içinde oluşan models.py dosyasını açarak buranın içerisine modellerimizi ekleyeceğiz.Ben sıfırdan model yazmak yerine sitemde kullandığım modeller uzerinden gideceğim.Zaten klasik bir blog sisteminde ortalama aynı şeyler olur.</p>
+<p>Mesela blog sitemizde Kategoriler ve Yazilar adında iki tablomuz olacak ve bu tabloların içinde aşağıdaki gibi kolonlarımız olacak.</p>
+<p>Kategoriler -&gt; baslik,sef_baslik,slug,aciklama,aciklama_sef</p>
+<p>Yazilar -&gt; baslik,sef_baslik,slug,aciklama,aciklama_sef,kategori,icerik_anasayfa,icerik,yayindami,etiketler,olusturulma,degistirilme,yazar</p>
+<p>Ben biraz fazla kolon kullanmış olabilirim ama siz ihtiyaçlarınız doğrultusunda eklemeler veya çıkartmalar yapabilirsiniz.Zaten aşağıdaki ornek ile eminim kafanızda bir parlama meydana gelecek ve olayı sokeceksiniz.Daha sonra da kendi modellerinizi yazacaksınız.</p>
 <div class="codehilite"><pre><span class="kn">from</span> <span class="nn">django.db</span> <span class="kn">import</span> <span class="n">models</span>
 <span class="kn">from</span> <span class="nn">django.contrib.auth.models</span> <span class="kn">import</span> <span class="n">User</span>
 <span class="kn">from</span> <span class="nn">tagging.fields</span> <span class="kn">import</span> <span class="n">TagField</span>
@@ -162,85 +156,86 @@ in <a href=".././category/django.html">django</a>
 </pre></div>
 
 
-<p>Yukarıdaki kodlar bizim models.py dosyamızın içerisi olacak.Şimdi sırayla biraz ayrıntıya&nbsp;girelim.</p>
-<p>En yukarıda gorduğunuz from ile başlayan satırlar klasik python ile import satırları.Ben burada django&#8217;nun user modelini(yazılardaki yazar kısmı için),tagging uygulaması(pip install django-tagging),meta bolumlerinde turkçe karakter sıkıntısını çozmek için unidecode ve yazılarımızı google&#8217;a pinglemek için ping_google import&nbsp;ettim.</p>
-<p>Biraz aşağıda class Kategoriler satırını goruyorsunuz.Django&#8217;da modellerde class ile oluştaracağımız bolumler veritabanında tablo olarak oluşacak.Classların içinde oluşturacağımız field kısımları veritabanında ilgili tablonun kolonları olacak.Djangodaki bu model yapısı ile veritabanı bağımsız çalışabilirsiniz.İsterseniz sqlite,psql,mysql veya oracle kullanın.Tek yapmanız gereken settings.py içindeki db ile ilgili satırı&nbsp;editlemek.</p>
-<p>Eğer models.py dosyasını incelerseniz iki adet class oluşturmuşum.Bunlar Kategoriler ve Yazilar.Artık bunlar veritabanındaki tablolarımız olacak.Kategoriler altında oluşturduğum baslik,sef_baslik,slug,aciklama,aciklama_sef fieldler yani alanlar Kategoriler tablomuzun kolonları olacak.Kolonları oluştururken hatırlarsanız mysql&#8217;da alan tipi seçimi yapılırdı.Bazı yerlerde char,bazı yerlerde text veya int gibi alanlar seçilirdi.Django&#8217;da da bu alanları burada tanımlıyoruz.Oluşturacağınız alanın turunu modeller içinde tanımlamanız&nbsp;gerekiyor.</p>
-<p>Django&#8217;daki fieldlerin Mysql karşılıkları aşağıdaki&nbsp;gibidir.</p>
+<p>Yukarıdaki kodlar bizim models.py dosyamızın içerisi olacak.Şimdi sırayla biraz ayrıntıya girelim.</p>
+<p>En yukarıda gorduğunuz from ile başlayan satırlar klasik python ile import satırları.Ben burada django'nun user modelini(yazılardaki yazar kısmı için),tagging uygulaması(pip install django-tagging),meta bolumlerinde turkçe karakter sıkıntısını çozmek için unidecode ve yazılarımızı google'a pinglemek için ping_google import ettim.</p>
+<p>Biraz aşağıda class Kategoriler satırını goruyorsunuz.Django'da modellerde class ile oluştaracağımız bolumler veritabanında tablo olarak oluşacak.Classların içinde oluşturacağımız field kısımları veritabanında ilgili tablonun kolonları olacak.Djangodaki bu model yapısı ile veritabanı bağımsız çalışabilirsiniz.İsterseniz sqlite,psql,mysql veya oracle kullanın.Tek yapmanız gereken settings.py içindeki db ile ilgili satırı editlemek.</p>
+<p>Eğer models.py dosyasını incelerseniz iki adet class oluşturmuşum.Bunlar Kategoriler ve Yazilar.Artık bunlar veritabanındaki tablolarımız olacak.Kategoriler altında oluşturduğum baslik,sef_baslik,slug,aciklama,aciklama_sef fieldler yani alanlar Kategoriler tablomuzun kolonları olacak.Kolonları oluştururken hatırlarsanız mysql'da alan tipi seçimi yapılırdı.Bazı yerlerde char,bazı yerlerde text veya int gibi alanlar seçilirdi.Django'da da bu alanları burada tanımlıyoruz.Oluşturacağınız alanın turunu modeller içinde tanımlamanız gerekiyor.</p>
+<p>Django'daki fieldlerin Mysql karşılıkları aşağıdaki gibidir.</p>
 <p><strong>Django</strong>
 <strong>Mysql</strong></p>
 <p>AutoField
-integer&nbsp;AUTO_INCREMENT</p>
-<p>BooleanField&nbsp;bool</p>
-<p>CharField&nbsp;varchar(%(max_length)s)</p>
-<p>CommaSeparatedIntegerField&nbsp;varchar(%(max_length)s)</p>
-<p>DateField&nbsp;date</p>
-<p>DateTimeField&nbsp;datetime</p>
+integer AUTO_INCREMENT</p>
+<p>BooleanField
+bool</p>
+<p>CharField
+varchar(%(max_length)s)</p>
+<p>CommaSeparatedIntegerField
+varchar(%(max_length)s)</p>
+<p>DateField
+date</p>
+<p>DateTimeField
+datetime</p>
 <p>DecimalField
-numeric(%(max_digits)s,&nbsp;%(decimal_places)s)</p>
-<p>FileField&nbsp;varchar(%(max_length)s)</p>
-<p>FilePathField&nbsp;varchar(%(max_length)s)</p>
+numeric(%(max_digits)s, %(decimal_places)s)</p>
+<p>FileField
+varchar(%(max_length)s)</p>
+<p>FilePathField
+varchar(%(max_length)s)</p>
 <p>FloatField
-double&nbsp;precision</p>
-<p>IntegerField&nbsp;integer</p>
-<p>IPAddressField&nbsp;char(15)</p>
-<p>NullBooleanField&nbsp;bool</p>
-<p>OneToOneField&nbsp;integer</p>
+double precision</p>
+<p>IntegerField
+integer</p>
+<p>IPAddressField
+char(15)</p>
+<p>NullBooleanField
+bool</p>
+<p>OneToOneField
+integer</p>
 <p>PositiveIntegerField
-integer&nbsp;<span class="caps">UNSIGNED</span></p>
+integer UNSIGNED</p>
 <p>PositiveSmallIntegerField
-smallint&nbsp;<span class="caps">UNSIGNED</span></p>
-<p>SlugField&nbsp;varchar(%(max_length)s)</p>
-<p>SmallIntegerField&nbsp;smallint</p>
-<p>TextField&nbsp;longtext</p>
-<p>TimeField&nbsp;time</p>
-<p>Django&#8217;da birçok field turu var.Bunların başında yukarıda yazdıklarım yer alır.Bunların hepsine django&#8217;nun <a href="https://docs.djangoproject.com/en/dev/ref/models/fields/">resmi sitesinden</a> veya <a href="http://www.halitalptekin.com/dosya/django-cheat-sheet/">django cheat sheet</a>&#8216;den&nbsp;ulaşabilirsiniz.</p>
-<p>Bu fieldlerde isimlerden yola çıkarak işlevlerini anlayabiliriz.Örneğin CharField&#8217;in mysqldaki char&#8217;a ,TextField&#8217;in longtext&#8217;e eşdeğer olduğunu soyleyebiliriz.Diğerleride veritabanın&#8217;ın o bolgesinde kullanmak istediğiniz veriye gore alan oluşturuyor.Örneğin bir blog yazısının içeriğini TextField&#8217;da saklayabiliriz.Veya iletişim paneli yaptığınızda cevabın gideceği mail adresini MailField,sitenin açık veya kapalı olduğunu anlamak için BooleanField kullanabiliriz.Bu ornekler çoğaltılabilir.Ayrıntılı bilgiler için kesinlikle resmi siteye&nbsp;bakınız.</p>
-<p>Birde bu fieldlerde yer alan verbose_name,help_text,max_length gibi bolumleri anlatmaya gerek yok.Herşey gayet açık.Ancak burada yer alan ForeignKey biraz onemli.Burada yapılan iş aslında gayet basit.Ancak ileride çok fazla kullanacağınız için kesinlikle oğrenmekte fayda var.ForeignKey&#8217;i biraz incelediğinizde gorevi belli oluyor.İki tabloyu birbiri ile ilişkilendiriyor.Mesela Yazilar tablosundaki kategori kolonundaki veriyi,Kategoriler tablosundan alıyoruz.Yani birbirleri arasında bir bağ kuruyor.İki tabloyu&nbsp;ilişkilendiriyor.</p>
-<p>Field kısımıda hallettikten sonra buraların altında yer alan fonksiyonları biraz inceleyelim.Bizim modellerimiz içinde tanımladığımız fonksiyonlara views içinden de ulaşabiliyor olmamız gerçekten Django&#8217;nun çok guzel ozelliklerinden birisi.Bu fonksiyonlar ile çok guzel şeyler yapabilirsiniz.Örneğin yazımızı kaydet dediğimizde google&#8217;a pinglettirebilir veya template içinde yazının urline direk buradaki fonksiyon ile&nbsp;ulaşabiliriz.</p>
-<p>Burada yer alan unicode ve meta bolumlerini atlıyorum.Çunku bunlar admin panelinde işimize yarayacak kısımlar.Ve tamamen site sahibine kolaylık sağlamak için kullanılıyor.Ama etkin kullanmakta çok fazla fayda&nbsp;var.</p>
-<p>Save fonksiyonu onemli ve çok kez kullanacağımız bir fonksiyon.Bu fonksiyon yazıyı kaydet butonuna bastığımız zaman çalıştırılan bir fonksiyon.Ve eğer yazı kaydedilirken yapılması gereken işlemler varsa bunları burada tanımlıyoruz.Mesela ben yazı başlığını alıp turkçe karakterlerden arındırıp sef_baslik alanına eklettiriyorum.Yani &#8220;Turkçe Şehirler&#8221; olan başlığı &#8220;Turkce Sehirler&#8221; olarak değiştirip sef_baslik alanına ekliyom.Bu sayede meta kodlarındaki Turkçe karakter sorununu çozuyorum.Sizde aklınıza gelen birçok alanda bu save fonksiyonunu&nbsp;kullanabilirsiniz.</p>
+smallint UNSIGNED</p>
+<p>SlugField
+varchar(%(max_length)s)</p>
+<p>SmallIntegerField
+smallint</p>
+<p>TextField
+longtext</p>
+<p>TimeField
+time</p>
+<p>Django'da birçok field turu var.Bunların başında yukarıda yazdıklarım yer alır.Bunların hepsine django'nun <a href="https://docs.djangoproject.com/en/dev/ref/models/fields/">resmi sitesinden</a> veya <a href="http://www.halitalptekin.com/dosya/django-cheat-sheet/">django cheat sheet</a>'den ulaşabilirsiniz.</p>
+<p>Bu fieldlerde isimlerden yola çıkarak işlevlerini anlayabiliriz.Örneğin CharField'in mysqldaki char'a ,TextField'in longtext'e eşdeğer olduğunu soyleyebiliriz.Diğerleride veritabanın'ın o bolgesinde kullanmak istediğiniz veriye gore alan oluşturuyor.Örneğin bir blog yazısının içeriğini TextField'da saklayabiliriz.Veya iletişim paneli yaptığınızda cevabın gideceği mail adresini MailField,sitenin açık veya kapalı olduğunu anlamak için BooleanField kullanabiliriz.Bu ornekler çoğaltılabilir.Ayrıntılı bilgiler için kesinlikle resmi siteye bakınız.</p>
+<p>Birde bu fieldlerde yer alan verbose_name,help_text,max_length gibi bolumleri anlatmaya gerek yok.Herşey gayet açık.Ancak burada yer alan ForeignKey biraz onemli.Burada yapılan iş aslında gayet basit.Ancak ileride çok fazla kullanacağınız için kesinlikle oğrenmekte fayda var.ForeignKey'i biraz incelediğinizde gorevi belli oluyor.İki tabloyu birbiri ile ilişkilendiriyor.Mesela Yazilar tablosundaki kategori kolonundaki veriyi,Kategoriler tablosundan alıyoruz.Yani birbirleri arasında bir bağ kuruyor.İki tabloyu ilişkilendiriyor.</p>
+<p>Field kısımıda hallettikten sonra buraların altında yer alan fonksiyonları biraz inceleyelim.Bizim modellerimiz içinde tanımladığımız fonksiyonlara views içinden de ulaşabiliyor olmamız gerçekten Django'nun çok guzel ozelliklerinden birisi.Bu fonksiyonlar ile çok guzel şeyler yapabilirsiniz.Örneğin yazımızı kaydet dediğimizde google'a pinglettirebilir veya template içinde yazının urline direk buradaki fonksiyon ile ulaşabiliriz.</p>
+<p>Burada yer alan unicode ve meta bolumlerini atlıyorum.Çunku bunlar admin panelinde işimize yarayacak kısımlar.Ve tamamen site sahibine kolaylık sağlamak için kullanılıyor.Ama etkin kullanmakta çok fazla fayda var.</p>
+<p>Save fonksiyonu onemli ve çok kez kullanacağımız bir fonksiyon.Bu fonksiyon yazıyı kaydet butonuna bastığımız zaman çalıştırılan bir fonksiyon.Ve eğer yazı kaydedilirken yapılması gereken işlemler varsa bunları burada tanımlıyoruz.Mesela ben yazı başlığını alıp turkçe karakterlerden arındırıp sef_baslik alanına eklettiriyorum.Yani "Turkçe Şehirler" olan başlığı "Turkce Sehirler" olarak değiştirip sef_baslik alanına ekliyom.Bu sayede meta kodlarındaki Turkçe karakter sorununu çozuyorum.Sizde aklınıza gelen birçok alanda bu save fonksiyonunu kullanabilirsiniz.</p>
 <p><img alt="Django Web Framework" src="http://www.halitalptekin.com/media/upload/django.jpg" /></p>
-<p>Django&#8217;da modeller ile temel olarak bilmeniz gerekenler bunlar.Ancak Django&#8217;da modeller bu kadar değil.İşin içinde girdikçe Django&#8217;nun bize getirdiği harika kolaylıkları keşfediyorsunuz.Mesela veritabanı bağımsız tablo ve kolonlar oluşturmak bana gore çok buyuk bir guzellik.(Tabi bunu yapan başka frameworklerde var) Ama sadece bu kadar değil.Zamanla birçok kolaylık farkedeceksiniz.Mesela Django&#8217;nun image ve file fieldleri bana gerçekten çok hoş geldi.<span class="caps">PHP</span>&#8217;deki gibi bir ton guvenlik uygulamasıyla uğraşmadan direk imagefield ekleyerek resim yuklememizi yapıyoruz.Geri kalan herşeyi Django&nbsp;hallediyor.</p>
-<p>Peki Django&#8217;da modelleri oluşturduk.Daha sonra ne yapacağız? Tabikide burasıda çok onemli.Modellerimiz içinde yer alan alanlarımızı veritabanına kayıt ettireceğiz.Bunun için kesinlikle sql ile uğraşmıyoruz.Komut satırına giriyoruz ve aşağıdaki komut ile tablo ve kolonlarımızı oluşturuyoruz.İlk oluşturmada mail ve username isteyecek.Bunlar sizin admin kullanıcısı&nbsp;bilgileridir.</p>
+<p>Django'da modeller ile temel olarak bilmeniz gerekenler bunlar.Ancak Django'da modeller bu kadar değil.İşin içinde girdikçe Django'nun bize getirdiği harika kolaylıkları keşfediyorsunuz.Mesela veritabanı bağımsız tablo ve kolonlar oluşturmak bana gore çok buyuk bir guzellik.(Tabi bunu yapan başka frameworklerde var) Ama sadece bu kadar değil.Zamanla birçok kolaylık farkedeceksiniz.Mesela Django'nun image ve file fieldleri bana gerçekten çok hoş geldi.PHP'deki gibi bir ton guvenlik uygulamasıyla uğraşmadan direk imagefield ekleyerek resim yuklememizi yapıyoruz.Geri kalan herşeyi Django hallediyor.</p>
+<p>Peki Django'da modelleri oluşturduk.Daha sonra ne yapacağız? Tabikide burasıda çok onemli.Modellerimiz içinde yer alan alanlarımızı veritabanına kayıt ettireceğiz.Bunun için kesinlikle sql ile uğraşmıyoruz.Komut satırına giriyoruz ve aşağıdaki komut ile tablo ve kolonlarımızı oluşturuyoruz.İlk oluşturmada mail ve username isteyecek.Bunlar sizin admin kullanıcısı bilgileridir.</p>
 <div class="codehilite"><pre><span class="n">python</span> <span class="n">manage</span><span class="o">.</span><span class="n">py</span> <span class="n">syncdb</span>
 </pre></div>
 
 
-<p>Artık veritabanı tablolarımız ve kolonlarımız oluştu.Bundan sonra uygulamamızı çalıştırmanın bir anlamı yok.Çunku henuz admin panelimize register etmedik.Onuda bu yazıda anlatıp sıkmak istemiyorum.Bir sonraki yazıda Django Admin Paneli ayarlarımızı yapmayı ve oluşturduğumuz tablo ve kolonlarımıza admin panelinden veri eklemeyi,değiştirmeyi,silmeyi anlatacağım.Şimdilik sitenizin veritabanı kısmını hallettik.Biraz zaman sonra da views ve templates olaylarına girip tum işlemleri tamamlayacağız.Ve ekstra işlemlere&nbsp;başlayacağız.</p>
-<p>Aşağıdaki resimde geçen uygulama isimlerine de şimdiden alışmanız fayda var diye duşunuyorum.İlerleyen zamanlarda çok kez&nbsp;kullanacaksınız.</p>
+<p>Artık veritabanı tablolarımız ve kolonlarımız oluştu.Bundan sonra uygulamamızı çalıştırmanın bir anlamı yok.Çunku henuz admin panelimize register etmedik.Onuda bu yazıda anlatıp sıkmak istemiyorum.Bir sonraki yazıda Django Admin Paneli ayarlarımızı yapmayı ve oluşturduğumuz tablo ve kolonlarımıza admin panelinden veri eklemeyi,değiştirmeyi,silmeyi anlatacağım.Şimdilik sitenizin veritabanı kısmını hallettik.Biraz zaman sonra da views ve templates olaylarına girip tum işlemleri tamamlayacağız.Ve ekstra işlemlere başlayacağız.</p>
+<p>Aşağıdaki resimde geçen uygulama isimlerine de şimdiden alışmanız fayda var diye duşunuyorum.İlerleyen zamanlarda çok kez kullanacaksınız.</p>
 <p><a href="http://www.flickr.com/photos/dibau_naum_h/5117424420/" title="Django build  deploy tools, Alex Arshavski by dibau_naum_h, on Flickr"><img alt="Django build  deploy tools, Alex Arshavski" src="http://farm2.staticflickr.com/1310/5117424420_48bea1bb29.jpg" /></a></p>
-<p><strong>Önemli Not:</strong> Yazı içerisinde birçok tablo ve kolon dedim.Şimdilik boyle bilmenizde fayda var.Ama oğrendikten sonra boyle olmadığını&nbsp;anlayacaksınız.</p>
-<p><strong>Önemli Not:</strong> Burada Django&#8217;nun kotu bir yanından bahsetmek istiyorum.Eğer modellerimiz oluşturup syncdb ile dbyide oluşturduktan sonra yeni bir model eklemesi yaparsanız bunların işlenmediğini farkedersiniz.Bu Django&#8217;nun bana gore en kotu ozelliğidir.Belki ilerleyen zamanlarda çozulecek ancak şu anda gerçekten Django&#8217;nun imajını sarsıyor.Ancak bundan kurtulmak için birçok yol olduğu için korkulcak bir durum yok.Eğer oluşturduğunuz veritabanını silip yeni oluşturursanız bunun uzerine django tum değişiklikleri işleyecektir.Ancak ben bunlarla uğraşamam diyorsanız daha kolay bir yol var.South adındaki uygulama ile veritabanınızı goç ettirebilirsiniz.Bu konu başlı başına bir makele konusu olduğu için şimdi anlatmıyorum ancak bu sorunun South ile çozulduğunu  şimdilik bilmenizde fayda&nbsp;var.</p></div>
+<p><strong>Önemli Not:</strong> Yazı içerisinde birçok tablo ve kolon dedim.Şimdilik boyle bilmenizde fayda var.Ama oğrendikten sonra boyle olmadığını anlayacaksınız.</p>
+<p><strong>Önemli Not:</strong> Burada Django'nun kotu bir yanından bahsetmek istiyorum.Eğer modellerimiz oluşturup syncdb ile dbyide oluşturduktan sonra yeni bir model eklemesi yaparsanız bunların işlenmediğini farkedersiniz.Bu Django'nun bana gore en kotu ozelliğidir.Belki ilerleyen zamanlarda çozulecek ancak şu anda gerçekten Django'nun imajını sarsıyor.Ancak bundan kurtulmak için birçok yol olduğu için korkulcak bir durum yok.Eğer oluşturduğunuz veritabanını silip yeni oluşturursanız bunun uzerine django tum değişiklikleri işleyecektir.Ancak ben bunlarla uğraşamam diyorsanız daha kolay bir yol var.South adındaki uygulama ile veritabanınızı goç ettirebilirsiniz.Bu konu başlı başına bir makele konusu olduğu için şimdi anlatmıyorum ancak bu sorunun South ile çozulduğunu  şimdilik bilmenizde fayda var.</p></div>
         <hr />
     </div>
 		
-    
-        <div class="pagination">
+            <div class="pagination">
 <ul>
-
     <li class="prev disabled"><a href="#">&larr; Previous</a></li>
 
-
-
-    <li class="active"><a href=".././tag/model fields.html">1</a></li>
-
-
+    <li class="active"><a href="../tag/model-fields.html">1</a></li>
 
     <li class="next disabled"><a href="#">&rarr; Next</a></li>
 
-
 </ul>
-</div>
-    
-
-
+</div>    
  
-
- 
- 
-
-
+  
         </div>
         
         <div class="span3">
@@ -251,115 +246,68 @@ smallint&nbsp;<span class="caps">UNSIGNED</span></p>
                 Site
                 </li>
             
-                <li><a href=".././archives.html">Archives</a>
-                <li><a href=".././tags.html">Tags</a>
-                <li><a href=".././feeds/all.atom.xml" rel="alternate">Atom feed</a></li>
-                
-                <li><a href=".././feeds/all.rss.xml" rel="alternate">RSS feed</a></li>
-                
-                 <li><a href=".././sitemap.xml">Sitemap</a>
+                <li><a href="../archives.html">Archives</a>
+                <li><a href="../tags.html">Tags</a>
+                <li><a href="../feeds/all.atom.xml" rel="alternate">Atom feed</a></li>
+                                <li><a href="../feeds/all.rss.xml" rel="alternate">RSS feed</a></li>
+                                 <li><a href="../sitemap.xml">Sitemap</a>
             </ul>
             </div>
 
 
-            
-            <div class="well" style="padding: 8px 0; background-color: #FBFBFB;">
+                        <div class="well" style="padding: 8px 0; background-color: #FBFBFB;">
             <ul class="nav nav-list">
                 <li class="nav-header"> 
                 Categories
                 </li>
                 
-                
-                <li><a href=".././category/tasarim.html">tasarim</a></li>
-                
-                <li><a href=".././category/server.html">server</a></li>
-                
-                <li><a href=".././category/python.html">python</a></li>
-                
-                <li><a href=".././category/programlama.html">programlama</a></li>
-                
-                <li><a href=".././category/linux.html">linux</a></li>
-                
-                <li><a href=".././category/kisisel.html">kisisel</a></li>
-                
-                <li><a href=".././category/internet.html">internet</a></li>
-                
-                <li><a href=".././category/guvenlik.html">guvenlik</a></li>
-                
-                <li><a href=".././category/genel.html">genel</a></li>
-                
-                <li><a href=".././category/eglence.html">eglence</a></li>
-                
-                <li><a href=".././category/django.html">django</a></li>
-                
-                <li><a href=".././category/compsci.html">compsci</a></li>
-                
-                <li><a href=".././category/arduino.html">arduino</a></li>
+                                <li><a href="../category/tasarim.html">tasarim</a></li>
+                                <li><a href="../category/server.html">server</a></li>
+                                <li><a href="../category/python.html">python</a></li>
+                                <li><a href="../category/programlama.html">programlama</a></li>
+                                <li><a href="../category/linux.html">linux</a></li>
+                                <li><a href="../category/kisisel.html">kisisel</a></li>
+                                <li><a href="../category/internet.html">internet</a></li>
+                                <li><a href="../category/guvenlik.html">guvenlik</a></li>
+                                <li><a href="../category/genel.html">genel</a></li>
+                                <li><a href="../category/eglence.html">eglence</a></li>
+                                <li><a href="../category/django.html">django</a></li>
+                                <li><a href="../category/compsci.html">compsci</a></li>
+                                <li><a href="../category/arduino.html">arduino</a></li>
                                    
             </ul>
             </div>
             
 
-
-            
-            <div class="well" style="padding: 8px 0; background-color: #FBFBFB;">
+                        <div class="well" style="padding: 8px 0; background-color: #FBFBFB;">
             <ul class="nav nav-list">
                 <li class="nav-header"> 
                 Links
                 </li>
             
-            
-                <li><a href="http://www.python.org">Python</a></li>
-            
-            </ul>
+                            <li><a href="http://www.python.org">Python</a></li>
+                        </ul>
             </div>
             
 
-
-            
-            <div class="social">
+                        <div class="social">
             <div class="well" style="padding: 8px 0; background-color: #FBFBFB;">
             <ul class="nav nav-list">
                 <li class="nav-header"> 
                 Social
                 </li>
            
-                
-                <li><a href="http://twitter.com/halitalptekin">twitter</a></li>
-                
-                <li><a href="http://github.com/halitalptekin">github</a></li>
-                
-                <li><a href="http://stackoverflow.com/users/1151618/halit-alptekin">stackoverflow</a></li>
-                
-                <li><a href="http://tr.linkedin.com/in/halitalptekin">linkedin</a></li>
-                
-            </ul>
+                                <li><a href="http://twitter.com/halitalptekin">twitter</a></li>
+                                <li><a href="http://github.com/halitalptekin">github</a></li>
+                                <li><a href="http://stackoverflow.com/users/1151618/halit-alptekin">stackoverflow</a></li>
+                                <li><a href="http://tr.linkedin.com/in/halitalptekin">linkedin</a></li>
+                            </ul>
             </div>
             </div>
             
-
             
-            <div class="well" style="padding: 8px 0; background-color: #FBFBFB;">
-            <ul class="nav nav-list">
-                <li class="nav-header"> 
-                Ads
-                </li>
-
-                
-                <li><a href="http://www.tamindir.com" title="Program Indir"><img src="/media/reklam/tamindir.jpg" alt="Tamindir" title="Program Indir"></a>
-                </li>
-                
-                <li><a href="http://www.tatilbuldur.com" title="TatilBudur"><img src="/media/reklam/tatilbudur.png" alt="TatilBudur" title="TatilBudur"></a>
-                </li>
-                
-            </ul>
-            </div>
-            
-
         </div>  
-    </div> 
-    </div> 
-
+    </div>     </div> 
 <footer>
 	<hr>
 	<p><a href='http://www.halitalptekin.com'>Halit Alptekin Personal Blog</a> &copy; 2012</p>
@@ -368,8 +316,6 @@ smallint&nbsp;<span class="caps">UNSIGNED</span></p>
 </div> <!-- /container -->
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
 <script src="http://twitter.github.com/bootstrap/assets/js/bootstrap-collapse.js"></script>
-
 <script>var _gaq=[['_setAccount','UA-24728900-1'],['_trackPageview']];(function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];g.src='//www.google-analytics.com/ga.js';s.parentNode.insertBefore(g,s)}(document,'script'))</script>
-
 </body>
 </html>

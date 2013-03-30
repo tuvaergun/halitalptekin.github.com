@@ -10,14 +10,14 @@
 
     <!-- Le HTML5 shim, for IE6-8 support of HTML elements -->
     <!--[if lt IE 9]>
-    <script src=".././theme/html5.js"></script>
+    <script src="../theme/html5.js"></script>
     <![endif]-->
 
     <!-- Le styles -->
-    <link href=".././theme/bootstrap.min.css" rel="stylesheet">
-    <link href=".././theme/bootstrap.min.responsive.css" rel="stylesheet">
-    <link href=".././theme/local.css" rel="stylesheet">
-    <link href=".././theme/pygments.css" rel="stylesheet">
+    <link href="../theme/bootstrap.min.css" rel="stylesheet">
+    <link href="../theme/bootstrap.min.responsive.css" rel="stylesheet">
+    <link href="../theme/local.css" rel="stylesheet">
+    <link href="../theme/pygments.css" rel="stylesheet">
 
 </head>
 
@@ -33,14 +33,13 @@
              <span class="icon-bar"></span>
          </a>
 
-        <a class="brand" href="../.">Halit Alptekin Personal Blog</a>
+        <a class="brand" href="..">Halit Alptekin Personal Blog</a>
 
         <div class="nav-collapse">
         <ul class="nav">
-        
-            
-        <li><a href=".././pages/about-me.html">About Me</a></li>
-	    <li><a href=".././pages/contact.html">Contact</a></li>
+                    
+        <li><a href="../pages/about-me.html">About Me</a></li>
+	    <li><a href="../pages/contact.html">Contact</a></li>
         </ul>
         </div>
         
@@ -54,159 +53,167 @@
 
         <div class="span9">
                 
-
         
-
-
 
     <div class='article'>
         <div class="content-title">
-            <a href=".././python-multithread-kullanimi-ve-dosya-arama.html"><h1>Python Multithread Kullanımı Ve Dosya&nbsp;Arama</h1></a>
+            <a href="../tc-kimlik-no-algoritmasi.html"><h1>TC Kimlik No Algoritması</h1></a>
             Aug 16, 2012
 
-
-by <a class="url fn" href=".././author/halit.html">halit</a>
+by <a class="url fn" href="../author/halit.html">halit</a>
  
 
-in <a href=".././category/python.html">python</a>
+in <a href="../category/programlama.html">programlama</a>
 
  
-    tagged <a href=".././tag/araci.html">araci</a> <a href=".././tag/pyqt.html">pyqt</a> <a href=".././tag/python.html">python</a> <a href=".././tag/python-multi-thread.html">python multi thread</a> <a href=".././tag/python-thread-kullanimi.html">python thread kullanımı</a> 
- 
+    tagged <a href="../tag/pyqt.html">pyqt</a> <a href="../tag/tc-kimlik-akraba.html">tc kimlik akraba</a> <a href="../tag/tc-kimlik-algoritmasi.html">tc kimlik algoritması</a> <a href="../tag/tc-kimlik-no.html">tc kimlik no</a>  
         </div>
         
-        <div><p>Python ve PyQt maceralarımın son programı olan Araci için yeni bil algoritma yazmayı duşunuyordum.Çunku ilk versiyonda sadece belirttiğim klasorun altındaki dosyaların içinde kelime arıyordu.Benim yapmak istediğim ise belirttiğim dizinin altındaki dosyaların içine bakması ve diğer dizinlerinde yolunu rekursif olarak tekrar kendisine gondermesini istiyordum.Bu mantık doğruydu ve çalışıyordu.Ancak çok yuksek dizin ve klasore sahip yerlerde python hata verip kapanıyordu.Bende bunu çozmek için guzel bir async arama classı yazdım.Şimdilik işimi goruyor.Belki ilerde yeniden&nbsp;geliştirebilirim.</p>
-<div class="codehilite"><pre><span class="k">class</span> <span class="nc">AsyncArama</span><span class="p">(</span><span class="n">threading</span><span class="o">.</span><span class="n">Thread</span><span class="p">):</span>
-    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">yer</span><span class="p">,</span> <span class="n">kelime</span><span class="p">,</span> <span class="n">uzanti</span><span class="p">):</span>
-        <span class="n">threading</span><span class="o">.</span><span class="n">Thread</span><span class="o">.</span><span class="n">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">yer</span> <span class="o">=</span> <span class="n">yer</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">kelime</span> <span class="o">=</span> <span class="n">kelime</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">uzanti</span> <span class="o">=</span> <span class="n">uzanti</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">bulunan</span> <span class="o">=</span> <span class="p">[]</span>
+        <div><p>Algoritma deyince aklıma ilk gelen nedense hep Tc Kimlik No algoritması oluyor.Bunun sebebi en başlarda çok ilginç gelmesi ve başlarda çok fazla ilgilenmem.Çunku bu algoritmayı oğrenince elinize bir kağıt kalem alıp başka kişilerin de Tc Kimlik numaralarının bilinmeyen 2 numarasını bulabiliyorsunuz.Tabi bu algoritma ile sadece kayıp numaralar bulunmuyor.Bir Tc Kimlikten yola çıkarak akrabalarınızın da Tc Kimlik Numaralarına ulaşabiliyorsunuz.</p>
+<p>Ben de son gunlerde bir hayli fazla bir şekilde PyQt ile ilgilendiğim için aklıma gelen her programı yapmaya çalışıyorum.Bazıları gerçekten işe yarayan şeyler olmasına rağmen bazılarında baya bi saçmalıyorum.Ama sonuç olarak kendimi bu alanda bir hayli geliştiriyorum.</p>
+<p>Yaptığım programa geçmeden once algoritmanın nasıl işlediğini anlatmak gerekirse:</p>
+<blockquote>
+<p>TC Kimlik numaraları 11 basamaktan oluşmaktadır.</p>
+<p>İlk 9 basamak arasında kurulan bir algoritma bize 10. basmağı, ilk 10 basamak arasında kurulan algoritma ise bize 11. basamağı verir.</p>
+<p>11 hanelidir.</p>
+<p>Her hanesi rakamsal değer içerir.</p>
+<p>İlk hane 0 olamaz. 1. 3. 5. 7. ve 9. hanelerin toplamının 7 katından, 2. 4. 6. ve 8. hanelerin toplamı çıkartıldığında, elde edilen sonucun 10'a bolumunden kalan, yani Mod10'u bize 10. haneyi verir.</p>
+<ol>
+<li>
+<ol>
+<li>
+<ol>
+<li>
+<ol>
+<li>
+<ol>
+<li>
+<ol>
+<li>
+<ol>
+<li>
+<ol>
+<li>
+<ol>
+<li>ve 10. hanelerin toplamından elde edilen sonucun 10'a bolumunden kalan, yani Mod10'u bize 11. haneyi verir.</li>
+</ol>
+</li>
+</ol>
+</li>
+</ol>
+</li>
+</ol>
+</li>
+</ol>
+</li>
+</ol>
+</li>
+</ol>
+</li>
+</ol>
+</li>
+</ol>
+</blockquote>
+<p>Bu Tc Kimliği doğrulama için kullanılacak olan algoritma.Bir de akraba algoritması var.Buda aynen şu şekilde.</p>
+<blockquote>
+<p>Rastgele bir tc no yazalım ( ilk 9 hane ):342165846</p>
+<p>Bunu ilk 5 ve son 4 hane olacak şekilde parçalıyoruz.</p>
+<p>Sizden yaşca aşağı inmek için (Kardeş , Kuzen vs.)</p>
+<p>34216 =&gt; 5 basamaklı bu sayıyı 6 azaltıyoruz.</p>
+<p>5846 =&gt; 4 basamaklı bu sayıyı 2 artırıyoruz.</p>
+<p>Yeni ilk 9 hanemiz = 342105848</p>
+<p>Sizden yaşca yukarı çıkmak için (Baba,amca vs.)</p>
+<p>34216 =&gt; 5 basamaklı bu sayıyı 6 artırıyoruz.</p>
+<p>5846 =&gt; 4 basamaklı bu sayıyı 2 azaltıyoruz.</p>
+<p>Yeni ilk 9 hanemiz = 342225844</p>
+</blockquote>
+<p>İşte bizlere verilen Tc Kimlik Numaraları bu şekilde oluşturulmuş.Ben denediğim tum hepsinde gayet guzel çalıştı.Hatta kendi programımda tum ailenin tc kimlik numaralarını başarıyla buldu.</p>
+<div class="codehilite"><pre><span class="k">def</span> <span class="nf">tcno_checksum</span><span class="p">(</span><span class="n">tcno</span><span class="p">):</span>
+    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">tcno</span><span class="p">))</span> <span class="o">==</span> <span class="mi">9</span><span class="p">:</span>
+        <span class="n">tc</span>    <span class="o">=</span> <span class="s">&#39;</span><span class="si">%d</span><span class="s">&#39;</span> <span class="o">%</span> <span class="n">tcno</span>
+        <span class="n">tc10</span>  <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">tc</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span> <span class="o">%</span><span class="mi">2</span><span class="n">B</span> <span class="nb">int</span><span class="p">(</span><span class="n">tc</span><span class="p">[</span><span class="mi">2</span><span class="p">])</span> <span class="o">%</span><span class="mi">2</span><span class="n">B</span> <span class="nb">int</span><span class="p">(</span><span class="n">tc</span><span class="p">[</span><span class="mi">4</span><span class="p">])</span> <span class="o">%</span><span class="mi">2</span><span class="n">B</span> <span class="nb">int</span><span class="p">(</span><span class="n">tc</span><span class="p">[</span><span class="mi">6</span><span class="p">])</span> <span class="o">%</span><span class="mi">2</span><span class="n">B</span> <span class="nb">int</span><span class="p">(</span><span class="n">tc</span><span class="p">[</span><span class="mi">8</span><span class="p">])</span>
+        <span class="n">tc10</span> <span class="o">*=</span> <span class="mi">7</span>
+        <span class="n">tc10</span> <span class="o">-=</span> <span class="nb">int</span><span class="p">(</span><span class="n">tc</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span> <span class="o">%</span><span class="mi">2</span><span class="n">B</span> <span class="nb">int</span><span class="p">(</span><span class="n">tc</span><span class="p">[</span><span class="mi">3</span><span class="p">])</span> <span class="o">%</span><span class="mi">2</span><span class="n">B</span> <span class="nb">int</span><span class="p">(</span><span class="n">tc</span><span class="p">[</span><span class="mi">5</span><span class="p">])</span> <span class="o">%</span><span class="mi">2</span><span class="n">B</span> <span class="nb">int</span><span class="p">(</span><span class="n">tc</span><span class="p">[</span><span class="mi">7</span><span class="p">])</span>
+        <span class="n">tc10</span> <span class="o">%=</span> <span class="mi">10</span>
+        <span class="n">tc11</span>  <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">tc</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span> <span class="o">%</span><span class="mi">2</span><span class="n">B</span> <span class="nb">int</span><span class="p">(</span><span class="n">tc</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span> <span class="o">%</span><span class="mi">2</span><span class="n">B</span> <span class="nb">int</span><span class="p">(</span><span class="n">tc</span><span class="p">[</span><span class="mi">2</span><span class="p">])</span> <span class="o">%</span><span class="mi">2</span><span class="n">B</span> <span class="nb">int</span><span class="p">(</span><span class="n">tc</span><span class="p">[</span><span class="mi">3</span><span class="p">])</span> <span class="o">%</span><span class="mi">2</span><span class="n">B</span> <span class="nb">int</span><span class="p">(</span><span class="n">tc</span><span class="p">[</span><span class="mi">4</span><span class="p">])</span>
+        <span class="n">tc11</span> <span class="o">%</span><span class="mi">2</span><span class="n">B</span><span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">tc</span><span class="p">[</span><span class="mi">5</span><span class="p">])</span> <span class="o">%</span><span class="mi">2</span><span class="n">B</span> <span class="nb">int</span><span class="p">(</span><span class="n">tc</span><span class="p">[</span><span class="mi">6</span><span class="p">])</span> <span class="o">%</span><span class="mi">2</span><span class="n">B</span> <span class="nb">int</span><span class="p">(</span><span class="n">tc</span><span class="p">[</span><span class="mi">7</span><span class="p">])</span> <span class="o">%</span><span class="mi">2</span><span class="n">B</span> <span class="nb">int</span><span class="p">(</span><span class="n">tc</span><span class="p">[</span><span class="mi">8</span><span class="p">])</span> <span class="o">%</span><span class="mi">2</span><span class="n">B</span> <span class="nb">int</span><span class="p">(</span><span class="n">tc10</span><span class="p">)</span>
+        <span class="n">tc11</span> <span class="o">%=</span> <span class="mi">10</span>
+        <span class="k">return</span> <span class="s">&#39;</span><span class="si">%s%d%d</span><span class="s">&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">tc</span><span class="p">,</span> <span class="n">tc10</span><span class="p">,</span> <span class="n">tc11</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">return</span> <span class="mi">0</span>
 
-    <span class="k">def</span> <span class="nf">run</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-
-        <span class="k">def</span> <span class="nf">dosyalama</span><span class="p">(</span><span class="n">yer</span><span class="p">,</span> <span class="n">uzanti</span><span class="p">):</span>
-            <span class="n">dosyalist</span> <span class="o">=</span> <span class="p">[]</span>
-
-            <span class="k">for</span> <span class="n">kok</span><span class="p">,</span> <span class="n">altdizinler</span><span class="p">,</span> <span class="n">dosyalar</span> <span class="ow">in</span> <span class="n">os</span><span class="o">.</span><span class="n">walk</span><span class="p">(</span><span class="n">yer</span><span class="p">):</span>
-                <span class="k">for</span> <span class="n">dosya</span> <span class="ow">in</span> <span class="n">dosyalar</span><span class="p">:</span>
-                    <span class="k">if</span> <span class="n">dosya</span><span class="o">.</span><span class="n">endswith</span><span class="p">(</span><span class="n">uzanti</span><span class="p">):</span>
-                        <span class="n">dosyalist</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">kok</span><span class="p">,</span><span class="n">dosya</span><span class="p">))</span>   
-            <span class="k">return</span> <span class="n">dosyalist</span>
-
-        <span class="k">def</span> <span class="nf">aramayap</span><span class="p">(</span><span class="n">yer</span><span class="p">,</span> <span class="n">kelime</span><span class="p">,</span> <span class="n">uzanti</span><span class="p">):</span>
-            <span class="n">dosyalar</span> <span class="o">=</span> <span class="n">dosyalama</span><span class="p">(</span><span class="n">yer</span><span class="p">,</span> <span class="n">uzanti</span><span class="p">)</span>
-            <span class="k">for</span> <span class="n">dosya</span> <span class="ow">in</span> <span class="n">dosyalar</span><span class="p">:</span>
-                <span class="k">try</span><span class="p">:</span>
-                    <span class="n">satirlar</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="n">dosya</span><span class="p">)</span>
-                    <span class="k">for</span> <span class="n">satir</span> <span class="ow">in</span> <span class="n">satirlar</span><span class="p">:</span>
-                        <span class="k">if</span> <span class="n">satir</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="n">kelime</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
-                            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">bulunan</span><span class="o">.</span><span class="n">count</span><span class="p">(</span><span class="n">dosya</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
-                                <span class="bp">self</span><span class="o">.</span><span class="n">bulunan</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">dosya</span><span class="p">)</span>  
-                <span class="k">except</span><span class="p">:</span>
-                    <span class="k">pass</span>                
-        <span class="n">aramayap</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">yer</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">kelime</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">uzanti</span><span class="p">)</span>                        
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">bulunan</span>
+<span class="k">def</span> <span class="nf">akraba_tcno</span><span class="p">(</span><span class="n">tcno</span><span class="p">,</span> <span class="n">adet</span><span class="p">):</span>
+    <span class="n">akraba_liste</span> <span class="o">=</span> <span class="s">&#39;&#39;</span>
+    <span class="n">tc</span>   <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">tcno</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="o">-</span><span class="mi">2</span><span class="p">])</span>
+    <span class="n">t</span>    <span class="o">=</span> <span class="n">tc</span> <span class="o">-</span> <span class="mi">29999</span> <span class="o">*</span> <span class="p">(</span><span class="mi">1</span> <span class="o">%</span><span class="mi">2</span><span class="n">B</span> <span class="nb">int</span><span class="p">(</span><span class="n">adet</span> <span class="o">/</span> <span class="mi">2</span><span class="p">))</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">adet</span><span class="o">%</span><span class="mi">2</span><span class="n">B1</span><span class="p">):</span>
+        <span class="n">t</span> <span class="o">%</span><span class="mi">2</span><span class="n">B</span><span class="o">=</span> <span class="mi">29999</span>
+        <span class="n">atc</span> <span class="o">=</span> <span class="n">tcno_checksum</span><span class="p">(</span><span class="n">t</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">atc</span> <span class="o">==</span> <span class="n">tcno</span><span class="p">:</span>
+            <span class="k">pass</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">akraba_liste</span> <span class="o">%</span><span class="mi">2</span><span class="n">B</span><span class="o">=</span> <span class="s">&quot;&#39;</span><span class="si">%s</span><span class="s">&#39;,&quot;</span> <span class="o">%</span> <span class="n">atc</span>
+    <span class="k">return</span> <span class="n">akraba_liste</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
 </pre></div>
 
 
-<p>Bu kod uzerinden pythonda multi-thread mantığınıda gostermek istiyorum.Diğer dillere nazaran Python&#8217;da bu olay çok çok kolay.Öncelikle threading modulunu import ettikten sonra ondan yararlanarak bir class oluşturuyoruz.Daha sonra bu class içine arguman gondereceksek onlarıda kodda gorunduğu şekilde ayarlıyoruz.Daha sonra kullanırken bu şekilde arguman yollayacağız.init fonksiyonunda adı uzerine kurulum yapılıyor.Class&#8217;ın tumunde kullanacağımız değişkenkenleri&nbsp;tanımlıyoruz.</p>
-<p>Burada onemli olan run fonksiyonu.Çunku ilerde bu sınıfı kullanmak istediğimizde run fonksiyonu altındaki kodlar çalışacak.Ve daha sonra bu sınıfı kullanmak istediğimiz yere almaya&nbsp;geldi.</p>
-<p><img alt="Araci v0.2" src="http://www.halitalptekin.com/media/upload/Araci_v0.2.png" /></p>
-<p>Ben PyQt ile oluşturduğum Araci isimli programımda aşağıdaki gibi&nbsp;kullandım.</p>
-<div class="codehilite"><pre><span class="n">aramath</span> <span class="o">=</span> <span class="n">AsyncArama</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">aramayeri</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">kelime</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">uzanti</span><span class="p">)</span>
-<span class="n">aramath</span><span class="o">.</span><span class="n">start</span><span class="p">()</span>
-
-<span class="k">if</span> <span class="n">aramath</span><span class="o">.</span><span class="n">run</span><span class="p">():</span>               
-            <span class="k">for</span> <span class="n">sonuc</span> <span class="ow">in</span> <span class="n">aramath</span><span class="o">.</span><span class="n">run</span><span class="p">():</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">listWidget</span><span class="o">.</span><span class="n">addItem</span><span class="p">(</span><span class="n">sonuc</span><span class="p">)</span>
-<span class="k">else</span><span class="p">:</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">listWidget</span><span class="o">.</span><span class="n">addItem</span><span class="p">(</span><span class="s">&quot;Bulunamadi!&quot;</span><span class="p">)</span>
-</pre></div>
-
-
-<p>Bu kodların Turkçe açıklaması şoyle.Aramayeri değişkenine belirttiğimiz yer ve onu tum alt dizinlerinde belirttiğiniz uzantıya sahip dosyalarda belirttiğiniz kelimeyi arıyor.Eğer buna uyanlar varsa geri donuş değeri olarak bu dosyaların konumunu bildiren bir liste geliyor.Bende bu gelen sonuclara gore listWidget&#8217;ıma bunları ekliyorum.Olay gayet basit.Python ve PyQt&#8217;de yazdığınız programlarda donma oluyorsa yukarıda kullandığım multi-thread mantığını sizde kullanın.Bu sayede hem gui ekranı donmuyor hemde işiniz çok daha hızlı bir şekilde&nbsp;yapılıyor.</p>
-<p>Videoda gorduğunuz gibi program işimi gorecek seviyeye geldi.Tum kaynak kodları için <a href="https://github.com/halitalptekin/Araci">github</a> depoma&nbsp;bakabilirsiniz.</p></div>
+<p>Bu kullandığım python kodu.Tüm kodlara ve ui tasarımlarına <a href="https://github.com/halitalptekin/MyCodeBook/blob/master/tckimlik/">github</a> depomdan ulaşabilirsiniz.Bu algoritma için yazdığım PyQt programın ekran görüntüsü aşağıdadır.</p>
+<p><img alt="Tc Kimlik No Algoritmasi" src="http://www.halitalptekin.com/media/upload/tc-kimlik-no-algoritmasi-pyqt.png" /></p></div>
         <hr />
     </div>
 		
     
-
-
  
-
         
-
 
  
 
     <div class='article'>
-        <a href=".././tc-kimlik-no-algoritmasi.html"><h2><span class="caps">TC</span> Kimlik No&nbsp;Algoritması</h2></a>
+        <a href="../python-multithread-kullanimi-ve-dosya-arama.html"><h2>Python Multithread Kullanımı Ve Dosya Arama</h2></a>
         <div class= "well small"> Aug 16, 2012
 
-
-by <a class="url fn" href=".././author/halit.html">halit</a>
+by <a class="url fn" href="../author/halit.html">halit</a>
  
 
-in <a href=".././category/programlama.html">programlama</a>
+in <a href="../category/python.html">python</a>
 
  
-    tagged <a href=".././tag/pyqt.html">pyqt</a> <a href=".././tag/tc-kimlik-akraba.html">tc kimlik akraba</a> <a href=".././tag/tc-kimlik-algoritmasi.html">tc kimlik algoritması</a> <a href=".././tag/tc-kimlik-no.html">tc kimlik no</a> 
- </div>
-        <div class="summary"><p>Algoritma deyince aklıma ilk gelen nedense hep Tc Kimlik No algoritması oluyor.Bunun sebebi en başlarda çok ilginç gelmesi ve başlarda çok fazla ilgilenmem.Çunku bu algoritmayı oğrenince elinize bir kağıt kalem alıp başka kişilerin de Tc Kimlik numaralarının bilinmeyen 2 numarasını bulabiliyorsunuz.Tabi bu algoritma ile sadece kayıp numaralar ...</p> <a class="btn btn-info xsmall" href=".././tc-kimlik-no-algoritmasi.html">read more</a></div>
+    tagged <a href="../tag/araci.html">araci</a> <a href="../tag/pyqt.html">pyqt</a> <a href="../tag/python.html">python</a> <a href="../tag/python-multi-thread.html">python multi thread</a> <a href="../tag/python-thread-kullanimi.html">python thread kullanımı</a>  </div>
+        <div class="summary"><p>Python ve PyQt maceralarımın son programı olan Araci için yeni bil algoritma yazmayı duşunuyordum.Çunku ilk versiyonda sadece belirttiğim klasorun altındaki dosyaların içinde kelime arıyordu.Benim yapmak istediğim ise belirttiğim dizinin altındaki dosyaların içine bakması ve diğer dizinlerinde yolunu rekursif olarak tekrar kendisine gondermesini istiyordum.Bu mantık doğruydu ve çalışıyordu ...</p> <a class="btn btn-info xsmall" href="../python-multithread-kullanimi-ve-dosya-arama.html">read more</a></div>
     </div>	
 				
     
-
  
-
         
-
 
  
 
     <div class='article'>
-        <a href=".././qt-ve-python-maceralarim.html"><h2>Qt Ve Python&nbsp;Maceralarım</h2></a>
+        <a href="../qt-ve-python-maceralarim.html"><h2>Qt Ve Python Maceralarım</h2></a>
         <div class= "well small"> Aug 14, 2012
 
-
-by <a class="url fn" href=".././author/halit.html">halit</a>
+by <a class="url fn" href="../author/halit.html">halit</a>
  
 
-in <a href=".././category/programlama.html">programlama</a>
+in <a href="../category/programlama.html">programlama</a>
 
  
-    tagged <a href=".././tag/c.html">c++</a> <a href=".././tag/gtk.html">gtk</a> <a href=".././tag/gui.html">gui</a> <a href=".././tag/pyqt.html">pyqt</a> <a href=".././tag/pyqt-tutorials.html">pyqt tutorials</a> <a href=".././tag/python-qt4.html">python qt4</a> <a href=".././tag/qt.html">qt</a> <a href=".././tag/qt-framework.html">qt framework</a> <a href=".././tag/tkinter.html">tkinter</a> 
- </div>
-        <div class="summary"><p>Ramazan dolayısıyla bloguma çok fazla yazı giremediğimin farkındayım.Bi tam başlarda başladığım Arduino tutkusu ile birlikte yazdığım yazılar var.Arduino tutkum tabikide geçmedi hatta daha da arttı diyebilirim.Ancak aklımda olan Arduino ile kullanabileceğim gui programlamarın nasıl yapılacağıydı.Python bana tamamen yeten bir dil olduğu için direk onunla başladım yola ...</p> <a class="btn btn-info xsmall" href=".././qt-ve-python-maceralarim.html">read more</a></div>
+    tagged <a href="../tag/c.html">c++</a> <a href="../tag/gtk.html">gtk</a> <a href="../tag/gui.html">gui</a> <a href="../tag/pyqt.html">pyqt</a> <a href="../tag/pyqt-tutorials.html">pyqt tutorials</a> <a href="../tag/python-qt4.html">python qt4</a> <a href="../tag/qt.html">qt</a> <a href="../tag/qt-framework.html">qt framework</a> <a href="../tag/tkinter.html">tkinter</a>  </div>
+        <div class="summary"><p>Ramazan dolayısıyla bloguma çok fazla yazı giremediğimin farkındayım.Bi tam başlarda başladığım Arduino tutkusu ile birlikte yazdığım yazılar var.Arduino tutkum tabikide geçmedi hatta daha da arttı diyebilirim.Ancak aklımda olan Arduino ile kullanabileceğim gui programlamarın nasıl yapılacağıydı.Python bana tamamen yeten bir dil olduğu için direk onunla başladım yola ...</p> <a class="btn btn-info xsmall" href="../qt-ve-python-maceralarim.html">read more</a></div>
     </div>	
 				
-    
-        <div class="pagination">
+            <div class="pagination">
 <ul>
-
     <li class="prev disabled"><a href="#">&larr; Previous</a></li>
 
-
-
-    <li class="active"><a href=".././tag/pyqt.html">1</a></li>
-
-
+    <li class="active"><a href="../tag/pyqt.html">1</a></li>
 
     <li class="next disabled"><a href="#">&rarr; Next</a></li>
 
-
 </ul>
-</div>
-    
-
+</div>    
  
-
- 
- 
-
-
+  
         </div>
         
         <div class="span3">
@@ -217,115 +224,68 @@ in <a href=".././category/programlama.html">programlama</a>
                 Site
                 </li>
             
-                <li><a href=".././archives.html">Archives</a>
-                <li><a href=".././tags.html">Tags</a>
-                <li><a href=".././feeds/all.atom.xml" rel="alternate">Atom feed</a></li>
-                
-                <li><a href=".././feeds/all.rss.xml" rel="alternate">RSS feed</a></li>
-                
-                 <li><a href=".././sitemap.xml">Sitemap</a>
+                <li><a href="../archives.html">Archives</a>
+                <li><a href="../tags.html">Tags</a>
+                <li><a href="../feeds/all.atom.xml" rel="alternate">Atom feed</a></li>
+                                <li><a href="../feeds/all.rss.xml" rel="alternate">RSS feed</a></li>
+                                 <li><a href="../sitemap.xml">Sitemap</a>
             </ul>
             </div>
 
 
-            
-            <div class="well" style="padding: 8px 0; background-color: #FBFBFB;">
+                        <div class="well" style="padding: 8px 0; background-color: #FBFBFB;">
             <ul class="nav nav-list">
                 <li class="nav-header"> 
                 Categories
                 </li>
                 
-                
-                <li><a href=".././category/tasarim.html">tasarim</a></li>
-                
-                <li><a href=".././category/server.html">server</a></li>
-                
-                <li><a href=".././category/python.html">python</a></li>
-                
-                <li><a href=".././category/programlama.html">programlama</a></li>
-                
-                <li><a href=".././category/linux.html">linux</a></li>
-                
-                <li><a href=".././category/kisisel.html">kisisel</a></li>
-                
-                <li><a href=".././category/internet.html">internet</a></li>
-                
-                <li><a href=".././category/guvenlik.html">guvenlik</a></li>
-                
-                <li><a href=".././category/genel.html">genel</a></li>
-                
-                <li><a href=".././category/eglence.html">eglence</a></li>
-                
-                <li><a href=".././category/django.html">django</a></li>
-                
-                <li><a href=".././category/compsci.html">compsci</a></li>
-                
-                <li><a href=".././category/arduino.html">arduino</a></li>
+                                <li><a href="../category/tasarim.html">tasarim</a></li>
+                                <li><a href="../category/server.html">server</a></li>
+                                <li><a href="../category/python.html">python</a></li>
+                                <li><a href="../category/programlama.html">programlama</a></li>
+                                <li><a href="../category/linux.html">linux</a></li>
+                                <li><a href="../category/kisisel.html">kisisel</a></li>
+                                <li><a href="../category/internet.html">internet</a></li>
+                                <li><a href="../category/guvenlik.html">guvenlik</a></li>
+                                <li><a href="../category/genel.html">genel</a></li>
+                                <li><a href="../category/eglence.html">eglence</a></li>
+                                <li><a href="../category/django.html">django</a></li>
+                                <li><a href="../category/compsci.html">compsci</a></li>
+                                <li><a href="../category/arduino.html">arduino</a></li>
                                    
             </ul>
             </div>
             
 
-
-            
-            <div class="well" style="padding: 8px 0; background-color: #FBFBFB;">
+                        <div class="well" style="padding: 8px 0; background-color: #FBFBFB;">
             <ul class="nav nav-list">
                 <li class="nav-header"> 
                 Links
                 </li>
             
-            
-                <li><a href="http://www.python.org">Python</a></li>
-            
-            </ul>
+                            <li><a href="http://www.python.org">Python</a></li>
+                        </ul>
             </div>
             
 
-
-            
-            <div class="social">
+                        <div class="social">
             <div class="well" style="padding: 8px 0; background-color: #FBFBFB;">
             <ul class="nav nav-list">
                 <li class="nav-header"> 
                 Social
                 </li>
            
-                
-                <li><a href="http://twitter.com/halitalptekin">twitter</a></li>
-                
-                <li><a href="http://github.com/halitalptekin">github</a></li>
-                
-                <li><a href="http://stackoverflow.com/users/1151618/halit-alptekin">stackoverflow</a></li>
-                
-                <li><a href="http://tr.linkedin.com/in/halitalptekin">linkedin</a></li>
-                
-            </ul>
+                                <li><a href="http://twitter.com/halitalptekin">twitter</a></li>
+                                <li><a href="http://github.com/halitalptekin">github</a></li>
+                                <li><a href="http://stackoverflow.com/users/1151618/halit-alptekin">stackoverflow</a></li>
+                                <li><a href="http://tr.linkedin.com/in/halitalptekin">linkedin</a></li>
+                            </ul>
             </div>
             </div>
             
-
             
-            <div class="well" style="padding: 8px 0; background-color: #FBFBFB;">
-            <ul class="nav nav-list">
-                <li class="nav-header"> 
-                Ads
-                </li>
-
-                
-                <li><a href="http://www.tamindir.com" title="Program Indir"><img src="/media/reklam/tamindir.jpg" alt="Tamindir" title="Program Indir"></a>
-                </li>
-                
-                <li><a href="http://www.tatilbuldur.com" title="TatilBudur"><img src="/media/reklam/tatilbudur.png" alt="TatilBudur" title="TatilBudur"></a>
-                </li>
-                
-            </ul>
-            </div>
-            
-
         </div>  
-    </div> 
-    </div> 
-
+    </div>     </div> 
 <footer>
 	<hr>
 	<p><a href='http://www.halitalptekin.com'>Halit Alptekin Personal Blog</a> &copy; 2012</p>
@@ -334,8 +294,6 @@ in <a href=".././category/programlama.html">programlama</a>
 </div> <!-- /container -->
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
 <script src="http://twitter.github.com/bootstrap/assets/js/bootstrap-collapse.js"></script>
-
 <script>var _gaq=[['_setAccount','UA-24728900-1'],['_trackPageview']];(function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];g.src='//www.google-analytics.com/ga.js';s.parentNode.insertBefore(g,s)}(document,'script'))</script>
-
 </body>
 </html>
