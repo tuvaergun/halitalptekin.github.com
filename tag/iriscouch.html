@@ -1,205 +1,158 @@
 <!DOCTYPE html>
-<html lang="en">
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
-    <meta charset="utf-8">
-    <title>Halit Alptekin Personal Blog</title>
-    <meta name="description" content="Programming and Life Blog Of Halit Alptekin. Karadeniz Technical University Computer Engineering Student.">
-    <meta name="keywords" content="programlama, blog, personal blog, linux, python, django, php, bootstrap, seo, bilgisayar muhendisligi, ktu, karadeniz teknik universitesi, programming">
-    <meta name="author" content="halit">
-    <meta name="robots" content="index, follow, all"/>
+  <meta charset="utf-8">
+  <title>{ Halit Alptekin } - iriscouch</title>
 
-    <!-- Le HTML5 shim, for IE6-8 support of HTML elements -->
-    <!--[if lt IE 9]>
-    <script src="../theme/html5.js"></script>
-    <![endif]-->
+  <meta name="author" content="halit">
 
-    <!-- Le styles -->
-    <link href="../theme/bootstrap.min.css" rel="stylesheet">
-    <link href="../theme/bootstrap.min.responsive.css" rel="stylesheet">
-    <link href="../theme/local.css" rel="stylesheet">
-    <link href="../theme/pygments.css" rel="stylesheet">
-
-</head>
-
-<body>
-
-<div class="navbar">
-    <div class="navbar-inner">
-    <div class="container">
-
-         <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
-             <span class="icon-bar"></span>
-             <span class="icon-bar"></span>
-             <span class="icon-bar"></span>
-         </a>
-
-        <a class="brand" href="..">Halit Alptekin Personal Blog</a>
-
-        <div class="nav-collapse">
-        <ul class="nav">
-                    
-        <li><a href="../pages/about-me.html">About Me</a></li>
-	    <li><a href="../pages/contact.html">Contact</a></li>
-        </ul>
-        </div>
-        
-    </div>
-    </div>
-</div>
-
-<div class="container">
-    <div class="content">
-    <div class="row">
-
-        <div class="span9">
-                
-        
-
-    <div class='article'>
-        <div class="content-title">
-            <a href="../ucretsiz-couchdb.html"><h1>Ücretsiz Couchdb</h1></a>
-            Sep 03, 2012
-
-by <a class="url fn" href="../author/halit.html">halit</a>
- 
-
-in <a href="../category/programlama.html">programlama</a>
-
- 
-    tagged <a href="../tag/couchdb.html">couchdb</a> <a href="../tag/couchdb-hosting.html">couchdb hosting</a> <a href="../tag/iriscouch.html">iriscouch</a> <a href="../tag/python-couchdb.html">python couchdb</a> <a href="../tag/ucretsiz-couchdb.html">ücretsiz couchdb</a>  
-        </div>
-        
-        <div><p>Bir onceki yazımda Python ve Django ile CouchDB'yi nasıl kullanacağımızı ana hatlarıyla anlatmıştım.Ancak her zaman olduğu gibi bu tur yazılarda hep localhost'ta denemeler yaparız.İşte bu yuzde her zaman evdeki hesap çarşıya uymaz.Localde yaptıklarınızın kendi serverınızda nasıl çalışacağı hakkında bilgi edinmeniz ve deploy'a hazırlanmanız gerekir.Burada da gidip couchdb destekli bir hosting almanıza gerek yok.En azından alıştırma yapmak ve ufak amaçlı işlerinizde kullanmak için ucretsiz alternatiflere yonelmelisiniz.Bu alternatiflerin başında da iriscouch geliyor.</p>
-<p>İriscouch'a kayıt olmak ve kullanmak tahmin edeceğinizden de kolay.Öncelikle <a href="http://www.iriscouch.com/service">siteye</a> giriş yapıyoruz ve sağ taraftaki kısımı dolduruyoruz.</p>
-<p><img alt="CouchDb IrishCouch" src="http://www.halitalptekin.com/media/upload/couchdb-iriscouch-1.png" /></p>
-<p>Daha sonra Send butonuna basıp kaydımızı tamamlıyoruz.Bundan sonra onumuze bir adet link gelmesi lazım.Bu link bizim admin panelimiz.</p>
-<p><img alt="CouchDb IrishCouch 2" src="http://www.halitalptekin.com/media/upload/couchdb-iriscouch-2.png" /></p>
-<p>Bu linke girdiğinizde aşağıdaki gibi bir kullanıcı dostu ekran sizi karşılayacak.</p>
-<p><a href="http://www.halitalptekin.com/media/upload/couchdb-iriscouch-3.png"><img alt="Ucretsiz Couchdb hosting" src="http://www.halitalptekin.com/media/upload/couchdb-iriscouch-3.png" /></a></p>
-<p>Evet ucretsiz DB'miz hazır.Şimdi de python'a geçip veritabanımıza bağlanalım ve tablolarımızı oluşturup içlerine veri koyalım.</p>
-<p><img alt="Couchdb Python" src="http://www.halitalptekin.com/media/upload/couchdb-iriscouch-8.png" /></p>
-<p>Bir onceki <a href="http://www.halitalptekin.com/makale/python/python-ve-couchdb/">Python ve CouchDB</a> yazımda kullandığım kodların aynısını kullandım.Ayrıntılı bilgiyi o yazımdan oğrenebilirsiniz.Ve şimdide admin panelimizden bu eklediğimiz verilere bakalım.</p>
-<p><a href="http://www.halitalptekin.com/media/upload/couchdb-iriscouch-4.png"><img alt="CouchDb Python Django" src="http://www.halitalptekin.com/media/upload/couchdb-iriscouch-4.png" /></a></p>
-<p>Ne kadar da guzel duruyor değil mi ? Biraz daha içeri girelim.</p>
-<p><a href="http://www.halitalptekin.com/media/upload/couchdb-iriscouch-5.png"><img alt="Python CouchDB" src="http://www.halitalptekin.com/media/upload/couchdb-iriscouch-5.png" /></a></p>
-<p>Tum verileri bu şekilde de çekebilirsiniz.</p>
-<p><img alt="CouchDB Json" src="http://www.halitalptekin.com/media/upload/couchdb-iriscouch-6.png" /></p>
-<p>Herşey buraya kadar guzel.Ancak bu oluşturduğumuz veritabanı Public oldu.Yani herkes tarafından erişilebilir ve değiştirilebilir.Bunu onlemek için admin eklememiz gerekiyor.Bunuda girdiğimiz bu paneldeki sağ alt koşede yazan "Everyone is admin.Fix This" yazısındaki linke basarak duzeltebiliriz.Bu sayede artık bir adminimiz var ve erişimleri o ayarlayacak.</p>
-<p><img alt="CouchDB Admin Python" src="http://www.halitalptekin.com/media/upload/couchdb-iriscouch-7.png" /></p>
-<p>Şimdi Python'dan ekleme çıkarma gibi işlemleri deneyelim.</p>
-<p><a href="http://www.halitalptekin.com/media/upload/couchdb-iriscouch-9.png"><img alt="CouchDB Admin ipython" src="http://www.halitalptekin.com/media/upload/couchdb-iriscouch-9.png" /></a></p>
-<p>Sizin yetkiniz yok siz admin değilsiniz cevabını aldığımıza gore artık korumamız altında.</p>
-<p>İrisCouch gerçekten çok guzel bir ucretsiz alternatif.Çunku piyasada CouchDB alıştırması yapacağınız servis bulmak çok zor.Olanlar da çok pahalı.Bu noktada iriscouch'un ucretlendirme politikasının da çok iyi  olduğunu soyleyebilirim.Buna gore yaptığınız her işlemin bir ucreti var.Ancak bu işlemlerin ucreti 5 doların altında ise herhangibi bir ucret odemiyorsunuz.Buda ufak geliştiriciler için bir hayli yeterli bir kaynak anlamına geliyor.</p>
-<p>GB başına 1 dolardan depolama, her 100 PUT, POST, DELETE gibi yazma işlemi için 1 ¢(517 istek 0.05$ yapıyor), her 500 GET, HEADS, OPTIONS gibi okuma işlemi için 1¢(62,941 istek 1.26$ yapıyor.</p>
-<p>SSL kullanırsanız da gene benzer bir <a href="http://www.iriscouch.com/service">fiyatlandırma politikası</a> var.</p>
-<p>CouchDB için ucretsiz bir alternatif olan <a href="http://www.iriscouch.com">iriscouch</a>'a kesinlikle bakmanızda yarar var.Ufak çaplı uygulamalarda çok rahat kullanılabilir.</p></div>
-        <hr />
-    </div>
-		
-            <div class="pagination">
-<ul>
-    <li class="prev disabled"><a href="#">&larr; Previous</a></li>
-
-    <li class="active"><a href="../tag/iriscouch.html">1</a></li>
-
-    <li class="next disabled"><a href="#">&rarr; Next</a></li>
-
-</ul>
-</div>    
- 
+    <link href="http://www.halitalptekin.com/feeds/all.atom.xml" type="application/atom+xml" rel="alternate"
+        title="{ Halit Alptekin } Atom Feed" />
+      <link href="http://www.halitalptekin.com/feeds/all.rss.xml" type="application/rss+xml" rel="alternate"
+        title="{ Halit Alptekin } RSS Feed" />
   
-        </div>
-        
-        <div class="span3">
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
 
-            <div class="well" style="padding: 8px 0; background-color: #FBFBFB;">
-            <ul class="nav nav-list">
-                <li class="nav-header"> 
-                Site
-                </li>
-            
-                <li><a href="../archives.html">Archives</a>
-                <li><a href="../tags.html">Tags</a>
-                <li><a href="../feeds/all.atom.xml" rel="alternate">Atom feed</a></li>
-                                <li><a href="../feeds/all.rss.xml" rel="alternate">RSS feed</a></li>
-                                 <li><a href="../sitemap.xml">Sitemap</a>
-            </ul>
-            </div>
+  <link href="../favicon.png" rel="icon">
+  <link href="../theme/css/main.css" media="screen, projection"
+        rel="stylesheet" type="text/css">
+  <script src="../theme/js/modernizr-2.0.js"></script>
+  <script src="../theme/js/ender.js"></script>
+  <script src="../theme/js/octopress.js" type="text/javascript"></script>
 
+  <link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic"
+        rel="stylesheet" type="text/css">
+  <link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic"
+        rel="stylesheet" type="text/css">
+</head>
+<body>
+  <header role="banner"><hgroup>
+  <h1><a href="../">{ Halit Alptekin }</a></h1>
+  </hgroup></header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  <li><a href="http://www.halitalptekin.com/feeds/all.atom.xml" rel="subscribe-rss">Atom</a></li>
+    <li><a href="http://www.halitalptekin.com/feeds/all.rss.xml" rel="subscribe-rss">Rss</a></li>
+  </ul>
 
-                        <div class="well" style="padding: 8px 0; background-color: #FBFBFB;">
-            <ul class="nav nav-list">
-                <li class="nav-header"> 
-                Categories
-                </li>
-                
-                                <li><a href="../category/tasarim.html">tasarim</a></li>
-                                <li><a href="../category/server.html">server</a></li>
-                                <li><a href="../category/python.html">python</a></li>
-                                <li><a href="../category/programlama.html">programlama</a></li>
-                                <li><a href="../category/linux.html">linux</a></li>
-                                <li><a href="../category/kisisel.html">kisisel</a></li>
-                                <li><a href="../category/internet.html">internet</a></li>
-                                <li><a href="../category/guvenlik.html">guvenlik</a></li>
-                                <li><a href="../category/genel.html">genel</a></li>
-                                <li><a href="../category/eglence.html">eglence</a></li>
-                                <li><a href="../category/django.html">django</a></li>
-                                <li><a href="../category/compsci.html">compsci</a></li>
-                                <li><a href="../category/arduino.html">arduino</a></li>
-                                   
-            </ul>
-            </div>
-            
+<!-- TODO: add search here
+<form action="" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="q" value="site:.." />
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+-->
 
-                        <div class="well" style="padding: 8px 0; background-color: #FBFBFB;">
-            <ul class="nav nav-list">
-                <li class="nav-header"> 
-                Links
-                </li>
-            
-                            <li><a href="http://www.python.org">Python</a></li>
-                        </ul>
-            </div>
-            
+<ul class="main-navigation">
+  <li><a href="../">Blog</a></li>
+        <li><a href="../pages/about-me.html">About Me</a></li>
+    <li><a href="../pages/contact.html">Contact</a></li>
+  <!-- TODO: add categories here? -->
+  </ul></nav>
+  <div id="main">
+    <div id="content">
+      <div class="blog-index">
+    	  		<article>
+    		<header>
+          <h1 class="entry-title">
+        <a href="../ucretsiz-couchdb.html">Ücretsiz Couchdb</a>
+      </h1>
+          <p class="meta"><time datetime="2012-09-03T00:00:00" pubdate>Sep 03, 2012</time></p>
+</header>
 
-                        <div class="social">
-            <div class="well" style="padding: 8px 0; background-color: #FBFBFB;">
-            <ul class="nav nav-list">
-                <li class="nav-header"> 
-                Social
-                </li>
-           
-                                <li><a href="http://twitter.com/halitalptekin">twitter</a></li>
-                                <li><a href="http://github.com/halitalptekin">github</a></li>
-                                <li><a href="http://stackoverflow.com/users/1151618/halit-alptekin">stackoverflow</a></li>
-                                <li><a href="http://tr.linkedin.com/in/halitalptekin">linkedin</a></li>
-                            </ul>
-            </div>
-            </div>
-            
-                        <div class="well" style="padding: 8px 0; background-color: #FBFBFB;">
-            <ul class="nav nav-list">
-                <li class="nav-header"> 
-                Ads
-                </li>
+  <div class="entry-content"><p>Bir onceki yazımda Python ve Django ile CouchDB'yi nasıl kullanacağımızı ana hatlarıyla anlatmıştım.Ancak her zaman olduğu gibi bu tur yazılarda hep localhost'ta denemeler yaparız.İşte bu yuzde her zaman evdeki hesap çarşıya uymaz.Localde yaptıklarınızın kendi serverınızda nasıl çalışacağı hakkında bilgi edinmeniz ve deploy'a hazırlanmanız gerekir ...</p></div>
+  <footer>
+    <a rel="full-article" href="../ucretsiz-couchdb.html">Read On &crarr;</a>
+  </footer>
+  		</article>
+  	  	<div class="pagination">
+  
+    <br />
+</div>  </div>
+      <aside class="sidebar">
+  <section>
+    <h1>Recent Posts</h1>
+    <ul id="recent_posts">
+            <li class="post">
+          <a href="../ucretsiz-couchdb.html">Ücretsiz Couchdb</a>
+      </li>
+          </ul>
+  </section>
+    <section>
+      
+    <h1>Categories</h1>
+    <ul id="recent_posts">
+              <li><a href="../category/tasarim.html">tasarim</a></li>
+              <li><a href="../category/server.html">server</a></li>
+              <li><a href="../category/python.html">python</a></li>
+              <li><a href="../category/programlama.html">programlama</a></li>
+              <li><a href="../category/linux.html">linux</a></li>
+              <li><a href="../category/kisisel.html">kisisel</a></li>
+              <li><a href="../category/internet.html">internet</a></li>
+              <li><a href="../category/guvenlik.html">guvenlik</a></li>
+              <li><a href="../category/genel.html">genel</a></li>
+              <li><a href="../category/eglence.html">eglence</a></li>
+              <li><a href="../category/django.html">django</a></li>
+              <li><a href="../category/compsci.html">compsci</a></li>
+              <li><a href="../category/arduino.html">arduino</a></li>
+          </ul>
+  </section>
+   
 
-                                <li><a href="https://www.camekan.com/adwords/" title="Google Adwords"><img src="/media/reklam/camekancom.jpg" alt="Google Adwords" title="Google Adwords"></a>
-                </li>
-                                <li><a href="http://www.dugunajans.com/" title="düğün fotoğrafçısı"><img src="/media/reklam/dugunajanscom.jpg" alt="düğün fotoğrafçısı" title="düğün fotoğrafçısı"></a>
-                </li>
-                            </ul>
-            </div>
-            
-        </div>  
-    </div>     </div> 
-<footer>
-	<hr>
-	<p><a href='http://www.halitalptekin.com'>Halit Alptekin Personal Blog</a> &copy; 2012</p>
-</footer>
+    
+    <section>
+        <h1>Social</h1>
+        <ul>
+            <li><a href="http://www.halitalptekin.com/feeds/all.rss.xml" type="application/rss+xml" rel="alternate">rss</a></li>
+                    <li><a href="http://twitter.com/halitalptekin" target="_blank">twitter</a></li>
+                    <li><a href="http://github.com/halitalptekin" target="_blank">github</a></li>
+                    <li><a href="http://stackoverflow.com/users/1151618/halit-alptekin" target="_blank">stackoverflow</a></li>
+                    <li><a href="http://tr.linkedin.com/in/halitalptekin" target="_blank">linkedin</a></li>
+                </ul>
+    </section>
+      <section>
+        <h1>Blogroll</h1>
+        <ul>
+                    <li><a href="http://www.python.org" target="_blank">Python</a></li>
+                </ul>
+    </section>
 
-</div> <!-- /container -->
-<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
-<script src="http://twitter.github.com/bootstrap/assets/js/bootstrap-collapse.js"></script>
-<script>var _gaq=[['_setAccount','UA-24728900-1'],['_trackPageview']];(function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];g.src='//www.google-analytics.com/ga.js';s.parentNode.insertBefore(g,s)}(document,'script'))</script>
+      <section>
+        <h1>Ads</h1>
+        <ul id="recent_posts">
+                            <li><a href="https://www.camekan.com/adwords/" title="Google Adwords"><img src="/media/reklam/camekancom.jpg" alt="Google Adwords" title="Google Adwords"></a></li>
+                            <li><a href="http://www.dugunajans.com/" title="düğün fotoğrafçısı"><img src="/media/reklam/dugunajanscom.jpg" alt="düğün fotoğrafçısı" title="düğün fotoğrafçısı"></a></li>
+                    </ul>
+    </section>
+  
+</aside>    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2013 - halit -
+  <span class="credit">Powered by <a href="http://getpelican.com">Pelican</a></span>
+</p></footer>
+      <script type="text/javascript">
+	    var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+	    document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+    </script>
+    <script type="text/javascript">
+	    try {
+	        var pageTracker = _gat._getTracker("UA-24728900-1");
+	    pageTracker._trackPageview();
+	    } catch(err) {}
+	</script>
+	<script type="text/javascript">
+	  var disqus_shortname = 'halitalptekin';
+	  (function() {
+	    var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+	    dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
+	    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+	   })();
+	</script>
 </body>
 </html>

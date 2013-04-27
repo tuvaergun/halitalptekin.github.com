@@ -1,255 +1,158 @@
 <!DOCTYPE html>
-<html lang="en">
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
-    <meta charset="utf-8">
-    <title>Halit Alptekin Personal Blog</title>
-    <meta name="description" content="Programming and Life Blog Of Halit Alptekin. Karadeniz Technical University Computer Engineering Student.">
-    <meta name="keywords" content="programlama, blog, personal blog, linux, python, django, php, bootstrap, seo, bilgisayar muhendisligi, ktu, karadeniz teknik universitesi, programming">
-    <meta name="author" content="halit">
-    <meta name="robots" content="index, follow, all"/>
+  <meta charset="utf-8">
+  <title>{ Halit Alptekin } - pypi</title>
 
-    <!-- Le HTML5 shim, for IE6-8 support of HTML elements -->
-    <!--[if lt IE 9]>
-    <script src="../theme/html5.js"></script>
-    <![endif]-->
+  <meta name="author" content="halit">
 
-    <!-- Le styles -->
-    <link href="../theme/bootstrap.min.css" rel="stylesheet">
-    <link href="../theme/bootstrap.min.responsive.css" rel="stylesheet">
-    <link href="../theme/local.css" rel="stylesheet">
-    <link href="../theme/pygments.css" rel="stylesheet">
-
-</head>
-
-<body>
-
-<div class="navbar">
-    <div class="navbar-inner">
-    <div class="container">
-
-         <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
-             <span class="icon-bar"></span>
-             <span class="icon-bar"></span>
-             <span class="icon-bar"></span>
-         </a>
-
-        <a class="brand" href="..">Halit Alptekin Personal Blog</a>
-
-        <div class="nav-collapse">
-        <ul class="nav">
-                    
-        <li><a href="../pages/about-me.html">About Me</a></li>
-	    <li><a href="../pages/contact.html">Contact</a></li>
-        </ul>
-        </div>
-        
-    </div>
-    </div>
-</div>
-
-<div class="container">
-    <div class="content">
-    <div class="row">
-
-        <div class="span9">
-                
-        
-
-    <div class='article'>
-        <div class="content-title">
-            <a href="../modulleri-paketleyip-paylasmak.html"><h1>Modülleri Paketleyip Paylaşmak</h1></a>
-            Aug 27, 2012
-
-by <a class="url fn" href="../author/halit.html">halit</a>
- 
-
-in <a href="../category/python.html">python</a>
-
- 
-    tagged <a href="../tag/pycharm.html">pycharm</a> <a href="../tag/pypi.html">pypi</a> <a href="../tag/pypi-kayit.html">pypi kayıt</a> <a href="../tag/python.html">python</a> <a href="../tag/python-setup-dosyasi-hazirlama.html">python setup dosyası hazırlama</a> <a href="../tag/python-setup-tools.html">python setup tools</a>  
-        </div>
-        
-        <div><p>Python'u ilk başta duşunup koda doken adamlar onlardan sonraki gelecek nesilleri daha en baştan duşunmuşler.Yeni geliştiriciler kod yazsında diğer geliştiricilerle paylaşsın kendisini geliştirsin diye her turlu kolaylığı sağlamışlar.Benim Python'un sevdiğim en guzel yanlarından birisi de kesinlikle bu.Çunku yazdığım kodu setuptools araçları ile paketleyip diğer kullanıcılarında benim modullerimi kullanılır hale getirebiliyorum.Bunu da sadece birkaç ufak komut ile yapıyorum.Yani Python'un bizden tek beklentisi var.Sadece kod yaz,paylaş,başkalarının kodlarını kullan ve kendini geliştir.</p>
-<p>Bugun bu konulardan paylaş bolumunu içeren kısmı en basit ayrıntılarıyla anlatmaya çalışacağım.Çunku bu konuda Python'a başlattığım bazı kişiler çok fazla soru sormaya başladılar.Demek ki hepsi artık bir eşik değerini aştılar.</p>
-<p>Öncelikle paylaşımını yapacağımız ornek bir gereksiz fonksiyon yazalım.Bu fonksiyon o kadar gereksiz olsun ki bu koda bakan kişiler acaba bu adam ne duşundu de bu kodu yazdı diyip google'da araştırma yapıp siteme gelsin ve bana hit kazandırsın :D</p>
-<p>Tabi siz bu kadar acımasız duşunmek yerine yazdığınız yararlı kodlarıda paylaşabilirsiniz.Ben aşağıdaki bir hayli gereksiz,saçma sapan kodu paylaşıma ornek gostermek amacıyla yazdım.Mantığına değinmek gerekirse cevir fonksiyonuna gonderilecek string değermi diye en başta kontrol ediliyor daha sonra eğer string ise ve uzunluğu tek ise bu kelime birkaç değişiklik yapıp liste olarak geri donduruyor.</p>
-<div class="codehilite"><pre><span class="k">def</span> <span class="nf">cevir</span><span class="p">(</span><span class="n">kelime</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;</span>
-
-<span class="sd">    Gonderilen Strink tipindeki karakterlerin eger tek sayi uzunlugunda ise tam oradaki degerine : atayip,listeyi buradan boluyor.</span>
-
-<span class="sd">    Daha sonra bu bolunen harfleri yeni bir liste haline getirip return ile geri donduruyor.</span>
-
-<span class="sd">    Olabildigince gereksiz ve kimsenin isine yaramaz bir moduldur.Gene de kullanmak isteyenlere hayir demiyorum.</span>
-
-<span class="sd">    &quot;&quot;&quot;</span>
-    <span class="k">if</span> <span class="nb">type</span><span class="p">(</span><span class="n">kelime</span><span class="p">)</span> <span class="o">==</span> <span class="nb">type</span><span class="p">(</span><span class="s">&quot;kelime&quot;</span><span class="p">):</span>
-        <span class="n">uzunluk</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">kelime</span><span class="p">)</span>
-
-        <span class="k">if</span> <span class="n">uzunluk</span> <span class="o">%</span> <span class="mi">2</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
-            <span class="k">print</span> <span class="s">&quot;Gonderdiginiz kelimenin uzunlugu cifttir.Sadece tek gonderebilirsiniz.&quot;</span>
-
-        <span class="k">if</span> <span class="n">uzunluk</span> <span class="o">%</span> <span class="mi">2</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
-
-            <span class="n">kelime</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">kelime</span><span class="p">)</span>
-            <span class="n">kelime</span><span class="p">[</span><span class="n">uzunluk</span><span class="o">/</span><span class="mi">2</span><span class="p">]</span> <span class="o">=</span> <span class="s">&quot;:&quot;</span>
-            <span class="n">kelime</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">kelime</span><span class="p">)</span>
-            <span class="n">yeni</span> <span class="o">=</span> <span class="n">kelime</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s">&quot;:&quot;</span><span class="p">)</span>
-
-            <span class="n">yenikelime</span> <span class="o">=</span> <span class="p">[]</span>
-
-            <span class="n">yenikelime</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">yeni</span> <span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="mi">9</span><span class="p">])</span>
-            <span class="n">yenikelime</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">yeni</span> <span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="mi">4</span><span class="p">])</span>
-            <span class="n">yenikelime</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">yeni</span> <span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">7</span><span class="p">])</span>
-            <span class="n">yenikelime</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">yeni</span> <span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">2</span><span class="p">])</span>
-
-            <span class="k">return</span> <span class="n">yenikelime</span>
-    <span class="k">else</span><span class="p">:</span>
-        <span class="k">print</span> <span class="s">&quot;Sadece string tipi degisken gonderebilirsiniz!&quot;</span>
-</pre></div>
-
-
-<p>Ve bi hayli gereksiz olan modulumuzu hazırladık.Daha sonra bu kodlarımız çalışıyormu aynı dizinde test ettim.Gayet gereksiz bir biçimde çalışıyor.Şimdi ben PyCharm editorumde bulunan Tools-&gt;Create setup.py sekmesinden oluşturacağım setup.py dosyasının içeriğini belirliyorum.Siz el ile de yapabilirsiniz.Aşağıdaki kodun aynısını kendinize gore duzenleyebilirsiniz.</p>
-<p><img alt="Python PyCharm Setup Tools" src="http://www.halitalptekin.com/media/upload/pypi/1-pycharm-setup-tools-python.png" /></p>
-<p>Oluşturulan setup.py dosyasının içeriği aşağıdadır.</p>
-<div class="codehilite"><pre><span class="kn">from</span> <span class="nn">distutils.core</span> <span class="kn">import</span> <span class="n">setup</span>
-
-<span class="n">setup</span><span class="p">(</span>
-    <span class="n">name</span><span class="o">=</span><span class="s">&#39;gereksiz&#39;</span><span class="p">,</span>
-    <span class="n">version</span><span class="o">=</span><span class="s">&#39;0.1&#39;</span><span class="p">,</span>
-    <span class="n">packages</span><span class="o">=</span><span class="p">[</span><span class="s">&#39;&#39;</span><span class="p">],</span>
-    <span class="n">url</span><span class="o">=</span><span class="s">&#39;www.halitalptekin.com&#39;</span><span class="p">,</span>
-    <span class="n">license</span><span class="o">=</span><span class="s">&#39;GPL&#39;</span><span class="p">,</span>
-    <span class="n">author</span><span class="o">=</span><span class="s">&#39;Halit Alptekin&#39;</span><span class="p">,</span>
-    <span class="n">author_email</span><span class="o">=</span><span class="s">&#39;info@halitalptekin.com&#39;</span><span class="p">,</span>
-    <span class="n">description</span><span class="o">=</span><span class="s">&#39;String tipindeki karakterleri reverse metoduna benzer sekilde geri dondurur.&#39;</span>
-<span class="p">)</span>
-</pre></div>
-
-
-<p>Ve gorunumu aşağıdaki gibi oluyor.</p>
-<p><a href="http://www.halitalptekin.com/media/upload/pypi/2-pycharm-setup-tools-python.png"><img alt="Python PyCharm Setup Tools" src="http://www.halitalptekin.com/media/upload/pypi/2-pycharm-setup-tools-python.png" /></a></p>
-<p>Ve bu modulumuz için uygun şekilde bir yardım dosyası oluşturuyoruz.</p>
-<p><a href="http://www.halitalptekin.com/media/upload/pypi/3-setup-tools-readme.png"><img alt="Python Setup Tools Readme" src="http://www.halitalptekin.com/media/upload/pypi/3-setup-tools-readme.png" /></a></p>
-<p>Ve artık yapmamız gerekenler buyuk oranda bitti.Bundan sonra yaptığımız modulu dağıtıma hazır hale getirmek için setuptools'tan faydalanacağız.Bunun için oncelikle <strong>python setup.py sdist</strong> komutunu çalıştırıyoruz.</p>
-<p><a href="http://www.halitalptekin.com/media/upload/pypi/4-python-setup-tools-sdist.png"><img alt="Python Setup Tools Sdist" src="http://www.halitalptekin.com/media/upload/pypi/4-python-setup-tools-sdist.png" /></a></p>
-<p>Bu komuttan sonra o dizinde dağıtıma hazır bir tar.gz dosyası ve dosya listesinin bulunduğu manifest oluşuyor.Ve artık <strong>python setup.py install </strong>diyerek bu modulumuzu bir kuralım.</p>
-<p><img alt="Python Setup Tools Install" src="http://www.halitalptekin.com/media/upload/pypi/5-python-setup-tools-install.png" /></p>
-<p>Burada sudo komutunu kullanma sebebim python dizinine yazma yetkisi almak içindir.Ubuntuda guvenlik için bu şekilde bir uygulama var.Ve artık sıra geldi modulumuzu PyPi'ye yuklemeye.</p>
-<p>Öncelikli olarak <a href="http://pypi.python.org/pypi">PyPi</a> sitesine girip kayıt oluyoruz.Buraya kayıt olurken kullandığımız kullanıcı adı ve şifreyi bizim için onemli.Kayıt olduktan sonra tekrardan konsola donuyoruz ve <strong>python setup.py register</strong> komutuyla uygulamamızı kayıt ediyoruz.Burada size kullanıcı adınız ve şifreniz sorulacak.Doğru şekilde verdiğiniz takdirde serverdan 200 değerini almanız lazım.Kayıdı tamamladıktan sonra uygulamamızı PyPi'ye yukluyoruz.Bunun için <strong>python setup.py sdist upload</strong> komutunu uyguluyoruz.Ve uygulamamız PyPi'ye gitti.</p>
-<p><a href="http://www.halitalptekin.com/media/upload/pypi/6-python-pypi-register.png"><img alt="Python PyPi Register" src="http://www.halitalptekin.com/media/upload/pypi/6-python-pypi-register.png" /></a></p>
-<p>Bu işlemden sonra PyPi'ye girip uygulamamıza bir goz atalım.</p>
-<p><img alt="Python Pypi Control" src="http://www.halitalptekin.com/media/upload/pypi/7-python-pypi-control-cvs.png" /></p>
-<p>Ve bir hayli gereksiz uygulamamızı başarıyla yukledik.Bundan sonra bizim modulumuzu kullanmak isteyenler <strong>pip install gereksiz</strong> komutuyla başarıyla kurabilirler.Ve bu modulumuzun gercekten yuklenip yuklenmediğini ipython kullanarak test edelim.</p>
-<p><img alt="Python Modul Import" src="http://www.halitalptekin.com/media/upload/pypi/8-python-modul-import.png" /></p>
-<p>Ve gercekten hiçbir işe yaramayan, gereksiz, saçma sapan modulumuz gerçekten de çalışıyor.Siz daha yararlı başkalarının işine gerekli uygulamaları paylaşırsanız Python için daha iyi olacaktır :D</p></div>
-        <hr />
-    </div>
-		
-            <div class="pagination">
-<ul>
-    <li class="prev disabled"><a href="#">&larr; Previous</a></li>
-
-    <li class="active"><a href="../tag/pypi.html">1</a></li>
-
-    <li class="next disabled"><a href="#">&rarr; Next</a></li>
-
-</ul>
-</div>    
- 
+    <link href="http://www.halitalptekin.com/feeds/all.atom.xml" type="application/atom+xml" rel="alternate"
+        title="{ Halit Alptekin } Atom Feed" />
+      <link href="http://www.halitalptekin.com/feeds/all.rss.xml" type="application/rss+xml" rel="alternate"
+        title="{ Halit Alptekin } RSS Feed" />
   
-        </div>
-        
-        <div class="span3">
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
 
-            <div class="well" style="padding: 8px 0; background-color: #FBFBFB;">
-            <ul class="nav nav-list">
-                <li class="nav-header"> 
-                Site
-                </li>
-            
-                <li><a href="../archives.html">Archives</a>
-                <li><a href="../tags.html">Tags</a>
-                <li><a href="../feeds/all.atom.xml" rel="alternate">Atom feed</a></li>
-                                <li><a href="../feeds/all.rss.xml" rel="alternate">RSS feed</a></li>
-                                 <li><a href="../sitemap.xml">Sitemap</a>
-            </ul>
-            </div>
+  <link href="../favicon.png" rel="icon">
+  <link href="../theme/css/main.css" media="screen, projection"
+        rel="stylesheet" type="text/css">
+  <script src="../theme/js/modernizr-2.0.js"></script>
+  <script src="../theme/js/ender.js"></script>
+  <script src="../theme/js/octopress.js" type="text/javascript"></script>
 
+  <link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic"
+        rel="stylesheet" type="text/css">
+  <link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic"
+        rel="stylesheet" type="text/css">
+</head>
+<body>
+  <header role="banner"><hgroup>
+  <h1><a href="../">{ Halit Alptekin }</a></h1>
+  </hgroup></header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  <li><a href="http://www.halitalptekin.com/feeds/all.atom.xml" rel="subscribe-rss">Atom</a></li>
+    <li><a href="http://www.halitalptekin.com/feeds/all.rss.xml" rel="subscribe-rss">Rss</a></li>
+  </ul>
 
-                        <div class="well" style="padding: 8px 0; background-color: #FBFBFB;">
-            <ul class="nav nav-list">
-                <li class="nav-header"> 
-                Categories
-                </li>
-                
-                                <li><a href="../category/tasarim.html">tasarim</a></li>
-                                <li><a href="../category/server.html">server</a></li>
-                                <li><a href="../category/python.html">python</a></li>
-                                <li><a href="../category/programlama.html">programlama</a></li>
-                                <li><a href="../category/linux.html">linux</a></li>
-                                <li><a href="../category/kisisel.html">kisisel</a></li>
-                                <li><a href="../category/internet.html">internet</a></li>
-                                <li><a href="../category/guvenlik.html">guvenlik</a></li>
-                                <li><a href="../category/genel.html">genel</a></li>
-                                <li><a href="../category/eglence.html">eglence</a></li>
-                                <li><a href="../category/django.html">django</a></li>
-                                <li><a href="../category/compsci.html">compsci</a></li>
-                                <li><a href="../category/arduino.html">arduino</a></li>
-                                   
-            </ul>
-            </div>
-            
+<!-- TODO: add search here
+<form action="" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="q" value="site:.." />
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+-->
 
-                        <div class="well" style="padding: 8px 0; background-color: #FBFBFB;">
-            <ul class="nav nav-list">
-                <li class="nav-header"> 
-                Links
-                </li>
-            
-                            <li><a href="http://www.python.org">Python</a></li>
-                        </ul>
-            </div>
-            
+<ul class="main-navigation">
+  <li><a href="../">Blog</a></li>
+        <li><a href="../pages/about-me.html">About Me</a></li>
+    <li><a href="../pages/contact.html">Contact</a></li>
+  <!-- TODO: add categories here? -->
+  </ul></nav>
+  <div id="main">
+    <div id="content">
+      <div class="blog-index">
+    	  		<article>
+    		<header>
+          <h1 class="entry-title">
+        <a href="../modulleri-paketleyip-paylasmak.html">Modülleri Paketleyip Paylaşmak</a>
+      </h1>
+          <p class="meta"><time datetime="2012-08-27T00:00:00" pubdate>Aug 27, 2012</time></p>
+</header>
 
-                        <div class="social">
-            <div class="well" style="padding: 8px 0; background-color: #FBFBFB;">
-            <ul class="nav nav-list">
-                <li class="nav-header"> 
-                Social
-                </li>
-           
-                                <li><a href="http://twitter.com/halitalptekin">twitter</a></li>
-                                <li><a href="http://github.com/halitalptekin">github</a></li>
-                                <li><a href="http://stackoverflow.com/users/1151618/halit-alptekin">stackoverflow</a></li>
-                                <li><a href="http://tr.linkedin.com/in/halitalptekin">linkedin</a></li>
-                            </ul>
-            </div>
-            </div>
-            
-                        <div class="well" style="padding: 8px 0; background-color: #FBFBFB;">
-            <ul class="nav nav-list">
-                <li class="nav-header"> 
-                Ads
-                </li>
+  <div class="entry-content"><p>Python'u ilk başta duşunup koda doken adamlar onlardan sonraki gelecek nesilleri daha en baştan duşunmuşler.Yeni geliştiriciler kod yazsında diğer geliştiricilerle paylaşsın kendisini geliştirsin diye her turlu kolaylığı sağlamışlar.Benim Python'un sevdiğim en guzel yanlarından birisi de kesinlikle bu.Çunku yazdığım kodu setuptools araçları ile paketleyip diğer kullanıcılarında ...</p></div>
+  <footer>
+    <a rel="full-article" href="../modulleri-paketleyip-paylasmak.html">Read On &crarr;</a>
+  </footer>
+  		</article>
+  	  	<div class="pagination">
+  
+    <br />
+</div>  </div>
+      <aside class="sidebar">
+  <section>
+    <h1>Recent Posts</h1>
+    <ul id="recent_posts">
+            <li class="post">
+          <a href="../modulleri-paketleyip-paylasmak.html">Modülleri Paketleyip Paylaşmak</a>
+      </li>
+          </ul>
+  </section>
+    <section>
+      
+    <h1>Categories</h1>
+    <ul id="recent_posts">
+              <li><a href="../category/tasarim.html">tasarim</a></li>
+              <li><a href="../category/server.html">server</a></li>
+              <li><a href="../category/python.html">python</a></li>
+              <li><a href="../category/programlama.html">programlama</a></li>
+              <li><a href="../category/linux.html">linux</a></li>
+              <li><a href="../category/kisisel.html">kisisel</a></li>
+              <li><a href="../category/internet.html">internet</a></li>
+              <li><a href="../category/guvenlik.html">guvenlik</a></li>
+              <li><a href="../category/genel.html">genel</a></li>
+              <li><a href="../category/eglence.html">eglence</a></li>
+              <li><a href="../category/django.html">django</a></li>
+              <li><a href="../category/compsci.html">compsci</a></li>
+              <li><a href="../category/arduino.html">arduino</a></li>
+          </ul>
+  </section>
+   
 
-                                <li><a href="https://www.camekan.com/adwords/" title="Google Adwords"><img src="/media/reklam/camekancom.jpg" alt="Google Adwords" title="Google Adwords"></a>
-                </li>
-                                <li><a href="http://www.dugunajans.com/" title="düğün fotoğrafçısı"><img src="/media/reklam/dugunajanscom.jpg" alt="düğün fotoğrafçısı" title="düğün fotoğrafçısı"></a>
-                </li>
-                            </ul>
-            </div>
-            
-        </div>  
-    </div>     </div> 
-<footer>
-	<hr>
-	<p><a href='http://www.halitalptekin.com'>Halit Alptekin Personal Blog</a> &copy; 2012</p>
-</footer>
+    
+    <section>
+        <h1>Social</h1>
+        <ul>
+            <li><a href="http://www.halitalptekin.com/feeds/all.rss.xml" type="application/rss+xml" rel="alternate">rss</a></li>
+                    <li><a href="http://twitter.com/halitalptekin" target="_blank">twitter</a></li>
+                    <li><a href="http://github.com/halitalptekin" target="_blank">github</a></li>
+                    <li><a href="http://stackoverflow.com/users/1151618/halit-alptekin" target="_blank">stackoverflow</a></li>
+                    <li><a href="http://tr.linkedin.com/in/halitalptekin" target="_blank">linkedin</a></li>
+                </ul>
+    </section>
+      <section>
+        <h1>Blogroll</h1>
+        <ul>
+                    <li><a href="http://www.python.org" target="_blank">Python</a></li>
+                </ul>
+    </section>
 
-</div> <!-- /container -->
-<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
-<script src="http://twitter.github.com/bootstrap/assets/js/bootstrap-collapse.js"></script>
-<script>var _gaq=[['_setAccount','UA-24728900-1'],['_trackPageview']];(function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];g.src='//www.google-analytics.com/ga.js';s.parentNode.insertBefore(g,s)}(document,'script'))</script>
+      <section>
+        <h1>Ads</h1>
+        <ul id="recent_posts">
+                            <li><a href="https://www.camekan.com/adwords/" title="Google Adwords"><img src="/media/reklam/camekancom.jpg" alt="Google Adwords" title="Google Adwords"></a></li>
+                            <li><a href="http://www.dugunajans.com/" title="düğün fotoğrafçısı"><img src="/media/reklam/dugunajanscom.jpg" alt="düğün fotoğrafçısı" title="düğün fotoğrafçısı"></a></li>
+                    </ul>
+    </section>
+  
+</aside>    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2013 - halit -
+  <span class="credit">Powered by <a href="http://getpelican.com">Pelican</a></span>
+</p></footer>
+      <script type="text/javascript">
+	    var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+	    document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+    </script>
+    <script type="text/javascript">
+	    try {
+	        var pageTracker = _gat._getTracker("UA-24728900-1");
+	    pageTracker._trackPageview();
+	    } catch(err) {}
+	</script>
+	<script type="text/javascript">
+	  var disqus_shortname = 'halitalptekin';
+	  (function() {
+	    var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+	    dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
+	    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+	   })();
+	</script>
 </body>
 </html>

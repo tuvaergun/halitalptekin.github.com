@@ -1,333 +1,158 @@
 <!DOCTYPE html>
-<html lang="en">
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
-    <meta charset="utf-8">
-    <title>Halit Alptekin Personal Blog</title>
-    <meta name="description" content="Programming and Life Blog Of Halit Alptekin. Karadeniz Technical University Computer Engineering Student.">
-    <meta name="keywords" content="programlama, blog, personal blog, linux, python, django, php, bootstrap, seo, bilgisayar muhendisligi, ktu, karadeniz teknik universitesi, programming">
-    <meta name="author" content="halit">
-    <meta name="robots" content="index, follow, all"/>
+  <meta charset="utf-8">
+  <title>{ Halit Alptekin } - django models</title>
 
-    <!-- Le HTML5 shim, for IE6-8 support of HTML elements -->
-    <!--[if lt IE 9]>
-    <script src="../theme/html5.js"></script>
-    <![endif]-->
+  <meta name="author" content="halit">
 
-    <!-- Le styles -->
-    <link href="../theme/bootstrap.min.css" rel="stylesheet">
-    <link href="../theme/bootstrap.min.responsive.css" rel="stylesheet">
-    <link href="../theme/local.css" rel="stylesheet">
-    <link href="../theme/pygments.css" rel="stylesheet">
-
-</head>
-
-<body>
-
-<div class="navbar">
-    <div class="navbar-inner">
-    <div class="container">
-
-         <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
-             <span class="icon-bar"></span>
-             <span class="icon-bar"></span>
-             <span class="icon-bar"></span>
-         </a>
-
-        <a class="brand" href="..">Halit Alptekin Personal Blog</a>
-
-        <div class="nav-collapse">
-        <ul class="nav">
-                    
-        <li><a href="../pages/about-me.html">About Me</a></li>
-	    <li><a href="../pages/contact.html">Contact</a></li>
-        </ul>
-        </div>
-        
-    </div>
-    </div>
-</div>
-
-<div class="container">
-    <div class="content">
-    <div class="row">
-
-        <div class="span9">
-                
-        
-
-    <div class='article'>
-        <div class="content-title">
-            <a href="../djangoda-modellere-giris.html"><h1>Django'da Modellere Giriş</h1></a>
-            Jun 19, 2012
-
-by <a class="url fn" href="../author/halit.html">halit</a>
- 
-
-in <a href="../category/django.html">django</a>
-
- 
-    tagged <a href="../tag/dajango-veritabani.html">dajango veritabanı</a> <a href="../tag/django.html">django</a> <a href="../tag/django-modeller.html">django modeller</a> <a href="../tag/django-models.html">django models</a> <a href="../tag/model-fields.html">model fields</a>  
-        </div>
-        
-        <div><p>Django'ya bir sure ara verdikten sonra bana gore Django'nun temelini oluşturan model kavramından bahsetmek istiyorum.Modeller Django'nun veritabanı ile bağlantısı oluşturan kısımlar diye duşunebiliriz.Yani veritabanında oluşmasını istediğimiz tabloları,kolonları model olarak tanımlayacağız ve Django bunları direk olarak veritabanına ekleme yapıcak.Bu sayede bir daha veritabanında sql sorgusu ile veritabanı oluşturmaktak kurtulacağız.Bu MVC yapısının bize getirdiği buyuk kolaylıklardan sadece birisi.</p>
-<p><a href="http://www.flickr.com/photos/hoerner_brett/2901426375/" title="django cake by hoerner_brett, on Flickr"><img alt="django cake" src="http://farm4.staticflickr.com/3160/2901426375_02257206aa.jpg" /></a></p>
-<p>Şimdi daha onceleri oluşturduğumuz uygulamanın içinde oluşan models.py dosyasını açarak buranın içerisine modellerimizi ekleyeceğiz.Ben sıfırdan model yazmak yerine sitemde kullandığım modeller uzerinden gideceğim.Zaten klasik bir blog sisteminde ortalama aynı şeyler olur.</p>
-<p>Mesela blog sitemizde Kategoriler ve Yazilar adında iki tablomuz olacak ve bu tabloların içinde aşağıdaki gibi kolonlarımız olacak.</p>
-<p>Kategoriler -&gt; baslik,sef_baslik,slug,aciklama,aciklama_sef</p>
-<p>Yazilar -&gt; baslik,sef_baslik,slug,aciklama,aciklama_sef,kategori,icerik_anasayfa,icerik,yayindami,etiketler,olusturulma,degistirilme,yazar</p>
-<p>Ben biraz fazla kolon kullanmış olabilirim ama siz ihtiyaçlarınız doğrultusunda eklemeler veya çıkartmalar yapabilirsiniz.Zaten aşağıdaki ornek ile eminim kafanızda bir parlama meydana gelecek ve olayı sokeceksiniz.Daha sonra da kendi modellerinizi yazacaksınız.</p>
-<div class="codehilite"><pre><span class="kn">from</span> <span class="nn">django.db</span> <span class="kn">import</span> <span class="n">models</span>
-<span class="kn">from</span> <span class="nn">django.contrib.auth.models</span> <span class="kn">import</span> <span class="n">User</span>
-<span class="kn">from</span> <span class="nn">tagging.fields</span> <span class="kn">import</span> <span class="n">TagField</span>
-<span class="kn">from</span> <span class="nn">tagging.models</span> <span class="kn">import</span> <span class="n">Tag</span>
-<span class="kn">from</span> <span class="nn">unidecode</span> <span class="kn">import</span> <span class="n">unidecode</span>
-<span class="kn">from</span> <span class="nn">django.contrib.sitemaps</span> <span class="kn">import</span> <span class="n">ping_google</span>
-
-<span class="k">class</span> <span class="nc">Kategoriler</span><span class="p">(</span><span class="n">models</span><span class="o">.</span><span class="n">Model</span><span class="p">):</span>
-
-   <span class="n">baslik</span>           <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">CharField</span><span class="p">(</span><span class="n">max_length</span><span class="o">=</span><span class="mi">255</span><span class="p">,</span> <span class="n">verbose_name</span><span class="o">=</span><span class="s">&quot;Baslik&quot;</span><span class="p">,</span> <span class="n">help_text</span> <span class="o">=</span> <span class="s">&quot;Kategori Basligi&quot;</span><span class="p">)</span>
-   <span class="n">sef_baslik</span>       <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">CharField</span><span class="p">(</span><span class="n">max_length</span><span class="o">=</span><span class="mi">255</span><span class="p">,</span> <span class="n">verbose_name</span><span class="o">=</span><span class="s">&quot;Baslik Sef&quot;</span><span class="p">,</span> <span class="n">help_text</span> <span class="o">=</span> <span class="s">&quot;Baslik Sef&quot;</span><span class="p">,</span> <span class="n">blank</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span> 
-   <span class="n">slug</span>             <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">SlugField</span><span class="p">(</span><span class="n">max_length</span><span class="o">=</span><span class="mi">255</span><span class="p">,</span> <span class="n">verbose_name</span><span class="o">=</span><span class="s">&quot;Slug&quot;</span><span class="p">)</span>
-
-   <span class="n">aciklama</span>         <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">CharField</span><span class="p">(</span><span class="n">max_length</span><span class="o">=</span><span class="mi">500</span><span class="p">,</span> <span class="n">verbose_name</span><span class="o">=</span><span class="s">&quot;Aciklama&quot;</span><span class="p">,</span> <span class="n">help_text</span> <span class="o">=</span> <span class="s">&quot;Kategori Aciklamasi&quot;</span><span class="p">)</span>
-   <span class="n">aciklama_sef</span>     <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">CharField</span><span class="p">(</span><span class="n">max_length</span><span class="o">=</span><span class="mi">500</span><span class="p">,</span> <span class="n">verbose_name</span><span class="o">=</span><span class="s">&quot;Aciklama Sef&quot;</span><span class="p">,</span> <span class="n">help_text</span> <span class="o">=</span> <span class="s">&quot;Aciklama Sef&quot;</span><span class="p">,</span> <span class="n">blank</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
-
-   <span class="k">def</span> <span class="nf">__unicode__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-       <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">baslik</span>
-
-   <span class="k">class</span> <span class="nc">Meta</span><span class="p">:</span>
-       <span class="n">verbose_name_plural</span> <span class="o">=</span> <span class="s">&quot;Kategoriler&quot;</span>
-
-   <span class="k">def</span> <span class="nf">get_absolute_url</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-       <span class="k">return</span> <span class="s">&quot;/blog/kategori/</span><span class="si">%s</span><span class="s">/&quot;</span> <span class="o">%</span><span class="bp">self</span><span class="o">.</span><span class="n">slug</span>
-
-   <span class="k">def</span> <span class="nf">save</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
-       <span class="bp">self</span><span class="o">.</span><span class="n">sef_baslik</span> <span class="o">=</span> <span class="n">unidecode</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">baslik</span><span class="p">)</span>
-       <span class="nb">super</span><span class="p">(</span><span class="n">Kategoriler</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
-
-       <span class="bp">self</span><span class="o">.</span><span class="n">aciklama_sef</span> <span class="o">=</span> <span class="n">unidecode</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">aciklama</span><span class="p">)</span>
-       <span class="nb">super</span><span class="p">(</span><span class="n">Kategoriler</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
-
-<span class="k">class</span> <span class="nc">Yazilar</span><span class="p">(</span><span class="n">models</span><span class="o">.</span><span class="n">Model</span><span class="p">):</span>
-   <span class="n">baslik</span>           <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">CharField</span><span class="p">(</span><span class="n">max_length</span><span class="o">=</span><span class="mi">255</span><span class="p">,</span> <span class="n">verbose_name</span><span class="o">=</span><span class="s">&quot;Baslik&quot;</span><span class="p">,</span> <span class="n">help_text</span> <span class="o">=</span> <span class="s">&quot;Yazi Basligi&quot;</span><span class="p">)</span>
-   <span class="n">sef_baslik</span>       <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">CharField</span><span class="p">(</span><span class="n">max_length</span><span class="o">=</span><span class="mi">255</span><span class="p">,</span> <span class="n">verbose_name</span><span class="o">=</span><span class="s">&quot;Baslik Sef&quot;</span><span class="p">,</span> <span class="n">help_text</span> <span class="o">=</span> <span class="s">&quot;Baslik Sef&quot;</span><span class="p">,</span> <span class="n">blank</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span> 
-   <span class="n">slug</span>             <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">SlugField</span><span class="p">(</span><span class="n">max_length</span><span class="o">=</span><span class="mi">255</span><span class="p">,</span> <span class="n">verbose_name</span><span class="o">=</span><span class="s">&quot;Slug&quot;</span><span class="p">)</span>
-
-   <span class="n">aciklama</span>         <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">CharField</span><span class="p">(</span><span class="n">max_length</span><span class="o">=</span><span class="mi">500</span><span class="p">,</span> <span class="n">verbose_name</span><span class="o">=</span><span class="s">&quot;Aciklama&quot;</span><span class="p">,</span> <span class="n">help_text</span> <span class="o">=</span> <span class="s">&quot;Yazi Aciklamasi&quot;</span><span class="p">)</span>
-   <span class="n">aciklama_sef</span>     <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">CharField</span><span class="p">(</span><span class="n">max_length</span><span class="o">=</span><span class="mi">500</span><span class="p">,</span> <span class="n">verbose_name</span><span class="o">=</span><span class="s">&quot;Aciklama Sef&quot;</span><span class="p">,</span> <span class="n">help_text</span> <span class="o">=</span> <span class="s">&quot;Aciklama Sef&quot;</span><span class="p">,</span> <span class="n">blank</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
-
-   <span class="n">kategori</span>     <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">ForeignKey</span><span class="p">(</span><span class="s">&quot;Kategoriler&quot;</span><span class="p">,</span> <span class="n">verbose_name</span><span class="o">=</span><span class="s">&quot;Kategori&quot;</span><span class="p">)</span>
-
-   <span class="n">icerik_anasayfa</span>  <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">TextField</span><span class="p">(</span><span class="n">verbose_name</span><span class="o">=</span><span class="s">&quot;Anasayfa Icerik&quot;</span><span class="p">,</span> <span class="n">help_text</span> <span class="o">=</span> <span class="s">&quot;Anasayfada Gozukecek Icerik&quot;</span><span class="p">)</span>
-   <span class="n">icerik</span>           <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">TextField</span><span class="p">(</span><span class="n">verbose_name</span><span class="o">=</span><span class="s">&quot;Tum Icerik&quot;</span><span class="p">,</span> <span class="n">help_text</span> <span class="o">=</span> <span class="s">&quot;Tum Icerik&quot;</span><span class="p">)</span>
-
-   <span class="n">anasayfa_sabit</span>   <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">BooleanField</span><span class="p">(</span><span class="n">verbose_name</span><span class="o">=</span><span class="s">&quot;Anasayfa&quot;</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">help_text</span> <span class="o">=</span> <span class="s">&quot;Yazi Anasayfa Gozuksun mu?&quot;</span><span class="p">)</span>
-
-   <span class="n">etiketler</span>        <span class="o">=</span> <span class="n">TagField</span><span class="p">(</span><span class="n">verbose_name</span><span class="o">=</span><span class="s">&quot;Etiketler&quot;</span><span class="p">)</span>
-
-   <span class="n">olusturulma</span>      <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">DateTimeField</span><span class="p">(</span><span class="n">auto_now_add</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">verbose_name</span><span class="o">=</span><span class="s">&quot;Olusturulma Tarihi&quot;</span><span class="p">)</span>
-   <span class="n">degistirilme</span>     <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">DateTimeField</span><span class="p">(</span><span class="n">auto_now</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">verbose_name</span><span class="o">=</span><span class="s">&quot;Degistirilme Tarihi&quot;</span><span class="p">)</span>
-
-   <span class="n">yazar</span>        <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">ForeignKey</span><span class="p">(</span><span class="n">User</span><span class="p">,</span> <span class="n">verbose_name</span><span class="o">=</span><span class="s">&quot;Yazar&quot;</span><span class="p">)</span>
-
-   <span class="k">def</span> <span class="nf">__unicode__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-       <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">baslik</span>
-
-   <span class="k">def</span> <span class="nf">save</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
-       <span class="bp">self</span><span class="o">.</span><span class="n">sef_baslik</span> <span class="o">=</span> <span class="n">unidecode</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">baslik</span><span class="p">)</span>
-       <span class="nb">super</span><span class="p">(</span><span class="n">Yazilar</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
-
-       <span class="bp">self</span><span class="o">.</span><span class="n">aciklama_sef</span> <span class="o">=</span> <span class="n">unidecode</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">aciklama</span><span class="p">)</span>
-       <span class="nb">super</span><span class="p">(</span><span class="n">Yazilar</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
-
-       <span class="k">try</span><span class="p">:</span>
-           <span class="n">ping_google</span><span class="p">()</span>
-       <span class="k">except</span> <span class="ne">Exception</span><span class="p">:</span>
-           <span class="k">pass</span>
-
-   <span class="k">class</span> <span class="nc">Meta</span><span class="p">:</span>
-       <span class="n">verbose_name_plural</span> <span class="o">=</span> <span class="s">&quot;Yazilar&quot;</span>
-
-   <span class="k">def</span> <span class="nf">get_absolute_url</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-       <span class="k">return</span> <span class="s">&quot;/</span><span class="si">%s</span><span class="s">.html&quot;</span> <span class="o">%</span><span class="bp">self</span><span class="o">.</span><span class="n">slug</span>
-
-   <span class="k">def</span> <span class="nf">get_tags</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-       <span class="k">return</span> <span class="n">Tag</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">get_for_object</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
-</pre></div>
-
-
-<p>Yukarıdaki kodlar bizim models.py dosyamızın içerisi olacak.Şimdi sırayla biraz ayrıntıya girelim.</p>
-<p>En yukarıda gorduğunuz from ile başlayan satırlar klasik python ile import satırları.Ben burada django'nun user modelini(yazılardaki yazar kısmı için),tagging uygulaması(pip install django-tagging),meta bolumlerinde turkçe karakter sıkıntısını çozmek için unidecode ve yazılarımızı google'a pinglemek için ping_google import ettim.</p>
-<p>Biraz aşağıda class Kategoriler satırını goruyorsunuz.Django'da modellerde class ile oluştaracağımız bolumler veritabanında tablo olarak oluşacak.Classların içinde oluşturacağımız field kısımları veritabanında ilgili tablonun kolonları olacak.Djangodaki bu model yapısı ile veritabanı bağımsız çalışabilirsiniz.İsterseniz sqlite,psql,mysql veya oracle kullanın.Tek yapmanız gereken settings.py içindeki db ile ilgili satırı editlemek.</p>
-<p>Eğer models.py dosyasını incelerseniz iki adet class oluşturmuşum.Bunlar Kategoriler ve Yazilar.Artık bunlar veritabanındaki tablolarımız olacak.Kategoriler altında oluşturduğum baslik,sef_baslik,slug,aciklama,aciklama_sef fieldler yani alanlar Kategoriler tablomuzun kolonları olacak.Kolonları oluştururken hatırlarsanız mysql'da alan tipi seçimi yapılırdı.Bazı yerlerde char,bazı yerlerde text veya int gibi alanlar seçilirdi.Django'da da bu alanları burada tanımlıyoruz.Oluşturacağınız alanın turunu modeller içinde tanımlamanız gerekiyor.</p>
-<p>Django'daki fieldlerin Mysql karşılıkları aşağıdaki gibidir.</p>
-<p><strong>Django</strong>
-<strong>Mysql</strong></p>
-<p>AutoField
-integer AUTO_INCREMENT</p>
-<p>BooleanField
-bool</p>
-<p>CharField
-varchar(%(max_length)s)</p>
-<p>CommaSeparatedIntegerField
-varchar(%(max_length)s)</p>
-<p>DateField
-date</p>
-<p>DateTimeField
-datetime</p>
-<p>DecimalField
-numeric(%(max_digits)s, %(decimal_places)s)</p>
-<p>FileField
-varchar(%(max_length)s)</p>
-<p>FilePathField
-varchar(%(max_length)s)</p>
-<p>FloatField
-double precision</p>
-<p>IntegerField
-integer</p>
-<p>IPAddressField
-char(15)</p>
-<p>NullBooleanField
-bool</p>
-<p>OneToOneField
-integer</p>
-<p>PositiveIntegerField
-integer UNSIGNED</p>
-<p>PositiveSmallIntegerField
-smallint UNSIGNED</p>
-<p>SlugField
-varchar(%(max_length)s)</p>
-<p>SmallIntegerField
-smallint</p>
-<p>TextField
-longtext</p>
-<p>TimeField
-time</p>
-<p>Django'da birçok field turu var.Bunların başında yukarıda yazdıklarım yer alır.Bunların hepsine django'nun <a href="https://docs.djangoproject.com/en/dev/ref/models/fields/">resmi sitesinden</a> veya <a href="http://www.halitalptekin.com/dosya/django-cheat-sheet/">django cheat sheet</a>'den ulaşabilirsiniz.</p>
-<p>Bu fieldlerde isimlerden yola çıkarak işlevlerini anlayabiliriz.Örneğin CharField'in mysqldaki char'a ,TextField'in longtext'e eşdeğer olduğunu soyleyebiliriz.Diğerleride veritabanın'ın o bolgesinde kullanmak istediğiniz veriye gore alan oluşturuyor.Örneğin bir blog yazısının içeriğini TextField'da saklayabiliriz.Veya iletişim paneli yaptığınızda cevabın gideceği mail adresini MailField,sitenin açık veya kapalı olduğunu anlamak için BooleanField kullanabiliriz.Bu ornekler çoğaltılabilir.Ayrıntılı bilgiler için kesinlikle resmi siteye bakınız.</p>
-<p>Birde bu fieldlerde yer alan verbose_name,help_text,max_length gibi bolumleri anlatmaya gerek yok.Herşey gayet açık.Ancak burada yer alan ForeignKey biraz onemli.Burada yapılan iş aslında gayet basit.Ancak ileride çok fazla kullanacağınız için kesinlikle oğrenmekte fayda var.ForeignKey'i biraz incelediğinizde gorevi belli oluyor.İki tabloyu birbiri ile ilişkilendiriyor.Mesela Yazilar tablosundaki kategori kolonundaki veriyi,Kategoriler tablosundan alıyoruz.Yani birbirleri arasında bir bağ kuruyor.İki tabloyu ilişkilendiriyor.</p>
-<p>Field kısımıda hallettikten sonra buraların altında yer alan fonksiyonları biraz inceleyelim.Bizim modellerimiz içinde tanımladığımız fonksiyonlara views içinden de ulaşabiliyor olmamız gerçekten Django'nun çok guzel ozelliklerinden birisi.Bu fonksiyonlar ile çok guzel şeyler yapabilirsiniz.Örneğin yazımızı kaydet dediğimizde google'a pinglettirebilir veya template içinde yazının urline direk buradaki fonksiyon ile ulaşabiliriz.</p>
-<p>Burada yer alan unicode ve meta bolumlerini atlıyorum.Çunku bunlar admin panelinde işimize yarayacak kısımlar.Ve tamamen site sahibine kolaylık sağlamak için kullanılıyor.Ama etkin kullanmakta çok fazla fayda var.</p>
-<p>Save fonksiyonu onemli ve çok kez kullanacağımız bir fonksiyon.Bu fonksiyon yazıyı kaydet butonuna bastığımız zaman çalıştırılan bir fonksiyon.Ve eğer yazı kaydedilirken yapılması gereken işlemler varsa bunları burada tanımlıyoruz.Mesela ben yazı başlığını alıp turkçe karakterlerden arındırıp sef_baslik alanına eklettiriyorum.Yani "Turkçe Şehirler" olan başlığı "Turkce Sehirler" olarak değiştirip sef_baslik alanına ekliyom.Bu sayede meta kodlarındaki Turkçe karakter sorununu çozuyorum.Sizde aklınıza gelen birçok alanda bu save fonksiyonunu kullanabilirsiniz.</p>
-<p><img alt="Django Web Framework" src="http://www.halitalptekin.com/media/upload/django.jpg" /></p>
-<p>Django'da modeller ile temel olarak bilmeniz gerekenler bunlar.Ancak Django'da modeller bu kadar değil.İşin içinde girdikçe Django'nun bize getirdiği harika kolaylıkları keşfediyorsunuz.Mesela veritabanı bağımsız tablo ve kolonlar oluşturmak bana gore çok buyuk bir guzellik.(Tabi bunu yapan başka frameworklerde var) Ama sadece bu kadar değil.Zamanla birçok kolaylık farkedeceksiniz.Mesela Django'nun image ve file fieldleri bana gerçekten çok hoş geldi.PHP'deki gibi bir ton guvenlik uygulamasıyla uğraşmadan direk imagefield ekleyerek resim yuklememizi yapıyoruz.Geri kalan herşeyi Django hallediyor.</p>
-<p>Peki Django'da modelleri oluşturduk.Daha sonra ne yapacağız? Tabikide burasıda çok onemli.Modellerimiz içinde yer alan alanlarımızı veritabanına kayıt ettireceğiz.Bunun için kesinlikle sql ile uğraşmıyoruz.Komut satırına giriyoruz ve aşağıdaki komut ile tablo ve kolonlarımızı oluşturuyoruz.İlk oluşturmada mail ve username isteyecek.Bunlar sizin admin kullanıcısı bilgileridir.</p>
-<div class="codehilite"><pre><span class="n">python</span> <span class="n">manage</span><span class="o">.</span><span class="n">py</span> <span class="n">syncdb</span>
-</pre></div>
-
-
-<p>Artık veritabanı tablolarımız ve kolonlarımız oluştu.Bundan sonra uygulamamızı çalıştırmanın bir anlamı yok.Çunku henuz admin panelimize register etmedik.Onuda bu yazıda anlatıp sıkmak istemiyorum.Bir sonraki yazıda Django Admin Paneli ayarlarımızı yapmayı ve oluşturduğumuz tablo ve kolonlarımıza admin panelinden veri eklemeyi,değiştirmeyi,silmeyi anlatacağım.Şimdilik sitenizin veritabanı kısmını hallettik.Biraz zaman sonra da views ve templates olaylarına girip tum işlemleri tamamlayacağız.Ve ekstra işlemlere başlayacağız.</p>
-<p>Aşağıdaki resimde geçen uygulama isimlerine de şimdiden alışmanız fayda var diye duşunuyorum.İlerleyen zamanlarda çok kez kullanacaksınız.</p>
-<p><a href="http://www.flickr.com/photos/dibau_naum_h/5117424420/" title="Django build  deploy tools, Alex Arshavski by dibau_naum_h, on Flickr"><img alt="Django build  deploy tools, Alex Arshavski" src="http://farm2.staticflickr.com/1310/5117424420_48bea1bb29.jpg" /></a></p>
-<p><strong>Önemli Not:</strong> Yazı içerisinde birçok tablo ve kolon dedim.Şimdilik boyle bilmenizde fayda var.Ama oğrendikten sonra boyle olmadığını anlayacaksınız.</p>
-<p><strong>Önemli Not:</strong> Burada Django'nun kotu bir yanından bahsetmek istiyorum.Eğer modellerimiz oluşturup syncdb ile dbyide oluşturduktan sonra yeni bir model eklemesi yaparsanız bunların işlenmediğini farkedersiniz.Bu Django'nun bana gore en kotu ozelliğidir.Belki ilerleyen zamanlarda çozulecek ancak şu anda gerçekten Django'nun imajını sarsıyor.Ancak bundan kurtulmak için birçok yol olduğu için korkulcak bir durum yok.Eğer oluşturduğunuz veritabanını silip yeni oluşturursanız bunun uzerine django tum değişiklikleri işleyecektir.Ancak ben bunlarla uğraşamam diyorsanız daha kolay bir yol var.South adındaki uygulama ile veritabanınızı goç ettirebilirsiniz.Bu konu başlı başına bir makele konusu olduğu için şimdi anlatmıyorum ancak bu sorunun South ile çozulduğunu  şimdilik bilmenizde fayda var.</p></div>
-        <hr />
-    </div>
-		
-            <div class="pagination">
-<ul>
-    <li class="prev disabled"><a href="#">&larr; Previous</a></li>
-
-    <li class="active"><a href="../tag/django-models.html">1</a></li>
-
-    <li class="next disabled"><a href="#">&rarr; Next</a></li>
-
-</ul>
-</div>    
- 
+    <link href="http://www.halitalptekin.com/feeds/all.atom.xml" type="application/atom+xml" rel="alternate"
+        title="{ Halit Alptekin } Atom Feed" />
+      <link href="http://www.halitalptekin.com/feeds/all.rss.xml" type="application/rss+xml" rel="alternate"
+        title="{ Halit Alptekin } RSS Feed" />
   
-        </div>
-        
-        <div class="span3">
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
 
-            <div class="well" style="padding: 8px 0; background-color: #FBFBFB;">
-            <ul class="nav nav-list">
-                <li class="nav-header"> 
-                Site
-                </li>
-            
-                <li><a href="../archives.html">Archives</a>
-                <li><a href="../tags.html">Tags</a>
-                <li><a href="../feeds/all.atom.xml" rel="alternate">Atom feed</a></li>
-                                <li><a href="../feeds/all.rss.xml" rel="alternate">RSS feed</a></li>
-                                 <li><a href="../sitemap.xml">Sitemap</a>
-            </ul>
-            </div>
+  <link href="../favicon.png" rel="icon">
+  <link href="../theme/css/main.css" media="screen, projection"
+        rel="stylesheet" type="text/css">
+  <script src="../theme/js/modernizr-2.0.js"></script>
+  <script src="../theme/js/ender.js"></script>
+  <script src="../theme/js/octopress.js" type="text/javascript"></script>
 
+  <link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic"
+        rel="stylesheet" type="text/css">
+  <link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic"
+        rel="stylesheet" type="text/css">
+</head>
+<body>
+  <header role="banner"><hgroup>
+  <h1><a href="../">{ Halit Alptekin }</a></h1>
+  </hgroup></header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  <li><a href="http://www.halitalptekin.com/feeds/all.atom.xml" rel="subscribe-rss">Atom</a></li>
+    <li><a href="http://www.halitalptekin.com/feeds/all.rss.xml" rel="subscribe-rss">Rss</a></li>
+  </ul>
 
-                        <div class="well" style="padding: 8px 0; background-color: #FBFBFB;">
-            <ul class="nav nav-list">
-                <li class="nav-header"> 
-                Categories
-                </li>
-                
-                                <li><a href="../category/tasarim.html">tasarim</a></li>
-                                <li><a href="../category/server.html">server</a></li>
-                                <li><a href="../category/python.html">python</a></li>
-                                <li><a href="../category/programlama.html">programlama</a></li>
-                                <li><a href="../category/linux.html">linux</a></li>
-                                <li><a href="../category/kisisel.html">kisisel</a></li>
-                                <li><a href="../category/internet.html">internet</a></li>
-                                <li><a href="../category/guvenlik.html">guvenlik</a></li>
-                                <li><a href="../category/genel.html">genel</a></li>
-                                <li><a href="../category/eglence.html">eglence</a></li>
-                                <li><a href="../category/django.html">django</a></li>
-                                <li><a href="../category/compsci.html">compsci</a></li>
-                                <li><a href="../category/arduino.html">arduino</a></li>
-                                   
-            </ul>
-            </div>
-            
+<!-- TODO: add search here
+<form action="" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="q" value="site:.." />
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+-->
 
-                        <div class="well" style="padding: 8px 0; background-color: #FBFBFB;">
-            <ul class="nav nav-list">
-                <li class="nav-header"> 
-                Links
-                </li>
-            
-                            <li><a href="http://www.python.org">Python</a></li>
-                        </ul>
-            </div>
-            
+<ul class="main-navigation">
+  <li><a href="../">Blog</a></li>
+        <li><a href="../pages/about-me.html">About Me</a></li>
+    <li><a href="../pages/contact.html">Contact</a></li>
+  <!-- TODO: add categories here? -->
+  </ul></nav>
+  <div id="main">
+    <div id="content">
+      <div class="blog-index">
+    	  		<article>
+    		<header>
+          <h1 class="entry-title">
+        <a href="../djangoda-modellere-giris.html">Django'da Modellere Giriş</a>
+      </h1>
+          <p class="meta"><time datetime="2012-06-19T00:00:00" pubdate>Jun 19, 2012</time></p>
+</header>
 
-                        <div class="social">
-            <div class="well" style="padding: 8px 0; background-color: #FBFBFB;">
-            <ul class="nav nav-list">
-                <li class="nav-header"> 
-                Social
-                </li>
-           
-                                <li><a href="http://twitter.com/halitalptekin">twitter</a></li>
-                                <li><a href="http://github.com/halitalptekin">github</a></li>
-                                <li><a href="http://stackoverflow.com/users/1151618/halit-alptekin">stackoverflow</a></li>
-                                <li><a href="http://tr.linkedin.com/in/halitalptekin">linkedin</a></li>
-                            </ul>
-            </div>
-            </div>
-            
-                        <div class="well" style="padding: 8px 0; background-color: #FBFBFB;">
-            <ul class="nav nav-list">
-                <li class="nav-header"> 
-                Ads
-                </li>
+  <div class="entry-content"><p>Django'ya bir sure ara verdikten sonra bana gore Django'nun temelini oluşturan model kavramından bahsetmek istiyorum.Modeller Django'nun veritabanı ile bağlantısı oluşturan kısımlar diye duşunebiliriz.Yani veritabanında oluşmasını istediğimiz tabloları,kolonları model olarak tanımlayacağız ve Django bunları direk olarak veritabanına ekleme yapıcak.Bu sayede bir daha veritabanında sql ...</p></div>
+  <footer>
+    <a rel="full-article" href="../djangoda-modellere-giris.html">Read On &crarr;</a>
+  </footer>
+  		</article>
+  	  	<div class="pagination">
+  
+    <br />
+</div>  </div>
+      <aside class="sidebar">
+  <section>
+    <h1>Recent Posts</h1>
+    <ul id="recent_posts">
+            <li class="post">
+          <a href="../djangoda-modellere-giris.html">Django'da Modellere Giriş</a>
+      </li>
+          </ul>
+  </section>
+    <section>
+      
+    <h1>Categories</h1>
+    <ul id="recent_posts">
+              <li><a href="../category/tasarim.html">tasarim</a></li>
+              <li><a href="../category/server.html">server</a></li>
+              <li><a href="../category/python.html">python</a></li>
+              <li><a href="../category/programlama.html">programlama</a></li>
+              <li><a href="../category/linux.html">linux</a></li>
+              <li><a href="../category/kisisel.html">kisisel</a></li>
+              <li><a href="../category/internet.html">internet</a></li>
+              <li><a href="../category/guvenlik.html">guvenlik</a></li>
+              <li><a href="../category/genel.html">genel</a></li>
+              <li><a href="../category/eglence.html">eglence</a></li>
+              <li><a href="../category/django.html">django</a></li>
+              <li><a href="../category/compsci.html">compsci</a></li>
+              <li><a href="../category/arduino.html">arduino</a></li>
+          </ul>
+  </section>
+   
 
-                                <li><a href="https://www.camekan.com/adwords/" title="Google Adwords"><img src="/media/reklam/camekancom.jpg" alt="Google Adwords" title="Google Adwords"></a>
-                </li>
-                                <li><a href="http://www.dugunajans.com/" title="düğün fotoğrafçısı"><img src="/media/reklam/dugunajanscom.jpg" alt="düğün fotoğrafçısı" title="düğün fotoğrafçısı"></a>
-                </li>
-                            </ul>
-            </div>
-            
-        </div>  
-    </div>     </div> 
-<footer>
-	<hr>
-	<p><a href='http://www.halitalptekin.com'>Halit Alptekin Personal Blog</a> &copy; 2012</p>
-</footer>
+    
+    <section>
+        <h1>Social</h1>
+        <ul>
+            <li><a href="http://www.halitalptekin.com/feeds/all.rss.xml" type="application/rss+xml" rel="alternate">rss</a></li>
+                    <li><a href="http://twitter.com/halitalptekin" target="_blank">twitter</a></li>
+                    <li><a href="http://github.com/halitalptekin" target="_blank">github</a></li>
+                    <li><a href="http://stackoverflow.com/users/1151618/halit-alptekin" target="_blank">stackoverflow</a></li>
+                    <li><a href="http://tr.linkedin.com/in/halitalptekin" target="_blank">linkedin</a></li>
+                </ul>
+    </section>
+      <section>
+        <h1>Blogroll</h1>
+        <ul>
+                    <li><a href="http://www.python.org" target="_blank">Python</a></li>
+                </ul>
+    </section>
 
-</div> <!-- /container -->
-<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
-<script src="http://twitter.github.com/bootstrap/assets/js/bootstrap-collapse.js"></script>
-<script>var _gaq=[['_setAccount','UA-24728900-1'],['_trackPageview']];(function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];g.src='//www.google-analytics.com/ga.js';s.parentNode.insertBefore(g,s)}(document,'script'))</script>
+      <section>
+        <h1>Ads</h1>
+        <ul id="recent_posts">
+                            <li><a href="https://www.camekan.com/adwords/" title="Google Adwords"><img src="/media/reklam/camekancom.jpg" alt="Google Adwords" title="Google Adwords"></a></li>
+                            <li><a href="http://www.dugunajans.com/" title="düğün fotoğrafçısı"><img src="/media/reklam/dugunajanscom.jpg" alt="düğün fotoğrafçısı" title="düğün fotoğrafçısı"></a></li>
+                    </ul>
+    </section>
+  
+</aside>    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2013 - halit -
+  <span class="credit">Powered by <a href="http://getpelican.com">Pelican</a></span>
+</p></footer>
+      <script type="text/javascript">
+	    var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+	    document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+    </script>
+    <script type="text/javascript">
+	    try {
+	        var pageTracker = _gat._getTracker("UA-24728900-1");
+	    pageTracker._trackPageview();
+	    } catch(err) {}
+	</script>
+	<script type="text/javascript">
+	  var disqus_shortname = 'halitalptekin';
+	  (function() {
+	    var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+	    dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
+	    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+	   })();
+	</script>
 </body>
 </html>

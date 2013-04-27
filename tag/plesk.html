@@ -1,212 +1,158 @@
 <!DOCTYPE html>
-<html lang="en">
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
-    <meta charset="utf-8">
-    <title>Halit Alptekin Personal Blog</title>
-    <meta name="description" content="Programming and Life Blog Of Halit Alptekin. Karadeniz Technical University Computer Engineering Student.">
-    <meta name="keywords" content="programlama, blog, personal blog, linux, python, django, php, bootstrap, seo, bilgisayar muhendisligi, ktu, karadeniz teknik universitesi, programming">
-    <meta name="author" content="halit">
-    <meta name="robots" content="index, follow, all"/>
+  <meta charset="utf-8">
+  <title>{ Halit Alptekin } - plesk</title>
 
-    <!-- Le HTML5 shim, for IE6-8 support of HTML elements -->
-    <!--[if lt IE 9]>
-    <script src="../theme/html5.js"></script>
-    <![endif]-->
+  <meta name="author" content="halit">
 
-    <!-- Le styles -->
-    <link href="../theme/bootstrap.min.css" rel="stylesheet">
-    <link href="../theme/bootstrap.min.responsive.css" rel="stylesheet">
-    <link href="../theme/local.css" rel="stylesheet">
-    <link href="../theme/pygments.css" rel="stylesheet">
-
-</head>
-
-<body>
-
-<div class="navbar">
-    <div class="navbar-inner">
-    <div class="container">
-
-         <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
-             <span class="icon-bar"></span>
-             <span class="icon-bar"></span>
-             <span class="icon-bar"></span>
-         </a>
-
-        <a class="brand" href="..">Halit Alptekin Personal Blog</a>
-
-        <div class="nav-collapse">
-        <ul class="nav">
-                    
-        <li><a href="../pages/about-me.html">About Me</a></li>
-	    <li><a href="../pages/contact.html">Contact</a></li>
-        </ul>
-        </div>
-        
-    </div>
-    </div>
-</div>
-
-<div class="container">
-    <div class="content">
-    <div class="row">
-
-        <div class="span9">
-                
-        
-
-    <div class='article'>
-        <div class="content-title">
-            <a href="../ajenti-panel.html"><h1>Ajenti Panel</h1></a>
-            Jun 08, 2012
-
-by <a class="url fn" href="../author/halit.html">halit</a>
- 
-
-in <a href="../category/server.html">server</a>
-
- 
-    tagged <a href="../tag/admin-panel.html">admin panel</a> <a href="../tag/ajenti.html">ajenti</a> <a href="../tag/ajenti-panel.html">ajenti panel</a> <a href="../tag/centos.html">centos</a> <a href="../tag/cpanel.html">cpanel</a> <a href="../tag/debian.html">debian</a> <a href="../tag/plesk.html">plesk</a>  
-        </div>
-        
-        <div><p>Server yonetimi gerçekten zor bir iştir.Çunku uğraşacağınız,kontrol etmeniz gereken birçok şey vardır.İşte bu durumları kolaylaştırmak için server yonetim panelleri uretilmiştir.Bunların en bilinenleri Cpanel,Plesk ve Directadmindir.Bunların yanına webmin,virtualmin de eklenebilir.İşte bu paneller çoğaldıkça aralarındaki rekabette artmaya devam ediyor.Cpanel ve Plesk kullanım kolaylığı ile şu anda ulkemizde ve dunyada favori durumundalar.Ama ilerleyen zamanlarda ne olur tam bilinmez.</p>
-<p>Bende serverı ilk aldığım zamanlar yonetim paneli kurmayı pek duşunmuyordum.Hatta aldığım yerde bana plesk kurabileceklerini soylediklerinde gerek olmadığı sadece boş bir şekilde almak istediğimi soylemiştim.Ama zamanla işlerin biraz zorlaştığını gorunce uygun bir panel bulmam gerektiğini duşundum ve arayışlara başladım.Bu arayışımın en temel faktoru kesinlikle kaynak kullanımı oldu.Her konuda olduğu gibi burada da en az kaynak tuketen paneli aradım.Çunku tek bir site için plesk veya cpanel kurmak anlamsız geliyordu.Uzun bir arayıştan sonra neredeyse tam olarak istediğim bir panel olan Ajenti ile tanıştım.Gerçektende hem az kaynak kullanımı ve harika gorselliği ile beni etkiledi.Eğer sizde serverınızda çok fazla site barındırmıyorsanız ve az kaynak tuketen bir panel arıyorsanız kesinlikle ajantiye goz atın derim.</p>
-<p>Ajenti hakkında aklınızda ufak bir ipucu oluşması için aşağıdaki resimlere bakmanız yeterli.Eğer hoşunuza giderse kurulum aşamasına geçebilirsiniz.</p>
-<p><strong>Giriş Paneli</strong></p>
-<p><a href="http://ajenti.org/misc/features/1.png"><img alt="Ajenti Dashboard" src="http://ajenti.org/misc/features/1.png" /></a></p>
-<p><strong>Firewall Ayarları</strong></p>
-<p><strong><a href="http://ajenti.org/misc/features/2.png"><img alt="Firewall Ayarlari" src="http://ajenti.org/misc/features/2.png" /></a></strong></p>
-<p><strong>Editor</strong></p>
-<p><strong><a href="http://ajenti.org/misc/features/8.png"><img alt="Ajenti Editor" src="http://ajenti.org/misc/features/8.png" /></a></strong></p>
-<p><strong>Debian Kurulumu</strong></p>
-<p>Eğer Debian 5'e kuracaksanız serverınızda Python 2.6 olması gerekmektedir.Debian 6'ya kurmak isterseniz herhangi bir şey yuklemenize gerek yok.Direk aşağıdaki komutları çalıştırarak kurulum yapabilirsiniz.</p>
-<div class="codehilite"><pre><span class="n">deb</span> <span class="n">http</span><span class="o">:</span><span class="c1">//repo.ajenti.org/debian main main</span>
-<span class="n">wget</span> <span class="n">http</span><span class="o">:</span><span class="c1">//repo.ajenti.org/debian/key -O- | sudo apt-key add</span>
-</pre></div>
-
-
-<p>Panel kurulduğunda default kullanıcı adı ve şifresi admin'dir.Panel portu ise :8000 dir.İlk girişte şifrenizi değiştirmenizi isteyecektir.</p>
-<p><strong>FreeBSD Kurulumu</strong></p>
-<p><a href="http://repo.ajenti.org/port.tar.gz">Buradaki</a> arşivi indirip dosyalarını çıkartın.Dosyaları çıkarttığınız klasore geçerek <strong>make install</strong> komutuyla kurulumu başlatabilirsiniz.</p>
-<p><strong>CentOS Kurulumu</strong></p>
-<p>Öncelikle <strong>/etc/yum.repos.d/ajenti.repo</strong> dosyasını oluşturup içine aşağıdaki satırları yazıyoruz.</p>
-<div class="codehilite"><pre><span class="k">[ajenti]</span>
-<span class="na">name</span><span class="o">=</span><span class="s">Ajenti</span>
-<span class="na">baseurl</span><span class="o">=</span><span class="s">http://repo.ajenti.org/centos/$releasever/$basearch/</span>
-<span class="na">gpgcheck</span><span class="o">=</span><span class="s">0</span>
-</pre></div>
-
-
-<p>Daha sonra <strong>yum install ajenti</strong> diyerek kurulumu başlatabiliriz.Debian'da olduğu girip standart port 8000,kullanıcı adı ve şifre de admindir.</p>
-<p>Bunların yanında Arch ve Gentoo dağıtımlarına da kurulum yapabilirsiniz.Bunlara <a href="http://ajenti.org">Ajenti</a>'nin resmi sitesinden ulaşabilirsiniz.Ajenti ile ilgili <a href="http://wiki.ajenti.org/">Wiki</a> sayfasına ve <a href="https://bugs.launchpad.net/ajenti">bug</a> merkezine bakmayı da unutmayınız.</p>
-<p>Kurulum ile ilgili aşağıdaki videoyu da izleyebilirsiniz.</p></div>
-        <hr />
-    </div>
-		
-            <div class="pagination">
-<ul>
-    <li class="prev disabled"><a href="#">&larr; Previous</a></li>
-
-    <li class="active"><a href="../tag/plesk.html">1</a></li>
-
-    <li class="next disabled"><a href="#">&rarr; Next</a></li>
-
-</ul>
-</div>    
- 
+    <link href="http://www.halitalptekin.com/feeds/all.atom.xml" type="application/atom+xml" rel="alternate"
+        title="{ Halit Alptekin } Atom Feed" />
+      <link href="http://www.halitalptekin.com/feeds/all.rss.xml" type="application/rss+xml" rel="alternate"
+        title="{ Halit Alptekin } RSS Feed" />
   
-        </div>
-        
-        <div class="span3">
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
 
-            <div class="well" style="padding: 8px 0; background-color: #FBFBFB;">
-            <ul class="nav nav-list">
-                <li class="nav-header"> 
-                Site
-                </li>
-            
-                <li><a href="../archives.html">Archives</a>
-                <li><a href="../tags.html">Tags</a>
-                <li><a href="../feeds/all.atom.xml" rel="alternate">Atom feed</a></li>
-                                <li><a href="../feeds/all.rss.xml" rel="alternate">RSS feed</a></li>
-                                 <li><a href="../sitemap.xml">Sitemap</a>
-            </ul>
-            </div>
+  <link href="../favicon.png" rel="icon">
+  <link href="../theme/css/main.css" media="screen, projection"
+        rel="stylesheet" type="text/css">
+  <script src="../theme/js/modernizr-2.0.js"></script>
+  <script src="../theme/js/ender.js"></script>
+  <script src="../theme/js/octopress.js" type="text/javascript"></script>
 
+  <link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic"
+        rel="stylesheet" type="text/css">
+  <link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic"
+        rel="stylesheet" type="text/css">
+</head>
+<body>
+  <header role="banner"><hgroup>
+  <h1><a href="../">{ Halit Alptekin }</a></h1>
+  </hgroup></header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  <li><a href="http://www.halitalptekin.com/feeds/all.atom.xml" rel="subscribe-rss">Atom</a></li>
+    <li><a href="http://www.halitalptekin.com/feeds/all.rss.xml" rel="subscribe-rss">Rss</a></li>
+  </ul>
 
-                        <div class="well" style="padding: 8px 0; background-color: #FBFBFB;">
-            <ul class="nav nav-list">
-                <li class="nav-header"> 
-                Categories
-                </li>
-                
-                                <li><a href="../category/tasarim.html">tasarim</a></li>
-                                <li><a href="../category/server.html">server</a></li>
-                                <li><a href="../category/python.html">python</a></li>
-                                <li><a href="../category/programlama.html">programlama</a></li>
-                                <li><a href="../category/linux.html">linux</a></li>
-                                <li><a href="../category/kisisel.html">kisisel</a></li>
-                                <li><a href="../category/internet.html">internet</a></li>
-                                <li><a href="../category/guvenlik.html">guvenlik</a></li>
-                                <li><a href="../category/genel.html">genel</a></li>
-                                <li><a href="../category/eglence.html">eglence</a></li>
-                                <li><a href="../category/django.html">django</a></li>
-                                <li><a href="../category/compsci.html">compsci</a></li>
-                                <li><a href="../category/arduino.html">arduino</a></li>
-                                   
-            </ul>
-            </div>
-            
+<!-- TODO: add search here
+<form action="" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="q" value="site:.." />
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+-->
 
-                        <div class="well" style="padding: 8px 0; background-color: #FBFBFB;">
-            <ul class="nav nav-list">
-                <li class="nav-header"> 
-                Links
-                </li>
-            
-                            <li><a href="http://www.python.org">Python</a></li>
-                        </ul>
-            </div>
-            
+<ul class="main-navigation">
+  <li><a href="../">Blog</a></li>
+        <li><a href="../pages/about-me.html">About Me</a></li>
+    <li><a href="../pages/contact.html">Contact</a></li>
+  <!-- TODO: add categories here? -->
+  </ul></nav>
+  <div id="main">
+    <div id="content">
+      <div class="blog-index">
+    	  		<article>
+    		<header>
+          <h1 class="entry-title">
+        <a href="../ajenti-panel.html">Ajenti Panel</a>
+      </h1>
+          <p class="meta"><time datetime="2012-06-08T00:00:00" pubdate>Jun 08, 2012</time></p>
+</header>
 
-                        <div class="social">
-            <div class="well" style="padding: 8px 0; background-color: #FBFBFB;">
-            <ul class="nav nav-list">
-                <li class="nav-header"> 
-                Social
-                </li>
-           
-                                <li><a href="http://twitter.com/halitalptekin">twitter</a></li>
-                                <li><a href="http://github.com/halitalptekin">github</a></li>
-                                <li><a href="http://stackoverflow.com/users/1151618/halit-alptekin">stackoverflow</a></li>
-                                <li><a href="http://tr.linkedin.com/in/halitalptekin">linkedin</a></li>
-                            </ul>
-            </div>
-            </div>
-            
-                        <div class="well" style="padding: 8px 0; background-color: #FBFBFB;">
-            <ul class="nav nav-list">
-                <li class="nav-header"> 
-                Ads
-                </li>
+  <div class="entry-content"><p>Server yonetimi gerçekten zor bir iştir.Çunku uğraşacağınız,kontrol etmeniz gereken birçok şey vardır.İşte bu durumları kolaylaştırmak için server yonetim panelleri uretilmiştir.Bunların en bilinenleri Cpanel,Plesk ve Directadmindir.Bunların yanına webmin,virtualmin de eklenebilir.İşte bu paneller çoğaldıkça aralarındaki rekabette artmaya devam ediyor.Cpanel ve Plesk kullanım kolaylığı ...</p></div>
+  <footer>
+    <a rel="full-article" href="../ajenti-panel.html">Read On &crarr;</a>
+  </footer>
+  		</article>
+  	  	<div class="pagination">
+  
+    <br />
+</div>  </div>
+      <aside class="sidebar">
+  <section>
+    <h1>Recent Posts</h1>
+    <ul id="recent_posts">
+            <li class="post">
+          <a href="../ajenti-panel.html">Ajenti Panel</a>
+      </li>
+          </ul>
+  </section>
+    <section>
+      
+    <h1>Categories</h1>
+    <ul id="recent_posts">
+              <li><a href="../category/tasarim.html">tasarim</a></li>
+              <li><a href="../category/server.html">server</a></li>
+              <li><a href="../category/python.html">python</a></li>
+              <li><a href="../category/programlama.html">programlama</a></li>
+              <li><a href="../category/linux.html">linux</a></li>
+              <li><a href="../category/kisisel.html">kisisel</a></li>
+              <li><a href="../category/internet.html">internet</a></li>
+              <li><a href="../category/guvenlik.html">guvenlik</a></li>
+              <li><a href="../category/genel.html">genel</a></li>
+              <li><a href="../category/eglence.html">eglence</a></li>
+              <li><a href="../category/django.html">django</a></li>
+              <li><a href="../category/compsci.html">compsci</a></li>
+              <li><a href="../category/arduino.html">arduino</a></li>
+          </ul>
+  </section>
+   
 
-                                <li><a href="https://www.camekan.com/adwords/" title="Google Adwords"><img src="/media/reklam/camekancom.jpg" alt="Google Adwords" title="Google Adwords"></a>
-                </li>
-                                <li><a href="http://www.dugunajans.com/" title="düğün fotoğrafçısı"><img src="/media/reklam/dugunajanscom.jpg" alt="düğün fotoğrafçısı" title="düğün fotoğrafçısı"></a>
-                </li>
-                            </ul>
-            </div>
-            
-        </div>  
-    </div>     </div> 
-<footer>
-	<hr>
-	<p><a href='http://www.halitalptekin.com'>Halit Alptekin Personal Blog</a> &copy; 2012</p>
-</footer>
+    
+    <section>
+        <h1>Social</h1>
+        <ul>
+            <li><a href="http://www.halitalptekin.com/feeds/all.rss.xml" type="application/rss+xml" rel="alternate">rss</a></li>
+                    <li><a href="http://twitter.com/halitalptekin" target="_blank">twitter</a></li>
+                    <li><a href="http://github.com/halitalptekin" target="_blank">github</a></li>
+                    <li><a href="http://stackoverflow.com/users/1151618/halit-alptekin" target="_blank">stackoverflow</a></li>
+                    <li><a href="http://tr.linkedin.com/in/halitalptekin" target="_blank">linkedin</a></li>
+                </ul>
+    </section>
+      <section>
+        <h1>Blogroll</h1>
+        <ul>
+                    <li><a href="http://www.python.org" target="_blank">Python</a></li>
+                </ul>
+    </section>
 
-</div> <!-- /container -->
-<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
-<script src="http://twitter.github.com/bootstrap/assets/js/bootstrap-collapse.js"></script>
-<script>var _gaq=[['_setAccount','UA-24728900-1'],['_trackPageview']];(function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];g.src='//www.google-analytics.com/ga.js';s.parentNode.insertBefore(g,s)}(document,'script'))</script>
+      <section>
+        <h1>Ads</h1>
+        <ul id="recent_posts">
+                            <li><a href="https://www.camekan.com/adwords/" title="Google Adwords"><img src="/media/reklam/camekancom.jpg" alt="Google Adwords" title="Google Adwords"></a></li>
+                            <li><a href="http://www.dugunajans.com/" title="düğün fotoğrafçısı"><img src="/media/reklam/dugunajanscom.jpg" alt="düğün fotoğrafçısı" title="düğün fotoğrafçısı"></a></li>
+                    </ul>
+    </section>
+  
+</aside>    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2013 - halit -
+  <span class="credit">Powered by <a href="http://getpelican.com">Pelican</a></span>
+</p></footer>
+      <script type="text/javascript">
+	    var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+	    document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+    </script>
+    <script type="text/javascript">
+	    try {
+	        var pageTracker = _gat._getTracker("UA-24728900-1");
+	    pageTracker._trackPageview();
+	    } catch(err) {}
+	</script>
+	<script type="text/javascript">
+	  var disqus_shortname = 'halitalptekin';
+	  (function() {
+	    var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+	    dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
+	    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+	   })();
+	</script>
 </body>
 </html>

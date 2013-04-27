@@ -1,291 +1,158 @@
 <!DOCTYPE html>
-<html lang="en">
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
-    <meta charset="utf-8">
-    <title>Halit Alptekin Personal Blog</title>
-    <meta name="description" content="Programming and Life Blog Of Halit Alptekin. Karadeniz Technical University Computer Engineering Student.">
-    <meta name="keywords" content="programlama, blog, personal blog, linux, python, django, php, bootstrap, seo, bilgisayar muhendisligi, ktu, karadeniz teknik universitesi, programming">
-    <meta name="author" content="halit">
-    <meta name="robots" content="index, follow, all"/>
+  <meta charset="utf-8">
+  <title>{ Halit Alptekin } - python turtle</title>
 
-    <!-- Le HTML5 shim, for IE6-8 support of HTML elements -->
-    <!--[if lt IE 9]>
-    <script src="../theme/html5.js"></script>
-    <![endif]-->
+  <meta name="author" content="halit">
 
-    <!-- Le styles -->
-    <link href="../theme/bootstrap.min.css" rel="stylesheet">
-    <link href="../theme/bootstrap.min.responsive.css" rel="stylesheet">
-    <link href="../theme/local.css" rel="stylesheet">
-    <link href="../theme/pygments.css" rel="stylesheet">
-
-</head>
-
-<body>
-
-<div class="navbar">
-    <div class="navbar-inner">
-    <div class="container">
-
-         <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
-             <span class="icon-bar"></span>
-             <span class="icon-bar"></span>
-             <span class="icon-bar"></span>
-         </a>
-
-        <a class="brand" href="..">Halit Alptekin Personal Blog</a>
-
-        <div class="nav-collapse">
-        <ul class="nav">
-                    
-        <li><a href="../pages/about-me.html">About Me</a></li>
-	    <li><a href="../pages/contact.html">Contact</a></li>
-        </ul>
-        </div>
-        
-    </div>
-    </div>
-</div>
-
-<div class="container">
-    <div class="content">
-    <div class="row">
-
-        <div class="span9">
-                
-        
-
-    <div class='article'>
-        <div class="content-title">
-            <a href="../python-turtle-modulu.html"><h1>Python Turtle Modülü</h1></a>
-            Sep 12, 2012
-
-by <a class="url fn" href="../author/halit.html">halit</a>
- 
-
-in <a href="../category/python.html">python</a>
-
- 
-    tagged <a href="../tag/python.html">python</a> <a href="../tag/python-kutuphanesi.html">python kütüphanesi</a> <a href="../tag/python-turtle.html">python turtle</a> <a href="../tag/python-turtle-lib.html">python turtle lib</a>  
-        </div>
-        
-        <div><p>Son gunlerde Python ile birlikte gelen modullere daha yakından bakıyorum. Aralarında bazen çok guzel araçlar çıkabiliyor. Mesela benim bugun gostermek istediğim Turtle modulunu daha once hiç gormemiştim. Eminim birçok kişi de bu kutuphaneden habersizdir. Python ile birlikte gelen Turtle modulu ile ekrana istediğiniz yazıyı yazmanızdan tutunda birçok resim ve şekil çizebilirsiniz. Ayrıcana bu modul algoritma kurma mantığını geliştirmekte de onemli bir yere sahip. Yani eğlenirken oğretici de olabiliyor.</p>
-<p>Bu modulu kullanmanız için fazladan bir modul yuklemenize gerek yok. Python'un bilgisayarınızda kurulu olması yeterli.</p>
-<div class="codehilite"><pre><span class="kn">import</span> <span class="nn">turtle</span>
-
-<span class="n">kaplumbagam</span> <span class="o">=</span> <span class="n">turtle</span><span class="o">.</span><span class="n">Turtle</span><span class="p">()</span> <span class="c"># ornekliyoruz</span>
-<span class="n">kaplumbagam</span><span class="o">.</span><span class="n">circle</span><span class="p">(</span><span class="mi">50</span><span class="p">)</span> <span class="c"># 50 derece cember ciziyoruz</span>
-<span class="n">turtle</span><span class="o">.</span><span class="n">getscreen</span><span class="p">()</span><span class="o">.</span><span class="n">_root</span><span class="o">.</span><span class="n">mainloop</span><span class="p">()</span> <span class="c"># cemberi ekranda tutuyoruz</span>
-</pre></div>
-
-
-<p>Ekrana bir daire çizmek ve bunu ekranda tutmak bu kadar basit. Bu kodu çalıştırdığımızda aşağıdaki gibi bir gorunum elde edeceksiniz.</p>
-<p><img alt="Python Turtle Graphics" src="http://www.halitalptekin.com/media/upload/python-turtle-lib.png" /></p>
-<p>Mesela burada ekrana daireyi çizen ok yerine uçgen kare veya kaplumbağa kullanabiliriz.Bunun için ilk orneklememizi yaptığımız satırda shape isminde tanımlama yapıyoruz.</p>
-<div class="codehilite"><pre><span class="kn">import</span> <span class="nn">turtle</span>
-
-<span class="n">kaplumbagam</span> <span class="o">=</span> <span class="n">turtle</span><span class="o">.</span><span class="n">Turtle</span><span class="p">(</span><span class="n">shape</span><span class="o">=</span><span class="s">&quot;turtle&quot;</span><span class="p">)</span> <span class="c"># ornekliyoruz</span>
-<span class="n">kaplumbagam</span><span class="o">.</span><span class="n">circle</span><span class="p">(</span><span class="mi">50</span><span class="p">)</span> <span class="c"># 50 derece cember ciziyoruz</span>
-<span class="n">turtle</span><span class="o">.</span><span class="n">getscreen</span><span class="p">()</span><span class="o">.</span><span class="n">_root</span><span class="o">.</span><span class="n">mainloop</span><span class="p">()</span> <span class="c"># cemberi ekranda tutuyoruz</span>
-</pre></div>
-
-
-<p>Ve kodumuzu çalıştırdığımızda şirin kaplumbağımız ekrana dairemizi çiziyor. Shape kısmında <strong>arrow</strong>, <strong>turtle</strong>, <strong>circle</strong>, <strong>square</strong>, <strong>triangle</strong>, <strong>classic</strong> gibi değerleri kullanabilirsiniz.</p>
-<p><img alt="Python Turtle Graphics Shape" src="http://www.halitalptekin.com/media/upload/python-turtle-lib-shape.png" /></p>
-<p>Şimdi de yukarıdaki kodumuzu birazcık geliştirip olimpiyat sembolu yapalım.</p>
-<div class="codehilite"><pre><span class="kn">import</span> <span class="nn">turtle</span>
-
-<span class="n">kaplumbagam</span> <span class="o">=</span> <span class="n">turtle</span><span class="o">.</span><span class="n">Turtle</span><span class="p">(</span><span class="n">shape</span><span class="o">=</span><span class="s">&quot;turtle&quot;</span><span class="p">)</span>
-<span class="n">kaplumbagam</span><span class="o">.</span><span class="n">circle</span><span class="p">(</span><span class="mi">50</span><span class="p">)</span>
-
-<span class="n">kaplumbagam</span><span class="o">.</span><span class="n">penup</span><span class="p">()</span>
-<span class="n">kaplumbagam</span><span class="o">.</span><span class="n">setposition</span><span class="p">(</span><span class="o">-</span><span class="mi">120</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
-<span class="n">kaplumbagam</span><span class="o">.</span><span class="n">pendown</span><span class="p">()</span>
-<span class="n">kaplumbagam</span><span class="o">.</span><span class="n">circle</span><span class="p">(</span><span class="mi">50</span><span class="p">)</span>
-
-<span class="n">kaplumbagam</span><span class="o">.</span><span class="n">penup</span><span class="p">()</span>
-<span class="n">kaplumbagam</span><span class="o">.</span><span class="n">setposition</span><span class="p">(</span><span class="mi">60</span><span class="p">,</span><span class="mi">60</span><span class="p">)</span>
-<span class="n">kaplumbagam</span><span class="o">.</span><span class="n">pendown</span><span class="p">()</span>
-<span class="n">kaplumbagam</span><span class="o">.</span><span class="n">circle</span><span class="p">(</span><span class="mi">50</span><span class="p">)</span>
-
-<span class="n">kaplumbagam</span><span class="o">.</span><span class="n">penup</span><span class="p">()</span>
-<span class="n">kaplumbagam</span><span class="o">.</span><span class="n">setposition</span><span class="p">(</span><span class="o">-</span><span class="mi">60</span><span class="p">,</span> <span class="mi">60</span><span class="p">)</span>
-<span class="n">kaplumbagam</span><span class="o">.</span><span class="n">pendown</span><span class="p">()</span>
-<span class="n">kaplumbagam</span><span class="o">.</span><span class="n">circle</span><span class="p">(</span><span class="mi">50</span><span class="p">)</span>
-
-<span class="n">kaplumbagam</span><span class="o">.</span><span class="n">penup</span><span class="p">()</span>
-<span class="n">kaplumbagam</span><span class="o">.</span><span class="n">setposition</span><span class="p">(</span><span class="o">-</span><span class="mi">180</span><span class="p">,</span> <span class="mi">60</span><span class="p">)</span>
-<span class="n">kaplumbagam</span><span class="o">.</span><span class="n">pendown</span><span class="p">()</span>
-<span class="n">kaplumbagam</span><span class="o">.</span><span class="n">circle</span><span class="p">(</span><span class="mi">50</span><span class="p">)</span>
-
-<span class="n">turtle</span><span class="o">.</span><span class="n">getscreen</span><span class="p">()</span><span class="o">.</span><span class="n">_root</span><span class="o">.</span><span class="n">mainloop</span><span class="p">()</span>
-</pre></div>
-
-
-<p>Kodlara baktığınızda olayın ne kadar da basit olduğunu anlamışsınızdır umarım. Basitçe once kalemi kaldırıyoruz, istediğimiz pozisyona getiriyoruz, daha sonra kalemi indirip 50 derece dairemizi çiziyoruz.Ve aşağıdaki gorunum ortaya çıkıyor.</p>
-<p><img alt="Python Turtle Graphics Olympic Symbol" src="http://www.halitalptekin.com/media/upload/python-turtle-olympic-symbol.png" /></p>
-<p>Ve şimdi de bu kodumuzu biraz daha cancanlı hale getirip bir sınıf yapalım.Bu sınıf içerisinde hem daire çizecek hemde olimpiyat sembolunu oluşturacak bir fonksiyonumuz olsun.Bir de ekrana yazı yazacak fonksiyon ekleyelim.</p>
-<div class="codehilite"><pre><span class="kn">import</span> <span class="nn">turtle</span>
-
-<span class="c">########################################################################</span>
-<span class="k">class</span> <span class="nc">Kaplumbagam</span><span class="p">(</span><span class="n">turtle</span><span class="o">.</span><span class="n">Turtle</span><span class="p">):</span>
-
-    <span class="c">#----------------------------------------------------------------------</span>
-    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="n">turtle</span><span class="o">.</span><span class="n">Turtle</span><span class="o">.</span><span class="n">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">shape</span><span class="o">=</span><span class="s">&quot;turtle&quot;</span><span class="p">)</span>
-        <span class="n">screen</span> <span class="o">=</span> <span class="n">turtle</span><span class="o">.</span><span class="n">Screen</span><span class="p">()</span>
-        <span class="n">screen</span><span class="o">.</span><span class="n">bgcolor</span><span class="p">(</span><span class="s">&quot;lightgrey&quot;</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">pensize</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
-
-    <span class="c">#----------------------------------------------------------------------</span>
-    <span class="k">def</span> <span class="nf">daireCiz</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">renk</span><span class="p">,</span> <span class="n">derece</span><span class="o">=</span><span class="mi">50</span><span class="p">):</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">penup</span><span class="p">()</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">setposition</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">pendown</span><span class="p">()</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">color</span><span class="p">(</span><span class="n">renk</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">circle</span><span class="p">(</span><span class="n">derece</span><span class="p">)</span>
-
-    <span class="c">#----------------------------------------------------------------------</span>
-    <span class="k">def</span> <span class="nf">olimpiyatSemboluCiz</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="n">positions</span> <span class="o">=</span> <span class="p">[(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="s">&quot;blue&quot;</span><span class="p">),</span> <span class="p">(</span><span class="o">-</span><span class="mi">120</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="s">&quot;purple&quot;</span><span class="p">),</span> <span class="p">(</span><span class="mi">60</span><span class="p">,</span><span class="mi">60</span><span class="p">,</span> <span class="s">&quot;red&quot;</span><span class="p">),</span>
-                     <span class="p">(</span><span class="o">-</span><span class="mi">60</span><span class="p">,</span> <span class="mi">60</span><span class="p">,</span> <span class="s">&quot;yellow&quot;</span><span class="p">),</span> <span class="p">(</span><span class="o">-</span><span class="mi">180</span><span class="p">,</span> <span class="mi">60</span><span class="p">,</span> <span class="s">&quot;green&quot;</span><span class="p">)]</span>
-        <span class="k">for</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">renk</span> <span class="ow">in</span> <span class="n">positions</span><span class="p">:</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">daireCiz</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">renk</span><span class="p">)</span>
-
-        <span class="bp">self</span><span class="o">.</span><span class="n">yaziYaz</span><span class="p">()</span>
-
-    <span class="c">#----------------------------------------------------------------------</span>
-    <span class="k">def</span> <span class="nf">yaziYaz</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">penup</span><span class="p">()</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">setposition</span><span class="p">(</span><span class="o">-</span><span class="mi">60</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">setheading</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">pendown</span><span class="p">()</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">color</span><span class="p">(</span><span class="s">&quot;black&quot;</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s">&quot;Londra 2012&quot;</span><span class="p">,</span> <span class="n">font</span><span class="o">=</span><span class="p">(</span><span class="s">&quot;Arial&quot;</span><span class="p">,</span> <span class="mi">16</span><span class="p">,</span> <span class="s">&quot;bold&quot;</span><span class="p">))</span>
-
-<span class="k">if</span> <span class="n">__name__</span> <span class="o">==</span> <span class="s">&quot;__main__&quot;</span><span class="p">:</span>
-    <span class="n">t</span> <span class="o">=</span> <span class="n">Kaplumbagam</span><span class="p">()</span>
-    <span class="n">t</span><span class="o">.</span><span class="n">olimpiyatSemboluCiz</span><span class="p">()</span>
-    <span class="n">turtle</span><span class="o">.</span><span class="n">getscreen</span><span class="p">()</span><span class="o">.</span><span class="n">_root</span><span class="o">.</span><span class="n">mainloop</span><span class="p">()</span>
-</pre></div>
-
-
-<p>Kodlarımıza baktığınızda zaten ne yapmak istediğimi çok rahat anlayabilirsiniz.  <strong>init</strong> kısmında once gerekli orneklemelerimiz yaptık ve shape olarak kaplumbağa atadık.Arkaplan rengini açık kahverengi yapıp kalemin boyutunu 3'e getirdik. Daha sonra da gerekli fonksiyonlarımızı tanımladık. Kodumuzu çalıştırdığımız da aşağıdaki gibi bir gorunum elde etmeniz lazım.</p>
-<p><img alt="Python Turtle Olympic Symbol Shape" src="http://www.halitalptekin.com/media/upload/python-turtle-olympic-symbol-shape.png" /></p>
-<p>İnternette araştırma yaptığımda bazı yerlerde Turtle ile çok guzel çalışmalar yapılmış.Onlardan birkaç ornek vereyim.</p>
-<p><img alt="Python Turtle" src="https://github.com/downloads/ecylmz/file/askin_1.gif" /></p>
-<p><img alt="Python Turtle" src="https://github.com/downloads/ecylmz/file/askin_2.gif" /></p>
-<p><img alt="Python Turtle" src="https://github.com/downloads/ecylmz/file/cagatay_1.gif" /></p>
-<p><img alt="Python Turtle" src="https://github.com/downloads/ecylmz/file/talha_1.gif" /></p>
-<p>Hepsinin kodlarına <a href="https://github.com/19ceng/ceng104pro/wiki/Turtle">buradaki</a> sayfadan ulaşabilirsiniz.</p>
-<p>Kısacası Turtle kutuphanesi çok eğlenceli ve eğitici bir oneme sahip. Özellikle Python'a yeni başlayanların Python'a ısınması için kullanılabilir.</p></div>
-        <hr />
-    </div>
-		
-            <div class="pagination">
-<ul>
-    <li class="prev disabled"><a href="#">&larr; Previous</a></li>
-
-    <li class="active"><a href="../tag/python-turtle.html">1</a></li>
-
-    <li class="next disabled"><a href="#">&rarr; Next</a></li>
-
-</ul>
-</div>    
- 
+    <link href="http://www.halitalptekin.com/feeds/all.atom.xml" type="application/atom+xml" rel="alternate"
+        title="{ Halit Alptekin } Atom Feed" />
+      <link href="http://www.halitalptekin.com/feeds/all.rss.xml" type="application/rss+xml" rel="alternate"
+        title="{ Halit Alptekin } RSS Feed" />
   
-        </div>
-        
-        <div class="span3">
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
 
-            <div class="well" style="padding: 8px 0; background-color: #FBFBFB;">
-            <ul class="nav nav-list">
-                <li class="nav-header"> 
-                Site
-                </li>
-            
-                <li><a href="../archives.html">Archives</a>
-                <li><a href="../tags.html">Tags</a>
-                <li><a href="../feeds/all.atom.xml" rel="alternate">Atom feed</a></li>
-                                <li><a href="../feeds/all.rss.xml" rel="alternate">RSS feed</a></li>
-                                 <li><a href="../sitemap.xml">Sitemap</a>
-            </ul>
-            </div>
+  <link href="../favicon.png" rel="icon">
+  <link href="../theme/css/main.css" media="screen, projection"
+        rel="stylesheet" type="text/css">
+  <script src="../theme/js/modernizr-2.0.js"></script>
+  <script src="../theme/js/ender.js"></script>
+  <script src="../theme/js/octopress.js" type="text/javascript"></script>
 
+  <link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic"
+        rel="stylesheet" type="text/css">
+  <link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic"
+        rel="stylesheet" type="text/css">
+</head>
+<body>
+  <header role="banner"><hgroup>
+  <h1><a href="../">{ Halit Alptekin }</a></h1>
+  </hgroup></header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  <li><a href="http://www.halitalptekin.com/feeds/all.atom.xml" rel="subscribe-rss">Atom</a></li>
+    <li><a href="http://www.halitalptekin.com/feeds/all.rss.xml" rel="subscribe-rss">Rss</a></li>
+  </ul>
 
-                        <div class="well" style="padding: 8px 0; background-color: #FBFBFB;">
-            <ul class="nav nav-list">
-                <li class="nav-header"> 
-                Categories
-                </li>
-                
-                                <li><a href="../category/tasarim.html">tasarim</a></li>
-                                <li><a href="../category/server.html">server</a></li>
-                                <li><a href="../category/python.html">python</a></li>
-                                <li><a href="../category/programlama.html">programlama</a></li>
-                                <li><a href="../category/linux.html">linux</a></li>
-                                <li><a href="../category/kisisel.html">kisisel</a></li>
-                                <li><a href="../category/internet.html">internet</a></li>
-                                <li><a href="../category/guvenlik.html">guvenlik</a></li>
-                                <li><a href="../category/genel.html">genel</a></li>
-                                <li><a href="../category/eglence.html">eglence</a></li>
-                                <li><a href="../category/django.html">django</a></li>
-                                <li><a href="../category/compsci.html">compsci</a></li>
-                                <li><a href="../category/arduino.html">arduino</a></li>
-                                   
-            </ul>
-            </div>
-            
+<!-- TODO: add search here
+<form action="" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="q" value="site:.." />
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+-->
 
-                        <div class="well" style="padding: 8px 0; background-color: #FBFBFB;">
-            <ul class="nav nav-list">
-                <li class="nav-header"> 
-                Links
-                </li>
-            
-                            <li><a href="http://www.python.org">Python</a></li>
-                        </ul>
-            </div>
-            
+<ul class="main-navigation">
+  <li><a href="../">Blog</a></li>
+        <li><a href="../pages/about-me.html">About Me</a></li>
+    <li><a href="../pages/contact.html">Contact</a></li>
+  <!-- TODO: add categories here? -->
+  </ul></nav>
+  <div id="main">
+    <div id="content">
+      <div class="blog-index">
+    	  		<article>
+    		<header>
+          <h1 class="entry-title">
+        <a href="../python-turtle-modulu.html">Python Turtle Modülü</a>
+      </h1>
+          <p class="meta"><time datetime="2012-09-12T00:00:00" pubdate>Sep 12, 2012</time></p>
+</header>
 
-                        <div class="social">
-            <div class="well" style="padding: 8px 0; background-color: #FBFBFB;">
-            <ul class="nav nav-list">
-                <li class="nav-header"> 
-                Social
-                </li>
-           
-                                <li><a href="http://twitter.com/halitalptekin">twitter</a></li>
-                                <li><a href="http://github.com/halitalptekin">github</a></li>
-                                <li><a href="http://stackoverflow.com/users/1151618/halit-alptekin">stackoverflow</a></li>
-                                <li><a href="http://tr.linkedin.com/in/halitalptekin">linkedin</a></li>
-                            </ul>
-            </div>
-            </div>
-            
-                        <div class="well" style="padding: 8px 0; background-color: #FBFBFB;">
-            <ul class="nav nav-list">
-                <li class="nav-header"> 
-                Ads
-                </li>
+  <div class="entry-content"><p>Son gunlerde Python ile birlikte gelen modullere daha yakından bakıyorum. Aralarında bazen çok guzel araçlar çıkabiliyor. Mesela benim bugun gostermek istediğim Turtle modulunu daha once hiç gormemiştim. Eminim birçok kişi de bu kutuphaneden habersizdir. Python ile birlikte gelen Turtle modulu ile ekrana istediğiniz yazıyı yazmanızdan tutunda birçok resim ve şekil ...</p></div>
+  <footer>
+    <a rel="full-article" href="../python-turtle-modulu.html">Read On &crarr;</a>
+  </footer>
+  		</article>
+  	  	<div class="pagination">
+  
+    <br />
+</div>  </div>
+      <aside class="sidebar">
+  <section>
+    <h1>Recent Posts</h1>
+    <ul id="recent_posts">
+            <li class="post">
+          <a href="../python-turtle-modulu.html">Python Turtle Modülü</a>
+      </li>
+          </ul>
+  </section>
+    <section>
+      
+    <h1>Categories</h1>
+    <ul id="recent_posts">
+              <li><a href="../category/tasarim.html">tasarim</a></li>
+              <li><a href="../category/server.html">server</a></li>
+              <li><a href="../category/python.html">python</a></li>
+              <li><a href="../category/programlama.html">programlama</a></li>
+              <li><a href="../category/linux.html">linux</a></li>
+              <li><a href="../category/kisisel.html">kisisel</a></li>
+              <li><a href="../category/internet.html">internet</a></li>
+              <li><a href="../category/guvenlik.html">guvenlik</a></li>
+              <li><a href="../category/genel.html">genel</a></li>
+              <li><a href="../category/eglence.html">eglence</a></li>
+              <li><a href="../category/django.html">django</a></li>
+              <li><a href="../category/compsci.html">compsci</a></li>
+              <li><a href="../category/arduino.html">arduino</a></li>
+          </ul>
+  </section>
+   
 
-                                <li><a href="https://www.camekan.com/adwords/" title="Google Adwords"><img src="/media/reklam/camekancom.jpg" alt="Google Adwords" title="Google Adwords"></a>
-                </li>
-                                <li><a href="http://www.dugunajans.com/" title="düğün fotoğrafçısı"><img src="/media/reklam/dugunajanscom.jpg" alt="düğün fotoğrafçısı" title="düğün fotoğrafçısı"></a>
-                </li>
-                            </ul>
-            </div>
-            
-        </div>  
-    </div>     </div> 
-<footer>
-	<hr>
-	<p><a href='http://www.halitalptekin.com'>Halit Alptekin Personal Blog</a> &copy; 2012</p>
-</footer>
+    
+    <section>
+        <h1>Social</h1>
+        <ul>
+            <li><a href="http://www.halitalptekin.com/feeds/all.rss.xml" type="application/rss+xml" rel="alternate">rss</a></li>
+                    <li><a href="http://twitter.com/halitalptekin" target="_blank">twitter</a></li>
+                    <li><a href="http://github.com/halitalptekin" target="_blank">github</a></li>
+                    <li><a href="http://stackoverflow.com/users/1151618/halit-alptekin" target="_blank">stackoverflow</a></li>
+                    <li><a href="http://tr.linkedin.com/in/halitalptekin" target="_blank">linkedin</a></li>
+                </ul>
+    </section>
+      <section>
+        <h1>Blogroll</h1>
+        <ul>
+                    <li><a href="http://www.python.org" target="_blank">Python</a></li>
+                </ul>
+    </section>
 
-</div> <!-- /container -->
-<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
-<script src="http://twitter.github.com/bootstrap/assets/js/bootstrap-collapse.js"></script>
-<script>var _gaq=[['_setAccount','UA-24728900-1'],['_trackPageview']];(function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];g.src='//www.google-analytics.com/ga.js';s.parentNode.insertBefore(g,s)}(document,'script'))</script>
+      <section>
+        <h1>Ads</h1>
+        <ul id="recent_posts">
+                            <li><a href="https://www.camekan.com/adwords/" title="Google Adwords"><img src="/media/reklam/camekancom.jpg" alt="Google Adwords" title="Google Adwords"></a></li>
+                            <li><a href="http://www.dugunajans.com/" title="düğün fotoğrafçısı"><img src="/media/reklam/dugunajanscom.jpg" alt="düğün fotoğrafçısı" title="düğün fotoğrafçısı"></a></li>
+                    </ul>
+    </section>
+  
+</aside>    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2013 - halit -
+  <span class="credit">Powered by <a href="http://getpelican.com">Pelican</a></span>
+</p></footer>
+      <script type="text/javascript">
+	    var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+	    document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+    </script>
+    <script type="text/javascript">
+	    try {
+	        var pageTracker = _gat._getTracker("UA-24728900-1");
+	    pageTracker._trackPageview();
+	    } catch(err) {}
+	</script>
+	<script type="text/javascript">
+	  var disqus_shortname = 'halitalptekin';
+	  (function() {
+	    var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+	    dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
+	    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+	   })();
+	</script>
 </body>
 </html>

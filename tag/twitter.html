@@ -1,264 +1,174 @@
 <!DOCTYPE html>
-<html lang="en">
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
-    <meta charset="utf-8">
-    <title>Halit Alptekin Personal Blog</title>
-    <meta name="description" content="Programming and Life Blog Of Halit Alptekin. Karadeniz Technical University Computer Engineering Student.">
-    <meta name="keywords" content="programlama, blog, personal blog, linux, python, django, php, bootstrap, seo, bilgisayar muhendisligi, ktu, karadeniz teknik universitesi, programming">
-    <meta name="author" content="halit">
-    <meta name="robots" content="index, follow, all"/>
+  <meta charset="utf-8">
+  <title>{ Halit Alptekin } - twitter</title>
 
-    <!-- Le HTML5 shim, for IE6-8 support of HTML elements -->
-    <!--[if lt IE 9]>
-    <script src="../theme/html5.js"></script>
-    <![endif]-->
+  <meta name="author" content="halit">
 
-    <!-- Le styles -->
-    <link href="../theme/bootstrap.min.css" rel="stylesheet">
-    <link href="../theme/bootstrap.min.responsive.css" rel="stylesheet">
-    <link href="../theme/local.css" rel="stylesheet">
-    <link href="../theme/pygments.css" rel="stylesheet">
-
-</head>
-
-<body>
-
-<div class="navbar">
-    <div class="navbar-inner">
-    <div class="container">
-
-         <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
-             <span class="icon-bar"></span>
-             <span class="icon-bar"></span>
-             <span class="icon-bar"></span>
-         </a>
-
-        <a class="brand" href="..">Halit Alptekin Personal Blog</a>
-
-        <div class="nav-collapse">
-        <ul class="nav">
-                    
-        <li><a href="../pages/about-me.html">About Me</a></li>
-	    <li><a href="../pages/contact.html">Contact</a></li>
-        </ul>
-        </div>
-        
-    </div>
-    </div>
-</div>
-
-<div class="container">
-    <div class="content">
-    <div class="row">
-
-        <div class="span9">
-                
-        
-
-    <div class='article'>
-        <div class="content-title">
-            <a href="../twitter-uzerinden-server-kontrolu.html"><h1>Twitter Üzerinden Server Kontrolü</h1></a>
-            Jun 07, 2012
-
-by <a class="url fn" href="../author/halit.html">halit</a>
- 
-
-in <a href="../category/server.html">server</a>
-
- 
-    tagged <a href="../tag/python.html">python</a> <a href="../tag/server-management.html">server management</a> <a href="../tag/server-yonetimi.html">server yönetimi</a> <a href="../tag/tweepy.html">tweepy</a> <a href="../tag/twitter.html">twitter</a> <a href="../tag/twitter-sms.html">twitter sms</a>  
-        </div>
-        
-        <div><p>Twitter'ın sms ile iletim ozelliğini kullanarak serverımla ilgili bilgileri almak uzun suredir duşunduğum birşeydi.Onu bugun gerçekleştirdim.Artık serverımda olup bitenleri belirli aralıklarla cep telefonuma alıyorum.Bu gelen mesajlarda serverdaki toplam bağlantı,syn paketleri,ram ve cpu kullanımı gibi bilgiler içeriyor.Boylelikle herhangi bir olağandışı durumda hemen mudahale etme şansım oldu.Bu sistemi biraz daha geliştirip Twitter uzerinden sistemde komut çalıştırma hatta SmsBlog uygulaması yapacağım.Bunlarla ilgili çalışmalara da çok yakında başlamayı duşunuyorum.</p>
-<p>Bu sistem için tweepy kullandım.Bunu kurmak için oncelikle aşağıdaki komutu girmeniz lazım.</p>
-<div class="codehilite"><pre><span class="n">easy_install</span> <span class="n">tweepy</span>
-</pre></div>
-
-
-<p>Veya</p>
-<div class="codehilite"><pre><span class="n">pip</span> <span class="n">install</span> <span class="n">tweepy</span>
-</pre></div>
-
-
-<p>Daha sonra <a href="https://dev.twitter.com/apps/new">buradaki </a>linkle girip gerekli yerleri dolduruyoruz.Daha sonra <strong>Create Your Twitter App</strong> dedikten sonra uygulamamız karşımıza gelecek.Burada <strong>Settings</strong> sekmesinden <strong>Access</strong> bolumune geçip <strong>Read, Write and Access direct messages</strong>'ı seçiyoruz.<strong>OAuth tool</strong> sekmesinden bulunan <strong>Consumer key:</strong>  ile<strong> Consumer secret:</strong> lerimizi bir kenara kaydediyoruz.</p>
-<p><strong>ACCESS_KEY</strong> ve <strong>ACCESS_SECRET</strong> imizi oğrenmek için bir ufak bir kod yazmamız lazım.</p>
-<div class="codehilite"><pre><span class="c">#!/usr/bin/env python</span>
-<span class="kn">import</span> <span class="nn">tweepy</span>
-<span class="n">CONSUMER_KEY</span> <span class="o">=</span> <span class="s">&#39;consumer_key buraya yazin&#39;</span>
-<span class="n">CONSUMER_SECRET</span> <span class="o">=</span> <span class="s">&#39;consumer_secret buraya yazin&#39;</span>
-<span class="n">auth</span> <span class="o">=</span> <span class="n">tweepy</span><span class="o">.</span><span class="n">OAuthHandler</span><span class="p">(</span><span class="n">CONSUMER_KEY</span><span class="p">,</span> <span class="n">CONSUMER_SECRET</span><span class="p">)</span>
-<span class="n">auth_url</span> <span class="o">=</span> <span class="n">auth</span><span class="o">.</span><span class="n">get_authorization_url</span><span class="p">()</span>
-<span class="k">print</span> <span class="s">&#39;Onaylama: &#39;</span> <span class="o">+</span> <span class="n">auth_url</span>
-<span class="n">verifier</span> <span class="o">=</span> <span class="nb">raw_input</span><span class="p">(</span><span class="s">&#39;PIN: &#39;</span><span class="p">)</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>
-<span class="n">auth</span><span class="o">.</span><span class="n">get_access_token</span><span class="p">(</span><span class="n">verifier</span><span class="p">)</span>
-<span class="k">print</span> <span class="s">&quot;ACCESS_KEY = &#39;</span><span class="si">%s</span><span class="s">&#39;&quot;</span> <span class="o">%</span> <span class="n">auth</span><span class="o">.</span><span class="n">access_token</span><span class="o">.</span><span class="n">key</span>
-<span class="k">print</span> <span class="s">&quot;ACCESS_SECRET = &#39;</span><span class="si">%s</span><span class="s">&#39;&quot;</span> <span class="o">%</span> <span class="n">auth</span><span class="o">.</span><span class="n">access_token</span><span class="o">.</span><span class="n">secret</span>
-</pre></div>
-
-
-<p>Yukarıdaki kodumuzu python ile çalıştırdıktan sonra onumuze bir link çıkacak.O linke giriş yaptığımızda pin kodu ekrana gelecek.O pin kodunu konsolda bekleyen satıra yazıyoruz.Boylelikle bize <strong>ACCESS_KEY</strong> ile <strong>ACCESS_SECRET</strong> kodumuzu geri dondurecek.</p>
-<p>Şimdi de deneme tweetimizi atalım.Aşağıdaki kod ile serverınızla ilgili bazı bilgileri alabilirsiniz.</p>
-<div class="codehilite"><pre><span class="c">#!/usr/bin/env python</span>
-<span class="kn">import</span> <span class="nn">tweepy</span>
-<span class="kn">import</span> <span class="nn">os</span>
-<span class="kn">import</span> <span class="nn">commands</span>
-<span class="n">consumer_anahtari</span> <span class="o">=</span> <span class="s">&#39;consumer_key yaziniz&#39;</span>
-<span class="n">consumer_gizli</span> <span class="o">=</span> <span class="s">&#39;consumer_secret yaziniz&#39;</span>
-<span class="n">giris_anahtari</span> <span class="o">=</span> <span class="s">&#39;access_key yaziniz&#39;</span>
-<span class="n">giris_gizli</span> <span class="o">=</span> <span class="s">&#39;access_secret yaziniz&#39;</span>
-<span class="n">baglanti</span> <span class="o">=</span> <span class="n">commands</span><span class="o">.</span><span class="n">getoutput</span><span class="p">(</span><span class="s">&#39;echo `netstat -an|wc -l`&#39;</span><span class="p">)</span>
-<span class="n">load</span> <span class="o">=</span> <span class="n">commands</span><span class="o">.</span><span class="n">getoutput</span><span class="p">(</span><span class="s">&quot;&quot;&quot;uptime | awk -F &quot;load average: &quot; &#39;{ print $2 }&#39; | cut -d, -f1 | cut -d. -f1&quot;&quot;&quot;</span><span class="p">)</span>
-<span class="n">syn</span> <span class="o">=</span> <span class="n">commands</span><span class="o">.</span><span class="n">getoutput</span><span class="p">(</span><span class="s">&#39;netstat -n | grep SYN | wc -l&#39;</span><span class="p">)</span>
-<span class="n">memory</span> <span class="o">=</span> <span class="n">commands</span><span class="o">.</span><span class="n">getoutput</span><span class="p">(</span><span class="s">&quot;&quot;&quot;free -t -m | grep &quot;Total&quot; | awk &#39;{ print &quot;Kullanilan : &quot;$3&quot; MB Bosta : &quot;$4&quot; MB&quot;;}&#39;&quot;&quot;&quot;</span><span class="p">)</span>
-<span class="n">auth</span> <span class="o">=</span> <span class="n">tweepy</span><span class="o">.</span><span class="n">OAuthHandler</span><span class="p">(</span><span class="n">consumer_anahtari</span><span class="p">,</span> <span class="n">consumer_gizli</span><span class="p">)</span>
-<span class="n">auth</span><span class="o">.</span><span class="n">set_access_token</span><span class="p">(</span><span class="n">giris_anahtari</span><span class="p">,</span> <span class="n">giris_gizli</span><span class="p">)</span>
-<span class="n">api</span> <span class="o">=</span> <span class="n">tweepy</span><span class="o">.</span><span class="n">API</span><span class="p">(</span><span class="n">auth</span><span class="p">)</span>
-
-<span class="n">api</span><span class="o">.</span><span class="n">update_status</span><span class="p">(</span><span class="s">&quot;Toplam &quot;</span> <span class="o">+</span> <span class="n">baglanti</span> <span class="o">+</span> <span class="s">&quot; baglanti var.Sistem load su anda &quot;</span> <span class="o">+</span> <span class="n">load</span> <span class="o">+</span> <span class="s">&quot; .Toplam &quot;</span> <span class="o">+</span> <span class="n">syn</span> <span class="o">+</span> <span class="s">&quot; syn paketi bulundu. &quot;</span> <span class="o">+</span> <span class="n">memory</span> <span class="o">+</span> <span class="s">&quot; .&quot;</span> <span class="p">)</span>
-</pre></div>
-
-
-<p>Örnek twitter gonderisi aşağıdaki gibi oluyor.Sizde yukarıdaki kodda değişiklikler yapıp istediğiniz herhangi bir komutu çalıştırıp twittera bildirebilirsiniz.Yukarıda yer alan <strong>commands.getoutput(' ')</strong> içine istediğiniz bir komutu çalıştırabilirsiniz.Örneğin nginx'e restart attırabilir,cacheleri boşaltabilir,sql yedeğinizi alabilirsiniz.Bundan sonrası sizin hayal gucunuze kalıyor.</p>
-<p><img alt="HDBlog Twitter" src="http://www.halitalptekin.com/media/upload/hdblog-twitter.png" /></p>
-<p>Ve cep telefonuma gelen sms orneği.</p>
-<p><img alt="HDBlog Sms Status Sender" src="http://www.halitalptekin.com/media/upload/hdblog-sms-status-sender.jpg" /></p>
-<p>Yukarıdaki dosyayı python dosyası olarak kaydedip cronjob eklerseniz belirli aralıklarla twitter'a gonderebilirsiniz.Bunun için <strong>crontab -e</strong> komutu ile cron listenizi açın ve aşağıdaki satırı ekleyin.(Aşağıdaki satır ile dosyayı 4 saatte bir çalıştırabilirsiniz.Eğer başka zamanlarda çalıştırmak isterseniz google'da crontab kullanımı diye aratabilirsiniz.)</p>
-<div class="codehilite"><pre><span class="mi">0</span> <span class="err">*/</span><span class="mi">4</span> <span class="o">*</span> <span class="o">*</span> <span class="o">*</span> <span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="n">bin</span><span class="o">/</span><span class="n">python</span> <span class="o">/</span><span class="n">root</span><span class="o">/</span><span class="n">hdblogstatus</span><span class="p">.</span><span class="n">py</span>
-</pre></div>
-
-
-<p><img alt="Twitter Python" src="http://www.halitalptekin.com/media/upload/twitter-python.jpg" /></p>
-<p>Artık 4 saatte bir server durumunu tweet olarak atıyoruz.Sıra bu bilgileri telefonumuza almakta.Bunun için twitterımıza giriş yapıp <a href="https://twitter.com/settings/devices">buradaki</a> bolume geçiyoruz.Burada yer alan <strong>Cep telefonu bildirimlerini etkinleştirdiğin kişilerden gelen tweetler</strong> sekmesini işaretliyoruz.Daha sonrada bilgilerimizi paylaştığımız twitter hesabına girip mobil bildirimleri açıyoruz.</p>
-<p>Butun bunları yaptığınızda 4 saatte bir 2444'ten server bilgilerinizi içeren bir sms almanız lazım.Şimdilik bu kadarı benim işimi goruyor.Siz kodu geliştirip ihtiyaçlarınız doğrultusunda geliştirebilirsiniz.</p>
-<p><strong>Önemli Not:</strong> Bilgilerinizi paylaştığınız twitter hesabının tweetlerini koruma altına almaya unutmayınız.Ve tanımadığınız kişilerin bu bilgilere erişmemesini sağlayınız.</p>
-<p>Yukarıdaki python kodunu <a href="https://gist.github.com/2891358">buradanda</a> indirebilirsiniz.</p></div>
-        <hr />
-    </div>
-		
-    
- 
-        
-
- 
-
-    <div class='article'>
-        <a href="../blog-yazilarini-twittera-ekleme.html"><h2>Blog Yazılarını Twittera Ekleme</h2></a>
-        <div class= "well small"> Jun 02, 2012
-
-by <a class="url fn" href="../author/halit.html">halit</a>
- 
-
-in <a href="../category/internet.html">internet</a>
-
- 
-    tagged <a href="../tag/cron-job.html">cron job</a> <a href="../tag/rss-post.html">rss post</a> <a href="../tag/twitter.html">twitter</a> <a href="../tag/twitter-api.html">twitter api</a>  </div>
-        <div class="summary"><p>Bildiğiniz gibi Twitterın bir çok apisi piyasada dolaşıyor.Hem kendi elemanları hemde bağımsız programcılar tarafından birçok apiler geliştiriliyor.Bugun sizlere çok kullanışlı olan bir apinin kurulumundan bahsedeceğim.Bu api ile blogunuzda veya sitenize yazdığınız yazının daha fazla hit ve yorum alacağını kendi gozlerinizle goreceksiniz.Kurulum için birkaç açıklama yapıcam.Bunları ...</p> <a class="btn btn-info xsmall" href="../blog-yazilarini-twittera-ekleme.html">read more</a></div>
-    </div>	
-				
-            <div class="pagination">
-<ul>
-    <li class="prev disabled"><a href="#">&larr; Previous</a></li>
-
-    <li class="active"><a href="../tag/twitter.html">1</a></li>
-
-    <li class="next disabled"><a href="#">&rarr; Next</a></li>
-
-</ul>
-</div>    
- 
+    <link href="http://www.halitalptekin.com/feeds/all.atom.xml" type="application/atom+xml" rel="alternate"
+        title="{ Halit Alptekin } Atom Feed" />
+      <link href="http://www.halitalptekin.com/feeds/all.rss.xml" type="application/rss+xml" rel="alternate"
+        title="{ Halit Alptekin } RSS Feed" />
   
-        </div>
-        
-        <div class="span3">
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
 
-            <div class="well" style="padding: 8px 0; background-color: #FBFBFB;">
-            <ul class="nav nav-list">
-                <li class="nav-header"> 
-                Site
-                </li>
-            
-                <li><a href="../archives.html">Archives</a>
-                <li><a href="../tags.html">Tags</a>
-                <li><a href="../feeds/all.atom.xml" rel="alternate">Atom feed</a></li>
-                                <li><a href="../feeds/all.rss.xml" rel="alternate">RSS feed</a></li>
-                                 <li><a href="../sitemap.xml">Sitemap</a>
-            </ul>
-            </div>
+  <link href="../favicon.png" rel="icon">
+  <link href="../theme/css/main.css" media="screen, projection"
+        rel="stylesheet" type="text/css">
+  <script src="../theme/js/modernizr-2.0.js"></script>
+  <script src="../theme/js/ender.js"></script>
+  <script src="../theme/js/octopress.js" type="text/javascript"></script>
 
+  <link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic"
+        rel="stylesheet" type="text/css">
+  <link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic"
+        rel="stylesheet" type="text/css">
+</head>
+<body>
+  <header role="banner"><hgroup>
+  <h1><a href="../">{ Halit Alptekin }</a></h1>
+  </hgroup></header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  <li><a href="http://www.halitalptekin.com/feeds/all.atom.xml" rel="subscribe-rss">Atom</a></li>
+    <li><a href="http://www.halitalptekin.com/feeds/all.rss.xml" rel="subscribe-rss">Rss</a></li>
+  </ul>
 
-                        <div class="well" style="padding: 8px 0; background-color: #FBFBFB;">
-            <ul class="nav nav-list">
-                <li class="nav-header"> 
-                Categories
-                </li>
-                
-                                <li><a href="../category/tasarim.html">tasarim</a></li>
-                                <li><a href="../category/server.html">server</a></li>
-                                <li><a href="../category/python.html">python</a></li>
-                                <li><a href="../category/programlama.html">programlama</a></li>
-                                <li><a href="../category/linux.html">linux</a></li>
-                                <li><a href="../category/kisisel.html">kisisel</a></li>
-                                <li><a href="../category/internet.html">internet</a></li>
-                                <li><a href="../category/guvenlik.html">guvenlik</a></li>
-                                <li><a href="../category/genel.html">genel</a></li>
-                                <li><a href="../category/eglence.html">eglence</a></li>
-                                <li><a href="../category/django.html">django</a></li>
-                                <li><a href="../category/compsci.html">compsci</a></li>
-                                <li><a href="../category/arduino.html">arduino</a></li>
-                                   
-            </ul>
-            </div>
-            
+<!-- TODO: add search here
+<form action="" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="q" value="site:.." />
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+-->
 
-                        <div class="well" style="padding: 8px 0; background-color: #FBFBFB;">
-            <ul class="nav nav-list">
-                <li class="nav-header"> 
-                Links
-                </li>
-            
-                            <li><a href="http://www.python.org">Python</a></li>
-                        </ul>
-            </div>
-            
+<ul class="main-navigation">
+  <li><a href="../">Blog</a></li>
+        <li><a href="../pages/about-me.html">About Me</a></li>
+    <li><a href="../pages/contact.html">Contact</a></li>
+  <!-- TODO: add categories here? -->
+  </ul></nav>
+  <div id="main">
+    <div id="content">
+      <div class="blog-index">
+    	  		<article>
+    		<header>
+          <h1 class="entry-title">
+        <a href="../twitter-uzerinden-server-kontrolu.html">Twitter Üzerinden Server Kontrolü</a>
+      </h1>
+          <p class="meta"><time datetime="2012-06-07T00:00:00" pubdate>Jun 07, 2012</time></p>
+</header>
 
-                        <div class="social">
-            <div class="well" style="padding: 8px 0; background-color: #FBFBFB;">
-            <ul class="nav nav-list">
-                <li class="nav-header"> 
-                Social
-                </li>
-           
-                                <li><a href="http://twitter.com/halitalptekin">twitter</a></li>
-                                <li><a href="http://github.com/halitalptekin">github</a></li>
-                                <li><a href="http://stackoverflow.com/users/1151618/halit-alptekin">stackoverflow</a></li>
-                                <li><a href="http://tr.linkedin.com/in/halitalptekin">linkedin</a></li>
-                            </ul>
-            </div>
-            </div>
-            
-                        <div class="well" style="padding: 8px 0; background-color: #FBFBFB;">
-            <ul class="nav nav-list">
-                <li class="nav-header"> 
-                Ads
-                </li>
+  <div class="entry-content"><p>Twitter'ın sms ile iletim ozelliğini kullanarak serverımla ilgili bilgileri almak uzun suredir duşunduğum birşeydi.Onu bugun gerçekleştirdim.Artık serverımda olup bitenleri belirli aralıklarla cep telefonuma alıyorum.Bu gelen mesajlarda serverdaki toplam bağlantı,syn paketleri,ram ve cpu kullanımı gibi bilgiler içeriyor.Boylelikle herhangi bir olağandışı durumda hemen mudahale etme ...</p></div>
+  <footer>
+    <a rel="full-article" href="../twitter-uzerinden-server-kontrolu.html">Read On &crarr;</a>
+  </footer>
+  		</article>
+  	  		<article>
+    		<header>
+          <h1 class="entry-title">
+        <a href="../blog-yazilarini-twittera-ekleme.html">Blog Yazılarını Twittera Ekleme</a>
+      </h1>
+          <p class="meta"><time datetime="2012-06-02T00:00:00" pubdate>Jun 02, 2012</time></p>
+</header>
 
-                                <li><a href="https://www.camekan.com/adwords/" title="Google Adwords"><img src="/media/reklam/camekancom.jpg" alt="Google Adwords" title="Google Adwords"></a>
-                </li>
-                                <li><a href="http://www.dugunajans.com/" title="düğün fotoğrafçısı"><img src="/media/reklam/dugunajanscom.jpg" alt="düğün fotoğrafçısı" title="düğün fotoğrafçısı"></a>
-                </li>
-                            </ul>
-            </div>
-            
-        </div>  
-    </div>     </div> 
-<footer>
-	<hr>
-	<p><a href='http://www.halitalptekin.com'>Halit Alptekin Personal Blog</a> &copy; 2012</p>
-</footer>
+  <div class="entry-content"><p>Bildiğiniz gibi Twitterın bir çok apisi piyasada dolaşıyor.Hem kendi elemanları hemde bağımsız programcılar tarafından birçok apiler geliştiriliyor.Bugun sizlere çok kullanışlı olan bir apinin kurulumundan bahsedeceğim.Bu api ile blogunuzda veya sitenize yazdığınız yazının daha fazla hit ve yorum alacağını kendi gozlerinizle goreceksiniz.Kurulum için birkaç açıklama yapıcam.Bunları ...</p></div>
+  <footer>
+    <a rel="full-article" href="../blog-yazilarini-twittera-ekleme.html">Read On &crarr;</a>
+  </footer>
+  		</article>
+  	  	<div class="pagination">
+  
+    <br />
+</div>  </div>
+      <aside class="sidebar">
+  <section>
+    <h1>Recent Posts</h1>
+    <ul id="recent_posts">
+            <li class="post">
+          <a href="../twitter-uzerinden-server-kontrolu.html">Twitter Üzerinden Server Kontrolü</a>
+      </li>
+            <li class="post">
+          <a href="../blog-yazilarini-twittera-ekleme.html">Blog Yazılarını Twittera Ekleme</a>
+      </li>
+          </ul>
+  </section>
+    <section>
+      
+    <h1>Categories</h1>
+    <ul id="recent_posts">
+              <li><a href="../category/tasarim.html">tasarim</a></li>
+              <li><a href="../category/server.html">server</a></li>
+              <li><a href="../category/python.html">python</a></li>
+              <li><a href="../category/programlama.html">programlama</a></li>
+              <li><a href="../category/linux.html">linux</a></li>
+              <li><a href="../category/kisisel.html">kisisel</a></li>
+              <li><a href="../category/internet.html">internet</a></li>
+              <li><a href="../category/guvenlik.html">guvenlik</a></li>
+              <li><a href="../category/genel.html">genel</a></li>
+              <li><a href="../category/eglence.html">eglence</a></li>
+              <li><a href="../category/django.html">django</a></li>
+              <li><a href="../category/compsci.html">compsci</a></li>
+              <li><a href="../category/arduino.html">arduino</a></li>
+          </ul>
+  </section>
+   
 
-</div> <!-- /container -->
-<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
-<script src="http://twitter.github.com/bootstrap/assets/js/bootstrap-collapse.js"></script>
-<script>var _gaq=[['_setAccount','UA-24728900-1'],['_trackPageview']];(function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];g.src='//www.google-analytics.com/ga.js';s.parentNode.insertBefore(g,s)}(document,'script'))</script>
+    
+    <section>
+        <h1>Social</h1>
+        <ul>
+            <li><a href="http://www.halitalptekin.com/feeds/all.rss.xml" type="application/rss+xml" rel="alternate">rss</a></li>
+                    <li><a href="http://twitter.com/halitalptekin" target="_blank">twitter</a></li>
+                    <li><a href="http://github.com/halitalptekin" target="_blank">github</a></li>
+                    <li><a href="http://stackoverflow.com/users/1151618/halit-alptekin" target="_blank">stackoverflow</a></li>
+                    <li><a href="http://tr.linkedin.com/in/halitalptekin" target="_blank">linkedin</a></li>
+                </ul>
+    </section>
+      <section>
+        <h1>Blogroll</h1>
+        <ul>
+                    <li><a href="http://www.python.org" target="_blank">Python</a></li>
+                </ul>
+    </section>
+
+      <section>
+        <h1>Ads</h1>
+        <ul id="recent_posts">
+                            <li><a href="https://www.camekan.com/adwords/" title="Google Adwords"><img src="/media/reklam/camekancom.jpg" alt="Google Adwords" title="Google Adwords"></a></li>
+                            <li><a href="http://www.dugunajans.com/" title="düğün fotoğrafçısı"><img src="/media/reklam/dugunajanscom.jpg" alt="düğün fotoğrafçısı" title="düğün fotoğrafçısı"></a></li>
+                    </ul>
+    </section>
+  
+</aside>    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2013 - halit -
+  <span class="credit">Powered by <a href="http://getpelican.com">Pelican</a></span>
+</p></footer>
+      <script type="text/javascript">
+	    var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+	    document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+    </script>
+    <script type="text/javascript">
+	    try {
+	        var pageTracker = _gat._getTracker("UA-24728900-1");
+	    pageTracker._trackPageview();
+	    } catch(err) {}
+	</script>
+	<script type="text/javascript">
+	  var disqus_shortname = 'halitalptekin';
+	  (function() {
+	    var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+	    dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
+	    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+	   })();
+	</script>
 </body>
 </html>

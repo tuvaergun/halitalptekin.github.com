@@ -1,199 +1,158 @@
 <!DOCTYPE html>
-<html lang="en">
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
-    <meta charset="utf-8">
-    <title>Halit Alptekin Personal Blog</title>
-    <meta name="description" content="Programming and Life Blog Of Halit Alptekin. Karadeniz Technical University Computer Engineering Student.">
-    <meta name="keywords" content="programlama, blog, personal blog, linux, python, django, php, bootstrap, seo, bilgisayar muhendisligi, ktu, karadeniz teknik universitesi, programming">
-    <meta name="author" content="halit">
-    <meta name="robots" content="index, follow, all"/>
+  <meta charset="utf-8">
+  <title>{ Halit Alptekin } - enc28j60</title>
 
-    <!-- Le HTML5 shim, for IE6-8 support of HTML elements -->
-    <!--[if lt IE 9]>
-    <script src="../theme/html5.js"></script>
-    <![endif]-->
+  <meta name="author" content="halit">
 
-    <!-- Le styles -->
-    <link href="../theme/bootstrap.min.css" rel="stylesheet">
-    <link href="../theme/bootstrap.min.responsive.css" rel="stylesheet">
-    <link href="../theme/local.css" rel="stylesheet">
-    <link href="../theme/pygments.css" rel="stylesheet">
-
-</head>
-
-<body>
-
-<div class="navbar">
-    <div class="navbar-inner">
-    <div class="container">
-
-         <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
-             <span class="icon-bar"></span>
-             <span class="icon-bar"></span>
-             <span class="icon-bar"></span>
-         </a>
-
-        <a class="brand" href="..">Halit Alptekin Personal Blog</a>
-
-        <div class="nav-collapse">
-        <ul class="nav">
-                    
-        <li><a href="../pages/about-me.html">About Me</a></li>
-	    <li><a href="../pages/contact.html">Contact</a></li>
-        </ul>
-        </div>
-        
-    </div>
-    </div>
-</div>
-
-<div class="container">
-    <div class="content">
-    <div class="row">
-
-        <div class="span9">
-                
-        
-
-    <div class='article'>
-        <div class="content-title">
-            <a href="../enc28j60-ve-arduino.html"><h1>Enc28j60 Ve Arduino</h1></a>
-            Aug 29, 2012
-
-by <a class="url fn" href="../author/halit.html">halit</a>
- 
-
-in <a href="../category/arduino.html">arduino</a>
-
- 
-    tagged <a href="../tag/arduino-enc28j60.html">arduino enc28j60</a> <a href="../tag/arduino-ethernet.html">arduino ethernet</a> <a href="../tag/arduino-shield.html">arduino shield</a> <a href="../tag/arduio-ethernet-shield.html">arduio ethernet shield</a> <a href="../tag/enc28j60.html">enc28j60</a>  
-        </div>
-        
-        <div><p>Arduino hobi elektronik olarak gerçekten insana çok şey katıp ufkunu açıyor.Aklınıza gelecek neredeyse her turlu projenizi kısa sure yapmanızı sağlıyor.Benimde bu yaz tatilinde ciddi derece de ilgilendiğim Arduino ile bu sefer de internete bağlanma gereksinimi hissettim.Bunun için Arduino'nun ethernet modeli ile Arduino Ethernet Shield bulunuyor.Ben bunların yerine ebaydan 4-5 dolara alabileceğiniz ENC28J60 modulunu kullanarak Arduino'mu internete bağladım.</p>
-<p><img alt="Arduino ENC28J60 Modulu" src="http://www.halitalptekin.com/media/upload/enc28j60-arduino.JPG" /></p>
-<p>Tabi internete bağladım derken aklınıza sadece internete girmek gelmesin.Bu modul ile kablosunu taktığınız ağa dahil oluyorsunuz.Daha sonra bu ağda yapmak istediğiniz aklınıza gelen herşeyi yaptırabiliyorsunuz.Örneğin bu ağda bir webserver kurarak ağa bağlı diğer kişilerin girmesini sağlayabilirsiniz.Veya arduino'nun digitall ve analog girişlerinden gelen değerleri internetteki herhangibi bir yere gonderip depolayabilirsiniz.Hatta Arduino bağlı ağa internetten erişip role kontrolu veya aklınıza gelecek akıllı ev modellerinden birisini gerçekleştirebilirsiniz.(Örneğin uzun tatillere gittiğinizde istediğiniz zaman camlarınızı açıp havalandırabilir, bitkilerinizin suyunu dokebilir veya hayvanınızın yemini verebilirsiniz.)</p>
-<p>Arduino'yu ağa bağladıktan sonra internet ve yerel ağ ile ilgili aklınıza gelebilecek herşeyi gerçekleştirebilirsiniz.Bundan sonrası sizin hayal gucunuz ve yeteneklerinize kalmış.</p>
-<p>Ben ENC28J60 modulumu ebaydaki <a href="http://www.ebay.com/itm/New-ENC28J60-Ethernet-LAN-Network-Module-Schematic-For-Arduino-51-AVR-LPC-STM32-/350585962026?pt=LH_DefaultDomain_0&amp;hash=item51a08d3e2a">bu</a> ilandan aldım.Yaklaşık 15 gun içinde elime ulaştı.Satıcı gayet guvenilir birisi.Satışın hemen ardından bana tracking number ve takip edeceğim yeri verdi.Bu sayede modulumun nerede olduğunu surekli olarak kontrol ettim.</p>
-<p>Sizinde bir şekilde elinize bu modul geçerse aşağıdaki şekilde bağlantılarınızı kurabilirsiniz.(Turkiyede 40-50 lira civarında satılıyor)</p>
-<p><a href="http://www.halitalptekin.com/media/upload/arduino-enc28j60-baglantisi.png"><img alt="Arduino ve ENC28J60 Baglantisi" src="http://www.halitalptekin.com/media/upload/arduino-enc28j60-baglantisi.png" /></a></p>
-<p>Voltaj bağlantısını yaparken dikkat etmeniz gereken nokta her zamanki gibi Arduino'nuzun 5v çıkışı yerine 3.3v çıkışına bağlamanız gerekli.Bu bağlantıyı yaptıktan sonra diğer bağlantılar aşağıdaki gibi olacak.</p>
-<p><strong>Digital</strong> <strong>8</strong> --&gt; <strong>CS </strong></p>
-<p><strong>Digital</strong> <strong>11</strong> --&gt; <strong>SI </strong></p>
-<p><strong>Digital</strong> <strong>12</strong> --&gt; <strong>SO </strong></p>
-<p><strong>Digital</strong> <strong>13</strong> --&gt; <strong>SCK</strong></p>
-<p>Bu bağlantıları doğru şekilde kurduktan sonra donanımsal olarak yapacaklarımız bitti.Bundan sonra Arduino'nun yazılımını yuklememiz lazım.Bunun için arduino'nun orjinal ethernet kutuphanesini de kullanabilirsiniz.Ancak o zaman bağlantılarda bir değişiklik yapıp CS bağlantısını 8 yerine 10'a yapmanız gerekir.</p>
-<p>Ben yazılım olarak <a href="https://github.com/jcw/ethercard/">ethercard</a> kullandım.Örnekleri ve kullanım olarak gayet hoşuma gitti.Sizde indirip Arduino'nun kutuphaneler dizinine atarak kullanabilirsiniz.</p>
-<p>İlk denemem de odamdaki sıcaklık değerlerini cosm'a yukledim.Gayette hoş oldu diyebilirim.Kısa sureliğine yaptığım o testin grafikleri için <a href="https://cosm.com/feeds/72972">buraya</a> bakabilirsiniz.İşte o test sırasında çektiğim bir resim.</p>
-<p><img alt="Arduino Ethernet Shield ENC28J60" src="http://distilleryimage1.instagram.com/28296cdef1de11e19fe21231380f3636_7.jpg" /></p>
-<p>Analog 0 girişine gelen sıcaklık değerlerini ethercard ornekleri içinde de yer alan cosm apisine yukledim.Bunu 2 dakikada bir yaptığımda en uygun sonuçları aldım.Saniyede bir yaptığımda ise bir sureden sonra bağlantının koptuğunu fark ettim.Belki benim netimden kaynaklıdır.</p>
-<p>Sonuç olarak Arduino için hem ucuz hem de pahalı tercihler var.Siz ihtiyaçlarınız doğrultusunda tercih yapmalısınız.Yukarıdaki gorduğunuz ENC28J60 diye google'da aratıp Turkçe sayfalar derseniz ne demek istediğimi anlarsınız.Tabi bu aldıkları fazla paraların sebebi ise 1 gun sonra elimize ulaşması.Benim zamanım yok param var diyorsanız Turkiye,param yok zamanım var diyorsanız Ebay sizin için doğru tercih olacaktır.</p></div>
-        <hr />
-    </div>
-		
-            <div class="pagination">
-<ul>
-    <li class="prev disabled"><a href="#">&larr; Previous</a></li>
-
-    <li class="active"><a href="../tag/enc28j60.html">1</a></li>
-
-    <li class="next disabled"><a href="#">&rarr; Next</a></li>
-
-</ul>
-</div>    
- 
+    <link href="http://www.halitalptekin.com/feeds/all.atom.xml" type="application/atom+xml" rel="alternate"
+        title="{ Halit Alptekin } Atom Feed" />
+      <link href="http://www.halitalptekin.com/feeds/all.rss.xml" type="application/rss+xml" rel="alternate"
+        title="{ Halit Alptekin } RSS Feed" />
   
-        </div>
-        
-        <div class="span3">
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
 
-            <div class="well" style="padding: 8px 0; background-color: #FBFBFB;">
-            <ul class="nav nav-list">
-                <li class="nav-header"> 
-                Site
-                </li>
-            
-                <li><a href="../archives.html">Archives</a>
-                <li><a href="../tags.html">Tags</a>
-                <li><a href="../feeds/all.atom.xml" rel="alternate">Atom feed</a></li>
-                                <li><a href="../feeds/all.rss.xml" rel="alternate">RSS feed</a></li>
-                                 <li><a href="../sitemap.xml">Sitemap</a>
-            </ul>
-            </div>
+  <link href="../favicon.png" rel="icon">
+  <link href="../theme/css/main.css" media="screen, projection"
+        rel="stylesheet" type="text/css">
+  <script src="../theme/js/modernizr-2.0.js"></script>
+  <script src="../theme/js/ender.js"></script>
+  <script src="../theme/js/octopress.js" type="text/javascript"></script>
 
+  <link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic"
+        rel="stylesheet" type="text/css">
+  <link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic"
+        rel="stylesheet" type="text/css">
+</head>
+<body>
+  <header role="banner"><hgroup>
+  <h1><a href="../">{ Halit Alptekin }</a></h1>
+  </hgroup></header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  <li><a href="http://www.halitalptekin.com/feeds/all.atom.xml" rel="subscribe-rss">Atom</a></li>
+    <li><a href="http://www.halitalptekin.com/feeds/all.rss.xml" rel="subscribe-rss">Rss</a></li>
+  </ul>
 
-                        <div class="well" style="padding: 8px 0; background-color: #FBFBFB;">
-            <ul class="nav nav-list">
-                <li class="nav-header"> 
-                Categories
-                </li>
-                
-                                <li><a href="../category/tasarim.html">tasarim</a></li>
-                                <li><a href="../category/server.html">server</a></li>
-                                <li><a href="../category/python.html">python</a></li>
-                                <li><a href="../category/programlama.html">programlama</a></li>
-                                <li><a href="../category/linux.html">linux</a></li>
-                                <li><a href="../category/kisisel.html">kisisel</a></li>
-                                <li><a href="../category/internet.html">internet</a></li>
-                                <li><a href="../category/guvenlik.html">guvenlik</a></li>
-                                <li><a href="../category/genel.html">genel</a></li>
-                                <li><a href="../category/eglence.html">eglence</a></li>
-                                <li><a href="../category/django.html">django</a></li>
-                                <li><a href="../category/compsci.html">compsci</a></li>
-                                <li><a href="../category/arduino.html">arduino</a></li>
-                                   
-            </ul>
-            </div>
-            
+<!-- TODO: add search here
+<form action="" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="q" value="site:.." />
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+-->
 
-                        <div class="well" style="padding: 8px 0; background-color: #FBFBFB;">
-            <ul class="nav nav-list">
-                <li class="nav-header"> 
-                Links
-                </li>
-            
-                            <li><a href="http://www.python.org">Python</a></li>
-                        </ul>
-            </div>
-            
+<ul class="main-navigation">
+  <li><a href="../">Blog</a></li>
+        <li><a href="../pages/about-me.html">About Me</a></li>
+    <li><a href="../pages/contact.html">Contact</a></li>
+  <!-- TODO: add categories here? -->
+  </ul></nav>
+  <div id="main">
+    <div id="content">
+      <div class="blog-index">
+    	  		<article>
+    		<header>
+          <h1 class="entry-title">
+        <a href="../enc28j60-ve-arduino.html">Enc28j60 Ve Arduino</a>
+      </h1>
+          <p class="meta"><time datetime="2012-08-29T00:00:00" pubdate>Aug 29, 2012</time></p>
+</header>
 
-                        <div class="social">
-            <div class="well" style="padding: 8px 0; background-color: #FBFBFB;">
-            <ul class="nav nav-list">
-                <li class="nav-header"> 
-                Social
-                </li>
-           
-                                <li><a href="http://twitter.com/halitalptekin">twitter</a></li>
-                                <li><a href="http://github.com/halitalptekin">github</a></li>
-                                <li><a href="http://stackoverflow.com/users/1151618/halit-alptekin">stackoverflow</a></li>
-                                <li><a href="http://tr.linkedin.com/in/halitalptekin">linkedin</a></li>
-                            </ul>
-            </div>
-            </div>
-            
-                        <div class="well" style="padding: 8px 0; background-color: #FBFBFB;">
-            <ul class="nav nav-list">
-                <li class="nav-header"> 
-                Ads
-                </li>
+  <div class="entry-content"><p>Arduino hobi elektronik olarak gerçekten insana çok şey katıp ufkunu açıyor.Aklınıza gelecek neredeyse her turlu projenizi kısa sure yapmanızı sağlıyor.Benimde bu yaz tatilinde ciddi derece de ilgilendiğim Arduino ile bu sefer de internete bağlanma gereksinimi hissettim.Bunun için Arduino'nun ethernet modeli ile Arduino Ethernet Shield bulunuyor.Ben ...</p></div>
+  <footer>
+    <a rel="full-article" href="../enc28j60-ve-arduino.html">Read On &crarr;</a>
+  </footer>
+  		</article>
+  	  	<div class="pagination">
+  
+    <br />
+</div>  </div>
+      <aside class="sidebar">
+  <section>
+    <h1>Recent Posts</h1>
+    <ul id="recent_posts">
+            <li class="post">
+          <a href="../enc28j60-ve-arduino.html">Enc28j60 Ve Arduino</a>
+      </li>
+          </ul>
+  </section>
+    <section>
+      
+    <h1>Categories</h1>
+    <ul id="recent_posts">
+              <li><a href="../category/tasarim.html">tasarim</a></li>
+              <li><a href="../category/server.html">server</a></li>
+              <li><a href="../category/python.html">python</a></li>
+              <li><a href="../category/programlama.html">programlama</a></li>
+              <li><a href="../category/linux.html">linux</a></li>
+              <li><a href="../category/kisisel.html">kisisel</a></li>
+              <li><a href="../category/internet.html">internet</a></li>
+              <li><a href="../category/guvenlik.html">guvenlik</a></li>
+              <li><a href="../category/genel.html">genel</a></li>
+              <li><a href="../category/eglence.html">eglence</a></li>
+              <li><a href="../category/django.html">django</a></li>
+              <li><a href="../category/compsci.html">compsci</a></li>
+              <li><a href="../category/arduino.html">arduino</a></li>
+          </ul>
+  </section>
+   
 
-                                <li><a href="https://www.camekan.com/adwords/" title="Google Adwords"><img src="/media/reklam/camekancom.jpg" alt="Google Adwords" title="Google Adwords"></a>
-                </li>
-                                <li><a href="http://www.dugunajans.com/" title="düğün fotoğrafçısı"><img src="/media/reklam/dugunajanscom.jpg" alt="düğün fotoğrafçısı" title="düğün fotoğrafçısı"></a>
-                </li>
-                            </ul>
-            </div>
-            
-        </div>  
-    </div>     </div> 
-<footer>
-	<hr>
-	<p><a href='http://www.halitalptekin.com'>Halit Alptekin Personal Blog</a> &copy; 2012</p>
-</footer>
+    
+    <section>
+        <h1>Social</h1>
+        <ul>
+            <li><a href="http://www.halitalptekin.com/feeds/all.rss.xml" type="application/rss+xml" rel="alternate">rss</a></li>
+                    <li><a href="http://twitter.com/halitalptekin" target="_blank">twitter</a></li>
+                    <li><a href="http://github.com/halitalptekin" target="_blank">github</a></li>
+                    <li><a href="http://stackoverflow.com/users/1151618/halit-alptekin" target="_blank">stackoverflow</a></li>
+                    <li><a href="http://tr.linkedin.com/in/halitalptekin" target="_blank">linkedin</a></li>
+                </ul>
+    </section>
+      <section>
+        <h1>Blogroll</h1>
+        <ul>
+                    <li><a href="http://www.python.org" target="_blank">Python</a></li>
+                </ul>
+    </section>
 
-</div> <!-- /container -->
-<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
-<script src="http://twitter.github.com/bootstrap/assets/js/bootstrap-collapse.js"></script>
-<script>var _gaq=[['_setAccount','UA-24728900-1'],['_trackPageview']];(function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];g.src='//www.google-analytics.com/ga.js';s.parentNode.insertBefore(g,s)}(document,'script'))</script>
+      <section>
+        <h1>Ads</h1>
+        <ul id="recent_posts">
+                            <li><a href="https://www.camekan.com/adwords/" title="Google Adwords"><img src="/media/reklam/camekancom.jpg" alt="Google Adwords" title="Google Adwords"></a></li>
+                            <li><a href="http://www.dugunajans.com/" title="düğün fotoğrafçısı"><img src="/media/reklam/dugunajanscom.jpg" alt="düğün fotoğrafçısı" title="düğün fotoğrafçısı"></a></li>
+                    </ul>
+    </section>
+  
+</aside>    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2013 - halit -
+  <span class="credit">Powered by <a href="http://getpelican.com">Pelican</a></span>
+</p></footer>
+      <script type="text/javascript">
+	    var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+	    document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+    </script>
+    <script type="text/javascript">
+	    try {
+	        var pageTracker = _gat._getTracker("UA-24728900-1");
+	    pageTracker._trackPageview();
+	    } catch(err) {}
+	</script>
+	<script type="text/javascript">
+	  var disqus_shortname = 'halitalptekin';
+	  (function() {
+	    var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+	    dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
+	    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+	   })();
+	</script>
 </body>
 </html>

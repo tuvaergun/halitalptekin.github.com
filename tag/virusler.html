@@ -1,200 +1,158 @@
 <!DOCTYPE html>
-<html lang="en">
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
-    <meta charset="utf-8">
-    <title>Halit Alptekin Personal Blog</title>
-    <meta name="description" content="Programming and Life Blog Of Halit Alptekin. Karadeniz Technical University Computer Engineering Student.">
-    <meta name="keywords" content="programlama, blog, personal blog, linux, python, django, php, bootstrap, seo, bilgisayar muhendisligi, ktu, karadeniz teknik universitesi, programming">
-    <meta name="author" content="halit">
-    <meta name="robots" content="index, follow, all"/>
+  <meta charset="utf-8">
+  <title>{ Halit Alptekin } - virüsler</title>
 
-    <!-- Le HTML5 shim, for IE6-8 support of HTML elements -->
-    <!--[if lt IE 9]>
-    <script src="../theme/html5.js"></script>
-    <![endif]-->
+  <meta name="author" content="halit">
 
-    <!-- Le styles -->
-    <link href="../theme/bootstrap.min.css" rel="stylesheet">
-    <link href="../theme/bootstrap.min.responsive.css" rel="stylesheet">
-    <link href="../theme/local.css" rel="stylesheet">
-    <link href="../theme/pygments.css" rel="stylesheet">
-
-</head>
-
-<body>
-
-<div class="navbar">
-    <div class="navbar-inner">
-    <div class="container">
-
-         <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
-             <span class="icon-bar"></span>
-             <span class="icon-bar"></span>
-             <span class="icon-bar"></span>
-         </a>
-
-        <a class="brand" href="..">Halit Alptekin Personal Blog</a>
-
-        <div class="nav-collapse">
-        <ul class="nav">
-                    
-        <li><a href="../pages/about-me.html">About Me</a></li>
-	    <li><a href="../pages/contact.html">Contact</a></li>
-        </ul>
-        </div>
-        
-    </div>
-    </div>
-</div>
-
-<div class="container">
-    <div class="content">
-    <div class="row">
-
-        <div class="span9">
-                
-        
-
-    <div class='article'>
-        <div class="content-title">
-            <a href="../stuxnet-virusu.html"><h1>Stuxnet Virüsü</h1></a>
-            Jun 03, 2012
-
-by <a class="url fn" href="../author/halit.html">halit</a>
- 
-
-in <a href="../category/guvenlik.html">guvenlik</a>
-
- 
-    tagged <a href="../tag/sanal-savas.html">sanal savaş</a> <a href="../tag/stuxnet-incelemesi.html">stuxnet incelemesi</a> <a href="../tag/stuxnet-virusu.html">stuxnet virüsü</a> <a href="../tag/virus.html">virüs</a> <a href="../tag/virusler.html">virüsler</a>  
-        </div>
-        
-        <div><p>Stuxnet virusu bu aralar guvenlik uzmanları tarafından en fazla konuşulan konulardan birisi.Çunku diğer viruslere benzemeyen amacı tamamen siber savaş olan bir bir virus.Diğer virus turlerinin amacı daha fazla bilgisayara yayılıp daha fazla bilgisayara zarar vermek.Ama Stuxnet'i diğer viruslerden ayıran nokta da bu.O daha fazla sisteme yayılmak yerine endustriyel sistemleri gizlice gozetliyor ve yeniden programlayabiliyor.Kısacası tam bir siber savaş askeri.</p>
-<p>İran bu Stuxnet virusunden zarar gorduğunu resmi olarak açıkladı.Natanz'daki Uranyum zenginleştirme tesisi kapasitesi %15 dolayında duştu.Bunlar aslında çok ciddi olaylar.Artık sanal alemin reel alem uzerinde ne kadar etkili olduğunun birer kanıtları.Her zaman soylendiği gibi fiziksel savaşların yerine siber savaşlar gelicek.Bunun da ilk temsilcilerinden birisi Stuxnet oldu.</p>
-<p>Stuxnet ilk defa haziran ayının ortalarında Beyaz Rusya'daki kuçuk bir firma olan VirusBlokAda tarafından tespit edildi. İlk incelemeler virusun standart bir solucan olmadığını zaten gosteriyordu fakat karmaşık yapısı yuzunden uzayan incelemeler devam ettikçe işin boyutu gittikçe değişti. Özellikle solucanın çok karmaşık yapısı, kullandığı taktikler ve hedefi goz onune alınınca, siber savaş adı altında yıllarca dillendirilen senaryoların aslında çok da gerçek dışı olmadığı ortaya çıktı.</p>
-<p>Stuxneti inceleyen ilk uzmanlar zaten incelemeye başladıkları ilk andan itibaren bu virusun çok karmaşık bir yapıda olduğunu ve tek bir kişi tarafından değilde arkasında buyuk devletlerin olduğu bir grup tarafından oluşturulduğu fikri oluştu.Çunku virusun amacı tamamen devletlerin onemli yerlerini etkilemekti.Boyle birşeyi de rakip devletler isteyebilirdi.</p>
-<p>Stuxneti onemli yapan bir konuda 4 tane 0-day açığı ile birlikte gelmesi.Bazı virusler yayılmadan once 1-2 tane 0day açığı ile birlikte piyasa surulurdu.Ama Stuxnet bu kuralı bozdu.İlginç olan ise bu açıklardan 2 tanesinin bulunup diğer 2 tanesinin hala bulunamamış olması.Bulunan açıklar aşağıdadır.Bunların yanında geri kalan 2 açık ise Windows sistemler yetki yukseltme açığı.Bana gore de en tehlikeli olanlar.</p>
-<p><strong>MS10-046, Microsoft Windows Shell Kısayol İşleme Açıklığı:</strong> Asıl olarak işletim sistemindeki bir dizayn hatasından kaynaklanan bu açıklık sayesinde autorun açık olmasa bile bilgisayara takılan bir taşınabilir depolama aygıtındaki dosyaların ikonlarını gostermeye çalışan Windows Gezgini ve benzeri bir programın zararlı bir kodu çalıştırması sağlanabiliyor. Stuxnet'in de asıl olarak bu yontemle birçok yere bulaştırıldığı duşunuluyor. Ayrıca kendini guncelleme yeteneğine sahip olan stuxnet'e bu ozelliğin mart ayında eklendiği ve daha onceden solucanın taşınabilir cihazlardaki autorun ozelliği ile bilgisayara bulaştığı duşunulmekte.</p>
-<p><strong>MS10-061, Microsoft Windows Yazdırma Kuyruklayıcısı Açıklığı:</strong> Bu açıklığı kullandığı, stuxnet'in daha sonraki detaylı incelemelerinde açığa çıktı. Bu açıklığı kullanarak stuxnet bulaşmış olduğu bir bilgisayardan diğerine atlamayı başarabilmekte. Basitçe bu açıklık bir bilgisayara uzaktan yuksek yetkilerle dosya yuklenilmesine olanak sağlamakta. Daha sonra da bu dosya WBEM'in bir ozelliği ile çalıştırılabilmekte. Önce şunu belirtmek gerekir ki bu açıklık yukarıdaki açıklık gibi bir taşınabilir aygıtın takılmasını gerektirmese de açıklıktan yararlanılabilmesi için gereken birçok şartın beraber bulunmasını gerektiği için kullanılabilmesi daha zor olan bir açıklık.</p>
-<p>Peki, bu kadar hazırlık ve çabanın sonucunda yapılmak istenen ne? Stuxnet'in hedefi halihazırda piyasa da bulunan virusler gibi banka veya online oyun hesap bilgilerinin çalınması, DDOS saldırıları gerçekleştirmek veya spam mail atabilmek için zombi bilgisayar ordusu kurmak ve kiralamak değil. Bunların hepsinden farklı olarak; su kaynakları, petrol platformları, enerji santralleri ve diğer sanayi tesislerinin kontrolu için kullanılan SCADA (Siemens supervisory control and data acquisition) sistemlerini ele geçirip fiziksel kontrol sistemlerinin çalışmasını değiştirmek. Stuxnet eğer bulaştığı bilgisayarda bir SCADA sistemi mevcutsa ilk once mevcut projelerin kod ve dizaynlarını çalmaya çalışıyor, onun dışında asıl ilginç olan nokta ise stuxnet'in programlama yazılım ara yuzu vasıtasıyla PLC'lere (Programmable Logic Controllers) kendi kodlarını yuklemesi. Ayrıca yuklenen bu kodlar, stuxnet'in bulaşmış olduğu bir bilgisayardan PLC'lerdeki butun kodlar incelenmek istendiğinde dahi gorulemiyor. Boylelikle stuxnet PLC lere enjekte edilen kodları saklayabilen bilinen ilk rootkit unvanına da sahip oluyor.</p>
-<p>Birçok medya raporunda kodlar arasında MYRTUS sozcuğunun geçmesi Stuxnet'in İsrail tarafından oluşturulduğu iddialarına neden oldu. İddiaya gore MYRTUS "Myrtle" yani İbranice'de "Hadassah" olarak geçen mersin ağacına gondermeydi ve Yahudi İran kraliçesi Esther'in doğum adı da Hadassah'tı. Yine kodlar arasında geçen 19790509 sayısının 9 Mayıs 1979 olduğu ve bir başka İranlı Yahudi olan işadamı Habib Elghanian'ın Tahran'da idam edildiği tarih olarak yorumlandı. Öte yandan MYRTUS'un yanlış algılanmış olabileceği, ifadenin sadece "My RTUs" olduğu da iddialar arasında. RTUs "Remote Terminal Units" anlamına gelen SCADA bileşenlerinin kısaltması. İsrail bu konuda açıklama yapmasa da konunun takibi için askeri haberalma birimi kurması siber-savaşın başladığını doğruluyor.</p>
-<p>İran'da ise 30bin IP adresinin saldırıdan etkilendiği ve saldırıların Stuxnet'in farklı surumleriyle devam ettiği bildirildi. İran Siemens'in antivirus yazılımının solucanı silmek yerine guncellediğinden kuşkulandığını belirterek kendi temizleme programlarını oluşturacağını açıkladı</p>
-<p>Kasım ayı sonunda nukleer programda çalışan iki İranlı bilimadamının bombalı suikaste kurban gitmesi Stuxnet'in arkasında olanların nukleer programı durdurmakla yetinmeyeceği yorumlarını getirdi. BKZ: <a href="http://www.sabah.com.tr/Dunya/2011/11/20/iranli-uzmanlari-stuxnet-oldurdu">http://www.sabah.com.tr/Dunya/2011/11/20/iranli-uzmanlari-stuxnet-oldurdu</a></p>
-<p>Peki biz ne yapacağız diye duşunuyorsanız bizim yapacağımız pek birşey yok.Antivurusumuzu guncellemek(!) ve birazcık dikkatli olmak yeter gibi gozukuyor.Zaten Stuxnetin işi gucu yokta bize mi gelecek.O yuzden biraz rahat olabiliriz.Tutunki geldi o zaman <a href="http://www.malwarecity.com/community/index.php?app=downloads&amp;showfile=12">buradaki</a> araç ile temizleyebilirsiniz.Ama eğer kurumsal bir ağınız varsa aşağıdaki yazıyı okumanızda fayda var. <a href="http://www.eyupcelik.com.tr/ceh/kurumsal-aglarda-stuxnet-virusunu-tespit-etme">http://www.eyupcelik.com.tr/ceh/kurumsal-aglarda-stuxnet-virusunu-tespit-etme</a></p>
-<p><strong>Kaynaklar: </strong></p>
-<p><a href="http://blogs.technet.com/b/mmpc/archive/2010/07/16/the-stuxnet-sting.aspx">http://blogs.technet.com/b/mmpc/archive/2010/07/16/the-stuxnet-sting.aspx </a></p>
-<p><a href="http://blogs.technet.com/b/mmpc/archive/2010/07/23/protection-for-new-malware-families-using-lnk-vulnerability.aspx">http://blogs.technet.com/b/mmpc/archive/2010/07/23/protection-for-new-malware-families-using-lnk-vulnerability.aspx </a></p>
-<p><a href="http://blogs.technet.com/b/srd/archive/2010/09/14/ms10-061-printer-spooler-vulnerability.aspx">http://blogs.technet.com/b/srd/archive/2010/09/14/ms10-061-printer-spooler-vulnerability.aspx </a></p>
-<p><a href="http://blogs.technet.com/b/mmpc/archive/2010/09/16/hold-on-to-your-keys.aspx">http://blogs.technet.com/b/mmpc/archive/2010/09/16/hold-on-to-your-keys.aspx </a></p>
-<p><a href="http://www.bilgiguvenligi.gov.tr/guvenlik-bildirileri/index.php">http://www.bilgiguvenligi.gov.tr/guvenlik-bildirileri/index.php </a></p>
-<p><a href="http://www.e-data.com.tr/dogrusuyla-yanlisiyla-stuxnet.aspx">http://www.e-data.com.tr/dogrusuyla-yanlisiyla-stuxnet.aspx</a></p></div>
-        <hr />
-    </div>
-		
-            <div class="pagination">
-<ul>
-    <li class="prev disabled"><a href="#">&larr; Previous</a></li>
-
-    <li class="active"><a href="../tag/virusler.html">1</a></li>
-
-    <li class="next disabled"><a href="#">&rarr; Next</a></li>
-
-</ul>
-</div>    
- 
+    <link href="http://www.halitalptekin.com/feeds/all.atom.xml" type="application/atom+xml" rel="alternate"
+        title="{ Halit Alptekin } Atom Feed" />
+      <link href="http://www.halitalptekin.com/feeds/all.rss.xml" type="application/rss+xml" rel="alternate"
+        title="{ Halit Alptekin } RSS Feed" />
   
-        </div>
-        
-        <div class="span3">
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
 
-            <div class="well" style="padding: 8px 0; background-color: #FBFBFB;">
-            <ul class="nav nav-list">
-                <li class="nav-header"> 
-                Site
-                </li>
-            
-                <li><a href="../archives.html">Archives</a>
-                <li><a href="../tags.html">Tags</a>
-                <li><a href="../feeds/all.atom.xml" rel="alternate">Atom feed</a></li>
-                                <li><a href="../feeds/all.rss.xml" rel="alternate">RSS feed</a></li>
-                                 <li><a href="../sitemap.xml">Sitemap</a>
-            </ul>
-            </div>
+  <link href="../favicon.png" rel="icon">
+  <link href="../theme/css/main.css" media="screen, projection"
+        rel="stylesheet" type="text/css">
+  <script src="../theme/js/modernizr-2.0.js"></script>
+  <script src="../theme/js/ender.js"></script>
+  <script src="../theme/js/octopress.js" type="text/javascript"></script>
 
+  <link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic"
+        rel="stylesheet" type="text/css">
+  <link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic"
+        rel="stylesheet" type="text/css">
+</head>
+<body>
+  <header role="banner"><hgroup>
+  <h1><a href="../">{ Halit Alptekin }</a></h1>
+  </hgroup></header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  <li><a href="http://www.halitalptekin.com/feeds/all.atom.xml" rel="subscribe-rss">Atom</a></li>
+    <li><a href="http://www.halitalptekin.com/feeds/all.rss.xml" rel="subscribe-rss">Rss</a></li>
+  </ul>
 
-                        <div class="well" style="padding: 8px 0; background-color: #FBFBFB;">
-            <ul class="nav nav-list">
-                <li class="nav-header"> 
-                Categories
-                </li>
-                
-                                <li><a href="../category/tasarim.html">tasarim</a></li>
-                                <li><a href="../category/server.html">server</a></li>
-                                <li><a href="../category/python.html">python</a></li>
-                                <li><a href="../category/programlama.html">programlama</a></li>
-                                <li><a href="../category/linux.html">linux</a></li>
-                                <li><a href="../category/kisisel.html">kisisel</a></li>
-                                <li><a href="../category/internet.html">internet</a></li>
-                                <li><a href="../category/guvenlik.html">guvenlik</a></li>
-                                <li><a href="../category/genel.html">genel</a></li>
-                                <li><a href="../category/eglence.html">eglence</a></li>
-                                <li><a href="../category/django.html">django</a></li>
-                                <li><a href="../category/compsci.html">compsci</a></li>
-                                <li><a href="../category/arduino.html">arduino</a></li>
-                                   
-            </ul>
-            </div>
-            
+<!-- TODO: add search here
+<form action="" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="q" value="site:.." />
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+-->
 
-                        <div class="well" style="padding: 8px 0; background-color: #FBFBFB;">
-            <ul class="nav nav-list">
-                <li class="nav-header"> 
-                Links
-                </li>
-            
-                            <li><a href="http://www.python.org">Python</a></li>
-                        </ul>
-            </div>
-            
+<ul class="main-navigation">
+  <li><a href="../">Blog</a></li>
+        <li><a href="../pages/about-me.html">About Me</a></li>
+    <li><a href="../pages/contact.html">Contact</a></li>
+  <!-- TODO: add categories here? -->
+  </ul></nav>
+  <div id="main">
+    <div id="content">
+      <div class="blog-index">
+    	  		<article>
+    		<header>
+          <h1 class="entry-title">
+        <a href="../stuxnet-virusu.html">Stuxnet Virüsü</a>
+      </h1>
+          <p class="meta"><time datetime="2012-06-03T00:00:00" pubdate>Jun 03, 2012</time></p>
+</header>
 
-                        <div class="social">
-            <div class="well" style="padding: 8px 0; background-color: #FBFBFB;">
-            <ul class="nav nav-list">
-                <li class="nav-header"> 
-                Social
-                </li>
-           
-                                <li><a href="http://twitter.com/halitalptekin">twitter</a></li>
-                                <li><a href="http://github.com/halitalptekin">github</a></li>
-                                <li><a href="http://stackoverflow.com/users/1151618/halit-alptekin">stackoverflow</a></li>
-                                <li><a href="http://tr.linkedin.com/in/halitalptekin">linkedin</a></li>
-                            </ul>
-            </div>
-            </div>
-            
-                        <div class="well" style="padding: 8px 0; background-color: #FBFBFB;">
-            <ul class="nav nav-list">
-                <li class="nav-header"> 
-                Ads
-                </li>
+  <div class="entry-content"><p>Stuxnet virusu bu aralar guvenlik uzmanları tarafından en fazla konuşulan konulardan birisi.Çunku diğer viruslere benzemeyen amacı tamamen siber savaş olan bir bir virus.Diğer virus turlerinin amacı daha fazla bilgisayara yayılıp daha fazla bilgisayara zarar vermek.Ama Stuxnet'i diğer viruslerden ayıran nokta da bu.O daha fazla sisteme ...</p></div>
+  <footer>
+    <a rel="full-article" href="../stuxnet-virusu.html">Read On &crarr;</a>
+  </footer>
+  		</article>
+  	  	<div class="pagination">
+  
+    <br />
+</div>  </div>
+      <aside class="sidebar">
+  <section>
+    <h1>Recent Posts</h1>
+    <ul id="recent_posts">
+            <li class="post">
+          <a href="../stuxnet-virusu.html">Stuxnet Virüsü</a>
+      </li>
+          </ul>
+  </section>
+    <section>
+      
+    <h1>Categories</h1>
+    <ul id="recent_posts">
+              <li><a href="../category/tasarim.html">tasarim</a></li>
+              <li><a href="../category/server.html">server</a></li>
+              <li><a href="../category/python.html">python</a></li>
+              <li><a href="../category/programlama.html">programlama</a></li>
+              <li><a href="../category/linux.html">linux</a></li>
+              <li><a href="../category/kisisel.html">kisisel</a></li>
+              <li><a href="../category/internet.html">internet</a></li>
+              <li><a href="../category/guvenlik.html">guvenlik</a></li>
+              <li><a href="../category/genel.html">genel</a></li>
+              <li><a href="../category/eglence.html">eglence</a></li>
+              <li><a href="../category/django.html">django</a></li>
+              <li><a href="../category/compsci.html">compsci</a></li>
+              <li><a href="../category/arduino.html">arduino</a></li>
+          </ul>
+  </section>
+   
 
-                                <li><a href="https://www.camekan.com/adwords/" title="Google Adwords"><img src="/media/reklam/camekancom.jpg" alt="Google Adwords" title="Google Adwords"></a>
-                </li>
-                                <li><a href="http://www.dugunajans.com/" title="düğün fotoğrafçısı"><img src="/media/reklam/dugunajanscom.jpg" alt="düğün fotoğrafçısı" title="düğün fotoğrafçısı"></a>
-                </li>
-                            </ul>
-            </div>
-            
-        </div>  
-    </div>     </div> 
-<footer>
-	<hr>
-	<p><a href='http://www.halitalptekin.com'>Halit Alptekin Personal Blog</a> &copy; 2012</p>
-</footer>
+    
+    <section>
+        <h1>Social</h1>
+        <ul>
+            <li><a href="http://www.halitalptekin.com/feeds/all.rss.xml" type="application/rss+xml" rel="alternate">rss</a></li>
+                    <li><a href="http://twitter.com/halitalptekin" target="_blank">twitter</a></li>
+                    <li><a href="http://github.com/halitalptekin" target="_blank">github</a></li>
+                    <li><a href="http://stackoverflow.com/users/1151618/halit-alptekin" target="_blank">stackoverflow</a></li>
+                    <li><a href="http://tr.linkedin.com/in/halitalptekin" target="_blank">linkedin</a></li>
+                </ul>
+    </section>
+      <section>
+        <h1>Blogroll</h1>
+        <ul>
+                    <li><a href="http://www.python.org" target="_blank">Python</a></li>
+                </ul>
+    </section>
 
-</div> <!-- /container -->
-<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
-<script src="http://twitter.github.com/bootstrap/assets/js/bootstrap-collapse.js"></script>
-<script>var _gaq=[['_setAccount','UA-24728900-1'],['_trackPageview']];(function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];g.src='//www.google-analytics.com/ga.js';s.parentNode.insertBefore(g,s)}(document,'script'))</script>
+      <section>
+        <h1>Ads</h1>
+        <ul id="recent_posts">
+                            <li><a href="https://www.camekan.com/adwords/" title="Google Adwords"><img src="/media/reklam/camekancom.jpg" alt="Google Adwords" title="Google Adwords"></a></li>
+                            <li><a href="http://www.dugunajans.com/" title="düğün fotoğrafçısı"><img src="/media/reklam/dugunajanscom.jpg" alt="düğün fotoğrafçısı" title="düğün fotoğrafçısı"></a></li>
+                    </ul>
+    </section>
+  
+</aside>    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2013 - halit -
+  <span class="credit">Powered by <a href="http://getpelican.com">Pelican</a></span>
+</p></footer>
+      <script type="text/javascript">
+	    var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+	    document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+    </script>
+    <script type="text/javascript">
+	    try {
+	        var pageTracker = _gat._getTracker("UA-24728900-1");
+	    pageTracker._trackPageview();
+	    } catch(err) {}
+	</script>
+	<script type="text/javascript">
+	  var disqus_shortname = 'halitalptekin';
+	  (function() {
+	    var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+	    dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
+	    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+	   })();
+	</script>
 </body>
 </html>

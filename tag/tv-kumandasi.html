@@ -1,313 +1,158 @@
 <!DOCTYPE html>
-<html lang="en">
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
-    <meta charset="utf-8">
-    <title>Halit Alptekin Personal Blog</title>
-    <meta name="description" content="Programming and Life Blog Of Halit Alptekin. Karadeniz Technical University Computer Engineering Student.">
-    <meta name="keywords" content="programlama, blog, personal blog, linux, python, django, php, bootstrap, seo, bilgisayar muhendisligi, ktu, karadeniz teknik universitesi, programming">
-    <meta name="author" content="halit">
-    <meta name="robots" content="index, follow, all"/>
+  <meta charset="utf-8">
+  <title>{ Halit Alptekin } - tv kumandası</title>
 
-    <!-- Le HTML5 shim, for IE6-8 support of HTML elements -->
-    <!--[if lt IE 9]>
-    <script src="../theme/html5.js"></script>
-    <![endif]-->
+  <meta name="author" content="halit">
 
-    <!-- Le styles -->
-    <link href="../theme/bootstrap.min.css" rel="stylesheet">
-    <link href="../theme/bootstrap.min.responsive.css" rel="stylesheet">
-    <link href="../theme/local.css" rel="stylesheet">
-    <link href="../theme/pygments.css" rel="stylesheet">
-
-</head>
-
-<body>
-
-<div class="navbar">
-    <div class="navbar-inner">
-    <div class="container">
-
-         <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
-             <span class="icon-bar"></span>
-             <span class="icon-bar"></span>
-             <span class="icon-bar"></span>
-         </a>
-
-        <a class="brand" href="..">Halit Alptekin Personal Blog</a>
-
-        <div class="nav-collapse">
-        <ul class="nav">
-                    
-        <li><a href="../pages/about-me.html">About Me</a></li>
-	    <li><a href="../pages/contact.html">Contact</a></li>
-        </ul>
-        </div>
-        
-    </div>
-    </div>
-</div>
-
-<div class="container">
-    <div class="content">
-    <div class="row">
-
-        <div class="span9">
-                
-        
-
-    <div class='article'>
-        <div class="content-title">
-            <a href="../arduino-ve-kizilotesi-alici.html"><h1>Arduino Ve Kızılötesi Alıcı</h1></a>
-            Jul 09, 2012
-
-by <a class="url fn" href="../author/halit.html">halit</a>
- 
-
-in <a href="../category/arduino.html">arduino</a>
-
- 
-    tagged <a href="../tag/arduino.html">arduino</a> <a href="../tag/ir-detector.html">ir detector</a> <a href="../tag/ir-led.html">ir led</a> <a href="../tag/ir-sensor.html">ir sensör</a> <a href="../tag/tv-kumandasi.html">tv kumandası</a> <a href="../tag/xdotool.html">xdotool</a>  
-        </div>
-        
-        <div><p>Bundan tam 1 hafta once bugun Arduino ile nasıl bilgisayarınızı kontrol edebileceğiniz konusunda basit birşey yapmıştım.Onun mantığı seri porttan gelen verileri python ile algılayıp xdotool aracını kullanarak bilgisayara erişmekti.Gorunuş olarak bir hayli amatordu.Boyle birşey yapmıştım ama aklımda hep kumanda ile kontrol vardı.Nasıl bunu yaparım diye duşunuyordum.Tam bu duşunceden vazgeçmişken evden atılacak bir parçanın içinde kızıl otesi alıcı(IR Detector) gordum.Hemen dikkatlice sokup internette biraz araştırma yaptım.</p>
-<p>Bu alıcı ile istediğim şeyi yapabilirdim.Aynı geçenlerde yazdığım kodun birazcık daha gelişmişi ile daha kaliteli birşey yapabileceğimi duşundum.Hemen bu IR alıcı için birkaç kutuphane arayışlarına girdim.Eğer çalışsalardı hepsi işime yarardı ama maalesef hiçbiri çalışmadı.Bende kolları sıvayıp bir tanesini çalışır duruma getirdim.Aslında çok da fazla birşey yapmadım.Sadece şu anda kullandığım surum ile uygun bir hale gelmesini sağladım.Bu kutuphane dosyasını <a href="http://www.halitalptekin.com/dosya/arduino-ir-detect-kutuphanesi/">buradan</a> indirebilirsiniz.</p>
-<p>İşlerimize geçmeden hemen once IR Detectorumuzu Arduino ile bağlayalım.Devre aşağıda gorduğunuz gibi gayet basit.</p>
-<p><img alt="Arduino IR Detector" src="http://www.halitalptekin.com/media/upload/arduino-ir-detector.gif" /></p>
-<p>Devremizi kurduktan sonra az once indirdiğiniz kutuphane dosyasını açıp içindeki klasoru <strong>/usr/share/arduino/libraries</strong> dizinine atıyoruz.IDE'yi yeniden başlattığınızda File-&gt;Examples içinde IRremote klasorunu goreceksiniz.Bu klasorun içindeki <strong>IRrecvDemo</strong> dosyası bizim birazdan kullanacağımız için gerekli olan ornek.Siz diğer ornekleride inceleyebilirsiniz.Bunların arasında IR Led ile veri gondermede var.</p>
-<p><strong>IRrecvDemo</strong> orneğini Arduinomuza yukledikten sonra seri porttan kızılotesi ile algılanan tum değerleri goreceksiniz.Evinizdeki her kumanda da her tuşa bastığınızda farklı bir değer çıktığını gorebilirsiniz.Benim kullandığım bizim evin televizyonunda aşağıdaki değerler çıkıyor.Örneğin aşağı tuşunda <strong>F38</strong>,yukarı tuşunda <strong>B38</strong>,sağ tuşunda <strong>738</strong>,sol tuşunda <strong>338</strong> vb.Sizde kullanacağınız kumandanın buton değerlerini bir yerlere not etmenizde fayda var.</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
- 2
- 3
- 4
- 5
- 6
- 7
- 8
- 9
-10
-11
-12
-13
-14
-15
-16
-17
-18
-19
-20
-21
-22
-23
-24
-25
-26
-27
-28
-29
-30
-31
-32
-33
-34
-35
-36
-37
-38
-39
-40
-41
-42
-43
-44
-45
-46
-47
-48
-49
-50
-51
-52
-53
-54
-55
-56
-57
-58
-59</pre></div></td><td class="code"><div class="codehilite"><pre><span class="c">#!/usr/bin/env python</span>
-<span class="kn">import</span> <span class="nn">os</span>
-<span class="kn">import</span> <span class="nn">serial</span>
-
-<span class="n">sensetive</span> <span class="o">=</span> <span class="s">&quot;10&quot;</span> <span class="c">## Mouse Hassasiyet Degeri - Mouse Sensetive ##</span>
-
-<span class="n">SERIAL_PORT</span>     <span class="o">=</span> <span class="s">&#39;/dev/ttyACM0&#39;</span>
-<span class="n">SERI_BAUDRATE</span>   <span class="o">=</span> <span class="mi">9600</span>
-<span class="n">SERI_BYTESIZE</span>   <span class="o">=</span> <span class="mi">8</span>
-<span class="n">SERI_PARITY</span>     <span class="o">=</span> <span class="s">&#39;N&#39;</span>
-<span class="n">SERI_STOPBITS</span>   <span class="o">=</span> <span class="mi">1</span>
-<span class="n">SERI_TIMEOUT</span>    <span class="o">=</span> <span class="mf">0.2</span>
-<span class="n">SERI_BUFFER_SIZE</span><span class="o">=</span> <span class="mi">1024</span>
-
-<span class="k">def</span> <span class="nf">seriBaglan</span><span class="p">():</span>
-    <span class="n">bag</span>             <span class="o">=</span> <span class="n">serial</span><span class="o">.</span><span class="n">Serial</span><span class="p">()</span>
-    <span class="n">bag</span><span class="o">.</span><span class="n">port</span>        <span class="o">=</span> <span class="n">SERIAL_PORT</span>
-    <span class="n">bag</span><span class="o">.</span><span class="n">baudrate</span>    <span class="o">=</span> <span class="n">SERI_BAUDRATE</span>
-    <span class="n">bag</span><span class="o">.</span><span class="n">bytesize</span>    <span class="o">=</span> <span class="n">SERI_BYTESIZE</span>
-    <span class="n">bag</span><span class="o">.</span><span class="n">parity</span>      <span class="o">=</span> <span class="n">SERI_PARITY</span>
-    <span class="n">bag</span><span class="o">.</span><span class="n">stopbits</span>    <span class="o">=</span> <span class="n">SERI_STOPBITS</span>
-    <span class="n">bag</span><span class="o">.</span><span class="n">timeout</span>     <span class="o">=</span> <span class="n">SERI_TIMEOUT</span>
-    <span class="n">bag</span><span class="o">.</span><span class="n">open</span><span class="p">()</span>
-    <span class="k">return</span> <span class="n">bag</span>
-<span class="n">bag</span> <span class="o">=</span> <span class="n">seriBaglan</span><span class="p">()</span>
-<span class="k">while</span> <span class="mi">1</span><span class="p">:</span>
-
-    <span class="n">gelen</span>  <span class="o">=</span> <span class="n">bag</span><span class="o">.</span><span class="n">readline</span><span class="p">()</span>
-    <span class="k">for</span> <span class="n">gl</span> <span class="ow">in</span> <span class="n">gelen</span><span class="p">:</span>
-        <span class="n">gl</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">gl</span><span class="p">)</span>
-
-        <span class="c">## Buton - Button ##</span>
-    <span class="n">asagi</span>        <span class="o">=</span> <span class="n">gelen</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s">&quot;F38&quot;</span><span class="p">)</span>        
-    <span class="n">yukari</span>       <span class="o">=</span> <span class="n">gelen</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s">&quot;B38&quot;</span><span class="p">)</span>
-    <span class="n">sag</span>          <span class="o">=</span> <span class="n">gelen</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s">&quot;738&quot;</span><span class="p">)</span>
-    <span class="n">sol</span>          <span class="o">=</span> <span class="n">gelen</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s">&quot;338&quot;</span><span class="p">)</span>
-    <span class="n">sagclick</span>     <span class="o">=</span> <span class="n">gelen</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s">&quot;5E25&quot;</span><span class="p">)</span>
-    <span class="n">solclick</span>     <span class="o">=</span> <span class="n">gelen</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s">&quot;70&quot;</span><span class="p">)</span>
-    <span class="n">asagitik</span>     <span class="o">=</span> <span class="n">gelen</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s">&quot;C90&quot;</span><span class="p">)</span>
-    <span class="n">yukgitik</span>     <span class="o">=</span> <span class="n">gelen</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s">&quot;490&quot;</span><span class="p">)</span>
-
-    <span class="k">if</span> <span class="n">asagi</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
-        <span class="k">print</span> <span class="s">&quot;asagi&quot;</span>
-        <span class="n">os</span><span class="o">.</span><span class="n">system</span><span class="p">(</span><span class="s">&quot;xdotool mousemove_relative 0 </span><span class="si">%s</span><span class="s">&quot;</span> <span class="o">%</span><span class="n">sensetive</span><span class="p">)</span>
-    <span class="k">if</span> <span class="n">yukari</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
-        <span class="k">print</span> <span class="s">&quot;yukari&quot;</span>
-        <span class="n">os</span><span class="o">.</span><span class="n">system</span><span class="p">(</span><span class="s">&quot;xdotool mousemove_relative -- 0 -</span><span class="si">%s</span><span class="s">&quot;</span> <span class="o">%</span><span class="n">sensetive</span><span class="p">)</span>
-    <span class="k">if</span> <span class="n">sag</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
-        <span class="n">os</span><span class="o">.</span><span class="n">system</span><span class="p">(</span><span class="s">&quot;xdotool mousemove_relative </span><span class="si">%s</span><span class="s"> 0&quot;</span> <span class="o">%</span><span class="n">sensetive</span><span class="p">)</span>
-    <span class="k">if</span> <span class="n">sol</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
-        <span class="n">os</span><span class="o">.</span><span class="n">system</span><span class="p">(</span><span class="s">&quot;xdotool mousemove_relative -- -</span><span class="si">%s</span><span class="s"> 0&quot;</span> <span class="o">%</span><span class="n">sensetive</span><span class="p">)</span>
-    <span class="k">if</span> <span class="n">solclick</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
-        <span class="n">os</span><span class="o">.</span><span class="n">system</span><span class="p">(</span><span class="s">&quot;xdotool click 3&quot;</span><span class="p">)</span>
-    <span class="k">if</span> <span class="n">sagclick</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
-        <span class="n">os</span><span class="o">.</span><span class="n">system</span><span class="p">(</span><span class="s">&quot;xdotool click 1&quot;</span><span class="p">)</span>
-    <span class="k">if</span> <span class="n">asagitik</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
-        <span class="n">os</span><span class="o">.</span><span class="n">system</span><span class="p">(</span><span class="s">&quot;xdotool click 5&quot;</span><span class="p">)</span>
-    <span class="k">if</span> <span class="n">yukgitik</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
-        <span class="n">os</span><span class="o">.</span><span class="n">system</span><span class="p">(</span><span class="s">&quot;xdotool click 4&quot;</span><span class="p">)</span>
-</pre></div>
-</td></tr></table>
-
-<p>Sizin bu kodda değiştireceğiniz yerler en baştaki <strong>sensetive</strong> diye tanımladığım mouse'un hassasiyet değeri ve buton diye belirttiğim yerdeki kumandanızdan gelen buton değerleri.Bu iki yeri kendinize gore değiştirip programı çalıştırabilirsiniz.(Programın çalışması için bilgisayarınızda xdotool kurulu olması lazım. <strong>sudo apt-get install xdotool</strong> diyerek kurabilirsiniz.)</p>
-<p>Yukarıdaki Python programı arkaplanda çalışırken siz kumandanız ile sitelerde rahatça gezebilirsiniz.Şimdilik bu kodda mouse'u ileri,geri,aşağı ve yukarı oynatma,mouse sağ,sol ve ortadaki tekerlek var.Siz bu kodlardan sonra xdotool'un yapabileceklerine iyice bakıp kumandanızın istediğinize tuşuna işlevsellik atayabilirsiniz.Tamamen size kalan birşey.</p>
-<p>Tabiki de bu olayı sadece kumanda dan gelen verileri okumak için kullanmanıza gerek yok.Kurduğunuz kutuphane içindeki orneklere bakarak IR Led ile veri gonderimi de yapabilirsiniz.İki devreyi birbiri ile haberleştirebilirsiniz.Veya IR Led ve IR Detector kullanarak kendinize cisim algılayan bir sensor yapabilirsiniz.</p>
-<p>Benim kullandığım kumanda aşağıdaki şekilde.</p>
-<p><img alt="Arduino Tv Kumandası" src="http://www.halitalptekin.com/media/upload/2012-07-09_20.17.21.jpg" /></p>
-<p>Ve kendi çekimim olan video.(Evet hesap makinesi ile çektim)</p></div>
-        <hr />
-    </div>
-		
-            <div class="pagination">
-<ul>
-    <li class="prev disabled"><a href="#">&larr; Previous</a></li>
-
-    <li class="active"><a href="../tag/tv-kumandasi.html">1</a></li>
-
-    <li class="next disabled"><a href="#">&rarr; Next</a></li>
-
-</ul>
-</div>    
- 
+    <link href="http://www.halitalptekin.com/feeds/all.atom.xml" type="application/atom+xml" rel="alternate"
+        title="{ Halit Alptekin } Atom Feed" />
+      <link href="http://www.halitalptekin.com/feeds/all.rss.xml" type="application/rss+xml" rel="alternate"
+        title="{ Halit Alptekin } RSS Feed" />
   
-        </div>
-        
-        <div class="span3">
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
 
-            <div class="well" style="padding: 8px 0; background-color: #FBFBFB;">
-            <ul class="nav nav-list">
-                <li class="nav-header"> 
-                Site
-                </li>
-            
-                <li><a href="../archives.html">Archives</a>
-                <li><a href="../tags.html">Tags</a>
-                <li><a href="../feeds/all.atom.xml" rel="alternate">Atom feed</a></li>
-                                <li><a href="../feeds/all.rss.xml" rel="alternate">RSS feed</a></li>
-                                 <li><a href="../sitemap.xml">Sitemap</a>
-            </ul>
-            </div>
+  <link href="../favicon.png" rel="icon">
+  <link href="../theme/css/main.css" media="screen, projection"
+        rel="stylesheet" type="text/css">
+  <script src="../theme/js/modernizr-2.0.js"></script>
+  <script src="../theme/js/ender.js"></script>
+  <script src="../theme/js/octopress.js" type="text/javascript"></script>
 
+  <link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic"
+        rel="stylesheet" type="text/css">
+  <link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic"
+        rel="stylesheet" type="text/css">
+</head>
+<body>
+  <header role="banner"><hgroup>
+  <h1><a href="../">{ Halit Alptekin }</a></h1>
+  </hgroup></header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  <li><a href="http://www.halitalptekin.com/feeds/all.atom.xml" rel="subscribe-rss">Atom</a></li>
+    <li><a href="http://www.halitalptekin.com/feeds/all.rss.xml" rel="subscribe-rss">Rss</a></li>
+  </ul>
 
-                        <div class="well" style="padding: 8px 0; background-color: #FBFBFB;">
-            <ul class="nav nav-list">
-                <li class="nav-header"> 
-                Categories
-                </li>
-                
-                                <li><a href="../category/tasarim.html">tasarim</a></li>
-                                <li><a href="../category/server.html">server</a></li>
-                                <li><a href="../category/python.html">python</a></li>
-                                <li><a href="../category/programlama.html">programlama</a></li>
-                                <li><a href="../category/linux.html">linux</a></li>
-                                <li><a href="../category/kisisel.html">kisisel</a></li>
-                                <li><a href="../category/internet.html">internet</a></li>
-                                <li><a href="../category/guvenlik.html">guvenlik</a></li>
-                                <li><a href="../category/genel.html">genel</a></li>
-                                <li><a href="../category/eglence.html">eglence</a></li>
-                                <li><a href="../category/django.html">django</a></li>
-                                <li><a href="../category/compsci.html">compsci</a></li>
-                                <li><a href="../category/arduino.html">arduino</a></li>
-                                   
-            </ul>
-            </div>
-            
+<!-- TODO: add search here
+<form action="" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="q" value="site:.." />
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+-->
 
-                        <div class="well" style="padding: 8px 0; background-color: #FBFBFB;">
-            <ul class="nav nav-list">
-                <li class="nav-header"> 
-                Links
-                </li>
-            
-                            <li><a href="http://www.python.org">Python</a></li>
-                        </ul>
-            </div>
-            
+<ul class="main-navigation">
+  <li><a href="../">Blog</a></li>
+        <li><a href="../pages/about-me.html">About Me</a></li>
+    <li><a href="../pages/contact.html">Contact</a></li>
+  <!-- TODO: add categories here? -->
+  </ul></nav>
+  <div id="main">
+    <div id="content">
+      <div class="blog-index">
+    	  		<article>
+    		<header>
+          <h1 class="entry-title">
+        <a href="../arduino-ve-kizilotesi-alici.html">Arduino Ve Kızılötesi Alıcı</a>
+      </h1>
+          <p class="meta"><time datetime="2012-07-09T00:00:00" pubdate>Jul 09, 2012</time></p>
+</header>
 
-                        <div class="social">
-            <div class="well" style="padding: 8px 0; background-color: #FBFBFB;">
-            <ul class="nav nav-list">
-                <li class="nav-header"> 
-                Social
-                </li>
-           
-                                <li><a href="http://twitter.com/halitalptekin">twitter</a></li>
-                                <li><a href="http://github.com/halitalptekin">github</a></li>
-                                <li><a href="http://stackoverflow.com/users/1151618/halit-alptekin">stackoverflow</a></li>
-                                <li><a href="http://tr.linkedin.com/in/halitalptekin">linkedin</a></li>
-                            </ul>
-            </div>
-            </div>
-            
-                        <div class="well" style="padding: 8px 0; background-color: #FBFBFB;">
-            <ul class="nav nav-list">
-                <li class="nav-header"> 
-                Ads
-                </li>
+  <div class="entry-content"><p>Bundan tam 1 hafta once bugun Arduino ile nasıl bilgisayarınızı kontrol edebileceğiniz konusunda basit birşey yapmıştım.Onun mantığı seri porttan gelen verileri python ile algılayıp xdotool aracını kullanarak bilgisayara erişmekti.Gorunuş olarak bir hayli amatordu.Boyle birşey yapmıştım ama aklımda hep kumanda ile kontrol vardı.Nasıl bunu yaparım diye duşunuyordum ...</p></div>
+  <footer>
+    <a rel="full-article" href="../arduino-ve-kizilotesi-alici.html">Read On &crarr;</a>
+  </footer>
+  		</article>
+  	  	<div class="pagination">
+  
+    <br />
+</div>  </div>
+      <aside class="sidebar">
+  <section>
+    <h1>Recent Posts</h1>
+    <ul id="recent_posts">
+            <li class="post">
+          <a href="../arduino-ve-kizilotesi-alici.html">Arduino Ve Kızılötesi Alıcı</a>
+      </li>
+          </ul>
+  </section>
+    <section>
+      
+    <h1>Categories</h1>
+    <ul id="recent_posts">
+              <li><a href="../category/tasarim.html">tasarim</a></li>
+              <li><a href="../category/server.html">server</a></li>
+              <li><a href="../category/python.html">python</a></li>
+              <li><a href="../category/programlama.html">programlama</a></li>
+              <li><a href="../category/linux.html">linux</a></li>
+              <li><a href="../category/kisisel.html">kisisel</a></li>
+              <li><a href="../category/internet.html">internet</a></li>
+              <li><a href="../category/guvenlik.html">guvenlik</a></li>
+              <li><a href="../category/genel.html">genel</a></li>
+              <li><a href="../category/eglence.html">eglence</a></li>
+              <li><a href="../category/django.html">django</a></li>
+              <li><a href="../category/compsci.html">compsci</a></li>
+              <li><a href="../category/arduino.html">arduino</a></li>
+          </ul>
+  </section>
+   
 
-                                <li><a href="https://www.camekan.com/adwords/" title="Google Adwords"><img src="/media/reklam/camekancom.jpg" alt="Google Adwords" title="Google Adwords"></a>
-                </li>
-                                <li><a href="http://www.dugunajans.com/" title="düğün fotoğrafçısı"><img src="/media/reklam/dugunajanscom.jpg" alt="düğün fotoğrafçısı" title="düğün fotoğrafçısı"></a>
-                </li>
-                            </ul>
-            </div>
-            
-        </div>  
-    </div>     </div> 
-<footer>
-	<hr>
-	<p><a href='http://www.halitalptekin.com'>Halit Alptekin Personal Blog</a> &copy; 2012</p>
-</footer>
+    
+    <section>
+        <h1>Social</h1>
+        <ul>
+            <li><a href="http://www.halitalptekin.com/feeds/all.rss.xml" type="application/rss+xml" rel="alternate">rss</a></li>
+                    <li><a href="http://twitter.com/halitalptekin" target="_blank">twitter</a></li>
+                    <li><a href="http://github.com/halitalptekin" target="_blank">github</a></li>
+                    <li><a href="http://stackoverflow.com/users/1151618/halit-alptekin" target="_blank">stackoverflow</a></li>
+                    <li><a href="http://tr.linkedin.com/in/halitalptekin" target="_blank">linkedin</a></li>
+                </ul>
+    </section>
+      <section>
+        <h1>Blogroll</h1>
+        <ul>
+                    <li><a href="http://www.python.org" target="_blank">Python</a></li>
+                </ul>
+    </section>
 
-</div> <!-- /container -->
-<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
-<script src="http://twitter.github.com/bootstrap/assets/js/bootstrap-collapse.js"></script>
-<script>var _gaq=[['_setAccount','UA-24728900-1'],['_trackPageview']];(function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];g.src='//www.google-analytics.com/ga.js';s.parentNode.insertBefore(g,s)}(document,'script'))</script>
+      <section>
+        <h1>Ads</h1>
+        <ul id="recent_posts">
+                            <li><a href="https://www.camekan.com/adwords/" title="Google Adwords"><img src="/media/reklam/camekancom.jpg" alt="Google Adwords" title="Google Adwords"></a></li>
+                            <li><a href="http://www.dugunajans.com/" title="düğün fotoğrafçısı"><img src="/media/reklam/dugunajanscom.jpg" alt="düğün fotoğrafçısı" title="düğün fotoğrafçısı"></a></li>
+                    </ul>
+    </section>
+  
+</aside>    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2013 - halit -
+  <span class="credit">Powered by <a href="http://getpelican.com">Pelican</a></span>
+</p></footer>
+      <script type="text/javascript">
+	    var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+	    document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+    </script>
+    <script type="text/javascript">
+	    try {
+	        var pageTracker = _gat._getTracker("UA-24728900-1");
+	    pageTracker._trackPageview();
+	    } catch(err) {}
+	</script>
+	<script type="text/javascript">
+	  var disqus_shortname = 'halitalptekin';
+	  (function() {
+	    var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+	    dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
+	    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+	   })();
+	</script>
 </body>
 </html>

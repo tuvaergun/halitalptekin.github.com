@@ -1,264 +1,158 @@
 <!DOCTYPE html>
-<html lang="en">
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
-    <meta charset="utf-8">
-    <title>Halit Alptekin Personal Blog</title>
-    <meta name="description" content="Programming and Life Blog Of Halit Alptekin. Karadeniz Technical University Computer Engineering Student.">
-    <meta name="keywords" content="programlama, blog, personal blog, linux, python, django, php, bootstrap, seo, bilgisayar muhendisligi, ktu, karadeniz teknik universitesi, programming">
-    <meta name="author" content="halit">
-    <meta name="robots" content="index, follow, all"/>
+  <meta charset="utf-8">
+  <title>{ Halit Alptekin } - gnome tema</title>
 
-    <!-- Le HTML5 shim, for IE6-8 support of HTML elements -->
-    <!--[if lt IE 9]>
-    <script src="../theme/html5.js"></script>
-    <![endif]-->
+  <meta name="author" content="halit">
 
-    <!-- Le styles -->
-    <link href="../theme/bootstrap.min.css" rel="stylesheet">
-    <link href="../theme/bootstrap.min.responsive.css" rel="stylesheet">
-    <link href="../theme/local.css" rel="stylesheet">
-    <link href="../theme/pygments.css" rel="stylesheet">
-
-</head>
-
-<body>
-
-<div class="navbar">
-    <div class="navbar-inner">
-    <div class="container">
-
-         <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
-             <span class="icon-bar"></span>
-             <span class="icon-bar"></span>
-             <span class="icon-bar"></span>
-         </a>
-
-        <a class="brand" href="..">Halit Alptekin Personal Blog</a>
-
-        <div class="nav-collapse">
-        <ul class="nav">
-                    
-        <li><a href="../pages/about-me.html">About Me</a></li>
-	    <li><a href="../pages/contact.html">Contact</a></li>
-        </ul>
-        </div>
-        
-    </div>
-    </div>
-</div>
-
-<div class="container">
-    <div class="content">
-    <div class="row">
-
-        <div class="span9">
-                
-        
-
-    <div class='article'>
-        <div class="content-title">
-            <a href="../ubuntu-ekran-karti-ve-gnome-shell.html"><h1>Ubuntu Ekran Kartı Ve Gnome Shell</h1></a>
-            Sep 18, 2012
-
-by <a class="url fn" href="../author/halit.html">halit</a>
- 
-
-in <a href="../category/linux.html">linux</a>
-
- 
-    tagged <a href="../tag/gnome-shell.html">gnome shell</a> <a href="../tag/gnome-tema.html">gnome tema</a> <a href="../tag/microsoft-font.html">microsoft font</a> <a href="../tag/ubuntu.html">ubuntu</a> <a href="../tag/ubuntu-gnome.html">ubuntu gnome</a>  
-        </div>
-        
-        <div><p>Aslında Ubuntu bilgisayarımda uzunca bir suredir olmasına rağmen tamamen bir geçiş yapmamıştım. Bundan tam 3 ay once koklu bir şekilde Windows'tan Ubuntu'ya geçtim. Ve o gun bugundur hala kullanıyorum. Daha doğrusu kullandığımı sanıyordum. Çunku birçok grafik problemlerim vardı. Bunların başında ekran kartı surucusunun yuklenmemesi ve blenderin kurulmaması vardır. Ayrıcana firefoxta da birçok grafik sorunları vardı. Hepsinin çozumunun ekran kartı surucusunu yuklemeyle çozuleceğine inanıyordum ancak birçok ubuntu forumlarına sorduğum sorulardan gelen cevaplar yeterli değildi. En sonunda ciddi bir şekilde karar verdim ekran kartıyla ciddi ciddi uğraştım. Sonunda hem ekran kartını yukledim hem de gnome-shell ile yeni temalar kurdum.</p>
-<p>Tabi sadece bununla da kalmayıp wine ile çalıştıramadığım oyunlar ve blender gibi 3d programları da çalıştırmayı başardım. Yani artık Ubuntu'yu tam olarak kullanmaya başladım.</p>
-<p><strong>Hybrid Ekran Kartlarının Kurulumu</strong></p>
-<p>Bu tabiri ubuntu forumlarında yazdığım soruya gelen cevapta gordum. Aşağıdaki sonucun çıktısı benimkine benzer şekilde 2 tane ekran kartı gozukuyorsa sizin de kartınız hybrid olmalı.</p>
-<div class="codehilite"><pre><span class="n">lspci</span> <span class="o">|</span> <span class="n">grep</span> <span class="n">VGA</span>
-
-
-
-<span class="mo">00</span><span class="o">:</span><span class="mf">02.0</span> <span class="n">VGA</span> <span class="n">compatible</span> <span class="n">controller</span><span class="o">:</span> <span class="n">Intel</span> <span class="n">Corporation</span> <span class="mi">2</span><span class="n">nd</span> <span class="n">Generation</span> <span class="n">Core</span> <span class="n">Processor</span> <span class="n">Family</span> <span class="n">Integrated</span> <span class="n">Graphics</span> <span class="n">Controller</span> <span class="p">(</span><span class="n">rev</span> <span class="mi">09</span><span class="p">)</span>
-<span class="mo">01</span><span class="o">:</span><span class="mf">00.0</span> <span class="n">VGA</span> <span class="n">compatible</span> <span class="n">controller</span><span class="o">:</span> <span class="n">Advanced</span> <span class="n">Micro</span> <span class="n">Devices</span> <span class="p">[</span><span class="n">AMD</span><span class="p">]</span> <span class="n">nee</span> <span class="n">ATI</span> <span class="n">Seymour</span> <span class="p">[</span><span class="n">Radeon</span> <span class="n">HD</span> <span class="mi">6400</span><span class="n">M</span> <span class="n">Series</span><span class="p">]</span>
-</pre></div>
-
-
-<p>Hybrid kartları anlamak için çift kameralı cep telefonlarını duşunun. Ön kamerası 1.3 arka kamerası 8.0 olsun. Ben bugune kadar hep 1.3luk kamerayı kullanmışım. 8.0'lık kamerayı kullanmak için once Ubuntu -&gt; Sistem ayarları bolumunden ek suruculer uygulamasını çalıştırın. </p>
-<p><img alt="Ubuntu Ek suruculer" src="http://www.halitalptekin.com/media/upload/ek-suruculer-ubuntu.png" /></p>
-<p>Ben onceki deneyimlerimde yukarıda gozuken <strong>ATI/AMD için telifli FGLRX grafik surucusu </strong>ve <strong>ATI/AMD için telifli FGLRX grafik surucusu(surum sonrası guncellemeler) </strong>seçenklerinin ikisinide kurmama rağmen herhangibi bir değişiklik olmadı. Daha sonra anladığım kadarıyla sadece <strong>ATI/AMD için telifli FGLRX grafik surucusu </strong>seçeneğini kurmak yeterli olacaktır. Ben diğerini kurduğumda sorun ile karşılaştım. Bu surucunun kurulumu biraz surecek bittikten hemen sonra bilgisayarınızı yeniden başlatın.</p>
-<p>Ben bunu da yaptıktan sonra bilgisayarım açıldığında ekran kartımın kurulumu olmasını hayal etmiştim. Ancak olmamıştı. Çunku eksik bir yer vardı. Bunu da saolsun Ubuntu'nun resmi sitesinde dosyalar içinde gordum. Buna gore aşağıdaki komutu çalıştırıp driver kurulumunu tamamlamam gerekliymiş.</p>
-<div class="codehilite"><pre><span class="n">sudo</span> <span class="n">aticonfig</span> <span class="o">--</span><span class="n">initial</span>
-</pre></div>
-
-
-<p>Bilgisayarınızın ekranında kararma ve yeniden donuş olduktan sonra dosya oluşturuldu gibi bir yazı gorurseniz başarıyla kurmuş oldunuz. Artık rahatça diğer gorsel efektleri kullanabilirsiniz.</p>
-<p><strong>Gnome ve Gnome Shell Kurulumu</strong></p>
-<p>Bildiğiniz gibi Ubuntu Unity ile on tanımlı olarak geliyor. Ancak Ubuntu depolarından Gnome'u da çekerek kurabilirsiniz. Sırasıyla aşağıdaki komutlar yeterli olacaktır.</p>
-<div class="codehilite"><pre><span class="n">sudo</span> <span class="n">add</span><span class="o">-</span><span class="n">apt</span><span class="o">-</span><span class="n">repository</span> <span class="n">ppa</span><span class="o">:</span><span class="n">gnome3</span><span class="o">-</span><span class="n">team</span><span class="o">/</span><span class="n">gnome3</span>
-<span class="n">sudo</span> <span class="n">apt</span><span class="o">-</span><span class="n">get</span> <span class="n">update</span>
-<span class="n">sudo</span> <span class="n">apt</span><span class="o">-</span><span class="n">get</span> <span class="n">install</span> <span class="n">gnome</span><span class="o">-</span><span class="n">shell</span>
-</pre></div>
-
-
-<p>Veya;</p>
-<p><a href="http://www.halitalptekin.com/media/upload/ubuntu-yazilim-merkezi-gnome-shell.png"><img alt="Ubuntu Gnome Kurulumu" src="http://www.halitalptekin.com/media/upload/ubuntu-yazilim-merkezi-gnome-shell.png" /></a></p>
-<p>Gnome kurulumumuz başarıyla gerçekleştikten sonra birde gnome tweak tool aracımızı kuralım. Bunun için;</p>
-<div class="codehilite"><pre><span class="n">sudo</span> <span class="n">apt</span><span class="o">-</span><span class="n">get</span> <span class="n">install</span> <span class="n">gnome</span><span class="o">-</span><span class="n">tweak</span><span class="o">-</span><span class="n">tool</span>
-</pre></div>
-
-
-<p>Komutunu çalıştırmanız yeterlidir. Artık oturumumuzu kapatıp yeniden açarken giriş ekranındaki logoya basarak Gnome'u seçebiliriz. Eğer bir yanlış olmadıysa onunuze gorsel bir Gnome 3 gelecektir. Farenizi sol ust veya sağ alta goturduğunuzde gorsel efektlerin çalışması ekran kartımızın doğru çalıştığının da bir gostergesi.</p>
-<p><strong>Gnome Shell Kurulumu</strong></p>
-<p>Yukarıdaki resimde gorduğunuz gibi gnome shell eklentilerini kurabilirsiniz. Veya aşağıdaki komutları çalıştırabilirsiniz.</p>
-<div class="codehilite"><pre><span class="n">sudo</span> <span class="n">apt</span><span class="o">-</span><span class="n">get</span> <span class="n">install</span> <span class="n">gnome</span><span class="o">-</span><span class="n">shell</span>
-</pre></div>
-
-
-<p>Burada dikkat etmeniz gereken nokta benim gibi ubuntu forumlarından aşağıdaki gibi bir cevap alabilirsiniz.</p>
-<blockquote>
-<p>"ricotz" kelimesini gordum ve yeniden yuklemek zorunda kaldığım Ubuntu sistemleri aklıma geldi.</p>
-<p>İleri gitsen gidemezsin, geri donmek istesen donemezsin hali diyebilirim kısaca..</p>
-<p>"ricotz" kelimesini içeren PPA kaynaklarından yuklediğin paketleri kaldırıp Ubuntu depolarından sunulan paketleri yukleyebilirsen kurtardın, aksi halde yeni bir kuruluma hazır olmalısın.</p>
-</blockquote>
-<p>Bu yuzden bu aşamaları dikkatli yaparak Ubuntu depolarını baz almanızı istiyorum. Sonra benim gibi uğraşmayın.</p>
-<p><strong>Gnome Shell Temalar Kurulumu</strong></p>
-<p>Öncelikle ana /home/user dizini altına .fonts ve .icons diye klasorlerimizi açalım. <a href="http://gnome-look.org">Gnome-Look</a> sitesinden de hoşunuza giden bir temayı veya icon paketini indirip bu dizin altına koyalım. Koyarken dikkat etmeniz gereken nokta temalarınızın /home/username/.themes/Tema İsmi/gnome-shell şeklinde bir dizin yapısına sahip olmasıdır. Daha sonra <a href="https://extensions.gnome.org/extension/19/user-themes/">buradaki</a> siteye girip eklentimizi aktifleştirelim. Bu arada değişikliklerin aktif olması için ctl+alt+f2 yazıp gelen kısma r yazıp entere basmak gerektiğini unutmayalım.</p>
-<p><img alt="Gnome Shell Theme" src="http://www.halitalptekin.com/media/upload/gnome-shell-theme.png" /></p>
-<p>Kurulumu yaptıktan sonra komut satırından gnome-tweak-tool diyip aracımızı açalım. Bu açılış sırasında aşağıdaki gibi bir hata alabilirsiniz.</p>
-<div class="codehilite"><pre><span class="p">(</span><span class="n">gnome</span><span class="o">-</span><span class="n">tweak</span><span class="o">-</span><span class="n">tool</span><span class="o">:</span><span class="mi">4506</span><span class="p">)</span><span class="o">:</span> <span class="n">GLib</span><span class="o">-</span><span class="n">GIO</span><span class="o">-</span><span class="n">ERROR</span> <span class="o">**:</span> <span class="n">Settings</span> <span class="n">schema</span> <span class="err">&#39;</span><span class="n">org</span><span class="p">.</span><span class="n">gnome</span><span class="p">.</span><span class="n">shell</span><span class="p">.</span><span class="n">extensions</span><span class="p">.</span><span class="n">user</span><span class="o">-</span><span class="n">theme</span><span class="err">&#39;</span> <span class="n">is</span> <span class="n">not</span> <span class="n">installed</span>
-<span class="n">Trace</span><span class="o">/</span><span class="n">breakpoint</span> <span class="n">trap</span> <span class="p">(</span><span class="n">core</span> <span class="n">dumped</span><span class="p">)</span>
-</pre></div>
-
-
-<p>Sorunun çozumu için sırayla aşağıdaki komutları girin.</p>
-<div class="codehilite"><pre><span class="n">sudo</span> <span class="n">cp</span> <span class="err">$</span><span class="n">HOME</span><span class="o">/</span><span class="p">.</span><span class="n">local</span><span class="o">/</span><span class="n">share</span><span class="o">/</span><span class="n">gnome</span><span class="o">-</span><span class="n">shell</span><span class="o">/</span><span class="n">extensions</span><span class="o">/</span><span class="n">user</span><span class="o">-</span><span class="n">theme</span><span class="err">@</span><span class="n">gnome</span><span class="o">-</span><span class="n">shell</span><span class="o">-</span><span class="n">extensions</span><span class="p">.</span><span class="n">gcampax</span><span class="p">.</span><span class="n">github</span><span class="p">.</span><span class="n">com</span><span class="o">/</span><span class="n">schemas</span><span class="o">/</span><span class="n">org</span><span class="p">.</span><span class="n">gnome</span><span class="p">.</span><span class="n">shell</span><span class="p">.</span><span class="n">extensions</span><span class="p">.</span><span class="n">user</span><span class="o">-</span><span class="n">theme</span><span class="p">.</span><span class="n">gschema</span><span class="p">.</span><span class="n">xml</span> <span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="n">share</span><span class="o">/</span><span class="n">glib</span><span class="o">-</span><span class="mf">2.0</span><span class="o">/</span><span class="n">schemas</span>
-<span class="n">sudo</span> <span class="n">glib</span><span class="o">-</span><span class="n">compile</span><span class="o">-</span><span class="n">schemas</span> <span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="n">share</span><span class="o">/</span><span class="n">glib</span><span class="o">-</span><span class="mf">2.0</span><span class="o">/</span><span class="n">schemas</span>
-</pre></div>
-
-
-<p>Şimdi tekrardan gnome-tweak-tool yazıp entere basalım ve uygulamamızı açalım. Daha sonra aşağıdaki kısma geçip temamızı seçebiliyoruz.</p>
-<p><img alt="Gnome Tweak Tool" src="http://www.halitalptekin.com/media/upload/gnome-tweak-tool.png" /></p>
-<p><strong>Font Sorunu</strong></p>
-<p>Eğer girdiğiniz sitelerde fontlar gozunuze bakıyorsa oncelikli olarak ubuntu depolarından microsoft fontlarını yuklemelisiniz.</p>
-<p><a href="http://www.halitalptekin.com/media/upload/ubuntu-ms-fonts.png"><img alt="Ubuntu Microsoft Font" src="http://www.halitalptekin.com/media/upload/ubuntu-ms-fonts.png" /></a></p>
-<p>Yukarıdaki kurulumu yaptıktan sonra eğer benim gibi Tahoma fontu sorun çıkarıyorsa(Facebook'a girişte fark edersiniz) bunun için sırayla aşağıdaki komutları vermelisiniz.</p>
-<div class="codehilite"><pre><span class="n">wget</span> <span class="n">http</span><span class="o">:</span><span class="c1">//download.microsoft.com/download/ie6sp1/finrel/6_sp1/W98NT42KMeXP/EN-US/IELPKTH.CAB</span>
-<span class="n">cabextract</span> <span class="o">-</span><span class="n">F</span> <span class="err">&#39;</span><span class="n">tahoma</span><span class="o">*</span><span class="n">ttf</span><span class="err">&#39;</span> <span class="n">IELPKTH</span><span class="p">.</span><span class="n">CAB</span>
-<span class="n">mkdir</span> <span class="o">-</span><span class="n">p</span> <span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="n">share</span><span class="o">/</span><span class="n">fonts</span><span class="o">/</span><span class="n">truetype</span><span class="o">/</span><span class="n">msttcorefonts</span><span class="o">/</span>
-<span class="n">mv</span> <span class="o">-</span><span class="n">f</span> <span class="n">tahoma</span><span class="o">*</span><span class="n">ttf</span> <span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="n">share</span><span class="o">/</span><span class="n">fonts</span><span class="o">/</span><span class="n">truetype</span><span class="o">/</span><span class="n">msttcorefonts</span><span class="o">/</span>
-<span class="n">chmod</span> <span class="mi">644</span> <span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="n">share</span><span class="o">/</span><span class="n">fonts</span><span class="o">/</span><span class="n">truetype</span><span class="o">/</span><span class="n">msttcorefonts</span><span class="o">/</span><span class="n">tahoma</span><span class="o">*</span>
-<span class="n">fc</span><span class="o">-</span><span class="n">cache</span> <span class="o">-</span><span class="n">v</span>
-<span class="n">rm</span> <span class="o">-</span><span class="n">f</span> <span class="n">IELPKTH</span><span class="p">.</span><span class="n">CAB</span>
-</pre></div>
-
-
-<p>Artık problemsiz bir Ubuntunuz olması lazım :D Eğer gene bir sorununuz olursa <a href="http://forum.ubuntu-tr.net/">Ubuntu Forumları</a> sizin sorunuzu çozmek için uğraşacak insanlar ile dolu.</p></div>
-        <hr />
-    </div>
-		
-            <div class="pagination">
-<ul>
-    <li class="prev disabled"><a href="#">&larr; Previous</a></li>
-
-    <li class="active"><a href="../tag/gnome-tema.html">1</a></li>
-
-    <li class="next disabled"><a href="#">&rarr; Next</a></li>
-
-</ul>
-</div>    
- 
+    <link href="http://www.halitalptekin.com/feeds/all.atom.xml" type="application/atom+xml" rel="alternate"
+        title="{ Halit Alptekin } Atom Feed" />
+      <link href="http://www.halitalptekin.com/feeds/all.rss.xml" type="application/rss+xml" rel="alternate"
+        title="{ Halit Alptekin } RSS Feed" />
   
-        </div>
-        
-        <div class="span3">
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
 
-            <div class="well" style="padding: 8px 0; background-color: #FBFBFB;">
-            <ul class="nav nav-list">
-                <li class="nav-header"> 
-                Site
-                </li>
-            
-                <li><a href="../archives.html">Archives</a>
-                <li><a href="../tags.html">Tags</a>
-                <li><a href="../feeds/all.atom.xml" rel="alternate">Atom feed</a></li>
-                                <li><a href="../feeds/all.rss.xml" rel="alternate">RSS feed</a></li>
-                                 <li><a href="../sitemap.xml">Sitemap</a>
-            </ul>
-            </div>
+  <link href="../favicon.png" rel="icon">
+  <link href="../theme/css/main.css" media="screen, projection"
+        rel="stylesheet" type="text/css">
+  <script src="../theme/js/modernizr-2.0.js"></script>
+  <script src="../theme/js/ender.js"></script>
+  <script src="../theme/js/octopress.js" type="text/javascript"></script>
 
+  <link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic"
+        rel="stylesheet" type="text/css">
+  <link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic"
+        rel="stylesheet" type="text/css">
+</head>
+<body>
+  <header role="banner"><hgroup>
+  <h1><a href="../">{ Halit Alptekin }</a></h1>
+  </hgroup></header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  <li><a href="http://www.halitalptekin.com/feeds/all.atom.xml" rel="subscribe-rss">Atom</a></li>
+    <li><a href="http://www.halitalptekin.com/feeds/all.rss.xml" rel="subscribe-rss">Rss</a></li>
+  </ul>
 
-                        <div class="well" style="padding: 8px 0; background-color: #FBFBFB;">
-            <ul class="nav nav-list">
-                <li class="nav-header"> 
-                Categories
-                </li>
-                
-                                <li><a href="../category/tasarim.html">tasarim</a></li>
-                                <li><a href="../category/server.html">server</a></li>
-                                <li><a href="../category/python.html">python</a></li>
-                                <li><a href="../category/programlama.html">programlama</a></li>
-                                <li><a href="../category/linux.html">linux</a></li>
-                                <li><a href="../category/kisisel.html">kisisel</a></li>
-                                <li><a href="../category/internet.html">internet</a></li>
-                                <li><a href="../category/guvenlik.html">guvenlik</a></li>
-                                <li><a href="../category/genel.html">genel</a></li>
-                                <li><a href="../category/eglence.html">eglence</a></li>
-                                <li><a href="../category/django.html">django</a></li>
-                                <li><a href="../category/compsci.html">compsci</a></li>
-                                <li><a href="../category/arduino.html">arduino</a></li>
-                                   
-            </ul>
-            </div>
-            
+<!-- TODO: add search here
+<form action="" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="q" value="site:.." />
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+-->
 
-                        <div class="well" style="padding: 8px 0; background-color: #FBFBFB;">
-            <ul class="nav nav-list">
-                <li class="nav-header"> 
-                Links
-                </li>
-            
-                            <li><a href="http://www.python.org">Python</a></li>
-                        </ul>
-            </div>
-            
+<ul class="main-navigation">
+  <li><a href="../">Blog</a></li>
+        <li><a href="../pages/about-me.html">About Me</a></li>
+    <li><a href="../pages/contact.html">Contact</a></li>
+  <!-- TODO: add categories here? -->
+  </ul></nav>
+  <div id="main">
+    <div id="content">
+      <div class="blog-index">
+    	  		<article>
+    		<header>
+          <h1 class="entry-title">
+        <a href="../ubuntu-ekran-karti-ve-gnome-shell.html">Ubuntu Ekran Kartı Ve Gnome Shell</a>
+      </h1>
+          <p class="meta"><time datetime="2012-09-18T00:00:00" pubdate>Sep 18, 2012</time></p>
+</header>
 
-                        <div class="social">
-            <div class="well" style="padding: 8px 0; background-color: #FBFBFB;">
-            <ul class="nav nav-list">
-                <li class="nav-header"> 
-                Social
-                </li>
-           
-                                <li><a href="http://twitter.com/halitalptekin">twitter</a></li>
-                                <li><a href="http://github.com/halitalptekin">github</a></li>
-                                <li><a href="http://stackoverflow.com/users/1151618/halit-alptekin">stackoverflow</a></li>
-                                <li><a href="http://tr.linkedin.com/in/halitalptekin">linkedin</a></li>
-                            </ul>
-            </div>
-            </div>
-            
-                        <div class="well" style="padding: 8px 0; background-color: #FBFBFB;">
-            <ul class="nav nav-list">
-                <li class="nav-header"> 
-                Ads
-                </li>
+  <div class="entry-content"><p>Aslında Ubuntu bilgisayarımda uzunca bir suredir olmasına rağmen tamamen bir geçiş yapmamıştım. Bundan tam 3 ay once koklu bir şekilde Windows'tan Ubuntu'ya geçtim. Ve o gun bugundur hala kullanıyorum. Daha doğrusu kullandığımı sanıyordum. Çunku birçok grafik problemlerim vardı. Bunların başında ekran kartı surucusunun yuklenmemesi ve blenderin kurulmaması vardır ...</p></div>
+  <footer>
+    <a rel="full-article" href="../ubuntu-ekran-karti-ve-gnome-shell.html">Read On &crarr;</a>
+  </footer>
+  		</article>
+  	  	<div class="pagination">
+  
+    <br />
+</div>  </div>
+      <aside class="sidebar">
+  <section>
+    <h1>Recent Posts</h1>
+    <ul id="recent_posts">
+            <li class="post">
+          <a href="../ubuntu-ekran-karti-ve-gnome-shell.html">Ubuntu Ekran Kartı Ve Gnome Shell</a>
+      </li>
+          </ul>
+  </section>
+    <section>
+      
+    <h1>Categories</h1>
+    <ul id="recent_posts">
+              <li><a href="../category/tasarim.html">tasarim</a></li>
+              <li><a href="../category/server.html">server</a></li>
+              <li><a href="../category/python.html">python</a></li>
+              <li><a href="../category/programlama.html">programlama</a></li>
+              <li><a href="../category/linux.html">linux</a></li>
+              <li><a href="../category/kisisel.html">kisisel</a></li>
+              <li><a href="../category/internet.html">internet</a></li>
+              <li><a href="../category/guvenlik.html">guvenlik</a></li>
+              <li><a href="../category/genel.html">genel</a></li>
+              <li><a href="../category/eglence.html">eglence</a></li>
+              <li><a href="../category/django.html">django</a></li>
+              <li><a href="../category/compsci.html">compsci</a></li>
+              <li><a href="../category/arduino.html">arduino</a></li>
+          </ul>
+  </section>
+   
 
-                                <li><a href="https://www.camekan.com/adwords/" title="Google Adwords"><img src="/media/reklam/camekancom.jpg" alt="Google Adwords" title="Google Adwords"></a>
-                </li>
-                                <li><a href="http://www.dugunajans.com/" title="düğün fotoğrafçısı"><img src="/media/reklam/dugunajanscom.jpg" alt="düğün fotoğrafçısı" title="düğün fotoğrafçısı"></a>
-                </li>
-                            </ul>
-            </div>
-            
-        </div>  
-    </div>     </div> 
-<footer>
-	<hr>
-	<p><a href='http://www.halitalptekin.com'>Halit Alptekin Personal Blog</a> &copy; 2012</p>
-</footer>
+    
+    <section>
+        <h1>Social</h1>
+        <ul>
+            <li><a href="http://www.halitalptekin.com/feeds/all.rss.xml" type="application/rss+xml" rel="alternate">rss</a></li>
+                    <li><a href="http://twitter.com/halitalptekin" target="_blank">twitter</a></li>
+                    <li><a href="http://github.com/halitalptekin" target="_blank">github</a></li>
+                    <li><a href="http://stackoverflow.com/users/1151618/halit-alptekin" target="_blank">stackoverflow</a></li>
+                    <li><a href="http://tr.linkedin.com/in/halitalptekin" target="_blank">linkedin</a></li>
+                </ul>
+    </section>
+      <section>
+        <h1>Blogroll</h1>
+        <ul>
+                    <li><a href="http://www.python.org" target="_blank">Python</a></li>
+                </ul>
+    </section>
 
-</div> <!-- /container -->
-<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
-<script src="http://twitter.github.com/bootstrap/assets/js/bootstrap-collapse.js"></script>
-<script>var _gaq=[['_setAccount','UA-24728900-1'],['_trackPageview']];(function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];g.src='//www.google-analytics.com/ga.js';s.parentNode.insertBefore(g,s)}(document,'script'))</script>
+      <section>
+        <h1>Ads</h1>
+        <ul id="recent_posts">
+                            <li><a href="https://www.camekan.com/adwords/" title="Google Adwords"><img src="/media/reklam/camekancom.jpg" alt="Google Adwords" title="Google Adwords"></a></li>
+                            <li><a href="http://www.dugunajans.com/" title="düğün fotoğrafçısı"><img src="/media/reklam/dugunajanscom.jpg" alt="düğün fotoğrafçısı" title="düğün fotoğrafçısı"></a></li>
+                    </ul>
+    </section>
+  
+</aside>    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2013 - halit -
+  <span class="credit">Powered by <a href="http://getpelican.com">Pelican</a></span>
+</p></footer>
+      <script type="text/javascript">
+	    var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+	    document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+    </script>
+    <script type="text/javascript">
+	    try {
+	        var pageTracker = _gat._getTracker("UA-24728900-1");
+	    pageTracker._trackPageview();
+	    } catch(err) {}
+	</script>
+	<script type="text/javascript">
+	  var disqus_shortname = 'halitalptekin';
+	  (function() {
+	    var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+	    dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
+	    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+	   })();
+	</script>
 </body>
 </html>

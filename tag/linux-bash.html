@@ -1,391 +1,158 @@
 <!DOCTYPE html>
-<html lang="en">
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
-    <meta charset="utf-8">
-    <title>Halit Alptekin Personal Blog</title>
-    <meta name="description" content="Programming and Life Blog Of Halit Alptekin. Karadeniz Technical University Computer Engineering Student.">
-    <meta name="keywords" content="programlama, blog, personal blog, linux, python, django, php, bootstrap, seo, bilgisayar muhendisligi, ktu, karadeniz teknik universitesi, programming">
-    <meta name="author" content="halit">
-    <meta name="robots" content="index, follow, all"/>
+  <meta charset="utf-8">
+  <title>{ Halit Alptekin } - linux bash</title>
 
-    <!-- Le HTML5 shim, for IE6-8 support of HTML elements -->
-    <!--[if lt IE 9]>
-    <script src="../theme/html5.js"></script>
-    <![endif]-->
+  <meta name="author" content="halit">
 
-    <!-- Le styles -->
-    <link href="../theme/bootstrap.min.css" rel="stylesheet">
-    <link href="../theme/bootstrap.min.responsive.css" rel="stylesheet">
-    <link href="../theme/local.css" rel="stylesheet">
-    <link href="../theme/pygments.css" rel="stylesheet">
-
-</head>
-
-<body>
-
-<div class="navbar">
-    <div class="navbar-inner">
-    <div class="container">
-
-         <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
-             <span class="icon-bar"></span>
-             <span class="icon-bar"></span>
-             <span class="icon-bar"></span>
-         </a>
-
-        <a class="brand" href="..">Halit Alptekin Personal Blog</a>
-
-        <div class="nav-collapse">
-        <ul class="nav">
-                    
-        <li><a href="../pages/about-me.html">About Me</a></li>
-	    <li><a href="../pages/contact.html">Contact</a></li>
-        </ul>
-        </div>
-        
-    </div>
-    </div>
-</div>
-
-<div class="container">
-    <div class="content">
-    <div class="row">
-
-        <div class="span9">
-                
-        
-
-    <div class='article'>
-        <div class="content-title">
-            <a href="../linux-komutlari.html"><h1>Linux Komutları</h1></a>
-            Jun 03, 2012
-
-by <a class="url fn" href="../author/halit.html">halit</a>
- 
-
-in <a href="../category/linux.html">linux</a>
-
- 
-    tagged <a href="../tag/konsol-komutlari.html">konsol komutları</a> <a href="../tag/linux-bash.html">linux bash</a> <a href="../tag/linux-komutlari.html">linux komutları</a> <a href="../tag/linux-konsol.html">linux konsol</a> <a href="../tag/unix-komutlari.html">unix komutları</a>  
-        </div>
-        
-        <div><p>Linux aslında komut satırına bağımlı bir işletim sistemi değil.Ama sizde zamanla Linuxu kullandıkça komut satırının ne kadar daha rahat olduğunu anlıyacaksınız.Bir uygulama için klasor klasor dolaşmadan bir iki komutla işimizi halledebiliyoruz.Bunun yanında aradığımız bir dosyayı daha gelişmiş komutlar kullanarak saniyeler içinde bulabiliyoruz.Bunlar sadece bir kaç ornek.</p>
-<p>Linux Komutları Linux kullanıcılarının hayal gucune bağlı olarak surekli gelişiyor.İşte o gelişen komutları bir sitede toplamışlar.Gerçekten çok kaliteli Linux Komutlarını barındıran bir site.Ben herhangi bir komut aradığımda Google'dan once burada arıyorum.Eğer bulamazsam ki çok nadir oluyor o zaman Google'a başvuruyorum.Tum Linux kullanıcılarının arşivinde olması gereken bir site.</p>
-<p><strong>Site :</strong> http://www.commandlinefu.com/commands/browse</p>
-<p>Tabi yukarıdaki sitede komut aramadan once basit Linux Komutlarının temel olarak ne yaptıklarını oğrenmek gerekir.Ardından ustteki siteden gelişmiş komutları aramanız size daha faydalı olacaktır.</p>
-<blockquote>
-<p>a2ps : ASCII dosyalarini Postscript formatina cevir, mesela yazdiginiz bir program kodunu</p>
-<p>acroread : AcrobatReader, pdf-dosyalarini görebilmek icin gerekli olan program</p>
-<p>alias : Komuta baska bir isim ver</p>
-<p>apropos : Belli bir kelimeyi man sayfalarinda ara</p>
-<p>ar : Arsiv olusturmak, olusturulmus bir arsivi calismak ya da acmak icin</p>
-<p>arch : Processor’un yapisi hakkinda bilgi ver</p>
-<p>arp : Host ve IP numarasini göster. (arp = adress resolution protocol)</p>
-<p>at : Komutu ya da komutlari daha sonraki bir zamanda calistir (bak. batch)</p>
-<p>basename : Bir dosyanin gercek ismini ver (Üst dizinleri göstermeden)</p>
-<p>bash : Bourne Again Shell -&gt; Linux’un standart shell’i</p>
-<p>batch : Komutu ya da komutlari daha sonra ki bir zamanda calistir(bak. at)</p>
-<p>bg : Bir programi Ön planda calistir</p>
-<p>break : Bir blogu belli bir kosuldan terk et (bak. continue)</p>
-<p>bunzip2 : (bak. bzip2)</p>
-<p>bzip2 : Bir arsivleme programi</p>
-<p>cal : Aktuel takvimi göster</p>
-<p>calender : Bir randevu hatirlatma programi</p>
-<p>case : Coklu seceneklere ayirma komutu</p>
-<p>cat : Dosyayi monitöre ver</p>
-<p>cc : C derleyicisi (C-compiler)</p>
-<p>cdrecord : CD kopyalama tool’u</p>
-<p>chfn : finger bilgilerinde degisiklik yap</p>
-<p>chgrp : Grup degistir</p>
-<p>chmod : Bir dosyanin haklarini degistir</p>
-<p>chown : Bir dosyanin sahiplerini degistir</p>
-<p>chroot : Bir komutu Özel bir root dizininde calistir</p>
-<p>chsh : Standart shell i degistir</p>
-<p>clear : Monitörü temizle</p>
-<p>continue : Bir bloku belli bir kosuldan sonra terk etme ve kaldigin yerden devam et. (bak. break)</p>
-<p>cmp : Iki dosyayi karsilastir (bak. comm, diff)</p>
-<p>comm : Iki dosyayi satir satir karsilastir (bak. cmp, diff)</p>
-<p>csh : C-Shell -&gt; Yapisi biraz C diline benzeyen bir shell programi</p>
-<p>csplit : Bir dosyayi parcalara ayir</p>
-<p>cut : Bir dosyadan belli sütunlari kes</p>
-<p>date : Aktuel zamani göster</p>
-<p>deluser : Kullanici sil</p>
-<p>df : Bellekte ne kadar bos yer oldugunu göster</p>
-<p>diff : Iki dosya arasindaki farklari göster (bak. cmp, comm)</p>
-<p>do : Belli bir kosuldan sonra bir komutu ya da komut blogunu calistir</p>
-<p>done : do blogunun bitimi (bak. do)</p>
-<p>du : Bir dosyanin ya da dizinin bellekte ne kadar yer kapladigini göster</p>
-<p>echo : Harf dizisini monitöre yaz</p>
-<p>ed : Bir editör programi</p>
-<p>egrep : Bir dosyanin icinde belli bir harf dizisini ara(bak. fgrep. grep)</p>
-<p>eject : Medium’u disari ver, mesela CDROM</p>
-<p>emacs : Bir editör programi</p>
-<p>elif : if kosulunun saglanmadigi zaman devreye sokulan baska bir if kosulu</p>
-<p>else : if kosullarinin saglanmadigi zaman devreye sokulan baska komutu</p>
-<p>env : Bütün sistem degiskenlerini göster</p>
-<p>esac : case seceneklerinin bitimi (bak. case)</p>
-<p>exec : Komutu calistir</p>
-<p>exit : Shell’den cikma komutu</p>
-<p>export : Sistem degiskeninin tanimlanmasi</p>
-<p>expr : Matematik ifadesini hesapla</p>
-<p>false : Boolean tipinde "yanlis" degeri</p>
-<p>fdformat : Disket formatla</p>
-<p>fdisk : Bellegi bölme programi</p>
-<p>fg : Programi ön plana al</p>
-<p>fgrep : (bak. egrep, grep)</p>
-<p>fi : if kosulunun sonu (bak if)</p>
-<p>file : dosya hakkinda bilgi ver</p>
-<p>find : Belli bir dosyayi dizinlerde ara</p>
-<p>finger : Sisteme kayitli olan kullanciliari göster ya da kullanici hakkinda bilgi ver</p>
-<p>for : Belli komutlari belli bir kosula kadar döngü seklinde calistir</p>
-<p>ftp : Dosya transfer programi (ftp = file transfer protocol)</p>
-<p>fvwm : Linux icin yapilmis bir desktop programi (bak. fvwm2, gnome, kde ...)</p>
-<p>g++ : C++ derleyicisi (C++ compiler)</p>
-<p>gcc : GNU C derleyicisi</p>
-<p>grep : (bak. egrep , fgrep)</p>
-<p>groupadd : Yeni bir grup olustur</p>
-<p>groupmod : Grup üzerinde degisiklikler yap</p>
-<p>groups : Kullanicinin bagli oldugu gruplari göster</p>
-<p>grub : Bir cesit Linux Bootloader (bak. lilo)</p>
-<p>gvim : vi editörünün GUI (graphical user interface) versiyonu</p>
-<p>gzip : Bir arsivleme programi</p>
-<p>halt : Sistemi durdur</p>
-<p>head : Bir dosyanin ilk satirlarini göster (standart 10 satir) (bak. tail)</p>
-<p>help : Shell komutlarini göster</p>
-<p>history : Kullanicini o zamana kadar kullandigi komutlari göster</p>
-<p>host : Bir bilgisayarin adini sor</p>
-<p>hostid : sistemin host kimligini göster</p>
-<p>hostname : sistemin host adini göster</p>
-<p>httpd : Apache server’i baslat</p>
-<p>httpd2 : Apache 2 server’i baslat</p>
-<p>id : Kullanicini kullanici kodunu , bagli oldugu gruplarin kodunu göster</p>
-<p>ifconfig : Ag kartini ayarla</p>
-<p>init 0 : Sistemi kapat ( bak. halt, shutdown, poweroff)</p>
-<p>init 1 : Sistemi tek kullanicili modus’a gecir (bak. init S, init s)</p>
-<p>init 2 : Sistemi lokal cok kullanicili modus’a gecir</p>
-<p>init 3 : Sistemi tam aga bagli sekilde ve cok kullanicili modus’a gecir</p>
-<p>init 5 : Sistemi tam aga bagli sekilde, cok kullancili ve GUI’li modus’a gecir</p>
-<p>init 6 : Sistemi yeniden baslat</p>
-<p>init S : (bak. init 1)</p>
-<p>init s : (bak. init 1)</p>
-<p>java : Java Virtual Machine (JVM)</p>
-<p>javac : Java Compiler</p>
-<p>javadoc : Java dokumanlari olustur</p>
-<p>jikes : IBM tarafindan sunulan ve javac’tan daha hizli olan bir Java Compiler</p>
-<p>joe : Bir editör programi</p>
-<p>k3b : KDE’de GUI’li bir CD kopyalama programi</p>
-<p>kaffeine : KDE CD, VCD, DVD vs. oynatma programi</p>
-<p>kate : Bir KDE editör programi</p>
-<p>kbear : Bir KDE FTP programi</p>
-<p>kcalc : Bir KDE hesap makinesi programi</p>
-<p>kernelversion : Hangi kernel versiyonu kullanildigini göster</p>
-<p>kmail : KDE Mail programi</p>
-<p>konqueror : KDE internet browser</p>
-<p>konsole : Yeni bir konsol ac</p>
-<p>kopete : Bir KDE multiple messenger programi</p>
-<p>killall : Bütün process’leri bitir</p>
-<p>kwrite : Bir KDE editörü</p>
-<p>last : Sisteme son kayit olan kisileri göster</p>
-<p>less : Herhangi bir ciktiyi monitörde sayfa sayfa göster (bak. more)</p>
-<p>lilo : Bir Linux Bootloader (bak. grub)</p>
-<p>ln : Dosyalar ya da dizinler arasinda link olustur</p>
-<p>logname : login ismini göster</p>
-<p>logout : Sistemden ayril (eger login shell’le girildiyse)</p>
-<p>lpr : Dosyayi basilmasi icin yaziciya gönder</p>
-<p>lprm : Yaziciya gönderilen dokümanlari sil</p>
-<p>ls : Dizinde bulunan dosyalari listele</p>
-<p>lsmod : Yüklenmis modullari listele</p>
-<p>mail : Kullancillar arasinda mail yazmayi mümkün kilan mail programi</p>
-<p>make : C programini belli bir kurala göre derleyen komut</p>
-<p>man : Manual sayfalar dokümanlari</p>
-<p>mcedit : Bir editör programi</p>
-<p>mkdir : Yeni bir dizin olustur</p>
-<p>modprobe : Kernel’a bir module eklemek ya da ondan silmek icin</p>
-<p>mozilla : Netscape’in open source versiyonu ve gercekten harika bir web browser</p>
-<p>mount : Bir aleti bagla</p>
-<p>mv : Dosyayi kaydir ya da ismini degistir (dikkat: cok tehlikeli bir komut bence)</p>
-<p>mysql : MySQL veritabani programi</p>
-<p>nedit : Bir editör programi</p>
-<p>newgrp : Yeni bir gruba gir</p>
-<p>netstat : Ag baglantilarini görüntüle</p>
-<p>netscape : Bir web browser</p>
-<p>nl : Bir dosyayi satirlari numaralandirarak göster</p>
-<p>nslookup : DNS (domain name system) sorgusu</p>
-<p>opera : Hizli bir web browser</p>
-<p>passwd : Sifre degistir</p>
-<p>perl : PERL interpreter</p>
-<p>php : PHP interpreter</p>
-<p>pine : Bir mail programi</p>
-<p>ping : Baska bir bilgisayara ulasabilme sorgusu</p>
-<p>poweroff : Sistemi kapat (bak. init 0)</p>
-<p>ps : Calisan process’leri göster</p>
-<p>pwd : Icinden bulunulan dizini göster</p>
-<p>quanta : Güzel bir HTML editörü</p>
-<p>read : Shell’de monitörde girilen girdiyi oku</p>
-<p>reboot : Sistemi yeniden baslat (bak. init 6)</p>
-<p>reset : Shell ayarlarini eski ayarlara getir</p>
-<p>return : Bir fonksiyonun hesapladigi degeri geri vermesi icin gereken komut</p>
-<p>rlogin : Uzaktaki bir bilgisayara baglan (bak. telnet)</p>
-<p>rmdir : Dizini sil (dizinin bos olmasi sarti ile)</p>
-<p>rpm : Redhat Packet Manager (ama genelde bütün Linux distrolari tarafindan desteklenir)</p>
-<p>select : Secenek secimi</p>
-<p>shutdown : Sistemi kapat (bak. init 0)</p>
-<p>sleep : Belli bir süre ara ver</p>
-<p>sort : Siralayarak göster</p>
-<p>split : Bir dosyayi parcalara ayir</p>
-<p>startx : X-Server baslat</p>
-<p>su : Baska bir kullanici adiyla gir ( option verilmezse root sifresi vermek gerekir)</p>
-<p>sudo : Bir komutu root gibi calistir (tabii "sudoers" dosyasi buna izin veriyorsa, normal bir kullanicinin sudoers’i okumaya hakki yoktur).</p>
-<p>tail : Bir dosyanin son satirlarini göster (standart 10 satir). (bak. head)</p>
-<p>talk : Sisteme kayitli olan baska bir kullanici ile sohbet et</p>
-<p>tcsh : Ilerletilmis bir C-shell</p>
-<p>telnet : Uzak bir bilgisayara baglan</p>
-<p>then : if kosulu saglaniyorsa bundan sonraki komutlari calistir</p>
-<p>time : Bir komutun ne kadar süre harcadigini göster</p>
-<p>test : Bir kosulu test et</p>
-<p>top : Process’leri görüntüle</p>
-<p>touch : Dosyanin degistirilme zamanini degistir</p>
-<p>traceroute : Router takibi</p>
-<p>true : Boolean tipindeki "dogru" degeri</p>
-<p>umask : Bir dosya icin standart haklar belirle</p>
-<p>uniq : Siralanmis bir dosya icinde birden fazal ayni satirlari ele</p>
-<p>umount : Baglanmis bir aleti sistemden geri cöz (hayir komutu yanlis yazmadim ;o) komutun ismi "unmount" degil)</p>
-<p>unalias : alias’la degistirilmis komut aliaslarini geri cevir</p>
-<p>unrar : Bir Arsivleme programi</p>
-<p>until : Bir komutlar blogunu belli bir kosula kadar uygula</p>
-<p>unzip : Arsiv programi</p>
-<p>useradd : Sisteme yeni bir kullanici ekle</p>
-<p>userdel : Sistemden bir kullanici sil</p>
-<p>users : Su anda sisteme kayitli olan kullanicilari göster</p>
-<p>vim : Bir editör programi</p>
-<p>visudo : sudoers dosyasi üzerinde calis</p>
-<p>w : Hangi kullanicinin o anda hangi komutu calistirdigini ya da hangi programi kullandigini göster</p>
-<p>wait : Belli bir process’i bekle</p>
-<p>wall : Bütün kullanicilara mesaj yolla</p>
-<p>wc : Harf, kelime ve satir sayma komutu</p>
-<p>wget : Belli bir sayfa icerigini agdan lokal PC ye indir</p>
-<p>whatis : Bir komutun ne ise yaradigini göster</p>
-<p>while : Komutlari belli bir kosula kadar döngü halinde calistir</p>
-<p>who : Sisteme kayitli olan kullanicilari göster (bak. finger, w)</p>
-<p>whoami : Kullanicinin kendisi hakkinda bilgi</p>
-<p>windowmaker : Bir destkop</p>
-<p>wine : Windows Emulator programi</p>
-<p>wish : Windowing Shell</p>
-<p>write : Bir kullaniciya mesaj gönder</p>
-<p>xanim : Bir media player</p>
-<p>yast (sadece SuSE) : Sistem ayarlari yapmak icin GUI’siz bir tool (yet another setup tool)</p>
-<p>yast2 (sadece SuSE) : Sistem ayarlari yapmak icin GUI’li bir tool</p>
-<p>you (sadece SuSE) : YaST online update</p>
-<p>zip : Arsivleme programi  </p>
-</blockquote>
-<p>Kaynak : <a href="http://www.truvalinux.org.tr/">http://www.truvalinux.org.tr</a></p></div>
-        <hr />
-    </div>
-		
-            <div class="pagination">
-<ul>
-    <li class="prev disabled"><a href="#">&larr; Previous</a></li>
-
-    <li class="active"><a href="../tag/linux-bash.html">1</a></li>
-
-    <li class="next disabled"><a href="#">&rarr; Next</a></li>
-
-</ul>
-</div>    
- 
+    <link href="http://www.halitalptekin.com/feeds/all.atom.xml" type="application/atom+xml" rel="alternate"
+        title="{ Halit Alptekin } Atom Feed" />
+      <link href="http://www.halitalptekin.com/feeds/all.rss.xml" type="application/rss+xml" rel="alternate"
+        title="{ Halit Alptekin } RSS Feed" />
   
-        </div>
-        
-        <div class="span3">
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
 
-            <div class="well" style="padding: 8px 0; background-color: #FBFBFB;">
-            <ul class="nav nav-list">
-                <li class="nav-header"> 
-                Site
-                </li>
-            
-                <li><a href="../archives.html">Archives</a>
-                <li><a href="../tags.html">Tags</a>
-                <li><a href="../feeds/all.atom.xml" rel="alternate">Atom feed</a></li>
-                                <li><a href="../feeds/all.rss.xml" rel="alternate">RSS feed</a></li>
-                                 <li><a href="../sitemap.xml">Sitemap</a>
-            </ul>
-            </div>
+  <link href="../favicon.png" rel="icon">
+  <link href="../theme/css/main.css" media="screen, projection"
+        rel="stylesheet" type="text/css">
+  <script src="../theme/js/modernizr-2.0.js"></script>
+  <script src="../theme/js/ender.js"></script>
+  <script src="../theme/js/octopress.js" type="text/javascript"></script>
 
+  <link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic"
+        rel="stylesheet" type="text/css">
+  <link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic"
+        rel="stylesheet" type="text/css">
+</head>
+<body>
+  <header role="banner"><hgroup>
+  <h1><a href="../">{ Halit Alptekin }</a></h1>
+  </hgroup></header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  <li><a href="http://www.halitalptekin.com/feeds/all.atom.xml" rel="subscribe-rss">Atom</a></li>
+    <li><a href="http://www.halitalptekin.com/feeds/all.rss.xml" rel="subscribe-rss">Rss</a></li>
+  </ul>
 
-                        <div class="well" style="padding: 8px 0; background-color: #FBFBFB;">
-            <ul class="nav nav-list">
-                <li class="nav-header"> 
-                Categories
-                </li>
-                
-                                <li><a href="../category/tasarim.html">tasarim</a></li>
-                                <li><a href="../category/server.html">server</a></li>
-                                <li><a href="../category/python.html">python</a></li>
-                                <li><a href="../category/programlama.html">programlama</a></li>
-                                <li><a href="../category/linux.html">linux</a></li>
-                                <li><a href="../category/kisisel.html">kisisel</a></li>
-                                <li><a href="../category/internet.html">internet</a></li>
-                                <li><a href="../category/guvenlik.html">guvenlik</a></li>
-                                <li><a href="../category/genel.html">genel</a></li>
-                                <li><a href="../category/eglence.html">eglence</a></li>
-                                <li><a href="../category/django.html">django</a></li>
-                                <li><a href="../category/compsci.html">compsci</a></li>
-                                <li><a href="../category/arduino.html">arduino</a></li>
-                                   
-            </ul>
-            </div>
-            
+<!-- TODO: add search here
+<form action="" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="q" value="site:.." />
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+-->
 
-                        <div class="well" style="padding: 8px 0; background-color: #FBFBFB;">
-            <ul class="nav nav-list">
-                <li class="nav-header"> 
-                Links
-                </li>
-            
-                            <li><a href="http://www.python.org">Python</a></li>
-                        </ul>
-            </div>
-            
+<ul class="main-navigation">
+  <li><a href="../">Blog</a></li>
+        <li><a href="../pages/about-me.html">About Me</a></li>
+    <li><a href="../pages/contact.html">Contact</a></li>
+  <!-- TODO: add categories here? -->
+  </ul></nav>
+  <div id="main">
+    <div id="content">
+      <div class="blog-index">
+    	  		<article>
+    		<header>
+          <h1 class="entry-title">
+        <a href="../linux-komutlari.html">Linux Komutları</a>
+      </h1>
+          <p class="meta"><time datetime="2012-06-03T00:00:00" pubdate>Jun 03, 2012</time></p>
+</header>
 
-                        <div class="social">
-            <div class="well" style="padding: 8px 0; background-color: #FBFBFB;">
-            <ul class="nav nav-list">
-                <li class="nav-header"> 
-                Social
-                </li>
-           
-                                <li><a href="http://twitter.com/halitalptekin">twitter</a></li>
-                                <li><a href="http://github.com/halitalptekin">github</a></li>
-                                <li><a href="http://stackoverflow.com/users/1151618/halit-alptekin">stackoverflow</a></li>
-                                <li><a href="http://tr.linkedin.com/in/halitalptekin">linkedin</a></li>
-                            </ul>
-            </div>
-            </div>
-            
-                        <div class="well" style="padding: 8px 0; background-color: #FBFBFB;">
-            <ul class="nav nav-list">
-                <li class="nav-header"> 
-                Ads
-                </li>
+  <div class="entry-content"><p>Linux aslında komut satırına bağımlı bir işletim sistemi değil.Ama sizde zamanla Linuxu kullandıkça komut satırının ne kadar daha rahat olduğunu anlıyacaksınız.Bir uygulama için klasor klasor dolaşmadan bir iki komutla işimizi halledebiliyoruz.Bunun yanında aradığımız bir dosyayı daha gelişmiş komutlar kullanarak saniyeler içinde bulabiliyoruz.Bunlar sadece bir kaç ornek ...</p></div>
+  <footer>
+    <a rel="full-article" href="../linux-komutlari.html">Read On &crarr;</a>
+  </footer>
+  		</article>
+  	  	<div class="pagination">
+  
+    <br />
+</div>  </div>
+      <aside class="sidebar">
+  <section>
+    <h1>Recent Posts</h1>
+    <ul id="recent_posts">
+            <li class="post">
+          <a href="../linux-komutlari.html">Linux Komutları</a>
+      </li>
+          </ul>
+  </section>
+    <section>
+      
+    <h1>Categories</h1>
+    <ul id="recent_posts">
+              <li><a href="../category/tasarim.html">tasarim</a></li>
+              <li><a href="../category/server.html">server</a></li>
+              <li><a href="../category/python.html">python</a></li>
+              <li><a href="../category/programlama.html">programlama</a></li>
+              <li><a href="../category/linux.html">linux</a></li>
+              <li><a href="../category/kisisel.html">kisisel</a></li>
+              <li><a href="../category/internet.html">internet</a></li>
+              <li><a href="../category/guvenlik.html">guvenlik</a></li>
+              <li><a href="../category/genel.html">genel</a></li>
+              <li><a href="../category/eglence.html">eglence</a></li>
+              <li><a href="../category/django.html">django</a></li>
+              <li><a href="../category/compsci.html">compsci</a></li>
+              <li><a href="../category/arduino.html">arduino</a></li>
+          </ul>
+  </section>
+   
 
-                                <li><a href="https://www.camekan.com/adwords/" title="Google Adwords"><img src="/media/reklam/camekancom.jpg" alt="Google Adwords" title="Google Adwords"></a>
-                </li>
-                                <li><a href="http://www.dugunajans.com/" title="düğün fotoğrafçısı"><img src="/media/reklam/dugunajanscom.jpg" alt="düğün fotoğrafçısı" title="düğün fotoğrafçısı"></a>
-                </li>
-                            </ul>
-            </div>
-            
-        </div>  
-    </div>     </div> 
-<footer>
-	<hr>
-	<p><a href='http://www.halitalptekin.com'>Halit Alptekin Personal Blog</a> &copy; 2012</p>
-</footer>
+    
+    <section>
+        <h1>Social</h1>
+        <ul>
+            <li><a href="http://www.halitalptekin.com/feeds/all.rss.xml" type="application/rss+xml" rel="alternate">rss</a></li>
+                    <li><a href="http://twitter.com/halitalptekin" target="_blank">twitter</a></li>
+                    <li><a href="http://github.com/halitalptekin" target="_blank">github</a></li>
+                    <li><a href="http://stackoverflow.com/users/1151618/halit-alptekin" target="_blank">stackoverflow</a></li>
+                    <li><a href="http://tr.linkedin.com/in/halitalptekin" target="_blank">linkedin</a></li>
+                </ul>
+    </section>
+      <section>
+        <h1>Blogroll</h1>
+        <ul>
+                    <li><a href="http://www.python.org" target="_blank">Python</a></li>
+                </ul>
+    </section>
 
-</div> <!-- /container -->
-<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
-<script src="http://twitter.github.com/bootstrap/assets/js/bootstrap-collapse.js"></script>
-<script>var _gaq=[['_setAccount','UA-24728900-1'],['_trackPageview']];(function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];g.src='//www.google-analytics.com/ga.js';s.parentNode.insertBefore(g,s)}(document,'script'))</script>
+      <section>
+        <h1>Ads</h1>
+        <ul id="recent_posts">
+                            <li><a href="https://www.camekan.com/adwords/" title="Google Adwords"><img src="/media/reklam/camekancom.jpg" alt="Google Adwords" title="Google Adwords"></a></li>
+                            <li><a href="http://www.dugunajans.com/" title="düğün fotoğrafçısı"><img src="/media/reklam/dugunajanscom.jpg" alt="düğün fotoğrafçısı" title="düğün fotoğrafçısı"></a></li>
+                    </ul>
+    </section>
+  
+</aside>    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2013 - halit -
+  <span class="credit">Powered by <a href="http://getpelican.com">Pelican</a></span>
+</p></footer>
+      <script type="text/javascript">
+	    var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+	    document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+    </script>
+    <script type="text/javascript">
+	    try {
+	        var pageTracker = _gat._getTracker("UA-24728900-1");
+	    pageTracker._trackPageview();
+	    } catch(err) {}
+	</script>
+	<script type="text/javascript">
+	  var disqus_shortname = 'halitalptekin';
+	  (function() {
+	    var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+	    dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
+	    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+	   })();
+	</script>
 </body>
 </html>

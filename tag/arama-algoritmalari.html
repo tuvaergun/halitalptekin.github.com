@@ -1,275 +1,158 @@
 <!DOCTYPE html>
-<html lang="en">
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
-    <meta charset="utf-8">
-    <title>Halit Alptekin Personal Blog</title>
-    <meta name="description" content="Programming and Life Blog Of Halit Alptekin. Karadeniz Technical University Computer Engineering Student.">
-    <meta name="keywords" content="programlama, blog, personal blog, linux, python, django, php, bootstrap, seo, bilgisayar muhendisligi, ktu, karadeniz teknik universitesi, programming">
-    <meta name="author" content="halit">
-    <meta name="robots" content="index, follow, all"/>
+  <meta charset="utf-8">
+  <title>{ Halit Alptekin } - arama algoritmaları</title>
 
-    <!-- Le HTML5 shim, for IE6-8 support of HTML elements -->
-    <!--[if lt IE 9]>
-    <script src="../theme/html5.js"></script>
-    <![endif]-->
+  <meta name="author" content="halit">
 
-    <!-- Le styles -->
-    <link href="../theme/bootstrap.min.css" rel="stylesheet">
-    <link href="../theme/bootstrap.min.responsive.css" rel="stylesheet">
-    <link href="../theme/local.css" rel="stylesheet">
-    <link href="../theme/pygments.css" rel="stylesheet">
-
-</head>
-
-<body>
-
-<div class="navbar">
-    <div class="navbar-inner">
-    <div class="container">
-
-         <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
-             <span class="icon-bar"></span>
-             <span class="icon-bar"></span>
-             <span class="icon-bar"></span>
-         </a>
-
-        <a class="brand" href="..">Halit Alptekin Personal Blog</a>
-
-        <div class="nav-collapse">
-        <ul class="nav">
-                    
-        <li><a href="../pages/about-me.html">About Me</a></li>
-	    <li><a href="../pages/contact.html">Contact</a></li>
-        </ul>
-        </div>
-        
-    </div>
-    </div>
-</div>
-
-<div class="container">
-    <div class="content">
-    <div class="row">
-
-        <div class="span9">
-                
-        
-
-    <div class='article'>
-        <div class="content-title">
-            <a href="../python-fuzzy-modulu.html"><h1>Python Fuzzy Modülü</h1></a>
-            Sep 16, 2012
-
-by <a class="url fn" href="../author/halit.html">halit</a>
- 
-
-in <a href="../category/python.html">python</a>
-
- 
-    tagged <a href="../tag/arama-algoritmalari.html">arama algoritmaları</a> <a href="../tag/fuzzy.html">fuzzy</a> <a href="../tag/python.html">python</a> <a href="../tag/python-arama.html">python arama</a>  
-        </div>
-        
-        <div><p>İlk defa Yaşar Arabacı'nın blogunda okuduğum benzer yazı algoritmaları bana çok ilginç gelmişti. Çunku kuçuk kelimelerde veya cumlelerde kelimeleri parçalayıp oranlamak işe yarardı ancak boyutlar buyuyunce bu imkansızlaşmaya başladı. Paragrafları cumlelere, cumleleri kelimelere ayırdıktan sonra kelime bazlı kontrolde çok saçmaydı. Bu yuzden biraz daha farklı algoritma arayışlarına girdim. Bana bu konuda ilginç gelen ise kelimeleri fonetik olarak karşılaştıran algoritmalardı.</p>
-<p>Benim okuduğum yazıda 3 tane algoritmadan bahsediyordu. Sayısının benim açımdan bir onemi yok. En azından yazıların benzerliklerini fonetik olarak karşılaştırmanın daha doğru sonuçlar verdiğinin farkına vardım.</p>
-<p>Her gun girdiğimiz google'da bazen yazdığımız kelimelerde google hep "Bunu mu demek istediniz?" diye duzeltiyor. İşte burada kullandığı algoritmanında bunlardan birisi olabileceğine vardım. Eğer değilse bile benzer olabilirler.</p>
-<p>İşte bende bu algoritmaları Python'da deneyip kullanmak istedim. Bunun için en uygun kutuphane Fuzzy. Bilgisayarınıza yuklemek için aşağıdaki komutu yazmanız yeterli.</p>
-<div class="codehilite"><pre><span class="n">pip</span> <span class="n">install</span> <span class="n">Fuzzy</span>
-</pre></div>
-
-
-<p>Daha sonra da direk olarak import edip kullanalım. Önce soundex algoritmasına bakalım.</p>
-<div class="codehilite"><pre><span class="c">#!/usr/bin/env python</span>
-
-<span class="kn">import</span> <span class="nn">fuzzy</span>
-
-<span class="n">isimler</span> <span class="o">=</span> <span class="p">[</span> <span class="s">&#39;halit&#39;</span><span class="p">,</span> <span class="s">&#39;halil&#39;</span><span class="p">,</span> <span class="s">&#39;haim&#39;</span><span class="p">,</span> <span class="s">&#39;hain&#39;</span><span class="p">]</span>
-
-<span class="n">soundex</span> <span class="o">=</span> <span class="n">fuzzy</span><span class="o">.</span><span class="n">Soundex</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span>
-
-<span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="n">isimler</span><span class="p">:</span>
-    <span class="k">print</span> <span class="s">&#39;</span><span class="si">%-10s</span><span class="s">&#39;</span> <span class="o">%</span> <span class="n">n</span><span class="p">,</span> <span class="n">soundex</span><span class="p">(</span><span class="n">n</span><span class="p">)</span>
-</pre></div>
-
-
-<p>Bunun çıktısı aşağıdaki gibi oluyor.</p>
-<div class="codehilite"><pre><span class="n">halit</span>      <span class="n">H430</span>
-<span class="n">halil</span>      <span class="n">H400</span>
-<span class="n">haim</span>       <span class="n">H500</span>
-<span class="n">hain</span>       <span class="n">H500</span>
-</pre></div>
-
-
-<p>Gorduğunuz gibi gayet başarılı sonuçlar çıkarıyor. Sizde soundex geçen kısmı DMetaphone veya nysiis ile değiştirip diğer algoritmaların çıktılarına bakabilirsiniz. Ben buradan sonra Soundex algoritmasını kullanarak birkaç uygulama yaptım. Neden soundex derseniz çok iyi sonuçlar verdiği için değil de daha kolay kullanım sağladığı için seçtim. Diğerlerinde donuş değerleri liste olarak gelebiliyor. Buda gelen verilerde tekrardan işlem yapmak demek.</p>
-<p>İşte bende bu algoritmayı belirttiğim bir db içinde kelime arama şeklinde kullandım. Kodlar uzerinde çok fazla uğraşmadığım için fazla gereksiz kod olabilir. Ancak mantığın kavranması ve basit işler için yeterlidir diye duşunuyorum. Benim bu algoritmayı kullanarak yazdığım kod aşağıdaki gibi.</p>
-<div class="codehilite"><pre><span class="c">#!/usr/bin/env python</span>
-
-<span class="kn">from</span> <span class="nn">fuzzy</span> <span class="kn">import</span> <span class="n">Soundex</span>
-
-<span class="k">class</span> <span class="nc">aramaYap</span><span class="p">:</span>
-    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">veritabani</span><span class="p">,</span> <span class="n">arancak</span><span class="p">):</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">veritabani</span> <span class="o">=</span> <span class="n">veritabani</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">arancaklar</span> <span class="o">=</span> <span class="n">arancak</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s">&quot; &quot;</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">soundex</span>    <span class="o">=</span> <span class="n">Soundex</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">sonuclar</span>   <span class="o">=</span> <span class="p">[]</span>
-
-    <span class="k">def</span> <span class="nf">parset</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">liste</span><span class="p">):</span>
-        <span class="n">ksozluk</span> <span class="o">=</span> <span class="p">{}</span>
-        <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span>
-        <span class="k">for</span> <span class="n">eleman</span> <span class="ow">in</span> <span class="n">liste</span><span class="p">:</span>
-            <span class="n">lis</span>  <span class="o">=</span> <span class="p">[]</span>
-            <span class="n">dlis</span> <span class="o">=</span> <span class="p">[]</span>
-            <span class="n">lis</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">eleman</span><span class="p">)</span>
-            <span class="n">dlis</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">eleman</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s">&quot; &quot;</span><span class="p">))</span>
-            <span class="n">lis</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">dlis</span><span class="p">)</span>
-            <span class="n">ksozluk</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">lis</span>
-            <span class="n">i</span><span class="o">+=</span><span class="mi">1</span>
-        <span class="k">return</span> <span class="n">ksozluk</span>
-
-    <span class="k">def</span> <span class="nf">arama</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="n">veritabani</span>  <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">parset</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">veritabani</span><span class="p">)</span>
-        <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span>
-        <span class="k">while</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="nb">len</span><span class="p">(</span><span class="n">veritabani</span><span class="p">):</span>
-            <span class="k">for</span> <span class="n">kelimem</span> <span class="ow">in</span> <span class="n">veritabani</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="mi">1</span><span class="p">][</span><span class="mi">0</span><span class="p">]:</span>
-                <span class="k">for</span> <span class="n">arancak</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">arancaklar</span><span class="p">:</span>
-                    <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">soundex</span><span class="p">(</span><span class="n">kelimem</span><span class="p">)</span> <span class="o">==</span> <span class="bp">self</span><span class="o">.</span><span class="n">soundex</span><span class="p">(</span><span class="n">arancak</span><span class="p">):</span>
-                        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">sonuclar</span><span class="o">.</span><span class="n">count</span><span class="p">(</span><span class="n">veritabani</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="mi">0</span><span class="p">])</span> <span class="o">&lt;</span> <span class="mi">1</span><span class="p">:</span>
-                            <span class="bp">self</span><span class="o">.</span><span class="n">sonuclar</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">veritabani</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="mi">0</span><span class="p">])</span>
-            <span class="n">i</span><span class="o">+=</span><span class="mi">1</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">sonuclar</span>
-</pre></div>
-
-
-<p>Şimdi de bunu gerçek bir ornekte kullanalım.</p>
-<div class="codehilite"><pre><span class="kn">from</span> <span class="nn">aramam</span> <span class="kn">import</span> <span class="n">aramaYap</span>
-
-<span class="n">veritabani</span> <span class="o">=</span> <span class="p">[</span><span class="s">&quot;Python Yol Haritasi&quot;</span><span class="p">,</span>
-              <span class="s">&quot;Ucretsiz CouchDB&quot;</span><span class="p">,</span>
-              <span class="s">&quot;ENC28J60 ve Arduino&quot;</span><span class="p">,</span>
-              <span class="s">&quot;Facebooku Proxy Olarak Kullanma&quot;</span><span class="p">,</span>
-              <span class="s">&quot;schweinsteiger&quot;</span><span class="p">,</span>
-              <span class="s">&quot;python programlama&quot;</span><span class="p">,</span>
-              <span class="s">&quot;halit alptekin&quot;</span><span class="p">]</span>
-
-<span class="k">while</span> <span class="mi">1</span><span class="p">:</span>
-    <span class="n">aranacak</span> <span class="o">=</span> <span class="nb">raw_input</span><span class="p">(</span><span class="s">&quot;Aranacak kelime: &quot;</span><span class="p">)</span>
-    <span class="n">arama</span> <span class="o">=</span> <span class="n">aramaYap</span><span class="p">(</span><span class="n">veritabani</span><span class="p">,</span> <span class="n">aranacak</span><span class="p">)</span>
-    <span class="n">i</span> <span class="o">=</span> <span class="mi">1</span>
-    <span class="k">for</span> <span class="n">sonuc</span> <span class="ow">in</span> <span class="n">arama</span><span class="o">.</span><span class="n">arama</span><span class="p">():</span>
-        <span class="k">print</span> <span class="nb">str</span><span class="p">(</span><span class="n">i</span><span class="p">)</span> <span class="o">+</span> <span class="s">&quot;. ihtimal = &quot;</span> <span class="o">+</span> <span class="n">sonuc</span>
-        <span class="n">i</span><span class="o">=</span><span class="nb">int</span><span class="p">(</span><span class="n">i</span><span class="p">)</span><span class="o">+</span><span class="mi">1</span>
-</pre></div>
-
-
-<p>Veritabanındaki değerlerimize aşağıdaki gibi sorgular gonderdim ve gelen sonuçlar aşağıda.( Veritabanı olarak basit bir liste kullandım. Siz bunu gerçek bir veritabanı uzerinde de kullanabilirsiniz. Bunun için <a href="http://www.informit.com/articles/article.aspx?p=1848528">buradaki</a> yazıya bakmanız yeterlidir. Ayrıcana benim kullanmadığım diye 2 algoritmanın da kullanımı burada var.)</p>
-<p><a href="http://www.halitalptekin.com/media/upload/python-fuzzy-search-algorithm.png"><img alt="Python Fuzzy Fonetic Search Algorithm" src="http://www.halitalptekin.com/media/upload/python-fuzzy-search-algorithm.png" /></a></p>
-<p>Feysbuk aramasında bile başarılı bir sonuç veriyor :D Yazdığım kodlarda ne yapmak istediğime gelirsek; veritabanındaki oğeleri sırayla kelimelere ayırıyorum. Daha sonra bu ayırdığım kelimeler ile aranacak olan kelimeyi yukarıdaki algoritmayı kullanarak karşılaştırıyorum. Şimdilik sadece değerleri eşit olanları sonuç olarak donduruyor. Belki ileride yakın değerlere sahip olanları da dondururse guzel bir algoritma olur.</p></div>
-        <hr />
-    </div>
-		
-            <div class="pagination">
-<ul>
-    <li class="prev disabled"><a href="#">&larr; Previous</a></li>
-
-    <li class="active"><a href="../tag/arama-algoritmalari.html">1</a></li>
-
-    <li class="next disabled"><a href="#">&rarr; Next</a></li>
-
-</ul>
-</div>    
- 
+    <link href="http://www.halitalptekin.com/feeds/all.atom.xml" type="application/atom+xml" rel="alternate"
+        title="{ Halit Alptekin } Atom Feed" />
+      <link href="http://www.halitalptekin.com/feeds/all.rss.xml" type="application/rss+xml" rel="alternate"
+        title="{ Halit Alptekin } RSS Feed" />
   
-        </div>
-        
-        <div class="span3">
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
 
-            <div class="well" style="padding: 8px 0; background-color: #FBFBFB;">
-            <ul class="nav nav-list">
-                <li class="nav-header"> 
-                Site
-                </li>
-            
-                <li><a href="../archives.html">Archives</a>
-                <li><a href="../tags.html">Tags</a>
-                <li><a href="../feeds/all.atom.xml" rel="alternate">Atom feed</a></li>
-                                <li><a href="../feeds/all.rss.xml" rel="alternate">RSS feed</a></li>
-                                 <li><a href="../sitemap.xml">Sitemap</a>
-            </ul>
-            </div>
+  <link href="../favicon.png" rel="icon">
+  <link href="../theme/css/main.css" media="screen, projection"
+        rel="stylesheet" type="text/css">
+  <script src="../theme/js/modernizr-2.0.js"></script>
+  <script src="../theme/js/ender.js"></script>
+  <script src="../theme/js/octopress.js" type="text/javascript"></script>
 
+  <link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic"
+        rel="stylesheet" type="text/css">
+  <link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic"
+        rel="stylesheet" type="text/css">
+</head>
+<body>
+  <header role="banner"><hgroup>
+  <h1><a href="../">{ Halit Alptekin }</a></h1>
+  </hgroup></header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  <li><a href="http://www.halitalptekin.com/feeds/all.atom.xml" rel="subscribe-rss">Atom</a></li>
+    <li><a href="http://www.halitalptekin.com/feeds/all.rss.xml" rel="subscribe-rss">Rss</a></li>
+  </ul>
 
-                        <div class="well" style="padding: 8px 0; background-color: #FBFBFB;">
-            <ul class="nav nav-list">
-                <li class="nav-header"> 
-                Categories
-                </li>
-                
-                                <li><a href="../category/tasarim.html">tasarim</a></li>
-                                <li><a href="../category/server.html">server</a></li>
-                                <li><a href="../category/python.html">python</a></li>
-                                <li><a href="../category/programlama.html">programlama</a></li>
-                                <li><a href="../category/linux.html">linux</a></li>
-                                <li><a href="../category/kisisel.html">kisisel</a></li>
-                                <li><a href="../category/internet.html">internet</a></li>
-                                <li><a href="../category/guvenlik.html">guvenlik</a></li>
-                                <li><a href="../category/genel.html">genel</a></li>
-                                <li><a href="../category/eglence.html">eglence</a></li>
-                                <li><a href="../category/django.html">django</a></li>
-                                <li><a href="../category/compsci.html">compsci</a></li>
-                                <li><a href="../category/arduino.html">arduino</a></li>
-                                   
-            </ul>
-            </div>
-            
+<!-- TODO: add search here
+<form action="" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="q" value="site:.." />
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+-->
 
-                        <div class="well" style="padding: 8px 0; background-color: #FBFBFB;">
-            <ul class="nav nav-list">
-                <li class="nav-header"> 
-                Links
-                </li>
-            
-                            <li><a href="http://www.python.org">Python</a></li>
-                        </ul>
-            </div>
-            
+<ul class="main-navigation">
+  <li><a href="../">Blog</a></li>
+        <li><a href="../pages/about-me.html">About Me</a></li>
+    <li><a href="../pages/contact.html">Contact</a></li>
+  <!-- TODO: add categories here? -->
+  </ul></nav>
+  <div id="main">
+    <div id="content">
+      <div class="blog-index">
+    	  		<article>
+    		<header>
+          <h1 class="entry-title">
+        <a href="../python-fuzzy-modulu.html">Python Fuzzy Modülü</a>
+      </h1>
+          <p class="meta"><time datetime="2012-09-16T00:00:00" pubdate>Sep 16, 2012</time></p>
+</header>
 
-                        <div class="social">
-            <div class="well" style="padding: 8px 0; background-color: #FBFBFB;">
-            <ul class="nav nav-list">
-                <li class="nav-header"> 
-                Social
-                </li>
-           
-                                <li><a href="http://twitter.com/halitalptekin">twitter</a></li>
-                                <li><a href="http://github.com/halitalptekin">github</a></li>
-                                <li><a href="http://stackoverflow.com/users/1151618/halit-alptekin">stackoverflow</a></li>
-                                <li><a href="http://tr.linkedin.com/in/halitalptekin">linkedin</a></li>
-                            </ul>
-            </div>
-            </div>
-            
-                        <div class="well" style="padding: 8px 0; background-color: #FBFBFB;">
-            <ul class="nav nav-list">
-                <li class="nav-header"> 
-                Ads
-                </li>
+  <div class="entry-content"><p>İlk defa Yaşar Arabacı'nın blogunda okuduğum benzer yazı algoritmaları bana çok ilginç gelmişti. Çunku kuçuk kelimelerde veya cumlelerde kelimeleri parçalayıp oranlamak işe yarardı ancak boyutlar buyuyunce bu imkansızlaşmaya başladı. Paragrafları cumlelere, cumleleri kelimelere ayırdıktan sonra kelime bazlı kontrolde çok saçmaydı. Bu yuzden biraz daha farklı algoritma arayışlarına girdim. Bana ...</p></div>
+  <footer>
+    <a rel="full-article" href="../python-fuzzy-modulu.html">Read On &crarr;</a>
+  </footer>
+  		</article>
+  	  	<div class="pagination">
+  
+    <br />
+</div>  </div>
+      <aside class="sidebar">
+  <section>
+    <h1>Recent Posts</h1>
+    <ul id="recent_posts">
+            <li class="post">
+          <a href="../python-fuzzy-modulu.html">Python Fuzzy Modülü</a>
+      </li>
+          </ul>
+  </section>
+    <section>
+      
+    <h1>Categories</h1>
+    <ul id="recent_posts">
+              <li><a href="../category/tasarim.html">tasarim</a></li>
+              <li><a href="../category/server.html">server</a></li>
+              <li><a href="../category/python.html">python</a></li>
+              <li><a href="../category/programlama.html">programlama</a></li>
+              <li><a href="../category/linux.html">linux</a></li>
+              <li><a href="../category/kisisel.html">kisisel</a></li>
+              <li><a href="../category/internet.html">internet</a></li>
+              <li><a href="../category/guvenlik.html">guvenlik</a></li>
+              <li><a href="../category/genel.html">genel</a></li>
+              <li><a href="../category/eglence.html">eglence</a></li>
+              <li><a href="../category/django.html">django</a></li>
+              <li><a href="../category/compsci.html">compsci</a></li>
+              <li><a href="../category/arduino.html">arduino</a></li>
+          </ul>
+  </section>
+   
 
-                                <li><a href="https://www.camekan.com/adwords/" title="Google Adwords"><img src="/media/reklam/camekancom.jpg" alt="Google Adwords" title="Google Adwords"></a>
-                </li>
-                                <li><a href="http://www.dugunajans.com/" title="düğün fotoğrafçısı"><img src="/media/reklam/dugunajanscom.jpg" alt="düğün fotoğrafçısı" title="düğün fotoğrafçısı"></a>
-                </li>
-                            </ul>
-            </div>
-            
-        </div>  
-    </div>     </div> 
-<footer>
-	<hr>
-	<p><a href='http://www.halitalptekin.com'>Halit Alptekin Personal Blog</a> &copy; 2012</p>
-</footer>
+    
+    <section>
+        <h1>Social</h1>
+        <ul>
+            <li><a href="http://www.halitalptekin.com/feeds/all.rss.xml" type="application/rss+xml" rel="alternate">rss</a></li>
+                    <li><a href="http://twitter.com/halitalptekin" target="_blank">twitter</a></li>
+                    <li><a href="http://github.com/halitalptekin" target="_blank">github</a></li>
+                    <li><a href="http://stackoverflow.com/users/1151618/halit-alptekin" target="_blank">stackoverflow</a></li>
+                    <li><a href="http://tr.linkedin.com/in/halitalptekin" target="_blank">linkedin</a></li>
+                </ul>
+    </section>
+      <section>
+        <h1>Blogroll</h1>
+        <ul>
+                    <li><a href="http://www.python.org" target="_blank">Python</a></li>
+                </ul>
+    </section>
 
-</div> <!-- /container -->
-<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
-<script src="http://twitter.github.com/bootstrap/assets/js/bootstrap-collapse.js"></script>
-<script>var _gaq=[['_setAccount','UA-24728900-1'],['_trackPageview']];(function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];g.src='//www.google-analytics.com/ga.js';s.parentNode.insertBefore(g,s)}(document,'script'))</script>
+      <section>
+        <h1>Ads</h1>
+        <ul id="recent_posts">
+                            <li><a href="https://www.camekan.com/adwords/" title="Google Adwords"><img src="/media/reklam/camekancom.jpg" alt="Google Adwords" title="Google Adwords"></a></li>
+                            <li><a href="http://www.dugunajans.com/" title="düğün fotoğrafçısı"><img src="/media/reklam/dugunajanscom.jpg" alt="düğün fotoğrafçısı" title="düğün fotoğrafçısı"></a></li>
+                    </ul>
+    </section>
+  
+</aside>    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2013 - halit -
+  <span class="credit">Powered by <a href="http://getpelican.com">Pelican</a></span>
+</p></footer>
+      <script type="text/javascript">
+	    var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+	    document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+    </script>
+    <script type="text/javascript">
+	    try {
+	        var pageTracker = _gat._getTracker("UA-24728900-1");
+	    pageTracker._trackPageview();
+	    } catch(err) {}
+	</script>
+	<script type="text/javascript">
+	  var disqus_shortname = 'halitalptekin';
+	  (function() {
+	    var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+	    dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
+	    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+	   })();
+	</script>
 </body>
 </html>

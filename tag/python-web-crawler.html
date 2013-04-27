@@ -1,285 +1,158 @@
 <!DOCTYPE html>
-<html lang="en">
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
-    <meta charset="utf-8">
-    <title>Halit Alptekin Personal Blog</title>
-    <meta name="description" content="Programming and Life Blog Of Halit Alptekin. Karadeniz Technical University Computer Engineering Student.">
-    <meta name="keywords" content="programlama, blog, personal blog, linux, python, django, php, bootstrap, seo, bilgisayar muhendisligi, ktu, karadeniz teknik universitesi, programming">
-    <meta name="author" content="halit">
-    <meta name="robots" content="index, follow, all"/>
+  <meta charset="utf-8">
+  <title>{ Halit Alptekin } - python web crawler</title>
 
-    <!-- Le HTML5 shim, for IE6-8 support of HTML elements -->
-    <!--[if lt IE 9]>
-    <script src="../theme/html5.js"></script>
-    <![endif]-->
+  <meta name="author" content="halit">
 
-    <!-- Le styles -->
-    <link href="../theme/bootstrap.min.css" rel="stylesheet">
-    <link href="../theme/bootstrap.min.responsive.css" rel="stylesheet">
-    <link href="../theme/local.css" rel="stylesheet">
-    <link href="../theme/pygments.css" rel="stylesheet">
-
-</head>
-
-<body>
-
-<div class="navbar">
-    <div class="navbar-inner">
-    <div class="container">
-
-         <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
-             <span class="icon-bar"></span>
-             <span class="icon-bar"></span>
-             <span class="icon-bar"></span>
-         </a>
-
-        <a class="brand" href="..">Halit Alptekin Personal Blog</a>
-
-        <div class="nav-collapse">
-        <ul class="nav">
-                    
-        <li><a href="../pages/about-me.html">About Me</a></li>
-	    <li><a href="../pages/contact.html">Contact</a></li>
-        </ul>
-        </div>
-        
-    </div>
-    </div>
-</div>
-
-<div class="container">
-    <div class="content">
-    <div class="row">
-
-        <div class="span9">
-                
-        
-
-    <div class='article'>
-        <div class="content-title">
-            <a href="../scrapy-ile-arama-motoru.html"><h1>Scrapy İle Arama Motoru</h1></a>
-            Sep 13, 2012
-
-by <a class="url fn" href="../author/halit.html">halit</a>
- 
-
-in <a href="../category/python.html">python</a>
-
- 
-    tagged <a href="../tag/python.html">python</a> <a href="../tag/python-bot.html">python bot</a> <a href="../tag/python-spider.html">python spider</a> <a href="../tag/python-web-crawler.html">python web crawler</a> <a href="../tag/scrapy.html">scrapy</a>  
-        </div>
-        
-        <div><p>Bloglar ve siteler olduğundan beri bir siteden diğerine veri çekmek her zaman programcılar için onemli oldu. Kimi zaman sitelerin webmasterlar için verdiği araçları kullandık kimi zaman da kendimiz yazmak zorunda kaldık. Tabi zaman ilerleryince arama motoru tarafında da gelişmeler hızla ilerledi. Ciddi derece iyi motorlar ve botlar yazıldı. Ben PHP ile yazdığım sitemi Python ile yazdığım şu anki haline taşırken kesinlikle MySql to PostgreSql veya benzeri yazılımlar kullanmadım. Çunku PHP blogumda herşey karşık ve dağınıktı.</p>
-<p>Şimdi ise Django bir hayli duzenli. Bu yuzden donuşturmek yerine direk olarak sayfadan verileri almam gerektiği duşundum. Boylece en başta bahsettiğim botlar dunyasına bakmam gerekti. Ben bu botlardan zamanında pek de haberdar değildim. Bu yuzden Python ile birkaç spagetti kod ile urllib, urllib2 ve for, while dongulerini kullanarak tum yazılarımı etiketlerimi çektim.</p>
-<p>Ama aklıda hep bu işi profesyonel olarak yazılmış bir botla yapmak vardı. Biraz araştırınca Python ile ScraPy adında harika bir arama motoru ile karşılaştım. Bununla takip etmesini istediğim sayfaları regex ile belirtip aynı şekilde veri almasını istediklerimi de ayrı ayrı belirtiyoruz.</p>
-<p>Öncelikle ScraPy'yi bi bilgisayarımıza kuralım.Bunun için klasik olarak aşağıdaki komutu kullanıyoruz.</p>
-<div class="codehilite"><pre><span class="n">pip</span> <span class="n">install</span> <span class="n">scrapy</span>
-</pre></div>
-
-
-<p>Daha sonra sanal ortamımızda aşağıdaki komut ile klasorlerimiz oluşturuyoruz.</p>
-<div class="codehilite"><pre><span class="n">scrapy</span> <span class="n">startproject</span> <span class="n">orumcek</span>
-</pre></div>
-
-
-<p>Bu komutu verdiğimizde aşağıdaki gorunumde bir dizin elde etmeniz gerekli.</p>
-<div class="codehilite"><pre><span class="n">orumcek</span><span class="o">/</span>
-    <span class="n">scrapy</span><span class="o">.</span><span class="n">cfg</span>
-    <span class="n">orumcek</span><span class="o">/</span>
-        <span class="n">__init__</span><span class="o">.</span><span class="n">py</span>
-        <span class="n">items</span><span class="o">.</span><span class="n">py</span>
-        <span class="n">pipelines</span><span class="o">.</span><span class="n">py</span>
-        <span class="n">settings</span><span class="o">.</span><span class="n">py</span>
-        <span class="n">spiders</span><span class="o">/</span>
-            <span class="n">__init__</span><span class="o">.</span><span class="n">py</span>
-</pre></div>
-
-
-<p>Bu dosyaların gorevlerine bakacak olursak:</p>
-<ul>
-<li><strong>scrapy.cfg: </strong>ayar dosyamız</li>
-<li><strong>orumcek/:</strong> proje klasorumuz</li>
-<li><strong>orumcek/items.py:</strong> projemize ait oğeler burada</li>
-<li><strong>orumcek/pipelines.py:</strong> projemizdeki verileri bu dosya sayesinde paylaştıracağız</li>
-<li><strong>orumcek/settings.py: </strong>projemize ait ayarlar</li>
-<li><strong>orumcek/spiders/:</strong> orumceklerimiz bu klasor altında yer alacak</li>
-</ul>
-<p>Şimdi herşeyimiz hazır olduğuna gore ilk kodlarımızı yazabiliriz.Öncelikle bize gerekli olan kısımları soyleyim. <strong>items.py </strong>içinde hangi verileri çekeceğimizi tanımlayacağız. Benim tanımladığım ornek dosya aşağıda.</p>
-<div class="codehilite"><pre><span class="kn">from</span> <span class="nn">scrapy.item</span> <span class="kn">import</span> <span class="n">Item</span><span class="p">,</span> <span class="n">Field</span>
-
-<span class="k">class</span> <span class="nc">OrumcekItem</span><span class="p">(</span><span class="n">Item</span><span class="p">):</span>
-    <span class="n">title</span>       <span class="o">=</span> <span class="n">Field</span><span class="p">()</span>
-    <span class="n">description</span> <span class="o">=</span> <span class="n">Field</span><span class="p">()</span>
-    <span class="c">#post        = Field()</span>
-    <span class="n">date</span>        <span class="o">=</span> <span class="n">Field</span><span class="p">()</span>
-</pre></div>
-
-
-<p>Bu dosyanının gorevini anlamış olmalısınız.Çekeceğimiz verilerin title, description ve date olacağını tanımlıyoruz.(Şimdilik post'u çekmiyorum. Eğer başındaki # işaretini kaldırırsanız onu da çekebilirsiniz. Ancak çok fazla kargaşa yarattığı için şimdilik gerek yok. Siz isteğinize gore ekleyebilirsiniz.)</p>
-<p>Şimdi de onemli kısma gelelim. Burada orumceğimizi yazacağız. Bunun için oncelikle spiders/ klasorunun altına bir python dosyası oluşturuyoruz. Ben ismini <strong>hd_spider.py</strong> koydum. Ve içeriğini aşağıdaki gibi yapıyoruz.</p>
-<div class="codehilite"><pre><span class="kn">from</span> <span class="nn">scrapy.contrib.spiders</span> <span class="kn">import</span> <span class="n">CrawlSpider</span><span class="p">,</span> <span class="n">Rule</span>
-<span class="kn">from</span> <span class="nn">scrapy.contrib.linkextractors.sgml</span> <span class="kn">import</span> <span class="n">SgmlLinkExtractor</span>
-<span class="kn">from</span> <span class="nn">scrapy.selector</span> <span class="kn">import</span> <span class="n">HtmlXPathSelector</span>
-<span class="kn">from</span> <span class="nn">orumcek.items</span> <span class="kn">import</span> <span class="n">OrumcekItem</span>
-
-
-<span class="k">class</span> <span class="nc">OrumcekSpider</span><span class="p">(</span><span class="n">CrawlSpider</span><span class="p">):</span>
-    <span class="n">name</span> <span class="o">=</span> <span class="s">&#39;orumcek&#39;</span>
-    <span class="n">start_urls</span> <span class="o">=</span> <span class="p">[</span><span class="s">&#39;http://www.halitalptekin.com/blog/&#39;</span><span class="p">]</span>
-    <span class="n">rules</span> <span class="o">=</span> <span class="p">[</span><span class="n">Rule</span><span class="p">(</span><span class="n">SgmlLinkExtractor</span><span class="p">(</span><span class="n">allow</span><span class="o">=</span><span class="p">[</span><span class="s">r&#39;\?page=\d+&#39;</span><span class="p">]),</span> <span class="n">follow</span><span class="o">=</span><span class="bp">True</span><span class="p">),</span>
-             <span class="n">Rule</span><span class="p">(</span><span class="n">SgmlLinkExtractor</span><span class="p">(</span><span class="n">allow</span><span class="o">=</span><span class="p">[</span><span class="s">r&#39;\w+.html&#39;</span><span class="p">]),</span> <span class="n">callback</span><span class="o">=</span><span class="s">&#39;parse_blogpost&#39;</span><span class="p">)]</span>
-
-    <span class="k">def</span> <span class="nf">parse_blog</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">response</span><span class="p">):</span>
-        <span class="n">hxs</span> <span class="o">=</span> <span class="n">HtmlXPathSelector</span><span class="p">(</span><span class="n">response</span><span class="p">)</span>
-        <span class="n">item</span> <span class="o">=</span> <span class="n">OrumcekItem</span><span class="p">()</span>
-
-        <span class="n">item</span><span class="p">[</span><span class="s">&#39;title&#39;</span><span class="p">]</span>       <span class="o">=</span> <span class="n">hxs</span><span class="o">.</span><span class="n">select</span><span class="p">(</span><span class="s">&quot;//div[@class=&#39;span9&#39;]/h1/a/text()&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">extract</span><span class="p">()</span>
-        <span class="n">item</span><span class="p">[</span><span class="s">&#39;description&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">hxs</span><span class="o">.</span><span class="n">select</span><span class="p">(</span><span class="s">&quot;//div[@class=&#39;span9&#39;]/p[@class=&#39;lead&#39;]/text()&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">extract</span><span class="p">()</span>
-        <span class="n">item</span><span class="p">[</span><span class="s">&#39;date&#39;</span><span class="p">]</span>        <span class="o">=</span> <span class="n">hxs</span><span class="o">.</span><span class="n">select</span><span class="p">(</span><span class="s">&quot;//div[@class=&#39;span9&#39;]/h1/small/text()&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">extract</span><span class="p">()</span>
-        <span class="c">#item[&#39;post&#39;]        = hxs.select(&quot;//div[@class=&#39;span9&#39;]/p/text()&quot;).extract()</span>
-        <span class="k">return</span> <span class="n">item</span>
-</pre></div>
-
-
-<p>Kodumuzda ilk olarak isim ve taramanın başlanacağı linki ekliyoruz. Bu link başlangıç noktası olarak alınacak ve daha sonra gelen kurallara gore takip edilecek. Kurallar içinde regex kullandığımı gorebilirsiniz. Burada dikkat etmeniz gereken nokta eğer takip etmesini istediğin linkler varsa bunlara <strong>follow=True </strong>kuralını ekliyoruz. Veri çekmesini istediklerimizde de o sayfayı parse edecek fonksiyonumuzu çağırıyoruz.</p>
-<p>Yukarıdaki kodun Turkçesi; http://www.halitalptekin.com/blog/ linkine gir ve <strong>?page=sayi</strong> olan tum sayfalarda gez(?page=1, ?page=2) .Eğer içlerinde <strong>\w+.html</strong> kuralına uyan(sonu .html ile biten) sayfalar varsa bunları <strong>parse_blog</strong> fonksiyonuna gonder.</p>
-<p><strong>parse_blog</strong> fonksiyonuna gelen sayfalarda da oğelerimizi xpath kurallarına gore çekiyoruz. Mesela ben item isimli oğemizin <strong>span9</strong> ve sırayla <strong>h1</strong>, <strong>a</strong> etiketleri altındaki metin olduğunu belirtmişim.Burada sizin <strong>xpath</strong> bilginizi konuşturmanız gerekli.Zaten çok da zor bir durum yok.</p>
-<p>Bundan sonra aşağıdaki komutu çalıştırarak deneme yapabilirsiniz. Gelen değerler istediğiniz şekilde değilse duzeltmeleri kendinize gore yapın.</p>
-<div class="codehilite"><pre><span class="n">scrapy</span> <span class="n">crawl</span> <span class="n">orumcek</span>
-</pre></div>
-
-
-<p>Ve şimdi de bu aldığımız verileri bir çıktı haline getirelim. Siz isterseniz xml, feed, json, txt veya direk veritabanına ekleme yapabilirsiniz. Ben json olarak çıktı alacağım. Bunun için <strong>pipelines.py</strong> dosyamıza aşağıdaki satırları ekliyoruz.</p>
-<div class="codehilite"><pre><span class="kn">import</span> <span class="nn">json</span>
-
-<span class="k">class</span> <span class="nc">JsonWriterPipeline</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
-
-    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">file</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s">&#39;items.json&#39;</span><span class="p">,</span> <span class="s">&#39;wb&#39;</span><span class="p">)</span>
-
-    <span class="k">def</span> <span class="nf">process_item</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">item</span><span class="p">,</span> <span class="n">spider</span><span class="p">):</span>
-        <span class="n">line</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">(</span><span class="nb">dict</span><span class="p">(</span><span class="n">item</span><span class="p">))</span> <span class="o">+</span> <span class="s">&quot;</span><span class="se">\n</span><span class="s">&quot;</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">file</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">line</span><span class="p">)</span>
-        <span class="k">return</span> <span class="n">item</span>
-</pre></div>
-
-
-<p>Bu kod ile gelen itemleri json dosyamıza serialize ediyoruz. Siz isterseniz bu kısımda bilginizi konuşturarak verileri mongodb, mysql veya xml şeklinde de alabilirsiniz. Burada yapmanız gerekenler <a href="http://doc.scrapy.org/en/0.14/index.html">sitesinde</a> ayrıntılı anlatılmış.</p>
-<p>Daha sonra bu boru hattımızı ayar dosyamıza ekliyoruz. Bunun için settings.py içine aşağıdaki satırı ekliyoruz.</p>
-<div class="codehilite"><pre><span class="n">ITEM_PIPELINES</span> <span class="o">=</span> <span class="p">[</span><span class="s">&#39;orumcek.pipelines.JsonWriterPipeline&#39;</span><span class="p">,]</span>
-</pre></div>
-
-
-<p>Artık herşey hazır. Gene yukarıdaki komutuzu girerek aynı dizinde json dosyamızın oluştuğunu gorebilirsiniz.</p>
-<p><img alt="Python Web Crawler Spider" src="http://www.halitalptekin.com/media/upload/python-web-crawler-spider.png" /></p>
-<p>Ben verileri alırken direk olarak yazılarımı çekmedim. Bunun sebebi Turkçe karakterlerin ascii olarak gelmesi. Bunun çozumu bir hayli basit ancak gene de goz karmaşasına yol açıyor. Github <a href="https://github.com/halitalptekin/MyCodeBook/blob/master/orumcek/items1.json">depoma</a> koyduğum json dosyama bakarak ascii karakterleri gayet guzel donuşturduğumu gorebilirsiniz.</p></div>
-        <hr />
-    </div>
-		
-            <div class="pagination">
-<ul>
-    <li class="prev disabled"><a href="#">&larr; Previous</a></li>
-
-    <li class="active"><a href="../tag/python-web-crawler.html">1</a></li>
-
-    <li class="next disabled"><a href="#">&rarr; Next</a></li>
-
-</ul>
-</div>    
- 
+    <link href="http://www.halitalptekin.com/feeds/all.atom.xml" type="application/atom+xml" rel="alternate"
+        title="{ Halit Alptekin } Atom Feed" />
+      <link href="http://www.halitalptekin.com/feeds/all.rss.xml" type="application/rss+xml" rel="alternate"
+        title="{ Halit Alptekin } RSS Feed" />
   
-        </div>
-        
-        <div class="span3">
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
 
-            <div class="well" style="padding: 8px 0; background-color: #FBFBFB;">
-            <ul class="nav nav-list">
-                <li class="nav-header"> 
-                Site
-                </li>
-            
-                <li><a href="../archives.html">Archives</a>
-                <li><a href="../tags.html">Tags</a>
-                <li><a href="../feeds/all.atom.xml" rel="alternate">Atom feed</a></li>
-                                <li><a href="../feeds/all.rss.xml" rel="alternate">RSS feed</a></li>
-                                 <li><a href="../sitemap.xml">Sitemap</a>
-            </ul>
-            </div>
+  <link href="../favicon.png" rel="icon">
+  <link href="../theme/css/main.css" media="screen, projection"
+        rel="stylesheet" type="text/css">
+  <script src="../theme/js/modernizr-2.0.js"></script>
+  <script src="../theme/js/ender.js"></script>
+  <script src="../theme/js/octopress.js" type="text/javascript"></script>
 
+  <link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic"
+        rel="stylesheet" type="text/css">
+  <link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic"
+        rel="stylesheet" type="text/css">
+</head>
+<body>
+  <header role="banner"><hgroup>
+  <h1><a href="../">{ Halit Alptekin }</a></h1>
+  </hgroup></header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  <li><a href="http://www.halitalptekin.com/feeds/all.atom.xml" rel="subscribe-rss">Atom</a></li>
+    <li><a href="http://www.halitalptekin.com/feeds/all.rss.xml" rel="subscribe-rss">Rss</a></li>
+  </ul>
 
-                        <div class="well" style="padding: 8px 0; background-color: #FBFBFB;">
-            <ul class="nav nav-list">
-                <li class="nav-header"> 
-                Categories
-                </li>
-                
-                                <li><a href="../category/tasarim.html">tasarim</a></li>
-                                <li><a href="../category/server.html">server</a></li>
-                                <li><a href="../category/python.html">python</a></li>
-                                <li><a href="../category/programlama.html">programlama</a></li>
-                                <li><a href="../category/linux.html">linux</a></li>
-                                <li><a href="../category/kisisel.html">kisisel</a></li>
-                                <li><a href="../category/internet.html">internet</a></li>
-                                <li><a href="../category/guvenlik.html">guvenlik</a></li>
-                                <li><a href="../category/genel.html">genel</a></li>
-                                <li><a href="../category/eglence.html">eglence</a></li>
-                                <li><a href="../category/django.html">django</a></li>
-                                <li><a href="../category/compsci.html">compsci</a></li>
-                                <li><a href="../category/arduino.html">arduino</a></li>
-                                   
-            </ul>
-            </div>
-            
+<!-- TODO: add search here
+<form action="" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="q" value="site:.." />
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+-->
 
-                        <div class="well" style="padding: 8px 0; background-color: #FBFBFB;">
-            <ul class="nav nav-list">
-                <li class="nav-header"> 
-                Links
-                </li>
-            
-                            <li><a href="http://www.python.org">Python</a></li>
-                        </ul>
-            </div>
-            
+<ul class="main-navigation">
+  <li><a href="../">Blog</a></li>
+        <li><a href="../pages/about-me.html">About Me</a></li>
+    <li><a href="../pages/contact.html">Contact</a></li>
+  <!-- TODO: add categories here? -->
+  </ul></nav>
+  <div id="main">
+    <div id="content">
+      <div class="blog-index">
+    	  		<article>
+    		<header>
+          <h1 class="entry-title">
+        <a href="../scrapy-ile-arama-motoru.html">Scrapy İle Arama Motoru</a>
+      </h1>
+          <p class="meta"><time datetime="2012-09-13T00:00:00" pubdate>Sep 13, 2012</time></p>
+</header>
 
-                        <div class="social">
-            <div class="well" style="padding: 8px 0; background-color: #FBFBFB;">
-            <ul class="nav nav-list">
-                <li class="nav-header"> 
-                Social
-                </li>
-           
-                                <li><a href="http://twitter.com/halitalptekin">twitter</a></li>
-                                <li><a href="http://github.com/halitalptekin">github</a></li>
-                                <li><a href="http://stackoverflow.com/users/1151618/halit-alptekin">stackoverflow</a></li>
-                                <li><a href="http://tr.linkedin.com/in/halitalptekin">linkedin</a></li>
-                            </ul>
-            </div>
-            </div>
-            
-                        <div class="well" style="padding: 8px 0; background-color: #FBFBFB;">
-            <ul class="nav nav-list">
-                <li class="nav-header"> 
-                Ads
-                </li>
+  <div class="entry-content"><p>Bloglar ve siteler olduğundan beri bir siteden diğerine veri çekmek her zaman programcılar için onemli oldu. Kimi zaman sitelerin webmasterlar için verdiği araçları kullandık kimi zaman da kendimiz yazmak zorunda kaldık. Tabi zaman ilerleryince arama motoru tarafında da gelişmeler hızla ilerledi. Ciddi derece iyi motorlar ve botlar yazıldı. Ben PHP ...</p></div>
+  <footer>
+    <a rel="full-article" href="../scrapy-ile-arama-motoru.html">Read On &crarr;</a>
+  </footer>
+  		</article>
+  	  	<div class="pagination">
+  
+    <br />
+</div>  </div>
+      <aside class="sidebar">
+  <section>
+    <h1>Recent Posts</h1>
+    <ul id="recent_posts">
+            <li class="post">
+          <a href="../scrapy-ile-arama-motoru.html">Scrapy İle Arama Motoru</a>
+      </li>
+          </ul>
+  </section>
+    <section>
+      
+    <h1>Categories</h1>
+    <ul id="recent_posts">
+              <li><a href="../category/tasarim.html">tasarim</a></li>
+              <li><a href="../category/server.html">server</a></li>
+              <li><a href="../category/python.html">python</a></li>
+              <li><a href="../category/programlama.html">programlama</a></li>
+              <li><a href="../category/linux.html">linux</a></li>
+              <li><a href="../category/kisisel.html">kisisel</a></li>
+              <li><a href="../category/internet.html">internet</a></li>
+              <li><a href="../category/guvenlik.html">guvenlik</a></li>
+              <li><a href="../category/genel.html">genel</a></li>
+              <li><a href="../category/eglence.html">eglence</a></li>
+              <li><a href="../category/django.html">django</a></li>
+              <li><a href="../category/compsci.html">compsci</a></li>
+              <li><a href="../category/arduino.html">arduino</a></li>
+          </ul>
+  </section>
+   
 
-                                <li><a href="https://www.camekan.com/adwords/" title="Google Adwords"><img src="/media/reklam/camekancom.jpg" alt="Google Adwords" title="Google Adwords"></a>
-                </li>
-                                <li><a href="http://www.dugunajans.com/" title="düğün fotoğrafçısı"><img src="/media/reklam/dugunajanscom.jpg" alt="düğün fotoğrafçısı" title="düğün fotoğrafçısı"></a>
-                </li>
-                            </ul>
-            </div>
-            
-        </div>  
-    </div>     </div> 
-<footer>
-	<hr>
-	<p><a href='http://www.halitalptekin.com'>Halit Alptekin Personal Blog</a> &copy; 2012</p>
-</footer>
+    
+    <section>
+        <h1>Social</h1>
+        <ul>
+            <li><a href="http://www.halitalptekin.com/feeds/all.rss.xml" type="application/rss+xml" rel="alternate">rss</a></li>
+                    <li><a href="http://twitter.com/halitalptekin" target="_blank">twitter</a></li>
+                    <li><a href="http://github.com/halitalptekin" target="_blank">github</a></li>
+                    <li><a href="http://stackoverflow.com/users/1151618/halit-alptekin" target="_blank">stackoverflow</a></li>
+                    <li><a href="http://tr.linkedin.com/in/halitalptekin" target="_blank">linkedin</a></li>
+                </ul>
+    </section>
+      <section>
+        <h1>Blogroll</h1>
+        <ul>
+                    <li><a href="http://www.python.org" target="_blank">Python</a></li>
+                </ul>
+    </section>
 
-</div> <!-- /container -->
-<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
-<script src="http://twitter.github.com/bootstrap/assets/js/bootstrap-collapse.js"></script>
-<script>var _gaq=[['_setAccount','UA-24728900-1'],['_trackPageview']];(function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];g.src='//www.google-analytics.com/ga.js';s.parentNode.insertBefore(g,s)}(document,'script'))</script>
+      <section>
+        <h1>Ads</h1>
+        <ul id="recent_posts">
+                            <li><a href="https://www.camekan.com/adwords/" title="Google Adwords"><img src="/media/reklam/camekancom.jpg" alt="Google Adwords" title="Google Adwords"></a></li>
+                            <li><a href="http://www.dugunajans.com/" title="düğün fotoğrafçısı"><img src="/media/reklam/dugunajanscom.jpg" alt="düğün fotoğrafçısı" title="düğün fotoğrafçısı"></a></li>
+                    </ul>
+    </section>
+  
+</aside>    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2013 - halit -
+  <span class="credit">Powered by <a href="http://getpelican.com">Pelican</a></span>
+</p></footer>
+      <script type="text/javascript">
+	    var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+	    document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+    </script>
+    <script type="text/javascript">
+	    try {
+	        var pageTracker = _gat._getTracker("UA-24728900-1");
+	    pageTracker._trackPageview();
+	    } catch(err) {}
+	</script>
+	<script type="text/javascript">
+	  var disqus_shortname = 'halitalptekin';
+	  (function() {
+	    var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+	    dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
+	    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+	   })();
+	</script>
 </body>
 </html>
