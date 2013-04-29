@@ -291,7 +291,8 @@ flake8 --ignore&lt;span class="o"&gt;=&lt;/span&gt;E501 &lt;span class="nv"&gt;$
    &lt;span class="p"&gt;}&lt;/span&gt;
 
 
-&lt;span class="n"&gt;print&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;Hello, world!&amp;quot;&lt;/span&gt;
+&lt;span class="o"&gt;:::&lt;/span&gt;&lt;span class="n"&gt;python&lt;/span&gt;
+&lt;span class="n"&gt;print&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;Hello, world!&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
