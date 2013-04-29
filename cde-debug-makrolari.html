@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>{ Halit Alptekin } - C'de debug makrolari</title>
+
+  <meta name="author" content="halit">
+
+    <link href="http://www.halitalptekin.com/feeds/all.atom.xml" type="application/atom+xml" rel="alternate"
+        title="{ Halit Alptekin } Atom Feed" />
+      <link href="http://www.halitalptekin.com/feeds/all.rss.xml" type="application/rss+xml" rel="alternate"
+        title="{ Halit Alptekin } RSS Feed" />
+  
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <link href="./favicon.png" rel="icon">
+  <link href="./theme/css/main.css" media="screen, projection"
+        rel="stylesheet" type="text/css">
+  <script src="./theme/js/modernizr-2.0.js"></script>
+  <script src="./theme/js/ender.js"></script>
+  <script src="./theme/js/octopress.js" type="text/javascript"></script>
+
+  <link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic"
+        rel="stylesheet" type="text/css">
+  <link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic"
+        rel="stylesheet" type="text/css">
+</head>
+<body>
+  <header role="banner"><hgroup>
+  <h1><a href="./">{ Halit Alptekin }</a></h1>
+  </hgroup></header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  <li><a href="http://www.halitalptekin.com/feeds/all.atom.xml" rel="subscribe-rss">Atom</a></li>
+    <li><a href="http://www.halitalptekin.com/feeds/all.rss.xml" rel="subscribe-rss">Rss</a></li>
+  </ul>
+
+<!-- TODO: add search here
+<form action="" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="q" value="site:." />
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+-->
+
+<ul class="main-navigation">
+  <li><a href="./">Blog</a></li>
+        <li><a href="./pages/about-me.html">About Me</a></li>
+    <li><a href="./pages/contact.html">Contact</a></li>
+  <!-- TODO: add categories here? -->
+  </ul></nav>
+  <div id="main">
+    <div id="content">
+      <div>
+  <article class="hentry" role="article">
+    <header>
+          <h1 class="entry-title">C'de debug makrolari</h1>
+          <p class="meta"><time datetime="2013-04-29T00:00:00" pubdate> Apr 29, 2013 </time></p>
+</header>
+
+  <div class="entry-content"><p>Bu sıralar okulda aldığım programlamaya giriş dersinden dolayı ciddi anlamda C ile içli dışlı oluyorum. En başlarda biraz mesafeli davransam da zamanla beni kendisine çekmeye başardı diyebilirim. Düşük seviyede çalışmanın kazandırdığı hız, bu işin karmaşıklığını gözardı etmeme sebep oluyor. Ve bu anlatmaya çalıştığım hız gerçekten beni yeterince tatmin ediyor. Tabi C'ye sadece hızlı demek büyük ayıp olur. İşletim sistemi tarafında da diğer dillere göre çok alt seviyede rahatça hareket edebiliyorsunuz. Özellikle <strong>GNU/Linux</strong> dünyası içerisinde yer alan programları yeniden yazmaya çalışmak da ayrı bir zevkli oluyor.</p>
+<p>C ile ilk uğraşlarım klasik olarak önce syntaxı öğrenmek oldu. Daha sonra da zamanla incelikleri ve kütüphaneleri öğrenmeye başladım. Hala da öğrenmeye devam ediyorum. Bu öğrenme aşamalarında da çok fazla kod yazmaya çalışıyorum. İrili ufaklı birçok kod yazdım. Bir kısmı program denilecek seviyede iken diğerleri sadece ufak denemelerden oluşuyor. Buna rağmen 2 haftada 6-7 bin satır sadece C kodu yazdığımı da farkettim. Ve belirli bir seviyeye geldiğime inanıyorum. Bundan sonra yazacağım kodların biraz daha ciddi programlar olmasını umuyorum.</p>
+<p>İşte bu tarz programlarda hata ayıklama için biraz efor sarf etmek gerekiyor. Bu amaç için çıktığım arayışta aşağıdaki gayet minimal ama işimi gören bir makrolar topluluğu ile karşılaştım.</p>
+<div class="codehilite"><pre><span class="c">#ifndef __dbg_h__</span>
+<span class="c">#define __dbg_h__</span>
+
+<span class="c">#include &lt;stdio.h&gt;</span>
+<span class="c">#include &lt;errno.h&gt;</span>
+<span class="c">#include &lt;string.h&gt;</span>
+
+<span class="c">#ifdef NDEBUG</span>
+<span class="c">#define debug(M, ...)</span>
+<span class="c">#else</span>
+<span class="c">#define debug(M, ...) fprintf(stderr, &quot;DEBUG %s:%d: &quot; M &quot;\n&quot;, __FILE__, __LINE__, ##__VA_ARGS__)</span>
+<span class="c">#endif</span>
+
+<span class="c">#define clean_errno() (errno == 0 ? &quot;None&quot; : strerror(errno))</span>
+
+<span class="c">#define log_err(M, ...) fprintf(stderr, &quot;[ERROR] (%s:%d: errno: %s) &quot; M &quot;\n&quot;, __FILE__, __LINE__, clean_errno(), ##__VA_ARGS__)</span>
+
+<span class="c">#define log_warn(M, ...) fprintf(stderr, &quot;[WARN] (%s:%d: errno: %s) &quot; M &quot;\n&quot;, __FILE__, __LINE__, clean_errno(), ##__VA_ARGS__)</span>
+
+<span class="c">#define log_info(M, ...) fprintf(stderr, &quot;[INFO] (%s:%d) &quot; M &quot;\n&quot;, __FILE__, __LINE__, ##__VA_ARGS__)</span>
+
+<span class="c">#define check(A, M, ...) if(!(A)) { log_err(M, ##__VA_ARGS__); errno=0; goto error; }</span>
+
+<span class="c">#define sentinel(M, ...)  { log_err(M, ##__VA_ARGS__); errno=0; goto error; }</span>
+
+<span class="c">#define check_mem(A) check((A), &quot;Out of memory.&quot;)</span>
+
+<span class="c">#define check_debug(A, M, ...) if(!(A)) { debug(M, ##__VA_ARGS__); errno=0; goto error; }</span>
+
+<span class="c">#endif</span>
+</pre></div>
+
+
+<p>Bu kodu <code>dbg.h</code> olarak kaydedip kullanmak istediğiniz programa <code>#include "dbg.h"</code> şeklinde ekleyebilirsiniz. Daha sonra da kodunuzun ilgili satırlarda karşılaşabileceğiniz olası <strong>hataları</strong> rahatça çözebilirsiniz. Kullanim sekline gelirsek <code>log_err</code>, <code>log_warn</code>, <code>log_info</code> isimlerinden de anlaşılacağı gibi hata uyarı ve bilgi verme amacıyla kullanılabilir. <code>check</code> makrosu ise verilen argümanın doğruluğu test eder ve eğer doğru değilse <code>stderr</code>'e hatayi yazip <code>error</code> isimli etikete zıplar ve oradaki kodları çalıştırır. <code>check_mem</code> ise işletim sisteminden dinamik olarak alan istediğimiz de bu bellek alanının bize tahsis edilip edilmediğini kontrol edebilmemizi sağlar. <code>check</code> isimli makro da verilen argümanın doğruluğunu test edip duruma göre hata verip <code>error</code> isimli etikete zıplar.</p>
+<p>Bu makroların nasıl kullanılabileceğine dair <a href="http://c.learncodethehardway.org/book/ex20.html" title="Learn C The Hard Way Debugging Macros">buradaki</a> link size gayet yardımcı olacaktır. Zaten anlaşılmayacak kadar zor birşey yok. Önemli olan bu makroları sürekli olarak kodunuzda hata çıkartabileceği muhtemel yerlerde kullanmayı alışkanlık haline getirmek. Sanki heryerden hata fışkıracakmış gibi kod yazmak insana çok fazla şey katacağına eminim. Ayrıcana sadece bu makrolar için değil de <a href="http://http://c.learncodethehardway.org/book/" title="Learn C The Hard Way">Learn C The Hard Way</a> sitesindeki tüm dökümanlar bence bulabileceğiniz en kaliteli <strong>C</strong> dökümanları diyebilirim. En azından bir süre <strong>C</strong> ile uğraşmış kişilerin kesinlikle göz atması gerektiğini düşünüyorum.</p>
+<p>Yukarıda bahsettiğim makroların kullanımına dair kod da aşağıdaki gibi.</p>
+<div class="codehilite"><pre><span class="cp">#include &quot;dbg.h&quot;</span>
+<span class="cp">#include &lt;stdlib.h&gt;</span>
+<span class="cp">#include &lt;stdio.h&gt;</span>
+
+
+<span class="kt">void</span> <span class="nf">test_debug</span><span class="p">()</span>
+<span class="p">{</span>
+    <span class="c1">// notice you don&#39;t need the \n</span>
+    <span class="n">debug</span><span class="p">(</span><span class="s">&quot;I have Brown Hair.&quot;</span><span class="p">);</span>
+
+    <span class="c1">// passing in arguments like printf</span>
+    <span class="n">debug</span><span class="p">(</span><span class="s">&quot;I am %d years old.&quot;</span><span class="p">,</span> <span class="mi">37</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="kt">void</span> <span class="nf">test_log_err</span><span class="p">()</span>
+<span class="p">{</span>
+    <span class="n">log_err</span><span class="p">(</span><span class="s">&quot;I believe everything is broken.&quot;</span><span class="p">);</span>
+    <span class="n">log_err</span><span class="p">(</span><span class="s">&quot;There are %d problems in %s.&quot;</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="s">&quot;space&quot;</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="kt">void</span> <span class="nf">test_log_warn</span><span class="p">()</span>
+<span class="p">{</span>
+    <span class="n">log_warn</span><span class="p">(</span><span class="s">&quot;You can safely ignore this.&quot;</span><span class="p">);</span>
+    <span class="n">log_warn</span><span class="p">(</span><span class="s">&quot;Maybe consider looking at: %s.&quot;</span><span class="p">,</span> <span class="s">&quot;/etc/passwd&quot;</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="kt">void</span> <span class="nf">test_log_info</span><span class="p">()</span>
+<span class="p">{</span>
+    <span class="n">log_info</span><span class="p">(</span><span class="s">&quot;Well I did something mundane.&quot;</span><span class="p">);</span>
+    <span class="n">log_info</span><span class="p">(</span><span class="s">&quot;It happened %f times today.&quot;</span><span class="p">,</span> <span class="mf">1.3f</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="kt">int</span> <span class="nf">test_check</span><span class="p">(</span><span class="kt">char</span> <span class="o">*</span><span class="n">file_name</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="kt">FILE</span> <span class="o">*</span><span class="n">input</span> <span class="o">=</span> <span class="nb">NULL</span><span class="p">;</span>
+    <span class="kt">char</span> <span class="o">*</span><span class="n">block</span> <span class="o">=</span> <span class="nb">NULL</span><span class="p">;</span>
+
+    <span class="n">block</span> <span class="o">=</span> <span class="n">malloc</span><span class="p">(</span><span class="mi">100</span><span class="p">);</span>
+    <span class="n">check_mem</span><span class="p">(</span><span class="n">block</span><span class="p">);</span> <span class="c1">// should work</span>
+
+    <span class="n">input</span> <span class="o">=</span> <span class="n">fopen</span><span class="p">(</span><span class="n">file_name</span><span class="p">,</span><span class="s">&quot;r&quot;</span><span class="p">);</span>
+    <span class="n">check</span><span class="p">(</span><span class="n">input</span><span class="p">,</span> <span class="s">&quot;Failed to open %s.&quot;</span><span class="p">,</span> <span class="n">file_name</span><span class="p">);</span>
+
+    <span class="n">free</span><span class="p">(</span><span class="n">block</span><span class="p">);</span>
+    <span class="n">fclose</span><span class="p">(</span><span class="n">input</span><span class="p">);</span>
+    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+
+<span class="nl">error:</span>
+    <span class="k">if</span><span class="p">(</span><span class="n">block</span><span class="p">)</span> <span class="n">free</span><span class="p">(</span><span class="n">block</span><span class="p">);</span>
+    <span class="k">if</span><span class="p">(</span><span class="n">input</span><span class="p">)</span> <span class="n">fclose</span><span class="p">(</span><span class="n">input</span><span class="p">);</span>
+    <span class="k">return</span> <span class="o">-</span><span class="mi">1</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="kt">int</span> <span class="nf">test_sentinel</span><span class="p">(</span><span class="kt">int</span> <span class="n">code</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="kt">char</span> <span class="o">*</span><span class="n">temp</span> <span class="o">=</span> <span class="n">malloc</span><span class="p">(</span><span class="mi">100</span><span class="p">);</span>
+    <span class="n">check_mem</span><span class="p">(</span><span class="n">temp</span><span class="p">);</span>
+
+    <span class="k">switch</span><span class="p">(</span><span class="n">code</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">case</span> <span class="mi">1</span>:
+            <span class="n">log_info</span><span class="p">(</span><span class="s">&quot;It worked.&quot;</span><span class="p">);</span>
+            <span class="k">break</span><span class="p">;</span>
+        <span class="nl">default:</span>
+            <span class="n">sentinel</span><span class="p">(</span><span class="s">&quot;I shouldn&#39;t run.&quot;</span><span class="p">);</span>
+    <span class="p">}</span>
+
+    <span class="n">free</span><span class="p">(</span><span class="n">temp</span><span class="p">);</span>
+    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+
+<span class="nl">error:</span>
+    <span class="k">if</span><span class="p">(</span><span class="n">temp</span><span class="p">)</span> <span class="n">free</span><span class="p">(</span><span class="n">temp</span><span class="p">);</span>
+    <span class="k">return</span> <span class="o">-</span><span class="mi">1</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="kt">int</span> <span class="nf">test_check_mem</span><span class="p">()</span>
+<span class="p">{</span>
+    <span class="kt">char</span> <span class="o">*</span><span class="n">test</span> <span class="o">=</span> <span class="nb">NULL</span><span class="p">;</span>
+    <span class="n">check_mem</span><span class="p">(</span><span class="n">test</span><span class="p">);</span>
+
+    <span class="n">free</span><span class="p">(</span><span class="n">test</span><span class="p">);</span>
+    <span class="k">return</span> <span class="mi">1</span><span class="p">;</span>
+
+<span class="nl">error:</span>
+    <span class="k">return</span> <span class="o">-</span><span class="mi">1</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="kt">int</span> <span class="nf">test_check_debug</span><span class="p">()</span>
+<span class="p">{</span>
+    <span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+    <span class="n">check_debug</span><span class="p">(</span><span class="n">i</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">,</span> <span class="s">&quot;Oops, I was 0.&quot;</span><span class="p">);</span>
+
+    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="nl">error:</span>
+    <span class="k">return</span> <span class="o">-</span><span class="mi">1</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="kt">int</span> <span class="nf">main</span><span class="p">(</span><span class="kt">int</span> <span class="n">argc</span><span class="p">,</span> <span class="kt">char</span> <span class="o">*</span><span class="n">argv</span><span class="p">[])</span>
+<span class="p">{</span>
+    <span class="n">check</span><span class="p">(</span><span class="n">argc</span> <span class="o">==</span> <span class="mi">2</span><span class="p">,</span> <span class="s">&quot;Need an argument.&quot;</span><span class="p">);</span>
+
+    <span class="n">test_debug</span><span class="p">();</span>
+    <span class="n">test_log_err</span><span class="p">();</span>
+    <span class="n">test_log_warn</span><span class="p">();</span>
+    <span class="n">test_log_info</span><span class="p">();</span>
+
+    <span class="n">check</span><span class="p">(</span><span class="n">test_check</span><span class="p">(</span><span class="s">&quot;ex20.c&quot;</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">,</span> <span class="s">&quot;failed with ex20.c&quot;</span><span class="p">);</span>
+    <span class="n">check</span><span class="p">(</span><span class="n">test_check</span><span class="p">(</span><span class="n">argv</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span> <span class="o">==</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="s">&quot;failed with argv&quot;</span><span class="p">);</span>
+    <span class="n">check</span><span class="p">(</span><span class="n">test_sentinel</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">,</span> <span class="s">&quot;test_sentinel failed.&quot;</span><span class="p">);</span>
+    <span class="n">check</span><span class="p">(</span><span class="n">test_sentinel</span><span class="p">(</span><span class="mi">100</span><span class="p">)</span> <span class="o">==</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="s">&quot;test_sentinel failed.&quot;</span><span class="p">);</span>
+    <span class="n">check</span><span class="p">(</span><span class="n">test_check_mem</span><span class="p">()</span> <span class="o">==</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="s">&quot;test_check_mem failed.&quot;</span><span class="p">);</span>
+    <span class="n">check</span><span class="p">(</span><span class="n">test_check_debug</span><span class="p">()</span> <span class="o">==</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="s">&quot;test_check_debug failed.&quot;</span><span class="p">);</span>
+
+    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+
+<span class="nl">error:</span>
+    <span class="k">return</span> <span class="mi">1</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div></div>
+    <footer>
+      <p class="meta">
+  <span class="byline author vcard">
+    Posted by <span class="fn">halit</span>
+  </span>
+  <time datetime="2013-04-29T00:00:00" pubdate> Apr 29, 2013 </time>    <span class="categories">
+        <a class="category" href="./tag/c.html">c</a>
+        <a class="category" href="./tag/c-debug.html">c debug</a>
+        <a class="category" href="./tag/debugging.html">debugging</a>
+        <a class="category" href="./tag/c-makro.html">c makro</a>
+        <a class="category" href="./tag/c-macros.html">c macros</a>
+      </span>
+  </p>    </footer>
+  </article>
+  <section>
+    <div class="addthis_toolbox addthis_default_style addthis_32x32_style">
+        <a class="addthis_button_preferred_1"></a>
+        <a class="addthis_button_preferred_2"></a>
+        <a class="addthis_button_preferred_3"></a>
+        <a class="addthis_button_preferred_4"></a>
+        <a class="addthis_button_preferred_5"></a>
+        <a class="addthis_button_preferred_6"></a>
+        <a class="addthis_button_preferred_7"></a>
+        <a class="addthis_button_preferred_8"></a>
+        <a class="addthis_button_preferred_9"></a>
+        <a class="addthis_button_preferred_10"></a>
+        <a class="addthis_counter addthis_bubble_style"></a>
+    </div>
+    <script type="text/javascript" src="http://s7.addthis.com/js/250/addthis_widget.js#pubid=ra-504c6d593daec57a"></script>
+  </section>
+    <section>
+    <h1>Comments</h1>
+    <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript></div>
+  </section>
+  </div>
+<aside class="sidebar">
+  <section>
+    <h1>Recent Posts</h1>
+    <ul id="recent_posts">
+            <li class="post">
+          <a href="./cde-debug-makrolari.html">C'de debug makrolari</a>
+      </li>
+            <li class="post">
+          <a href="./uzun-bir-aradan-sonra.html">Uzun bir aradan sonra</a>
+      </li>
+            <li class="post">
+          <a href="./the-seven-rules-of-technical-writing.html">The Seven Rules Of Technical Writing</a>
+      </li>
+            <li class="post">
+          <a href="./gizli-medya-dosyalarini-bulma.html">Gizli Medya Dosyalarını Bulma</a>
+      </li>
+            <li class="post">
+          <a href="./floating-point-numbers.html">Floating Point Numbers</a>
+      </li>
+          </ul>
+  </section>
+    <section>
+      
+    <h1>Categories</h1>
+    <ul id="recent_posts">
+              <li><a href="./category/tasarim.html">tasarim</a></li>
+              <li><a href="./category/server.html">server</a></li>
+              <li><a href="./category/python.html">python</a></li>
+              <li><a href="./category/programlama.html">programlama</a></li>
+              <li><a href="./category/linux.html">linux</a></li>
+              <li><a href="./category/kisisel.html">kisisel</a></li>
+              <li><a href="./category/internet.html">internet</a></li>
+              <li><a href="./category/guvenlik.html">guvenlik</a></li>
+              <li><a href="./category/genel.html">genel</a></li>
+              <li><a href="./category/eglence.html">eglence</a></li>
+              <li><a href="./category/django.html">django</a></li>
+              <li><a href="./category/compsci.html">compsci</a></li>
+              <li><a href="./category/arduino.html">arduino</a></li>
+          </ul>
+  </section>
+   
+
+    
+    <section>
+        <h1>Social</h1>
+        <ul>
+            <li><a href="http://www.halitalptekin.com/feeds/all.rss.xml" type="application/rss+xml" rel="alternate">rss</a></li>
+                    <li><a href="http://twitter.com/halitalptekin" target="_blank">twitter</a></li>
+                    <li><a href="http://github.com/halitalptekin" target="_blank">github</a></li>
+                    <li><a href="http://stackoverflow.com/users/1151618/halit-alptekin" target="_blank">stackoverflow</a></li>
+                    <li><a href="http://tr.linkedin.com/in/halitalptekin" target="_blank">linkedin</a></li>
+                </ul>
+    </section>
+      <section>
+        <h1>Blogroll</h1>
+        <ul>
+                    <li><a href="http://www.python.org" target="_blank">Python</a></li>
+                </ul>
+    </section>
+
+      <section>
+        <h1>Ads</h1>
+        <ul id="recent_posts">
+                            <li><a href="https://www.camekan.com/adwords/" title="Google Adwords"><img src="/media/reklam/camekancom.jpg" alt="Google Adwords" title="Google Adwords"></a></li>
+                            <li><a href="http://www.dugunajans.com/" title="düğün fotoğrafçısı"><img src="/media/reklam/dugunajanscom.jpg" alt="düğün fotoğrafçısı" title="düğün fotoğrafçısı"></a></li>
+                            <li><a href="http://cevap.tv/yeme-icme/yemek-tarifleri/hamur-isleri/cupcake" title="cupcake tarifi"><img src="/media/reklam/cevaptv.png" alt="cupcake tarifi" title="cupcake tarifi"></a></li>
+                    </ul>
+    </section>
+  
+</aside>      <aside class="sidebar">
+  <section>
+    <h1>Recent Posts</h1>
+    <ul id="recent_posts">
+            <li class="post">
+          <a href="./cde-debug-makrolari.html">C'de debug makrolari</a>
+      </li>
+            <li class="post">
+          <a href="./uzun-bir-aradan-sonra.html">Uzun bir aradan sonra</a>
+      </li>
+            <li class="post">
+          <a href="./the-seven-rules-of-technical-writing.html">The Seven Rules Of Technical Writing</a>
+      </li>
+            <li class="post">
+          <a href="./gizli-medya-dosyalarini-bulma.html">Gizli Medya Dosyalarını Bulma</a>
+      </li>
+            <li class="post">
+          <a href="./floating-point-numbers.html">Floating Point Numbers</a>
+      </li>
+          </ul>
+  </section>
+    <section>
+      
+    <h1>Categories</h1>
+    <ul id="recent_posts">
+              <li><a href="./category/tasarim.html">tasarim</a></li>
+              <li><a href="./category/server.html">server</a></li>
+              <li><a href="./category/python.html">python</a></li>
+              <li><a href="./category/programlama.html">programlama</a></li>
+              <li><a href="./category/linux.html">linux</a></li>
+              <li><a href="./category/kisisel.html">kisisel</a></li>
+              <li><a href="./category/internet.html">internet</a></li>
+              <li><a href="./category/guvenlik.html">guvenlik</a></li>
+              <li><a href="./category/genel.html">genel</a></li>
+              <li><a href="./category/eglence.html">eglence</a></li>
+              <li><a href="./category/django.html">django</a></li>
+              <li><a href="./category/compsci.html">compsci</a></li>
+              <li><a href="./category/arduino.html">arduino</a></li>
+          </ul>
+  </section>
+   
+
+    
+    <section>
+        <h1>Social</h1>
+        <ul>
+            <li><a href="http://www.halitalptekin.com/feeds/all.rss.xml" type="application/rss+xml" rel="alternate">rss</a></li>
+                    <li><a href="http://twitter.com/halitalptekin" target="_blank">twitter</a></li>
+                    <li><a href="http://github.com/halitalptekin" target="_blank">github</a></li>
+                    <li><a href="http://stackoverflow.com/users/1151618/halit-alptekin" target="_blank">stackoverflow</a></li>
+                    <li><a href="http://tr.linkedin.com/in/halitalptekin" target="_blank">linkedin</a></li>
+                </ul>
+    </section>
+      <section>
+        <h1>Blogroll</h1>
+        <ul>
+                    <li><a href="http://www.python.org" target="_blank">Python</a></li>
+                </ul>
+    </section>
+
+      <section>
+        <h1>Ads</h1>
+        <ul id="recent_posts">
+                            <li><a href="https://www.camekan.com/adwords/" title="Google Adwords"><img src="/media/reklam/camekancom.jpg" alt="Google Adwords" title="Google Adwords"></a></li>
+                            <li><a href="http://www.dugunajans.com/" title="düğün fotoğrafçısı"><img src="/media/reklam/dugunajanscom.jpg" alt="düğün fotoğrafçısı" title="düğün fotoğrafçısı"></a></li>
+                            <li><a href="http://cevap.tv/yeme-icme/yemek-tarifleri/hamur-isleri/cupcake" title="cupcake tarifi"><img src="/media/reklam/cevaptv.png" alt="cupcake tarifi" title="cupcake tarifi"></a></li>
+                    </ul>
+    </section>
+  
+</aside>    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2013 - halit -
+  <span class="credit">Powered by <a href="http://getpelican.com">Pelican</a></span>
+</p></footer>
+      <script type="text/javascript">
+	    var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+	    document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+    </script>
+    <script type="text/javascript">
+	    try {
+	        var pageTracker = _gat._getTracker("UA-24728900-1");
+	    pageTracker._trackPageview();
+	    } catch(err) {}
+	</script>
+	<script type="text/javascript">
+	  var disqus_shortname = 'halitalptekin';
+	  (function() {
+	    var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+	    dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
+	    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+	   })();
+	</script>
+</body>
+</html>
