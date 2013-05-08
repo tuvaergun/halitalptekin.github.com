@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>{ Halit Alptekin } - GNU C tamsayi turleri</title>
+
+  <meta name="author" content="halit">
+
+    <link href="http://www.halitalptekin.com/feeds/all.atom.xml" type="application/atom+xml" rel="alternate"
+        title="{ Halit Alptekin } Atom Feed" />
+      <link href="http://www.halitalptekin.com/feeds/all.rss.xml" type="application/rss+xml" rel="alternate"
+        title="{ Halit Alptekin } RSS Feed" />
+  
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <link href="./favicon.png" rel="icon">
+  <link href="./theme/css/main.css" media="screen, projection"
+        rel="stylesheet" type="text/css">
+  <script src="./theme/js/modernizr-2.0.js"></script>
+  <script src="./theme/js/ender.js"></script>
+  <script src="./theme/js/octopress.js" type="text/javascript"></script>
+
+  <link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic"
+        rel="stylesheet" type="text/css">
+  <link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic"
+        rel="stylesheet" type="text/css">
+</head>
+<body>
+  <header role="banner"><hgroup>
+  <h1><a href="./">{ Halit Alptekin }</a></h1>
+  </hgroup></header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  <li><a href="http://www.halitalptekin.com/feeds/all.atom.xml" rel="subscribe-rss">Atom</a></li>
+    <li><a href="http://www.halitalptekin.com/feeds/all.rss.xml" rel="subscribe-rss">Rss</a></li>
+  </ul>
+
+<!-- TODO: add search here
+<form action="" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="q" value="site:." />
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+-->
+
+<ul class="main-navigation">
+  <li><a href="./">Blog</a></li>
+        <li><a href="./pages/about-me.html">About Me</a></li>
+    <li><a href="./pages/contact.html">Contact</a></li>
+  <!-- TODO: add categories here? -->
+  </ul></nav>
+  <div id="main">
+    <div id="content">
+      <div>
+  <article class="hentry" role="article">
+    <header>
+          <h1 class="entry-title">GNU C tamsayi turleri</h1>
+          <p class="meta"><time datetime="2013-05-08T00:00:00" pubdate> May 08, 2013 </time></p>
+</header>
+
+  <div class="entry-content"><p>Project Euler, Topcoder gibi programlama ve algoritma problemleri üzerine kurulu sitelerdeki soruları çözerken bildiğiniz dilin size kazandırdığı hız ve işlev gerçekten çok önemli. Ben uzun süreler Python ile kolayca syntax'ı üzerine düşünmeden sadece kodun algoritmik kısmıyla uğraşıp hızlı hızlı soruları çözerek ilerliyordum. Ancak bu dönem C ile ilgilendiğimden dolayı bu problemlerde kaldığım yerden C ile devam ediyorum. Bu şekilde hem C konusunda teknik bilgim gelişirken hem de C'ye alışıp daha hızlı öğreniyorum. Bu hem bana okulda hem de ilerde yapacağım işler için büyük fayda sağlıyor diyebilirim.</p>
+<p>C'de tamsayı(int), küçük tamsayı(short), büyük tamsayı(long), karakter(char) gibi tamsayı türleri vardır.Ve bunların işaretli(signed), işaretsiz(unsigned) durumları olabilir. Normal amaçlar için bu türler yeterli gelebilir. Ancak programlama konusunda yarışma düzeyinde sorular ile uğraşıyorsanız bu türlerin tutabileceği hane sayısından daha büyük sayılar ile uğraşabilirsiniz. İşte bunun için <strong>GNU C</strong> kütüphanesinde özel amaçlar için birçok farklı tür tanımlanmıştır. Bu türlere kaynak kodunuza <code>stdint.h</code> dosyasını <code>include</code> ederek ulaşıp kullanabilirsiniz.</p>
+<p>Yaptığınız işte yeterli olacak bit sayısını biliyorsanız <code>int8_t</code>, <code>int16_t</code>, <code>int32_t</code>, <code>int64_t</code> ve bunların işaretsiz türlerini <code>uint8_t</code>, <code>uint16_t</code>, <code>uint32_t</code>, <code>uint64_t</code> kullabilirsiniz. Ancak burada dikkat edilmesi gereken nokta bilgisayarınızın özellikleri gereği bazı veri türleri olmayabilir(64-bit veya 32 bit makinelerde). Kütüphane dosyasına bakıp hangi türlerin tanımlı olduğuna bakabilirsiniz.</p>
+<p>Aynı yukardaki veri türlerine benzer şekilde ama en azından ne kadar bitlik olacağını belirlemek isteyebilirsiniz. Bunun için <code>int_least8_t</code>, <code>int_least16_t</code>, <code>int_least32_t</code>, <code>int_least64_t</code> ve işaretsiz türleri <code>uint_least8_t</code>, <code>uint_least16_t</code>, <code>uint_least32_t</code> , <code>uint_least64_t</code> kullanabilirsiniz. Bu veri türlerini kullanırken tanımlama yaptıktan sonra<code>sizeof</code> ile boyutlarını kontrol ettirip yeniden tanımlama yapabilirsiniz.</p>
+<p>C'nin diğer dillerden bana göre en büyük avantajlarından birisi de alt seviyeye yakın olmasının kazandırdığı hızdır. Eğer kodunuzun belirli kısmında hızlı erişime sahip tamsayı türleri kullanmak istiyorsanız <code>int_fast8_t</code>, <code>int_fast16_t</code>, <code>int_fast32_t</code>, <code>int_fast64_t</code> ve işaretsiz türleri <code>uint_fast8_t</code>, <code>uint_fast16_t</code>, <code>uint_fast32_t</code>, <code>uint_fast64_t</code> deneyebilirsiniz.</p>
+<p>Bu türlerin yanında bilgisayarınızın destekleyeceği en büyük tam sayı genişliği için de <code>intmax_t</code> ve <code>uintmax_t</code> veri türlerini kullanabilirsiniz. Bu türleri kullanırken bilgisayarınızda tanımlı olan asgari ve azami değerleri öğrenmek için <code>INT32_MAX</code>, <code>UINT8_MAX</code>, <code>INT_FAST32_MIN</code>, <code>INT_LEAST64_MIN</code>, <code>UINTMAX_MAX</code>, <code>INTMAX_MIN</code> gibi makroları kullanabilirsiniz.</p>
+<p>Bu veri türlerini kullanım şeklide diğerleri gibi. Sadece printf veya scanf kullanılcağı zaman bu değerler <code>long integer</code> olduğundan <code>%ld</code> kullanılması gerekiyor. Aşağıda verilen bir sayının tersini döndüren fonksiyon bu veri türlerinden <code>uint64_t</code> kullanılarak tanımlanmıştır.</p>
+<div class="codehilite"><pre><span class="kt">uint64_t</span> <span class="nf">reverse</span><span class="p">(</span><span class="kt">uint64_t</span> <span class="n">n</span><span class="p">){</span>
+    <span class="kt">uint64_t</span> <span class="n">rev</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+    <span class="k">while</span> <span class="p">(</span><span class="n">n</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">rev</span> <span class="o">=</span> <span class="p">(</span><span class="mi">10</span><span class="o">*</span><span class="n">rev</span><span class="p">)</span> <span class="o">+</span> <span class="p">(</span><span class="n">n</span><span class="o">%</span><span class="mi">10</span><span class="p">);</span>
+        <span class="n">n</span> <span class="o">/=</span> <span class="mi">10</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="k">return</span> <span class="n">rev</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+
+
+<p>Benzer şekilde verilen sayının en büyük asal böleni döndüren fonksiyon şu şekilde tanımlanabilir.</p>
+<div class="codehilite"><pre><span class="kt">uint32_t</span> <span class="nf">largest_prime_fact</span><span class="p">(</span><span class="kt">uint64_t</span> <span class="n">num</span><span class="p">){</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">num</span> <span class="o">&lt;</span> <span class="mi">4</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">num</span><span class="p">;</span>
+
+    <span class="kt">uint32_t</span> <span class="n">lfact</span><span class="p">,</span> <span class="n">fact</span><span class="p">;</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">num</span><span class="o">%</span><span class="mi">2</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">lfact</span> <span class="o">=</span> <span class="mi">2</span><span class="p">;</span>
+        <span class="n">num</span> <span class="o">/=</span> <span class="mi">2</span><span class="p">;</span>
+        <span class="k">while</span> <span class="p">(</span><span class="n">num</span><span class="o">%</span><span class="mi">2</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span>
+            <span class="n">num</span> <span class="o">/=</span> <span class="mi">2</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="kt">uint32_t</span> <span class="n">maxfact</span> <span class="o">=</span> <span class="n">sqrt</span><span class="p">(</span><span class="n">num</span><span class="p">);</span>
+    <span class="k">for</span> <span class="p">(</span><span class="n">fact</span> <span class="o">=</span> <span class="mi">3</span><span class="p">;</span> <span class="n">num</span> <span class="o">&gt;</span> <span class="mi">1</span> <span class="o">&amp;&amp;</span> <span class="n">fact</span> <span class="o">&lt;</span> <span class="n">maxfact</span><span class="p">;</span> <span class="n">fact</span> <span class="o">+=</span> <span class="mi">2</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">num</span><span class="o">%</span><span class="n">fact</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
+            <span class="n">num</span> <span class="o">/=</span> <span class="n">fact</span><span class="p">;</span>
+            <span class="n">lfact</span> <span class="o">=</span> <span class="n">fact</span><span class="p">;</span>
+            <span class="k">while</span> <span class="p">(</span><span class="n">num</span><span class="o">%</span><span class="n">fact</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span>
+                <span class="n">num</span> <span class="o">/=</span> <span class="n">fact</span><span class="p">;</span>
+            <span class="n">maxfact</span> <span class="o">=</span> <span class="n">sqrt</span><span class="p">(</span><span class="n">num</span><span class="p">);</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+
+    <span class="k">return</span> <span class="n">num</span> <span class="o">!=</span> <span class="mi">1</span> <span class="o">?</span> <span class="n">num</span> <span class="o">:</span> <span class="n">lfact</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+
+
+<p>Asal sayıları elekten geçirerek bulan fonksiyon da şu şekilde tanımlanabilirdi.</p>
+<div class="codehilite"><pre><span class="kt">uint32_t</span> <span class="nf">e_sieve</span><span class="p">(</span><span class="kt">uint32_t</span> <span class="o">**</span><span class="n">primes</span><span class="p">,</span> <span class="kt">uint32_t</span> <span class="n">limit</span><span class="p">){</span>
+    <span class="kt">int32_t</span> <span class="o">*</span><span class="n">pbits</span> <span class="o">=</span> <span class="n">calloc</span><span class="p">(</span><span class="n">limit</span><span class="o">/</span><span class="k">sizeof</span><span class="p">(</span><span class="kt">int32_t</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span>
+            <span class="k">sizeof</span><span class="p">(</span><span class="kt">int32_t</span><span class="p">));</span>
+    <span class="kt">uint32_t</span> <span class="n">prime</span> <span class="o">=</span> <span class="mi">2</span><span class="p">;</span>
+    <span class="kt">uint32_t</span> <span class="n">mult</span><span class="p">,</span> <span class="n">idx</span><span class="p">,</span> <span class="n">bidx</span><span class="p">;</span>
+
+    <span class="kt">int</span> <span class="n">psize</span> <span class="o">=</span> <span class="mi">1024</span><span class="p">;</span>
+    <span class="kt">uint32_t</span> <span class="o">*</span><span class="n">pfound</span> <span class="o">=</span> <span class="n">malloc</span><span class="p">(</span><span class="k">sizeof</span><span class="p">(</span><span class="kt">uint32_t</span><span class="p">)</span><span class="o">*</span><span class="n">psize</span><span class="p">);</span>
+    <span class="kt">uint32_t</span> <span class="n">pcount</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+    <span class="n">pfound</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="n">prime</span><span class="p">;</span>
+    <span class="k">while</span> <span class="p">(</span><span class="n">prime</span><span class="o">*</span><span class="n">prime</span> <span class="o">&lt;</span> <span class="n">limit</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">mult</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+        <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">2</span><span class="p">;</span> <span class="n">mult</span> <span class="o">&lt;</span> <span class="n">limit</span><span class="p">;</span> <span class="o">++</span><span class="n">i</span><span class="p">)</span> <span class="p">{</span>
+            <span class="n">mult</span> <span class="o">=</span> <span class="n">i</span><span class="o">*</span><span class="n">prime</span><span class="p">;</span>
+            <span class="n">idx</span> <span class="o">=</span> <span class="n">mult</span><span class="o">/</span><span class="mi">32</span><span class="p">;</span>
+            <span class="n">bidx</span> <span class="o">=</span> <span class="n">mult</span><span class="o">%</span><span class="mi">32</span><span class="p">;</span>
+            <span class="n">pbits</span><span class="p">[</span><span class="n">idx</span><span class="p">]</span> <span class="o">|=</span> <span class="p">(</span><span class="mi">1</span> <span class="o">&lt;&lt;</span> <span class="n">bidx</span><span class="p">);</span>
+        <span class="p">}</span>
+        <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="n">prime</span> <span class="o">+</span> <span class="mi">1</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">limit</span><span class="p">;</span> <span class="o">++</span><span class="n">i</span><span class="p">)</span> <span class="p">{</span>
+            <span class="n">idx</span> <span class="o">=</span> <span class="n">i</span><span class="o">/</span><span class="mi">32</span><span class="p">;</span>
+            <span class="n">bidx</span> <span class="o">=</span> <span class="n">i</span><span class="o">%</span><span class="mi">32</span><span class="p">;</span>
+            <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="p">((</span><span class="n">pbits</span><span class="p">[</span><span class="n">idx</span><span class="p">]</span> <span class="o">&gt;&gt;</span> <span class="n">bidx</span><span class="p">)</span> <span class="o">&amp;</span> <span class="mi">1</span><span class="p">))</span> <span class="p">{</span>
+                <span class="k">if</span> <span class="p">(</span><span class="n">pcount</span> <span class="o">==</span> <span class="n">psize</span><span class="p">)</span> <span class="p">{</span>
+                    <span class="n">psize</span> <span class="o">*=</span> <span class="mi">2</span><span class="p">;</span>
+                    <span class="n">pfound</span> <span class="o">=</span> <span class="n">realloc</span><span class="p">(</span><span class="n">pfound</span><span class="p">,</span> <span class="k">sizeof</span><span class="p">(</span><span class="kt">uint32_t</span><span class="p">)</span><span class="o">*</span><span class="n">psize</span><span class="p">);</span>
+                <span class="p">}</span>
+                <span class="n">prime</span> <span class="o">=</span> <span class="n">i</span><span class="p">;</span>
+                <span class="n">pfound</span><span class="p">[</span><span class="n">pcount</span><span class="o">++</span><span class="p">]</span> <span class="o">=</span> <span class="n">prime</span><span class="p">;</span>
+                <span class="k">break</span><span class="p">;</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+    <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="n">prime</span> <span class="o">+</span> <span class="mi">1</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">limit</span><span class="p">;</span> <span class="o">++</span><span class="n">i</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">idx</span> <span class="o">=</span> <span class="n">i</span><span class="o">/</span><span class="mi">32</span><span class="p">;</span>
+        <span class="n">bidx</span> <span class="o">=</span> <span class="n">i</span><span class="o">%</span><span class="mi">32</span><span class="p">;</span>
+        <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="p">((</span><span class="n">pbits</span><span class="p">[</span><span class="n">idx</span><span class="p">]</span> <span class="o">&gt;&gt;</span> <span class="n">bidx</span><span class="p">)</span> <span class="o">&amp;</span> <span class="mi">1</span><span class="p">))</span> <span class="p">{</span>
+            <span class="k">if</span> <span class="p">(</span><span class="n">pcount</span> <span class="o">==</span> <span class="n">psize</span><span class="p">)</span> <span class="p">{</span>
+                <span class="n">psize</span> <span class="o">*=</span> <span class="mi">2</span><span class="p">;</span>
+                <span class="n">pfound</span> <span class="o">=</span> <span class="n">realloc</span><span class="p">(</span><span class="n">pfound</span><span class="p">,</span> <span class="k">sizeof</span><span class="p">(</span><span class="kt">uint32_t</span><span class="p">)</span><span class="o">*</span><span class="n">psize</span><span class="p">);</span>
+            <span class="p">}</span>
+            <span class="n">pfound</span><span class="p">[</span><span class="n">pcount</span><span class="o">++</span><span class="p">]</span> <span class="o">=</span> <span class="n">i</span><span class="p">;</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+    <span class="n">free</span><span class="p">(</span><span class="n">pbits</span><span class="p">);</span>
+    <span class="o">*</span><span class="n">primes</span> <span class="o">=</span> <span class="n">realloc</span><span class="p">(</span><span class="n">pfound</span><span class="p">,</span> <span class="k">sizeof</span><span class="p">(</span><span class="kt">uint32_t</span><span class="p">)</span><span class="o">*</span><span class="n">pcount</span><span class="p">);</span>
+    <span class="k">return</span> <span class="n">pcount</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+
+
+<p>Bu veri türlerini kullanarak düşük işlem yaparken hız farkını hissedemeyebilirsiniz. Ancak ProjectEuler'in ilerleyen kısımlarındaki devasa boyutta işlemlerde gerçektende farkını koyuyor diyebilirim. Tabi sadece hız değil büyük haneli tamsayılar üzerinde de rahatça çalışma imkanı sağlıyor. Alışkanlık kazanmak insana çok şey katabilir.</p></div>
+    <footer>
+      <p class="meta">
+  <span class="byline author vcard">
+    Posted by <span class="fn">halit</span>
+  </span>
+  <time datetime="2013-05-08T00:00:00" pubdate> May 08, 2013 </time>    <span class="categories">
+        <a class="category" href="./tag/gcc.html">gcc</a>
+        <a class="category" href="./tag/glibc.html">glibc</a>
+        <a class="category" href="./tag/int.html">int</a>
+        <a class="category" href="./tag/c.html">c</a>
+        <a class="category" href="./tag/gnu-c.html">gnu c</a>
+      </span>
+  </p>    </footer>
+  </article>
+  <section>
+    <div class="addthis_toolbox addthis_default_style addthis_32x32_style">
+        <a class="addthis_button_preferred_1"></a>
+        <a class="addthis_button_preferred_2"></a>
+        <a class="addthis_button_preferred_3"></a>
+        <a class="addthis_button_preferred_4"></a>
+        <a class="addthis_button_preferred_5"></a>
+        <a class="addthis_button_preferred_6"></a>
+        <a class="addthis_button_preferred_7"></a>
+        <a class="addthis_button_preferred_8"></a>
+        <a class="addthis_button_preferred_9"></a>
+        <a class="addthis_button_preferred_10"></a>
+        <a class="addthis_counter addthis_bubble_style"></a>
+    </div>
+    <script type="text/javascript" src="http://s7.addthis.com/js/250/addthis_widget.js#pubid=ra-504c6d593daec57a"></script>
+  </section>
+    <section>
+    <h1>Comments</h1>
+    <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript></div>
+  </section>
+  </div>
+<aside class="sidebar">
+  <section>
+    <h1>Recent Posts</h1>
+    <ul id="recent_posts">
+            <li class="post">
+          <a href="./gnu-c-tamsayi-turleri.html">GNU C tamsayi turleri</a>
+      </li>
+            <li class="post">
+          <a href="./fonksiyon-gostergeleri.html">Fonksiyon göstergeleri</a>
+      </li>
+            <li class="post">
+          <a href="./cde-debug-makrolari.html">C'de debug makrolari</a>
+      </li>
+            <li class="post">
+          <a href="./uzun-bir-aradan-sonra.html">Uzun bir aradan sonra</a>
+      </li>
+            <li class="post">
+          <a href="./the-seven-rules-of-technical-writing.html">The Seven Rules Of Technical Writing</a>
+      </li>
+          </ul>
+  </section>
+    <section>
+      
+    <h1>Categories</h1>
+    <ul id="recent_posts">
+              <li><a href="./category/tasarim.html">tasarim</a></li>
+              <li><a href="./category/server.html">server</a></li>
+              <li><a href="./category/python.html">python</a></li>
+              <li><a href="./category/programlama.html">programlama</a></li>
+              <li><a href="./category/linux.html">linux</a></li>
+              <li><a href="./category/kisisel.html">kisisel</a></li>
+              <li><a href="./category/internet.html">internet</a></li>
+              <li><a href="./category/guvenlik.html">guvenlik</a></li>
+              <li><a href="./category/genel.html">genel</a></li>
+              <li><a href="./category/eglence.html">eglence</a></li>
+              <li><a href="./category/django.html">django</a></li>
+              <li><a href="./category/compsci.html">compsci</a></li>
+              <li><a href="./category/arduino.html">arduino</a></li>
+          </ul>
+  </section>
+   
+
+    
+    <section>
+        <h1>Social</h1>
+        <ul>
+            <li><a href="http://www.halitalptekin.com/feeds/all.rss.xml" type="application/rss+xml" rel="alternate">rss</a></li>
+                    <li><a href="http://twitter.com/halitalptekin" target="_blank">twitter</a></li>
+                    <li><a href="http://github.com/halitalptekin" target="_blank">github</a></li>
+                    <li><a href="http://stackoverflow.com/users/1151618/halit-alptekin" target="_blank">stackoverflow</a></li>
+                    <li><a href="http://tr.linkedin.com/in/halitalptekin" target="_blank">linkedin</a></li>
+                </ul>
+    </section>
+      <section>
+        <h1>Blogroll</h1>
+        <ul>
+                    <li><a href="http://www.python.org" target="_blank">Python</a></li>
+                </ul>
+    </section>
+
+      <section>
+        <h1>Ads</h1>
+        <ul id="recent_posts">
+                            <li><a href="https://www.camekan.com/adwords/" title="Google Adwords"><img src="/media/reklam/camekancom.jpg" alt="Google Adwords" title="Google Adwords"></a></li>
+                            <li><a href="http://www.dugunajans.com/" title="düğün fotoğrafçısı"><img src="/media/reklam/dugunajanscom.jpg" alt="düğün fotoğrafçısı" title="düğün fotoğrafçısı"></a></li>
+                            <li><a href="http://cevap.tv/yeme-icme/yemek-tarifleri/hamur-isleri/cupcake" title="cupcake tarifi"><img src="/media/reklam/cevaptv.png" alt="cupcake tarifi" title="cupcake tarifi"></a></li>
+                    </ul>
+    </section>
+  
+</aside>      <aside class="sidebar">
+  <section>
+    <h1>Recent Posts</h1>
+    <ul id="recent_posts">
+            <li class="post">
+          <a href="./gnu-c-tamsayi-turleri.html">GNU C tamsayi turleri</a>
+      </li>
+            <li class="post">
+          <a href="./fonksiyon-gostergeleri.html">Fonksiyon göstergeleri</a>
+      </li>
+            <li class="post">
+          <a href="./cde-debug-makrolari.html">C'de debug makrolari</a>
+      </li>
+            <li class="post">
+          <a href="./uzun-bir-aradan-sonra.html">Uzun bir aradan sonra</a>
+      </li>
+            <li class="post">
+          <a href="./the-seven-rules-of-technical-writing.html">The Seven Rules Of Technical Writing</a>
+      </li>
+          </ul>
+  </section>
+    <section>
+      
+    <h1>Categories</h1>
+    <ul id="recent_posts">
+              <li><a href="./category/tasarim.html">tasarim</a></li>
+              <li><a href="./category/server.html">server</a></li>
+              <li><a href="./category/python.html">python</a></li>
+              <li><a href="./category/programlama.html">programlama</a></li>
+              <li><a href="./category/linux.html">linux</a></li>
+              <li><a href="./category/kisisel.html">kisisel</a></li>
+              <li><a href="./category/internet.html">internet</a></li>
+              <li><a href="./category/guvenlik.html">guvenlik</a></li>
+              <li><a href="./category/genel.html">genel</a></li>
+              <li><a href="./category/eglence.html">eglence</a></li>
+              <li><a href="./category/django.html">django</a></li>
+              <li><a href="./category/compsci.html">compsci</a></li>
+              <li><a href="./category/arduino.html">arduino</a></li>
+          </ul>
+  </section>
+   
+
+    
+    <section>
+        <h1>Social</h1>
+        <ul>
+            <li><a href="http://www.halitalptekin.com/feeds/all.rss.xml" type="application/rss+xml" rel="alternate">rss</a></li>
+                    <li><a href="http://twitter.com/halitalptekin" target="_blank">twitter</a></li>
+                    <li><a href="http://github.com/halitalptekin" target="_blank">github</a></li>
+                    <li><a href="http://stackoverflow.com/users/1151618/halit-alptekin" target="_blank">stackoverflow</a></li>
+                    <li><a href="http://tr.linkedin.com/in/halitalptekin" target="_blank">linkedin</a></li>
+                </ul>
+    </section>
+      <section>
+        <h1>Blogroll</h1>
+        <ul>
+                    <li><a href="http://www.python.org" target="_blank">Python</a></li>
+                </ul>
+    </section>
+
+      <section>
+        <h1>Ads</h1>
+        <ul id="recent_posts">
+                            <li><a href="https://www.camekan.com/adwords/" title="Google Adwords"><img src="/media/reklam/camekancom.jpg" alt="Google Adwords" title="Google Adwords"></a></li>
+                            <li><a href="http://www.dugunajans.com/" title="düğün fotoğrafçısı"><img src="/media/reklam/dugunajanscom.jpg" alt="düğün fotoğrafçısı" title="düğün fotoğrafçısı"></a></li>
+                            <li><a href="http://cevap.tv/yeme-icme/yemek-tarifleri/hamur-isleri/cupcake" title="cupcake tarifi"><img src="/media/reklam/cevaptv.png" alt="cupcake tarifi" title="cupcake tarifi"></a></li>
+                    </ul>
+    </section>
+  
+</aside>    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2013 - halit -
+  <span class="credit">Powered by <a href="http://getpelican.com">Pelican</a></span>
+</p></footer>
+      <script type="text/javascript">
+	    var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+	    document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+    </script>
+    <script type="text/javascript">
+	    try {
+	        var pageTracker = _gat._getTracker("UA-24728900-1");
+	    pageTracker._trackPageview();
+	    } catch(err) {}
+	</script>
+	<script type="text/javascript">
+	  var disqus_shortname = 'halitalptekin';
+	  (function() {
+	    var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+	    dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
+	    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+	   })();
+	</script>
+</body>
+</html>
