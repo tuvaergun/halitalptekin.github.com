@@ -18,12 +18,12 @@
   <meta name="MobileOptimized" content="320">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <link href="./favicon.png" rel="icon">
-  <link href="./theme/css/main.css" media="screen, projection"
+  <link href="http://www.halitalptekin.com/favicon.png" rel="icon">
+  <link href="http://www.halitalptekin.com/theme/css/main.css" media="screen, projection"
         rel="stylesheet" type="text/css">
-  <script src="./theme/js/modernizr-2.0.js"></script>
-  <script src="./theme/js/ender.js"></script>
-  <script src="./theme/js/octopress.js" type="text/javascript"></script>
+  <script src="http://www.halitalptekin.com/theme/js/modernizr-2.0.js"></script>
+  <script src="http://www.halitalptekin.com/theme/js/ender.js"></script>
+  <script src="http://www.halitalptekin.com/theme/js/octopress.js" type="text/javascript"></script>
 
   <link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic"
         rel="stylesheet" type="text/css">
@@ -32,7 +32,7 @@
 </head>
 <body>
   <header role="banner"><hgroup>
-  <h1><a href="./">{ Halit Alptekin }</a></h1>
+  <h1><a href="http://www.halitalptekin.com/">{ Halit Alptekin }</a></h1>
   </hgroup></header>
   <nav role="navigation"><ul class="subscription" data-subscription="rss">
   <li><a href="http://www.halitalptekin.com/feeds/all.atom.xml" rel="subscribe-rss">Atom</a></li>
@@ -42,16 +42,16 @@
 <!-- TODO: add search here
 <form action="" method="get">
   <fieldset role="search">
-    <input type="hidden" name="q" value="site:." />
+    <input type="hidden" name="q" value="site:http://www.halitalptekin.com" />
     <input class="search" type="text" name="q" results="0" placeholder="Search"/>
   </fieldset>
 </form>
 -->
 
 <ul class="main-navigation">
-  <li><a href="./">Blog</a></li>
-        <li><a href="./pages/about-me.html">About Me</a></li>
-    <li><a href="./pages/contact.html">Contact</a></li>
+  <li><a href="http://www.halitalptekin.com/">Blog</a></li>
+        <li><a href="http://www.halitalptekin.com/pages/about-me.html">About Me</a></li>
+    <li><a href="http://www.halitalptekin.com/pages/contact.html">Contact</a></li>
   <!-- TODO: add categories here? -->
   </ul></nav>
   <div id="main">
@@ -67,17 +67,17 @@
 <p>Şimdi ise Django bir hayli duzenli. Bu yuzden donuşturmek yerine direk olarak sayfadan verileri almam gerektiği duşundum. Boylece en başta bahsettiğim botlar dunyasına bakmam gerekti. Ben bu botlardan zamanında pek de haberdar değildim. Bu yuzden Python ile birkaç spagetti kod ile urllib, urllib2 ve for, while dongulerini kullanarak tum yazılarımı etiketlerimi çektim.</p>
 <p>Ama aklıda hep bu işi profesyonel olarak yazılmış bir botla yapmak vardı. Biraz araştırınca Python ile ScraPy adında harika bir arama motoru ile karşılaştım. Bununla takip etmesini istediğim sayfaları regex ile belirtip aynı şekilde veri almasını istediklerimi de ayrı ayrı belirtiyoruz.</p>
 <p>Öncelikle ScraPy'yi bi bilgisayarımıza kuralım.Bunun için klasik olarak aşağıdaki komutu kullanıyoruz.</p>
-<div class="codehilite"><pre><span class="n">pip</span> <span class="n">install</span> <span class="n">scrapy</span>
+<div class="highlight"><pre><span class="n">pip</span> <span class="n">install</span> <span class="n">scrapy</span>
 </pre></div>
 
 
 <p>Daha sonra sanal ortamımızda aşağıdaki komut ile klasorlerimiz oluşturuyoruz.</p>
-<div class="codehilite"><pre><span class="n">scrapy</span> <span class="n">startproject</span> <span class="n">orumcek</span>
+<div class="highlight"><pre><span class="n">scrapy</span> <span class="n">startproject</span> <span class="n">orumcek</span>
 </pre></div>
 
 
 <p>Bu komutu verdiğimizde aşağıdaki gorunumde bir dizin elde etmeniz gerekli.</p>
-<div class="codehilite"><pre><span class="n">orumcek</span><span class="o">/</span>
+<div class="highlight"><pre><span class="n">orumcek</span><span class="o">/</span>
     <span class="n">scrapy</span><span class="o">.</span><span class="n">cfg</span>
     <span class="n">orumcek</span><span class="o">/</span>
         <span class="n">__init__</span><span class="o">.</span><span class="n">py</span>
@@ -99,7 +99,7 @@
 <li><strong>orumcek/spiders/:</strong> orumceklerimiz bu klasor altında yer alacak</li>
 </ul>
 <p>Şimdi herşeyimiz hazır olduğuna gore ilk kodlarımızı yazabiliriz.Öncelikle bize gerekli olan kısımları soyleyim. <strong>items.py </strong>içinde hangi verileri çekeceğimizi tanımlayacağız. Benim tanımladığım ornek dosya aşağıda.</p>
-<div class="codehilite"><pre><span class="kn">from</span> <span class="nn">scrapy.item</span> <span class="kn">import</span> <span class="n">Item</span><span class="p">,</span> <span class="n">Field</span>
+<div class="highlight"><pre><span class="kn">from</span> <span class="nn">scrapy.item</span> <span class="kn">import</span> <span class="n">Item</span><span class="p">,</span> <span class="n">Field</span>
 
 <span class="k">class</span> <span class="nc">OrumcekItem</span><span class="p">(</span><span class="n">Item</span><span class="p">):</span>
     <span class="n">title</span>       <span class="o">=</span> <span class="n">Field</span><span class="p">()</span>
@@ -111,7 +111,7 @@
 
 <p>Bu dosyanının gorevini anlamış olmalısınız.Çekeceğimiz verilerin title, description ve date olacağını tanımlıyoruz.(Şimdilik post'u çekmiyorum. Eğer başındaki # işaretini kaldırırsanız onu da çekebilirsiniz. Ancak çok fazla kargaşa yarattığı için şimdilik gerek yok. Siz isteğinize gore ekleyebilirsiniz.)</p>
 <p>Şimdi de onemli kısma gelelim. Burada orumceğimizi yazacağız. Bunun için oncelikle spiders/ klasorunun altına bir python dosyası oluşturuyoruz. Ben ismini <strong>hd_spider.py</strong> koydum. Ve içeriğini aşağıdaki gibi yapıyoruz.</p>
-<div class="codehilite"><pre><span class="kn">from</span> <span class="nn">scrapy.contrib.spiders</span> <span class="kn">import</span> <span class="n">CrawlSpider</span><span class="p">,</span> <span class="n">Rule</span>
+<div class="highlight"><pre><span class="kn">from</span> <span class="nn">scrapy.contrib.spiders</span> <span class="kn">import</span> <span class="n">CrawlSpider</span><span class="p">,</span> <span class="n">Rule</span>
 <span class="kn">from</span> <span class="nn">scrapy.contrib.linkextractors.sgml</span> <span class="kn">import</span> <span class="n">SgmlLinkExtractor</span>
 <span class="kn">from</span> <span class="nn">scrapy.selector</span> <span class="kn">import</span> <span class="n">HtmlXPathSelector</span>
 <span class="kn">from</span> <span class="nn">orumcek.items</span> <span class="kn">import</span> <span class="n">OrumcekItem</span>
@@ -139,12 +139,12 @@
 <p>Yukarıdaki kodun Turkçesi; http://www.halitalptekin.com/blog/ linkine gir ve <strong>?page=sayi</strong> olan tum sayfalarda gez(?page=1, ?page=2) .Eğer içlerinde <strong>\w+.html</strong> kuralına uyan(sonu .html ile biten) sayfalar varsa bunları <strong>parse_blog</strong> fonksiyonuna gonder.</p>
 <p><strong>parse_blog</strong> fonksiyonuna gelen sayfalarda da oğelerimizi xpath kurallarına gore çekiyoruz. Mesela ben item isimli oğemizin <strong>span9</strong> ve sırayla <strong>h1</strong>, <strong>a</strong> etiketleri altındaki metin olduğunu belirtmişim.Burada sizin <strong>xpath</strong> bilginizi konuşturmanız gerekli.Zaten çok da zor bir durum yok.</p>
 <p>Bundan sonra aşağıdaki komutu çalıştırarak deneme yapabilirsiniz. Gelen değerler istediğiniz şekilde değilse duzeltmeleri kendinize gore yapın.</p>
-<div class="codehilite"><pre><span class="n">scrapy</span> <span class="n">crawl</span> <span class="n">orumcek</span>
+<div class="highlight"><pre><span class="n">scrapy</span> <span class="n">crawl</span> <span class="n">orumcek</span>
 </pre></div>
 
 
 <p>Ve şimdi de bu aldığımız verileri bir çıktı haline getirelim. Siz isterseniz xml, feed, json, txt veya direk veritabanına ekleme yapabilirsiniz. Ben json olarak çıktı alacağım. Bunun için <strong>pipelines.py</strong> dosyamıza aşağıdaki satırları ekliyoruz.</p>
-<div class="codehilite"><pre><span class="kn">import</span> <span class="nn">json</span>
+<div class="highlight"><pre><span class="kn">import</span> <span class="nn">json</span>
 
 <span class="k">class</span> <span class="nc">JsonWriterPipeline</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
 
@@ -160,7 +160,7 @@
 
 <p>Bu kod ile gelen itemleri json dosyamıza serialize ediyoruz. Siz isterseniz bu kısımda bilginizi konuşturarak verileri mongodb, mysql veya xml şeklinde de alabilirsiniz. Burada yapmanız gerekenler <a href="http://doc.scrapy.org/en/0.14/index.html">sitesinde</a> ayrıntılı anlatılmış.</p>
 <p>Daha sonra bu boru hattımızı ayar dosyamıza ekliyoruz. Bunun için settings.py içine aşağıdaki satırı ekliyoruz.</p>
-<div class="codehilite"><pre><span class="n">ITEM_PIPELINES</span> <span class="o">=</span> <span class="p">[</span><span class="s">&#39;orumcek.pipelines.JsonWriterPipeline&#39;</span><span class="p">,]</span>
+<div class="highlight"><pre><span class="n">ITEM_PIPELINES</span> <span class="o">=</span> <span class="p">[</span><span class="s">&#39;orumcek.pipelines.JsonWriterPipeline&#39;</span><span class="p">,]</span>
 </pre></div>
 
 
@@ -173,11 +173,11 @@
     Posted by <span class="fn">halit</span>
   </span>
   <time datetime="2012-09-13T00:00:00" pubdate> Sep 13, 2012 </time>    <span class="categories">
-        <a class="category" href="./tag/python.html">python</a>
-        <a class="category" href="./tag/python-bot.html">python bot</a>
-        <a class="category" href="./tag/python-spider.html">python spider</a>
-        <a class="category" href="./tag/python-web-crawler.html">python web crawler</a>
-        <a class="category" href="./tag/scrapy.html">scrapy</a>
+        <a class="category" href="http://www.halitalptekin.com/tag/python.html">python</a>
+        <a class="category" href="http://www.halitalptekin.com/tag/python-bot.html">python bot</a>
+        <a class="category" href="http://www.halitalptekin.com/tag/python-spider.html">python spider</a>
+        <a class="category" href="http://www.halitalptekin.com/tag/python-web-crawler.html">python web crawler</a>
+        <a class="category" href="http://www.halitalptekin.com/tag/scrapy.html">scrapy</a>
       </span>
   </p>    </footer>
   </article>
@@ -207,19 +207,19 @@
     <h1>Recent Posts</h1>
     <ul id="recent_posts">
             <li class="post">
-          <a href="./gnu-c-tamsayi-turleri.html">GNU C tamsayi turleri</a>
+          <a href="http://www.halitalptekin.com/gnu-c-tamsayi-turleri.html">GNU C tamsayi turleri</a>
       </li>
             <li class="post">
-          <a href="./fonksiyon-gostergeleri.html">Fonksiyon göstergeleri</a>
+          <a href="http://www.halitalptekin.com/fonksiyon-goestergeleri.html">Fonksiyon göstergeleri</a>
       </li>
             <li class="post">
-          <a href="./cde-debug-makrolari.html">C'de debug makrolari</a>
+          <a href="http://www.halitalptekin.com/cde-debug-makrolari.html">C'de debug makrolari</a>
       </li>
             <li class="post">
-          <a href="./uzun-bir-aradan-sonra.html">Uzun bir aradan sonra</a>
+          <a href="http://www.halitalptekin.com/uzun-bir-aradan-sonra.html">Uzun bir aradan sonra</a>
       </li>
             <li class="post">
-          <a href="./the-seven-rules-of-technical-writing.html">The Seven Rules Of Technical Writing</a>
+          <a href="http://www.halitalptekin.com/the-seven-rules-of-technical-writing.html">The Seven Rules Of Technical Writing</a>
       </li>
           </ul>
   </section>
@@ -227,19 +227,19 @@
       
     <h1>Categories</h1>
     <ul id="recent_posts">
-              <li><a href="./category/tasarim.html">tasarim</a></li>
-              <li><a href="./category/server.html">server</a></li>
-              <li><a href="./category/python.html">python</a></li>
-              <li><a href="./category/programlama.html">programlama</a></li>
-              <li><a href="./category/linux.html">linux</a></li>
-              <li><a href="./category/kisisel.html">kisisel</a></li>
-              <li><a href="./category/internet.html">internet</a></li>
-              <li><a href="./category/guvenlik.html">guvenlik</a></li>
-              <li><a href="./category/genel.html">genel</a></li>
-              <li><a href="./category/eglence.html">eglence</a></li>
-              <li><a href="./category/django.html">django</a></li>
-              <li><a href="./category/compsci.html">compsci</a></li>
-              <li><a href="./category/arduino.html">arduino</a></li>
+              <li><a href="http://www.halitalptekin.com/category/tasarim.html">tasarim</a></li>
+              <li><a href="http://www.halitalptekin.com/category/server.html">server</a></li>
+              <li><a href="http://www.halitalptekin.com/category/python.html">python</a></li>
+              <li><a href="http://www.halitalptekin.com/category/programlama.html">programlama</a></li>
+              <li><a href="http://www.halitalptekin.com/category/linux.html">linux</a></li>
+              <li><a href="http://www.halitalptekin.com/category/kisisel.html">kisisel</a></li>
+              <li><a href="http://www.halitalptekin.com/category/internet.html">internet</a></li>
+              <li><a href="http://www.halitalptekin.com/category/guvenlik.html">guvenlik</a></li>
+              <li><a href="http://www.halitalptekin.com/category/genel.html">genel</a></li>
+              <li><a href="http://www.halitalptekin.com/category/eglence.html">eglence</a></li>
+              <li><a href="http://www.halitalptekin.com/category/django.html">django</a></li>
+              <li><a href="http://www.halitalptekin.com/category/compsci.html">compsci</a></li>
+              <li><a href="http://www.halitalptekin.com/category/arduino.html">arduino</a></li>
           </ul>
   </section>
    
@@ -262,33 +262,25 @@
                 </ul>
     </section>
 
-      <section>
-        <h1>Ads</h1>
-        <ul id="recent_posts">
-                            <li><a href="https://www.camekan.com/adwords/" title="Google Adwords"><img src="/media/reklam/camekancom.jpg" alt="Google Adwords" title="Google Adwords"></a></li>
-                            <li><a href="http://www.dugunajans.com/" title="düğün fotoğrafçısı"><img src="/media/reklam/dugunajanscom.jpg" alt="düğün fotoğrafçısı" title="düğün fotoğrafçısı"></a></li>
-                            <li><a href="http://cevap.tv/yeme-icme/yemek-tarifleri/hamur-isleri/cupcake" title="cupcake tarifi"><img src="/media/reklam/cevaptv.png" alt="cupcake tarifi" title="cupcake tarifi"></a></li>
-                    </ul>
-    </section>
   
 </aside>      <aside class="sidebar">
   <section>
     <h1>Recent Posts</h1>
     <ul id="recent_posts">
             <li class="post">
-          <a href="./gnu-c-tamsayi-turleri.html">GNU C tamsayi turleri</a>
+          <a href="http://www.halitalptekin.com/gnu-c-tamsayi-turleri.html">GNU C tamsayi turleri</a>
       </li>
             <li class="post">
-          <a href="./fonksiyon-gostergeleri.html">Fonksiyon göstergeleri</a>
+          <a href="http://www.halitalptekin.com/fonksiyon-goestergeleri.html">Fonksiyon göstergeleri</a>
       </li>
             <li class="post">
-          <a href="./cde-debug-makrolari.html">C'de debug makrolari</a>
+          <a href="http://www.halitalptekin.com/cde-debug-makrolari.html">C'de debug makrolari</a>
       </li>
             <li class="post">
-          <a href="./uzun-bir-aradan-sonra.html">Uzun bir aradan sonra</a>
+          <a href="http://www.halitalptekin.com/uzun-bir-aradan-sonra.html">Uzun bir aradan sonra</a>
       </li>
             <li class="post">
-          <a href="./the-seven-rules-of-technical-writing.html">The Seven Rules Of Technical Writing</a>
+          <a href="http://www.halitalptekin.com/the-seven-rules-of-technical-writing.html">The Seven Rules Of Technical Writing</a>
       </li>
           </ul>
   </section>
@@ -296,19 +288,19 @@
       
     <h1>Categories</h1>
     <ul id="recent_posts">
-              <li><a href="./category/tasarim.html">tasarim</a></li>
-              <li><a href="./category/server.html">server</a></li>
-              <li><a href="./category/python.html">python</a></li>
-              <li><a href="./category/programlama.html">programlama</a></li>
-              <li><a href="./category/linux.html">linux</a></li>
-              <li><a href="./category/kisisel.html">kisisel</a></li>
-              <li><a href="./category/internet.html">internet</a></li>
-              <li><a href="./category/guvenlik.html">guvenlik</a></li>
-              <li><a href="./category/genel.html">genel</a></li>
-              <li><a href="./category/eglence.html">eglence</a></li>
-              <li><a href="./category/django.html">django</a></li>
-              <li><a href="./category/compsci.html">compsci</a></li>
-              <li><a href="./category/arduino.html">arduino</a></li>
+              <li><a href="http://www.halitalptekin.com/category/tasarim.html">tasarim</a></li>
+              <li><a href="http://www.halitalptekin.com/category/server.html">server</a></li>
+              <li><a href="http://www.halitalptekin.com/category/python.html">python</a></li>
+              <li><a href="http://www.halitalptekin.com/category/programlama.html">programlama</a></li>
+              <li><a href="http://www.halitalptekin.com/category/linux.html">linux</a></li>
+              <li><a href="http://www.halitalptekin.com/category/kisisel.html">kisisel</a></li>
+              <li><a href="http://www.halitalptekin.com/category/internet.html">internet</a></li>
+              <li><a href="http://www.halitalptekin.com/category/guvenlik.html">guvenlik</a></li>
+              <li><a href="http://www.halitalptekin.com/category/genel.html">genel</a></li>
+              <li><a href="http://www.halitalptekin.com/category/eglence.html">eglence</a></li>
+              <li><a href="http://www.halitalptekin.com/category/django.html">django</a></li>
+              <li><a href="http://www.halitalptekin.com/category/compsci.html">compsci</a></li>
+              <li><a href="http://www.halitalptekin.com/category/arduino.html">arduino</a></li>
           </ul>
   </section>
    
@@ -331,14 +323,6 @@
                 </ul>
     </section>
 
-      <section>
-        <h1>Ads</h1>
-        <ul id="recent_posts">
-                            <li><a href="https://www.camekan.com/adwords/" title="Google Adwords"><img src="/media/reklam/camekancom.jpg" alt="Google Adwords" title="Google Adwords"></a></li>
-                            <li><a href="http://www.dugunajans.com/" title="düğün fotoğrafçısı"><img src="/media/reklam/dugunajanscom.jpg" alt="düğün fotoğrafçısı" title="düğün fotoğrafçısı"></a></li>
-                            <li><a href="http://cevap.tv/yeme-icme/yemek-tarifleri/hamur-isleri/cupcake" title="cupcake tarifi"><img src="/media/reklam/cevaptv.png" alt="cupcake tarifi" title="cupcake tarifi"></a></li>
-                    </ul>
-    </section>
   
 </aside>    </div>
   </div>

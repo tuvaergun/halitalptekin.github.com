@@ -18,12 +18,12 @@
   <meta name="MobileOptimized" content="320">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <link href="./favicon.png" rel="icon">
-  <link href="./theme/css/main.css" media="screen, projection"
+  <link href="http://www.halitalptekin.com/favicon.png" rel="icon">
+  <link href="http://www.halitalptekin.com/theme/css/main.css" media="screen, projection"
         rel="stylesheet" type="text/css">
-  <script src="./theme/js/modernizr-2.0.js"></script>
-  <script src="./theme/js/ender.js"></script>
-  <script src="./theme/js/octopress.js" type="text/javascript"></script>
+  <script src="http://www.halitalptekin.com/theme/js/modernizr-2.0.js"></script>
+  <script src="http://www.halitalptekin.com/theme/js/ender.js"></script>
+  <script src="http://www.halitalptekin.com/theme/js/octopress.js" type="text/javascript"></script>
 
   <link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic"
         rel="stylesheet" type="text/css">
@@ -32,7 +32,7 @@
 </head>
 <body>
   <header role="banner"><hgroup>
-  <h1><a href="./">{ Halit Alptekin }</a></h1>
+  <h1><a href="http://www.halitalptekin.com/">{ Halit Alptekin }</a></h1>
   </hgroup></header>
   <nav role="navigation"><ul class="subscription" data-subscription="rss">
   <li><a href="http://www.halitalptekin.com/feeds/all.atom.xml" rel="subscribe-rss">Atom</a></li>
@@ -42,16 +42,16 @@
 <!-- TODO: add search here
 <form action="" method="get">
   <fieldset role="search">
-    <input type="hidden" name="q" value="site:." />
+    <input type="hidden" name="q" value="site:http://www.halitalptekin.com" />
     <input class="search" type="text" name="q" results="0" placeholder="Search"/>
   </fieldset>
 </form>
 -->
 
 <ul class="main-navigation">
-  <li><a href="./">Blog</a></li>
-        <li><a href="./pages/about-me.html">About Me</a></li>
-    <li><a href="./pages/contact.html">Contact</a></li>
+  <li><a href="http://www.halitalptekin.com/">Blog</a></li>
+        <li><a href="http://www.halitalptekin.com/pages/about-me.html">About Me</a></li>
+    <li><a href="http://www.halitalptekin.com/pages/contact.html">Contact</a></li>
   <!-- TODO: add categories here? -->
   </ul></nav>
   <div id="main">
@@ -67,7 +67,7 @@
 <p><a href="http://www.flickr.com/photos/tom-b/5547908627/" title="Wikipedia: Botnet by tom-b, on Flickr"><img alt="Wikipedia: Botnet" src="http://farm6.staticflickr.com/5052/5547908627_dc967fa7a3.jpg" /></a></p>
 <p>Öncelikle bilmeniz gereken bu script kesinlikle buyuk saldırıları engelleyemez.Bu tarz saldırılara donanım kaynaklarınız imkanlarıyla ortantılı olarak karşı koyabilirsiniz.Ki buyuk çaplı saldırılarda koskoca veri merkezleri zarar goruyor.Bir tane site niye gormesin.Ama birkaç site veya serverdan gelen saldırıları inetbase ile engelleyebilirsiniz.</p>
 <p>Serverımıza kurulum yapmak için oncelikle ssh ile root girişi yapıyoruz.Ve daha sonraki aşağıdaki 2 komutu çalıştırarak scripti kuruyoruz.</p>
-<div class="codehilite"><pre><span class="n">wget</span> <span class="n">http</span><span class="o">:</span><span class="c1">//www.inetbase.com/scripts/ddos/install.sh</span>
+<div class="highlight"><pre><span class="n">wget</span> <span class="n">http</span><span class="o">:</span><span class="c1">//www.inetbase.com/scripts/ddos/install.sh</span>
 <span class="n">sh</span> <span class="n">install</span><span class="p">.</span><span class="n">sh</span>
 </pre></div>
 
@@ -78,22 +78,22 @@
 <strong>BAN_PERIOD</strong>=600 (10 dakika içinde yukarıdaki sayı kadar bağlantı açanı banlar.)<br />
 <strong>EMAIL_TO</strong>=mail@siteadresi.com (Banlanma bilgilerinin gideceği mail adresi.)</p>
 <p>Bu ayarlardan sonra aşağıdaki komutu konsola girerek birkaç duzenleme yapıyoruz.</p>
-<div class="codehilite"><pre><span class="n">netstat</span> <span class="o">-</span><span class="n">tn</span> <span class="o">--</span><span class="n">inet</span> <span class="mi">2</span><span class="o">&gt;</span> <span class="o">/</span><span class="n">dev</span><span class="o">/</span><span class="n">null</span><span class="o">|</span> <span class="n">grep</span> <span class="s">&quot;:80&quot;</span> <span class="o">|</span> <span class="n">awk</span> <span class="err">&#39;</span><span class="o">/</span><span class="n">tcp</span><span class="p">[</span> <span class="p">]</span><span class="o">*</span><span class="p">[</span><span class="mi">0</span><span class="o">-</span><span class="mi">9</span><span class="p">]</span><span class="o">+</span><span class="p">[</span> <span class="p">]</span><span class="o">*</span><span class="p">[</span><span class="mi">0</span><span class="o">-</span><span class="mi">9</span><span class="p">]</span><span class="o">+</span><span class="p">[</span> <span class="p">]</span><span class="o">+</span><span class="p">[</span><span class="o">^</span> <span class="p">]</span><span class="o">+</span><span class="p">[</span> <span class="p">]</span><span class="o">*</span><span class="p">[</span><span class="o">^</span> <span class="p">]</span><span class="err">*/</span> <span class="p">{</span> <span class="n">print</span> <span class="err">$</span><span class="mi">5</span><span class="p">;</span> <span class="p">}</span><span class="err">&#39;</span> <span class="o">|</span> <span class="n">cut</span> <span class="o">-</span><span class="n">d</span><span class="s">&quot;:&quot;</span> <span class="o">-</span><span class="n">f1</span> <span class="o">|</span> <span class="n">sort</span> <span class="o">|</span> <span class="n">uniq</span> <span class="o">-</span><span class="n">c</span> <span class="o">|</span> <span class="n">sort</span> <span class="o">-</span><span class="n">n</span>
+<div class="highlight"><pre><span class="n">netstat</span> <span class="o">-</span><span class="n">tn</span> <span class="o">--</span><span class="n">inet</span> <span class="mi">2</span><span class="o">&gt;</span> <span class="o">/</span><span class="n">dev</span><span class="o">/</span><span class="n">null</span><span class="o">|</span> <span class="n">grep</span> <span class="s">&quot;:80&quot;</span> <span class="o">|</span> <span class="n">awk</span> <span class="err">&#39;</span><span class="o">/</span><span class="n">tcp</span><span class="p">[</span> <span class="p">]</span><span class="o">*</span><span class="p">[</span><span class="mi">0</span><span class="o">-</span><span class="mi">9</span><span class="p">]</span><span class="o">+</span><span class="p">[</span> <span class="p">]</span><span class="o">*</span><span class="p">[</span><span class="mi">0</span><span class="o">-</span><span class="mi">9</span><span class="p">]</span><span class="o">+</span><span class="p">[</span> <span class="p">]</span><span class="o">+</span><span class="p">[</span><span class="o">^</span> <span class="p">]</span><span class="o">+</span><span class="p">[</span> <span class="p">]</span><span class="o">*</span><span class="p">[</span><span class="o">^</span> <span class="p">]</span><span class="err">*/</span> <span class="p">{</span> <span class="n">print</span> <span class="err">$</span><span class="mi">5</span><span class="p">;</span> <span class="p">}</span><span class="err">&#39;</span> <span class="o">|</span> <span class="n">cut</span> <span class="o">-</span><span class="n">d</span><span class="s">&quot;:&quot;</span> <span class="o">-</span><span class="n">f1</span> <span class="o">|</span> <span class="n">sort</span> <span class="o">|</span> <span class="n">uniq</span> <span class="o">-</span><span class="n">c</span> <span class="o">|</span> <span class="n">sort</span> <span class="o">-</span><span class="n">n</span>
 </pre></div>
 
 
 <p>Ddos.conf dosyasının en altına gozardı edilecek ip adreslerini ekleyebiliriz.(Google botları,local ipler gibi)</p>
-<div class="codehilite"><pre><span class="n">PROTECTED_IPS</span><span class="o">=</span><span class="p">(</span> <span class="s">&quot;192.168.1.10&quot;</span> <span class="s">&quot;127.0.0.1&quot;</span> <span class="s">&quot;10.0.10.0&quot;</span> <span class="s">&quot;192.168.2.5&quot;</span> <span class="p">)</span>
+<div class="highlight"><pre><span class="n">PROTECTED_IPS</span><span class="o">=</span><span class="p">(</span> <span class="s">&quot;192.168.1.10&quot;</span> <span class="s">&quot;127.0.0.1&quot;</span> <span class="s">&quot;10.0.10.0&quot;</span> <span class="s">&quot;192.168.2.5&quot;</span> <span class="p">)</span>
 </pre></div>
 
 
 <p><strong>/usr/local/ddos/ddos.sh</strong> dosyası içinde aşağıdaki satırı bulun.</p>
-<div class="codehilite"><pre><span class="n">netstat</span> <span class="o">-</span><span class="n">ntu</span> <span class="o">|</span> <span class="n">awk</span> <span class="err">&#39;</span><span class="p">{</span><span class="n">print</span> <span class="err">$</span><span class="mi">5</span><span class="p">}</span><span class="err">&#39;</span> <span class="o">|</span> <span class="n">cut</span> <span class="o">-</span><span class="n">d</span><span class="o">:</span> <span class="o">-</span><span class="n">f1</span> <span class="o">|</span> <span class="n">sort</span> <span class="o">|</span> <span class="n">uniq</span> <span class="o">-</span><span class="n">c</span> <span class="o">|</span> <span class="n">sort</span> <span class="o">-</span><span class="n">nr</span> <span class="o">&gt;</span> <span class="err">$</span><span class="n">BAD_IP_LIST</span>
+<div class="highlight"><pre><span class="n">netstat</span> <span class="o">-</span><span class="n">ntu</span> <span class="o">|</span> <span class="n">awk</span> <span class="err">&#39;</span><span class="p">{</span><span class="n">print</span> <span class="err">$</span><span class="mi">5</span><span class="p">}</span><span class="err">&#39;</span> <span class="o">|</span> <span class="n">cut</span> <span class="o">-</span><span class="n">d</span><span class="o">:</span> <span class="o">-</span><span class="n">f1</span> <span class="o">|</span> <span class="n">sort</span> <span class="o">|</span> <span class="n">uniq</span> <span class="o">-</span><span class="n">c</span> <span class="o">|</span> <span class="n">sort</span> <span class="o">-</span><span class="n">nr</span> <span class="o">&gt;</span> <span class="err">$</span><span class="n">BAD_IP_LIST</span>
 </pre></div>
 
 
 <p>Daha sonra bu satırın altındakileri silip aşağıdaki kodları ekleyelim.</p>
-<div class="codehilite"><pre>BAD_SYN_IP_LIST=`<span class="nv">$TMP_FILE</span>`
+<div class="highlight"><pre>BAD_SYN_IP_LIST=`<span class="nv">$TMP_FILE</span>`
 netstat -np | grep SYN_RECV | awk &#39;{print $5}&#39; | cut -d: -f1 | cut -d: -f1 | sort | uniq -c | \
 sort -n| awk &#39;{if ($1 &gt; 4) print $2;}&#39; &gt; <span class="nv">$BAD_SYN_IP_LIST</span>
 cat <span class="nv">$BAD_SYN_IP_LIST</span>
@@ -152,12 +152,12 @@ done <span class="nt">&lt; </span><span class="nv">$BAD_IP_LIST</span><span clas
 
 
 <p>Boylelikle arka arkaya 4 syn paketi gonderen ip adresini banlıyorsunuz.Bu banlanan ip adresleri sizlere mail olarak gelecek.Eğer banlanan tum ip adreslerini boşaltmak için aşağıdaki komutu kullanabilirsiniz.</p>
-<div class="codehilite"><pre><span class="n">iptables</span> <span class="o">-</span><span class="n">F</span>
+<div class="highlight"><pre><span class="n">iptables</span> <span class="o">-</span><span class="n">F</span>
 </pre></div>
 
 
 <p>Eğer inetbase kullanmak istemiyorsanız da aşağıdaki uninstall dosyasını indirip çalıştırabilirsiniz.</p>
-<div class="codehilite"><pre><span class="n">wget</span> <span class="n">http</span><span class="o">:</span><span class="c1">//www.inetbase.com/scripts/ddos/uninstall.ddos</span>
+<div class="highlight"><pre><span class="n">wget</span> <span class="n">http</span><span class="o">:</span><span class="c1">//www.inetbase.com/scripts/ddos/uninstall.ddos</span>
 <span class="n">sh</span> <span class="n">uninstall</span><span class="p">.</span><span class="n">ddos</span>
 </pre></div></div>
     <footer>
@@ -166,11 +166,11 @@ done <span class="nt">&lt; </span><span class="nv">$BAD_IP_LIST</span><span clas
     Posted by <span class="fn">halit</span>
   </span>
   <time datetime="2012-06-11T00:00:00" pubdate> Jun 11, 2012 </time>    <span class="categories">
-        <a class="category" href="./tag/botnet-korumasi.html">botnet koruması</a>
-        <a class="category" href="./tag/ddos-korumasi.html">ddos koruması</a>
-        <a class="category" href="./tag/ddos-saldirisi.html">ddos saldırısı</a>
-        <a class="category" href="./tag/inetbase.html">inetbase</a>
-        <a class="category" href="./tag/server-guvenligi.html">server güvenliği</a>
+        <a class="category" href="http://www.halitalptekin.com/tag/botnet-korumasi.html">botnet koruması</a>
+        <a class="category" href="http://www.halitalptekin.com/tag/ddos-korumasi.html">ddos koruması</a>
+        <a class="category" href="http://www.halitalptekin.com/tag/ddos-saldirisi.html">ddos saldırısı</a>
+        <a class="category" href="http://www.halitalptekin.com/tag/inetbase.html">inetbase</a>
+        <a class="category" href="http://www.halitalptekin.com/tag/server-guevenligi.html">server güvenliği</a>
       </span>
   </p>    </footer>
   </article>
@@ -200,19 +200,19 @@ done <span class="nt">&lt; </span><span class="nv">$BAD_IP_LIST</span><span clas
     <h1>Recent Posts</h1>
     <ul id="recent_posts">
             <li class="post">
-          <a href="./gnu-c-tamsayi-turleri.html">GNU C tamsayi turleri</a>
+          <a href="http://www.halitalptekin.com/gnu-c-tamsayi-turleri.html">GNU C tamsayi turleri</a>
       </li>
             <li class="post">
-          <a href="./fonksiyon-gostergeleri.html">Fonksiyon göstergeleri</a>
+          <a href="http://www.halitalptekin.com/fonksiyon-goestergeleri.html">Fonksiyon göstergeleri</a>
       </li>
             <li class="post">
-          <a href="./cde-debug-makrolari.html">C'de debug makrolari</a>
+          <a href="http://www.halitalptekin.com/cde-debug-makrolari.html">C'de debug makrolari</a>
       </li>
             <li class="post">
-          <a href="./uzun-bir-aradan-sonra.html">Uzun bir aradan sonra</a>
+          <a href="http://www.halitalptekin.com/uzun-bir-aradan-sonra.html">Uzun bir aradan sonra</a>
       </li>
             <li class="post">
-          <a href="./the-seven-rules-of-technical-writing.html">The Seven Rules Of Technical Writing</a>
+          <a href="http://www.halitalptekin.com/the-seven-rules-of-technical-writing.html">The Seven Rules Of Technical Writing</a>
       </li>
           </ul>
   </section>
@@ -220,19 +220,19 @@ done <span class="nt">&lt; </span><span class="nv">$BAD_IP_LIST</span><span clas
       
     <h1>Categories</h1>
     <ul id="recent_posts">
-              <li><a href="./category/tasarim.html">tasarim</a></li>
-              <li><a href="./category/server.html">server</a></li>
-              <li><a href="./category/python.html">python</a></li>
-              <li><a href="./category/programlama.html">programlama</a></li>
-              <li><a href="./category/linux.html">linux</a></li>
-              <li><a href="./category/kisisel.html">kisisel</a></li>
-              <li><a href="./category/internet.html">internet</a></li>
-              <li><a href="./category/guvenlik.html">guvenlik</a></li>
-              <li><a href="./category/genel.html">genel</a></li>
-              <li><a href="./category/eglence.html">eglence</a></li>
-              <li><a href="./category/django.html">django</a></li>
-              <li><a href="./category/compsci.html">compsci</a></li>
-              <li><a href="./category/arduino.html">arduino</a></li>
+              <li><a href="http://www.halitalptekin.com/category/tasarim.html">tasarim</a></li>
+              <li><a href="http://www.halitalptekin.com/category/server.html">server</a></li>
+              <li><a href="http://www.halitalptekin.com/category/python.html">python</a></li>
+              <li><a href="http://www.halitalptekin.com/category/programlama.html">programlama</a></li>
+              <li><a href="http://www.halitalptekin.com/category/linux.html">linux</a></li>
+              <li><a href="http://www.halitalptekin.com/category/kisisel.html">kisisel</a></li>
+              <li><a href="http://www.halitalptekin.com/category/internet.html">internet</a></li>
+              <li><a href="http://www.halitalptekin.com/category/guvenlik.html">guvenlik</a></li>
+              <li><a href="http://www.halitalptekin.com/category/genel.html">genel</a></li>
+              <li><a href="http://www.halitalptekin.com/category/eglence.html">eglence</a></li>
+              <li><a href="http://www.halitalptekin.com/category/django.html">django</a></li>
+              <li><a href="http://www.halitalptekin.com/category/compsci.html">compsci</a></li>
+              <li><a href="http://www.halitalptekin.com/category/arduino.html">arduino</a></li>
           </ul>
   </section>
    
@@ -255,33 +255,25 @@ done <span class="nt">&lt; </span><span class="nv">$BAD_IP_LIST</span><span clas
                 </ul>
     </section>
 
-      <section>
-        <h1>Ads</h1>
-        <ul id="recent_posts">
-                            <li><a href="https://www.camekan.com/adwords/" title="Google Adwords"><img src="/media/reklam/camekancom.jpg" alt="Google Adwords" title="Google Adwords"></a></li>
-                            <li><a href="http://www.dugunajans.com/" title="düğün fotoğrafçısı"><img src="/media/reklam/dugunajanscom.jpg" alt="düğün fotoğrafçısı" title="düğün fotoğrafçısı"></a></li>
-                            <li><a href="http://cevap.tv/yeme-icme/yemek-tarifleri/hamur-isleri/cupcake" title="cupcake tarifi"><img src="/media/reklam/cevaptv.png" alt="cupcake tarifi" title="cupcake tarifi"></a></li>
-                    </ul>
-    </section>
   
 </aside>      <aside class="sidebar">
   <section>
     <h1>Recent Posts</h1>
     <ul id="recent_posts">
             <li class="post">
-          <a href="./gnu-c-tamsayi-turleri.html">GNU C tamsayi turleri</a>
+          <a href="http://www.halitalptekin.com/gnu-c-tamsayi-turleri.html">GNU C tamsayi turleri</a>
       </li>
             <li class="post">
-          <a href="./fonksiyon-gostergeleri.html">Fonksiyon göstergeleri</a>
+          <a href="http://www.halitalptekin.com/fonksiyon-goestergeleri.html">Fonksiyon göstergeleri</a>
       </li>
             <li class="post">
-          <a href="./cde-debug-makrolari.html">C'de debug makrolari</a>
+          <a href="http://www.halitalptekin.com/cde-debug-makrolari.html">C'de debug makrolari</a>
       </li>
             <li class="post">
-          <a href="./uzun-bir-aradan-sonra.html">Uzun bir aradan sonra</a>
+          <a href="http://www.halitalptekin.com/uzun-bir-aradan-sonra.html">Uzun bir aradan sonra</a>
       </li>
             <li class="post">
-          <a href="./the-seven-rules-of-technical-writing.html">The Seven Rules Of Technical Writing</a>
+          <a href="http://www.halitalptekin.com/the-seven-rules-of-technical-writing.html">The Seven Rules Of Technical Writing</a>
       </li>
           </ul>
   </section>
@@ -289,19 +281,19 @@ done <span class="nt">&lt; </span><span class="nv">$BAD_IP_LIST</span><span clas
       
     <h1>Categories</h1>
     <ul id="recent_posts">
-              <li><a href="./category/tasarim.html">tasarim</a></li>
-              <li><a href="./category/server.html">server</a></li>
-              <li><a href="./category/python.html">python</a></li>
-              <li><a href="./category/programlama.html">programlama</a></li>
-              <li><a href="./category/linux.html">linux</a></li>
-              <li><a href="./category/kisisel.html">kisisel</a></li>
-              <li><a href="./category/internet.html">internet</a></li>
-              <li><a href="./category/guvenlik.html">guvenlik</a></li>
-              <li><a href="./category/genel.html">genel</a></li>
-              <li><a href="./category/eglence.html">eglence</a></li>
-              <li><a href="./category/django.html">django</a></li>
-              <li><a href="./category/compsci.html">compsci</a></li>
-              <li><a href="./category/arduino.html">arduino</a></li>
+              <li><a href="http://www.halitalptekin.com/category/tasarim.html">tasarim</a></li>
+              <li><a href="http://www.halitalptekin.com/category/server.html">server</a></li>
+              <li><a href="http://www.halitalptekin.com/category/python.html">python</a></li>
+              <li><a href="http://www.halitalptekin.com/category/programlama.html">programlama</a></li>
+              <li><a href="http://www.halitalptekin.com/category/linux.html">linux</a></li>
+              <li><a href="http://www.halitalptekin.com/category/kisisel.html">kisisel</a></li>
+              <li><a href="http://www.halitalptekin.com/category/internet.html">internet</a></li>
+              <li><a href="http://www.halitalptekin.com/category/guvenlik.html">guvenlik</a></li>
+              <li><a href="http://www.halitalptekin.com/category/genel.html">genel</a></li>
+              <li><a href="http://www.halitalptekin.com/category/eglence.html">eglence</a></li>
+              <li><a href="http://www.halitalptekin.com/category/django.html">django</a></li>
+              <li><a href="http://www.halitalptekin.com/category/compsci.html">compsci</a></li>
+              <li><a href="http://www.halitalptekin.com/category/arduino.html">arduino</a></li>
           </ul>
   </section>
    
@@ -324,14 +316,6 @@ done <span class="nt">&lt; </span><span class="nv">$BAD_IP_LIST</span><span clas
                 </ul>
     </section>
 
-      <section>
-        <h1>Ads</h1>
-        <ul id="recent_posts">
-                            <li><a href="https://www.camekan.com/adwords/" title="Google Adwords"><img src="/media/reklam/camekancom.jpg" alt="Google Adwords" title="Google Adwords"></a></li>
-                            <li><a href="http://www.dugunajans.com/" title="düğün fotoğrafçısı"><img src="/media/reklam/dugunajanscom.jpg" alt="düğün fotoğrafçısı" title="düğün fotoğrafçısı"></a></li>
-                            <li><a href="http://cevap.tv/yeme-icme/yemek-tarifleri/hamur-isleri/cupcake" title="cupcake tarifi"><img src="/media/reklam/cevaptv.png" alt="cupcake tarifi" title="cupcake tarifi"></a></li>
-                    </ul>
-    </section>
   
 </aside>    </div>
   </div>

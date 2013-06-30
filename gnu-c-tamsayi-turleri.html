@@ -18,12 +18,12 @@
   <meta name="MobileOptimized" content="320">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <link href="./favicon.png" rel="icon">
-  <link href="./theme/css/main.css" media="screen, projection"
+  <link href="http://www.halitalptekin.com/favicon.png" rel="icon">
+  <link href="http://www.halitalptekin.com/theme/css/main.css" media="screen, projection"
         rel="stylesheet" type="text/css">
-  <script src="./theme/js/modernizr-2.0.js"></script>
-  <script src="./theme/js/ender.js"></script>
-  <script src="./theme/js/octopress.js" type="text/javascript"></script>
+  <script src="http://www.halitalptekin.com/theme/js/modernizr-2.0.js"></script>
+  <script src="http://www.halitalptekin.com/theme/js/ender.js"></script>
+  <script src="http://www.halitalptekin.com/theme/js/octopress.js" type="text/javascript"></script>
 
   <link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic"
         rel="stylesheet" type="text/css">
@@ -32,7 +32,7 @@
 </head>
 <body>
   <header role="banner"><hgroup>
-  <h1><a href="./">{ Halit Alptekin }</a></h1>
+  <h1><a href="http://www.halitalptekin.com/">{ Halit Alptekin }</a></h1>
   </hgroup></header>
   <nav role="navigation"><ul class="subscription" data-subscription="rss">
   <li><a href="http://www.halitalptekin.com/feeds/all.atom.xml" rel="subscribe-rss">Atom</a></li>
@@ -42,16 +42,16 @@
 <!-- TODO: add search here
 <form action="" method="get">
   <fieldset role="search">
-    <input type="hidden" name="q" value="site:." />
+    <input type="hidden" name="q" value="site:http://www.halitalptekin.com" />
     <input class="search" type="text" name="q" results="0" placeholder="Search"/>
   </fieldset>
 </form>
 -->
 
 <ul class="main-navigation">
-  <li><a href="./">Blog</a></li>
-        <li><a href="./pages/about-me.html">About Me</a></li>
-    <li><a href="./pages/contact.html">Contact</a></li>
+  <li><a href="http://www.halitalptekin.com/">Blog</a></li>
+        <li><a href="http://www.halitalptekin.com/pages/about-me.html">About Me</a></li>
+    <li><a href="http://www.halitalptekin.com/pages/contact.html">Contact</a></li>
   <!-- TODO: add categories here? -->
   </ul></nav>
   <div id="main">
@@ -70,7 +70,7 @@
 <p>C'nin diğer dillerden bana göre en büyük avantajlarından birisi de alt seviyeye yakın olmasının kazandırdığı hızdır. Eğer kodunuzun belirli kısmında hızlı erişime sahip tamsayı türleri kullanmak istiyorsanız <code>int_fast8_t</code>, <code>int_fast16_t</code>, <code>int_fast32_t</code>, <code>int_fast64_t</code> ve işaretsiz türleri <code>uint_fast8_t</code>, <code>uint_fast16_t</code>, <code>uint_fast32_t</code>, <code>uint_fast64_t</code> deneyebilirsiniz.</p>
 <p>Bu türlerin yanında bilgisayarınızın destekleyeceği en büyük tam sayı genişliği için de <code>intmax_t</code> ve <code>uintmax_t</code> veri türlerini kullanabilirsiniz. Bu türleri kullanırken bilgisayarınızda tanımlı olan asgari ve azami değerleri öğrenmek için <code>INT32_MAX</code>, <code>UINT8_MAX</code>, <code>INT_FAST32_MIN</code>, <code>INT_LEAST64_MIN</code>, <code>UINTMAX_MAX</code>, <code>INTMAX_MIN</code> gibi makroları kullanabilirsiniz.</p>
 <p>Bu veri türlerini kullanım şeklide diğerleri gibi. Sadece printf veya scanf kullanılcağı zaman bu değerler <code>long integer</code> olduğundan <code>%ld</code> kullanılması gerekiyor. Aşağıda verilen bir sayının tersini döndüren fonksiyon bu veri türlerinden <code>uint64_t</code> kullanılarak tanımlanmıştır.</p>
-<div class="codehilite"><pre><span class="kt">uint64_t</span> <span class="nf">reverse</span><span class="p">(</span><span class="kt">uint64_t</span> <span class="n">n</span><span class="p">){</span>
+<div class="highlight"><pre><span class="kt">uint64_t</span> <span class="nf">reverse</span><span class="p">(</span><span class="kt">uint64_t</span> <span class="n">n</span><span class="p">){</span>
     <span class="kt">uint64_t</span> <span class="n">rev</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
     <span class="k">while</span> <span class="p">(</span><span class="n">n</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
         <span class="n">rev</span> <span class="o">=</span> <span class="p">(</span><span class="mi">10</span><span class="o">*</span><span class="n">rev</span><span class="p">)</span> <span class="o">+</span> <span class="p">(</span><span class="n">n</span><span class="o">%</span><span class="mi">10</span><span class="p">);</span>
@@ -82,7 +82,7 @@
 
 
 <p>Benzer şekilde verilen sayının en büyük asal böleni döndüren fonksiyon şu şekilde tanımlanabilir.</p>
-<div class="codehilite"><pre><span class="kt">uint32_t</span> <span class="nf">largest_prime_fact</span><span class="p">(</span><span class="kt">uint64_t</span> <span class="n">num</span><span class="p">){</span>
+<div class="highlight"><pre><span class="kt">uint32_t</span> <span class="nf">largest_prime_fact</span><span class="p">(</span><span class="kt">uint64_t</span> <span class="n">num</span><span class="p">){</span>
     <span class="k">if</span> <span class="p">(</span><span class="n">num</span> <span class="o">&lt;</span> <span class="mi">4</span><span class="p">)</span>
         <span class="k">return</span> <span class="n">num</span><span class="p">;</span>
 
@@ -111,7 +111,7 @@
 
 
 <p>Asal sayıları elekten geçirerek bulan fonksiyon da şu şekilde tanımlanabilirdi.</p>
-<div class="codehilite"><pre><span class="kt">uint32_t</span> <span class="nf">e_sieve</span><span class="p">(</span><span class="kt">uint32_t</span> <span class="o">**</span><span class="n">primes</span><span class="p">,</span> <span class="kt">uint32_t</span> <span class="n">limit</span><span class="p">){</span>
+<div class="highlight"><pre><span class="kt">uint32_t</span> <span class="nf">e_sieve</span><span class="p">(</span><span class="kt">uint32_t</span> <span class="o">**</span><span class="n">primes</span><span class="p">,</span> <span class="kt">uint32_t</span> <span class="n">limit</span><span class="p">){</span>
     <span class="kt">int32_t</span> <span class="o">*</span><span class="n">pbits</span> <span class="o">=</span> <span class="n">calloc</span><span class="p">(</span><span class="n">limit</span><span class="o">/</span><span class="k">sizeof</span><span class="p">(</span><span class="kt">int32_t</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span>
             <span class="k">sizeof</span><span class="p">(</span><span class="kt">int32_t</span><span class="p">));</span>
     <span class="kt">uint32_t</span> <span class="n">prime</span> <span class="o">=</span> <span class="mi">2</span><span class="p">;</span>
@@ -168,11 +168,11 @@
     Posted by <span class="fn">halit</span>
   </span>
   <time datetime="2013-05-08T00:00:00" pubdate> May 08, 2013 </time>    <span class="categories">
-        <a class="category" href="./tag/gcc.html">gcc</a>
-        <a class="category" href="./tag/glibc.html">glibc</a>
-        <a class="category" href="./tag/int.html">int</a>
-        <a class="category" href="./tag/c.html">c</a>
-        <a class="category" href="./tag/gnu-c.html">gnu c</a>
+        <a class="category" href="http://www.halitalptekin.com/tag/gcc.html">gcc</a>
+        <a class="category" href="http://www.halitalptekin.com/tag/glibc.html">glibc</a>
+        <a class="category" href="http://www.halitalptekin.com/tag/int.html">int</a>
+        <a class="category" href="http://www.halitalptekin.com/tag/c.html">c</a>
+        <a class="category" href="http://www.halitalptekin.com/tag/gnu-c.html">gnu c</a>
       </span>
   </p>    </footer>
   </article>
@@ -202,19 +202,19 @@
     <h1>Recent Posts</h1>
     <ul id="recent_posts">
             <li class="post">
-          <a href="./gnu-c-tamsayi-turleri.html">GNU C tamsayi turleri</a>
+          <a href="http://www.halitalptekin.com/gnu-c-tamsayi-turleri.html">GNU C tamsayi turleri</a>
       </li>
             <li class="post">
-          <a href="./fonksiyon-gostergeleri.html">Fonksiyon göstergeleri</a>
+          <a href="http://www.halitalptekin.com/fonksiyon-goestergeleri.html">Fonksiyon göstergeleri</a>
       </li>
             <li class="post">
-          <a href="./cde-debug-makrolari.html">C'de debug makrolari</a>
+          <a href="http://www.halitalptekin.com/cde-debug-makrolari.html">C'de debug makrolari</a>
       </li>
             <li class="post">
-          <a href="./uzun-bir-aradan-sonra.html">Uzun bir aradan sonra</a>
+          <a href="http://www.halitalptekin.com/uzun-bir-aradan-sonra.html">Uzun bir aradan sonra</a>
       </li>
             <li class="post">
-          <a href="./the-seven-rules-of-technical-writing.html">The Seven Rules Of Technical Writing</a>
+          <a href="http://www.halitalptekin.com/the-seven-rules-of-technical-writing.html">The Seven Rules Of Technical Writing</a>
       </li>
           </ul>
   </section>
@@ -222,19 +222,19 @@
       
     <h1>Categories</h1>
     <ul id="recent_posts">
-              <li><a href="./category/tasarim.html">tasarim</a></li>
-              <li><a href="./category/server.html">server</a></li>
-              <li><a href="./category/python.html">python</a></li>
-              <li><a href="./category/programlama.html">programlama</a></li>
-              <li><a href="./category/linux.html">linux</a></li>
-              <li><a href="./category/kisisel.html">kisisel</a></li>
-              <li><a href="./category/internet.html">internet</a></li>
-              <li><a href="./category/guvenlik.html">guvenlik</a></li>
-              <li><a href="./category/genel.html">genel</a></li>
-              <li><a href="./category/eglence.html">eglence</a></li>
-              <li><a href="./category/django.html">django</a></li>
-              <li><a href="./category/compsci.html">compsci</a></li>
-              <li><a href="./category/arduino.html">arduino</a></li>
+              <li><a href="http://www.halitalptekin.com/category/tasarim.html">tasarim</a></li>
+              <li><a href="http://www.halitalptekin.com/category/server.html">server</a></li>
+              <li><a href="http://www.halitalptekin.com/category/python.html">python</a></li>
+              <li><a href="http://www.halitalptekin.com/category/programlama.html">programlama</a></li>
+              <li><a href="http://www.halitalptekin.com/category/linux.html">linux</a></li>
+              <li><a href="http://www.halitalptekin.com/category/kisisel.html">kisisel</a></li>
+              <li><a href="http://www.halitalptekin.com/category/internet.html">internet</a></li>
+              <li><a href="http://www.halitalptekin.com/category/guvenlik.html">guvenlik</a></li>
+              <li><a href="http://www.halitalptekin.com/category/genel.html">genel</a></li>
+              <li><a href="http://www.halitalptekin.com/category/eglence.html">eglence</a></li>
+              <li><a href="http://www.halitalptekin.com/category/django.html">django</a></li>
+              <li><a href="http://www.halitalptekin.com/category/compsci.html">compsci</a></li>
+              <li><a href="http://www.halitalptekin.com/category/arduino.html">arduino</a></li>
           </ul>
   </section>
    
@@ -257,33 +257,25 @@
                 </ul>
     </section>
 
-      <section>
-        <h1>Ads</h1>
-        <ul id="recent_posts">
-                            <li><a href="https://www.camekan.com/adwords/" title="Google Adwords"><img src="/media/reklam/camekancom.jpg" alt="Google Adwords" title="Google Adwords"></a></li>
-                            <li><a href="http://www.dugunajans.com/" title="düğün fotoğrafçısı"><img src="/media/reklam/dugunajanscom.jpg" alt="düğün fotoğrafçısı" title="düğün fotoğrafçısı"></a></li>
-                            <li><a href="http://cevap.tv/yeme-icme/yemek-tarifleri/hamur-isleri/cupcake" title="cupcake tarifi"><img src="/media/reklam/cevaptv.png" alt="cupcake tarifi" title="cupcake tarifi"></a></li>
-                    </ul>
-    </section>
   
 </aside>      <aside class="sidebar">
   <section>
     <h1>Recent Posts</h1>
     <ul id="recent_posts">
             <li class="post">
-          <a href="./gnu-c-tamsayi-turleri.html">GNU C tamsayi turleri</a>
+          <a href="http://www.halitalptekin.com/gnu-c-tamsayi-turleri.html">GNU C tamsayi turleri</a>
       </li>
             <li class="post">
-          <a href="./fonksiyon-gostergeleri.html">Fonksiyon göstergeleri</a>
+          <a href="http://www.halitalptekin.com/fonksiyon-goestergeleri.html">Fonksiyon göstergeleri</a>
       </li>
             <li class="post">
-          <a href="./cde-debug-makrolari.html">C'de debug makrolari</a>
+          <a href="http://www.halitalptekin.com/cde-debug-makrolari.html">C'de debug makrolari</a>
       </li>
             <li class="post">
-          <a href="./uzun-bir-aradan-sonra.html">Uzun bir aradan sonra</a>
+          <a href="http://www.halitalptekin.com/uzun-bir-aradan-sonra.html">Uzun bir aradan sonra</a>
       </li>
             <li class="post">
-          <a href="./the-seven-rules-of-technical-writing.html">The Seven Rules Of Technical Writing</a>
+          <a href="http://www.halitalptekin.com/the-seven-rules-of-technical-writing.html">The Seven Rules Of Technical Writing</a>
       </li>
           </ul>
   </section>
@@ -291,19 +283,19 @@
       
     <h1>Categories</h1>
     <ul id="recent_posts">
-              <li><a href="./category/tasarim.html">tasarim</a></li>
-              <li><a href="./category/server.html">server</a></li>
-              <li><a href="./category/python.html">python</a></li>
-              <li><a href="./category/programlama.html">programlama</a></li>
-              <li><a href="./category/linux.html">linux</a></li>
-              <li><a href="./category/kisisel.html">kisisel</a></li>
-              <li><a href="./category/internet.html">internet</a></li>
-              <li><a href="./category/guvenlik.html">guvenlik</a></li>
-              <li><a href="./category/genel.html">genel</a></li>
-              <li><a href="./category/eglence.html">eglence</a></li>
-              <li><a href="./category/django.html">django</a></li>
-              <li><a href="./category/compsci.html">compsci</a></li>
-              <li><a href="./category/arduino.html">arduino</a></li>
+              <li><a href="http://www.halitalptekin.com/category/tasarim.html">tasarim</a></li>
+              <li><a href="http://www.halitalptekin.com/category/server.html">server</a></li>
+              <li><a href="http://www.halitalptekin.com/category/python.html">python</a></li>
+              <li><a href="http://www.halitalptekin.com/category/programlama.html">programlama</a></li>
+              <li><a href="http://www.halitalptekin.com/category/linux.html">linux</a></li>
+              <li><a href="http://www.halitalptekin.com/category/kisisel.html">kisisel</a></li>
+              <li><a href="http://www.halitalptekin.com/category/internet.html">internet</a></li>
+              <li><a href="http://www.halitalptekin.com/category/guvenlik.html">guvenlik</a></li>
+              <li><a href="http://www.halitalptekin.com/category/genel.html">genel</a></li>
+              <li><a href="http://www.halitalptekin.com/category/eglence.html">eglence</a></li>
+              <li><a href="http://www.halitalptekin.com/category/django.html">django</a></li>
+              <li><a href="http://www.halitalptekin.com/category/compsci.html">compsci</a></li>
+              <li><a href="http://www.halitalptekin.com/category/arduino.html">arduino</a></li>
           </ul>
   </section>
    
@@ -326,14 +318,6 @@
                 </ul>
     </section>
 
-      <section>
-        <h1>Ads</h1>
-        <ul id="recent_posts">
-                            <li><a href="https://www.camekan.com/adwords/" title="Google Adwords"><img src="/media/reklam/camekancom.jpg" alt="Google Adwords" title="Google Adwords"></a></li>
-                            <li><a href="http://www.dugunajans.com/" title="düğün fotoğrafçısı"><img src="/media/reklam/dugunajanscom.jpg" alt="düğün fotoğrafçısı" title="düğün fotoğrafçısı"></a></li>
-                            <li><a href="http://cevap.tv/yeme-icme/yemek-tarifleri/hamur-isleri/cupcake" title="cupcake tarifi"><img src="/media/reklam/cevaptv.png" alt="cupcake tarifi" title="cupcake tarifi"></a></li>
-                    </ul>
-    </section>
   
 </aside>    </div>
   </div>

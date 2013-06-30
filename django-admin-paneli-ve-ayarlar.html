@@ -18,12 +18,12 @@
   <meta name="MobileOptimized" content="320">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <link href="./favicon.png" rel="icon">
-  <link href="./theme/css/main.css" media="screen, projection"
+  <link href="http://www.halitalptekin.com/favicon.png" rel="icon">
+  <link href="http://www.halitalptekin.com/theme/css/main.css" media="screen, projection"
         rel="stylesheet" type="text/css">
-  <script src="./theme/js/modernizr-2.0.js"></script>
-  <script src="./theme/js/ender.js"></script>
-  <script src="./theme/js/octopress.js" type="text/javascript"></script>
+  <script src="http://www.halitalptekin.com/theme/js/modernizr-2.0.js"></script>
+  <script src="http://www.halitalptekin.com/theme/js/ender.js"></script>
+  <script src="http://www.halitalptekin.com/theme/js/octopress.js" type="text/javascript"></script>
 
   <link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic"
         rel="stylesheet" type="text/css">
@@ -32,7 +32,7 @@
 </head>
 <body>
   <header role="banner"><hgroup>
-  <h1><a href="./">{ Halit Alptekin }</a></h1>
+  <h1><a href="http://www.halitalptekin.com/">{ Halit Alptekin }</a></h1>
   </hgroup></header>
   <nav role="navigation"><ul class="subscription" data-subscription="rss">
   <li><a href="http://www.halitalptekin.com/feeds/all.atom.xml" rel="subscribe-rss">Atom</a></li>
@@ -42,16 +42,16 @@
 <!-- TODO: add search here
 <form action="" method="get">
   <fieldset role="search">
-    <input type="hidden" name="q" value="site:." />
+    <input type="hidden" name="q" value="site:http://www.halitalptekin.com" />
     <input class="search" type="text" name="q" results="0" placeholder="Search"/>
   </fieldset>
 </form>
 -->
 
 <ul class="main-navigation">
-  <li><a href="./">Blog</a></li>
-        <li><a href="./pages/about-me.html">About Me</a></li>
-    <li><a href="./pages/contact.html">Contact</a></li>
+  <li><a href="http://www.halitalptekin.com/">Blog</a></li>
+        <li><a href="http://www.halitalptekin.com/pages/about-me.html">About Me</a></li>
+    <li><a href="http://www.halitalptekin.com/pages/contact.html">Contact</a></li>
   <!-- TODO: add categories here? -->
   </ul></nav>
   <div id="main">
@@ -65,13 +65,13 @@
 
   <div class="entry-content"><p>Bir onceki <a href="http://www.halitalptekin.com/makale/django/django-ile-tanisma/">yazımda</a> ilk projemizi başlatıp Django'ya kısa bir giriş yapmıştık.Şimdi de modellere geçmeden hemen once admin panelimizi kurup settings.py dosyamız içinde ufak ayarlar yapacağız.Bu yazıdan hemen sonra da Django'da modellere giriş yapacağız.Modeller konusunu yeniden yazmak yerine HDBlog'un kodlarından anlatarak devam edeceğim.Boylelikle elimizde canlı bir ornekte olmuş olacak.</p>
 <p>Şimdi oncelikle bir onceki yazımda oluşturduğumuz django projesinin içine giriyoruz ve ilk uygulamamızı oluşturuyoruz.Django'da uygulama oluşturmak için aşağıdaki komutu kullanmanız yeterli olacaktır.</p>
-<div class="codehilite"><pre><span class="n">python</span> <span class="n">manage</span><span class="p">.</span><span class="n">py</span> <span class="n">startapp</span> <span class="n">blogdeneme</span>
+<div class="highlight"><pre><span class="n">python</span> <span class="n">manage</span><span class="p">.</span><span class="n">py</span> <span class="n">startapp</span> <span class="n">blogdeneme</span>
 </pre></div>
 
 
 <p>Yukarıdaki komut ile blogdeneme adında bir uygulama oluşturuyoruz.Bu uygulamanın klasorune girdiğinizde <strong><strong>init</strong>.py</strong>,<strong>models.py</strong>,<strong>tests.py</strong>,<strong>views.py</strong> dosyalarını gormeniz gerekecektir.Eğer gorduyseniz başarıyla yeni uygulama oluşturdunuz demektir.</p>
 <p>Proje dizinimizdeki(ben djangoders adında proje oluşturdum) settings.py dosyasını açarsanız aşağıdaki gibi bir goruntuyle karşılaşacaksınız.Bu dosyaya veritabanı bilgilerinden media ve statik dosyalarımızın yerlerine kadar birçok onemli bilgiyi giriyoruz.</p>
-<div class="codehilite"><pre><span class="n">DEBUG</span> <span class="o">=</span> <span class="bp">True</span>
+<div class="highlight"><pre><span class="n">DEBUG</span> <span class="o">=</span> <span class="bp">True</span>
 <span class="n">TEMPLATE_DEBUG</span> <span class="o">=</span> <span class="n">DEBUG</span>
 
 <span class="n">ADMINS</span> <span class="o">=</span> <span class="p">(</span>
@@ -236,7 +236,7 @@
 <p><strong>TEMPLATE_DIRS </strong>ile kullanacağımız temanın dizinini belirtiyoruz.(Windows kullanıcıları yukarıda yazdığım uyarıyı dikkate almaya burada da devam etmelidirler.)</p>
 <p>Geldik projemize ekleyeceğimiz uygulamalara.Django'nun en guzel yanlarından birisi de birden fazla uygulamayı bir projede çalıştırma imkanı vermesi. <strong>INSTALLED_APPS </strong>içine <strong>blogdeneme</strong> adlı az once oluşturduğumuz uygulamayı ekleyelim.Bu kısımda birde dikkat etmemiz gereken bir olay var.Djangoda eğer admin paneli kullanacaksak <strong>django.contrib.admin </strong>uygulamasının başındaki # sembolunu kaldıralım.Daha sonra admin panelimize direk /admin/ yazıp ulaşmak içinde <strong>djangoders/urls.py </strong>dosyası içindeki <strong>from django.contrib import admin</strong> , <strong>admin.autodiscover()</strong> ve <strong>url(r'^admin/', include(admin.site.urls)),</strong> satırlarının başındaki # sembolunu kaldıralım.Bu şekilde yapınca admin panelimizi aktif etmiş oluyoruz.</p>
 <p>Settings.py ve admin panelimiz için yapacaklarımız bu kadar.Yukarıdakileri yaptıktan sonra yeni settings.py dosyamız aşağıdaki gibi olacak.Değişen yerlere dikkat edelim.</p>
-<div class="codehilite"><pre><span class="n">DEBUG</span> <span class="o">=</span> <span class="bp">True</span>
+<div class="highlight"><pre><span class="n">DEBUG</span> <span class="o">=</span> <span class="bp">True</span>
 <span class="n">TEMPLATE_DEBUG</span> <span class="o">=</span> <span class="n">DEBUG</span>
 
 <span class="n">ADMINS</span> <span class="o">=</span> <span class="p">(</span>
@@ -394,14 +394,14 @@
 
 
 <p>Ve daha sonra projemizin dizinine geçiyoruz ve veritabanı tablolarımızın oluşturulması için aşağıdaki komutu giriyoruz.</p>
-<div class="codehilite"><pre><span class="n">python</span> <span class="n">manage</span><span class="p">.</span><span class="n">py</span> <span class="n">syncdb</span>
+<div class="highlight"><pre><span class="n">python</span> <span class="n">manage</span><span class="p">.</span><span class="n">py</span> <span class="n">syncdb</span>
 </pre></div>
 
 
 <p>Bu komutu girdikten sonra super kullanıcı oluşturmak isteyip istemediğinizi soracak. Ve sizden mail adresi ile şifre alacak.Bu bilgileri admin paneline girmek için kullanacağız.</p>
 <p><img alt="Django Admin Panel" src="http://www.halitalptekin.com/media/upload/django-admin.png" /></p>
 <p>Şimdi uygulamamızı çalıştıralım.Aşağıdaki komuttan sonra port numarası girerek istediğiniz bir portta açabilirsiniz.Eğer belirtmezseniz default olarak 8000 açılacaktır.</p>
-<div class="codehilite"><pre><span class="n">python</span> <span class="n">manage</span><span class="p">.</span><span class="n">py</span> <span class="n">runserver</span>
+<div class="highlight"><pre><span class="n">python</span> <span class="n">manage</span><span class="p">.</span><span class="n">py</span> <span class="n">runserver</span>
 </pre></div>
 
 
@@ -418,12 +418,12 @@
     Posted by <span class="fn">halit</span>
   </span>
   <time datetime="2012-06-08T00:00:00" pubdate> Jun 08, 2012 </time>    <span class="categories">
-        <a class="category" href="./tag/django.html">django</a>
-        <a class="category" href="./tag/django-admin-paneli.html">django admin paneli</a>
-        <a class="category" href="./tag/django-ayarlari.html">django ayarları</a>
-        <a class="category" href="./tag/django-dersleri.html">django dersleri</a>
-        <a class="category" href="./tag/django-settings.html">django settings</a>
-        <a class="category" href="./tag/django-veritabani.html">django veritabanı</a>
+        <a class="category" href="http://www.halitalptekin.com/tag/django.html">django</a>
+        <a class="category" href="http://www.halitalptekin.com/tag/django-admin-paneli.html">django admin paneli</a>
+        <a class="category" href="http://www.halitalptekin.com/tag/django-ayarlari.html">django ayarları</a>
+        <a class="category" href="http://www.halitalptekin.com/tag/django-dersleri.html">django dersleri</a>
+        <a class="category" href="http://www.halitalptekin.com/tag/django-settings.html">django settings</a>
+        <a class="category" href="http://www.halitalptekin.com/tag/django-veritabani.html">django veritabanı</a>
       </span>
   </p>    </footer>
   </article>
@@ -453,19 +453,19 @@
     <h1>Recent Posts</h1>
     <ul id="recent_posts">
             <li class="post">
-          <a href="./gnu-c-tamsayi-turleri.html">GNU C tamsayi turleri</a>
+          <a href="http://www.halitalptekin.com/gnu-c-tamsayi-turleri.html">GNU C tamsayi turleri</a>
       </li>
             <li class="post">
-          <a href="./fonksiyon-gostergeleri.html">Fonksiyon göstergeleri</a>
+          <a href="http://www.halitalptekin.com/fonksiyon-goestergeleri.html">Fonksiyon göstergeleri</a>
       </li>
             <li class="post">
-          <a href="./cde-debug-makrolari.html">C'de debug makrolari</a>
+          <a href="http://www.halitalptekin.com/cde-debug-makrolari.html">C'de debug makrolari</a>
       </li>
             <li class="post">
-          <a href="./uzun-bir-aradan-sonra.html">Uzun bir aradan sonra</a>
+          <a href="http://www.halitalptekin.com/uzun-bir-aradan-sonra.html">Uzun bir aradan sonra</a>
       </li>
             <li class="post">
-          <a href="./the-seven-rules-of-technical-writing.html">The Seven Rules Of Technical Writing</a>
+          <a href="http://www.halitalptekin.com/the-seven-rules-of-technical-writing.html">The Seven Rules Of Technical Writing</a>
       </li>
           </ul>
   </section>
@@ -473,19 +473,19 @@
       
     <h1>Categories</h1>
     <ul id="recent_posts">
-              <li><a href="./category/tasarim.html">tasarim</a></li>
-              <li><a href="./category/server.html">server</a></li>
-              <li><a href="./category/python.html">python</a></li>
-              <li><a href="./category/programlama.html">programlama</a></li>
-              <li><a href="./category/linux.html">linux</a></li>
-              <li><a href="./category/kisisel.html">kisisel</a></li>
-              <li><a href="./category/internet.html">internet</a></li>
-              <li><a href="./category/guvenlik.html">guvenlik</a></li>
-              <li><a href="./category/genel.html">genel</a></li>
-              <li><a href="./category/eglence.html">eglence</a></li>
-              <li><a href="./category/django.html">django</a></li>
-              <li><a href="./category/compsci.html">compsci</a></li>
-              <li><a href="./category/arduino.html">arduino</a></li>
+              <li><a href="http://www.halitalptekin.com/category/tasarim.html">tasarim</a></li>
+              <li><a href="http://www.halitalptekin.com/category/server.html">server</a></li>
+              <li><a href="http://www.halitalptekin.com/category/python.html">python</a></li>
+              <li><a href="http://www.halitalptekin.com/category/programlama.html">programlama</a></li>
+              <li><a href="http://www.halitalptekin.com/category/linux.html">linux</a></li>
+              <li><a href="http://www.halitalptekin.com/category/kisisel.html">kisisel</a></li>
+              <li><a href="http://www.halitalptekin.com/category/internet.html">internet</a></li>
+              <li><a href="http://www.halitalptekin.com/category/guvenlik.html">guvenlik</a></li>
+              <li><a href="http://www.halitalptekin.com/category/genel.html">genel</a></li>
+              <li><a href="http://www.halitalptekin.com/category/eglence.html">eglence</a></li>
+              <li><a href="http://www.halitalptekin.com/category/django.html">django</a></li>
+              <li><a href="http://www.halitalptekin.com/category/compsci.html">compsci</a></li>
+              <li><a href="http://www.halitalptekin.com/category/arduino.html">arduino</a></li>
           </ul>
   </section>
    
@@ -508,33 +508,25 @@
                 </ul>
     </section>
 
-      <section>
-        <h1>Ads</h1>
-        <ul id="recent_posts">
-                            <li><a href="https://www.camekan.com/adwords/" title="Google Adwords"><img src="/media/reklam/camekancom.jpg" alt="Google Adwords" title="Google Adwords"></a></li>
-                            <li><a href="http://www.dugunajans.com/" title="düğün fotoğrafçısı"><img src="/media/reklam/dugunajanscom.jpg" alt="düğün fotoğrafçısı" title="düğün fotoğrafçısı"></a></li>
-                            <li><a href="http://cevap.tv/yeme-icme/yemek-tarifleri/hamur-isleri/cupcake" title="cupcake tarifi"><img src="/media/reklam/cevaptv.png" alt="cupcake tarifi" title="cupcake tarifi"></a></li>
-                    </ul>
-    </section>
   
 </aside>      <aside class="sidebar">
   <section>
     <h1>Recent Posts</h1>
     <ul id="recent_posts">
             <li class="post">
-          <a href="./gnu-c-tamsayi-turleri.html">GNU C tamsayi turleri</a>
+          <a href="http://www.halitalptekin.com/gnu-c-tamsayi-turleri.html">GNU C tamsayi turleri</a>
       </li>
             <li class="post">
-          <a href="./fonksiyon-gostergeleri.html">Fonksiyon göstergeleri</a>
+          <a href="http://www.halitalptekin.com/fonksiyon-goestergeleri.html">Fonksiyon göstergeleri</a>
       </li>
             <li class="post">
-          <a href="./cde-debug-makrolari.html">C'de debug makrolari</a>
+          <a href="http://www.halitalptekin.com/cde-debug-makrolari.html">C'de debug makrolari</a>
       </li>
             <li class="post">
-          <a href="./uzun-bir-aradan-sonra.html">Uzun bir aradan sonra</a>
+          <a href="http://www.halitalptekin.com/uzun-bir-aradan-sonra.html">Uzun bir aradan sonra</a>
       </li>
             <li class="post">
-          <a href="./the-seven-rules-of-technical-writing.html">The Seven Rules Of Technical Writing</a>
+          <a href="http://www.halitalptekin.com/the-seven-rules-of-technical-writing.html">The Seven Rules Of Technical Writing</a>
       </li>
           </ul>
   </section>
@@ -542,19 +534,19 @@
       
     <h1>Categories</h1>
     <ul id="recent_posts">
-              <li><a href="./category/tasarim.html">tasarim</a></li>
-              <li><a href="./category/server.html">server</a></li>
-              <li><a href="./category/python.html">python</a></li>
-              <li><a href="./category/programlama.html">programlama</a></li>
-              <li><a href="./category/linux.html">linux</a></li>
-              <li><a href="./category/kisisel.html">kisisel</a></li>
-              <li><a href="./category/internet.html">internet</a></li>
-              <li><a href="./category/guvenlik.html">guvenlik</a></li>
-              <li><a href="./category/genel.html">genel</a></li>
-              <li><a href="./category/eglence.html">eglence</a></li>
-              <li><a href="./category/django.html">django</a></li>
-              <li><a href="./category/compsci.html">compsci</a></li>
-              <li><a href="./category/arduino.html">arduino</a></li>
+              <li><a href="http://www.halitalptekin.com/category/tasarim.html">tasarim</a></li>
+              <li><a href="http://www.halitalptekin.com/category/server.html">server</a></li>
+              <li><a href="http://www.halitalptekin.com/category/python.html">python</a></li>
+              <li><a href="http://www.halitalptekin.com/category/programlama.html">programlama</a></li>
+              <li><a href="http://www.halitalptekin.com/category/linux.html">linux</a></li>
+              <li><a href="http://www.halitalptekin.com/category/kisisel.html">kisisel</a></li>
+              <li><a href="http://www.halitalptekin.com/category/internet.html">internet</a></li>
+              <li><a href="http://www.halitalptekin.com/category/guvenlik.html">guvenlik</a></li>
+              <li><a href="http://www.halitalptekin.com/category/genel.html">genel</a></li>
+              <li><a href="http://www.halitalptekin.com/category/eglence.html">eglence</a></li>
+              <li><a href="http://www.halitalptekin.com/category/django.html">django</a></li>
+              <li><a href="http://www.halitalptekin.com/category/compsci.html">compsci</a></li>
+              <li><a href="http://www.halitalptekin.com/category/arduino.html">arduino</a></li>
           </ul>
   </section>
    
@@ -577,14 +569,6 @@
                 </ul>
     </section>
 
-      <section>
-        <h1>Ads</h1>
-        <ul id="recent_posts">
-                            <li><a href="https://www.camekan.com/adwords/" title="Google Adwords"><img src="/media/reklam/camekancom.jpg" alt="Google Adwords" title="Google Adwords"></a></li>
-                            <li><a href="http://www.dugunajans.com/" title="düğün fotoğrafçısı"><img src="/media/reklam/dugunajanscom.jpg" alt="düğün fotoğrafçısı" title="düğün fotoğrafçısı"></a></li>
-                            <li><a href="http://cevap.tv/yeme-icme/yemek-tarifleri/hamur-isleri/cupcake" title="cupcake tarifi"><img src="/media/reklam/cevaptv.png" alt="cupcake tarifi" title="cupcake tarifi"></a></li>
-                    </ul>
-    </section>
   
 </aside>    </div>
   </div>

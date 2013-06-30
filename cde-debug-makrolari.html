@@ -18,12 +18,12 @@
   <meta name="MobileOptimized" content="320">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <link href="./favicon.png" rel="icon">
-  <link href="./theme/css/main.css" media="screen, projection"
+  <link href="http://www.halitalptekin.com/favicon.png" rel="icon">
+  <link href="http://www.halitalptekin.com/theme/css/main.css" media="screen, projection"
         rel="stylesheet" type="text/css">
-  <script src="./theme/js/modernizr-2.0.js"></script>
-  <script src="./theme/js/ender.js"></script>
-  <script src="./theme/js/octopress.js" type="text/javascript"></script>
+  <script src="http://www.halitalptekin.com/theme/js/modernizr-2.0.js"></script>
+  <script src="http://www.halitalptekin.com/theme/js/ender.js"></script>
+  <script src="http://www.halitalptekin.com/theme/js/octopress.js" type="text/javascript"></script>
 
   <link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic"
         rel="stylesheet" type="text/css">
@@ -32,7 +32,7 @@
 </head>
 <body>
   <header role="banner"><hgroup>
-  <h1><a href="./">{ Halit Alptekin }</a></h1>
+  <h1><a href="http://www.halitalptekin.com/">{ Halit Alptekin }</a></h1>
   </hgroup></header>
   <nav role="navigation"><ul class="subscription" data-subscription="rss">
   <li><a href="http://www.halitalptekin.com/feeds/all.atom.xml" rel="subscribe-rss">Atom</a></li>
@@ -42,16 +42,16 @@
 <!-- TODO: add search here
 <form action="" method="get">
   <fieldset role="search">
-    <input type="hidden" name="q" value="site:." />
+    <input type="hidden" name="q" value="site:http://www.halitalptekin.com" />
     <input class="search" type="text" name="q" results="0" placeholder="Search"/>
   </fieldset>
 </form>
 -->
 
 <ul class="main-navigation">
-  <li><a href="./">Blog</a></li>
-        <li><a href="./pages/about-me.html">About Me</a></li>
-    <li><a href="./pages/contact.html">Contact</a></li>
+  <li><a href="http://www.halitalptekin.com/">Blog</a></li>
+        <li><a href="http://www.halitalptekin.com/pages/about-me.html">About Me</a></li>
+    <li><a href="http://www.halitalptekin.com/pages/contact.html">Contact</a></li>
   <!-- TODO: add categories here? -->
   </ul></nav>
   <div id="main">
@@ -66,7 +66,7 @@
   <div class="entry-content"><p>Bu sıralar okulda aldığım programlamaya giriş dersinden dolayı ciddi anlamda C ile içli dışlı oluyorum. En başlarda biraz mesafeli davransam da zamanla beni kendisine çekmeye başardı diyebilirim. Düşük seviyede çalışmanın kazandırdığı hız, bu işin karmaşıklığını gözardı etmeme sebep oluyor. Ve bu anlatmaya çalıştığım hız gerçekten beni yeterince tatmin ediyor. Tabi C'ye sadece hızlı demek büyük ayıp olur. İşletim sistemi tarafında da diğer dillere göre çok alt seviyede rahatça hareket edebiliyorsunuz. Özellikle <strong>GNU/Linux</strong> dünyası içerisinde yer alan programları yeniden yazmaya çalışmak da ayrı bir zevkli oluyor.</p>
 <p>C ile ilk uğraşlarım klasik olarak önce syntaxı öğrenmek oldu. Daha sonra da zamanla incelikleri ve kütüphaneleri öğrenmeye başladım. Hala da öğrenmeye devam ediyorum. Bu öğrenme aşamalarında da çok fazla kod yazmaya çalışıyorum. İrili ufaklı birçok kod yazdım. Bir kısmı program denilecek seviyede iken diğerleri sadece ufak denemelerden oluşuyor. Buna rağmen 2 haftada 6-7 bin satır sadece C kodu yazdığımı da farkettim. Ve belirli bir seviyeye geldiğime inanıyorum. Bundan sonra yazacağım kodların biraz daha ciddi programlar olmasını umuyorum.</p>
 <p>İşte bu tarz programlarda hata ayıklama için biraz efor sarf etmek gerekiyor. Bu amaç için çıktığım arayışta aşağıdaki gayet minimal ama işimi gören bir makrolar topluluğu ile karşılaştım.</p>
-<div class="codehilite"><pre><span class="c">#ifndef __dbg_h__</span>
+<div class="highlight"><pre><span class="c">#ifndef __dbg_h__</span>
 <span class="c">#define __dbg_h__</span>
 
 <span class="c">#include &lt;stdio.h&gt;</span>
@@ -102,7 +102,7 @@
 <p>Bu kodu <code>dbg.h</code> olarak kaydedip kullanmak istediğiniz programa <code>#include "dbg.h"</code> şeklinde ekleyebilirsiniz. Daha sonra da kodunuzun ilgili satırlarda karşılaşabileceğiniz olası <strong>hataları</strong> rahatça çözebilirsiniz. Kullanim sekline gelirsek <code>log_err</code>, <code>log_warn</code>, <code>log_info</code> isimlerinden de anlaşılacağı gibi hata uyarı ve bilgi verme amacıyla kullanılabilir. <code>check</code> makrosu ise verilen argümanın doğruluğu test eder ve eğer doğru değilse <code>stderr</code>'e hatayi yazip <code>error</code> isimli etikete zıplar ve oradaki kodları çalıştırır. <code>check_mem</code> ise işletim sisteminden dinamik olarak alan istediğimiz de bu bellek alanının bize tahsis edilip edilmediğini kontrol edebilmemizi sağlar. <code>check</code> isimli makro da verilen argümanın doğruluğunu test edip duruma göre hata verip <code>error</code> isimli etikete zıplar.</p>
 <p>Bu makroların nasıl kullanılabileceğine dair <a href="http://c.learncodethehardway.org/book/ex20.html" title="Learn C The Hard Way Debugging Macros">buradaki</a> link size gayet yardımcı olacaktır. Zaten anlaşılmayacak kadar zor birşey yok. Önemli olan bu makroları sürekli olarak kodunuzda hata çıkartabileceği muhtemel yerlerde kullanmayı alışkanlık haline getirmek. Sanki heryerden hata fışkıracakmış gibi kod yazmak insana çok fazla şey katacağına eminim. Ayrıcana sadece bu makrolar için değil de <a href="http://http://c.learncodethehardway.org/book/" title="Learn C The Hard Way">Learn C The Hard Way</a> sitesindeki tüm dökümanlar bence bulabileceğiniz en kaliteli <strong>C</strong> dökümanları diyebilirim. En azından bir süre <strong>C</strong> ile uğraşmış kişilerin kesinlikle göz atması gerektiğini düşünüyorum.</p>
 <p>Yukarıda bahsettiğim makroların kullanımına dair kod da aşağıdaki gibi.</p>
-<div class="codehilite"><pre><span class="cp">#include &quot;dbg.h&quot;</span>
+<div class="highlight"><pre><span class="cp">#include &quot;dbg.h&quot;</span>
 <span class="cp">#include &lt;stdlib.h&gt;</span>
 <span class="cp">#include &lt;stdio.h&gt;</span>
 
@@ -226,11 +226,11 @@
     Posted by <span class="fn">halit</span>
   </span>
   <time datetime="2013-04-29T00:00:00" pubdate> Apr 29, 2013 </time>    <span class="categories">
-        <a class="category" href="./tag/c.html">c</a>
-        <a class="category" href="./tag/c-debug.html">c debug</a>
-        <a class="category" href="./tag/debugging.html">debugging</a>
-        <a class="category" href="./tag/c-makro.html">c makro</a>
-        <a class="category" href="./tag/c-macros.html">c macros</a>
+        <a class="category" href="http://www.halitalptekin.com/tag/c.html">c</a>
+        <a class="category" href="http://www.halitalptekin.com/tag/c-debug.html">c debug</a>
+        <a class="category" href="http://www.halitalptekin.com/tag/debugging.html">debugging</a>
+        <a class="category" href="http://www.halitalptekin.com/tag/c-makro.html">c makro</a>
+        <a class="category" href="http://www.halitalptekin.com/tag/c-macros.html">c macros</a>
       </span>
   </p>    </footer>
   </article>
@@ -260,19 +260,19 @@
     <h1>Recent Posts</h1>
     <ul id="recent_posts">
             <li class="post">
-          <a href="./gnu-c-tamsayi-turleri.html">GNU C tamsayi turleri</a>
+          <a href="http://www.halitalptekin.com/gnu-c-tamsayi-turleri.html">GNU C tamsayi turleri</a>
       </li>
             <li class="post">
-          <a href="./fonksiyon-gostergeleri.html">Fonksiyon göstergeleri</a>
+          <a href="http://www.halitalptekin.com/fonksiyon-goestergeleri.html">Fonksiyon göstergeleri</a>
       </li>
             <li class="post">
-          <a href="./cde-debug-makrolari.html">C'de debug makrolari</a>
+          <a href="http://www.halitalptekin.com/cde-debug-makrolari.html">C'de debug makrolari</a>
       </li>
             <li class="post">
-          <a href="./uzun-bir-aradan-sonra.html">Uzun bir aradan sonra</a>
+          <a href="http://www.halitalptekin.com/uzun-bir-aradan-sonra.html">Uzun bir aradan sonra</a>
       </li>
             <li class="post">
-          <a href="./the-seven-rules-of-technical-writing.html">The Seven Rules Of Technical Writing</a>
+          <a href="http://www.halitalptekin.com/the-seven-rules-of-technical-writing.html">The Seven Rules Of Technical Writing</a>
       </li>
           </ul>
   </section>
@@ -280,19 +280,19 @@
       
     <h1>Categories</h1>
     <ul id="recent_posts">
-              <li><a href="./category/tasarim.html">tasarim</a></li>
-              <li><a href="./category/server.html">server</a></li>
-              <li><a href="./category/python.html">python</a></li>
-              <li><a href="./category/programlama.html">programlama</a></li>
-              <li><a href="./category/linux.html">linux</a></li>
-              <li><a href="./category/kisisel.html">kisisel</a></li>
-              <li><a href="./category/internet.html">internet</a></li>
-              <li><a href="./category/guvenlik.html">guvenlik</a></li>
-              <li><a href="./category/genel.html">genel</a></li>
-              <li><a href="./category/eglence.html">eglence</a></li>
-              <li><a href="./category/django.html">django</a></li>
-              <li><a href="./category/compsci.html">compsci</a></li>
-              <li><a href="./category/arduino.html">arduino</a></li>
+              <li><a href="http://www.halitalptekin.com/category/tasarim.html">tasarim</a></li>
+              <li><a href="http://www.halitalptekin.com/category/server.html">server</a></li>
+              <li><a href="http://www.halitalptekin.com/category/python.html">python</a></li>
+              <li><a href="http://www.halitalptekin.com/category/programlama.html">programlama</a></li>
+              <li><a href="http://www.halitalptekin.com/category/linux.html">linux</a></li>
+              <li><a href="http://www.halitalptekin.com/category/kisisel.html">kisisel</a></li>
+              <li><a href="http://www.halitalptekin.com/category/internet.html">internet</a></li>
+              <li><a href="http://www.halitalptekin.com/category/guvenlik.html">guvenlik</a></li>
+              <li><a href="http://www.halitalptekin.com/category/genel.html">genel</a></li>
+              <li><a href="http://www.halitalptekin.com/category/eglence.html">eglence</a></li>
+              <li><a href="http://www.halitalptekin.com/category/django.html">django</a></li>
+              <li><a href="http://www.halitalptekin.com/category/compsci.html">compsci</a></li>
+              <li><a href="http://www.halitalptekin.com/category/arduino.html">arduino</a></li>
           </ul>
   </section>
    
@@ -315,33 +315,25 @@
                 </ul>
     </section>
 
-      <section>
-        <h1>Ads</h1>
-        <ul id="recent_posts">
-                            <li><a href="https://www.camekan.com/adwords/" title="Google Adwords"><img src="/media/reklam/camekancom.jpg" alt="Google Adwords" title="Google Adwords"></a></li>
-                            <li><a href="http://www.dugunajans.com/" title="düğün fotoğrafçısı"><img src="/media/reklam/dugunajanscom.jpg" alt="düğün fotoğrafçısı" title="düğün fotoğrafçısı"></a></li>
-                            <li><a href="http://cevap.tv/yeme-icme/yemek-tarifleri/hamur-isleri/cupcake" title="cupcake tarifi"><img src="/media/reklam/cevaptv.png" alt="cupcake tarifi" title="cupcake tarifi"></a></li>
-                    </ul>
-    </section>
   
 </aside>      <aside class="sidebar">
   <section>
     <h1>Recent Posts</h1>
     <ul id="recent_posts">
             <li class="post">
-          <a href="./gnu-c-tamsayi-turleri.html">GNU C tamsayi turleri</a>
+          <a href="http://www.halitalptekin.com/gnu-c-tamsayi-turleri.html">GNU C tamsayi turleri</a>
       </li>
             <li class="post">
-          <a href="./fonksiyon-gostergeleri.html">Fonksiyon göstergeleri</a>
+          <a href="http://www.halitalptekin.com/fonksiyon-goestergeleri.html">Fonksiyon göstergeleri</a>
       </li>
             <li class="post">
-          <a href="./cde-debug-makrolari.html">C'de debug makrolari</a>
+          <a href="http://www.halitalptekin.com/cde-debug-makrolari.html">C'de debug makrolari</a>
       </li>
             <li class="post">
-          <a href="./uzun-bir-aradan-sonra.html">Uzun bir aradan sonra</a>
+          <a href="http://www.halitalptekin.com/uzun-bir-aradan-sonra.html">Uzun bir aradan sonra</a>
       </li>
             <li class="post">
-          <a href="./the-seven-rules-of-technical-writing.html">The Seven Rules Of Technical Writing</a>
+          <a href="http://www.halitalptekin.com/the-seven-rules-of-technical-writing.html">The Seven Rules Of Technical Writing</a>
       </li>
           </ul>
   </section>
@@ -349,19 +341,19 @@
       
     <h1>Categories</h1>
     <ul id="recent_posts">
-              <li><a href="./category/tasarim.html">tasarim</a></li>
-              <li><a href="./category/server.html">server</a></li>
-              <li><a href="./category/python.html">python</a></li>
-              <li><a href="./category/programlama.html">programlama</a></li>
-              <li><a href="./category/linux.html">linux</a></li>
-              <li><a href="./category/kisisel.html">kisisel</a></li>
-              <li><a href="./category/internet.html">internet</a></li>
-              <li><a href="./category/guvenlik.html">guvenlik</a></li>
-              <li><a href="./category/genel.html">genel</a></li>
-              <li><a href="./category/eglence.html">eglence</a></li>
-              <li><a href="./category/django.html">django</a></li>
-              <li><a href="./category/compsci.html">compsci</a></li>
-              <li><a href="./category/arduino.html">arduino</a></li>
+              <li><a href="http://www.halitalptekin.com/category/tasarim.html">tasarim</a></li>
+              <li><a href="http://www.halitalptekin.com/category/server.html">server</a></li>
+              <li><a href="http://www.halitalptekin.com/category/python.html">python</a></li>
+              <li><a href="http://www.halitalptekin.com/category/programlama.html">programlama</a></li>
+              <li><a href="http://www.halitalptekin.com/category/linux.html">linux</a></li>
+              <li><a href="http://www.halitalptekin.com/category/kisisel.html">kisisel</a></li>
+              <li><a href="http://www.halitalptekin.com/category/internet.html">internet</a></li>
+              <li><a href="http://www.halitalptekin.com/category/guvenlik.html">guvenlik</a></li>
+              <li><a href="http://www.halitalptekin.com/category/genel.html">genel</a></li>
+              <li><a href="http://www.halitalptekin.com/category/eglence.html">eglence</a></li>
+              <li><a href="http://www.halitalptekin.com/category/django.html">django</a></li>
+              <li><a href="http://www.halitalptekin.com/category/compsci.html">compsci</a></li>
+              <li><a href="http://www.halitalptekin.com/category/arduino.html">arduino</a></li>
           </ul>
   </section>
    
@@ -384,14 +376,6 @@
                 </ul>
     </section>
 
-      <section>
-        <h1>Ads</h1>
-        <ul id="recent_posts">
-                            <li><a href="https://www.camekan.com/adwords/" title="Google Adwords"><img src="/media/reklam/camekancom.jpg" alt="Google Adwords" title="Google Adwords"></a></li>
-                            <li><a href="http://www.dugunajans.com/" title="düğün fotoğrafçısı"><img src="/media/reklam/dugunajanscom.jpg" alt="düğün fotoğrafçısı" title="düğün fotoğrafçısı"></a></li>
-                            <li><a href="http://cevap.tv/yeme-icme/yemek-tarifleri/hamur-isleri/cupcake" title="cupcake tarifi"><img src="/media/reklam/cevaptv.png" alt="cupcake tarifi" title="cupcake tarifi"></a></li>
-                    </ul>
-    </section>
   
 </aside>    </div>
   </div>

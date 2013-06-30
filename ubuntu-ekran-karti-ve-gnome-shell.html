@@ -18,12 +18,12 @@
   <meta name="MobileOptimized" content="320">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <link href="./favicon.png" rel="icon">
-  <link href="./theme/css/main.css" media="screen, projection"
+  <link href="http://www.halitalptekin.com/favicon.png" rel="icon">
+  <link href="http://www.halitalptekin.com/theme/css/main.css" media="screen, projection"
         rel="stylesheet" type="text/css">
-  <script src="./theme/js/modernizr-2.0.js"></script>
-  <script src="./theme/js/ender.js"></script>
-  <script src="./theme/js/octopress.js" type="text/javascript"></script>
+  <script src="http://www.halitalptekin.com/theme/js/modernizr-2.0.js"></script>
+  <script src="http://www.halitalptekin.com/theme/js/ender.js"></script>
+  <script src="http://www.halitalptekin.com/theme/js/octopress.js" type="text/javascript"></script>
 
   <link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic"
         rel="stylesheet" type="text/css">
@@ -32,7 +32,7 @@
 </head>
 <body>
   <header role="banner"><hgroup>
-  <h1><a href="./">{ Halit Alptekin }</a></h1>
+  <h1><a href="http://www.halitalptekin.com/">{ Halit Alptekin }</a></h1>
   </hgroup></header>
   <nav role="navigation"><ul class="subscription" data-subscription="rss">
   <li><a href="http://www.halitalptekin.com/feeds/all.atom.xml" rel="subscribe-rss">Atom</a></li>
@@ -42,16 +42,16 @@
 <!-- TODO: add search here
 <form action="" method="get">
   <fieldset role="search">
-    <input type="hidden" name="q" value="site:." />
+    <input type="hidden" name="q" value="site:http://www.halitalptekin.com" />
     <input class="search" type="text" name="q" results="0" placeholder="Search"/>
   </fieldset>
 </form>
 -->
 
 <ul class="main-navigation">
-  <li><a href="./">Blog</a></li>
-        <li><a href="./pages/about-me.html">About Me</a></li>
-    <li><a href="./pages/contact.html">Contact</a></li>
+  <li><a href="http://www.halitalptekin.com/">Blog</a></li>
+        <li><a href="http://www.halitalptekin.com/pages/about-me.html">About Me</a></li>
+    <li><a href="http://www.halitalptekin.com/pages/contact.html">Contact</a></li>
   <!-- TODO: add categories here? -->
   </ul></nav>
   <div id="main">
@@ -67,7 +67,7 @@
 <p>Tabi sadece bununla da kalmayıp wine ile çalıştıramadığım oyunlar ve blender gibi 3d programları da çalıştırmayı başardım. Yani artık Ubuntu'yu tam olarak kullanmaya başladım.</p>
 <p><strong>Hybrid Ekran Kartlarının Kurulumu</strong></p>
 <p>Bu tabiri ubuntu forumlarında yazdığım soruya gelen cevapta gordum. Aşağıdaki sonucun çıktısı benimkine benzer şekilde 2 tane ekran kartı gozukuyorsa sizin de kartınız hybrid olmalı.</p>
-<div class="codehilite"><pre><span class="n">lspci</span> <span class="o">|</span> <span class="n">grep</span> <span class="n">VGA</span>
+<div class="highlight"><pre><span class="n">lspci</span> <span class="o">|</span> <span class="n">grep</span> <span class="n">VGA</span>
 
 
 
@@ -80,14 +80,14 @@
 <p><img alt="Ubuntu Ek suruculer" src="http://www.halitalptekin.com/media/upload/ek-suruculer-ubuntu.png" /></p>
 <p>Ben onceki deneyimlerimde yukarıda gozuken <strong>ATI/AMD için telifli FGLRX grafik surucusu </strong>ve <strong>ATI/AMD için telifli FGLRX grafik surucusu(surum sonrası guncellemeler) </strong>seçenklerinin ikisinide kurmama rağmen herhangibi bir değişiklik olmadı. Daha sonra anladığım kadarıyla sadece <strong>ATI/AMD için telifli FGLRX grafik surucusu </strong>seçeneğini kurmak yeterli olacaktır. Ben diğerini kurduğumda sorun ile karşılaştım. Bu surucunun kurulumu biraz surecek bittikten hemen sonra bilgisayarınızı yeniden başlatın.</p>
 <p>Ben bunu da yaptıktan sonra bilgisayarım açıldığında ekran kartımın kurulumu olmasını hayal etmiştim. Ancak olmamıştı. Çunku eksik bir yer vardı. Bunu da saolsun Ubuntu'nun resmi sitesinde dosyalar içinde gordum. Buna gore aşağıdaki komutu çalıştırıp driver kurulumunu tamamlamam gerekliymiş.</p>
-<div class="codehilite"><pre><span class="n">sudo</span> <span class="n">aticonfig</span> <span class="o">--</span><span class="n">initial</span>
+<div class="highlight"><pre><span class="n">sudo</span> <span class="n">aticonfig</span> <span class="o">--</span><span class="n">initial</span>
 </pre></div>
 
 
 <p>Bilgisayarınızın ekranında kararma ve yeniden donuş olduktan sonra dosya oluşturuldu gibi bir yazı gorurseniz başarıyla kurmuş oldunuz. Artık rahatça diğer gorsel efektleri kullanabilirsiniz.</p>
 <p><strong>Gnome ve Gnome Shell Kurulumu</strong></p>
 <p>Bildiğiniz gibi Ubuntu Unity ile on tanımlı olarak geliyor. Ancak Ubuntu depolarından Gnome'u da çekerek kurabilirsiniz. Sırasıyla aşağıdaki komutlar yeterli olacaktır.</p>
-<div class="codehilite"><pre><span class="n">sudo</span> <span class="n">add</span><span class="o">-</span><span class="n">apt</span><span class="o">-</span><span class="n">repository</span> <span class="n">ppa</span><span class="o">:</span><span class="n">gnome3</span><span class="o">-</span><span class="n">team</span><span class="o">/</span><span class="n">gnome3</span>
+<div class="highlight"><pre><span class="n">sudo</span> <span class="n">add</span><span class="o">-</span><span class="n">apt</span><span class="o">-</span><span class="n">repository</span> <span class="n">ppa</span><span class="o">:</span><span class="n">gnome3</span><span class="o">-</span><span class="n">team</span><span class="o">/</span><span class="n">gnome3</span>
 <span class="n">sudo</span> <span class="n">apt</span><span class="o">-</span><span class="n">get</span> <span class="n">update</span>
 <span class="n">sudo</span> <span class="n">apt</span><span class="o">-</span><span class="n">get</span> <span class="n">install</span> <span class="n">gnome</span><span class="o">-</span><span class="n">shell</span>
 </pre></div>
@@ -96,14 +96,14 @@
 <p>Veya;</p>
 <p><a href="http://www.halitalptekin.com/media/upload/ubuntu-yazilim-merkezi-gnome-shell.png"><img alt="Ubuntu Gnome Kurulumu" src="http://www.halitalptekin.com/media/upload/ubuntu-yazilim-merkezi-gnome-shell.png" /></a></p>
 <p>Gnome kurulumumuz başarıyla gerçekleştikten sonra birde gnome tweak tool aracımızı kuralım. Bunun için;</p>
-<div class="codehilite"><pre><span class="n">sudo</span> <span class="n">apt</span><span class="o">-</span><span class="n">get</span> <span class="n">install</span> <span class="n">gnome</span><span class="o">-</span><span class="n">tweak</span><span class="o">-</span><span class="n">tool</span>
+<div class="highlight"><pre><span class="n">sudo</span> <span class="n">apt</span><span class="o">-</span><span class="n">get</span> <span class="n">install</span> <span class="n">gnome</span><span class="o">-</span><span class="n">tweak</span><span class="o">-</span><span class="n">tool</span>
 </pre></div>
 
 
 <p>Komutunu çalıştırmanız yeterlidir. Artık oturumumuzu kapatıp yeniden açarken giriş ekranındaki logoya basarak Gnome'u seçebiliriz. Eğer bir yanlış olmadıysa onunuze gorsel bir Gnome 3 gelecektir. Farenizi sol ust veya sağ alta goturduğunuzde gorsel efektlerin çalışması ekran kartımızın doğru çalıştığının da bir gostergesi.</p>
 <p><strong>Gnome Shell Kurulumu</strong></p>
 <p>Yukarıdaki resimde gorduğunuz gibi gnome shell eklentilerini kurabilirsiniz. Veya aşağıdaki komutları çalıştırabilirsiniz.</p>
-<div class="codehilite"><pre><span class="n">sudo</span> <span class="n">apt</span><span class="o">-</span><span class="n">get</span> <span class="n">install</span> <span class="n">gnome</span><span class="o">-</span><span class="n">shell</span>
+<div class="highlight"><pre><span class="n">sudo</span> <span class="n">apt</span><span class="o">-</span><span class="n">get</span> <span class="n">install</span> <span class="n">gnome</span><span class="o">-</span><span class="n">shell</span>
 </pre></div>
 
 
@@ -118,13 +118,13 @@
 <p>Öncelikle ana /home/user dizini altına .fonts ve .icons diye klasorlerimizi açalım. <a href="http://gnome-look.org">Gnome-Look</a> sitesinden de hoşunuza giden bir temayı veya icon paketini indirip bu dizin altına koyalım. Koyarken dikkat etmeniz gereken nokta temalarınızın /home/username/.themes/Tema İsmi/gnome-shell şeklinde bir dizin yapısına sahip olmasıdır. Daha sonra <a href="https://extensions.gnome.org/extension/19/user-themes/">buradaki</a> siteye girip eklentimizi aktifleştirelim. Bu arada değişikliklerin aktif olması için ctl+alt+f2 yazıp gelen kısma r yazıp entere basmak gerektiğini unutmayalım.</p>
 <p><img alt="Gnome Shell Theme" src="http://www.halitalptekin.com/media/upload/gnome-shell-theme.png" /></p>
 <p>Kurulumu yaptıktan sonra komut satırından gnome-tweak-tool diyip aracımızı açalım. Bu açılış sırasında aşağıdaki gibi bir hata alabilirsiniz.</p>
-<div class="codehilite"><pre><span class="p">(</span><span class="n">gnome</span><span class="o">-</span><span class="n">tweak</span><span class="o">-</span><span class="n">tool</span><span class="o">:</span><span class="mi">4506</span><span class="p">)</span><span class="o">:</span> <span class="n">GLib</span><span class="o">-</span><span class="n">GIO</span><span class="o">-</span><span class="n">ERROR</span> <span class="o">**:</span> <span class="n">Settings</span> <span class="n">schema</span> <span class="err">&#39;</span><span class="n">org</span><span class="p">.</span><span class="n">gnome</span><span class="p">.</span><span class="n">shell</span><span class="p">.</span><span class="n">extensions</span><span class="p">.</span><span class="n">user</span><span class="o">-</span><span class="n">theme</span><span class="err">&#39;</span> <span class="n">is</span> <span class="n">not</span> <span class="n">installed</span>
+<div class="highlight"><pre><span class="p">(</span><span class="n">gnome</span><span class="o">-</span><span class="n">tweak</span><span class="o">-</span><span class="n">tool</span><span class="o">:</span><span class="mi">4506</span><span class="p">)</span><span class="o">:</span> <span class="n">GLib</span><span class="o">-</span><span class="n">GIO</span><span class="o">-</span><span class="n">ERROR</span> <span class="o">**:</span> <span class="n">Settings</span> <span class="n">schema</span> <span class="err">&#39;</span><span class="n">org</span><span class="p">.</span><span class="n">gnome</span><span class="p">.</span><span class="n">shell</span><span class="p">.</span><span class="n">extensions</span><span class="p">.</span><span class="n">user</span><span class="o">-</span><span class="n">theme</span><span class="err">&#39;</span> <span class="n">is</span> <span class="n">not</span> <span class="n">installed</span>
 <span class="n">Trace</span><span class="o">/</span><span class="n">breakpoint</span> <span class="n">trap</span> <span class="p">(</span><span class="n">core</span> <span class="n">dumped</span><span class="p">)</span>
 </pre></div>
 
 
 <p>Sorunun çozumu için sırayla aşağıdaki komutları girin.</p>
-<div class="codehilite"><pre><span class="n">sudo</span> <span class="n">cp</span> <span class="err">$</span><span class="n">HOME</span><span class="o">/</span><span class="p">.</span><span class="n">local</span><span class="o">/</span><span class="n">share</span><span class="o">/</span><span class="n">gnome</span><span class="o">-</span><span class="n">shell</span><span class="o">/</span><span class="n">extensions</span><span class="o">/</span><span class="n">user</span><span class="o">-</span><span class="n">theme</span><span class="err">@</span><span class="n">gnome</span><span class="o">-</span><span class="n">shell</span><span class="o">-</span><span class="n">extensions</span><span class="p">.</span><span class="n">gcampax</span><span class="p">.</span><span class="n">github</span><span class="p">.</span><span class="n">com</span><span class="o">/</span><span class="n">schemas</span><span class="o">/</span><span class="n">org</span><span class="p">.</span><span class="n">gnome</span><span class="p">.</span><span class="n">shell</span><span class="p">.</span><span class="n">extensions</span><span class="p">.</span><span class="n">user</span><span class="o">-</span><span class="n">theme</span><span class="p">.</span><span class="n">gschema</span><span class="p">.</span><span class="n">xml</span> <span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="n">share</span><span class="o">/</span><span class="n">glib</span><span class="o">-</span><span class="mf">2.0</span><span class="o">/</span><span class="n">schemas</span>
+<div class="highlight"><pre><span class="n">sudo</span> <span class="n">cp</span> <span class="err">$</span><span class="n">HOME</span><span class="o">/</span><span class="p">.</span><span class="n">local</span><span class="o">/</span><span class="n">share</span><span class="o">/</span><span class="n">gnome</span><span class="o">-</span><span class="n">shell</span><span class="o">/</span><span class="n">extensions</span><span class="o">/</span><span class="n">user</span><span class="o">-</span><span class="n">theme</span><span class="err">@</span><span class="n">gnome</span><span class="o">-</span><span class="n">shell</span><span class="o">-</span><span class="n">extensions</span><span class="p">.</span><span class="n">gcampax</span><span class="p">.</span><span class="n">github</span><span class="p">.</span><span class="n">com</span><span class="o">/</span><span class="n">schemas</span><span class="o">/</span><span class="n">org</span><span class="p">.</span><span class="n">gnome</span><span class="p">.</span><span class="n">shell</span><span class="p">.</span><span class="n">extensions</span><span class="p">.</span><span class="n">user</span><span class="o">-</span><span class="n">theme</span><span class="p">.</span><span class="n">gschema</span><span class="p">.</span><span class="n">xml</span> <span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="n">share</span><span class="o">/</span><span class="n">glib</span><span class="o">-</span><span class="mf">2.0</span><span class="o">/</span><span class="n">schemas</span>
 <span class="n">sudo</span> <span class="n">glib</span><span class="o">-</span><span class="n">compile</span><span class="o">-</span><span class="n">schemas</span> <span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="n">share</span><span class="o">/</span><span class="n">glib</span><span class="o">-</span><span class="mf">2.0</span><span class="o">/</span><span class="n">schemas</span>
 </pre></div>
 
@@ -135,7 +135,7 @@
 <p>Eğer girdiğiniz sitelerde fontlar gozunuze bakıyorsa oncelikli olarak ubuntu depolarından microsoft fontlarını yuklemelisiniz.</p>
 <p><a href="http://www.halitalptekin.com/media/upload/ubuntu-ms-fonts.png"><img alt="Ubuntu Microsoft Font" src="http://www.halitalptekin.com/media/upload/ubuntu-ms-fonts.png" /></a></p>
 <p>Yukarıdaki kurulumu yaptıktan sonra eğer benim gibi Tahoma fontu sorun çıkarıyorsa(Facebook'a girişte fark edersiniz) bunun için sırayla aşağıdaki komutları vermelisiniz.</p>
-<div class="codehilite"><pre><span class="n">wget</span> <span class="n">http</span><span class="o">:</span><span class="c1">//download.microsoft.com/download/ie6sp1/finrel/6_sp1/W98NT42KMeXP/EN-US/IELPKTH.CAB</span>
+<div class="highlight"><pre><span class="n">wget</span> <span class="n">http</span><span class="o">:</span><span class="c1">//download.microsoft.com/download/ie6sp1/finrel/6_sp1/W98NT42KMeXP/EN-US/IELPKTH.CAB</span>
 <span class="n">cabextract</span> <span class="o">-</span><span class="n">F</span> <span class="err">&#39;</span><span class="n">tahoma</span><span class="o">*</span><span class="n">ttf</span><span class="err">&#39;</span> <span class="n">IELPKTH</span><span class="p">.</span><span class="n">CAB</span>
 <span class="n">mkdir</span> <span class="o">-</span><span class="n">p</span> <span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="n">share</span><span class="o">/</span><span class="n">fonts</span><span class="o">/</span><span class="n">truetype</span><span class="o">/</span><span class="n">msttcorefonts</span><span class="o">/</span>
 <span class="n">mv</span> <span class="o">-</span><span class="n">f</span> <span class="n">tahoma</span><span class="o">*</span><span class="n">ttf</span> <span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="n">share</span><span class="o">/</span><span class="n">fonts</span><span class="o">/</span><span class="n">truetype</span><span class="o">/</span><span class="n">msttcorefonts</span><span class="o">/</span>
@@ -152,11 +152,11 @@
     Posted by <span class="fn">halit</span>
   </span>
   <time datetime="2012-09-18T00:00:00" pubdate> Sep 18, 2012 </time>    <span class="categories">
-        <a class="category" href="./tag/gnome-shell.html">gnome shell</a>
-        <a class="category" href="./tag/gnome-tema.html">gnome tema</a>
-        <a class="category" href="./tag/microsoft-font.html">microsoft font</a>
-        <a class="category" href="./tag/ubuntu.html">ubuntu</a>
-        <a class="category" href="./tag/ubuntu-gnome.html">ubuntu gnome</a>
+        <a class="category" href="http://www.halitalptekin.com/tag/gnome-shell.html">gnome shell</a>
+        <a class="category" href="http://www.halitalptekin.com/tag/gnome-tema.html">gnome tema</a>
+        <a class="category" href="http://www.halitalptekin.com/tag/microsoft-font.html">microsoft font</a>
+        <a class="category" href="http://www.halitalptekin.com/tag/ubuntu.html">ubuntu</a>
+        <a class="category" href="http://www.halitalptekin.com/tag/ubuntu-gnome.html">ubuntu gnome</a>
       </span>
   </p>    </footer>
   </article>
@@ -186,19 +186,19 @@
     <h1>Recent Posts</h1>
     <ul id="recent_posts">
             <li class="post">
-          <a href="./gnu-c-tamsayi-turleri.html">GNU C tamsayi turleri</a>
+          <a href="http://www.halitalptekin.com/gnu-c-tamsayi-turleri.html">GNU C tamsayi turleri</a>
       </li>
             <li class="post">
-          <a href="./fonksiyon-gostergeleri.html">Fonksiyon göstergeleri</a>
+          <a href="http://www.halitalptekin.com/fonksiyon-goestergeleri.html">Fonksiyon göstergeleri</a>
       </li>
             <li class="post">
-          <a href="./cde-debug-makrolari.html">C'de debug makrolari</a>
+          <a href="http://www.halitalptekin.com/cde-debug-makrolari.html">C'de debug makrolari</a>
       </li>
             <li class="post">
-          <a href="./uzun-bir-aradan-sonra.html">Uzun bir aradan sonra</a>
+          <a href="http://www.halitalptekin.com/uzun-bir-aradan-sonra.html">Uzun bir aradan sonra</a>
       </li>
             <li class="post">
-          <a href="./the-seven-rules-of-technical-writing.html">The Seven Rules Of Technical Writing</a>
+          <a href="http://www.halitalptekin.com/the-seven-rules-of-technical-writing.html">The Seven Rules Of Technical Writing</a>
       </li>
           </ul>
   </section>
@@ -206,19 +206,19 @@
       
     <h1>Categories</h1>
     <ul id="recent_posts">
-              <li><a href="./category/tasarim.html">tasarim</a></li>
-              <li><a href="./category/server.html">server</a></li>
-              <li><a href="./category/python.html">python</a></li>
-              <li><a href="./category/programlama.html">programlama</a></li>
-              <li><a href="./category/linux.html">linux</a></li>
-              <li><a href="./category/kisisel.html">kisisel</a></li>
-              <li><a href="./category/internet.html">internet</a></li>
-              <li><a href="./category/guvenlik.html">guvenlik</a></li>
-              <li><a href="./category/genel.html">genel</a></li>
-              <li><a href="./category/eglence.html">eglence</a></li>
-              <li><a href="./category/django.html">django</a></li>
-              <li><a href="./category/compsci.html">compsci</a></li>
-              <li><a href="./category/arduino.html">arduino</a></li>
+              <li><a href="http://www.halitalptekin.com/category/tasarim.html">tasarim</a></li>
+              <li><a href="http://www.halitalptekin.com/category/server.html">server</a></li>
+              <li><a href="http://www.halitalptekin.com/category/python.html">python</a></li>
+              <li><a href="http://www.halitalptekin.com/category/programlama.html">programlama</a></li>
+              <li><a href="http://www.halitalptekin.com/category/linux.html">linux</a></li>
+              <li><a href="http://www.halitalptekin.com/category/kisisel.html">kisisel</a></li>
+              <li><a href="http://www.halitalptekin.com/category/internet.html">internet</a></li>
+              <li><a href="http://www.halitalptekin.com/category/guvenlik.html">guvenlik</a></li>
+              <li><a href="http://www.halitalptekin.com/category/genel.html">genel</a></li>
+              <li><a href="http://www.halitalptekin.com/category/eglence.html">eglence</a></li>
+              <li><a href="http://www.halitalptekin.com/category/django.html">django</a></li>
+              <li><a href="http://www.halitalptekin.com/category/compsci.html">compsci</a></li>
+              <li><a href="http://www.halitalptekin.com/category/arduino.html">arduino</a></li>
           </ul>
   </section>
    
@@ -241,33 +241,25 @@
                 </ul>
     </section>
 
-      <section>
-        <h1>Ads</h1>
-        <ul id="recent_posts">
-                            <li><a href="https://www.camekan.com/adwords/" title="Google Adwords"><img src="/media/reklam/camekancom.jpg" alt="Google Adwords" title="Google Adwords"></a></li>
-                            <li><a href="http://www.dugunajans.com/" title="düğün fotoğrafçısı"><img src="/media/reklam/dugunajanscom.jpg" alt="düğün fotoğrafçısı" title="düğün fotoğrafçısı"></a></li>
-                            <li><a href="http://cevap.tv/yeme-icme/yemek-tarifleri/hamur-isleri/cupcake" title="cupcake tarifi"><img src="/media/reklam/cevaptv.png" alt="cupcake tarifi" title="cupcake tarifi"></a></li>
-                    </ul>
-    </section>
   
 </aside>      <aside class="sidebar">
   <section>
     <h1>Recent Posts</h1>
     <ul id="recent_posts">
             <li class="post">
-          <a href="./gnu-c-tamsayi-turleri.html">GNU C tamsayi turleri</a>
+          <a href="http://www.halitalptekin.com/gnu-c-tamsayi-turleri.html">GNU C tamsayi turleri</a>
       </li>
             <li class="post">
-          <a href="./fonksiyon-gostergeleri.html">Fonksiyon göstergeleri</a>
+          <a href="http://www.halitalptekin.com/fonksiyon-goestergeleri.html">Fonksiyon göstergeleri</a>
       </li>
             <li class="post">
-          <a href="./cde-debug-makrolari.html">C'de debug makrolari</a>
+          <a href="http://www.halitalptekin.com/cde-debug-makrolari.html">C'de debug makrolari</a>
       </li>
             <li class="post">
-          <a href="./uzun-bir-aradan-sonra.html">Uzun bir aradan sonra</a>
+          <a href="http://www.halitalptekin.com/uzun-bir-aradan-sonra.html">Uzun bir aradan sonra</a>
       </li>
             <li class="post">
-          <a href="./the-seven-rules-of-technical-writing.html">The Seven Rules Of Technical Writing</a>
+          <a href="http://www.halitalptekin.com/the-seven-rules-of-technical-writing.html">The Seven Rules Of Technical Writing</a>
       </li>
           </ul>
   </section>
@@ -275,19 +267,19 @@
       
     <h1>Categories</h1>
     <ul id="recent_posts">
-              <li><a href="./category/tasarim.html">tasarim</a></li>
-              <li><a href="./category/server.html">server</a></li>
-              <li><a href="./category/python.html">python</a></li>
-              <li><a href="./category/programlama.html">programlama</a></li>
-              <li><a href="./category/linux.html">linux</a></li>
-              <li><a href="./category/kisisel.html">kisisel</a></li>
-              <li><a href="./category/internet.html">internet</a></li>
-              <li><a href="./category/guvenlik.html">guvenlik</a></li>
-              <li><a href="./category/genel.html">genel</a></li>
-              <li><a href="./category/eglence.html">eglence</a></li>
-              <li><a href="./category/django.html">django</a></li>
-              <li><a href="./category/compsci.html">compsci</a></li>
-              <li><a href="./category/arduino.html">arduino</a></li>
+              <li><a href="http://www.halitalptekin.com/category/tasarim.html">tasarim</a></li>
+              <li><a href="http://www.halitalptekin.com/category/server.html">server</a></li>
+              <li><a href="http://www.halitalptekin.com/category/python.html">python</a></li>
+              <li><a href="http://www.halitalptekin.com/category/programlama.html">programlama</a></li>
+              <li><a href="http://www.halitalptekin.com/category/linux.html">linux</a></li>
+              <li><a href="http://www.halitalptekin.com/category/kisisel.html">kisisel</a></li>
+              <li><a href="http://www.halitalptekin.com/category/internet.html">internet</a></li>
+              <li><a href="http://www.halitalptekin.com/category/guvenlik.html">guvenlik</a></li>
+              <li><a href="http://www.halitalptekin.com/category/genel.html">genel</a></li>
+              <li><a href="http://www.halitalptekin.com/category/eglence.html">eglence</a></li>
+              <li><a href="http://www.halitalptekin.com/category/django.html">django</a></li>
+              <li><a href="http://www.halitalptekin.com/category/compsci.html">compsci</a></li>
+              <li><a href="http://www.halitalptekin.com/category/arduino.html">arduino</a></li>
           </ul>
   </section>
    
@@ -310,14 +302,6 @@
                 </ul>
     </section>
 
-      <section>
-        <h1>Ads</h1>
-        <ul id="recent_posts">
-                            <li><a href="https://www.camekan.com/adwords/" title="Google Adwords"><img src="/media/reklam/camekancom.jpg" alt="Google Adwords" title="Google Adwords"></a></li>
-                            <li><a href="http://www.dugunajans.com/" title="düğün fotoğrafçısı"><img src="/media/reklam/dugunajanscom.jpg" alt="düğün fotoğrafçısı" title="düğün fotoğrafçısı"></a></li>
-                            <li><a href="http://cevap.tv/yeme-icme/yemek-tarifleri/hamur-isleri/cupcake" title="cupcake tarifi"><img src="/media/reklam/cevaptv.png" alt="cupcake tarifi" title="cupcake tarifi"></a></li>
-                    </ul>
-    </section>
   
 </aside>    </div>
   </div>
