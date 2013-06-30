@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title>{ Halit Alptekin }</title><link>http://www.halitalptekin.com/</link><description></description><atom:link href="http://www.halitalptekin.com/feeds/django.rss.xml" rel="self"></atom:link><lastBuildDate>Fri, 30 Nov 2012 00:00:00 +0200</lastBuildDate><item><title>Django'dan Pelicana</title><link>http://www.halitalptekin.com/djangodan-pelicana.html</link><description>&lt;p&gt;Django sitemi Pelican'a taşırken öncelikle yazılarımı Markdown'a dönüştürmem gerekiyordu. Bunu ya PostgreSql ile boğuşup ya da views ve templates üzerinde değişiklikler yaparak yapacaktım. Ben tercihimi ikinci şıktan yana kullandım.&lt;/p&gt;
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>{ Halit Alptekin }</title><link>http://www.halitalptekin.com/</link><description></description><atom:link href="http://www.halitalptekin.com/feeds/django.rss.xml" rel="self"></atom:link><lastBuildDate>Fri, 30 Nov 2012 00:00:00 +0200</lastBuildDate><item><title>Django'dan Pelicana</title><link>http://www.halitalptekin.com/djangodan-pelicana.html</link><description>&lt;p&gt;Django sitemi Pelican'a taşırken öncelikle yazılarımı Markdown'a dönüştürmem gerekiyordu. Bunu ya PostgreSql ile boğuşup ya da views ve templates üzerinde değişiklikler yaparak yapacaktım. Ben tercihimi ikinci şıktan yana kullandım.&lt;/p&gt;
 &lt;p&gt;Bunun için Django sitemin &lt;strong&gt;templates&lt;/strong&gt; klasörü altındaki sayfalarda biraz değişiklik yaptım(biraz da viewste). Buna göre yazılarımı ve makalelerimi önce;&lt;/p&gt;
-&lt;div class="codehilite"&gt;&lt;pre&gt;&lt;span class="n"&gt;Date&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="p"&gt;{{&lt;/span&gt; &lt;span class="n"&gt;tarih&lt;/span&gt; &lt;span class="p"&gt;}}&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;Date&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="p"&gt;{{&lt;/span&gt; &lt;span class="n"&gt;tarih&lt;/span&gt; &lt;span class="p"&gt;}}&lt;/span&gt;
 &lt;span class="n"&gt;Title&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="p"&gt;{{&lt;/span&gt; &lt;span class="n"&gt;title&lt;/span&gt; &lt;span class="p"&gt;}}&lt;/span&gt;
 &lt;span class="n"&gt;Tags&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="p"&gt;{{&lt;/span&gt; &lt;span class="n"&gt;tags&lt;/span&gt; &lt;span class="p"&gt;}}&lt;/span&gt;
 &lt;span class="n"&gt;Category&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="p"&gt;{{&lt;/span&gt; &lt;span class="n"&gt;category&lt;/span&gt; &lt;span class="p"&gt;}}&lt;/span&gt;
@@ -12,7 +12,7 @@
 
 
 &lt;p&gt;gibi bir düzene koydum. Bu sayede yazıların Pelican'a eklenmesi sırasında çok uğraşmadım. Daha sonra &lt;a href="http://brettterpstra.com/scripting-readability-markdownify-for-clipping-web-pages/"&gt;read2text&lt;/a&gt; aracı ile bu çıktıdaki tüm yazılarımı aşağıdaki şekilde &lt;strong&gt;Markdown&lt;/strong&gt;'a dönüştürdüm.&lt;/p&gt;
-&lt;div class="codehilite"&gt;&lt;pre&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;read2text&lt;/span&gt; &lt;span class="n"&gt;http&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="c1"&gt;//www.halitalptekin.com &amp;gt;&amp;gt; index.md&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;read2text&lt;/span&gt; &lt;span class="n"&gt;http&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="c1"&gt;//www.halitalptekin.com &amp;gt;&amp;gt; index.md&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
@@ -22,40 +22,40 @@
 &lt;p&gt;Bu şekilde sitemdeki tüm yazıları çok büyük oranda sorunsuz bir şekilde pelican üzerine taşıdım. Şimdilik bu sistemden gayet memnun gibiyim. Eğer sizde Pelican'a geçip geçmeme konusunda kararsız iseniz kesinlikle denemenizi öneririm.&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">halit</dc:creator><pubDate>Fri, 30 Nov 2012 00:00:00 +0200</pubDate><guid>tag:www.halitalptekin.com,2012-11-30:djangodan-pelicana.html</guid><category>django</category><category>pelican</category><category>markdown</category><category>markdownify</category><category>read2text</category></item><item><title>Django Uygulamaları İçin Heroku</title><link>http://www.halitalptekin.com/django-uygulamalari-icin-heroku.html</link><description>&lt;p&gt;Django uygulaması yazmak diğer birçok dil ve framework'a gore hem kolay hem de zevkli.Bu sayede çok kısa surede kendi blogunuzu veya hayalinizdeki scripti yazabiliyorsunuz.Bende en son pytr.org domaini için guzel bir blog çalışması yaptım.Tam olarak bitmemiş olsada bir blogta olması gereken en temel şeyleri ekledim.Zaten scripti de git uzerinde tuttuğum için belirli aralıklarla geliştirmeye devam ediyorum.İşte bir noktada artık bu uygulamanızı değploy etme zorunluğu duyacaksınız.Sonuçta bir yerde localhost'ta çalıştırmak size yetmeyecek.Ve kullandığınız domain uzerine kurmak isteyeceksiniz.İşte bu noktada ucretsiz alternatiflerin başında gelen Heroku kullanabilirsiniz.&lt;/p&gt;
 &lt;p&gt;&lt;a href="http://www.halitalptekin.com/media/upload/django-heroku-deploy.png"&gt;&lt;img alt="Django Heroku Deploy" src="http://www.halitalptekin.com/media/upload/django-heroku-deploy.png" /&gt;&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;Öncelikle kendi uygulamanızı yazdığınızı varsayıyorum.Ben son kodladığım blog olan &lt;a href="http://www.pytr.org"&gt;PyTr&lt;/a&gt; nin kaynak kodlarını kullanacağım.Öncelikli olarak bilgisayarınıza heroku kurulumunu yapmanız gerekiyor.Debian ve Ubuntu kullanıcıları aşağıdaki komut ile kurabilirler.Windows kullanıcıları ise &lt;a href="https://toolbelt.heroku.com/download/windows"&gt;bu&lt;/a&gt; dosyayı indirip kurması lazım.Bu kurulumu yaptıktan sonra ilk çalıştırmanızda sizden bilgilerinizi isteyeceğinizi unutmayın.&lt;/p&gt;
-&lt;div class="codehilite"&gt;&lt;pre&gt;&lt;span class="n"&gt;wget&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;qO&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt; &lt;span class="n"&gt;https&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="c1"&gt;//toolbelt.heroku.com/install.sh | sh&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;wget&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;qO&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt; &lt;span class="n"&gt;https&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="c1"&gt;//toolbelt.heroku.com/install.sh | sh&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;p&gt;Uygulamanızı eğer virtualenv kullanarak yaparsanız çok daha rahat edersiniz.Mumkun olduğunca daha fazla kullanmaya çalışın.Eğer virtualenv kullanıyorsanız aşağıdaki komut ile gerekli olacak olan modulleri requirements.txt de toplayabilirsiniz.Yoksa bu dosyayı kendiniz oluşturup teker teker eklemeniz gerekecektir.&lt;/p&gt;
-&lt;div class="codehilite"&gt;&lt;pre&gt;&lt;span class="n"&gt;pip&lt;/span&gt; &lt;span class="n"&gt;freeze&lt;/span&gt; &lt;span class="o"&gt;&amp;gt;&lt;/span&gt; &lt;span class="n"&gt;requirements&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;txt&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;pip&lt;/span&gt; &lt;span class="n"&gt;freeze&lt;/span&gt; &lt;span class="o"&gt;&amp;gt;&lt;/span&gt; &lt;span class="n"&gt;requirements&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;txt&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;p&gt;Gerekliliklerimizi tanımladıktan sonra django uygulamamızın veritabanını herokuya uygun hale getirmemiz lazım.Ben PostgreSQL kullanacağım.settings.py dosyamızın içindeki veritabanı bolgesini aşağıdaki gibi değiştiriyoruz.&lt;/p&gt;
-&lt;div class="codehilite"&gt;&lt;pre&gt;&lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;dj_database_url&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;dj_database_url&lt;/span&gt;
 &lt;span class="n"&gt;DATABASES&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;default&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="n"&gt;dj_database_url&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;config&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;default&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;postgres://localhost&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)}&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;p&gt;Şimdi heroku açısından herşeyimiz hazır.Artık git kurulumunu yapalım ve dosyalarımızı ekleyelim.&lt;/p&gt;
-&lt;div class="codehilite"&gt;&lt;pre&gt;&lt;span class="n"&gt;git&lt;/span&gt; &lt;span class="n"&gt;init&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;git&lt;/span&gt; &lt;span class="n"&gt;init&lt;/span&gt;
 &lt;span class="n"&gt;git&lt;/span&gt; &lt;span class="n"&gt;add&lt;/span&gt; &lt;span class="p"&gt;.&lt;/span&gt;
 &lt;span class="n"&gt;git&lt;/span&gt; &lt;span class="n"&gt;commit&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;m&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;pytr first upload&amp;quot;&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;p&gt;Şimdi de heroku kurulumunu yapalım.&lt;/p&gt;
-&lt;div class="codehilite"&gt;&lt;pre&gt;&lt;span class="n"&gt;heroku&lt;/span&gt; &lt;span class="n"&gt;create&lt;/span&gt; &lt;span class="n"&gt;pytrdeploy&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;heroku&lt;/span&gt; &lt;span class="n"&gt;create&lt;/span&gt; &lt;span class="n"&gt;pytrdeploy&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;p&gt;Herşeyimiz hazır olduğuna gore pushlayabiliriz artık.Push işlemi başladıktan sonra otomatik olarak requirements.txt dosyası içindeki bağımlılıklarda kurulacak.Daha sonrada eklemeler yaparak bunları ekleyebilirsiniz.&lt;/p&gt;
-&lt;div class="codehilite"&gt;&lt;pre&gt;&lt;span class="n"&gt;git&lt;/span&gt; &lt;span class="n"&gt;push&lt;/span&gt; &lt;span class="n"&gt;heroku&lt;/span&gt; &lt;span class="n"&gt;master&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;git&lt;/span&gt; &lt;span class="n"&gt;push&lt;/span&gt; &lt;span class="n"&gt;heroku&lt;/span&gt; &lt;span class="n"&gt;master&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;p&gt;Dosyalarımızı gonderdikten sonra ekrana gelen url'ye girdiğinizde django hatası alacaksınız çunku henuz veritabanı kurulumunu yapmadık.Bunun için aşağıdaki komutu çalıştırıyoruz.Zaten bunun mantığını anlayabilirsiniz.Buna gore bundan sonra istediğiniz komutu kendi bulutunuzda çalıştırabilirsiniz.&lt;/p&gt;
-&lt;div class="codehilite"&gt;&lt;pre&gt;&lt;span class="n"&gt;heroku&lt;/span&gt; &lt;span class="n"&gt;run&lt;/span&gt; &lt;span class="n"&gt;python&lt;/span&gt; &lt;span class="n"&gt;manage&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;py&lt;/span&gt; &lt;span class="n"&gt;syncdb&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;heroku&lt;/span&gt; &lt;span class="n"&gt;run&lt;/span&gt; &lt;span class="n"&gt;python&lt;/span&gt; &lt;span class="n"&gt;manage&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;py&lt;/span&gt; &lt;span class="n"&gt;syncdb&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
@@ -67,7 +67,7 @@
 &lt;p&gt;Kategoriler -&amp;gt; baslik,sef_baslik,slug,aciklama,aciklama_sef&lt;/p&gt;
 &lt;p&gt;Yazilar -&amp;gt; baslik,sef_baslik,slug,aciklama,aciklama_sef,kategori,icerik_anasayfa,icerik,yayindami,etiketler,olusturulma,degistirilme,yazar&lt;/p&gt;
 &lt;p&gt;Ben biraz fazla kolon kullanmış olabilirim ama siz ihtiyaçlarınız doğrultusunda eklemeler veya çıkartmalar yapabilirsiniz.Zaten aşağıdaki ornek ile eminim kafanızda bir parlama meydana gelecek ve olayı sokeceksiniz.Daha sonra da kendi modellerinizi yazacaksınız.&lt;/p&gt;
-&lt;div class="codehilite"&gt;&lt;pre&gt;&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;django.db&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;models&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;django.db&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;models&lt;/span&gt;
 &lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;django.contrib.auth.models&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;User&lt;/span&gt;
 &lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;tagging.fields&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;TagField&lt;/span&gt;
 &lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;tagging.models&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;Tag&lt;/span&gt;
@@ -203,7 +203,7 @@ time&lt;/p&gt;
 &lt;p&gt;&lt;img alt="Django Web Framework" src="http://www.halitalptekin.com/media/upload/django.jpg" /&gt;&lt;/p&gt;
 &lt;p&gt;Django'da modeller ile temel olarak bilmeniz gerekenler bunlar.Ancak Django'da modeller bu kadar değil.İşin içinde girdikçe Django'nun bize getirdiği harika kolaylıkları keşfediyorsunuz.Mesela veritabanı bağımsız tablo ve kolonlar oluşturmak bana gore çok buyuk bir guzellik.(Tabi bunu yapan başka frameworklerde var) Ama sadece bu kadar değil.Zamanla birçok kolaylık farkedeceksiniz.Mesela Django'nun image ve file fieldleri bana gerçekten çok hoş geldi.PHP'deki gibi bir ton guvenlik uygulamasıyla uğraşmadan direk imagefield ekleyerek resim yuklememizi yapıyoruz.Geri kalan herşeyi Django hallediyor.&lt;/p&gt;
 &lt;p&gt;Peki Django'da modelleri oluşturduk.Daha sonra ne yapacağız? Tabikide burasıda çok onemli.Modellerimiz içinde yer alan alanlarımızı veritabanına kayıt ettireceğiz.Bunun için kesinlikle sql ile uğraşmıyoruz.Komut satırına giriyoruz ve aşağıdaki komut ile tablo ve kolonlarımızı oluşturuyoruz.İlk oluşturmada mail ve username isteyecek.Bunlar sizin admin kullanıcısı bilgileridir.&lt;/p&gt;
-&lt;div class="codehilite"&gt;&lt;pre&gt;&lt;span class="n"&gt;python&lt;/span&gt; &lt;span class="n"&gt;manage&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;py&lt;/span&gt; &lt;span class="n"&gt;syncdb&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;python&lt;/span&gt; &lt;span class="n"&gt;manage&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;py&lt;/span&gt; &lt;span class="n"&gt;syncdb&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
@@ -213,13 +213,13 @@ time&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;Önemli Not:&lt;/strong&gt; Yazı içerisinde birçok tablo ve kolon dedim.Şimdilik boyle bilmenizde fayda var.Ama oğrendikten sonra boyle olmadığını anlayacaksınız.&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;Önemli Not:&lt;/strong&gt; Burada Django'nun kotu bir yanından bahsetmek istiyorum.Eğer modellerimiz oluşturup syncdb ile dbyide oluşturduktan sonra yeni bir model eklemesi yaparsanız bunların işlenmediğini farkedersiniz.Bu Django'nun bana gore en kotu ozelliğidir.Belki ilerleyen zamanlarda çozulecek ancak şu anda gerçekten Django'nun imajını sarsıyor.Ancak bundan kurtulmak için birçok yol olduğu için korkulcak bir durum yok.Eğer oluşturduğunuz veritabanını silip yeni oluşturursanız bunun uzerine django tum değişiklikleri işleyecektir.Ancak ben bunlarla uğraşamam diyorsanız daha kolay bir yol var.South adındaki uygulama ile veritabanınızı goç ettirebilirsiniz.Bu konu başlı başına bir makele konusu olduğu için şimdi anlatmıyorum ancak bu sorunun South ile çozulduğunu  şimdilik bilmenizde fayda var.&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">halit</dc:creator><pubDate>Tue, 19 Jun 2012 00:00:00 +0300</pubDate><guid>tag:www.halitalptekin.com,2012-06-19:djangoda-modellere-giris.html</guid><category>dajango veritabanı</category><category>django</category><category>django modeller</category><category>django models</category><category>model fields</category></item><item><title>Django Admin Paneli Ve Ayarlar</title><link>http://www.halitalptekin.com/django-admin-paneli-ve-ayarlar.html</link><description>&lt;p&gt;Bir onceki &lt;a href="http://www.halitalptekin.com/makale/django/django-ile-tanisma/"&gt;yazımda&lt;/a&gt; ilk projemizi başlatıp Django'ya kısa bir giriş yapmıştık.Şimdi de modellere geçmeden hemen once admin panelimizi kurup settings.py dosyamız içinde ufak ayarlar yapacağız.Bu yazıdan hemen sonra da Django'da modellere giriş yapacağız.Modeller konusunu yeniden yazmak yerine HDBlog'un kodlarından anlatarak devam edeceğim.Boylelikle elimizde canlı bir ornekte olmuş olacak.&lt;/p&gt;
 &lt;p&gt;Şimdi oncelikle bir onceki yazımda oluşturduğumuz django projesinin içine giriyoruz ve ilk uygulamamızı oluşturuyoruz.Django'da uygulama oluşturmak için aşağıdaki komutu kullanmanız yeterli olacaktır.&lt;/p&gt;
-&lt;div class="codehilite"&gt;&lt;pre&gt;&lt;span class="n"&gt;python&lt;/span&gt; &lt;span class="n"&gt;manage&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;py&lt;/span&gt; &lt;span class="n"&gt;startapp&lt;/span&gt; &lt;span class="n"&gt;blogdeneme&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;python&lt;/span&gt; &lt;span class="n"&gt;manage&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;py&lt;/span&gt; &lt;span class="n"&gt;startapp&lt;/span&gt; &lt;span class="n"&gt;blogdeneme&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;p&gt;Yukarıdaki komut ile blogdeneme adında bir uygulama oluşturuyoruz.Bu uygulamanın klasorune girdiğinizde &lt;strong&gt;&lt;strong&gt;init&lt;/strong&gt;.py&lt;/strong&gt;,&lt;strong&gt;models.py&lt;/strong&gt;,&lt;strong&gt;tests.py&lt;/strong&gt;,&lt;strong&gt;views.py&lt;/strong&gt; dosyalarını gormeniz gerekecektir.Eğer gorduyseniz başarıyla yeni uygulama oluşturdunuz demektir.&lt;/p&gt;
 &lt;p&gt;Proje dizinimizdeki(ben djangoders adında proje oluşturdum) settings.py dosyasını açarsanız aşağıdaki gibi bir goruntuyle karşılaşacaksınız.Bu dosyaya veritabanı bilgilerinden media ve statik dosyalarımızın yerlerine kadar birçok onemli bilgiyi giriyoruz.&lt;/p&gt;
-&lt;div class="codehilite"&gt;&lt;pre&gt;&lt;span class="n"&gt;DEBUG&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="bp"&gt;True&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;DEBUG&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="bp"&gt;True&lt;/span&gt;
 &lt;span class="n"&gt;TEMPLATE_DEBUG&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;DEBUG&lt;/span&gt;
 
 &lt;span class="n"&gt;ADMINS&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;
@@ -384,7 +384,7 @@ time&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;TEMPLATE_DIRS &lt;/strong&gt;ile kullanacağımız temanın dizinini belirtiyoruz.(Windows kullanıcıları yukarıda yazdığım uyarıyı dikkate almaya burada da devam etmelidirler.)&lt;/p&gt;
 &lt;p&gt;Geldik projemize ekleyeceğimiz uygulamalara.Django'nun en guzel yanlarından birisi de birden fazla uygulamayı bir projede çalıştırma imkanı vermesi. &lt;strong&gt;INSTALLED_APPS &lt;/strong&gt;içine &lt;strong&gt;blogdeneme&lt;/strong&gt; adlı az once oluşturduğumuz uygulamayı ekleyelim.Bu kısımda birde dikkat etmemiz gereken bir olay var.Djangoda eğer admin paneli kullanacaksak &lt;strong&gt;django.contrib.admin &lt;/strong&gt;uygulamasının başındaki # sembolunu kaldıralım.Daha sonra admin panelimize direk /admin/ yazıp ulaşmak içinde &lt;strong&gt;djangoders/urls.py &lt;/strong&gt;dosyası içindeki &lt;strong&gt;from django.contrib import admin&lt;/strong&gt; , &lt;strong&gt;admin.autodiscover()&lt;/strong&gt; ve &lt;strong&gt;url(r'^admin/', include(admin.site.urls)),&lt;/strong&gt; satırlarının başındaki # sembolunu kaldıralım.Bu şekilde yapınca admin panelimizi aktif etmiş oluyoruz.&lt;/p&gt;
 &lt;p&gt;Settings.py ve admin panelimiz için yapacaklarımız bu kadar.Yukarıdakileri yaptıktan sonra yeni settings.py dosyamız aşağıdaki gibi olacak.Değişen yerlere dikkat edelim.&lt;/p&gt;
-&lt;div class="codehilite"&gt;&lt;pre&gt;&lt;span class="n"&gt;DEBUG&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="bp"&gt;True&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;DEBUG&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="bp"&gt;True&lt;/span&gt;
 &lt;span class="n"&gt;TEMPLATE_DEBUG&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;DEBUG&lt;/span&gt;
 
 &lt;span class="n"&gt;ADMINS&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;
@@ -542,14 +542,14 @@ time&lt;/p&gt;
 
 
 &lt;p&gt;Ve daha sonra projemizin dizinine geçiyoruz ve veritabanı tablolarımızın oluşturulması için aşağıdaki komutu giriyoruz.&lt;/p&gt;
-&lt;div class="codehilite"&gt;&lt;pre&gt;&lt;span class="n"&gt;python&lt;/span&gt; &lt;span class="n"&gt;manage&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;py&lt;/span&gt; &lt;span class="n"&gt;syncdb&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;python&lt;/span&gt; &lt;span class="n"&gt;manage&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;py&lt;/span&gt; &lt;span class="n"&gt;syncdb&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;p&gt;Bu komutu girdikten sonra super kullanıcı oluşturmak isteyip istemediğinizi soracak. Ve sizden mail adresi ile şifre alacak.Bu bilgileri admin paneline girmek için kullanacağız.&lt;/p&gt;
 &lt;p&gt;&lt;img alt="Django Admin Panel" src="http://www.halitalptekin.com/media/upload/django-admin.png" /&gt;&lt;/p&gt;
 &lt;p&gt;Şimdi uygulamamızı çalıştıralım.Aşağıdaki komuttan sonra port numarası girerek istediğiniz bir portta açabilirsiniz.Eğer belirtmezseniz default olarak 8000 açılacaktır.&lt;/p&gt;
-&lt;div class="codehilite"&gt;&lt;pre&gt;&lt;span class="n"&gt;python&lt;/span&gt; &lt;span class="n"&gt;manage&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;py&lt;/span&gt; &lt;span class="n"&gt;runserver&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;python&lt;/span&gt; &lt;span class="n"&gt;manage&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;py&lt;/span&gt; &lt;span class="n"&gt;runserver&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
@@ -574,7 +574,7 @@ time&lt;/p&gt;
 &lt;p&gt;Djangoyu kurmak için oncelikle bilgisayarımızda Python kurulu olması lazım.Bu yuzden once onu kuralım.Eğer bilgisayarınızda linux yuklu ise dağıtımına gore herhangi bir paket yoneticisi ile kurabilirsiniz.(Centos: yum install python , Ubuntu: apt-get install python vb) Kurulu olup olmadığını anlamak için konsola python yazmanız yeterlidir.Eğer python uygulaması açılmadıysa kurulu değildir.Ayrıcana girdiğiniz python'un interaktif yorumlayıcısından çıkmak için exit() yazıp entere basmanız yeterlidir.Windows kullanıcılarıda &lt;a href="http://www.python.org/download/"&gt;buradaki&lt;/a&gt; sayfadan sistemine en uygun olan surumunu indirip kurabilir.&lt;/p&gt;
 &lt;p&gt;Artık bilgisayarınızda python'un yuklu olduğunu kabul ediyorum.(Ek olarak pythonu PATH yolunuza eklemeniz sizin için ileride çok yararlı olacaktır.)Bundan sonra django kurulumu yapmalıyız.Öncelikle Django'nun sitesinden &lt;a href="https://www.djangoproject.com/download/1.4/tarball/"&gt;son surumu&lt;/a&gt; indirelim.Ve daha sonra aşağıdaki şekilde kurulumu gerçekleştirelim.(Windows kullanıcıları kurulum sırasında hata alırsa bilgisayarına &lt;a href="http://pypi.python.org/pypi/setuptools"&gt;python setup tools&lt;/a&gt; kurup sonra tekrardan denemelidirler.)&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;Linux kullanıcıları&lt;/strong&gt;&lt;/p&gt;
-&lt;div class="codehilite"&gt;&lt;pre&gt;&lt;span class="n"&gt;tar&lt;/span&gt; &lt;span class="n"&gt;xzvf&lt;/span&gt; &lt;span class="n"&gt;Django&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mf"&gt;1.4&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;tar&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;gz&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;tar&lt;/span&gt; &lt;span class="n"&gt;xzvf&lt;/span&gt; &lt;span class="n"&gt;Django&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mf"&gt;1.4&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;tar&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;gz&lt;/span&gt;
 &lt;span class="n"&gt;cd&lt;/span&gt; &lt;span class="n"&gt;Django&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mf"&gt;1.4&lt;/span&gt;
 &lt;span class="n"&gt;python&lt;/span&gt; &lt;span class="n"&gt;setup&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;py&lt;/span&gt; &lt;span class="n"&gt;install&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
@@ -585,18 +585,18 @@ time&lt;/p&gt;
 &lt;p&gt;Django ile ilk tanışmanız sırasında SQLite kullanmanızı oneririm.Kolay kurulumu ve kullanımı ile başlangıç için gayet idealdir.Kodlamanız bittiği zaman deploy aşamasından hemen once kullanmak istediğiniz veritabanına geçiş yapabilirsiniz.Django'nun en guzel yanlarından birisi de budur.Diğer veritabanı sistemlerine geçmek için ufak bir paket kurmak ve settings.py içinde bir satırı duzenlemek yetiyor.Bu paketler MySQL için &lt;a href="http://sourceforge.net/projects/mysql-python"&gt;MySQLdb&lt;/a&gt; ,PostgreSQL için &lt;a href="http://initd.org/pub/software/psycopg/"&gt;psycopg&lt;/a&gt; , Oracle için &lt;a href="http://cx-oracle.sourceforge.net/"&gt;cx_Oracle&lt;/a&gt; dir.Bunlara ilerleyen zamanlarda daha ayrıntılı giriş yapacağım.Şimdilik sadece bunları bilmemiz yeterlidir.&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;Django İle İlk Projemiz&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;Dajngo ile ilk projemizi başlatmak için linux ortamında django-admin komutu yeterli olacaktır.Windows kullanıcıları ise python kurulumunun yapıldığı yerde django-admin.py dosyasını arayıp istediği bir dizine kopyalayarak veya PATH dizinine bu dosyayı ekleyerek kullanabilir.Ben bu dosyayı masaustume aldım.O şekilde kullanıyorum.&lt;/p&gt;
-&lt;div class="codehilite"&gt;&lt;pre&gt;&lt;span class="n"&gt;django&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;admin&lt;/span&gt; &lt;span class="n"&gt;startproject&lt;/span&gt; &lt;span class="n"&gt;denemedjango&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;django&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;admin&lt;/span&gt; &lt;span class="n"&gt;startproject&lt;/span&gt; &lt;span class="n"&gt;denemedjango&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;p&gt;Yukarıdaki komut ile ilk django projemizi başlatmış oluyoruz.Bundan sonra o dizin içinde denemedjango adında bir klasor oluşturulcak ve içinde gene denemedjango klasoru ve manage.py dosyası olacak.Burdaki denemedjango klasoru içinde ise &lt;strong&gt;init&lt;/strong&gt;.py,settings.py,urls.py,wsgi.py dosyaları olması lazım.Eğer bu dosyaları gorduyseniz ilk projeniz başarıyla oluşturulmuş demektir.&lt;/p&gt;
 &lt;p&gt;Şimdi bunlardan sonra projemizi çalıştırıp test edebiliriz.Bunun için proje klasorunun içine(yani içinde manage.py olan klasor) girelim.Daha sonra aşağıdaki komut ile çalıştıralım.&lt;/p&gt;
-&lt;div class="codehilite"&gt;&lt;pre&gt;&lt;span class="n"&gt;python&lt;/span&gt; &lt;span class="n"&gt;manage&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;py&lt;/span&gt; &lt;span class="n"&gt;runserver&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;python&lt;/span&gt; &lt;span class="n"&gt;manage&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;py&lt;/span&gt; &lt;span class="n"&gt;runserver&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;p&gt;Şu anda konsol ekranınızda aşağıdaki yazıları gormeniz lazım.Daha sonra da browserınıza geçip localhost:8000 veya 127.0.0.1:8000 yapmanız yeterli olacaktır.Girdiğinizde ise Djangoya hoş geldiniz mesajını goreceksiniz.&lt;/p&gt;
-&lt;div class="codehilite"&gt;&lt;pre&gt;&lt;span class="n"&gt;Validating&lt;/span&gt; &lt;span class="n"&gt;models&lt;/span&gt;&lt;span class="p"&gt;...&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;Validating&lt;/span&gt; &lt;span class="n"&gt;models&lt;/span&gt;&lt;span class="p"&gt;...&lt;/span&gt;
 
 &lt;span class="mi"&gt;0&lt;/span&gt; &lt;span class="n"&gt;errors&lt;/span&gt; &lt;span class="n"&gt;found&lt;/span&gt;
 &lt;span class="n"&gt;Django&lt;/span&gt; &lt;span class="n"&gt;version&lt;/span&gt; &lt;span class="mf"&gt;1.4&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;using&lt;/span&gt; &lt;span class="n"&gt;settings&lt;/span&gt; &lt;span class="err"&gt;&amp;#39;&lt;/span&gt;&lt;span class="n"&gt;denemedjango&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;settings&lt;/span&gt;&lt;span class="err"&gt;&amp;#39;&lt;/span&gt;
