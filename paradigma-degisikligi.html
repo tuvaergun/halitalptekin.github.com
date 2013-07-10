@@ -4,7 +4,7 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>{ Halit Alptekin } - Tiobe Temmuz Ayı Sıralaması</title>
+  <title>{ Halit Alptekin } - Paradigma değişikliği</title>
 
   <meta name="author" content="halit">
 
@@ -59,22 +59,69 @@
       <div>
   <article class="hentry" role="article">
     <header>
-          <h1 class="entry-title">Tiobe Temmuz Ayı Sıralaması</h1>
-          <p class="meta"><time datetime="2012-08-04T00:00:00" pubdate> Aug 04, 2012 </time></p>
+          <h1 class="entry-title">Paradigma değişikliği</h1>
+          <p class="meta"><time datetime="2013-07-10T00:00:00" pubdate> Jul 10, 2013 </time></p>
 </header>
 
-  <div class="entry-content"><p>Python,Ruby,Perl,C,C++ gibi buyuk dillerin belirli tanımlamalara gore sıralanıp her ay Tiobe tarafından yayımlanıyor.Temmuz ayı için olansa son gunlerde yayınlandı.Bu sıralamaya en son baktığımda Java'nın ilk sırada olduğunu hatırlıyordum.Ancak Temmuz ayı sıralamasında yerini C'ye kaptırmış.Belki bu daha once olmuş olabilir ama ben yeni farkettim.Beni bu sıralamada en çok uzen ise her baktığımda Python'u 7-8-9 sıralamalarından birisinde gormek.Temmuz ayında da 8.sırada.İlk 3 kesinlikle C,C++ veya Javadan oluşmasına karşı değilim ancak Python'u 8.sırada gormek beni uzuyor.Gerçek hakkının en azından 4.sıra olması gerektiğini duşunuyorum.Ama bunun boyle olması için biraz daha beklememiz gerekiyor galiba.</p>
-<p><img alt="2012 Temmuz Ayı Programlama Dilleri Sıralaması" src="http://www.halitalptekin.com/media/upload/2012-temmuz-ayi-programlama-dilleri.png" /></p></div>
+  <div class="entry-content"><p>C'de kod yazarken fonksiyon içinde fonksiyon tanımlamanın yasaklı olması en başta bana çok saçma gelmişti. Birçok diğer dilde olduğu gibi ezberci sistem gereği üstüne gitmedik ve o şekilde öğrendik. Ama hep aklımı kurcalıyordu. Niye fonksiyon içine fonksiyon yazamıyorum ki? Buna yönelik birkaç tane kendimin geliştirdiği teoriler bile vardı. En mantıklısı; C dili programcıyı modüler geliştirme tekniğine zorluyordu. Yani fonksiyonları iç içe değilde farklı yerlerde tanımlayarak yazıp, gerektiği yerlerde kullanmamızı istiyordu. Ama bu benim düşüncemdi ve eksik yanları vardı. </p>
+<p><img alt="Lisp Programlama Dili" src="http://www.linuxforu.com/wp-content/uploads/2011/06/lisp-1-590x396.jpg" /></p>
+<p>Bunun yanında bazı dillerde de hep duyduğum birşey vardı. Global değişken kullanmak zararlıdır, tehlikelidir. Ama hiçkimse de çıkıp neden böyle olduğunu anlatma gereği duymamış. Birkaç yerde anlatılanlar var ama onlarda sadece işin güvenlik tarafından bahsetmişler. Sorunun asıl kaynağını anlatmamışlar veya anlatamamışlar.</p>
+<p>Tabi programlama dilleri ile bunun gibi birçok sorum ve problemim vardı. Ama bunları kafamdan bir süre uzaklaştırıp sanki yokmuş gibi düşünüp kodlarımı yazıyordum. Ama felsefem gereği yaptığım işte sistemin en altında da neler döndüğünü bilmek isterim. Bu yüzden yokmuş gibi davranmak pek bana göre değil.</p>
+<p>Aklımda böyle sorular varken derslerini çok sevdiğim Chris Stephenson'un izlemediğime bin pişman olduğum aşağıdaki videosu ile karşılaştım. Normalde bu kadar uzun video izleyen birisi değilim. Bir zaman sonra beni sıkıyor ve hızlı hızlı geçmeye başlıyorum. Ama ilk defa bir videoda böyle yapma gereği duymadım. Sonuna kadar pür dikkat dinledim. Yukarda yazdığım ve aklıma takılan sorunların birçoğundan videoda bahsediyordu. Bittiğinde izlediğime gerçekten pişman olmamıştım. Size tavsiyem ne kadar uzun olursa olsun sonuna kadar izleyin.</p>
+<p><object width="720" height="400" data="http://video.cs.bilgi.edu.tr/flowplayer-3.1.5.swf" type="application/x-shockwave-flash"><param name="movie" value="http://video.cs.bilgi.edu.tr/flowplayer-3.1.5.swf" /><param name="allowfullscreen" value="true" /><param name="allowscriptaccess" value="always" /><param name="flashvars" value='config={"clip":{"provider":"lighttpd","url":"http://video.cs.bilgi.edu.tr/videos/ACM_Istanbul_1.flv","autoPlay":false,"autoBuffering":true},"plugins":{"lighttpd":{"url":"http://video.cs.bilgi.edu.tr/flowplayer.pseudostreaming-3.1.3.swf"}},"playlist":[{"provider":"lighttpd","url":"http://video.cs.bilgi.edu.tr/videos/ACM_Istanbul_1.flv"}]}' /></object></p>
+<p>Videoyu izledikten sonra kafamda ilginç şeyler belirmeye bazı problemlerinde ardındaki sis perdesi aralanmaya başladı. Birçok dilin aslında yaratıcılığımızı nasıl engellediğini düşündüm. Bize bir özgürlük alanı veriyorlardı ama bu alan gerçek özgürlüğün içinde büyük bir hapishaneymiş meğer.</p>
+<p>Yukarıdaki videoyu izledikten sonra bir süredir aklımda yer alan Lisp ailesinden bir dil öğrenme fikrini hemen gerçekleştirmek istedim. Benim bu dilimi öğrenmemdeki amaç kesinlikle ilerde bana iş olanağı açacağı veya popüler olduğu için değil, gerçekten bana programlama adına birşeyler öğretmesi istediğimdendi. Tamam Python'da kesinlikle bana bu tarz birşey sağlıyordu diye öğrendim. Ama <strong>Python</strong> ve diğer dillerden aşina olduğum tarzdan yani bu dillerin paradigmalarından biraz kurtulmak istiyordum. Açıkcası bunların hepsi beni fonksiyonel programlamaya doğru çekiyordu. Ve bu fonksiyonel programlama dilinin <strong>Lisp</strong> ailesinden olmasını istiyordum.</p>
+<p>Bildiğiniz gibi <a href="http://tr.wikipedia.org/wiki/Lisp" title="Lisp">Lisp</a> 1958 yılında icat edildiğini için günümüzdeki en eski dillerden birisi. Bu kadar köklü geçmişi olmasından dolayıda haliyle çok fazla dallanıp budaklanmış. Birçok lehçesi çıkmış. Buraya dikkat. Lehçe diyorum ama bunların hepsi başlı başına bir dil. Lisp'in ne kadar köklü olduğunu anlamışınızdır.</p>
+<p>Günümüzde hala <strong>Common Lisp</strong>, <strong>Scheme</strong>, <strong>Clojure</strong>, <strong>Emacs Lisp</strong> lehçeleri çokca kullanılıyor. Ben de bu lehçelerden birisini seçip öğrenmek istiyordum ama hangisine seçeceğime bir türlü karar veremiyordum. Bu konuda bir uzmana danışmak gerekiyor diye düşündüm ve Türkiye'de bana göre <strong>Lisp</strong> deyince aklıma gelen kişi olan <a href="http://ileriseviye.wordpress.com/" title="Emre Sevinç">Emre Sevinç</a> abiye mail attım. Ve kendisi bana inanılmaz kısa bir sürede geri döndü ve yapacağım seçimde belirleyici rol oynadı. Bana söylediği seçim aşamasındaki kısmı aynen atıyorum.</p>
+<blockquote>
+<ul>
+<li>
+<p>Common Lisp: Buyuk bir dil. Emacs + SLIME (+HyperSpec, CLtL2,
+    lispdoc, vs. ile muazzam yetenekli ve güçlü bir gelistirme ortami
+    sunuyor ama o ortamin hakkini vermek için iyi ögrenmek, iyi ögrenmek
+    için de sakin kafa ile epey vakit ayirmak sart. Bu aralar
+    http://www.quicklisp.org/ gibi araçlar sayesinde epey farkli kitapliga
+    kolayca erisip kurmak mümkün.</p>
+</li>
+<li>
+<p>Scheme: Burada bir iki farkli durum var, klasik Scheme ile mesela
+    SICP kitabi çalisilabilir, zordur, ufuk açar ama zordur.</p>
+</li>
+</ul>
+<p>Yahut: Cok yogun sekilde gelistirilen Dr.Racket ve
+    http://www.ccs.neu.edu/home/matthias/HtDP2e/ ile hem eglenceli bir
+    gelistirme ortamina, hem de gayet iyi bir kitaba kavusmak, duzenli bir
+    calisma ile birkac ayda epey sey ögrenmek mümkün.</p>
+<p>Dr.Racket'in kitaplik zenginligi ne durumda, bilemiyorum acikcasi
+    son durumlari.</p>
+<ul>
+<li>Clojure: 'a strange beast'. Hiç kullanmadim. Yani Lisp'e ve
+    fikirlere, ufuk genislemesine odaklanacaksam önce CL ya da Scheme
+    tercih ederim. Ayrica Clojure'un REPL ortami Emacs+SLIME yahut
+    Dr.Racket ile ne kadar boy ölçüsebilir, süpheli. Diger yandan Java ve
+    JVM dünyasinin ezici bir yayginligi, muazzam bir kitaplik destegi var.
+    Yani gelistiren Lisp kodunu bir sekilde baska sistemlerle entegre
+    etmek gerekirse Clojure illa ki avantajini belli edecektir diye tahmin
+    ediyorum.</li>
+</ul>
+</blockquote>
+<p>Bu söylediklerinden sonra birinde karar vermem gerekiyordu. Açıkcası önümde birkaç kapı var ve hangisini seçersem seçeyim bana birşeyler katacağından emindim. Belkide en güzel karar vermelerden birisi buydu. Birini seçtiğimde pişman olmayacaktım. Lisp'in syntaxına ve getirdiklerine aşina olacaktım ya o bana yeterdi.</p>
+<p>Ve ben bunca düşünme ve karar verme aşamasından sonra tercihimi Clojure'dan yana kullandım. Neden derseniz öyle kısa veya uzun bir cevabı yok. Birini seçmek zorundaydım. Ben hem yeni(2007) hem de eskinin mirasını alan birşey istiyordum. <a href="http://clojure.org/" title="Clojure">Clojure</a> bu tanıma uyuyordu. Hatta Clojure hep uzak durduğum <strong>Java</strong> dünyasına da beni yakınlaştırabilir diye düşünüyorum. Çünkü <strong>Clojure</strong> ile yazdığım kodlar direk Java içinde, Java içinde yazılan kodlar da direk Clojure içinde kullanılabiliyor. Mesela büyük bir <strong>Java</strong> uygulamanız ve kodunuz varsa bunun içinde sorunlu ve performans gerektiren bazı işleri Clojure ile yazıp direk o sistemin parçası edebiliyorsunuz. Gerçekten çok iyi birşey bu.</p>
+<p>Artık hem <strong>Lisp</strong> syntaxını ve getirdiklerini öğreniyordum hem de arkama yılların tecrübesi ve gayet büyük Java dünyasını alıyordum. Gerçekten bu iş için biçilmiş kaftan oldu Clojure. Ve bu gazla bundan sadece 2 gün önce ilk kanı döktüm ve <strong>Clojure</strong> çalışmaya başladım. Başladıktan bu yana beni gerçekten içine çektikçe çekti. Şu anda aklımda birton proje oluştu bile diyebilirim. Zaten çoğu soruma cevapta buldum. Bunlar benim için gerçekten yeterliydi. Şimdi de elimdeki algoritmalar kitabındaki çoğu problemi <strong>Clojure</strong> ile gerçeklemeyi düşünüyorum. Hem algoritmalar ile uğraşıcam hem de yeni bir dil ile. Çok güzel bir anlaşma oldu bu.</p>
+<p>Bu yazının bir amacı artık programlama dünyasına farklı baktığımı göstermek içindi. Bir diğeri ise <strong>Clojure</strong> ile ilgili yazıları bundan sonra blogumda bolca bulabileceğiniz içindi. Tabi bir de artık her gördüğüm matematiksel problem ve algoritmayı gerçekleme fikrim var. Bu da ilerde dönüp baktığımda bana güzel bir anı olması için.</p>
+<p><img alt="Clojure" src="http://kryshen.net/photos/original/clojure_mug.jpg" /></p>
+<p>Özetle en azından bir fonksiyonel programlama dili bilmeye çalışın. Mümkünse Lisp ailesinden olsun olmazsa da önemli değil zaten çoğunun kökeni aynı yere gidiyor. Hatta zamanınız varsa <strong>Lambda Calculus</strong> neymiş ne değilmiş diye araştırın. Sadece 3 tane kuralı olan bu programlama dili ile yapılanları gördükçe benim hissettiklerimi sizde hissedeceksiniz. Geç değil yapın bunu. Hatta buyurun <a href="http://courses.cs.bilgi.edu.tr/course/view.php?id=308" title="Lambda Calculus">buradan</a> başlayın.</p>
+<p>Önce <a href="http://www.kurumsaljava.com/2012/12/30/neden-fonksiyonel-programlamayi-ogrenmek-zorundayiz/" title="Fonksiyonel Programlama">şu</a> yazıyı ardından da <a href="http://burcudogan.com/articles/functional-programing-for-beginners/" title="Fonksiyonel Programlama">bu</a> yazıyı okuyarak fonksiyonel programlama konusundaki ilk atılımı yapabilirsiniz. Bundan sonra uygun dili seçip ufkunuzu açın derim.(Lisp ailesinden seçin farkı yaşayın)</p></div>
     <footer>
       <p class="meta">
   <span class="byline author vcard">
     Posted by <span class="fn">halit</span>
   </span>
-  <time datetime="2012-08-04T00:00:00" pubdate> Aug 04, 2012 </time>    <span class="categories">
+  <time datetime="2013-07-10T00:00:00" pubdate> Jul 10, 2013 </time>    <span class="categories">
         <a class="category" href="http://www.halitalptekin.com/tag/programlama.html">programlama</a>
-        <a class="category" href="http://www.halitalptekin.com/tag/programlama-dilleri.html">programlama dilleri</a>
-        <a class="category" href="http://www.halitalptekin.com/tag/programlama-dilleri-siralamasi.html">programlama dilleri sıralaması</a>
-        <a class="category" href="http://www.halitalptekin.com/tag/python.html">python</a>
+        <a class="category" href="http://www.halitalptekin.com/tag/lisp.html">lisp</a>
+        <a class="category" href="http://www.halitalptekin.com/tag/fonksiyonel-programlama.html">fonksiyonel programlama</a>
+        <a class="category" href="http://www.halitalptekin.com/tag/lambda-calculus.html">lambda calculus</a>
       </span>
   </p>    </footer>
   </article>
