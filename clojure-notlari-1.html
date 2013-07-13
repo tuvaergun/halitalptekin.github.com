@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>{ Halit Alptekin } - Clojure Notları #1</title>
+
+  <meta name="author" content="halit">
+
+    <link href="http://www.halitalptekin.com/feeds/all.atom.xml" type="application/atom+xml" rel="alternate"
+        title="{ Halit Alptekin } Atom Feed" />
+      <link href="http://www.halitalptekin.com/feeds/all.rss.xml" type="application/rss+xml" rel="alternate"
+        title="{ Halit Alptekin } RSS Feed" />
+  
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <link href="http://www.halitalptekin.com/favicon.png" rel="icon">
+  <link href="http://www.halitalptekin.com/theme/css/main.css" media="screen, projection"
+        rel="stylesheet" type="text/css">
+  <script src="http://www.halitalptekin.com/theme/js/modernizr-2.0.js"></script>
+  <script src="http://www.halitalptekin.com/theme/js/ender.js"></script>
+  <script src="http://www.halitalptekin.com/theme/js/octopress.js" type="text/javascript"></script>
+
+  <link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic"
+        rel="stylesheet" type="text/css">
+  <link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic"
+        rel="stylesheet" type="text/css">
+</head>
+<body>
+  <header role="banner"><hgroup>
+  <h1><a href="http://www.halitalptekin.com/">{ Halit Alptekin }</a></h1>
+  </hgroup></header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  <li><a href="http://www.halitalptekin.com/feeds/all.atom.xml" rel="subscribe-rss">Atom</a></li>
+    <li><a href="http://www.halitalptekin.com/feeds/all.rss.xml" rel="subscribe-rss">Rss</a></li>
+  </ul>
+
+<!-- TODO: add search here
+<form action="" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="q" value="site:http://www.halitalptekin.com" />
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+-->
+
+<ul class="main-navigation">
+  <li><a href="http://www.halitalptekin.com/">Blog</a></li>
+        <li><a href="http://www.halitalptekin.com/pages/about-me.html">About Me</a></li>
+    <li><a href="http://www.halitalptekin.com/pages/contact.html">Contact</a></li>
+  <!-- TODO: add categories here? -->
+  </ul></nav>
+  <div id="main">
+    <div id="content">
+      <div>
+  <article class="hentry" role="article">
+    <header>
+          <h1 class="entry-title">Clojure Notları #1</h1>
+          <p class="meta"><time datetime="2013-07-14T00:00:00" pubdate> Jul 14, 2013 </time></p>
+</header>
+
+  <div class="entry-content"><p>Bir önceki yazımda da dediğim gibi paradigma değişikliğine gidip Lisp ailesi diller ile uğraşmaya başlamıştım. Bu dillerden Clojure'u seçip ciddi anlamda üstüne düşüyorum. Tabi <strong>Clojure</strong> ile ilgilenirken bir yandan da <strong>Lisp</strong> ailesinin getirdiklerini anlamaya ve uygulamaya çalışıyorum. Bir de fonksiyonel programlamaya alışmaya çalışıyorum. Benim için pek alışkın olmadığım bu dünya gayet heyecanlı gelmeye de başladı diyebilirim. Bu yüzden en iyi öğrenme şekillerinden biri olan öğrendiğini hemen anlatmayı uygulayarak, Clojure'u öğrenirken bir yandan da bloguma notlar tutacağım. İlerde dönüp baktığımda başvuru kaynağı olarak kullanabilirim. Aklıma gelmeyen bazı şeylerede hemen dönüp bakabilirim. Tabi bir de benim gibi sıfırdan başlamak isteyenler için başlangıç noktası olabilir.</p>
+<h2>Neden Clojure?</h2>
+<ul>
+<li>
+<p>Bir kere öncelikle Lisp ailesinin son üyelerinden birisi. Yani Lisp'in uzun tarihi sürecinde edindiği birçok tecrübeye sahip yepyeni bir dil. 2007 yılında <strong>Rich Hickey</strong> tarafından oluşturuldu. Ancak bu kadar kısa bir süreye rağmen gayet yeterli derecede kütüphaneleri ve kullanıcı grubu var. Asıl ilginç olan ise uzun bir süredir adı bile anılmayan bu dilin son birkaç yıl içinde çok fazla sesi çıkmaya başladı. Büyük şirketlerin tek tük geçmesi ile ayrı bir boyuta taşıdı kendini.</p>
+</li>
+<li>
+<p>Clojure diğer script dilleri gibi yorumlanmaz. Yazılan kodlar <strong>JVM</strong> üzerinde çalışacak şekilde Java byte koduna derlenir. Bu sayede hız konusundaki şüpheleri ortadan kaldırır. JVM üzerinde çalışmasının diğer önemli özelliği Java'nın sahip olduğu tüm kütüphanelere direkt olarak ulaşabilmesi ve onları istediği gibi kullanabilmesi. Bu sayede yazdığınız bi Clojure koduna Java kodlarını ekleyebilir aynı şekilde <strong>Java</strong> kodlarınızın bir kısmını <strong>Clojure</strong> ile yazabilirsiniz. Özellikle büyük çaplı Java uygulamalarının kilit noktalarının <strong>Clojure</strong> ile programlandığını biliyorum.</p>
+</li>
+<li>
+<p>Tamamen fonksiyonel bir dil. Diğer<strong> Lisp</strong> dillerinde olduğu gibi <strong>fonksiyonel programlamanın</strong> tüm marifetlerine sahip. Diğer dil paradigmalarında yazmanın eziyet olduğu kodları, sanki ingilizce yazar gibi yazabiliyorsunuz. Girdikçe için içine daha fazla aşık oluyorsunuz. Sonsuz uzunluktaki dizilerde işlemler(laziness) birçok konuda düşünme becerisini geliştiriyor. Matematiksel problemlerde ve bilimsel projelerde ayrı bir hız kazandırıyor insana. </p>
+</li>
+</ul>
+<p><img alt="Concurrent" src="http://www.gotw.ca/images/CPU.png" /></p>
+<ul>
+<li>
+<p>Resimden de gördüğünüz gibi bilgisayarlar hızlanmaya devam ediyor. Tabi bu da bir yere kadar gidecek. Artık bilgisayarların hızlarını çok çekirdekli olup olmamaları etkiliyor. Aynı anda birçok çekirdek üzerinde işlem yapan programlar büyük öneme sahip. Bu yüzden fonksiyonel programlama eş-zamanlı işler için bulunmaz nimet. Clojure'da bu iş için diğer rakipleri <strong>Scala</strong>, <strong>Go</strong>, <strong>Erlang</strong> gibi çok büyük öneme sahip. Bu dillere olan ilgiler sürekli artıyor. Ve emin olun artmayada devam edecektir. Özellikle Scala'nın sert girişi ardından son günlerdeki Go'nun yükselişini kimse inkar edemez. Clojure'da bu diller arasına, arkasına Java ve Lisp'in getirdiklerini alarak giriyor. Ve bu tarz işler için biçilmiş kaftan. Hatta tam olarak bu konu üzerine bir <a href="http://pluralsight.com/training/Courses/TableOfContents/clojure-concurrency-tutorial" title="Clojure Concurrency">Clojure Kursu</a> var. İlgilenenler bakabilir.</p>
+</li>
+<li>
+<p>Clojure diğer fonksiyonel programlama dilleri gibi gerçekten hızlı. Çünkü dildeki veri yapıları değiştirilemez(immutable). Yani siz bir liste oluşturduğunuzda ve üzerinde işlemler yaptığınızda listenin son durumu ilk halinin aynısı. Özellikle değiştirmek istemediğiniz(yan etkiler) takdirde tüm veri yapıları üzerinde kalıcı değişiklikler yapamıyorsunuz. Haliyle kod içerisinde bir yerlerde bir listenin kopyasını alamıyorsunuz. Başta bana çok ilginç gelen bu özellik gerçekten de çok faydalı oluyor. Diyebilirsiniz değiştirmeden herşeyi yapabiliyormuyuz? Evet. Genelde bu şekilde her işinizi halledebiliyorsunuz. Ancak çok gerekli bir durum olduğunda tabiki de Clojure değişiklik yapmanıza izin veriyor. Gerekmedikçe kullanmanın anlamı yok.</p>
+</li>
+</ul>
+<p>Burada yazdığım gibi benzer kanıtlar arıyorsanız <a href="http://www.quora.com/Clojure/Why-would-someone-learn-Clojure" title="Why Clojure?">buradaki</a> veya <a href="http://johnfn.github.io/johnfn/post3.html" title="Clojure">buradaki</a> gibi bir link işinizi görecektir. Zaten internet üzerinde neden Lisp, neden Clojure gibi konularda çok fazla yazı var. İstediğiniz bir tanesini seçip okuyabilirsiniz.</p>
+<h2>Biraz Syntax</h2>
+<p>Clojure dediğim gibi Lisp ailesi dillerinden birisidir. Yani diğer <strong>Lisp</strong> dillerinde olduğu gibi aynı syntax yapısını kullanır. <a href="http://en.wikipedia.org/wiki/Polish_notation" title="Polish Notation">Polonyalı notasyonu</a> dedikleri bu yapı ilk başlarda zor gözükse de aslında diğer tüm dillerden daha zarif ve okunabilir yapıda. Ben de başta bu kadar paranteze ne gerek var gibi düşünsemde bir zaman sonra oradaki her parantezin aslında bir amacı olduğunu anladım. Öyle söylenildiği kadar da karışık ve anlaşılmaz değil.</p>
+<p>Parantezlerle boğuşacağımız için öncelikle güzel bir geliştirme ortamımızın hazır olması gerekli. <strong>Lisp</strong> için en iyi geliştirme ortamı kesinlikle <strong>Emacs</strong>. Direk kendisi için yazılmış ayrı bir Lisp lehçesi bile var. Emacs'in yanında<strong> Eclipse</strong>, <strong>Netbeans</strong> veya <strong>IntelliJ</strong> gibi ortamları sevenlerde rahatça kodlarını buralarda yazabilirler. Ben <strong>Vim</strong> fanatiği olduğum için <strong>Clojure</strong> kodlarımı Vim'de yazıyorum. Ve gayette mutluyum. Lazım olan herşeyi rahatça kurdum ve ayarladım. Bu konuyada yakında değineceğim zaten.(Emacs'e alışmak için çok uğraşsamda beni bir türlü içine çekemedi. Vim'deki zerafeti ve kolaylığı bana sağlayamadı. Emacs fanatikleri sinirlenecek ama öyle maalesef. Hala VIM!)</p>
+<p><img alt="Vim for Clojure" src="media/vimrepl.png" /></p>
+<h2>Kurulum</h2>
+<p>Clojure ile kod yazmaya başlamak için kendi sitesindeki <a href="http://clojure.org/" title="Clojure Indirme">indirme</a> sayfasından java dosyasını indirip aşağıdaki komutla açmak yeterli.</p>
+<div class="highlight"><pre><span class="n">java</span> <span class="o">-</span><span class="n">jar</span> <span class="n">clojure</span><span class="o">-</span><span class="mf">1.5.1</span><span class="p">.</span><span class="n">jar</span>
+</pre></div>
+
+
+<p>Bu sayede önünüze <strong>REPL(Read Evolution Print Loop)</strong> ortamı gelecek. Artık burada ilk denemelerinizi yapabilirsiniz.(Bu arada android markette de <strong>Clojure REPL</strong> isimli uygulamayı kurarsanız aynı ortama sahip olabilirsiniz)    </p>
+<div class="highlight"><pre><span class="n">user</span><span class="o">=&gt;</span> <span class="p">(</span><span class="o">+</span> <span class="mi">5</span> <span class="mi">6</span><span class="p">)</span>
+<span class="mi">11</span>
+</pre></div>
+
+
+<p>Yukarıdaki kodun ne yaptığı gayet açık zaten anlatmaya gerek yok. Şimdilik sadece bakmak yeterli. Henüz gerekli ortamlarımızı kurmadık.</p>
+<h2>Paket Yöneticisi</h2>
+<p>Clojure diğer birçok dilin de sahip olduğu gibi güzel bir paket yöneticisine sahip. Bu yönetici ile yeni proje oluşturup, çalıştırabilirsiniz. <strong>Ubuntu/Debian</strong> kullanıcıları aşağıdaki paketi kurarak bu güzel yöneticiye sahip olabilirler.</p>
+<div class="highlight"><pre><span class="n">sudo</span> <span class="n">apt</span><span class="o">-</span><span class="n">get</span> <span class="n">install</span> <span class="n">leiningen</span>
+</pre></div>
+
+
+<p>Kurulum bittikten sonra istediğimiz bir dizine geçip yeni proje oluşturalım.</p>
+<div class="highlight"><pre><span class="n">lein</span> <span class="n">new</span> <span class="n">hello</span>
+</pre></div>
+
+
+<p>Eğer herhangi bir sıkıntı ile karşılaşmadıysanız aşağıdaki gibi birşey görmeniz lazım. Eğer hata ile karşılaşırsanız(ki bende bazı paketlerde sıkıntı yapmıştı. Bunu da verdiği uyarıdan yola çıkarak kurmuştum. Normal şartlarda bir sorun ile karşılaşmamanız lazım.)</p>
+<div class="highlight"><pre><span class="n">Created</span> <span class="n">new</span> <span class="n">project</span> <span class="n">in</span><span class="o">:</span> <span class="o">/</span><span class="n">home</span><span class="o">/</span><span class="n">halit</span><span class="o">/</span><span class="n">hello</span>
+<span class="n">Look</span> <span class="n">over</span> <span class="n">project</span><span class="p">.</span><span class="n">clj</span> <span class="n">and</span> <span class="n">start</span> <span class="n">coding</span> <span class="n">in</span> <span class="n">proje</span><span class="o">/</span><span class="n">core</span><span class="p">.</span><span class="n">clj</span>
+</pre></div>
+
+
+<p>Aynen verdiği uyarıdaki gibi <code>hello/core.clj</code> içine girerek kodlamaya başlayabilirsiniz. Tabi kodlamaya geçmeden önce ortamınızı da ayarlamanız gerekli. <a href="http://www.lighttable.com/" title="Light Table">Light Table</a> isimli IDE Clojure kodlamak için gayet güzel bir ortam sunuyor. Eğer Vim veya Emacs fanatiği değil iseniz ve Netbeans, Eclipse gibi ortamların hantallığından şikayet ediyorsanız bir bakın derim. Sublime Text'de bu iş için bir alternatif tabi.</p>
+<div class="highlight"><pre><span class="n">hello</span>
+<span class="err">├──</span> <span class="n">project</span><span class="p">.</span><span class="n">clj</span>
+<span class="err">├──</span> <span class="n">README</span>
+<span class="err">├──</span> <span class="n">src</span>
+<span class="err">│  </span> <span class="err">└──</span> <span class="n">hello</span>
+<span class="err">│  </span>     <span class="err">└──</span> <span class="n">core</span><span class="p">.</span><span class="n">clj</span>
+<span class="err">└──</span> <span class="n">test</span>
+    <span class="err">└──</span> <span class="n">hello</span>
+        <span class="err">└──</span> <span class="n">test</span>
+            <span class="err">└──</span> <span class="n">core</span><span class="p">.</span><span class="n">clj</span>
+</pre></div>
+
+
+<p>Lein'in bize oluşturduğu proje yukarıdaki gibi oluyor. Biz kodlarımızı <code>src/hello/core.clj</code> içine yazacağız. Kodlarımızı kullanmak istediğimizde <code>lein repl</code> kullanarak interaktif satırımıza girebiliriz. Veya web uygulaması yazdığınızda çalıştırmak için <code>lein run</code> komutunu kullanabiliriz.</p>
+<p>Yazdığımız projenin bağımlılıklarını <code>project.clj</code> içine tanımlıyoruz ve gerekli işlemler için <code>lein deps</code> komutunu kullanıyoruz. Bu sayede hiçbir sorunla karşılaşmadan gerekli paketleri kurabiliriz. Aynı şekilde yazdığımız testler için de <code>lein test</code> kullanabilirsiniz.</p>
+<p>Şimdi ne olduğunu pek anlamaya çalışmadan ilk basit uygulamamızı yapalım. Önce <code>src/hello/core.clj</code> dosyamızı açalım ve aşağıdaki kodları ekleyelim.</p>
+<div class="highlight"><pre><span class="p">(</span><span class="n">defn</span> <span class="n">say</span><span class="o">-</span><span class="n">hello</span> <span class="p">[</span><span class="n">x</span><span class="p">]</span>
+  <span class="p">(</span><span class="n">println</span> <span class="s">&quot;Merhaba &quot;</span> <span class="n">x</span> <span class="s">&quot; !&quot;</span><span class="p">))</span>
+</pre></div>
+
+
+<p>Daha sonra <code>lein repl</code> ile REPL ortamımıza girelim. Önümüze gelen kısımda önce <code>(use 'hello.core)</code> ile hangi kodu kullanacağımızı belirtelim. Ve daha sonra bu kod içerisindeki <code>say-hello</code> isimli(şu anda nasıl çalıştığını bilmiyoruz) fonksiyonunu <code>"Clojure"</code> argümanıyla çağıralım.</p>
+<div class="highlight"><pre><span class="n">REPL</span> <span class="n">started</span><span class="p">;</span> <span class="n">server</span> <span class="n">listening</span> <span class="n">on</span> <span class="n">localhost</span> <span class="n">port</span> <span class="mi">40061</span>
+<span class="n">user</span><span class="o">=&gt;</span> <span class="p">(</span><span class="n">use</span> <span class="err">&#39;</span><span class="n">hello</span><span class="p">.</span><span class="n">core</span><span class="p">)</span>
+<span class="n">nil</span>
+<span class="n">user</span><span class="o">=&gt;</span> <span class="p">(</span><span class="n">say</span><span class="o">-</span><span class="n">hello</span> <span class="s">&quot;Clojure&quot;</span><span class="p">)</span>
+<span class="n">Merhaba</span>  <span class="n">Clojure</span>  <span class="o">!</span>
+<span class="n">nil</span>
+<span class="n">user</span><span class="o">=&gt;</span>
+</pre></div>
+
+
+<p>Yapılabilecek en basit ve gereksiz uygulamayı bu sayede yapmış olduk. Bundan sonraki yazımda Vim için Clojure ortamının kurulumunu anlatmaya çalışacağım. Daha sonrada ufak ufak Clojure'un en başından başlarım. Bu yazılardan çok profesyonel birşeyler beklemeyiniz. Ben ne anladıysam onu anlatacağım. Yanlış anladıklarım da olmuş olabilir. Bunları uyarırsanız bende hazır bu öğrenme aşamasında düzeltirim.</p></div>
+    <footer>
+      <p class="meta">
+  <span class="byline author vcard">
+    Posted by <span class="fn">halit</span>
+  </span>
+  <time datetime="2013-07-14T00:00:00" pubdate> Jul 14, 2013 </time>    <span class="categories">
+        <a class="category" href="http://www.halitalptekin.com/tag/clojure.html">clojure</a>
+        <a class="category" href="http://www.halitalptekin.com/tag/clojure-programlama.html">clojure programlama</a>
+        <a class="category" href="http://www.halitalptekin.com/tag/clojure-programming.html">clojure programming</a>
+      </span>
+  </p>    </footer>
+  </article>
+  <section>
+    <div class="addthis_toolbox addthis_default_style addthis_32x32_style">
+        <a class="addthis_button_preferred_1"></a>
+        <a class="addthis_button_preferred_2"></a>
+        <a class="addthis_button_preferred_3"></a>
+        <a class="addthis_button_preferred_4"></a>
+        <a class="addthis_button_preferred_5"></a>
+        <a class="addthis_button_preferred_6"></a>
+        <a class="addthis_button_preferred_7"></a>
+        <a class="addthis_button_preferred_8"></a>
+        <a class="addthis_button_preferred_9"></a>
+        <a class="addthis_button_preferred_10"></a>
+        <a class="addthis_counter addthis_bubble_style"></a>
+    </div>
+    <script type="text/javascript" src="http://s7.addthis.com/js/250/addthis_widget.js#pubid=ra-504c6d593daec57a"></script>
+  </section>
+    <section>
+    <h1>Comments</h1>
+    <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript></div>
+  </section>
+  </div>
+<aside class="sidebar">
+  <section>
+    <h1>Recent Posts</h1>
+    <ul id="recent_posts">
+            <li class="post">
+          <a href="http://www.halitalptekin.com/clojure-notlari-1.html">Clojure Notları #1</a>
+      </li>
+            <li class="post">
+          <a href="http://www.halitalptekin.com/paradigma-degisikligi.html">Paradigma değişikliği</a>
+      </li>
+            <li class="post">
+          <a href="http://www.halitalptekin.com/gnu-c-tamsayi-turleri.html">GNU C tamsayi turleri</a>
+      </li>
+            <li class="post">
+          <a href="http://www.halitalptekin.com/fonksiyon-goestergeleri.html">Fonksiyon göstergeleri</a>
+      </li>
+            <li class="post">
+          <a href="http://www.halitalptekin.com/cde-debug-makrolari.html">C'de debug makrolari</a>
+      </li>
+          </ul>
+  </section>
+    <section>
+      
+    <h1>Categories</h1>
+    <ul id="recent_posts">
+              <li><a href="http://www.halitalptekin.com/category/tasarim.html">tasarim</a></li>
+              <li><a href="http://www.halitalptekin.com/category/server.html">server</a></li>
+              <li><a href="http://www.halitalptekin.com/category/python.html">python</a></li>
+              <li><a href="http://www.halitalptekin.com/category/programlama.html">programlama</a></li>
+              <li><a href="http://www.halitalptekin.com/category/linux.html">linux</a></li>
+              <li><a href="http://www.halitalptekin.com/category/kisisel.html">kisisel</a></li>
+              <li><a href="http://www.halitalptekin.com/category/internet.html">internet</a></li>
+              <li><a href="http://www.halitalptekin.com/category/guvenlik.html">guvenlik</a></li>
+              <li><a href="http://www.halitalptekin.com/category/genel.html">genel</a></li>
+              <li><a href="http://www.halitalptekin.com/category/eglence.html">eglence</a></li>
+              <li><a href="http://www.halitalptekin.com/category/django.html">django</a></li>
+              <li><a href="http://www.halitalptekin.com/category/compsci.html">compsci</a></li>
+              <li><a href="http://www.halitalptekin.com/category/arduino.html">arduino</a></li>
+          </ul>
+  </section>
+   
+
+    
+    <section>
+        <h1>Social</h1>
+        <ul>
+            <li><a href="http://www.halitalptekin.com/feeds/all.rss.xml" type="application/rss+xml" rel="alternate">rss</a></li>
+                    <li><a href="http://twitter.com/halitalptekin" target="_blank">twitter</a></li>
+                    <li><a href="http://github.com/halitalptekin" target="_blank">github</a></li>
+                    <li><a href="http://stackoverflow.com/users/1151618/halit-alptekin" target="_blank">stackoverflow</a></li>
+                    <li><a href="http://tr.linkedin.com/in/halitalptekin" target="_blank">linkedin</a></li>
+                </ul>
+    </section>
+      <section>
+        <h1>Blogroll</h1>
+        <ul>
+                    <li><a href="http://www.python.org" target="_blank">Python</a></li>
+                </ul>
+    </section>
+
+  
+</aside>      <aside class="sidebar">
+  <section>
+    <h1>Recent Posts</h1>
+    <ul id="recent_posts">
+            <li class="post">
+          <a href="http://www.halitalptekin.com/clojure-notlari-1.html">Clojure Notları #1</a>
+      </li>
+            <li class="post">
+          <a href="http://www.halitalptekin.com/paradigma-degisikligi.html">Paradigma değişikliği</a>
+      </li>
+            <li class="post">
+          <a href="http://www.halitalptekin.com/gnu-c-tamsayi-turleri.html">GNU C tamsayi turleri</a>
+      </li>
+            <li class="post">
+          <a href="http://www.halitalptekin.com/fonksiyon-goestergeleri.html">Fonksiyon göstergeleri</a>
+      </li>
+            <li class="post">
+          <a href="http://www.halitalptekin.com/cde-debug-makrolari.html">C'de debug makrolari</a>
+      </li>
+          </ul>
+  </section>
+    <section>
+      
+    <h1>Categories</h1>
+    <ul id="recent_posts">
+              <li><a href="http://www.halitalptekin.com/category/tasarim.html">tasarim</a></li>
+              <li><a href="http://www.halitalptekin.com/category/server.html">server</a></li>
+              <li><a href="http://www.halitalptekin.com/category/python.html">python</a></li>
+              <li><a href="http://www.halitalptekin.com/category/programlama.html">programlama</a></li>
+              <li><a href="http://www.halitalptekin.com/category/linux.html">linux</a></li>
+              <li><a href="http://www.halitalptekin.com/category/kisisel.html">kisisel</a></li>
+              <li><a href="http://www.halitalptekin.com/category/internet.html">internet</a></li>
+              <li><a href="http://www.halitalptekin.com/category/guvenlik.html">guvenlik</a></li>
+              <li><a href="http://www.halitalptekin.com/category/genel.html">genel</a></li>
+              <li><a href="http://www.halitalptekin.com/category/eglence.html">eglence</a></li>
+              <li><a href="http://www.halitalptekin.com/category/django.html">django</a></li>
+              <li><a href="http://www.halitalptekin.com/category/compsci.html">compsci</a></li>
+              <li><a href="http://www.halitalptekin.com/category/arduino.html">arduino</a></li>
+          </ul>
+  </section>
+   
+
+    
+    <section>
+        <h1>Social</h1>
+        <ul>
+            <li><a href="http://www.halitalptekin.com/feeds/all.rss.xml" type="application/rss+xml" rel="alternate">rss</a></li>
+                    <li><a href="http://twitter.com/halitalptekin" target="_blank">twitter</a></li>
+                    <li><a href="http://github.com/halitalptekin" target="_blank">github</a></li>
+                    <li><a href="http://stackoverflow.com/users/1151618/halit-alptekin" target="_blank">stackoverflow</a></li>
+                    <li><a href="http://tr.linkedin.com/in/halitalptekin" target="_blank">linkedin</a></li>
+                </ul>
+    </section>
+      <section>
+        <h1>Blogroll</h1>
+        <ul>
+                    <li><a href="http://www.python.org" target="_blank">Python</a></li>
+                </ul>
+    </section>
+
+  
+</aside>    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2013 - halit -
+  <span class="credit">Powered by <a href="http://getpelican.com">Pelican</a></span>
+</p></footer>
+      <script type="text/javascript">
+	    var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+	    document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+    </script>
+    <script type="text/javascript">
+	    try {
+	        var pageTracker = _gat._getTracker("UA-24728900-1");
+	    pageTracker._trackPageview();
+	    } catch(err) {}
+	</script>
+	<script type="text/javascript">
+	  var disqus_shortname = 'halitalptekin';
+	  (function() {
+	    var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+	    dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
+	    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+	   })();
+	</script>
+</body>
+</html>
