@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>{ Halit Alptekin } - Clojure geliştirme ortamı</title>
+
+  <meta name="author" content="halit">
+
+    <link href="http://www.halitalptekin.com/feeds/all.atom.xml" type="application/atom+xml" rel="alternate"
+        title="{ Halit Alptekin } Atom Feed" />
+      <link href="http://www.halitalptekin.com/feeds/all.rss.xml" type="application/rss+xml" rel="alternate"
+        title="{ Halit Alptekin } RSS Feed" />
+  
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <link href="http://www.halitalptekin.com/favicon.png" rel="icon">
+  <link href="http://www.halitalptekin.com/theme/css/main.css" media="screen, projection"
+        rel="stylesheet" type="text/css">
+  <script src="http://www.halitalptekin.com/theme/js/modernizr-2.0.js"></script>
+  <script src="http://www.halitalptekin.com/theme/js/ender.js"></script>
+  <script src="http://www.halitalptekin.com/theme/js/octopress.js" type="text/javascript"></script>
+
+  <link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic"
+        rel="stylesheet" type="text/css">
+  <link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic"
+        rel="stylesheet" type="text/css">
+</head>
+<body>
+  <header role="banner"><hgroup>
+  <h1><a href="http://www.halitalptekin.com/">{ Halit Alptekin }</a></h1>
+  </hgroup></header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  <li><a href="http://www.halitalptekin.com/feeds/all.atom.xml" rel="subscribe-rss">Atom</a></li>
+    <li><a href="http://www.halitalptekin.com/feeds/all.rss.xml" rel="subscribe-rss">Rss</a></li>
+  </ul>
+
+<!-- TODO: add search here
+<form action="" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="q" value="site:http://www.halitalptekin.com" />
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+-->
+
+<ul class="main-navigation">
+  <li><a href="http://www.halitalptekin.com/">Blog</a></li>
+        <li><a href="http://www.halitalptekin.com/pages/about-me.html">About Me</a></li>
+    <li><a href="http://www.halitalptekin.com/pages/contact.html">Contact</a></li>
+  <!-- TODO: add categories here? -->
+  </ul></nav>
+  <div id="main">
+    <div id="content">
+      <div>
+  <article class="hentry" role="article">
+    <header>
+          <h1 class="entry-title">Clojure geliştirme ortamı</h1>
+          <p class="meta"><time datetime="2013-07-15T00:00:00" pubdate> Jul 15, 2013 </time></p>
+</header>
+
+  <div class="entry-content"><p>Herhangi bir Lisp dili üzerinde geliştirme yapacaksanız muhtemelen en bu konudaki en büyük adayınız Emacs olur. Çünkü Emacs gerçektende Lisp dilleri için tam bir geliştirme ortamı sunuyor. Hatta kendisi için geliştirilmiş bir Lisp lehçesi bile var. Ayar dosyalarından önemli ayarlara kadar hepsi bu Emacs Lisp adı verilen dil ile yapılıyor. Açıkcası Emacs ile sadece Lisp yazmıyor resmen onu yaşıyorsunuz diyebilirim.</p>
+<h2>EMACS</h2>
+<p>Emacs kullanarak Clojure geliştirmek istiyorsanız işinizi çok kolaylaştırcak paketlerden birini seçerek başlayabilirsiniz. Bunlar hem Emacs'e başlangıç için hem de Clojure için gerekli herşeyi size sağlıyorlar. Benim de Emacs'e girişimi yaptığım ve Clojure için özel yapılandırılmış <a href="https://github.com/overtone/emacs-live" title="Emacs Live">emacslive</a> gördüklerim arasında en güzel başlangıç seti diyebilirim. Hem kurulum kısmıda o kadar basit ki size hiçbirşey bırakmadan herşeyi hallediyor. Siz sadece Emacs girip kodunuzu yazmaya başlıyorsunuz. Kurmak için yapmanız gereken tek şey aşağıdaki komutu çalıştırmak ve kurulumun bitmesini beklemek.</p>
+<div class="highlight"><pre><span class="n">bash</span> <span class="o">&lt;</span><span class="p">(</span><span class="n">curl</span> <span class="o">-</span><span class="n">fksSL</span> <span class="n">https</span><span class="o">:</span><span class="c1">//raw.github.com/overtone/emacs-live/master/installer/install-emacs-live.sh)</span>
+</pre></div>
+
+
+<p>Kurulum başarıyla bittikten sonra Emacsinizi açtığınızda aşağıdaki gibi bir şey görmeniz gerekli.</p>
+<p><img alt="Emacs Live" src="https://github.com/downloads/overtone/live-coding-emacs/live-coding-config-in-use.png" /></p>
+<p>Kurulum ve kurduktan sonraki kurulumlar ile ilgili tüm ayrıntılı bilgileri kendi sitesinden bulabilirsiniz. Zaten çok birşeyi yok. Lein ile oluşturduğunuz projeye <code>nrepl</code> kullanarak bağlanıyorsunuz. Github sayfasındaki videoyu izlerseniz çok rahat bir şekilde çözersiniz.</p>
+<p>Tabi bu biraz işin en kolay tarafı oldu. Eğer birazcık daha fazla uğraşmak(üsttekine göre) istiyorsanız daha güzel bir çözüm var. Bu da aynı emacs-live kadar kolay kuruluyor ve gerekli herşeyi size sağlıyor.</p>
+<p>Öncelikle bilgisayarımıza <code>emacs24</code> paketini kurmamız gerekiyor. Debian/Ubuntu kullanıcıları aşağıdaki şekilde kurabilir.</p>
+<div class="highlight"><pre><span class="n">sudo</span> <span class="n">apt</span><span class="o">-</span><span class="n">get</span> <span class="n">install</span> <span class="n">emacs24</span>
+</pre></div>
+
+
+<p>Yükleme bittikten sonra şimdi sıra Emacs'e gerekli paketleri kurmaya geldi. Öncelikle <code>~/.emacs.d/init.el</code> dosyasını açıyoruz ve içine aşağıdaki satırları ekliyoruz.</p>
+<div class="highlight"><pre><span class="p">(</span><span class="n">require</span> <span class="err">&#39;</span><span class="n">package</span><span class="p">)</span>
+<span class="p">(</span><span class="n">add</span><span class="o">-</span><span class="n">to</span><span class="o">-</span><span class="n">list</span> <span class="err">&#39;</span><span class="n">package</span><span class="o">-</span><span class="n">archives</span>
+             <span class="err">&#39;</span><span class="p">(</span><span class="s">&quot;marmalade&quot;</span> <span class="p">.</span> <span class="s">&quot;http://marmalade-repo.org/packages/&quot;</span><span class="p">))</span>
+<span class="p">(</span><span class="n">package</span><span class="o">-</span><span class="n">initialize</span><span class="p">)</span>
+</pre></div>
+
+
+<p>Eklemeyi yaptıktan hemen sonra Emacs'i açıyoruz ve M-x(genellikle M alt tuşudur) yapıyoruz. Önümüze açılan kısma <code>package-refresh-contents</code> yazıp entere bastığımızda Emacs paketlerimizi otomatik olarak güncelleyecektir. Eğer kurmak istediğiniz bir paket varsa gene M-x kombinasyonundan sonra açılan yere <code>package-install</code> yazıp istediğimiz pakedi kurabiliriz.</p>
+<p>Eğer hangi pakedi kuracağınızı otomatikleştirmek isterseniz <code>~/.emacs.d/init.el</code> dosyanıza aşağıdaki satıları ekleyebilirsiniz.</p>
+<div class="highlight"><pre><span class="p">(</span><span class="n">defvar</span> <span class="n">my</span><span class="o">-</span><span class="n">packages</span> <span class="err">&#39;</span><span class="p">(</span><span class="n">starter</span><span class="o">-</span><span class="n">kit</span>
+                  <span class="n">starter</span><span class="o">-</span><span class="n">kit</span><span class="o">-</span><span class="n">lisp</span>
+                  <span class="n">starter</span><span class="o">-</span><span class="n">kit</span><span class="o">-</span><span class="n">bindings</span>
+                  <span class="n">starter</span><span class="o">-</span><span class="n">kit</span><span class="o">-</span><span class="n">eshell</span>
+                  <span class="n">clojure</span><span class="o">-</span><span class="n">mode</span>
+                  <span class="n">clojure</span><span class="o">-</span><span class="n">test</span><span class="o">-</span><span class="n">mode</span>
+                  <span class="n">nrepl</span><span class="p">))</span>
+
+<span class="p">(</span><span class="n">dolist</span> <span class="p">(</span><span class="n">p</span> <span class="n">my</span><span class="o">-</span><span class="n">packages</span><span class="p">)</span>
+<span class="p">(</span><span class="n">when</span> <span class="p">(</span><span class="n">not</span> <span class="p">(</span><span class="n">package</span><span class="o">-</span><span class="n">installed</span><span class="o">-</span><span class="n">p</span> <span class="n">p</span><span class="p">))</span>
+<span class="p">(</span><span class="n">package</span><span class="o">-</span><span class="n">install</span> <span class="n">p</span><span class="p">)))</span>
+</pre></div>
+
+
+<p>Emacs açılışta paketleri otomatik olarak kuracaktır. Eğer kurmazsa M-x kombinasyonundan sonra <code>eval-buffer</code> yazarsanız kuruluma başlaması lazım.</p>
+<p>Emacs'i ilk defa kullanacağınızı düşünerek aşağıdaki komutları bilmenizde fayda var. En azından en fazla kullandıklarınızı iyice öğrenin derim. Eğer Emacs'i biraz daha iyi öğrenmek isterseniz <a href="http://acehreli.org/TUTORIAL.html" title="Emacs Tutorial">buradaki</a> Türkçe tutoriali ekleyip bitirebilirsiniz. Başlangıç için gayet iyi. Aşağıdaki kısayollarda kullanılan C(control) M(büyük ihtimal Alt) tuşununun kısaltmasıdır. Bazı yerlerde göreceğiniz RET(return)'de bildiğimiz enter oluyor.</p>
+<div class="highlight"><pre><span class="n">C</span><span class="o">-</span><span class="n">x</span> <span class="n">C</span><span class="o">-</span><span class="n">f</span>     <span class="n">Dosya</span> <span class="n">bul</span>
+<span class="n">C</span><span class="o">-</span><span class="n">x</span> <span class="n">C</span><span class="o">-</span><span class="n">s</span>     <span class="n">Buffer</span><span class="err">&#39;</span><span class="n">i</span> <span class="n">kaydet</span>
+<span class="n">C</span><span class="o">-</span><span class="n">x</span> <span class="n">s</span>       <span class="n">Dosyayi</span> <span class="n">kaydet</span><span class="p">(</span><span class="n">farkli</span> <span class="n">kaydet</span> <span class="n">gibi</span><span class="p">)</span>
+<span class="n">C</span><span class="o">-</span><span class="n">x</span> <span class="n">b</span>       <span class="n">Bufferlar</span> <span class="n">arasi</span> <span class="n">gecis</span>
+<span class="n">C</span><span class="o">-</span><span class="n">x</span> <span class="n">k</span>       <span class="n">Buffer</span><span class="err">&#39;</span><span class="n">i</span> <span class="n">kapat</span>
+<span class="n">C</span><span class="o">-</span><span class="n">x</span> <span class="mi">1</span>       <span class="n">Diger</span> <span class="n">pencereleri</span> <span class="n">sil</span>
+<span class="n">C</span><span class="o">-</span><span class="n">x</span> <span class="mi">0</span>       <span class="n">Acik</span> <span class="n">pencereyi</span> <span class="n">sil</span>
+<span class="n">C</span><span class="o">-</span><span class="n">x</span> <span class="mi">2</span>       <span class="n">Ekrani</span> <span class="n">yatay</span> <span class="n">olarak</span> <span class="n">bolme</span>
+<span class="n">C</span><span class="o">-</span><span class="n">x</span> <span class="mi">3</span>       <span class="n">Ekrani</span> <span class="n">dikey</span> <span class="n">olarak</span> <span class="n">bolme</span>
+<span class="n">C</span><span class="o">-</span><span class="n">a</span>         <span class="n">Satir</span> <span class="n">basinda</span> <span class="n">git</span>
+<span class="n">C</span><span class="o">-</span><span class="n">e</span>         <span class="n">Satir</span> <span class="n">sonuna</span> <span class="n">git</span>
+<span class="n">C</span><span class="o">-</span><span class="n">n</span>         <span class="n">Bir</span> <span class="n">sonraki</span> <span class="n">satir</span><span class="p">(</span><span class="n">asagiya</span> <span class="n">dogru</span><span class="p">)</span>
+<span class="n">C</span><span class="o">-</span><span class="n">p</span>         <span class="n">Bir</span> <span class="n">onceki</span> <span class="n">sat</span><span class="p">,</span><span class="n">r</span><span class="p">(</span><span class="n">yukariya</span> <span class="n">dogru</span><span class="p">)</span>
+<span class="n">C</span><span class="o">-</span><span class="n">b</span>         <span class="n">Geriye</span> <span class="n">git</span><span class="p">(</span><span class="n">sol</span><span class="p">)</span>
+<span class="n">C</span><span class="o">-</span><span class="n">f</span>         <span class="n">Ileriye</span> <span class="n">git</span><span class="p">(</span><span class="n">sag</span><span class="p">)</span>
+<span class="n">M</span><span class="o">-</span><span class="n">f</span>         <span class="n">Kelimeye</span> <span class="n">ilerle</span>
+<span class="n">M</span><span class="o">-</span><span class="n">b</span>         <span class="n">Kelimeye</span> <span class="n">geri</span> <span class="n">gel</span>
+<span class="n">C</span><span class="o">-</span><span class="n">v</span>         <span class="n">Sayfaya</span> <span class="n">ilerle</span>
+<span class="n">M</span><span class="o">-</span><span class="n">v</span>         <span class="n">Sayfaya</span> <span class="n">geri</span> <span class="n">gel</span>
+<span class="n">C</span><span class="o">-</span><span class="n">d</span>         <span class="n">Karakteri</span> <span class="n">yok</span> <span class="n">et</span>
+<span class="n">M</span><span class="o">-</span><span class="n">d</span>         <span class="n">Kelimeyi</span> <span class="n">yok</span> <span class="n">et</span>
+<span class="n">C</span><span class="o">-</span><span class="n">s</span>         <span class="n">Ileriye</span> <span class="n">dogru</span> <span class="n">regex</span> <span class="n">aramasi</span>
+<span class="n">C</span><span class="o">-</span><span class="n">r</span>         <span class="n">Geriye</span> <span class="n">dogru</span> <span class="n">regex</span> <span class="n">aramasi</span>
+<span class="n">M</span><span class="o">-%</span>         <span class="n">Degisiklik</span> <span class="n">sorgusu</span>
+<span class="n">C</span><span class="o">-</span><span class="n">h</span> <span class="n">t</span>       <span class="n">Emacs</span> <span class="n">kullanma</span> <span class="n">kilavuzu</span>
+<span class="n">C</span><span class="o">-</span><span class="n">h</span> <span class="n">b</span>       <span class="n">Tus</span> <span class="n">kisayollarinin</span> <span class="n">ac</span><span class="p">,</span><span class="n">klanmasi</span>
+<span class="n">C</span><span class="o">-</span><span class="n">h</span> <span class="n">m</span>       <span class="n">Bulunan</span> <span class="n">modun</span> <span class="n">aciklamasi</span>
+</pre></div>
+
+
+<p>Emacs'i Clojure ile kullanırken M-x ve  <code>nrepl-jack-in</code> yapıp REPL ortamını açabilirsiniz. Daha fazla detay için <a href="http://clojure-doc.org/articles/tutorials/emacs.html" title="Emacs for Clojure">buradaki</a> link işinizi görecektir.</p>
+<h2>Light Table</h2>
+<p>Yiğidi öldür hakkını ver demişler. O yüzden Lisp dili geliştirme ortamı denilince ilk akla gelen Emacs'i önce anlatmak gerekliydi. Bundan sonra Clojure için hafif bir geliştirme ortamı olan <a href="http://www.lighttable.com/" title="Light Table">Light Table</a> isimli programıda denemenizi öneririm. Gayet hızlı kodlarınızı yazıp anlık olarak değerlendirmelerinizi görebilirsiniz. Bana gayet hoş ve şık geldi. Deneyin birşey kaybetmezsiniz. Bir resim vereyim belki ilginizi çeker.</p>
+<p><img alt="Light Table Clojure" src="http://www.chris-granger.com/images/lightable/v0.0.6.png" /></p>
+<h2>Vim</h2>
+<p>Her ne kadar Lisp için geliştirme ortamı tarafsız Emacs olsa da ben tam bir Vim fanatiğiyim. Bu yüzden her işimi orada halletmeyi seviyorum. Firefox'a bile <a href="http://www.vimperator.org/" title="Vimperator">vimperator</a> eklentisini kurarak internette de Vim gibi dolaşıyorum.</p>
+<p><img alt="Vimperator" src="media/vimperator.png" /></p>
+<p>Bu yüzden C, C++, Python, Perl, Php, Ruby'den sonra Clojure içinde Vim kullanıyorum. Ve bundan gayette mutluyum. Alışkın olmayanlar için zor gelebilir ama biraz alıştıktan sonra bırakması gerçekten çok zor. Öyle tuşları zor, çok fazla kısayol var gibi düşünmeyin. Tabularınızı yıkıp bir gün deneyin sonra bir daha düşünün.</p>
+<p>Vim'de Clojure yazmak için birçok eklenti desteği mevcut. Ama ben kendi kullandığım ve çok memnun olduğum Slimv'den bahsedeceğim. Adındanda anlayacağınız üzere Emacs için olan Slime ortamının Vim ortamıdan kullanılması için yazılmış. Kullanışlılık ve kolaylık açısından gayet memnunum. Henüz bir sıkıntı çekmedim kendisinden.</p>
+<p>Öncelikle <a href="http://www.vim.org/scripts/script.php?script_id=2531" title="Slimv">Slimv</a> eklentisini indirip <code>.vim</code> klasörünüz içinde uygun yere(eklenti yöneticileri kullanıyorsanız içine) atmanız gerekli. Bu işlemden sonra yapmamız gereken tek şey <code>.vimrc</code> dosyamızın içine aşağıdaki satırı eklemek. Bu sayede yazdığımız kodları direkt olarak REPL ile yorumlayabiliriz. Ve gayet hızlı bir şekilde kodlarımızı geliştirebiliriz.</p>
+<div class="highlight"><pre><span class="n">let</span> <span class="n">g</span><span class="o">:</span><span class="n">slimv_swank_clojure</span> <span class="o">=</span> <span class="err">&#39;</span><span class="o">!</span> <span class="n">xterm</span> <span class="o">-</span><span class="n">e</span> <span class="n">lein</span> <span class="n">swank</span> <span class="o">&amp;</span><span class="err">&#39;</span>
+</pre></div>
+
+
+<p>Burada dikkat çekmem gereken bir nokta var. Yukarıdaki kodu gördüğünüzde kafanızda canlanan birşeyler olmuştur tabi. Eğer dosyanızı editlemek için vimi <code>project.clj</code> dosyasının olduğu dizinden çağırdıysanız herhangi bir sıkıntı olmadan çalışıyor. Ancak eğer farklı bir dizinde iseniz kod başarıyla çalışmıyor ve siz vim'in alt kısmında sürekli bağlanıyor yazısını görüyorsunuz. Bunun çözümü için ya sürekli olarak vimi uygun klasörden çağıracaksınız ya da benim yaptığım gibi statik bir tanımlama yapacaksınız. Daha yaratıcı çözümlerde olabilir ama şimdilik işimi görüyor.</p>
+<div class="highlight"><pre><span class="n">let</span> <span class="n">g</span><span class="o">:</span><span class="n">slimv_swank_clojure</span> <span class="o">=</span> <span class="err">&#39;</span><span class="o">!</span> <span class="n">xterm</span> <span class="o">-</span><span class="n">e</span> <span class="s">&quot;cd ~/lispCodes/hello/ &amp;&amp; lein swank&quot;</span><span class="o">&amp;</span> <span class="err">&#39;</span>
+</pre></div>
+
+
+<p><code>~/lispCodes/hello</code> dizini altında şartlara uygun kullanmadığım bir <code>lein</code> projesi var. Sürekli olarak oradan REPL'i çağırıyorum. Bende gayet sorunsuz çalışıyor. Hatta <code>lein2</code> kurduğumdan dolayı REPL ortamımım hepten bozulmuştu. Ama bu hello isimli uygulamayı <code>lein1</code> ile oluşturduğumdan sıkıntısız kullanıyorum.</p>
+<p>Bundan sonra yapmamız gerekenlerden birisi de parantezlerin renklendirilmesi. Bunun yanında Clojure konusunda gayet başarılı bir eklenti olan <a href="https://github.com/vim-scripts/VimClojure" title="Clojure Vim">ClojureVim</a>'i de kurmadan geçmeyelim. Son olarak <code>.vimrc</code> dosyamıza şu satırlarıda ekleyerek işimizi bitirelim.</p>
+<div class="highlight"><pre><span class="n">let</span> <span class="n">g</span><span class="o">:</span><span class="n">vimclojure</span><span class="err">#</span><span class="n">HighlightBuiltins</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="n">let</span> <span class="n">g</span><span class="o">:</span><span class="n">vimclojure</span><span class="err">#</span><span class="n">ParenRainbow</span> <span class="o">=</span> <span class="mi">1</span>
+</pre></div>
+
+
+<p>Bundan sonra Vim'i eğer bir <code>.clj</code> uzantılı dosyayı açması için çağırırsak otomatik olarak Slimv açılacaktır ve komutlar çalışır durumda olacaktır. Gvim kullanıyorsanız yukarıdaki panelde Slimv menüsünden tüm komutları görebilirsiniz. En çok lazım olanları bilmek bana şimdilik yeterli oluyor. İlerde biraz daha fazla kod yazmaya başladığımda Debugger gibi araçlarıda kullanacağım tabi.</p>
+<div class="highlight"><pre><span class="p">,</span><span class="n">d</span> <span class="o">=&gt;</span> <span class="n">Uzerinde</span> <span class="n">bulunan</span> <span class="n">fonksiyonu</span> <span class="n">REPL</span> <span class="n">ortamina</span> <span class="n">aktarir</span>
+<span class="p">,</span><span class="n">e</span> <span class="o">=&gt;</span> <span class="n">Uzerinde</span> <span class="n">bulunan</span> <span class="n">ifadeyi</span> <span class="n">REPL</span> <span class="n">ortamina</span> <span class="n">aktarir</span>
+<span class="p">,</span><span class="n">r</span> <span class="o">=&gt;</span> <span class="n">Secili</span> <span class="n">bolgeyi</span> <span class="n">REPL</span> <span class="n">ortamina</span> <span class="n">aktarir</span>
+<span class="p">,</span><span class="n">b</span> <span class="o">=&gt;</span> <span class="n">Calisilan</span> <span class="n">buffer</span><span class="err">&#39;</span><span class="n">i</span> <span class="n">REPL</span> <span class="n">ortamina</span> <span class="n">aktarir</span>
+</pre></div>
+
+
+<p>Eğer başarılı bir şekilde yaptıysanız en az Emacs kadar iyi bir ortama sahip oluyorsunuz. Ben şu anda gayet memnunum. Ufak sorunlar tabi başta vardı ama şu anda sorunsuz kullanıyorum. Bir çılgınlık yapıp sizlerinde Vim'i kullanmasını tavsiye ediyorum.</p>
+<p><img alt="Vim Clojure" src="media/vimrepl.png" /></p>
+<p>Ek olarak gerçek bir ortama dönüşmesi için <code>omni-complete</code> ve <code>fireplace</code> gibi eklentileri de kurmanız gerekli. Hatta <code>ctrlp</code> ve <code>synastic</code> de kurduğunuzda tadından yenmez. Tabi <code>NerdTree</code> , <code>Powerline</code> , <code>Gundo</code> , <code>Pathogen</code> , <code>Taglist</code> gibi eklentileri söylemiyorum bile. Bunlar olmadan olmaz.</p>
+<h2>Buradan devam</h2>
+<ul>
+<li><a href="http://clojure-doc.org/articles/tutorials/vim_fireplace.html">http://clojure-doc.org/articles/tutorials/vim_fireplace.html</a></li>
+<li><a href="http://clojure-doc.org/articles/tutorials/emacs.html">http://clojure-doc.org/articles/tutorials/emacs.html</a></li>
+<li><a href="http://naleid.com/blog/2011/12/19/getting-a-clojure-repl-in-vim-with-vimclojure-nailgun-and-leiningen/">http://naleid.com/blog/2011/12/19/getting-a-clojure-repl-in-vim-with-vimclojure-nailgun-and-leiningen/</a></li>
+<li><a href="http://usevim.com/2013/01/02/vimclojure/">http://usevim.com/2013/01/02/vimclojure/</a></li>
+<li><a href="http://ianrumford.github.io/blog/2012/06/22/clojure-emacs-slime-and-swank-on-ubuntu-precise-1204/">http://ianrumford.github.io/blog/2012/06/22/clojure-emacs-slime-and-swank-on-ubuntu-precise-1204/</a></li>
+<li><a href="http://www.emacswiki.org/emacs/ClojureMode">http://www.emacswiki.org/emacs/ClojureMode</a></li>
+<li><a href="http://www.unexpected-vortices.com/clojure/10-minute-emacs-for-clojure.html">http://www.unexpected-vortices.com/clojure/10-minute-emacs-for-clojure.html</a></li>
+</ul></div>
+    <footer>
+      <p class="meta">
+  <span class="byline author vcard">
+    Posted by <span class="fn">halit</span>
+  </span>
+  <time datetime="2013-07-15T00:00:00" pubdate> Jul 15, 2013 </time>    <span class="categories">
+        <a class="category" href="http://www.halitalptekin.com/tag/clojure.html">clojure</a>
+        <a class="category" href="http://www.halitalptekin.com/tag/vim.html">vim</a>
+        <a class="category" href="http://www.halitalptekin.com/tag/emacs.html">emacs</a>
+        <a class="category" href="http://www.halitalptekin.com/tag/clojure-programming.html">clojure programming</a>
+        <a class="category" href="http://www.halitalptekin.com/tag/vim-for-clojure.html">vim for clojure</a>
+      </span>
+  </p>    </footer>
+  </article>
+  <section>
+    <div class="addthis_toolbox addthis_default_style addthis_32x32_style">
+        <a class="addthis_button_preferred_1"></a>
+        <a class="addthis_button_preferred_2"></a>
+        <a class="addthis_button_preferred_3"></a>
+        <a class="addthis_button_preferred_4"></a>
+        <a class="addthis_button_preferred_5"></a>
+        <a class="addthis_button_preferred_6"></a>
+        <a class="addthis_button_preferred_7"></a>
+        <a class="addthis_button_preferred_8"></a>
+        <a class="addthis_button_preferred_9"></a>
+        <a class="addthis_button_preferred_10"></a>
+        <a class="addthis_counter addthis_bubble_style"></a>
+    </div>
+    <script type="text/javascript" src="http://s7.addthis.com/js/250/addthis_widget.js#pubid=ra-504c6d593daec57a"></script>
+  </section>
+    <section>
+    <h1>Comments</h1>
+    <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript></div>
+  </section>
+  </div>
+<aside class="sidebar">
+  <section>
+    <h1>Recent Posts</h1>
+    <ul id="recent_posts">
+            <li class="post">
+          <a href="http://www.halitalptekin.com/clojure-gelistirme-ortami.html">Clojure geliştirme ortamı</a>
+      </li>
+            <li class="post">
+          <a href="http://www.halitalptekin.com/clojure-notlari-1.html">Clojure Notları #1</a>
+      </li>
+            <li class="post">
+          <a href="http://www.halitalptekin.com/paradigma-degisikligi.html">Paradigma değişikliği</a>
+      </li>
+            <li class="post">
+          <a href="http://www.halitalptekin.com/gnu-c-tamsayi-turleri.html">GNU C tamsayi turleri</a>
+      </li>
+            <li class="post">
+          <a href="http://www.halitalptekin.com/fonksiyon-goestergeleri.html">Fonksiyon göstergeleri</a>
+      </li>
+          </ul>
+  </section>
+    <section>
+      
+    <h1>Categories</h1>
+    <ul id="recent_posts">
+              <li><a href="http://www.halitalptekin.com/category/tasarim.html">tasarim</a></li>
+              <li><a href="http://www.halitalptekin.com/category/server.html">server</a></li>
+              <li><a href="http://www.halitalptekin.com/category/python.html">python</a></li>
+              <li><a href="http://www.halitalptekin.com/category/programlama.html">programlama</a></li>
+              <li><a href="http://www.halitalptekin.com/category/linux.html">linux</a></li>
+              <li><a href="http://www.halitalptekin.com/category/kisisel.html">kisisel</a></li>
+              <li><a href="http://www.halitalptekin.com/category/internet.html">internet</a></li>
+              <li><a href="http://www.halitalptekin.com/category/guvenlik.html">guvenlik</a></li>
+              <li><a href="http://www.halitalptekin.com/category/genel.html">genel</a></li>
+              <li><a href="http://www.halitalptekin.com/category/eglence.html">eglence</a></li>
+              <li><a href="http://www.halitalptekin.com/category/django.html">django</a></li>
+              <li><a href="http://www.halitalptekin.com/category/compsci.html">compsci</a></li>
+              <li><a href="http://www.halitalptekin.com/category/arduino.html">arduino</a></li>
+          </ul>
+  </section>
+   
+
+    
+    <section>
+        <h1>Social</h1>
+        <ul>
+            <li><a href="http://www.halitalptekin.com/feeds/all.rss.xml" type="application/rss+xml" rel="alternate">rss</a></li>
+                    <li><a href="http://twitter.com/halitalptekin" target="_blank">twitter</a></li>
+                    <li><a href="http://github.com/halitalptekin" target="_blank">github</a></li>
+                    <li><a href="http://stackoverflow.com/users/1151618/halit-alptekin" target="_blank">stackoverflow</a></li>
+                    <li><a href="http://tr.linkedin.com/in/halitalptekin" target="_blank">linkedin</a></li>
+                </ul>
+    </section>
+      <section>
+        <h1>Blogroll</h1>
+        <ul>
+                    <li><a href="http://www.python.org" target="_blank">Python</a></li>
+                </ul>
+    </section>
+
+  
+</aside>      <aside class="sidebar">
+  <section>
+    <h1>Recent Posts</h1>
+    <ul id="recent_posts">
+            <li class="post">
+          <a href="http://www.halitalptekin.com/clojure-gelistirme-ortami.html">Clojure geliştirme ortamı</a>
+      </li>
+            <li class="post">
+          <a href="http://www.halitalptekin.com/clojure-notlari-1.html">Clojure Notları #1</a>
+      </li>
+            <li class="post">
+          <a href="http://www.halitalptekin.com/paradigma-degisikligi.html">Paradigma değişikliği</a>
+      </li>
+            <li class="post">
+          <a href="http://www.halitalptekin.com/gnu-c-tamsayi-turleri.html">GNU C tamsayi turleri</a>
+      </li>
+            <li class="post">
+          <a href="http://www.halitalptekin.com/fonksiyon-goestergeleri.html">Fonksiyon göstergeleri</a>
+      </li>
+          </ul>
+  </section>
+    <section>
+      
+    <h1>Categories</h1>
+    <ul id="recent_posts">
+              <li><a href="http://www.halitalptekin.com/category/tasarim.html">tasarim</a></li>
+              <li><a href="http://www.halitalptekin.com/category/server.html">server</a></li>
+              <li><a href="http://www.halitalptekin.com/category/python.html">python</a></li>
+              <li><a href="http://www.halitalptekin.com/category/programlama.html">programlama</a></li>
+              <li><a href="http://www.halitalptekin.com/category/linux.html">linux</a></li>
+              <li><a href="http://www.halitalptekin.com/category/kisisel.html">kisisel</a></li>
+              <li><a href="http://www.halitalptekin.com/category/internet.html">internet</a></li>
+              <li><a href="http://www.halitalptekin.com/category/guvenlik.html">guvenlik</a></li>
+              <li><a href="http://www.halitalptekin.com/category/genel.html">genel</a></li>
+              <li><a href="http://www.halitalptekin.com/category/eglence.html">eglence</a></li>
+              <li><a href="http://www.halitalptekin.com/category/django.html">django</a></li>
+              <li><a href="http://www.halitalptekin.com/category/compsci.html">compsci</a></li>
+              <li><a href="http://www.halitalptekin.com/category/arduino.html">arduino</a></li>
+          </ul>
+  </section>
+   
+
+    
+    <section>
+        <h1>Social</h1>
+        <ul>
+            <li><a href="http://www.halitalptekin.com/feeds/all.rss.xml" type="application/rss+xml" rel="alternate">rss</a></li>
+                    <li><a href="http://twitter.com/halitalptekin" target="_blank">twitter</a></li>
+                    <li><a href="http://github.com/halitalptekin" target="_blank">github</a></li>
+                    <li><a href="http://stackoverflow.com/users/1151618/halit-alptekin" target="_blank">stackoverflow</a></li>
+                    <li><a href="http://tr.linkedin.com/in/halitalptekin" target="_blank">linkedin</a></li>
+                </ul>
+    </section>
+      <section>
+        <h1>Blogroll</h1>
+        <ul>
+                    <li><a href="http://www.python.org" target="_blank">Python</a></li>
+                </ul>
+    </section>
+
+  
+</aside>    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2013 - halit -
+  <span class="credit">Powered by <a href="http://getpelican.com">Pelican</a></span>
+</p></footer>
+      <script type="text/javascript">
+	    var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+	    document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+    </script>
+    <script type="text/javascript">
+	    try {
+	        var pageTracker = _gat._getTracker("UA-24728900-1");
+	    pageTracker._trackPageview();
+	    } catch(err) {}
+	</script>
+	<script type="text/javascript">
+	  var disqus_shortname = 'halitalptekin';
+	  (function() {
+	    var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+	    dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
+	    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+	   })();
+	</script>
+</body>
+</html>
