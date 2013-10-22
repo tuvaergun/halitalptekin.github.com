@@ -4,26 +4,27 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>{ Halit Alptekin } - Fonksiyon göstergeleri</title>
+  <title>( &#955; Halit Alptekin ) - Fonksiyon göstergeleri</title>
 
   <meta name="author" content="halit">
+  <meta name="description" content="Programming and Life Blog Of Halit Alptekin. Karadeniz Technical University Computer Engineering Student.">
+  <meta name="keywords" content="programlama, blog, personal blog, linux, python, django, php, bootstrap, seo, bilgisayar muhendisligi, ktu, karadeniz teknik universitesi, programming">
+  <meta name="robots" content="index, follow, all"/>
 
-    <link href="http://www.halitalptekin.com/feeds/all.atom.xml" type="application/atom+xml" rel="alternate"
-        title="{ Halit Alptekin } Atom Feed" />
-      <link href="http://www.halitalptekin.com/feeds/all.rss.xml" type="application/rss+xml" rel="alternate"
-        title="{ Halit Alptekin } RSS Feed" />
-  
+  <link href="http://www.halitalptekin.com/feeds/all.rss.xml" type="application/rss+xml" rel="alternate"
+        title="( &#955; Halit Alptekin ) RSS Feed" />
+
   <!-- http://t.co/dKP3o1e -->
   <meta name="HandheldFriendly" content="True">
   <meta name="MobileOptimized" content="320">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <link href="./favicon.png" rel="icon">
-  <link href="./theme/css/main.css" media="screen, projection"
+  <link href="http://www.halitalptekin.com/favicon.png" rel="icon">
+  <link href="http://www.halitalptekin.com/theme/css/main.css" media="screen, projection"
         rel="stylesheet" type="text/css">
-  <script src="./theme/js/modernizr-2.0.js"></script>
-  <script src="./theme/js/ender.js"></script>
-  <script src="./theme/js/octopress.js" type="text/javascript"></script>
+  <script src="http://www.halitalptekin.com/theme/js/modernizr-2.0.js"></script>
+  <script src="http://www.halitalptekin.com/theme/js/ender.js"></script>
+  <script src="http://www.halitalptekin.com/theme/js/octopress.js" type="text/javascript"></script>
 
   <link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic"
         rel="stylesheet" type="text/css">
@@ -32,47 +33,46 @@
 </head>
 <body>
   <header role="banner"><hgroup>
-  <h1><a href="./">{ Halit Alptekin }</a></h1>
-  </hgroup></header>
+  <h1><a href="http://www.halitalptekin.com/">( &#955; Halit Alptekin )</a></h1>
+</hgroup></header>
   <nav role="navigation"><ul class="subscription" data-subscription="rss">
-  <li><a href="http://www.halitalptekin.com/feeds/all.atom.xml" rel="subscribe-rss">Atom</a></li>
-    <li><a href="http://www.halitalptekin.com/feeds/all.rss.xml" rel="subscribe-rss">Rss</a></li>
-  </ul>
+  <li><a href="http://www.halitalptekin.com/feeds/all.rss.xml" rel="subscribe-rss">Rss</a></li>
+</ul>
 
 <!-- TODO: add search here
 <form action="" method="get">
   <fieldset role="search">
-    <input type="hidden" name="q" value="site:." />
+    <input type="hidden" name="q" value="site:http://www.halitalptekin.com" />
     <input class="search" type="text" name="q" results="0" placeholder="Search"/>
   </fieldset>
 </form>
 -->
 
 <ul class="main-navigation">
-  <li><a href="./">Blog</a></li>
-        <li><a href="./pages/about-me.html">About Me</a></li>
-    <li><a href="./pages/contact.html">Contact</a></li>
+  <li><a href="http://www.halitalptekin.com/">Blog</a></li>
+    <li><a href="http://www.halitalptekin.com/pages/about-me.html">About Me</a></li>
+    <li><a href="http://www.halitalptekin.com/pages/contact.html">Contact</a></li>
   <!-- TODO: add categories here? -->
-  </ul></nav>
+</ul></nav>
   <div id="main">
     <div id="content">
-      <div>
+<div>
   <article class="hentry" role="article">
-    <header>
-          <h1 class="entry-title">Fonksiyon göstergeleri</h1>
-          <p class="meta"><time datetime="2013-05-01T00:00:00" pubdate> May 01, 2013 </time></p>
+<header>
+      <h1 class="entry-title">Fonksiyon göstergeleri</h1>
+      <p class="meta"><time datetime="2013-05-01T00:00:00" pubdate> May 01, 2013 </time></p>
 </header>
 
   <div class="entry-content"><p>C'de göstergeler fonksiyonlar(function pointers) herhangi bir fonksiyonun bellekteki adresine işaret eden göstergelerdir. Aynı diğer göstergelerde olduğu gibi işaret ettiği türün başlangıç adresini saklarlar. Diğer göstergelerin tanımlanması ve kullanılması ile aralarında ciddi benzerlikler olsa da çoğu kitapta kendisinden bahsedilmez bile. Benim şansım okuduğum ilk C kitabı olan <strong>K&amp;R</strong>'in bu konuyu gayet detaylıca işlemesi oldu. Ve bu konuyu anladıktan sonra programlama ufkumda yeni alanlar açıldı diyebilirim.</p>
 <p>Fonksiyon göstergelerini anlayabilmek için önce kesinlikle gösterge kavramının iyice anlaşılmış olması gerekiyor. Yoksa işler daha da karışabilir.</p>
-<div class="codehilite"><pre><span class="kt">void</span> <span class="nf">testFonk</span><span class="p">(</span><span class="kt">int</span> <span class="n">x</span><span class="p">){</span>
+<div class="highlight"><pre><span class="kt">void</span> <span class="nf">testFonk</span><span class="p">(</span><span class="kt">int</span> <span class="n">x</span><span class="p">){</span>
     <span class="n">printf</span><span class="p">(</span><span class="s">&quot;%d</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span> <span class="n">x</span> <span class="o">*</span> <span class="n">x</span><span class="p">);</span>
 <span class="p">}</span>
 </pre></div>
 
 
 <p>Burada geriye birşey döndürmeyen <code>void</code> türünde ve bir tane <code>int</code> türünde parametre alan <code>testFonk</code> isminde fonksiyon tanımladık. Diyelim ki bu fonksiyona işaret eden bir <strong>fonksiyon göstergesi</strong> tanımlamak istiyoruz. Bunun için klasik gösterge işlemlerine benzeyen aşağıdaki işlemleri yapıyoruz.</p>
-<div class="codehilite"><pre><span class="kt">int</span> <span class="nf">main</span><span class="p">(){</span>
+<div class="highlight"><pre><span class="kt">int</span> <span class="nf">main</span><span class="p">(){</span>
     <span class="kt">void</span> <span class="p">(</span><span class="o">*</span><span class="n">testFonksiyonPt</span><span class="p">)(</span><span class="kt">int</span><span class="p">);</span>
     <span class="n">testFonksiyonPt</span> <span class="o">=</span> <span class="o">&amp;</span><span class="n">testFonk</span><span class="p">;</span>
 
@@ -86,7 +86,7 @@
 <p>Bu kısımda <code>testFonksiyonPt</code> isminde geriye birşey döndürmeyen ve <code>int</code> türünde bir tane parametre alan <code>void</code> türünde bir fonksiyon göstergesi tanımladık. Artık <code>testFonksiyonPt</code> göstergemiz başka bir fonksiyonu işaret etmeye hazır.</p>
 <p>Başka bir fonksiyona işaret etmek içinse o fonksiyonun başlangıç adresini göstergemize veriyoruz. Bu sayede artık göstergemiz üzerinden ilgili fonksiyona ulaşabiliyoruz.</p>
 <p>Fonksiyon göstergelerini bu şekilde kullanabileceğimiz gibi başka bir fonksiyona parametre olarak da verebiliriz. Ki fonksiyon göstergelerinin en fazla kullanım şekli de bu diyebilirim. Özellikle sistem tarafında çalışan kodlar da ismini bilmediğimiz bir çok fonksiyon olabilir. İşte bu tarz durumlarda fonksiyon göstergeleri gerçekten bulunmaz bir nimet.</p>
-<div class="codehilite"><pre><span class="cp">#include &lt;stdio.h&gt;</span>
+<div class="highlight"><pre><span class="cp">#include &lt;stdio.h&gt;</span>
 
 <span class="kt">void</span> <span class="nf">hesapla</span><span class="p">(</span><span class="kt">int</span> <span class="n">s1</span><span class="p">,</span><span class="kt">int</span> <span class="n">s2</span><span class="p">,</span> <span class="kt">int</span> <span class="p">(</span><span class="o">*</span><span class="n">islem</span><span class="p">)(</span><span class="kt">int</span><span class="p">,</span> <span class="kt">int</span><span class="p">)){</span>
     <span class="kt">int</span> <span class="n">sonuc</span> <span class="o">=</span> <span class="n">islem</span><span class="p">(</span><span class="n">s1</span><span class="p">,</span> <span class="n">s2</span><span class="p">);</span>
@@ -108,7 +108,7 @@
 
 <p>Yukarıdaki kod da önce <code>hesapla</code> isminde, 2 tane <code>int</code> türünde parametre ve iki parametreli bir fonksiyonu işaret eden gösterge olan fonksiyon tanımlanıyor. Yani biz <code>hesapla</code> fonksiyonuna iki adet <code>int</code> türünde sayı ile birlikte bu iki sayı ile işlem yapacak bir fonksiyonun adresini verebiliriz. Bu amaç için basit çaplı <code>topla</code>, <code>carp</code> ve <code>cikar</code> isimli fonksiyonlarımız var. <code>main</code> içerisinden görüldüğü gibi <code>hesapla</code> isimli fonksiyonumuzu 10 ve 5 sayılarını sirayla fonksiyonlarımıza versin ve sonuclarını ekrana bassın diye çağırıyoruz.</p>
 <p>Fonksiyon içerisine başka bir fonksiyonu işaret eden göstergeyi alabileceğimiz gibi geriye de bu tarzda bir gösterge döndürebiliriz. Syntax olarak karışmaya meyilli olduğundan <code>typedef</code> ile yeni tanımlama yapmak fayda sağlıyor.</p>
-<div class="codehilite"><pre><span class="kt">int</span> <span class="p">(</span><span class="o">*</span><span class="n">alFonksiyonPtr</span><span class="p">(</span><span class="k">const</span> <span class="kt">char</span> <span class="n">operator</span><span class="p">))(</span><span class="kt">int</span><span class="p">,</span> <span class="kt">int</span><span class="p">){</span>
+<div class="highlight"><pre><span class="kt">int</span> <span class="p">(</span><span class="o">*</span><span class="n">alFonksiyonPtr</span><span class="p">(</span><span class="k">const</span> <span class="kt">char</span> <span class="n">operator</span><span class="p">))(</span><span class="kt">int</span><span class="p">,</span> <span class="kt">int</span><span class="p">){</span>
    <span class="k">if</span><span class="p">(</span><span class="n">operator</span> <span class="o">==</span> <span class="sc">&#39;+&#39;</span><span class="p">)</span> <span class="k">return</span> <span class="o">&amp;</span><span class="n">topla</span><span class="p">;</span>
    <span class="k">else</span> <span class="k">if</span><span class="p">(</span><span class="n">operator</span> <span class="o">==</span> <span class="sc">&#39;-&#39;</span><span class="p">)</span> <span class="k">return</span> <span class="o">&amp;</span><span class="n">cikar</span><span class="p">;</span>
    <span class="k">else</span> <span class="k">if</span><span class="p">(</span><span class="n">operator</span> <span class="o">==</span> <span class="sc">&#39;*&#39;</span><span class="p">)</span> <span class="k">return</span> <span class="o">&amp;</span><span class="n">carp</span><span class="p">;</span>
@@ -117,13 +117,13 @@
 
 
 <p>Burada gördüğünüz gibi <code>alFonksiyonPtr</code> isimli <code>char</code> türünde parametre alan ve geriye iki <code>int</code> parametreli bir fonksiyona işaret eden göstergeyi döndüren fonksiyon tanımladık. Bunu aşağıdaki şekilde daha kolay okunabilir yapabiliriz.</p>
-<div class="codehilite"><pre><span class="k">typedef</span> <span class="nf">int</span> <span class="p">(</span><span class="o">*</span><span class="n">fPtr</span><span class="p">)(</span><span class="kt">int</span><span class="p">,</span> <span class="kt">int</span><span class="p">);</span>
+<div class="highlight"><pre><span class="k">typedef</span> <span class="nf">int</span> <span class="p">(</span><span class="o">*</span><span class="n">fPtr</span><span class="p">)(</span><span class="kt">int</span><span class="p">,</span> <span class="kt">int</span><span class="p">);</span>
 <span class="n">fPtr</span> <span class="nf">alFonksiyonPtr</span><span class="p">(</span><span class="k">const</span> <span class="kt">char</span> <span class="n">operator</span><span class="p">);</span>
 </pre></div>
 
 
 <p>Fonksiyon göstergelerini ilk gördüğüm anda aklıma Python'dan aşina olduğum <code>map</code>, <code>reduce</code> ve <code>filter</code> gibi kavramlar geldi. Hazır bu konuyu yeni öğrenmişken basit bir <code>map</code> fonksiyonu da yazayım dedim.</p>
-<div class="codehilite"><pre><span class="kt">void</span> <span class="nf">map</span><span class="p">(</span><span class="kt">int</span> <span class="o">*</span><span class="n">dizi</span><span class="p">,</span> <span class="kt">int</span> <span class="n">len</span><span class="p">,</span>  <span class="kt">int</span> <span class="p">(</span><span class="o">*</span><span class="n">mapFunc</span><span class="p">)(</span><span class="kt">int</span><span class="p">)</span> <span class="p">){</span>
+<div class="highlight"><pre><span class="kt">void</span> <span class="nf">map</span><span class="p">(</span><span class="kt">int</span> <span class="o">*</span><span class="n">dizi</span><span class="p">,</span> <span class="kt">int</span> <span class="n">len</span><span class="p">,</span>  <span class="kt">int</span> <span class="p">(</span><span class="o">*</span><span class="n">mapFunc</span><span class="p">)(</span><span class="kt">int</span><span class="p">)</span> <span class="p">){</span>
     <span class="kt">int</span> <span class="n">i</span><span class="p">;</span>
     <span class="k">for</span><span class="p">(</span><span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">len</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">){</span>
         <span class="o">*</span><span class="n">dizi</span> <span class="o">=</span> <span class="n">mapFunc</span><span class="p">(</span><span class="o">*</span><span class="n">dizi</span><span class="p">);</span>
@@ -134,7 +134,7 @@
 
 
 <p>Bu fonksiyonda verdiğimiz dizinin tüm elemanlarını teker teker <code>mapFunc</code> fonksiyonuna veriyor ve dönen değerleri elemanın bulunduğu konuma yazıyor. Örnek kullanımı da aşağıdaki gibi olabilir.</p>
-<div class="codehilite"><pre><span class="cp">#include &lt;stdio.h&gt;</span>
+<div class="highlight"><pre><span class="cp">#include &lt;stdio.h&gt;</span>
 
 <span class="kt">void</span> <span class="nf">map</span><span class="p">(</span><span class="kt">int</span> <span class="o">*</span><span class="n">dizi</span><span class="p">,</span> <span class="kt">int</span> <span class="n">len</span><span class="p">,</span>  <span class="kt">int</span> <span class="p">(</span><span class="o">*</span><span class="n">mapFunc</span><span class="p">)(</span><span class="kt">int</span><span class="p">)</span> <span class="p">){</span>
     <span class="kt">int</span> <span class="n">i</span><span class="p">;</span>
@@ -176,18 +176,18 @@
 <p><a href="http://www.cs.cmu.edu/~guna/15-123S11/Lectures/Lecture14.pdf">http://www.cs.cmu.edu/~guna/15-123S11/Lectures/Lecture14.pdf</a></p>
 <p><a href="http://c.learncodethehardway.org/book/ex18.html">http://c.learncodethehardway.org/book/ex18.html</a></p></div>
     <footer>
-      <p class="meta">
+<p class="meta">
   <span class="byline author vcard">
     Posted by <span class="fn">halit</span>
   </span>
-  <time datetime="2013-05-01T00:00:00" pubdate> May 01, 2013 </time>    <span class="categories">
-        <a class="category" href="./tag/function-pointers.html">function pointers</a>
-        <a class="category" href="./tag/fonksiyon-gostergeleri.html">fonksiyon gostergeleri</a>
-        <a class="category" href="./tag/gosterge-fonksiyon.html">gosterge fonksiyon</a>
-        <a class="category" href="./tag/pointers.html">pointers</a>
-        <a class="category" href="./tag/gostergeler.html">gostergeler</a>
-      </span>
-  </p>    </footer>
+<time datetime="2013-05-01T00:00:00" pubdate> May 01, 2013 </time>  <span class="categories">
+    <a class="category" href="http://www.halitalptekin.com/tag/function-pointers.html">function pointers</a>
+    <a class="category" href="http://www.halitalptekin.com/tag/fonksiyon-gostergeleri.html">fonksiyon gostergeleri</a>
+    <a class="category" href="http://www.halitalptekin.com/tag/gosterge-fonksiyon.html">gosterge fonksiyon</a>
+    <a class="category" href="http://www.halitalptekin.com/tag/pointers.html">pointers</a>
+    <a class="category" href="http://www.halitalptekin.com/tag/gostergeler.html">gostergeler</a>
+  </span>
+</p>    </footer>
   </article>
   <section>
     <div class="addthis_toolbox addthis_default_style addthis_32x32_style">
@@ -205,156 +205,142 @@
     </div>
     <script type="text/javascript" src="http://s7.addthis.com/js/250/addthis_widget.js#pubid=ra-504c6d593daec57a"></script>
   </section>
-    <section>
+  <section>
     <h1>Comments</h1>
     <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript></div>
   </section>
-  </div>
+</div>
 <aside class="sidebar">
   <section>
     <h1>Recent Posts</h1>
     <ul id="recent_posts">
-            <li class="post">
-          <a href="./gnu-c-tamsayi-turleri.html">GNU C tamsayi turleri</a>
+      <li class="post">
+          <a href="http://www.halitalptekin.com/clojure-notlari-2.html">Clojure Notları #2</a>
       </li>
-            <li class="post">
-          <a href="./fonksiyon-gostergeleri.html">Fonksiyon göstergeleri</a>
+      <li class="post">
+          <a href="http://www.halitalptekin.com/clojure-gelistirme-ortami.html">Clojure geliştirme ortamı</a>
       </li>
-            <li class="post">
-          <a href="./cde-debug-makrolari.html">C'de debug makrolari</a>
+      <li class="post">
+          <a href="http://www.halitalptekin.com/clojure-notlari-1.html">Clojure Notları #1</a>
       </li>
-            <li class="post">
-          <a href="./uzun-bir-aradan-sonra.html">Uzun bir aradan sonra</a>
+      <li class="post">
+          <a href="http://www.halitalptekin.com/paradigma-degisikligi.html">Paradigma değişikliği</a>
       </li>
-            <li class="post">
-          <a href="./the-seven-rules-of-technical-writing.html">The Seven Rules Of Technical Writing</a>
+      <li class="post">
+          <a href="http://www.halitalptekin.com/gnu-c-tamsayi-turleri.html">GNU C tamsayi turleri</a>
       </li>
-          </ul>
+    </ul>
   </section>
-    <section>
+  <section>
       
     <h1>Categories</h1>
     <ul id="recent_posts">
-              <li><a href="./category/tasarim.html">tasarim</a></li>
-              <li><a href="./category/server.html">server</a></li>
-              <li><a href="./category/python.html">python</a></li>
-              <li><a href="./category/programlama.html">programlama</a></li>
-              <li><a href="./category/linux.html">linux</a></li>
-              <li><a href="./category/kisisel.html">kisisel</a></li>
-              <li><a href="./category/internet.html">internet</a></li>
-              <li><a href="./category/guvenlik.html">guvenlik</a></li>
-              <li><a href="./category/genel.html">genel</a></li>
-              <li><a href="./category/eglence.html">eglence</a></li>
-              <li><a href="./category/django.html">django</a></li>
-              <li><a href="./category/compsci.html">compsci</a></li>
-              <li><a href="./category/arduino.html">arduino</a></li>
-          </ul>
+        <li><a href="http://www.halitalptekin.com/category/tasarim.html">tasarim</a></li>
+        <li><a href="http://www.halitalptekin.com/category/server.html">server</a></li>
+        <li><a href="http://www.halitalptekin.com/category/python.html">python</a></li>
+        <li><a href="http://www.halitalptekin.com/category/programlama.html">programlama</a></li>
+        <li><a href="http://www.halitalptekin.com/category/linux.html">linux</a></li>
+        <li><a href="http://www.halitalptekin.com/category/kisisel.html">kisisel</a></li>
+        <li><a href="http://www.halitalptekin.com/category/internet.html">internet</a></li>
+        <li><a href="http://www.halitalptekin.com/category/guvenlik.html">guvenlik</a></li>
+        <li><a href="http://www.halitalptekin.com/category/genel.html">genel</a></li>
+        <li><a href="http://www.halitalptekin.com/category/eglence.html">eglence</a></li>
+        <li><a href="http://www.halitalptekin.com/category/django.html">django</a></li>
+        <li><a href="http://www.halitalptekin.com/category/compsci.html">compsci</a></li>
+        <li><a href="http://www.halitalptekin.com/category/clojure.html">clojure</a></li>
+        <li><a href="http://www.halitalptekin.com/category/arduino.html">arduino</a></li>
+    </ul>
   </section>
-   
+ 
 
-    
+
     <section>
         <h1>Social</h1>
         <ul>
             <li><a href="http://www.halitalptekin.com/feeds/all.rss.xml" type="application/rss+xml" rel="alternate">rss</a></li>
-                    <li><a href="http://twitter.com/halitalptekin" target="_blank">twitter</a></li>
-                    <li><a href="http://github.com/halitalptekin" target="_blank">github</a></li>
-                    <li><a href="http://stackoverflow.com/users/1151618/halit-alptekin" target="_blank">stackoverflow</a></li>
-                    <li><a href="http://tr.linkedin.com/in/halitalptekin" target="_blank">linkedin</a></li>
-                </ul>
+            <li><a href="http://twitter.com/halitalptekin" target="_blank">twitter</a></li>
+            <li><a href="http://github.com/halitalptekin" target="_blank">github</a></li>
+            <li><a href="http://stackoverflow.com/users/1151618/halit-alptekin" target="_blank">stackoverflow</a></li>
+            <li><a href="http://tr.linkedin.com/in/halitalptekin" target="_blank">linkedin</a></li>
+        </ul>
     </section>
-      <section>
+    <section>
         <h1>Blogroll</h1>
         <ul>
-                    <li><a href="http://www.python.org" target="_blank">Python</a></li>
-                </ul>
+            <li><a href="http://www.python.org" target="_blank">Python</a></li>
+        </ul>
     </section>
 
-      <section>
-        <h1>Ads</h1>
-        <ul id="recent_posts">
-                            <li><a href="https://www.camekan.com/adwords/" title="Google Adwords"><img src="/media/reklam/camekancom.jpg" alt="Google Adwords" title="Google Adwords"></a></li>
-                            <li><a href="http://www.dugunajans.com/" title="düğün fotoğrafçısı"><img src="/media/reklam/dugunajanscom.jpg" alt="düğün fotoğrafçısı" title="düğün fotoğrafçısı"></a></li>
-                            <li><a href="http://cevap.tv/yeme-icme/yemek-tarifleri/hamur-isleri/cupcake" title="cupcake tarifi"><img src="/media/reklam/cevaptv.png" alt="cupcake tarifi" title="cupcake tarifi"></a></li>
-                    </ul>
-    </section>
-  
-</aside>      <aside class="sidebar">
+
+</aside><aside class="sidebar">
   <section>
     <h1>Recent Posts</h1>
     <ul id="recent_posts">
-            <li class="post">
-          <a href="./gnu-c-tamsayi-turleri.html">GNU C tamsayi turleri</a>
+      <li class="post">
+          <a href="http://www.halitalptekin.com/clojure-notlari-2.html">Clojure Notları #2</a>
       </li>
-            <li class="post">
-          <a href="./fonksiyon-gostergeleri.html">Fonksiyon göstergeleri</a>
+      <li class="post">
+          <a href="http://www.halitalptekin.com/clojure-gelistirme-ortami.html">Clojure geliştirme ortamı</a>
       </li>
-            <li class="post">
-          <a href="./cde-debug-makrolari.html">C'de debug makrolari</a>
+      <li class="post">
+          <a href="http://www.halitalptekin.com/clojure-notlari-1.html">Clojure Notları #1</a>
       </li>
-            <li class="post">
-          <a href="./uzun-bir-aradan-sonra.html">Uzun bir aradan sonra</a>
+      <li class="post">
+          <a href="http://www.halitalptekin.com/paradigma-degisikligi.html">Paradigma değişikliği</a>
       </li>
-            <li class="post">
-          <a href="./the-seven-rules-of-technical-writing.html">The Seven Rules Of Technical Writing</a>
+      <li class="post">
+          <a href="http://www.halitalptekin.com/gnu-c-tamsayi-turleri.html">GNU C tamsayi turleri</a>
       </li>
-          </ul>
+    </ul>
   </section>
-    <section>
+  <section>
       
     <h1>Categories</h1>
     <ul id="recent_posts">
-              <li><a href="./category/tasarim.html">tasarim</a></li>
-              <li><a href="./category/server.html">server</a></li>
-              <li><a href="./category/python.html">python</a></li>
-              <li><a href="./category/programlama.html">programlama</a></li>
-              <li><a href="./category/linux.html">linux</a></li>
-              <li><a href="./category/kisisel.html">kisisel</a></li>
-              <li><a href="./category/internet.html">internet</a></li>
-              <li><a href="./category/guvenlik.html">guvenlik</a></li>
-              <li><a href="./category/genel.html">genel</a></li>
-              <li><a href="./category/eglence.html">eglence</a></li>
-              <li><a href="./category/django.html">django</a></li>
-              <li><a href="./category/compsci.html">compsci</a></li>
-              <li><a href="./category/arduino.html">arduino</a></li>
-          </ul>
+        <li><a href="http://www.halitalptekin.com/category/tasarim.html">tasarim</a></li>
+        <li><a href="http://www.halitalptekin.com/category/server.html">server</a></li>
+        <li><a href="http://www.halitalptekin.com/category/python.html">python</a></li>
+        <li><a href="http://www.halitalptekin.com/category/programlama.html">programlama</a></li>
+        <li><a href="http://www.halitalptekin.com/category/linux.html">linux</a></li>
+        <li><a href="http://www.halitalptekin.com/category/kisisel.html">kisisel</a></li>
+        <li><a href="http://www.halitalptekin.com/category/internet.html">internet</a></li>
+        <li><a href="http://www.halitalptekin.com/category/guvenlik.html">guvenlik</a></li>
+        <li><a href="http://www.halitalptekin.com/category/genel.html">genel</a></li>
+        <li><a href="http://www.halitalptekin.com/category/eglence.html">eglence</a></li>
+        <li><a href="http://www.halitalptekin.com/category/django.html">django</a></li>
+        <li><a href="http://www.halitalptekin.com/category/compsci.html">compsci</a></li>
+        <li><a href="http://www.halitalptekin.com/category/clojure.html">clojure</a></li>
+        <li><a href="http://www.halitalptekin.com/category/arduino.html">arduino</a></li>
+    </ul>
   </section>
-   
+ 
 
-    
+
     <section>
         <h1>Social</h1>
         <ul>
             <li><a href="http://www.halitalptekin.com/feeds/all.rss.xml" type="application/rss+xml" rel="alternate">rss</a></li>
-                    <li><a href="http://twitter.com/halitalptekin" target="_blank">twitter</a></li>
-                    <li><a href="http://github.com/halitalptekin" target="_blank">github</a></li>
-                    <li><a href="http://stackoverflow.com/users/1151618/halit-alptekin" target="_blank">stackoverflow</a></li>
-                    <li><a href="http://tr.linkedin.com/in/halitalptekin" target="_blank">linkedin</a></li>
-                </ul>
+            <li><a href="http://twitter.com/halitalptekin" target="_blank">twitter</a></li>
+            <li><a href="http://github.com/halitalptekin" target="_blank">github</a></li>
+            <li><a href="http://stackoverflow.com/users/1151618/halit-alptekin" target="_blank">stackoverflow</a></li>
+            <li><a href="http://tr.linkedin.com/in/halitalptekin" target="_blank">linkedin</a></li>
+        </ul>
     </section>
-      <section>
+    <section>
         <h1>Blogroll</h1>
         <ul>
-                    <li><a href="http://www.python.org" target="_blank">Python</a></li>
-                </ul>
+            <li><a href="http://www.python.org" target="_blank">Python</a></li>
+        </ul>
     </section>
 
-      <section>
-        <h1>Ads</h1>
-        <ul id="recent_posts">
-                            <li><a href="https://www.camekan.com/adwords/" title="Google Adwords"><img src="/media/reklam/camekancom.jpg" alt="Google Adwords" title="Google Adwords"></a></li>
-                            <li><a href="http://www.dugunajans.com/" title="düğün fotoğrafçısı"><img src="/media/reklam/dugunajanscom.jpg" alt="düğün fotoğrafçısı" title="düğün fotoğrafçısı"></a></li>
-                            <li><a href="http://cevap.tv/yeme-icme/yemek-tarifleri/hamur-isleri/cupcake" title="cupcake tarifi"><img src="/media/reklam/cevaptv.png" alt="cupcake tarifi" title="cupcake tarifi"></a></li>
-                    </ul>
-    </section>
-  
+
 </aside>    </div>
   </div>
   <footer role="contentinfo"><p>
   Copyright &copy; 2013 - halit -
   <span class="credit">Powered by <a href="http://getpelican.com">Pelican</a></span>
 </p></footer>
-      <script type="text/javascript">
+    <script type="text/javascript">
 	    var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
 	    document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
     </script>
