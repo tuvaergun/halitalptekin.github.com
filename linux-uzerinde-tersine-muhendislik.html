@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>( &#955; Halit Alptekin ) - Linux üzerinde tersine mühendislik</title>
+
+  <meta name="author" content="halit">
+  <meta name="description" content="Programming and Life Blog Of Halit Alptekin. Karadeniz Technical University Computer Engineering Student.">
+  <meta name="keywords" content="programlama, blog, personal blog, linux, python, django, php, bootstrap, seo, bilgisayar muhendisligi, ktu, karadeniz teknik universitesi, programming">
+  <meta name="robots" content="index, follow, all"/>
+
+  <link href="http://www.halitalptekin.com/feeds/all.rss.xml" type="application/rss+xml" rel="alternate"
+        title="( &#955; Halit Alptekin ) RSS Feed" />
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <link href="http://www.halitalptekin.com/favicon.png" rel="icon">
+  <link href="http://www.halitalptekin.com/theme/css/main.css" media="screen, projection"
+        rel="stylesheet" type="text/css">
+  <script src="http://www.halitalptekin.com/theme/js/modernizr-2.0.js"></script>
+  <script src="http://www.halitalptekin.com/theme/js/ender.js"></script>
+  <script src="http://www.halitalptekin.com/theme/js/octopress.js" type="text/javascript"></script>
+
+  <link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic"
+        rel="stylesheet" type="text/css">
+  <link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic"
+        rel="stylesheet" type="text/css">
+</head>
+<body>
+  <header role="banner"><hgroup>
+  <h1><a href="http://www.halitalptekin.com/">( &#955; Halit Alptekin )</a></h1>
+</hgroup></header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  <li><a href="http://www.halitalptekin.com/feeds/all.rss.xml" rel="subscribe-rss">Rss</a></li>
+</ul>
+
+<!-- TODO: add search here
+<form action="" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="q" value="site:http://www.halitalptekin.com" />
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+-->
+
+<ul class="main-navigation">
+  <li><a href="http://www.halitalptekin.com/">Blog</a></li>
+    <li><a href="http://www.halitalptekin.com/pages/about-me.html">About Me</a></li>
+    <li><a href="http://www.halitalptekin.com/pages/contact.html">Contact</a></li>
+  <!-- TODO: add categories here? -->
+</ul></nav>
+  <div id="main">
+    <div id="content">
+<div>
+  <article class="hentry" role="article">
+<header>
+      <h1 class="entry-title">Linux üzerinde tersine mühendislik</h1>
+      <p class="meta"><time datetime="2013-11-23T00:00:00" pubdate> Nov 23, 2013 </time></p>
+</header>
+
+  <div class="entry-content"><p>Siteme o kadar uzun süredir yazı girmiyorum ki artık kendisini unutma derecesine geldim. Bu şekilde olma sebebi yazacak şey bulamamak değil tam tersi o kadar çok yazacak konum olmasına rağmen bir türlü ilk ateşi yakamamam. Vize haftasının son bulması ve tam bu sırada SiberMeydan yarışmasına katılmamız beni bu yazıyı yazmaya itti. Ciddi anlamda blog yazmayı özlemişim diyebilirim.</p>
+<p>Sibermeydan Tubitak'ın düzenlediği üniversite öğrencilerinin siber güvenlik konusunda birbirleriyle yarıştığı eğlenceli bir proje oldu. İlk aşaması geçtiğimiz perşembe ve cuma günleri gerçekleştirildi. İkinci aşamaya geçecek olan 10 takımda dün akşam belirlendi. İstanbula gidecek olan ekiplerden birisi de benim arkadaşlarım ile katıldığım OctoSec grubu oldu.</p>
+<p>Yarışma konusundan bu kadar bahsettikten sonra gerçek konumuza dönebiliriz. Sibermeydan içerisinde yer alan tersine mühendislik sorularından bir tanesi üzerinden basit bir giriş yapmayı düşünüyorum.</p>
+<p>Öncelikle soruyu anlayalım. Dizin altında derlenmiş bir dosya var. Bu dosyayı çalıştırdığınızda yetkisiz işlem yaptınız şeklinde hata alıyorsunuz. Kullanıcılar değişince, yetkiler değişince hata mesajının sadece hata kodları değişiyor. İşte amaç bu dosyayı istenildiği şekilde çalıştırmak ve çalışınca üreteceği değere ulaşmak.</p>
+<p><img alt="Calistir ve Kir Beni" src="media/1.png" /></p>
+<p>Amacımızı anladıktan sonra uygulama hakkında biraz bilgi toplamaya başlayalım. İlk olarak bu uygulamanın hangi platform için derlendiği gibi temel bilgileri <code>file</code> aracı ile öğreniyoruz.</p>
+<p><img alt="File" src="media/2.png" /></p>
+<p>Uygulamamızın Linux 32 bit sistemler için derlendiği bilgisi elde ettik. Bundan sonra çalıştırılabilir dosya içerisinde yer alan metinleri çıkarabilen <code>strings</code> aracı ile içerisine ufak bir göz gezdiriyoruz. Bu çıktı biraz büyük olacaktır. Ancak tüm stringlere göz ucuyla da olsa bi bakmak çok faydalı oluyor. Ve gördüğümüz gibi bu uygulama <code>upx</code> ile sıkıştırılmış.</p>
+<p><img alt="Upx" src="media/3.png" /></p>
+<p>Şimdiki amacımız öncelikle bu dosyayı açmak ve daha sonra hakkında daha detaylı bilgiler öğrenmek. Upx kullanılarak sıkıştırılmış dosyaları <code>upx -d</code> komutu ile kolayca açabiliyoruz.</p>
+<p><img alt="Upx Decompress" src="media/4.png" /></p>
+<p>Artık uygulamamızı açtığımıza göre hakkında daha detaylı bilgiler öğrenmeye başlayabiliriz. Öncelikle içerisinde sembol varmı diye kontrol ediyoruz. Bunun için <code>nm</code> aracı kullanılabilir.</p>
+<p><img alt="Nm" src="media/5.png" /></p>
+<p>Bu komut sonrasında uzunca bir çıktı gelecektir. Sembollerin yanında yer alan <code>T</code> bu sembolun <code>.text</code> kod kısmında olduğunu, <code>B</code> ilk değer verilmemiş <code>.data</code> kısmında ve <code>D</code> ise ilk değer verilmiş <code>.data</code> kısmında yer aldığını söylüyor. Değişken isimleri, fonksiyon isimleri gibi detaylı verilere bu sayede ulaşabiliriz.</p>
+<p>Şimdi de uygulamımızın çağırdığı sistem çağrılarını bir gözden geçirelim.</p>
+<p><img alt="System Call Trace" src="media/6.png" /></p>
+<p>Burada yer alan <code>getuid32()</code> fonksiyonu aslında programın amacını açıkca belli etti ancak biz farketmemiş gibi işimize devam edelim.</p>
+<p>Son olarakta uygulamamız dinamik olarak kullandığı kütüphaneler varmı diye kontrol ediyoruz.</p>
+<p><img alt="LDD" src="media/7.png" /></p>
+<p>Artık uygulamamız hakkında detaylı birçok bilgiye sahibiz. Şimdi de onu debug edip çalışma şekline müdahale edelim. Bunun için Linux üzerinde <code>gdb</code> gibi harika bir araca sahibiz. Hemen uygulamamızı <code>gdb</code> ile açıp ilk debug işlemlerimize başlayalım.</p>
+<p>Uygulamamızı <code>gdb</code> ile açtıktan sonra <code>main</code> fonksiyonuna breakpoint koyalım. Bu sayede uygulama buraya kadar çalışacak ve biz daha sonra debug etmeye başlayacağız. Breakpoint koyduktan sonra uygulamayı <code>r</code> ile koşturalım.</p>
+<p><img alt="GDB Debug" src="media/8.png" /></p>
+<p>Şimdi de uygulamamızı disassemble edip assembly kodlarına erişelim. Uygulama çalışma sırasında nerede olduğunu yan taraftaki ok ile öğrenebiliriz.</p>
+<p><img alt="GDB Debug2" src="media/9.png" /></p>
+<p>Bundan sonra kodumuzu detaylıca incelemeye başlıyoruz. En üstten itibaren takip ediyoruz. Ve uygulamanın en can alıcı noktasına ulaşıyoruz.</p>
+<p><img alt="GDB Debug3" src="media/10.png" /></p>
+<p>Gördüğünüz gibi <code>0x08048291</code> numaralı satırda <code>getuid</code> fonksiyonu <code>call</code> ile çağrılıyor. Daha sonraki satırda <code>eax</code> registerı içerisindeki değer <code>0x2098</code> değeri ile <code>cmp</code> ile karşılaştırılıyor. Artık herşey çok netleşti. Uygulama kullanıcın id'sinin <code>0x2098</code> 16lık değerine eşit olup olmamasına göre işlem yapıyor. Yani biz yeni bir kullanıcı oluşturup id'sini decimal olarak <code>8344</code> yaparsak bu uygulama çalışır.</p>
+<p>Bu tabi akla gelen ilk yol. Biz biraz daha kolayını yapalım. Tam karşılaştırma işleminin olduğu yere breakpoint koyalım. Ve uygulamanın koşmasına devam ettirelim.</p>
+<p><img alt="GDB Debug4" src="media/11.png" /></p>
+<p>Şimdi yapmamız gereken <code>eax</code> registeri içindeki değerimizi istenilen değere setlemek. Setleme işleminden sonra devam ettirdiğimizde uygulama istenildiği şekilde çalışması lazım. Önce ilk durumuna bakalım.</p>
+<p><img alt="GDB Debug5" src="media/12.png" /></p>
+<p>Şimdi registerımızı setleyelim.</p>
+<p><img alt="GDB Debug6" src="media/13.png" /></p>
+<p>Değerimizin değiştini gördünüz. Artık uygulamayı devam ettirelim ve if kısmının içerisini görelim.</p>
+<p><img alt="GDB Debug7" src="media/14.png" /></p>
+<p>Ve sonuca ulaştık.</p>
+<p>Buradaki amacım tersine mühendislik hakkında detaylıca konuşmak değil, yarışma içerisinde bir cevaba Linux ve GNU araçları sayesinde nasıl kısa sürede ulaştığımı göstermektir. Yukarda anlattığım adımlara sırf yazı için eklemeler yaptım. Normalde direk olarak <code>gdb</code> ile uygulamayı debug etmek bazen en kolayı oluyor. Ancak diğer araçları da tanıtmak istedim. Bir başka yazımda da bu araçların detaylı kullanımlarını anlatmayı düşünüyorum.</p></div>
+    <footer>
+<p class="meta">
+  <span class="byline author vcard">
+    Posted by <span class="fn">halit</span>
+  </span>
+<time datetime="2013-11-23T00:00:00" pubdate> Nov 23, 2013 </time>  <span class="categories">
+    <a class="category" href="http://www.halitalptekin.com/tag/reverse-engineering.html">reverse engineering</a>
+    <a class="category" href="http://www.halitalptekin.com/tag/tersine-muhendislik.html">tersine mühendislik</a>
+    <a class="category" href="http://www.halitalptekin.com/tag/gdb.html">gdb</a>
+    <a class="category" href="http://www.halitalptekin.com/tag/cracking.html">cracking</a>
+    <a class="category" href="http://www.halitalptekin.com/tag/sibermeydan.html">sibermeydan</a>
+    <a class="category" href="http://www.halitalptekin.com/tag/linux.html">linux</a>
+  </span>
+</p>    </footer>
+  </article>
+  <section>
+    <div class="addthis_toolbox addthis_default_style addthis_32x32_style">
+        <a class="addthis_button_preferred_1"></a>
+        <a class="addthis_button_preferred_2"></a>
+        <a class="addthis_button_preferred_3"></a>
+        <a class="addthis_button_preferred_4"></a>
+        <a class="addthis_button_preferred_5"></a>
+        <a class="addthis_button_preferred_6"></a>
+        <a class="addthis_button_preferred_7"></a>
+        <a class="addthis_button_preferred_8"></a>
+        <a class="addthis_button_preferred_9"></a>
+        <a class="addthis_button_preferred_10"></a>
+        <a class="addthis_counter addthis_bubble_style"></a>
+    </div>
+    <script type="text/javascript" src="http://s7.addthis.com/js/250/addthis_widget.js#pubid=ra-504c6d593daec57a"></script>
+  </section>
+  <section>
+    <h1>Comments</h1>
+    <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript></div>
+  </section>
+</div>
+<aside class="sidebar">
+  <section>
+    <h1>Recent Posts</h1>
+    <ul id="recent_posts">
+      <li class="post">
+          <a href="http://www.halitalptekin.com/linux-uzerinde-tersine-muhendislik.html">Linux üzerinde tersine mühendislik</a>
+      </li>
+      <li class="post">
+          <a href="http://www.halitalptekin.com/clojure-notlari-2.html">Clojure Notları #2</a>
+      </li>
+      <li class="post">
+          <a href="http://www.halitalptekin.com/clojure-gelistirme-ortami.html">Clojure geliştirme ortamı</a>
+      </li>
+      <li class="post">
+          <a href="http://www.halitalptekin.com/clojure-notlari-1.html">Clojure Notları #1</a>
+      </li>
+      <li class="post">
+          <a href="http://www.halitalptekin.com/paradigma-degisikligi.html">Paradigma değişikliği</a>
+      </li>
+    </ul>
+  </section>
+  <section>
+      
+    <h1>Categories</h1>
+    <ul id="recent_posts">
+        <li><a href="http://www.halitalptekin.com/category/tasarim.html">tasarim</a></li>
+        <li><a href="http://www.halitalptekin.com/category/server.html">server</a></li>
+        <li><a href="http://www.halitalptekin.com/category/python.html">python</a></li>
+        <li><a href="http://www.halitalptekin.com/category/programlama.html">programlama</a></li>
+        <li><a href="http://www.halitalptekin.com/category/linux.html">linux</a></li>
+        <li><a href="http://www.halitalptekin.com/category/kisisel.html">kisisel</a></li>
+        <li><a href="http://www.halitalptekin.com/category/internet.html">internet</a></li>
+        <li><a href="http://www.halitalptekin.com/category/guvenlik.html">guvenlik</a></li>
+        <li><a href="http://www.halitalptekin.com/category/genel.html">genel</a></li>
+        <li><a href="http://www.halitalptekin.com/category/eglence.html">eglence</a></li>
+        <li><a href="http://www.halitalptekin.com/category/django.html">django</a></li>
+        <li><a href="http://www.halitalptekin.com/category/compsci.html">compsci</a></li>
+        <li><a href="http://www.halitalptekin.com/category/clojure.html">clojure</a></li>
+        <li><a href="http://www.halitalptekin.com/category/arduino.html">arduino</a></li>
+    </ul>
+  </section>
+ 
+
+
+    <section>
+        <h1>Social</h1>
+        <ul>
+            <li><a href="http://www.halitalptekin.com/feeds/all.rss.xml" type="application/rss+xml" rel="alternate">rss</a></li>
+            <li><a href="http://twitter.com/halitalptekin" target="_blank">twitter</a></li>
+            <li><a href="http://github.com/halitalptekin" target="_blank">github</a></li>
+            <li><a href="http://stackoverflow.com/users/1151618/halit-alptekin" target="_blank">stackoverflow</a></li>
+            <li><a href="http://tr.linkedin.com/in/halitalptekin" target="_blank">linkedin</a></li>
+        </ul>
+    </section>
+    <section>
+        <h1>Blogroll</h1>
+        <ul>
+            <li><a href="http://www.python.org" target="_blank">Python</a></li>
+        </ul>
+    </section>
+
+
+</aside><aside class="sidebar">
+  <section>
+    <h1>Recent Posts</h1>
+    <ul id="recent_posts">
+      <li class="post">
+          <a href="http://www.halitalptekin.com/linux-uzerinde-tersine-muhendislik.html">Linux üzerinde tersine mühendislik</a>
+      </li>
+      <li class="post">
+          <a href="http://www.halitalptekin.com/clojure-notlari-2.html">Clojure Notları #2</a>
+      </li>
+      <li class="post">
+          <a href="http://www.halitalptekin.com/clojure-gelistirme-ortami.html">Clojure geliştirme ortamı</a>
+      </li>
+      <li class="post">
+          <a href="http://www.halitalptekin.com/clojure-notlari-1.html">Clojure Notları #1</a>
+      </li>
+      <li class="post">
+          <a href="http://www.halitalptekin.com/paradigma-degisikligi.html">Paradigma değişikliği</a>
+      </li>
+    </ul>
+  </section>
+  <section>
+      
+    <h1>Categories</h1>
+    <ul id="recent_posts">
+        <li><a href="http://www.halitalptekin.com/category/tasarim.html">tasarim</a></li>
+        <li><a href="http://www.halitalptekin.com/category/server.html">server</a></li>
+        <li><a href="http://www.halitalptekin.com/category/python.html">python</a></li>
+        <li><a href="http://www.halitalptekin.com/category/programlama.html">programlama</a></li>
+        <li><a href="http://www.halitalptekin.com/category/linux.html">linux</a></li>
+        <li><a href="http://www.halitalptekin.com/category/kisisel.html">kisisel</a></li>
+        <li><a href="http://www.halitalptekin.com/category/internet.html">internet</a></li>
+        <li><a href="http://www.halitalptekin.com/category/guvenlik.html">guvenlik</a></li>
+        <li><a href="http://www.halitalptekin.com/category/genel.html">genel</a></li>
+        <li><a href="http://www.halitalptekin.com/category/eglence.html">eglence</a></li>
+        <li><a href="http://www.halitalptekin.com/category/django.html">django</a></li>
+        <li><a href="http://www.halitalptekin.com/category/compsci.html">compsci</a></li>
+        <li><a href="http://www.halitalptekin.com/category/clojure.html">clojure</a></li>
+        <li><a href="http://www.halitalptekin.com/category/arduino.html">arduino</a></li>
+    </ul>
+  </section>
+ 
+
+
+    <section>
+        <h1>Social</h1>
+        <ul>
+            <li><a href="http://www.halitalptekin.com/feeds/all.rss.xml" type="application/rss+xml" rel="alternate">rss</a></li>
+            <li><a href="http://twitter.com/halitalptekin" target="_blank">twitter</a></li>
+            <li><a href="http://github.com/halitalptekin" target="_blank">github</a></li>
+            <li><a href="http://stackoverflow.com/users/1151618/halit-alptekin" target="_blank">stackoverflow</a></li>
+            <li><a href="http://tr.linkedin.com/in/halitalptekin" target="_blank">linkedin</a></li>
+        </ul>
+    </section>
+    <section>
+        <h1>Blogroll</h1>
+        <ul>
+            <li><a href="http://www.python.org" target="_blank">Python</a></li>
+        </ul>
+    </section>
+
+
+</aside>    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2013 - halit -
+  <span class="credit">Powered by <a href="http://getpelican.com">Pelican</a></span>
+</p></footer>
+    <script type="text/javascript">
+	    var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+	    document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+    </script>
+    <script type="text/javascript">
+	    try {
+	        var pageTracker = _gat._getTracker("UA-24728900-1");
+	    pageTracker._trackPageview();
+	    } catch(err) {}
+	</script>
+	<script type="text/javascript">
+	  var disqus_shortname = 'halitalptekin';
+	  (function() {
+	    var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+	    dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
+	    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+	   })();
+	</script>
+</body>
+</html>

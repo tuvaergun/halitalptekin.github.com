@@ -1,0 +1,542 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>( λ Halit Alptekin )</title><link>http://www.halitalptekin.com/</link><description></description><atom:link href="http://www.halitalptekin.com/feeds/clojure.rss.xml" rel="self"></atom:link><lastBuildDate>Thu, 18 Jul 2013 00:00:00 +0300</lastBuildDate><item><title>Clojure Notları #2</title><link>http://www.halitalptekin.com/clojure-notlari-2.html</link><description>&lt;p&gt;Son günlerde kendimi programlama dillerinin temeline adadım. Amacım sadece kod yazmak değil, yazdığım kodu daha yazarken kafamda çalıştırabilmek. Bunun yanında bir programın gerçekte neler yaptığı veya yapabildiği konularınada yöneldim. Clojure ile girdiğim fonksiyonel programlama dünyasına, satın aldığım SICP(Structure and Interpretation of Computer Programs) isimli kitapla devam ediyorum. Bu kitap adından anlaşıldığı üzere programların yapısı üzerine yoğunlaşıyor. Ama bugüne kadar hiçbir kitapta görmediğim derecede güzel ve fantastik bir biçimde olaylara yaklaşıyor. MIT'de de ders olarak okutulan bu kitabı bana göre, bilgisayar bilimi ile uğraşan herkesin bitirmesi gerekiyor.&lt;/p&gt;
+&lt;p&gt;Yalnız kitabın öyle çokda kolay olmadığını söyleyebilirim. Sorular üzerinde düşünmeniz kod yazmanızdan çok uzun sürüyor. Ama genede daha birinci bölümü bitirmeden birşeylerin kafanızda canlandığını hissediyorsunuz. Eğer sizde bu dediklerimden sonra merak ettiyseniz &lt;a href="http://mitpress.mit.edu/sicp/" title="Sicp"&gt;buradan&lt;/a&gt; kitaba online olarak ulaşabilir veya &lt;a href="http://ocw.mit.edu/courses/electrical-engineering-and-computer-science/6-001-structure-and-interpretation-of-computer-programs-spring-2005/index.htm" title="Sicp Mit"&gt;buradan&lt;/a&gt; videolu anlatımlarına ve ders notlarına ulaşabilirsiniz. Hatta &lt;a href="http://icampustutor.csail.mit.edu/6.001-public/" title="Mit"&gt;burada&lt;/a&gt; yer alan online derslere de katılabilirsiniz.&lt;/p&gt;
+&lt;p&gt;Diyeceksiniz bu kitabın &lt;strong&gt;Clojure&lt;/strong&gt; ile ne alakası var. Aslında çok alakası var. Kitapta konular bir Lisp lehçesi olan Scheme kullanılarak anlatılıyor. Zaten herhangi bir Lisp diline aşinalığınız varsa kodlar size uzak gelmiyor. Ben de bu kitapta yer alan kodları hem &lt;strong&gt;Scheme&lt;/strong&gt; hem de &lt;strong&gt;Clojure&lt;/strong&gt; ile yazarak ilerliyorum. Hatta sırf benim bu yaptığım için üzerinde uğraşılan &lt;a href="http://sicpinclojure.com/" title="Sicp in clojure"&gt;Sicp In Clojure&lt;/a&gt; kitabı bile var. &lt;strong&gt;Clojure&lt;/strong&gt; yanında herhangi bir fonksiyonel dil ile de (Scala vb) bu kitabı çözebilirsiniz. Emin olun çok faydasını göreceksiniz.&lt;/p&gt;
+&lt;p&gt;Clojure'a nasıl çalıştığımı anlattıktan sonra biraz da ilk gün öğrendiklerimden bahsetmek istiyorum. Yazı içerisinde geçen teknik kelimelerin Türkçelerini yazmak isterdim ancak bazı kelimeleri çevirince gerçekten çok saçma olduğunu gördüm. O yüzden nasıl biliniyorsa aynen yazıyorum. Hem bu sayede yabancı kaynaklarda uygun bir şekilde arama yapabilirsiniz. Türkçe kaynak konusuna değinmiyorum bile.&lt;/p&gt;
+&lt;h2&gt;Clojure&lt;/h2&gt;
+&lt;p&gt;Clojure ile yazdığınız kodlar aşağıda gördüğünüz biçimde &lt;strong&gt;JVM&lt;/strong&gt; üzerinde çalışacak hale getiriliyor. Burada diğer JVM üzerinde çalışan dillerin aksine &lt;code&gt;Reader&lt;/code&gt; isimli bir yapının olduğunu görüyorsunuz. Bu Lispten gelen bir miras diye düşünüyorum. &lt;code&gt;Reader&lt;/code&gt; makroları diye tamamen farklı bir konu bile var.&lt;/p&gt;
+&lt;p&gt;&lt;img alt="Clojure" src="http://alandipert.github.io/oscon2012-clojure/slide-assets/clojure-interactive-evaluation.svg" /&gt;&lt;/p&gt;
+&lt;h2&gt;Syntax&lt;/h2&gt;
+&lt;p&gt;Clojure diğer Lisp ailesi dillerde de olduğu gibi parantezleri ve prefix notasyonunu kullanıyor. Diğer dillerde yazılan &lt;code&gt;f(a, b, c)&lt;/code&gt; tarzı ifadeler, &lt;code&gt;(f a b c)&lt;/code&gt; şekline dönüşüyor. Burada &lt;code&gt;f&lt;/code&gt; yerine bir makro, özel operator veya fonksiyon gelmek zorundadır. &lt;code&gt;a b c&lt;/code&gt; ise bu fonksiyona veya diğer yapılara argüman olarak gidecekler.&lt;/p&gt;
+&lt;h2&gt;Comments&lt;/h2&gt;
+&lt;p&gt;Clojure'da yorum satırları &lt;code&gt;;&lt;/code&gt; ile başlar. Eğer blok olarak yorum yapmak istiyorsanız &lt;code&gt;(comment ...)&lt;/code&gt; şeklinde bir yapı kullanabilirsiniz.&lt;/p&gt;
+&lt;h2&gt;Forms&lt;/h2&gt;
+&lt;p&gt;Clojure'da Symbols, Literals, Lists, Vectors, Maps and Sets formları vardır.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Symbols&lt;/strong&gt;: Clojure içinde isimlendirme yapmak için kullanılır. Fonksiyon isimleri(map, str, println) hep bir semboldür. Dilde operatör olmadığı için +,-,/ hepsi birer fonksiyondur.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Literals&lt;/strong&gt;: Her dilde olduğu gibi Clojure'da da bildiğimiz sabitler var. Bunlar aşağıdaki gibi değerlendiriliyor.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt; &lt;span class="mi"&gt;42&lt;/span&gt;              &lt;span class="p"&gt;;&lt;/span&gt; &lt;span class="n"&gt;Long&lt;/span&gt;
+ &lt;span class="mf"&gt;6.022e23&lt;/span&gt;        &lt;span class="p"&gt;;&lt;/span&gt; &lt;span class="n"&gt;Double&lt;/span&gt;
+ &lt;span class="mh"&gt;0x7F&lt;/span&gt;            &lt;span class="p"&gt;;&lt;/span&gt; &lt;span class="n"&gt;Hexadecimal&lt;/span&gt; &lt;span class="n"&gt;number&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;127&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+ &lt;span class="mo"&gt;0177&lt;/span&gt;            &lt;span class="p"&gt;;&lt;/span&gt; &lt;span class="n"&gt;Octal&lt;/span&gt; &lt;span class="n"&gt;number&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;127&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+ &lt;span class="mi"&gt;42&lt;/span&gt;&lt;span class="n"&gt;N&lt;/span&gt;             &lt;span class="p"&gt;;&lt;/span&gt; &lt;span class="n"&gt;BigInt&lt;/span&gt;
+ &lt;span class="mf"&gt;1.0&lt;/span&gt;&lt;span class="n"&gt;M&lt;/span&gt;            &lt;span class="p"&gt;;&lt;/span&gt; &lt;span class="n"&gt;BigDecimal&lt;/span&gt;
+ &lt;span class="mi"&gt;22&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="mi"&gt;7&lt;/span&gt;            &lt;span class="p"&gt;;&lt;/span&gt; &lt;span class="n"&gt;Ratio&lt;/span&gt;
+ &lt;span class="s"&gt;&amp;quot;selam&amp;quot;&lt;/span&gt;         &lt;span class="p"&gt;;&lt;/span&gt; &lt;span class="n"&gt;String&lt;/span&gt;
+ &lt;span class="err"&gt;\&lt;/span&gt;&lt;span class="n"&gt;e&lt;/span&gt;              &lt;span class="p"&gt;;&lt;/span&gt; &lt;span class="n"&gt;Character&lt;/span&gt;
+ &lt;span class="nb"&gt;true&lt;/span&gt;  &lt;span class="nb"&gt;false&lt;/span&gt;     &lt;span class="p"&gt;;&lt;/span&gt; &lt;span class="n"&gt;Booleans&lt;/span&gt;
+ &lt;span class="n"&gt;nil&lt;/span&gt;             &lt;span class="p"&gt;;&lt;/span&gt; &lt;span class="n"&gt;null&lt;/span&gt;
+ &lt;span class="o"&gt;+&lt;/span&gt;  &lt;span class="n"&gt;Ahmet&lt;/span&gt; &lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="n"&gt;cem&lt;/span&gt;&lt;span class="o"&gt;*&lt;/span&gt;  &lt;span class="p"&gt;;&lt;/span&gt; &lt;span class="n"&gt;Symbols&lt;/span&gt;
+ &lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="n"&gt;elma&lt;/span&gt;  &lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="n"&gt;armut&lt;/span&gt;   &lt;span class="p"&gt;;&lt;/span&gt; &lt;span class="n"&gt;Keywords&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Burada dikkat etmemiz gereken bir detay var. Diğer dillerde yer alan &lt;code&gt;/&lt;/code&gt; operatörü ile iki sayının bölümünden kalan tam kısmı alıyorduk. Clojure'da ise bu bölümden sonra size tam sayıyı değil, rasyonel sayıyı veriyor(pay ve payda cinsinden). Eğer birbirine bölümünü bulmak istiyorsanız bir tanesini gerçek sayı yapmanız gerekiyor. &lt;code&gt;22/7.0&lt;/code&gt; gibi.&lt;/p&gt;
+&lt;p&gt;Dilde fark ettiğim ve bana çok büyük kolaylık sağlayan birşeyi söyleyim. Bazen büyük çaplı sayılar ile işlemler yapıyorum. Diğer dillerde yaparken hep zorlanmışımdır. Ancak &lt;strong&gt;Clojure&lt;/strong&gt; içerisinde sayının sonuna N eklemek ile bu sayıyı &lt;strong&gt;BigInt&lt;/strong&gt; olarak tanımlıyorsunuz. Ve bu sayı şimdilik işimi görecek kadar büyük sayıları tutabiliyor. Üstüne ihtiyaç duyduğumda başka olaylarıda incelerim tabi ama şimdilik gayet memnunum.&lt;/p&gt;
+&lt;h2&gt;Special Forms&lt;/h2&gt;
+&lt;p&gt;Özel formlar dilde en çok kullandığımız kısımdır diyebiliriz. Diğer birçok dilde de benzer olayları bulmanız mümkün. Clojure içerisinde o kadar çok bu şekilde form bulabilirsiniz ki hepsini ezberlemenize gerek yoktur. En aşağıda anlattığım gibi diğer formlara ulaşabilirsiniz.&lt;/p&gt;
+&lt;p&gt;Birden çok değeri &lt;code&gt;string&lt;/code&gt; olarak birleştirmek istiyorsanız &lt;code&gt;str&lt;/code&gt; formu bu iş için ideal.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt; &lt;span class="n"&gt;user&lt;/span&gt;&lt;span class="o"&gt;=&amp;gt;&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;str&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;Hello,&amp;quot;&lt;/span&gt; &lt;span class="s"&gt;&amp;quot; world!&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+ &lt;span class="s"&gt;&amp;quot;Hello, world!&amp;quot;&lt;/span&gt;
+ &lt;span class="n"&gt;user&lt;/span&gt;&lt;span class="o"&gt;=&amp;gt;&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;str&lt;/span&gt; &lt;span class="mi"&gt;7&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+ &lt;span class="s"&gt;&amp;quot;7&amp;quot;&lt;/span&gt;
+ &lt;span class="n"&gt;user&lt;/span&gt;&lt;span class="o"&gt;=&amp;gt;&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;str&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;Deger: &amp;quot;&lt;/span&gt; &lt;span class="mi"&gt;7&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+ &lt;span class="s"&gt;&amp;quot;Deger: 7&amp;quot;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Diğer tüm dillerde gördüğümüz &lt;code&gt;if&lt;/code&gt; koşulu için Clojure içerisinde de &lt;code&gt;if&lt;/code&gt; formu var. Kullanımı gayet benzer.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt; &lt;span class="n"&gt;user&lt;/span&gt;&lt;span class="o"&gt;=&amp;gt;&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;even&lt;/span&gt;&lt;span class="o"&gt;?&lt;/span&gt; &lt;span class="mi"&gt;23&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;23 cift&amp;quot;&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;23 tek&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+ &lt;span class="s"&gt;&amp;quot;23 tek&amp;quot;&lt;/span&gt;
+ &lt;span class="n"&gt;user&lt;/span&gt;&lt;span class="o"&gt;=&amp;gt;&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="nb"&gt;true&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;yes&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+ &lt;span class="s"&gt;&amp;quot;yes&amp;quot;&lt;/span&gt;
+ &lt;span class="n"&gt;user&lt;/span&gt;&lt;span class="o"&gt;=&amp;gt;&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="nb"&gt;false&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;yes&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+ &lt;span class="n"&gt;nil&lt;/span&gt;
+ &lt;span class="n"&gt;user&lt;/span&gt;&lt;span class="o"&gt;=&amp;gt;&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="nb"&gt;false&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;yes&amp;quot;&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;no&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+ &lt;span class="s"&gt;&amp;quot;no&amp;quot;&lt;/span&gt;
+ &lt;span class="n"&gt;user&lt;/span&gt;&lt;span class="o"&gt;=&amp;gt;&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="n"&gt;nil&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;yes&amp;quot;&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;no&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+ &lt;span class="s"&gt;&amp;quot;no&amp;quot;&lt;/span&gt;
+ &lt;span class="n"&gt;user&lt;/span&gt;&lt;span class="o"&gt;=&amp;gt;&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;&amp;quot;&lt;/span&gt; &lt;span class="nb"&gt;true&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+ &lt;span class="nb"&gt;true&lt;/span&gt;
+ &lt;span class="n"&gt;user&lt;/span&gt;&lt;span class="o"&gt;=&amp;gt;&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="mi"&gt;0&lt;/span&gt; &lt;span class="nb"&gt;true&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+ &lt;span class="nb"&gt;true&lt;/span&gt;
+ &lt;span class="n"&gt;user&lt;/span&gt;&lt;span class="o"&gt;=&amp;gt;&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="nb"&gt;true&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;yes&amp;quot;&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;no&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+ &lt;span class="s"&gt;&amp;quot;yes&amp;quot;&lt;/span&gt;
+ &lt;span class="n"&gt;user&lt;/span&gt;&lt;span class="o"&gt;=&amp;gt;&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="mi"&gt;1&lt;/span&gt; &lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;yes&amp;quot;&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;no&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+ &lt;span class="s"&gt;&amp;quot;yes&amp;quot;&lt;/span&gt;
+ &lt;span class="n"&gt;user&lt;/span&gt;&lt;span class="o"&gt;=&amp;gt;&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="mi"&gt;1&lt;/span&gt; &lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="o"&gt;+&lt;/span&gt; &lt;span class="mi"&gt;2&lt;/span&gt; &lt;span class="mi"&gt;4&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="o"&gt;+&lt;/span&gt; &lt;span class="mi"&gt;5&lt;/span&gt; &lt;span class="mi"&gt;5&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;
+ &lt;span class="mi"&gt;6&lt;/span&gt;
+ &lt;span class="n"&gt;user&lt;/span&gt;&lt;span class="o"&gt;=&amp;gt;&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="mi"&gt;1&lt;/span&gt; &lt;span class="mi"&gt;2&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="o"&gt;+&lt;/span&gt; &lt;span class="mi"&gt;2&lt;/span&gt; &lt;span class="mi"&gt;3&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="o"&gt;+&lt;/span&gt; &lt;span class="mi"&gt;5&lt;/span&gt; &lt;span class="mi"&gt;7&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;
+ &lt;span class="mi"&gt;12&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;C'de gördüğümüz &lt;code&gt;switch-case&lt;/code&gt; yapısının bir benzeri de clojure'da &lt;code&gt;cond&lt;/code&gt; formudur. Bana sorarsanız daha gelişmiş ve işlevsel diyebilirim.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt; &lt;span class="n"&gt;user&lt;/span&gt;&lt;span class="o"&gt;=&amp;gt;&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;def&lt;/span&gt; &lt;span class="n"&gt;x&lt;/span&gt; &lt;span class="mi"&gt;10&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+ &lt;span class="err"&gt;#&amp;#39;&lt;/span&gt;&lt;span class="n"&gt;user&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;x&lt;/span&gt;
+ &lt;span class="n"&gt;user&lt;/span&gt;&lt;span class="o"&gt;=&amp;gt;&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;cond&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="o"&gt;&amp;lt;&lt;/span&gt; &lt;span class="n"&gt;x&lt;/span&gt; &lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;println&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;Negatif&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+              &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;x&lt;/span&gt; &lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;println&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;Sifir&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+              &lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="k"&gt;else&lt;/span&gt;   &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;println&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;Pozitif&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Sadece bir durumu kontrol etmek istersek &lt;code&gt;when&lt;/code&gt; formunu kullanabiliriz.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt; &lt;span class="n"&gt;user&lt;/span&gt;&lt;span class="o"&gt;=&amp;gt;&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;when&lt;/span&gt; &lt;span class="n"&gt;nil&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;buranin bir onemi yok yan taraf nil&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+ &lt;span class="n"&gt;nil&lt;/span&gt;
+ &lt;span class="n"&gt;user&lt;/span&gt;&lt;span class="o"&gt;=&amp;gt;&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;when&lt;/span&gt; &lt;span class="nb"&gt;false&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;hala bi onemi yok durum false&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+ &lt;span class="n"&gt;nil&lt;/span&gt;
+ &lt;span class="n"&gt;user&lt;/span&gt;&lt;span class="o"&gt;=&amp;gt;&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;when&lt;/span&gt; &lt;span class="nb"&gt;true&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;simdi geliyom&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+ &lt;span class="s"&gt;&amp;quot;simdi geliyom&amp;quot;&lt;/span&gt;
+ &lt;span class="n"&gt;user&lt;/span&gt;&lt;span class="o"&gt;=&amp;gt;&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;when&lt;/span&gt; &lt;span class="nb"&gt;true&lt;/span&gt; &lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+ &lt;span class="mi"&gt;1&lt;/span&gt;
+ &lt;span class="n"&gt;user&lt;/span&gt;&lt;span class="o"&gt;=&amp;gt;&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;when&lt;/span&gt; &lt;span class="nb"&gt;true&lt;/span&gt; &lt;span class="mi"&gt;1&lt;/span&gt; &lt;span class="mi"&gt;2&lt;/span&gt; &lt;span class="mi"&gt;3&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+ &lt;span class="mi"&gt;3&lt;/span&gt;
+ &lt;span class="n"&gt;user&lt;/span&gt;&lt;span class="o"&gt;=&amp;gt;&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;when&lt;/span&gt; &lt;span class="nb"&gt;true&lt;/span&gt;
+   &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;println&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;Hello, world&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+   &lt;span class="s"&gt;&amp;quot;Yes&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+ &lt;span class="n"&gt;Hello&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;world&lt;/span&gt;
+ &lt;span class="s"&gt;&amp;quot;Yes&amp;quot;&lt;/span&gt;
+ &lt;span class="n"&gt;user&lt;/span&gt;&lt;span class="o"&gt;=&amp;gt;&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;when&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="mi"&gt;5&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;inc&lt;/span&gt; &lt;span class="mi"&gt;4&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;
+   &lt;span class="s"&gt;&amp;quot;Yes&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+ &lt;span class="s"&gt;&amp;quot;Yes&amp;quot;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Tam tersi lazımsa &lt;code&gt;when-not&lt;/code&gt; formu da var.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt; &lt;span class="n"&gt;user&lt;/span&gt;&lt;span class="o"&gt;=&amp;gt;&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;when&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;not&lt;/span&gt; &lt;span class="nb"&gt;true&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;ilk bu&amp;quot;&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;sonra bu&amp;quot;&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;en son bu&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+ &lt;span class="n"&gt;nil&lt;/span&gt;
+ &lt;span class="n"&gt;user&lt;/span&gt;&lt;span class="o"&gt;=&amp;gt;&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;when&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;not&lt;/span&gt; &lt;span class="nb"&gt;false&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;ilk bu&amp;quot;&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;sonra bu&amp;quot;&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;en son bu&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+ &lt;span class="s"&gt;&amp;quot;en son bu&amp;quot;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Yapılacak işlemleri belirtmek için &lt;code&gt;do&lt;/code&gt; formu kullanılabilir.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt; &lt;span class="n"&gt;user&lt;/span&gt;&lt;span class="o"&gt;=&amp;gt;&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="k"&gt;do&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;println&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;Selamlar&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;println&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;Tekrardan Selam&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt; &lt;span class="mi"&gt;22&lt;/span&gt; &lt;span class="mi"&gt;7&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;
+ &lt;span class="n"&gt;Selamlar&lt;/span&gt;
+ &lt;span class="n"&gt;Tekrardan&lt;/span&gt; &lt;span class="n"&gt;Selam&lt;/span&gt;
+ &lt;span class="mi"&gt;22&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="mi"&gt;7&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Geçici olarak değişken tanımlamaları için &lt;code&gt;let&lt;/code&gt; kullanılıyor. Aynı hadi x şimdi 5, y şimdi 6 olsun der gibi.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt; &lt;span class="n"&gt;user&lt;/span&gt;&lt;span class="o"&gt;=&amp;gt;&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;let&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;x&lt;/span&gt; &lt;span class="mi"&gt;2&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="o"&gt;+&lt;/span&gt; &lt;span class="n"&gt;x&lt;/span&gt; &lt;span class="mi"&gt;8&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;
+ &lt;span class="mi"&gt;10&lt;/span&gt;
+ &lt;span class="n"&gt;user&lt;/span&gt;&lt;span class="o"&gt;=&amp;gt;&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;let&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;x&lt;/span&gt; &lt;span class="mi"&gt;2&lt;/span&gt; &lt;span class="n"&gt;y&lt;/span&gt; &lt;span class="mi"&gt;8&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="o"&gt;+&lt;/span&gt; &lt;span class="n"&gt;x&lt;/span&gt; &lt;span class="n"&gt;y&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;
+ &lt;span class="mi"&gt;10&lt;/span&gt;
+ &lt;span class="n"&gt;user&lt;/span&gt;&lt;span class="o"&gt;=&amp;gt;&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;let&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;x&lt;/span&gt; &lt;span class="mi"&gt;2&lt;/span&gt; &lt;span class="n"&gt;y&lt;/span&gt; &lt;span class="mi"&gt;8&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="o"&gt;+&lt;/span&gt; &lt;span class="n"&gt;x&lt;/span&gt; &lt;span class="n"&gt;y&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="mi"&gt;10&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;
+ &lt;span class="nb"&gt;true&lt;/span&gt;
+ &lt;span class="n"&gt;user&lt;/span&gt;&lt;span class="o"&gt;=&amp;gt;&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;let&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;x&lt;/span&gt; &lt;span class="mi"&gt;3&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="o"&gt;+&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="o"&gt;*&lt;/span&gt; &lt;span class="n"&gt;x&lt;/span&gt; &lt;span class="n"&gt;x&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;
+ &lt;span class="mi"&gt;10&lt;/span&gt;
+ &lt;span class="n"&gt;user&lt;/span&gt;&lt;span class="o"&gt;=&amp;gt;&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;let&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;renk&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;Yesil&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;str&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;Renk: &amp;quot;&lt;/span&gt; &lt;span class="n"&gt;color&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;
+ &lt;span class="s"&gt;&amp;quot;Renk: Yesil&amp;quot;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Döngü kurmak için &lt;code&gt;loop&lt;/code&gt;, &lt;code&gt;recur&lt;/code&gt;, &lt;code&gt;dorun&lt;/code&gt;, &lt;code&gt;doseq&lt;/code&gt;, &lt;code&gt;for&lt;/code&gt; gibi formlar kullanılıyor. Bunları şimdilik öylesine yazıyorum. Tamamen başlı başına bir olay olduğu için ilerde detaylıca anlatmak istiyorum.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt; &lt;span class="n"&gt;user&lt;/span&gt;&lt;span class="o"&gt;=&amp;gt;&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;loop&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;i&lt;/span&gt; &lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;
+   &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;when&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="o"&gt;&amp;lt;&lt;/span&gt; &lt;span class="n"&gt;i&lt;/span&gt; &lt;span class="mi"&gt;3&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+     &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;println&lt;/span&gt; &lt;span class="n"&gt;i&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+     &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;recur&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;inc&lt;/span&gt; &lt;span class="n"&gt;i&lt;/span&gt;&lt;span class="p"&gt;))))&lt;/span&gt;
+ &lt;span class="mi"&gt;0&lt;/span&gt;
+ &lt;span class="mi"&gt;1&lt;/span&gt;
+ &lt;span class="mi"&gt;2&lt;/span&gt;
+ &lt;span class="n"&gt;nil&lt;/span&gt;
+ &lt;span class="n"&gt;user&lt;/span&gt;&lt;span class="o"&gt;=&amp;gt;&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;dorun&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;i&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;range&lt;/span&gt; &lt;span class="mi"&gt;0&lt;/span&gt; &lt;span class="mi"&gt;3&lt;/span&gt;&lt;span class="p"&gt;)]&lt;/span&gt;
+          &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;println&lt;/span&gt; &lt;span class="n"&gt;i&lt;/span&gt;&lt;span class="p"&gt;)))&lt;/span&gt;
+ &lt;span class="mi"&gt;0&lt;/span&gt;
+ &lt;span class="mi"&gt;1&lt;/span&gt;
+ &lt;span class="mi"&gt;2&lt;/span&gt;
+ &lt;span class="n"&gt;nil&lt;/span&gt;
+ &lt;span class="n"&gt;user&lt;/span&gt;&lt;span class="o"&gt;=&amp;gt;&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;doseq&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;i&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;range&lt;/span&gt; &lt;span class="mi"&gt;0&lt;/span&gt; &lt;span class="mi"&gt;3&lt;/span&gt;&lt;span class="p"&gt;)]&lt;/span&gt;
+   &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;println&lt;/span&gt; &lt;span class="n"&gt;i&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;
+ &lt;span class="mi"&gt;0&lt;/span&gt;
+ &lt;span class="mi"&gt;1&lt;/span&gt;
+ &lt;span class="mi"&gt;2&lt;/span&gt;
+ &lt;span class="n"&gt;nil&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h2&gt;Define&lt;/h2&gt;
+&lt;p&gt;Sembollere değer atamak için &lt;code&gt;def&lt;/code&gt; formu kullanılır. Fonksiyon döndüren fonksiyon olan &lt;code&gt;fn&lt;/code&gt; ile de dönen fonksiyona bir isim verebilirsiniz.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt; &lt;span class="n"&gt;user&lt;/span&gt;&lt;span class="o"&gt;=&amp;gt;&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;def&lt;/span&gt; &lt;span class="n"&gt;x&lt;/span&gt; &lt;span class="mi"&gt;7&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+ &lt;span class="err"&gt;#&amp;#39;&lt;/span&gt;&lt;span class="n"&gt;user&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;x&lt;/span&gt;
+ &lt;span class="n"&gt;user&lt;/span&gt;&lt;span class="o"&gt;=&amp;gt;&lt;/span&gt; &lt;span class="n"&gt;x&lt;/span&gt;
+ &lt;span class="mi"&gt;7&lt;/span&gt;
+ &lt;span class="n"&gt;user&lt;/span&gt;&lt;span class="o"&gt;=&amp;gt;&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="o"&gt;+&lt;/span&gt; &lt;span class="mi"&gt;5&lt;/span&gt; &lt;span class="mi"&gt;7&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+ &lt;span class="mi"&gt;12&lt;/span&gt;
+ &lt;span class="n"&gt;user&lt;/span&gt;&lt;span class="o"&gt;=&amp;gt;&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;def&lt;/span&gt; &lt;span class="n"&gt;listem&lt;/span&gt; &lt;span class="err"&gt;&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt; &lt;span class="mi"&gt;2&lt;/span&gt; &lt;span class="mi"&gt;3&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;
+ &lt;span class="err"&gt;#&amp;#39;&lt;/span&gt;&lt;span class="n"&gt;user&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;listem&lt;/span&gt;
+ &lt;span class="n"&gt;user&lt;/span&gt;&lt;span class="o"&gt;=&amp;gt;&lt;/span&gt; &lt;span class="n"&gt;listem&lt;/span&gt;
+ &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt; &lt;span class="mi"&gt;2&lt;/span&gt; &lt;span class="mi"&gt;3&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+ &lt;span class="n"&gt;user&lt;/span&gt;&lt;span class="o"&gt;=&amp;gt;&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;last&lt;/span&gt; &lt;span class="n"&gt;listem&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+ &lt;span class="mi"&gt;3&lt;/span&gt;
+ &lt;span class="n"&gt;user&lt;/span&gt;&lt;span class="o"&gt;=&amp;gt;&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;first&lt;/span&gt; &lt;span class="n"&gt;listem&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+ &lt;span class="mi"&gt;1&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h2&gt;Collections&lt;/h2&gt;
+&lt;p&gt;Aslında bunları bir önceki kısımda da yazabilirdim ama Clojure içerisinde de bu şekilde tanımlanıyorlar. Ve dilde gördüğüm en güzel şeylerden biriside bu yapıların  birbiri arasında kolaylıkla dönüştürülebilmesi. Burada dikkat etmemiz gereken bir nokta var. Bu yapılar üzerinde yaptığımız şeyler kalıcı olmuyor. Bunun bir zorluk  değil büyük bir kolaylık olduğunu zamanla anlıyorsunuz zate n.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;List&lt;/strong&gt;: Listeler diğer Lisp dillerinde olduğu gibi Clojure'da da önemli bir yere sahip. İstediğimiz herşeyi liste içerisine koyabiliyoruz. Listelerin ilk elemanla rını değerlendirmemesi için başlarına &lt;code&gt;'&lt;/code&gt; koyabiliriz veya &lt;code&gt;(quote )&lt;/code&gt; kalıbı içerisine alabiliriz.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;4&lt;/span&gt; &lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="n"&gt;elma&lt;/span&gt; &lt;span class="mf"&gt;3.0&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;          &lt;span class="p"&gt;;&lt;/span&gt; &lt;span class="n"&gt;Liste&lt;/span&gt;
+ &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;class&lt;/span&gt; &lt;span class="err"&gt;&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;4&lt;/span&gt; &lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="n"&gt;elma&lt;/span&gt; &lt;span class="mf"&gt;3.0&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt; &lt;span class="p"&gt;;&lt;/span&gt; &lt;span class="n"&gt;clojure&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;lang&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;PersistentList&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;&lt;strong&gt;Vector&lt;/strong&gt;: Vektörler diğer dillerdeki dizilere benziyor. Liste yapısınada çok benziyor. Ancak Liste içerisindeki elemanlara index numaraları ile ulaşabiliriz.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt; &lt;span class="mi"&gt;2&lt;/span&gt; &lt;span class="mi"&gt;3&lt;/span&gt; &lt;span class="mi"&gt;4&lt;/span&gt; &lt;span class="mi"&gt;5&lt;/span&gt; &lt;span class="mi"&gt;6&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;                     &lt;span class="p"&gt;;&lt;/span&gt; &lt;span class="n"&gt;Vektor&lt;/span&gt;
+ &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;class&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt; &lt;span class="mi"&gt;2&lt;/span&gt; &lt;span class="mi"&gt;3&lt;/span&gt; &lt;span class="mi"&gt;4&lt;/span&gt; &lt;span class="mi"&gt;5&lt;/span&gt; &lt;span class="mi"&gt;6&lt;/span&gt;&lt;span class="p"&gt;])&lt;/span&gt;             &lt;span class="p"&gt;;&lt;/span&gt; &lt;span class="n"&gt;clojure&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;lang&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;PersistentVector&lt;/span&gt;
+ &lt;span class="p"&gt;([&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;c&amp;quot;&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;l&amp;quot;&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;o&amp;quot;&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;j&amp;quot;&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;u&amp;quot;&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;r&amp;quot;&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;e&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt; &lt;span class="mi"&gt;3&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="p"&gt;;&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;j&amp;quot;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;&lt;strong&gt;Set&lt;/strong&gt;: Python'dan alışkın olduğum bu yapıda gerçekten çok faydalı. Kümeler sadece benzersiz elemanları bünyesinde barındırır. Tekrarlanan elemanlar yoksayılır.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt; &lt;span class="err"&gt;#&lt;/span&gt;&lt;span class="p"&gt;{&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="n"&gt;a&lt;/span&gt; &lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="n"&gt;b&lt;/span&gt; &lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="n"&gt;c&lt;/span&gt;&lt;span class="p"&gt;}&lt;/span&gt;                              &lt;span class="p"&gt;;&lt;/span&gt; &lt;span class="err"&gt;#&lt;/span&gt;&lt;span class="p"&gt;{&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="n"&gt;a&lt;/span&gt; &lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="n"&gt;b&lt;/span&gt; &lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="n"&gt;c&lt;/span&gt;&lt;span class="p"&gt;}&lt;/span&gt;
+ &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;class&lt;/span&gt; &lt;span class="err"&gt;#&lt;/span&gt;&lt;span class="p"&gt;{&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="n"&gt;a&lt;/span&gt; &lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="n"&gt;b&lt;/span&gt; &lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="n"&gt;c&lt;/span&gt; &lt;span class="p"&gt;})&lt;/span&gt;                     &lt;span class="p"&gt;;&lt;/span&gt; &lt;span class="n"&gt;clojure&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;lang&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;PersistentHashSet&lt;/span&gt;
+
+ &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;hash&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;set&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;l&amp;quot;&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;i&amp;quot;&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;s&amp;quot;&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;p&amp;quot;&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;s&amp;quot;&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;p&amp;quot;&lt;/span&gt; &lt;span class="n"&gt;s&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;     &lt;span class="p"&gt;;&lt;/span&gt; &lt;span class="err"&gt;#&lt;/span&gt;&lt;span class="p"&gt;{&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;l&amp;quot;&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;i&amp;quot;&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;s&amp;quot;&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;p&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;}&lt;/span&gt;
+ &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;sorted&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;set&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;a&amp;quot;&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;b&amp;quot;&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;f&amp;quot;&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;c&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;             &lt;span class="p"&gt;;&lt;/span&gt; &lt;span class="err"&gt;#&lt;/span&gt;&lt;span class="p"&gt;{&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;a&amp;quot;&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;b&amp;quot;&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;c&amp;quot;&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;f&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;}&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;&lt;strong&gt;Map&lt;/strong&gt;: Nasıl çevrildiğini bilmediğim ama kullanımına aşina olduğum bir yapı. Yukarıda gösterdiğimi &lt;code&gt;keywords&lt;/code&gt; yapısı genellikle burada çok fazla kullanılıyor.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;class&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt; &lt;span class="p"&gt;})&lt;/span&gt;                                       &lt;span class="p"&gt;;&lt;/span&gt; &lt;span class="n"&gt;clojure&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;lang&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;PersistentArrayMap&lt;/span&gt;
+
+ &lt;span class="p"&gt;{&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="n"&gt;istanbul&lt;/span&gt; &lt;span class="mi"&gt;34&lt;/span&gt; &lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="n"&gt;antalya&lt;/span&gt; &lt;span class="mi"&gt;7&lt;/span&gt; &lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="n"&gt;trabzon&lt;/span&gt; &lt;span class="mi"&gt;61&lt;/span&gt;&lt;span class="p"&gt;}&lt;/span&gt;             &lt;span class="p"&gt;;&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="n"&gt;istanbul&lt;/span&gt; &lt;span class="mi"&gt;34&lt;/span&gt; &lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="n"&gt;antalya&lt;/span&gt; &lt;span class="mi"&gt;7&lt;/span&gt; &lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="n"&gt;trabzon&lt;/span&gt; &lt;span class="mi"&gt;61&lt;/span&gt;&lt;span class="p"&gt;}&lt;/span&gt; 
+ &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="n"&gt;istanbul&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="n"&gt;istanbul&lt;/span&gt; &lt;span class="mi"&gt;34&lt;/span&gt; &lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="n"&gt;antalya&lt;/span&gt; &lt;span class="mi"&gt;7&lt;/span&gt; &lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="n"&gt;trabzon&lt;/span&gt; &lt;span class="mi"&gt;61&lt;/span&gt;&lt;span class="p"&gt;})&lt;/span&gt; &lt;span class="p"&gt;;&lt;/span&gt; &lt;span class="mi"&gt;34&lt;/span&gt;
+
+ &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;keys&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="n"&gt;istanbul&lt;/span&gt; &lt;span class="mi"&gt;34&lt;/span&gt; &lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="n"&gt;antalya&lt;/span&gt; &lt;span class="mi"&gt;7&lt;/span&gt; &lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="n"&gt;trabzon&lt;/span&gt; &lt;span class="mi"&gt;61&lt;/span&gt;&lt;span class="p"&gt;})&lt;/span&gt;      &lt;span class="p"&gt;;&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="n"&gt;istanbul&lt;/span&gt; &lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="n"&gt;trabzon&lt;/span&gt; &lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="n"&gt;antalya&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+ &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;vals&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="n"&gt;istanbul&lt;/span&gt; &lt;span class="mi"&gt;34&lt;/span&gt; &lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="n"&gt;antalya&lt;/span&gt; &lt;span class="mi"&gt;7&lt;/span&gt; &lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="n"&gt;trabzon&lt;/span&gt; &lt;span class="mi"&gt;61&lt;/span&gt;&lt;span class="p"&gt;})&lt;/span&gt;      &lt;span class="p"&gt;;&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;34&lt;/span&gt; &lt;span class="mi"&gt;61&lt;/span&gt; &lt;span class="mi"&gt;7&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h2&gt;Reader Macros&lt;/h2&gt;
+&lt;p&gt;Lispi Lisp yapan en önemli konulardan biriside kesinlikle makroları. Bazen yapılmış öyle şeyler görüyorum ki yani adam sanki hiç normal kod yazmamış sadece işini makroyla halletmiş diyebilirsiniz. Aşağıda en çok kullanılan makroların birkaçı var. Ben şimdilik bunlarla yetiniyorum. Ama çok yakın bir sürede ciddi ciddi makrolara giriş yapacağım. Makrolar öyle birkaç satırla anlatılcak basitlikte değil zaten. Alt tarafta ilk gördüğünüz kısım makroların yazım şekli ve yan tarafta da dönüştürülmüş hali var.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt; &lt;span class="err"&gt;&amp;#39;&lt;/span&gt;&lt;span class="n"&gt;makro&lt;/span&gt;     &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;quote&lt;/span&gt; &lt;span class="n"&gt;makro&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+ &lt;span class="o"&gt;~&lt;/span&gt;&lt;span class="n"&gt;makro&lt;/span&gt;      &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;unquote&lt;/span&gt; &lt;span class="n"&gt;makro&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+
+ &lt;span class="err"&gt;#&amp;#39;&lt;/span&gt;&lt;span class="n"&gt;makro&lt;/span&gt;        &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;var&lt;/span&gt; &lt;span class="n"&gt;makro&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+ &lt;span class="err"&gt;@&lt;/span&gt;&lt;span class="n"&gt;makro&lt;/span&gt;     &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;deref&lt;/span&gt; &lt;span class="n"&gt;makro&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+
+ &lt;span class="n"&gt;makro&lt;/span&gt;&lt;span class="err"&gt;#&lt;/span&gt;      &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;gensym&lt;/span&gt; &lt;span class="n"&gt;makro&lt;/span&gt;&lt;span class="o"&gt;?&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+ &lt;span class="err"&gt;#&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="o"&gt;+&lt;/span&gt; &lt;span class="o"&gt;%&lt;/span&gt; &lt;span class="mi"&gt;7&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;   &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;fn&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;x&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="o"&gt;+&lt;/span&gt; &lt;span class="n"&gt;x&lt;/span&gt; &lt;span class="mi"&gt;7&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h2&gt;Environment&lt;/h2&gt;
+&lt;p&gt;&lt;code&gt;doc&lt;/code&gt; fonksiyonu ile, hatırlayamadığınız fonksiyonun çalışmasına bakabilirsiniz.(Kod içerisinde yazılmış yorum satıları)&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt; &lt;span class="n"&gt;user&lt;/span&gt;&lt;span class="o"&gt;=&amp;gt;&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;doc&lt;/span&gt; &lt;span class="k"&gt;if&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+ &lt;span class="o"&gt;-------------------------&lt;/span&gt;
+ &lt;span class="k"&gt;if&lt;/span&gt;
+   &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="n"&gt;test&lt;/span&gt; &lt;span class="n"&gt;then&lt;/span&gt; &lt;span class="k"&gt;else&lt;/span&gt;&lt;span class="o"&gt;?&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+ &lt;span class="n"&gt;Special&lt;/span&gt; &lt;span class="n"&gt;Form&lt;/span&gt;
+   &lt;span class="n"&gt;Evaluates&lt;/span&gt; &lt;span class="n"&gt;test&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt; &lt;span class="n"&gt;If&lt;/span&gt; &lt;span class="n"&gt;not&lt;/span&gt; &lt;span class="n"&gt;the&lt;/span&gt; &lt;span class="n"&gt;singular&lt;/span&gt; &lt;span class="n"&gt;values&lt;/span&gt; &lt;span class="n"&gt;nil&lt;/span&gt; &lt;span class="n"&gt;or&lt;/span&gt; &lt;span class="nb"&gt;false&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+   &lt;span class="n"&gt;evaluates&lt;/span&gt; &lt;span class="n"&gt;and&lt;/span&gt; &lt;span class="n"&gt;yields&lt;/span&gt; &lt;span class="n"&gt;then&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;otherwise&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;evaluates&lt;/span&gt; &lt;span class="n"&gt;and&lt;/span&gt; &lt;span class="n"&gt;yields&lt;/span&gt; &lt;span class="k"&gt;else&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt; &lt;span class="n"&gt;If&lt;/span&gt;
+   &lt;span class="k"&gt;else&lt;/span&gt; &lt;span class="n"&gt;is&lt;/span&gt; &lt;span class="n"&gt;not&lt;/span&gt; &lt;span class="n"&gt;supplied&lt;/span&gt; &lt;span class="n"&gt;it&lt;/span&gt; &lt;span class="n"&gt;defaults&lt;/span&gt; &lt;span class="n"&gt;to&lt;/span&gt; &lt;span class="n"&gt;nil&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;
+
+   &lt;span class="n"&gt;Please&lt;/span&gt; &lt;span class="n"&gt;see&lt;/span&gt; &lt;span class="n"&gt;http&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="c1"&gt;//clojure.org/special_forms#if&lt;/span&gt;
+ &lt;span class="n"&gt;nil&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Eğer aklınıza fonksiyonun ismi gelmediyse &lt;code&gt;find-doc&lt;/code&gt; ile konu ile ilgili hepsini bulabilirsiniz.(İçerisinde geçen herşeyi getirir)&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt; &lt;span class="n"&gt;user&lt;/span&gt;&lt;span class="o"&gt;=&amp;gt;&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;find&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;doc&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;time&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+ &lt;span class="o"&gt;-------------------------&lt;/span&gt;
+ &lt;span class="n"&gt;clojure&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;pprint&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;print&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;length&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;loop&lt;/span&gt;
+ &lt;span class="p"&gt;([&lt;/span&gt;&lt;span class="n"&gt;bindings&lt;/span&gt; &lt;span class="o"&gt;&amp;amp;&lt;/span&gt; &lt;span class="n"&gt;body&lt;/span&gt;&lt;span class="p"&gt;])&lt;/span&gt;
+ &lt;span class="n"&gt;Macro&lt;/span&gt;
+ &lt;span class="p"&gt;...&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Benzer birşeyler arıyorsanız &lt;code&gt;apropos&lt;/code&gt; imdadınıza yetişir.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt; &lt;span class="n"&gt;user&lt;/span&gt;&lt;span class="o"&gt;=&amp;gt;&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;apropos&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;cat&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+ &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;lazy&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;cat&lt;/span&gt; &lt;span class="n"&gt;replicate&lt;/span&gt; &lt;span class="n"&gt;concat&lt;/span&gt; &lt;span class="n"&gt;mapcat&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Kaynak kodunu merak ettiklerinize &lt;code&gt;source&lt;/code&gt; ile bakabilirsiniz.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt; &lt;span class="n"&gt;user&lt;/span&gt;&lt;span class="o"&gt;=&amp;gt;&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;source&lt;/span&gt; &lt;span class="n"&gt;iterate&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+ &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;defn&lt;/span&gt; &lt;span class="n"&gt;iterate&lt;/span&gt;
+   &lt;span class="s"&gt;&amp;quot;Returns a lazy sequence of x, (f x), (f (f x)) etc. f must be free of side-effects&amp;quot;&lt;/span&gt;
+   &lt;span class="p"&gt;{&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="n"&gt;added&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;1.0&amp;quot;&lt;/span&gt;
+    &lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="k"&gt;static&lt;/span&gt; &lt;span class="nb"&gt;true&lt;/span&gt;&lt;span class="p"&gt;}&lt;/span&gt;
+   &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;f&lt;/span&gt; &lt;span class="n"&gt;x&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;cons&lt;/span&gt; &lt;span class="n"&gt;x&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;lazy&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;seq&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;iterate&lt;/span&gt; &lt;span class="n"&gt;f&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;f&lt;/span&gt; &lt;span class="n"&gt;x&lt;/span&gt;&lt;span class="p"&gt;)))))&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Modüller içerisindeki tüm fonksiyonlara bakmak için &lt;code&gt;dir&lt;/code&gt; kullanabilirsiniz. Python'daki gibi.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt; &lt;span class="n"&gt;user&lt;/span&gt;&lt;span class="o"&gt;=&amp;gt;&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;dir&lt;/span&gt; &lt;span class="n"&gt;clojure&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;repl&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+ &lt;span class="n"&gt;apropos&lt;/span&gt;
+ &lt;span class="n"&gt;demunge&lt;/span&gt;
+ &lt;span class="n"&gt;dir&lt;/span&gt;
+ &lt;span class="n"&gt;dir&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;fn&lt;/span&gt;
+ &lt;span class="n"&gt;doc&lt;/span&gt;
+ &lt;span class="n"&gt;find&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;doc&lt;/span&gt;
+ &lt;span class="n"&gt;pst&lt;/span&gt;
+ &lt;span class="n"&gt;root&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;cause&lt;/span&gt;
+ &lt;span class="n"&gt;set&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="k"&gt;break&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;handler&lt;/span&gt;&lt;span class="o"&gt;!&lt;/span&gt;
+ &lt;span class="n"&gt;source&lt;/span&gt;
+ &lt;span class="n"&gt;source&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;fn&lt;/span&gt;
+ &lt;span class="n"&gt;stack&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;element&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;str&lt;/span&gt;
+ &lt;span class="kr"&gt;thread&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;stopper&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h2&gt;Son&lt;/h2&gt;
+&lt;p&gt;İlk gün burada anlattıklarımın yanında fonksiyonlarıda öğrenmiştim. Bir sonraki günde aklımda tam olarak oturmuştum. Daha sonrada fonksiyonel programlama konusunda kendimi geliştirmeye başlamıştım. Eğer bir aksilik olmazsa bundan sonraki yazımda da fonksiyonlara ve fonksiyonel programlama konusundan bahsedeceğim.&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">halit</dc:creator><pubDate>Thu, 18 Jul 2013 00:00:00 +0300</pubDate><guid>tag:www.halitalptekin.com,2013-07-18:clojure-notlari-2.html</guid><category>clojure</category><category>clojure programlama</category><category>clojure programming</category><category>sicp</category></item><item><title>Clojure geliştirme ortamı</title><link>http://www.halitalptekin.com/clojure-gelistirme-ortami.html</link><description>&lt;p&gt;Herhangi bir Lisp dili üzerinde geliştirme yapacaksanız muhtemelen en bu konudaki en büyük adayınız Emacs olur. Çünkü Emacs gerçektende Lisp dilleri için tam bir geliştirme ortamı sunuyor. Hatta kendisi için geliştirilmiş bir Lisp lehçesi bile var. Ayar dosyalarından önemli ayarlara kadar hepsi bu Emacs Lisp adı verilen dil ile yapılıyor. Açıkcası Emacs ile sadece Lisp yazmıyor resmen onu yaşıyorsunuz diyebilirim.&lt;/p&gt;
+&lt;h2&gt;EMACS&lt;/h2&gt;
+&lt;p&gt;Emacs kullanarak Clojure geliştirmek istiyorsanız işinizi çok kolaylaştırcak paketlerden birini seçerek başlayabilirsiniz. Bunlar hem Emacs'e başlangıç için hem de Clojure için gerekli herşeyi size sağlıyorlar. Benim de Emacs'e girişimi yaptığım ve Clojure için özel yapılandırılmış &lt;a href="https://github.com/overtone/emacs-live" title="Emacs Live"&gt;emacslive&lt;/a&gt; gördüklerim arasında en güzel başlangıç seti diyebilirim. Hem kurulum kısmıda o kadar basit ki size hiçbirşey bırakmadan herşeyi hallediyor. Siz sadece Emacs girip kodunuzu yazmaya başlıyorsunuz. Kurmak için yapmanız gereken tek şey aşağıdaki komutu çalıştırmak ve kurulumun bitmesini beklemek.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;bash&lt;/span&gt; &lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;curl&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;fksSL&lt;/span&gt; &lt;span class="n"&gt;https&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="c1"&gt;//raw.github.com/overtone/emacs-live/master/installer/install-emacs-live.sh)&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Kurulum başarıyla bittikten sonra Emacsinizi açtığınızda aşağıdaki gibi bir şey görmeniz gerekli.&lt;/p&gt;
+&lt;p&gt;&lt;img alt="Emacs Live" src="https://github.com/downloads/overtone/live-coding-emacs/live-coding-config-in-use.png" /&gt;&lt;/p&gt;
+&lt;p&gt;Kurulum ve kurduktan sonraki kurulumlar ile ilgili tüm ayrıntılı bilgileri kendi sitesinden bulabilirsiniz. Zaten çok birşeyi yok. Lein ile oluşturduğunuz projeye &lt;code&gt;nrepl&lt;/code&gt; kullanarak bağlanıyorsunuz. Github sayfasındaki videoyu izlerseniz çok rahat bir şekilde çözersiniz.&lt;/p&gt;
+&lt;p&gt;Tabi bu biraz işin en kolay tarafı oldu. Eğer birazcık daha fazla uğraşmak(üsttekine göre) istiyorsanız daha güzel bir çözüm var. Bu da aynı emacs-live kadar kolay kuruluyor ve gerekli herşeyi size sağlıyor.&lt;/p&gt;
+&lt;p&gt;Öncelikle bilgisayarımıza &lt;code&gt;emacs24&lt;/code&gt; paketini kurmamız gerekiyor. Debian/Ubuntu kullanıcıları aşağıdaki şekilde kurabilir.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;sudo&lt;/span&gt; &lt;span class="n"&gt;apt&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;get&lt;/span&gt; &lt;span class="n"&gt;install&lt;/span&gt; &lt;span class="n"&gt;emacs24&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Yükleme bittikten sonra şimdi sıra Emacs'e gerekli paketleri kurmaya geldi. Öncelikle &lt;code&gt;~/.emacs.d/init.el&lt;/code&gt; dosyasını açıyoruz ve içine aşağıdaki satırları ekliyoruz.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;require&lt;/span&gt; &lt;span class="err"&gt;&amp;#39;&lt;/span&gt;&lt;span class="n"&gt;package&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;add&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;to&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;list&lt;/span&gt; &lt;span class="err"&gt;&amp;#39;&lt;/span&gt;&lt;span class="n"&gt;package&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;archives&lt;/span&gt;
+             &lt;span class="err"&gt;&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;marmalade&amp;quot;&lt;/span&gt; &lt;span class="p"&gt;.&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;http://marmalade-repo.org/packages/&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;
+&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;package&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;initialize&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Eklemeyi yaptıktan hemen sonra Emacs'i açıyoruz ve M-x(genellikle M alt tuşudur) yapıyoruz. Önümüze açılan kısma &lt;code&gt;package-refresh-contents&lt;/code&gt; yazıp entere bastığımızda Emacs paketlerimizi otomatik olarak güncelleyecektir. Eğer kurmak istediğiniz bir paket varsa gene M-x kombinasyonundan sonra açılan yere &lt;code&gt;package-install&lt;/code&gt; yazıp istediğimiz pakedi kurabiliriz.&lt;/p&gt;
+&lt;p&gt;Eğer hangi pakedi kuracağınızı otomatikleştirmek isterseniz &lt;code&gt;~/.emacs.d/init.el&lt;/code&gt; dosyanıza aşağıdaki satıları ekleyebilirsiniz.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;defvar&lt;/span&gt; &lt;span class="n"&gt;my&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;packages&lt;/span&gt; &lt;span class="err"&gt;&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;starter&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;kit&lt;/span&gt;
+                  &lt;span class="n"&gt;starter&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;kit&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;lisp&lt;/span&gt;
+                  &lt;span class="n"&gt;starter&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;kit&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;bindings&lt;/span&gt;
+                  &lt;span class="n"&gt;starter&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;kit&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;eshell&lt;/span&gt;
+                  &lt;span class="n"&gt;clojure&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;mode&lt;/span&gt;
+                  &lt;span class="n"&gt;clojure&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;test&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;mode&lt;/span&gt;
+                  &lt;span class="n"&gt;nrepl&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;
+
+&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;dolist&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;p&lt;/span&gt; &lt;span class="n"&gt;my&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;packages&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;when&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;not&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;package&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;installed&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;p&lt;/span&gt; &lt;span class="n"&gt;p&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;
+&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;package&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;install&lt;/span&gt; &lt;span class="n"&gt;p&lt;/span&gt;&lt;span class="p"&gt;)))&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Emacs açılışta paketleri otomatik olarak kuracaktır. Eğer kurmazsa M-x kombinasyonundan sonra &lt;code&gt;eval-buffer&lt;/code&gt; yazarsanız kuruluma başlaması lazım.&lt;/p&gt;
+&lt;p&gt;Emacs'i ilk defa kullanacağınızı düşünerek aşağıdaki komutları bilmenizde fayda var. En azından en fazla kullandıklarınızı iyice öğrenin derim. Eğer Emacs'i biraz daha iyi öğrenmek isterseniz &lt;a href="http://acehreli.org/TUTORIAL.html" title="Emacs Tutorial"&gt;buradaki&lt;/a&gt; Türkçe tutoriali ekleyip bitirebilirsiniz. Başlangıç için gayet iyi. Aşağıdaki kısayollarda kullanılan C(control) M(büyük ihtimal Alt) tuşununun kısaltmasıdır. Bazı yerlerde göreceğiniz RET(return)'de bildiğimiz enter oluyor.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;C&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;x&lt;/span&gt; &lt;span class="n"&gt;C&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;f&lt;/span&gt;     &lt;span class="n"&gt;Dosya&lt;/span&gt; &lt;span class="n"&gt;bul&lt;/span&gt;
+&lt;span class="n"&gt;C&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;x&lt;/span&gt; &lt;span class="n"&gt;C&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;s&lt;/span&gt;     &lt;span class="n"&gt;Buffer&lt;/span&gt;&lt;span class="err"&gt;&amp;#39;&lt;/span&gt;&lt;span class="n"&gt;i&lt;/span&gt; &lt;span class="n"&gt;kaydet&lt;/span&gt;
+&lt;span class="n"&gt;C&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;x&lt;/span&gt; &lt;span class="n"&gt;s&lt;/span&gt;       &lt;span class="n"&gt;Dosyayi&lt;/span&gt; &lt;span class="n"&gt;kaydet&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;farkli&lt;/span&gt; &lt;span class="n"&gt;kaydet&lt;/span&gt; &lt;span class="n"&gt;gibi&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="n"&gt;C&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;x&lt;/span&gt; &lt;span class="n"&gt;b&lt;/span&gt;       &lt;span class="n"&gt;Bufferlar&lt;/span&gt; &lt;span class="n"&gt;arasi&lt;/span&gt; &lt;span class="n"&gt;gecis&lt;/span&gt;
+&lt;span class="n"&gt;C&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;x&lt;/span&gt; &lt;span class="n"&gt;k&lt;/span&gt;       &lt;span class="n"&gt;Buffer&lt;/span&gt;&lt;span class="err"&gt;&amp;#39;&lt;/span&gt;&lt;span class="n"&gt;i&lt;/span&gt; &lt;span class="n"&gt;kapat&lt;/span&gt;
+&lt;span class="n"&gt;C&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;x&lt;/span&gt; &lt;span class="mi"&gt;1&lt;/span&gt;       &lt;span class="n"&gt;Diger&lt;/span&gt; &lt;span class="n"&gt;pencereleri&lt;/span&gt; &lt;span class="n"&gt;sil&lt;/span&gt;
+&lt;span class="n"&gt;C&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;x&lt;/span&gt; &lt;span class="mi"&gt;0&lt;/span&gt;       &lt;span class="n"&gt;Acik&lt;/span&gt; &lt;span class="n"&gt;pencereyi&lt;/span&gt; &lt;span class="n"&gt;sil&lt;/span&gt;
+&lt;span class="n"&gt;C&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;x&lt;/span&gt; &lt;span class="mi"&gt;2&lt;/span&gt;       &lt;span class="n"&gt;Ekrani&lt;/span&gt; &lt;span class="n"&gt;yatay&lt;/span&gt; &lt;span class="n"&gt;olarak&lt;/span&gt; &lt;span class="n"&gt;bolme&lt;/span&gt;
+&lt;span class="n"&gt;C&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;x&lt;/span&gt; &lt;span class="mi"&gt;3&lt;/span&gt;       &lt;span class="n"&gt;Ekrani&lt;/span&gt; &lt;span class="n"&gt;dikey&lt;/span&gt; &lt;span class="n"&gt;olarak&lt;/span&gt; &lt;span class="n"&gt;bolme&lt;/span&gt;
+&lt;span class="n"&gt;C&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;a&lt;/span&gt;         &lt;span class="n"&gt;Satir&lt;/span&gt; &lt;span class="n"&gt;basinda&lt;/span&gt; &lt;span class="n"&gt;git&lt;/span&gt;
+&lt;span class="n"&gt;C&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;e&lt;/span&gt;         &lt;span class="n"&gt;Satir&lt;/span&gt; &lt;span class="n"&gt;sonuna&lt;/span&gt; &lt;span class="n"&gt;git&lt;/span&gt;
+&lt;span class="n"&gt;C&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;n&lt;/span&gt;         &lt;span class="n"&gt;Bir&lt;/span&gt; &lt;span class="n"&gt;sonraki&lt;/span&gt; &lt;span class="n"&gt;satir&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;asagiya&lt;/span&gt; &lt;span class="n"&gt;dogru&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="n"&gt;C&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;p&lt;/span&gt;         &lt;span class="n"&gt;Bir&lt;/span&gt; &lt;span class="n"&gt;onceki&lt;/span&gt; &lt;span class="n"&gt;sat&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="n"&gt;r&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;yukariya&lt;/span&gt; &lt;span class="n"&gt;dogru&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="n"&gt;C&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;b&lt;/span&gt;         &lt;span class="n"&gt;Geriye&lt;/span&gt; &lt;span class="n"&gt;git&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;sol&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="n"&gt;C&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;f&lt;/span&gt;         &lt;span class="n"&gt;Ileriye&lt;/span&gt; &lt;span class="n"&gt;git&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;sag&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="n"&gt;M&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;f&lt;/span&gt;         &lt;span class="n"&gt;Kelimeye&lt;/span&gt; &lt;span class="n"&gt;ilerle&lt;/span&gt;
+&lt;span class="n"&gt;M&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;b&lt;/span&gt;         &lt;span class="n"&gt;Kelimeye&lt;/span&gt; &lt;span class="n"&gt;geri&lt;/span&gt; &lt;span class="n"&gt;gel&lt;/span&gt;
+&lt;span class="n"&gt;C&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;v&lt;/span&gt;         &lt;span class="n"&gt;Sayfaya&lt;/span&gt; &lt;span class="n"&gt;ilerle&lt;/span&gt;
+&lt;span class="n"&gt;M&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;v&lt;/span&gt;         &lt;span class="n"&gt;Sayfaya&lt;/span&gt; &lt;span class="n"&gt;geri&lt;/span&gt; &lt;span class="n"&gt;gel&lt;/span&gt;
+&lt;span class="n"&gt;C&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;d&lt;/span&gt;         &lt;span class="n"&gt;Karakteri&lt;/span&gt; &lt;span class="n"&gt;yok&lt;/span&gt; &lt;span class="n"&gt;et&lt;/span&gt;
+&lt;span class="n"&gt;M&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;d&lt;/span&gt;         &lt;span class="n"&gt;Kelimeyi&lt;/span&gt; &lt;span class="n"&gt;yok&lt;/span&gt; &lt;span class="n"&gt;et&lt;/span&gt;
+&lt;span class="n"&gt;C&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;s&lt;/span&gt;         &lt;span class="n"&gt;Ileriye&lt;/span&gt; &lt;span class="n"&gt;dogru&lt;/span&gt; &lt;span class="n"&gt;regex&lt;/span&gt; &lt;span class="n"&gt;aramasi&lt;/span&gt;
+&lt;span class="n"&gt;C&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;r&lt;/span&gt;         &lt;span class="n"&gt;Geriye&lt;/span&gt; &lt;span class="n"&gt;dogru&lt;/span&gt; &lt;span class="n"&gt;regex&lt;/span&gt; &lt;span class="n"&gt;aramasi&lt;/span&gt;
+&lt;span class="n"&gt;M&lt;/span&gt;&lt;span class="o"&gt;-%&lt;/span&gt;         &lt;span class="n"&gt;Degisiklik&lt;/span&gt; &lt;span class="n"&gt;sorgusu&lt;/span&gt;
+&lt;span class="n"&gt;C&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;h&lt;/span&gt; &lt;span class="n"&gt;t&lt;/span&gt;       &lt;span class="n"&gt;Emacs&lt;/span&gt; &lt;span class="n"&gt;kullanma&lt;/span&gt; &lt;span class="n"&gt;kilavuzu&lt;/span&gt;
+&lt;span class="n"&gt;C&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;h&lt;/span&gt; &lt;span class="n"&gt;b&lt;/span&gt;       &lt;span class="n"&gt;Tus&lt;/span&gt; &lt;span class="n"&gt;kisayollarinin&lt;/span&gt; &lt;span class="n"&gt;ac&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="n"&gt;klanmasi&lt;/span&gt;
+&lt;span class="n"&gt;C&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;h&lt;/span&gt; &lt;span class="n"&gt;m&lt;/span&gt;       &lt;span class="n"&gt;Bulunan&lt;/span&gt; &lt;span class="n"&gt;modun&lt;/span&gt; &lt;span class="n"&gt;aciklamasi&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Emacs'i Clojure ile kullanırken M-x ve  &lt;code&gt;nrepl-jack-in&lt;/code&gt; yapıp REPL ortamını açabilirsiniz. Daha fazla detay için &lt;a href="http://clojure-doc.org/articles/tutorials/emacs.html" title="Emacs for Clojure"&gt;buradaki&lt;/a&gt; link işinizi görecektir.&lt;/p&gt;
+&lt;h2&gt;Light Table&lt;/h2&gt;
+&lt;p&gt;Yiğidi öldür hakkını ver demişler. O yüzden Lisp dili geliştirme ortamı denilince ilk akla gelen Emacs'i önce anlatmak gerekliydi. Bundan sonra Clojure için hafif bir geliştirme ortamı olan &lt;a href="http://www.lighttable.com/" title="Light Table"&gt;Light Table&lt;/a&gt; isimli programıda denemenizi öneririm. Gayet hızlı kodlarınızı yazıp anlık olarak değerlendirmelerinizi görebilirsiniz. Bana gayet hoş ve şık geldi. Deneyin birşey kaybetmezsiniz. Bir resim vereyim belki ilginizi çeker.&lt;/p&gt;
+&lt;p&gt;&lt;img alt="Light Table Clojure" src="http://www.chris-granger.com/images/lightable/v0.0.6.png" /&gt;&lt;/p&gt;
+&lt;h2&gt;Vim&lt;/h2&gt;
+&lt;p&gt;Her ne kadar Lisp için geliştirme ortamı tarafsız Emacs olsa da ben tam bir Vim fanatiğiyim. Bu yüzden her işimi orada halletmeyi seviyorum. Firefox'a bile &lt;a href="http://www.vimperator.org/" title="Vimperator"&gt;vimperator&lt;/a&gt; eklentisini kurarak internette de Vim gibi dolaşıyorum.&lt;/p&gt;
+&lt;p&gt;&lt;img alt="Vimperator" src="media/vimperator.png" /&gt;&lt;/p&gt;
+&lt;p&gt;Bu yüzden C, C++, Python, Perl, Php, Ruby'den sonra Clojure içinde Vim kullanıyorum. Ve bundan gayette mutluyum. Alışkın olmayanlar için zor gelebilir ama biraz alıştıktan sonra bırakması gerçekten çok zor. Öyle tuşları zor, çok fazla kısayol var gibi düşünmeyin. Tabularınızı yıkıp bir gün deneyin sonra bir daha düşünün.&lt;/p&gt;
+&lt;p&gt;Vim'de Clojure yazmak için birçok eklenti desteği mevcut. Ama ben kendi kullandığım ve çok memnun olduğum Slimv'den bahsedeceğim. Adındanda anlayacağınız üzere Emacs için olan Slime ortamının Vim ortamıdan kullanılması için yazılmış. Kullanışlılık ve kolaylık açısından gayet memnunum. Henüz bir sıkıntı çekmedim kendisinden.&lt;/p&gt;
+&lt;p&gt;Öncelikle &lt;a href="http://www.vim.org/scripts/script.php?script_id=2531" title="Slimv"&gt;Slimv&lt;/a&gt; eklentisini indirip &lt;code&gt;.vim&lt;/code&gt; klasörünüz içinde uygun yere(eklenti yöneticileri kullanıyorsanız içine) atmanız gerekli. Bu işlemden sonra yapmamız gereken tek şey &lt;code&gt;.vimrc&lt;/code&gt; dosyamızın içine aşağıdaki satırı eklemek. Bu sayede yazdığımız kodları direkt olarak REPL ile yorumlayabiliriz. Ve gayet hızlı bir şekilde kodlarımızı geliştirebiliriz.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;let&lt;/span&gt; &lt;span class="n"&gt;g&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="n"&gt;slimv_swank_clojure&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="err"&gt;&amp;#39;&lt;/span&gt;&lt;span class="o"&gt;!&lt;/span&gt; &lt;span class="n"&gt;xterm&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;e&lt;/span&gt; &lt;span class="n"&gt;lein&lt;/span&gt; &lt;span class="n"&gt;swank&lt;/span&gt; &lt;span class="o"&gt;&amp;amp;&lt;/span&gt;&lt;span class="err"&gt;&amp;#39;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Burada dikkat çekmem gereken bir nokta var. Yukarıdaki kodu gördüğünüzde kafanızda canlanan birşeyler olmuştur tabi. Eğer dosyanızı editlemek için vimi &lt;code&gt;project.clj&lt;/code&gt; dosyasının olduğu dizinden çağırdıysanız herhangi bir sıkıntı olmadan çalışıyor. Ancak eğer farklı bir dizinde iseniz kod başarıyla çalışmıyor ve siz vim'in alt kısmında sürekli bağlanıyor yazısını görüyorsunuz. Bunun çözümü için ya sürekli olarak vimi uygun klasörden çağıracaksınız ya da benim yaptığım gibi statik bir tanımlama yapacaksınız. Daha yaratıcı çözümlerde olabilir ama şimdilik işimi görüyor.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;let&lt;/span&gt; &lt;span class="n"&gt;g&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="n"&gt;slimv_swank_clojure&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="err"&gt;&amp;#39;&lt;/span&gt;&lt;span class="o"&gt;!&lt;/span&gt; &lt;span class="n"&gt;xterm&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;e&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;cd ~/lispCodes/hello/ &amp;amp;&amp;amp; lein swank&amp;quot;&lt;/span&gt;&lt;span class="o"&gt;&amp;amp;&lt;/span&gt; &lt;span class="err"&gt;&amp;#39;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;&lt;code&gt;~/lispCodes/hello&lt;/code&gt; dizini altında şartlara uygun kullanmadığım bir &lt;code&gt;lein&lt;/code&gt; projesi var. Sürekli olarak oradan REPL'i çağırıyorum. Bende gayet sorunsuz çalışıyor. Hatta &lt;code&gt;lein2&lt;/code&gt; kurduğumdan dolayı REPL ortamımım hepten bozulmuştu. Ama bu hello isimli uygulamayı &lt;code&gt;lein1&lt;/code&gt; ile oluşturduğumdan sıkıntısız kullanıyorum.&lt;/p&gt;
+&lt;p&gt;Bundan sonra yapmamız gerekenlerden birisi de parantezlerin renklendirilmesi. Bunun yanında Clojure konusunda gayet başarılı bir eklenti olan &lt;a href="https://github.com/vim-scripts/VimClojure" title="Clojure Vim"&gt;ClojureVim&lt;/a&gt;'i de kurmadan geçmeyelim. Son olarak &lt;code&gt;.vimrc&lt;/code&gt; dosyamıza şu satırlarıda ekleyerek işimizi bitirelim.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;let&lt;/span&gt; &lt;span class="n"&gt;g&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="n"&gt;vimclojure&lt;/span&gt;&lt;span class="err"&gt;#&lt;/span&gt;&lt;span class="n"&gt;HighlightBuiltins&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="mi"&gt;1&lt;/span&gt;
+&lt;span class="n"&gt;let&lt;/span&gt; &lt;span class="n"&gt;g&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="n"&gt;vimclojure&lt;/span&gt;&lt;span class="err"&gt;#&lt;/span&gt;&lt;span class="n"&gt;ParenRainbow&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="mi"&gt;1&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Bundan sonra Vim'i eğer bir &lt;code&gt;.clj&lt;/code&gt; uzantılı dosyayı açması için çağırırsak otomatik olarak Slimv açılacaktır ve komutlar çalışır durumda olacaktır. Gvim kullanıyorsanız yukarıdaki panelde Slimv menüsünden tüm komutları görebilirsiniz. En çok lazım olanları bilmek bana şimdilik yeterli oluyor. İlerde biraz daha fazla kod yazmaya başladığımda Debugger gibi araçlarıda kullanacağım tabi.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="n"&gt;d&lt;/span&gt; &lt;span class="o"&gt;=&amp;gt;&lt;/span&gt; &lt;span class="n"&gt;Uzerinde&lt;/span&gt; &lt;span class="n"&gt;bulunan&lt;/span&gt; &lt;span class="n"&gt;fonksiyonu&lt;/span&gt; &lt;span class="n"&gt;REPL&lt;/span&gt; &lt;span class="n"&gt;ortamina&lt;/span&gt; &lt;span class="n"&gt;aktarir&lt;/span&gt;
+&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="n"&gt;e&lt;/span&gt; &lt;span class="o"&gt;=&amp;gt;&lt;/span&gt; &lt;span class="n"&gt;Uzerinde&lt;/span&gt; &lt;span class="n"&gt;bulunan&lt;/span&gt; &lt;span class="n"&gt;ifadeyi&lt;/span&gt; &lt;span class="n"&gt;REPL&lt;/span&gt; &lt;span class="n"&gt;ortamina&lt;/span&gt; &lt;span class="n"&gt;aktarir&lt;/span&gt;
+&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="n"&gt;r&lt;/span&gt; &lt;span class="o"&gt;=&amp;gt;&lt;/span&gt; &lt;span class="n"&gt;Secili&lt;/span&gt; &lt;span class="n"&gt;bolgeyi&lt;/span&gt; &lt;span class="n"&gt;REPL&lt;/span&gt; &lt;span class="n"&gt;ortamina&lt;/span&gt; &lt;span class="n"&gt;aktarir&lt;/span&gt;
+&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="n"&gt;b&lt;/span&gt; &lt;span class="o"&gt;=&amp;gt;&lt;/span&gt; &lt;span class="n"&gt;Calisilan&lt;/span&gt; &lt;span class="n"&gt;buffer&lt;/span&gt;&lt;span class="err"&gt;&amp;#39;&lt;/span&gt;&lt;span class="n"&gt;i&lt;/span&gt; &lt;span class="n"&gt;REPL&lt;/span&gt; &lt;span class="n"&gt;ortamina&lt;/span&gt; &lt;span class="n"&gt;aktarir&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Eğer başarılı bir şekilde yaptıysanız en az Emacs kadar iyi bir ortama sahip oluyorsunuz. Ben şu anda gayet memnunum. Ufak sorunlar tabi başta vardı ama şu anda sorunsuz kullanıyorum. Bir çılgınlık yapıp sizlerinde Vim'i kullanmasını tavsiye ediyorum.&lt;/p&gt;
+&lt;p&gt;&lt;img alt="Vim Clojure" src="media/vimrepl.png" /&gt;&lt;/p&gt;
+&lt;p&gt;Ek olarak gerçek bir ortama dönüşmesi için &lt;code&gt;omni-complete&lt;/code&gt; ve &lt;code&gt;fireplace&lt;/code&gt; gibi eklentileri de kurmanız gerekli. Hatta &lt;code&gt;ctrlp&lt;/code&gt; ve &lt;code&gt;synastic&lt;/code&gt; de kurduğunuzda tadından yenmez. Tabi &lt;code&gt;NerdTree&lt;/code&gt; , &lt;code&gt;Powerline&lt;/code&gt; , &lt;code&gt;Gundo&lt;/code&gt; , &lt;code&gt;Pathogen&lt;/code&gt; , &lt;code&gt;Taglist&lt;/code&gt; gibi eklentileri söylemiyorum bile. Bunlar olmadan olmaz.&lt;/p&gt;
+&lt;h2&gt;Buradan devam&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href="http://clojure-doc.org/articles/tutorials/vim_fireplace.html"&gt;http://clojure-doc.org/articles/tutorials/vim_fireplace.html&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="http://clojure-doc.org/articles/tutorials/emacs.html"&gt;http://clojure-doc.org/articles/tutorials/emacs.html&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="http://naleid.com/blog/2011/12/19/getting-a-clojure-repl-in-vim-with-vimclojure-nailgun-and-leiningen/"&gt;http://naleid.com/blog/2011/12/19/getting-a-clojure-repl-in-vim-with-vimclojure-nailgun-and-leiningen/&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="http://usevim.com/2013/01/02/vimclojure/"&gt;http://usevim.com/2013/01/02/vimclojure/&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="http://ianrumford.github.io/blog/2012/06/22/clojure-emacs-slime-and-swank-on-ubuntu-precise-1204/"&gt;http://ianrumford.github.io/blog/2012/06/22/clojure-emacs-slime-and-swank-on-ubuntu-precise-1204/&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="http://www.emacswiki.org/emacs/ClojureMode"&gt;http://www.emacswiki.org/emacs/ClojureMode&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="http://www.unexpected-vortices.com/clojure/10-minute-emacs-for-clojure.html"&gt;http://www.unexpected-vortices.com/clojure/10-minute-emacs-for-clojure.html&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">halit</dc:creator><pubDate>Mon, 15 Jul 2013 00:00:00 +0300</pubDate><guid>tag:www.halitalptekin.com,2013-07-15:clojure-gelistirme-ortami.html</guid><category>clojure</category><category>vim</category><category>emacs</category><category>clojure programming</category><category>vim for clojure</category></item><item><title>Clojure Notları #1</title><link>http://www.halitalptekin.com/clojure-notlari-1.html</link><description>&lt;p&gt;Bir önceki yazımda da dediğim gibi paradigma değişikliğine gidip Lisp ailesi diller ile uğraşmaya başlamıştım. Bu dillerden Clojure'u seçip ciddi anlamda üstüne düşüyorum. Tabi &lt;strong&gt;Clojure&lt;/strong&gt; ile ilgilenirken bir yandan da &lt;strong&gt;Lisp&lt;/strong&gt; ailesinin getirdiklerini anlamaya ve uygulamaya çalışıyorum. Bir de fonksiyonel programlamaya alışmaya çalışıyorum. Benim için pek alışkın olmadığım bu dünya gayet heyecanlı gelmeye de başladı diyebilirim. Bu yüzden en iyi öğrenme şekillerinden biri olan öğrendiğini hemen anlatmayı uygulayarak, Clojure'u öğrenirken bir yandan da bloguma notlar tutacağım. İlerde dönüp baktığımda başvuru kaynağı olarak kullanabilirim. Aklıma gelmeyen bazı şeylerede hemen dönüp bakabilirim. Tabi bir de benim gibi sıfırdan başlamak isteyenler için başlangıç noktası olabilir.&lt;/p&gt;
+&lt;h2&gt;Neden Clojure?&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;Bir kere öncelikle Lisp ailesinin son üyelerinden birisi. Yani Lisp'in uzun tarihi sürecinde edindiği birçok tecrübeye sahip yepyeni bir dil. 2007 yılında &lt;strong&gt;Rich Hickey&lt;/strong&gt; tarafından oluşturuldu. Ancak bu kadar kısa bir süreye rağmen gayet yeterli derecede kütüphaneleri ve kullanıcı grubu var. Asıl ilginç olan ise uzun bir süredir adı bile anılmayan bu dilin son birkaç yıl içinde çok fazla sesi çıkmaya başladı. Büyük şirketlerin tek tük geçmesi ile ayrı bir boyuta taşıdı kendini.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Clojure diğer script dilleri gibi yorumlanmaz. Yazılan kodlar &lt;strong&gt;JVM&lt;/strong&gt; üzerinde çalışacak şekilde Java byte koduna derlenir. Bu sayede hız konusundaki şüpheleri ortadan kaldırır. JVM üzerinde çalışmasının diğer önemli özelliği Java'nın sahip olduğu tüm kütüphanelere direkt olarak ulaşabilmesi ve onları istediği gibi kullanabilmesi. Bu sayede yazdığınız bi Clojure koduna Java kodlarını ekleyebilir aynı şekilde &lt;strong&gt;Java&lt;/strong&gt; kodlarınızın bir kısmını &lt;strong&gt;Clojure&lt;/strong&gt; ile yazabilirsiniz. Özellikle büyük çaplı Java uygulamalarının kilit noktalarının &lt;strong&gt;Clojure&lt;/strong&gt; ile programlandığını biliyorum.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Tamamen fonksiyonel bir dil. Diğer&lt;strong&gt; Lisp&lt;/strong&gt; dillerinde olduğu gibi &lt;strong&gt;fonksiyonel programlamanın&lt;/strong&gt; tüm marifetlerine sahip. Diğer dil paradigmalarında yazmanın eziyet olduğu kodları, sanki ingilizce yazar gibi yazabiliyorsunuz. Girdikçe için içine daha fazla aşık oluyorsunuz. Sonsuz uzunluktaki dizilerde işlemler(laziness) birçok konuda düşünme becerisini geliştiriyor. Matematiksel problemlerde ve bilimsel projelerde ayrı bir hız kazandırıyor insana. &lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;img alt="Concurrent" src="http://www.gotw.ca/images/CPU.png" /&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;Resimden de gördüğünüz gibi bilgisayarlar hızlanmaya devam ediyor. Tabi bu da bir yere kadar gidecek. Artık bilgisayarların hızlarını çok çekirdekli olup olmamaları etkiliyor. Aynı anda birçok çekirdek üzerinde işlem yapan programlar büyük öneme sahip. Bu yüzden fonksiyonel programlama eş-zamanlı işler için bulunmaz nimet. Clojure'da bu iş için diğer rakipleri &lt;strong&gt;Scala&lt;/strong&gt;, &lt;strong&gt;Go&lt;/strong&gt;, &lt;strong&gt;Erlang&lt;/strong&gt; gibi çok büyük öneme sahip. Bu dillere olan ilgiler sürekli artıyor. Ve emin olun artmayada devam edecektir. Özellikle Scala'nın sert girişi ardından son günlerdeki Go'nun yükselişini kimse inkar edemez. Clojure'da bu diller arasına, arkasına Java ve Lisp'in getirdiklerini alarak giriyor. Ve bu tarz işler için biçilmiş kaftan. Hatta tam olarak bu konu üzerine bir &lt;a href="http://pluralsight.com/training/Courses/TableOfContents/clojure-concurrency-tutorial" title="Clojure Concurrency"&gt;Clojure Kursu&lt;/a&gt; var. İlgilenenler bakabilir.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Clojure diğer fonksiyonel programlama dilleri gibi gerçekten hızlı. Çünkü dildeki veri yapıları değiştirilemez(immutable). Yani siz bir liste oluşturduğunuzda ve üzerinde işlemler yaptığınızda listenin son durumu ilk halinin aynısı. Özellikle değiştirmek istemediğiniz(yan etkiler) takdirde tüm veri yapıları üzerinde kalıcı değişiklikler yapamıyorsunuz. Haliyle kod içerisinde bir yerlerde bir listenin kopyasını alamıyorsunuz. Başta bana çok ilginç gelen bu özellik gerçekten de çok faydalı oluyor. Diyebilirsiniz değiştirmeden herşeyi yapabiliyormuyuz? Evet. Genelde bu şekilde her işinizi halledebiliyorsunuz. Ancak çok gerekli bir durum olduğunda tabiki de Clojure değişiklik yapmanıza izin veriyor. Gerekmedikçe kullanmanın anlamı yok.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Burada yazdığım gibi benzer kanıtlar arıyorsanız &lt;a href="http://www.quora.com/Clojure/Why-would-someone-learn-Clojure" title="Why Clojure?"&gt;buradaki&lt;/a&gt; veya &lt;a href="http://johnfn.github.io/johnfn/post3.html" title="Clojure"&gt;buradaki&lt;/a&gt; gibi bir link işinizi görecektir. Zaten internet üzerinde neden Lisp, neden Clojure gibi konularda çok fazla yazı var. İstediğiniz bir tanesini seçip okuyabilirsiniz.&lt;/p&gt;
+&lt;h2&gt;Biraz Syntax&lt;/h2&gt;
+&lt;p&gt;Clojure dediğim gibi Lisp ailesi dillerinden birisidir. Yani diğer &lt;strong&gt;Lisp&lt;/strong&gt; dillerinde olduğu gibi aynı syntax yapısını kullanır. &lt;a href="http://en.wikipedia.org/wiki/Polish_notation" title="Polish Notation"&gt;Polonyalı notasyonu&lt;/a&gt; dedikleri bu yapı ilk başlarda zor gözükse de aslında diğer tüm dillerden daha zarif ve okunabilir yapıda. Ben de başta bu kadar paranteze ne gerek var gibi düşünsemde bir zaman sonra oradaki her parantezin aslında bir amacı olduğunu anladım. Öyle söylenildiği kadar da karışık ve anlaşılmaz değil.&lt;/p&gt;
+&lt;p&gt;Parantezlerle boğuşacağımız için öncelikle güzel bir geliştirme ortamımızın hazır olması gerekli. &lt;strong&gt;Lisp&lt;/strong&gt; için en iyi geliştirme ortamı kesinlikle &lt;strong&gt;Emacs&lt;/strong&gt;. Direk kendisi için yazılmış ayrı bir Lisp lehçesi bile var. Emacs'in yanında&lt;strong&gt; Eclipse&lt;/strong&gt;, &lt;strong&gt;Netbeans&lt;/strong&gt; veya &lt;strong&gt;IntelliJ&lt;/strong&gt; gibi ortamları sevenlerde rahatça kodlarını buralarda yazabilirler. Ben &lt;strong&gt;Vim&lt;/strong&gt; fanatiği olduğum için &lt;strong&gt;Clojure&lt;/strong&gt; kodlarımı Vim'de yazıyorum. Ve gayette mutluyum. Lazım olan herşeyi rahatça kurdum ve ayarladım. Bu konuyada yakında değineceğim zaten.(Emacs'e alışmak için çok uğraşsamda beni bir türlü içine çekemedi. Vim'deki zerafeti ve kolaylığı bana sağlayamadı. Emacs fanatikleri sinirlenecek ama öyle maalesef. Hala VIM!)&lt;/p&gt;
+&lt;p&gt;&lt;img alt="Vim for Clojure" src="media/vimrepl.png" /&gt;&lt;/p&gt;
+&lt;h2&gt;Kurulum&lt;/h2&gt;
+&lt;p&gt;Clojure ile kod yazmaya başlamak için kendi sitesindeki &lt;a href="http://clojure.org/" title="Clojure Indirme"&gt;indirme&lt;/a&gt; sayfasından java dosyasını indirip aşağıdaki komutla açmak yeterli.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;java&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;jar&lt;/span&gt; &lt;span class="n"&gt;clojure&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mf"&gt;1.5.1&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;jar&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Bu sayede önünüze &lt;strong&gt;REPL(Read Evolution Print Loop)&lt;/strong&gt; ortamı gelecek. Artık burada ilk denemelerinizi yapabilirsiniz.(Bu arada android markette de &lt;strong&gt;Clojure REPL&lt;/strong&gt; isimli uygulamayı kurarsanız aynı ortama sahip olabilirsiniz)    &lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;user&lt;/span&gt;&lt;span class="o"&gt;=&amp;gt;&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="o"&gt;+&lt;/span&gt; &lt;span class="mi"&gt;5&lt;/span&gt; &lt;span class="mi"&gt;6&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="mi"&gt;11&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Yukarıdaki kodun ne yaptığı gayet açık zaten anlatmaya gerek yok. Şimdilik sadece bakmak yeterli. Henüz gerekli ortamlarımızı kurmadık.&lt;/p&gt;
+&lt;h2&gt;Paket Yöneticisi&lt;/h2&gt;
+&lt;p&gt;Clojure diğer birçok dilin de sahip olduğu gibi güzel bir paket yöneticisine sahip. Bu yönetici ile yeni proje oluşturup, çalıştırabilirsiniz. &lt;strong&gt;Ubuntu/Debian&lt;/strong&gt; kullanıcıları aşağıdaki paketi kurarak bu güzel yöneticiye sahip olabilirler.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;sudo&lt;/span&gt; &lt;span class="n"&gt;apt&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;get&lt;/span&gt; &lt;span class="n"&gt;install&lt;/span&gt; &lt;span class="n"&gt;leiningen&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Kurulum bittikten sonra istediğimiz bir dizine geçip yeni proje oluşturalım.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;lein&lt;/span&gt; &lt;span class="n"&gt;new&lt;/span&gt; &lt;span class="n"&gt;hello&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Eğer herhangi bir sıkıntı ile karşılaşmadıysanız aşağıdaki gibi birşey görmeniz lazım. Eğer hata ile karşılaşırsanız(ki bende bazı paketlerde sıkıntı yapmıştı. Bunu da verdiği uyarıdan yola çıkarak kurmuştum. Normal şartlarda bir sorun ile karşılaşmamanız lazım.)&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;Created&lt;/span&gt; &lt;span class="n"&gt;new&lt;/span&gt; &lt;span class="n"&gt;project&lt;/span&gt; &lt;span class="n"&gt;in&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;home&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;halit&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;hello&lt;/span&gt;
+&lt;span class="n"&gt;Look&lt;/span&gt; &lt;span class="n"&gt;over&lt;/span&gt; &lt;span class="n"&gt;project&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;clj&lt;/span&gt; &lt;span class="n"&gt;and&lt;/span&gt; &lt;span class="n"&gt;start&lt;/span&gt; &lt;span class="n"&gt;coding&lt;/span&gt; &lt;span class="n"&gt;in&lt;/span&gt; &lt;span class="n"&gt;hello&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;core&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;clj&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Aynen verdiği uyarıdaki gibi &lt;code&gt;hello/core.clj&lt;/code&gt; içine girerek kodlamaya başlayabilirsiniz. Tabi kodlamaya geçmeden önce ortamınızı da ayarlamanız gerekli. &lt;a href="http://www.lighttable.com/" title="Light Table"&gt;Light Table&lt;/a&gt; isimli IDE Clojure kodlamak için gayet güzel bir ortam sunuyor. Eğer Vim veya Emacs fanatiği değil iseniz ve Netbeans, Eclipse gibi ortamların hantallığından şikayet ediyorsanız bir bakın derim. Sublime Text'de bu iş için bir alternatif tabi.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;hello&lt;/span&gt;
+&lt;span class="err"&gt;├──&lt;/span&gt; &lt;span class="n"&gt;project&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;clj&lt;/span&gt;
+&lt;span class="err"&gt;├──&lt;/span&gt; &lt;span class="n"&gt;README&lt;/span&gt;
+&lt;span class="err"&gt;├──&lt;/span&gt; &lt;span class="n"&gt;src&lt;/span&gt;
+&lt;span class="err"&gt;│  &lt;/span&gt; &lt;span class="err"&gt;└──&lt;/span&gt; &lt;span class="n"&gt;hello&lt;/span&gt;
+&lt;span class="err"&gt;│  &lt;/span&gt;     &lt;span class="err"&gt;└──&lt;/span&gt; &lt;span class="n"&gt;core&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;clj&lt;/span&gt;
+&lt;span class="err"&gt;└──&lt;/span&gt; &lt;span class="n"&gt;test&lt;/span&gt;
+    &lt;span class="err"&gt;└──&lt;/span&gt; &lt;span class="n"&gt;hello&lt;/span&gt;
+        &lt;span class="err"&gt;└──&lt;/span&gt; &lt;span class="n"&gt;test&lt;/span&gt;
+            &lt;span class="err"&gt;└──&lt;/span&gt; &lt;span class="n"&gt;core&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;clj&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Lein'in bize oluşturduğu proje yukarıdaki gibi oluyor. Biz kodlarımızı &lt;code&gt;src/hello/core.clj&lt;/code&gt; içine yazacağız. Kodlarımızı kullanmak istediğimizde &lt;code&gt;lein repl&lt;/code&gt; kullanarak interaktif satırımıza girebiliriz. Veya web uygulaması yazdığınızda çalıştırmak için &lt;code&gt;lein run&lt;/code&gt; komutunu kullanabiliriz.&lt;/p&gt;
+&lt;p&gt;Yazdığımız projenin bağımlılıklarını &lt;code&gt;project.clj&lt;/code&gt; içine tanımlıyoruz ve gerekli işlemler için &lt;code&gt;lein deps&lt;/code&gt; komutunu kullanıyoruz. Bu sayede hiçbir sorunla karşılaşmadan gerekli paketleri kurabiliriz. Aynı şekilde yazdığımız testler için de &lt;code&gt;lein test&lt;/code&gt; kullanabilirsiniz.&lt;/p&gt;
+&lt;p&gt;Şimdi ne olduğunu pek anlamaya çalışmadan ilk basit uygulamamızı yapalım. Önce &lt;code&gt;src/hello/core.clj&lt;/code&gt; dosyamızı açalım ve aşağıdaki kodları ekleyelim.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;defn&lt;/span&gt; &lt;span class="n"&gt;say&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;hello&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;x&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;
+  &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;println&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;Merhaba &amp;quot;&lt;/span&gt; &lt;span class="n"&gt;x&lt;/span&gt; &lt;span class="s"&gt;&amp;quot; !&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Daha sonra &lt;code&gt;lein repl&lt;/code&gt; ile REPL ortamımıza girelim. Önümüze gelen kısımda önce &lt;code&gt;(use 'hello.core)&lt;/code&gt; ile hangi kodu kullanacağımızı belirtelim. Ve daha sonra bu kod içerisindeki &lt;code&gt;say-hello&lt;/code&gt; isimli(şu anda nasıl çalıştığını bilmiyoruz) fonksiyonunu &lt;code&gt;"Clojure"&lt;/code&gt; argümanıyla çağıralım.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;REPL&lt;/span&gt; &lt;span class="n"&gt;started&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt; &lt;span class="n"&gt;server&lt;/span&gt; &lt;span class="n"&gt;listening&lt;/span&gt; &lt;span class="n"&gt;on&lt;/span&gt; &lt;span class="n"&gt;localhost&lt;/span&gt; &lt;span class="n"&gt;port&lt;/span&gt; &lt;span class="mi"&gt;40061&lt;/span&gt;
+&lt;span class="n"&gt;user&lt;/span&gt;&lt;span class="o"&gt;=&amp;gt;&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;use&lt;/span&gt; &lt;span class="err"&gt;&amp;#39;&lt;/span&gt;&lt;span class="n"&gt;hello&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;core&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="n"&gt;nil&lt;/span&gt;
+&lt;span class="n"&gt;user&lt;/span&gt;&lt;span class="o"&gt;=&amp;gt;&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;say&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;hello&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;Clojure&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="n"&gt;Merhaba&lt;/span&gt;  &lt;span class="n"&gt;Clojure&lt;/span&gt;  &lt;span class="o"&gt;!&lt;/span&gt;
+&lt;span class="n"&gt;nil&lt;/span&gt;
+&lt;span class="n"&gt;user&lt;/span&gt;&lt;span class="o"&gt;=&amp;gt;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Yapılabilecek en basit ve gereksiz uygulamayı bu sayede yapmış olduk. Bundan sonraki yazımda Vim için Clojure ortamının kurulumunu anlatmaya çalışacağım. Daha sonrada ufak ufak Clojure'un en başından başlarım. Bu yazılardan çok profesyonel birşeyler beklemeyiniz. Ben ne anladıysam onu anlatacağım. Yanlış anladıklarım da olmuş olabilir. Bunları uyarırsanız bende hazır bu öğrenme aşamasında düzeltirim.&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">halit</dc:creator><pubDate>Sun, 14 Jul 2013 00:00:00 +0300</pubDate><guid>tag:www.halitalptekin.com,2013-07-14:clojure-notlari-1.html</guid><category>clojure</category><category>clojure programlama</category><category>clojure programming</category></item><item><title>Paradigma değişikliği</title><link>http://www.halitalptekin.com/paradigma-degisikligi.html</link><description>&lt;p&gt;C'de kod yazarken fonksiyon içinde fonksiyon tanımlamanın yasaklı olması en başta bana çok saçma gelmişti. Birçok diğer dilde olduğu gibi ezberci sistem gereği üstüne gitmedik ve o şekilde öğrendik. Ama hep aklımı kurcalıyordu. Niye fonksiyon içine fonksiyon yazamıyorum ki? Buna yönelik birkaç tane kendimin geliştirdiği teoriler bile vardı. En mantıklısı; C dili programcıyı modüler geliştirme tekniğine zorluyordu. Yani fonksiyonları iç içe değilde farklı yerlerde tanımlayarak yazıp, gerektiği yerlerde kullanmamızı istiyordu. Ama bu benim düşüncemdi ve eksik yanları vardı. &lt;/p&gt;
+&lt;p&gt;&lt;img alt="Lisp Programlama Dili" src="http://www.linuxforu.com/wp-content/uploads/2011/06/lisp-1-590x396.jpg" /&gt;&lt;/p&gt;
+&lt;p&gt;Bunun yanında bazı dillerde de hep duyduğum birşey vardı. Global değişken kullanmak zararlıdır, tehlikelidir. Ama hiçkimse de çıkıp neden böyle olduğunu anlatma gereği duymamış. Birkaç yerde anlatılanlar var ama onlarda sadece işin güvenlik tarafından bahsetmişler. Sorunun asıl kaynağını anlatmamışlar veya anlatamamışlar.&lt;/p&gt;
+&lt;p&gt;Tabi programlama dilleri ile bunun gibi birçok sorum ve problemim vardı. Ama bunları kafamdan bir süre uzaklaştırıp sanki yokmuş gibi düşünüp kodlarımı yazıyordum. Ama felsefem gereği yaptığım işte sistemin en altında da neler döndüğünü bilmek isterim. Bu yüzden yokmuş gibi davranmak pek bana göre değil.&lt;/p&gt;
+&lt;p&gt;Aklımda böyle sorular varken derslerini çok sevdiğim Chris Stephenson'un izlemediğime bin pişman olduğum aşağıdaki videosu ile karşılaştım. Normalde bu kadar uzun video izleyen birisi değilim. Bir zaman sonra beni sıkıyor ve hızlı hızlı geçmeye başlıyorum. Ama ilk defa bir videoda böyle yapma gereği duymadım. Sonuna kadar pür dikkat dinledim. Yukarda yazdığım ve aklıma takılan sorunların birçoğundan videoda bahsediyordu. Bittiğinde izlediğime gerçekten pişman olmamıştım. Size tavsiyem ne kadar uzun olursa olsun sonuna kadar izleyin.&lt;/p&gt;
+&lt;p&gt;&lt;object width="720" height="400" data="http://video.cs.bilgi.edu.tr/flowplayer-3.1.5.swf" type="application/x-shockwave-flash"&gt;&lt;param name="movie" value="http://video.cs.bilgi.edu.tr/flowplayer-3.1.5.swf" /&gt;&lt;param name="allowfullscreen" value="true" /&gt;&lt;param name="allowscriptaccess" value="always" /&gt;&lt;param name="flashvars" value='config={"clip":{"provider":"lighttpd","url":"http://video.cs.bilgi.edu.tr/videos/ACM_Istanbul_1.flv","autoPlay":false,"autoBuffering":true},"plugins":{"lighttpd":{"url":"http://video.cs.bilgi.edu.tr/flowplayer.pseudostreaming-3.1.3.swf"}},"playlist":[{"provider":"lighttpd","url":"http://video.cs.bilgi.edu.tr/videos/ACM_Istanbul_1.flv"}]}' /&gt;&lt;/object&gt;&lt;/p&gt;
+&lt;p&gt;Videoyu izledikten sonra kafamda ilginç şeyler belirmeye bazı problemlerinde ardındaki sis perdesi aralanmaya başladı. Birçok dilin aslında yaratıcılığımızı nasıl engellediğini düşündüm. Bize bir özgürlük alanı veriyorlardı ama bu alan gerçek özgürlüğün içinde büyük bir hapishaneymiş meğer.&lt;/p&gt;
+&lt;p&gt;Yukarıdaki videoyu izledikten sonra bir süredir aklımda yer alan Lisp ailesinden bir dil öğrenme fikrini hemen gerçekleştirmek istedim. Benim bu dilimi öğrenmemdeki amaç kesinlikle ilerde bana iş olanağı açacağı veya popüler olduğu için değil, gerçekten bana programlama adına birşeyler öğretmesi istediğimdendi. Tamam Python'da kesinlikle bana bu tarz birşey sağlıyordu diye öğrendim. Ama &lt;strong&gt;Python&lt;/strong&gt; ve diğer dillerden aşina olduğum tarzdan yani bu dillerin paradigmalarından biraz kurtulmak istiyordum. Açıkcası bunların hepsi beni fonksiyonel programlamaya doğru çekiyordu. Ve bu fonksiyonel programlama dilinin &lt;strong&gt;Lisp&lt;/strong&gt; ailesinden olmasını istiyordum.&lt;/p&gt;
+&lt;p&gt;Bildiğiniz gibi &lt;a href="http://tr.wikipedia.org/wiki/Lisp" title="Lisp"&gt;Lisp&lt;/a&gt; 1958 yılında icat edildiğini için günümüzdeki en eski dillerden birisi. Bu kadar köklü geçmişi olmasından dolayıda haliyle çok fazla dallanıp budaklanmış. Birçok lehçesi çıkmış. Buraya dikkat. Lehçe diyorum ama bunların hepsi başlı başına bir dil. Lisp'in ne kadar köklü olduğunu anlamışınızdır.&lt;/p&gt;
+&lt;p&gt;Günümüzde hala &lt;strong&gt;Common Lisp&lt;/strong&gt;, &lt;strong&gt;Scheme&lt;/strong&gt;, &lt;strong&gt;Clojure&lt;/strong&gt;, &lt;strong&gt;Emacs Lisp&lt;/strong&gt; lehçeleri çokca kullanılıyor. Ben de bu lehçelerden birisini seçip öğrenmek istiyordum ama hangisine seçeceğime bir türlü karar veremiyordum. Bu konuda bir uzmana danışmak gerekiyor diye düşündüm ve Türkiye'de bana göre &lt;strong&gt;Lisp&lt;/strong&gt; deyince aklıma gelen kişi olan &lt;a href="http://ileriseviye.wordpress.com/" title="Emre Sevinç"&gt;Emre Sevinç&lt;/a&gt; abiye mail attım. Ve kendisi bana inanılmaz kısa bir sürede geri döndü ve yapacağım seçimde belirleyici rol oynadı. Bana söylediği seçim aşamasındaki kısmı aynen atıyorum.&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;Common Lisp: Buyuk bir dil. Emacs + SLIME (+HyperSpec, CLtL2,
+    lispdoc, vs. ile muazzam yetenekli ve güçlü bir gelistirme ortami
+    sunuyor ama o ortamin hakkini vermek için iyi ögrenmek, iyi ögrenmek
+    için de sakin kafa ile epey vakit ayirmak sart. Bu aralar
+    http://www.quicklisp.org/ gibi araçlar sayesinde epey farkli kitapliga
+    kolayca erisip kurmak mümkün.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Scheme: Burada bir iki farkli durum var, klasik Scheme ile mesela
+    SICP kitabi çalisilabilir, zordur, ufuk açar ama zordur.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Yahut: Cok yogun sekilde gelistirilen Dr.Racket ve
+    http://www.ccs.neu.edu/home/matthias/HtDP2e/ ile hem eglenceli bir
+    gelistirme ortamina, hem de gayet iyi bir kitaba kavusmak, duzenli bir
+    calisma ile birkac ayda epey sey ögrenmek mümkün.&lt;/p&gt;
+&lt;p&gt;Dr.Racket'in kitaplik zenginligi ne durumda, bilemiyorum acikcasi
+    son durumlari.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Clojure: 'a strange beast'. Hiç kullanmadim. Yani Lisp'e ve
+    fikirlere, ufuk genislemesine odaklanacaksam önce CL ya da Scheme
+    tercih ederim. Ayrica Clojure'un REPL ortami Emacs+SLIME yahut
+    Dr.Racket ile ne kadar boy ölçüsebilir, süpheli. Diger yandan Java ve
+    JVM dünyasinin ezici bir yayginligi, muazzam bir kitaplik destegi var.
+    Yani gelistiren Lisp kodunu bir sekilde baska sistemlerle entegre
+    etmek gerekirse Clojure illa ki avantajini belli edecektir diye tahmin
+    ediyorum.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;Bu söylediklerinden sonra birinde karar vermem gerekiyordu. Açıkcası önümde birkaç kapı var ve hangisini seçersem seçeyim bana birşeyler katacağından emindim. Belkide en güzel karar vermelerden birisi buydu. Birini seçtiğimde pişman olmayacaktım. Lisp'in syntaxına ve getirdiklerine aşina olacaktım ya o bana yeterdi.&lt;/p&gt;
+&lt;p&gt;Ve ben bunca düşünme ve karar verme aşamasından sonra tercihimi Clojure'dan yana kullandım. Neden derseniz öyle kısa veya uzun bir cevabı yok. Birini seçmek zorundaydım. Ben hem yeni(2007) hem de eskinin mirasını alan birşey istiyordum. &lt;a href="http://clojure.org/" title="Clojure"&gt;Clojure&lt;/a&gt; bu tanıma uyuyordu. Hatta Clojure hep uzak durduğum &lt;strong&gt;Java&lt;/strong&gt; dünyasına da beni yakınlaştırabilir diye düşünüyorum. Çünkü &lt;strong&gt;Clojure&lt;/strong&gt; ile yazdığım kodlar direk Java içinde, Java içinde yazılan kodlar da direk Clojure içinde kullanılabiliyor. Mesela büyük bir &lt;strong&gt;Java&lt;/strong&gt; uygulamanız ve kodunuz varsa bunun içinde sorunlu ve performans gerektiren bazı işleri Clojure ile yazıp direk o sistemin parçası edebiliyorsunuz. Gerçekten çok iyi birşey bu.&lt;/p&gt;
+&lt;p&gt;Artık hem &lt;strong&gt;Lisp&lt;/strong&gt; syntaxını ve getirdiklerini öğreniyordum hem de arkama yılların tecrübesi ve gayet büyük Java dünyasını alıyordum. Gerçekten bu iş için biçilmiş kaftan oldu Clojure. Ve bu gazla bundan sadece 2 gün önce ilk kanı döktüm ve &lt;strong&gt;Clojure&lt;/strong&gt; çalışmaya başladım. Başladıktan bu yana beni gerçekten içine çektikçe çekti. Şu anda aklımda birton proje oluştu bile diyebilirim. Zaten çoğu soruma cevapta buldum. Bunlar benim için gerçekten yeterliydi. Şimdi de elimdeki algoritmalar kitabındaki çoğu problemi &lt;strong&gt;Clojure&lt;/strong&gt; ile gerçeklemeyi düşünüyorum. Hem algoritmalar ile uğraşıcam hem de yeni bir dil ile. Çok güzel bir anlaşma oldu bu.&lt;/p&gt;
+&lt;p&gt;Bu yazının bir amacı artık programlama dünyasına farklı baktığımı göstermek içindi. Bir diğeri ise &lt;strong&gt;Clojure&lt;/strong&gt; ile ilgili yazıları bundan sonra blogumda bolca bulabileceğiniz içindi. Tabi bir de artık her gördüğüm matematiksel problem ve algoritmayı gerçekleme fikrim var. Bu da ilerde dönüp baktığımda bana güzel bir anı olması için.&lt;/p&gt;
+&lt;p&gt;&lt;img alt="Clojure" src="http://kryshen.net/photos/original/clojure_mug.jpg" /&gt;&lt;/p&gt;
+&lt;p&gt;Özetle en azından bir fonksiyonel programlama dili bilmeye çalışın. Mümkünse Lisp ailesinden olsun olmazsa da önemli değil zaten çoğunun kökeni aynı yere gidiyor. Hatta zamanınız varsa &lt;strong&gt;Lambda Calculus&lt;/strong&gt; neymiş ne değilmiş diye araştırın. Sadece 3 tane kuralı olan bu programlama dili ile yapılanları gördükçe benim hissettiklerimi sizde hissedeceksiniz. Geç değil yapın bunu. Hatta buyurun &lt;a href="http://courses.cs.bilgi.edu.tr/course/view.php?id=308" title="Lambda Calculus"&gt;buradan&lt;/a&gt; başlayın.&lt;/p&gt;
+&lt;p&gt;Önce &lt;a href="http://www.kurumsaljava.com/2012/12/30/neden-fonksiyonel-programlamayi-ogrenmek-zorundayiz/" title="Fonksiyonel Programlama"&gt;şu&lt;/a&gt; yazıyı ardından da &lt;a href="http://burcudogan.com/articles/functional-programing-for-beginners/" title="Fonksiyonel Programlama"&gt;bu&lt;/a&gt; yazıyı okuyarak fonksiyonel programlama konusundaki ilk atılımı yapabilirsiniz. Bundan sonra uygun dili seçip ufkunuzu açın derim.(Lisp ailesinden seçin farkı yaşayın)&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">halit</dc:creator><pubDate>Wed, 10 Jul 2013 00:00:00 +0300</pubDate><guid>tag:www.halitalptekin.com,2013-07-10:paradigma-degisikligi.html</guid><category>programlama</category><category>lisp</category><category>fonksiyonel programlama</category><category>lambda calculus</category></item></channel></rss>
