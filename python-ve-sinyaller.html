@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>( &#955; Halit Alptekin ) - Python ve sinyaller</title>
+
+  <meta name="author" content="Halit Alptekin">
+  <meta name="description" content="Programming and Life Blog Of Halit Alptekin. Karadeniz Technical University Computer Engineering Student.">
+  <meta name="keywords" content="linux, python, django, ruby, open source, lisp, clojure, programming, ktu">
+  <meta name="robots" content="index, follow, all"/>
+
+  <link href="http://www.halitalptekin.com/feeds/all.rss.xml" type="application/rss+xml" rel="alternate"
+        title="( &#955; Halit Alptekin ) RSS Feed" />
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <link href="http://www.halitalptekin.com/favicon.png" rel="icon">
+  <link href="http://www.halitalptekin.com/theme/css/main.css" media="screen, projection"
+        rel="stylesheet" type="text/css">
+  <script src="http://www.halitalptekin.com/theme/js/modernizr-2.0.js"></script>
+  <script src="http://www.halitalptekin.com/theme/js/ender.js"></script>
+  <script src="http://www.halitalptekin.com/theme/js/octopress.js" type="text/javascript"></script>
+
+  <link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic"
+        rel="stylesheet" type="text/css">
+  <link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic"
+        rel="stylesheet" type="text/css">
+</head>
+<body>
+  <header role="banner"><hgroup>
+  <h1><a href="http://www.halitalptekin.com/">( &#955; Halit Alptekin )</a></h1>
+</hgroup></header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  <li><a href="http://www.halitalptekin.com/feeds/all.rss.xml" rel="subscribe-rss">Rss</a></li>
+</ul>
+
+<!-- TODO: add search here
+<form action="" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="q" value="site:http://www.halitalptekin.com" />
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+-->
+
+<ul class="main-navigation">
+  <li><a href="http://www.halitalptekin.com/">Blog</a></li>
+    <li><a href="http://www.halitalptekin.com/pages/about-me.html">About Me</a></li>
+    <li><a href="http://www.halitalptekin.com/pages/contact.html">Contact</a></li>
+  <!-- TODO: add categories here? -->
+</ul></nav>
+  <div id="main">
+    <div id="content">
+<div>
+  <article class="hentry" role="article">
+<header>
+      <h1 class="entry-title">Python ve sinyaller</h1>
+      <p class="meta"><time datetime="2014-01-22T00:00:00" pubdate> Jan 22, 2014 </time></p>
+</header>
+
+  <div class="entry-content"><p>Bu dönem okulda aldığım Sinyaller ve Sistemler dersi hayatımda gördüğüm en zevkli derslerden birisidir. Genelde mühendislik bölümlerinde bu ders tam bir baş belası olarak görülür. Ne anladığının önemi olmadan dersi geç modunda alır herkes. Tüm bunlara rağmen ben dersi cidden sevdim ve boş zamanlarımda sürekli olarak uğraştım. Elektrik-Elektronik ve Bilgisayar mühendisliğinde önemli bir yeri olan bu derse verilen inşallah zamanla daha fazla artar.</p>
+<p>Finalleri atlatıp, bahsettiğim derside zorlanmadan verince bunda en büyük payı olan Python ve kütüphanelerinden bahsetmek istedim. Bugün en temel sinyalleri nasıl çizdirebileceğimiz, bunlar üzerinde nasıl çalışabileceğimizi göstermek istiyorum. İlerleyen zamanlarda Fourier dönüşümü ve serilerine de değineceğim. Ama önce temelleri atmak lazım.</p>
+<p>Ben uygulamalarımı iPython üzerinde Pylab ile birlikte yapıyorum. Bunun için Debian dağıtımlarında aşağıdaki komutları çalıştırmanız yeterlidir. Diğer dağıtımlar içinde genellikle aynı isimli paketleri kurabilirsiniz.</p>
+<div class="highlight"><pre><span class="n">sudo</span> <span class="n">apt</span><span class="o">-</span><span class="n">get</span> <span class="n">install</span> <span class="n">python</span> <span class="n">ipython</span> <span class="n">ipython</span><span class="o">-</span><span class="n">notebook</span>
+<span class="n">sudo</span> <span class="n">apt</span><span class="o">-</span><span class="n">get</span> <span class="n">install</span> <span class="n">python</span><span class="o">-</span><span class="n">numpy</span> <span class="n">python</span><span class="o">-</span><span class="n">scipy</span> <span class="n">python</span><span class="o">-</span><span class="n">matplotlib</span> <span class="n">python</span><span class="o">-</span><span class="n">sympy</span>
+</pre></div>
+
+
+<p>Gerekli paketleri kurduktan sonra ipython'u <code>pylab</code> modunda açabilirsiniz. Bu şekilde başlatma sebebimiz kütüphaneleri otomatik olarak import etmesidir. Rahatlıkla işinize başlayabilirsiniz. Nerede ne vardı gibi düşünmenize gerek yok. Bu şekilde açmak için <code>ipython notebook --pylab</code> komutunu kullanabilirsiniz.</p>
+<h1>Sinus ve Cosinus</h1>
+<p>Temel sinyallerin başında sinus ve cosinus yer alıyor. Zaten bu ikisini çizdirip üzerinde oynamalar yapabildiğimiz zaman geri kalan tüm sinyalleri rahatlıkla çizdirip üzerinde işlem yapabiliriz.</p>
+<p>Sinyal dediğimiz aslında x, y koordinat düzleminde yer alan noktalar kümesidir. Bir kısmı kesikli, bir kısmı sürekli olabilir. Biz şimdilik sürekli zamanlı sinyaller ile uğraşıyoruz. Ama dikkatinizi çekeceğim bir konu ne kadar bize sürekli gibi gözüksede temelinde bilgisayar üzerinde yaptığımız işlemler hep kesikli. Bu konu analog, dijital ayrımından kaynaklanıyor. Neyse konumuz şimdilik bu değil.</p>
+<p>Öncelikli olarak çalışacağımız bir x alanı ve bu alan üzerindeki değerleri değiştirecek y fonksiyonumuz olacak. Y fonksiyonumuz öncelikli olarak sinus olacak. X alanımızı da 0-1 aralığında 1000 tane nokta olarak belirleyeceğiz. Şimdi tüm bu söylediklerimi koda dökelim ve ilk çıktımızı alalım.</p>
+<div class="highlight"><pre><span class="n">t</span> <span class="o">=</span> <span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1000</span><span class="p">)</span>
+<span class="n">f</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="n">sint</span> <span class="o">=</span> <span class="n">sin</span><span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="n">pi</span><span class="o">*</span><span class="n">f</span><span class="o">*</span><span class="n">t</span><span class="p">)</span>
+
+<span class="n">ylim</span><span class="p">(</span><span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+<span class="n">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">sint</span><span class="p">)</span>
+</pre></div>
+
+
+<p>Yukarıdaki kod parçasında öncelikli olarak 0-1 aralığında 1000 tane nokta seçtik. Daha sonra frekansımızın 1 olmasını belirttik. Son olarakta sinus fonksiyonumuzu kuralını uygun bir şekilde <code>2*pi*f*t</code> formunda belirledik. Arada yaptığımız <code>ylim(-2, 2)</code> işlemi sadece üst ve alt sınır belirleyerek işaretimizi daha net görmek için. Tüm bunlardan sonra elde edeceğimiz çıktı aşağıdaki gibi olacaktır.</p>
+<p><img alt="Sinus sinyali" src="media/sin.png" /></p>
+<p>Çıktıdan da görebildiğiniz gibi tam istediğimiz sonuca ulaştık. Artık elimizde 0-1 aralığında, frekansı 1 olan bir sinus işareti var. Artık üzerinde temel işlemler yapabiliriz. Mesela bu işaretimizi <code>pi/4</code> kadar öteleme yapalım. Yani zamanda yavaşlama.</p>
+<div class="highlight"><pre><span class="n">t</span> <span class="o">=</span> <span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1000</span><span class="p">)</span>
+<span class="n">f</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="n">sint</span> <span class="o">=</span> <span class="n">sin</span><span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="n">pi</span><span class="o">*</span><span class="n">f</span><span class="o">*</span><span class="n">t</span><span class="p">)</span>
+<span class="n">sino</span> <span class="o">=</span> <span class="n">sin</span><span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="n">pi</span><span class="o">*</span><span class="n">f</span><span class="o">*</span><span class="n">t</span> <span class="o">-</span> <span class="n">pi</span><span class="o">/</span><span class="mi">4</span><span class="p">)</span>
+
+<span class="n">ylim</span><span class="p">(</span><span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+<span class="n">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">sint</span><span class="p">)</span>
+<span class="n">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">sino</span><span class="p">)</span>
+</pre></div>
+
+
+<p>Bir önceki işaretimiz ile kıyaslama yaptığımızda gerçekten de ötelenmiş olduğunu görebiliriz. Elimizde yer alan sinyallere bu şekilde ileri veya geri öteleme yapabiliriz. Bu işlemin tam tersi için kod içerisinde eksi olan yeri artı yapmak yeterlidir.</p>
+<p><img alt="Otelenmis sinus sinyali" src="media/sin2.png" /></p>
+<p>Elimizdeki bu işaretin x eksenine müdahele etme şeklini yukarıda gösterdik. Eğer y eksenine müdahale etmek istiyorsak bu da eşit derecede kolay. Aşağıdaki kod ile işaretimize doğrusal bir ekleme yapabiliriz.</p>
+<div class="highlight"><pre><span class="n">t</span> <span class="o">=</span> <span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1000</span><span class="p">)</span>
+<span class="n">f</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="n">sint</span> <span class="o">=</span> <span class="n">sin</span><span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="n">pi</span><span class="o">*</span><span class="n">f</span><span class="o">*</span><span class="n">t</span><span class="p">)</span>
+<span class="n">sinl</span> <span class="o">=</span> <span class="n">sin</span><span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="n">pi</span><span class="o">*</span><span class="n">f</span><span class="o">*</span><span class="n">t</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span>
+
+<span class="n">ylim</span><span class="p">(</span><span class="o">-</span><span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
+<span class="n">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">sint</span><span class="p">)</span>
+<span class="n">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">sinl</span><span class="p">)</span>
+</pre></div>
+
+
+<p>Ve artık işaretimiz negatif kısım yerine orjine kadar inip tekrardan yükseliyor.</p>
+<p><img alt="Negatif sinus" src="media/sin3.png" /></p>
+<p>Sinus işaretimiz ile temel anlamda yapabileceklerimizi anladığımızı umuyorum. Gösterdiğim herşey cosinus için de geçerli olduğundan hepsini tekrardan belirtmeyeceğim. Ama cosinus ile de bir örnek yapmak istediğimden yukarıda yer alan kodumuzun frekansını ve tepe değerini değiştirip göstereceğim.</p>
+<div class="highlight"><pre><span class="n">t</span> <span class="o">=</span> <span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1000</span><span class="p">)</span>
+<span class="n">f</span> <span class="o">=</span> <span class="mi">2</span>
+<span class="n">cost</span> <span class="o">=</span> <span class="mi">3</span><span class="o">*</span><span class="n">cos</span><span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="n">pi</span><span class="o">*</span><span class="n">f</span><span class="o">*</span><span class="n">t</span><span class="p">)</span>
+
+<span class="n">ylim</span><span class="p">(</span><span class="o">-</span><span class="mi">4</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span>
+<span class="n">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">cost</span><span class="p">)</span>
+</pre></div>
+
+
+<p>Yukarıdaki kodun çıktısı 0-1 aralığında, frekansı 2 ve tepe noktası 3 ile çarpılmış bir cosinus işareti olacaktır.</p>
+<p><img alt="Cosinus isareti" src="media/cos.png" /></p>
+<h1>Sinc</h1>
+<p>Sinc fonksiyonu en az sinus, cosinus kadar çok kullanılır. Kare dalganın fourier dönüşümü bir sinc işareti olduğundan sinyaller arasında önemli bir yere sahiptir. Bu işareti yukarılarda yaptığımız işlemlerin benzerleri ile rahatlıkla çizdirebiliriz.</p>
+<div class="highlight"><pre><span class="n">t</span> <span class="o">=</span> <span class="n">linspace</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1000</span><span class="p">)</span>
+<span class="n">f</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="n">sinct</span> <span class="o">=</span> <span class="n">sinc</span><span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="n">pi</span><span class="o">*</span><span class="n">f</span><span class="o">*</span><span class="n">t</span><span class="p">)</span>
+
+<span class="n">ylim</span><span class="p">(</span><span class="o">-</span><span class="mf">0.5</span><span class="p">,</span> <span class="mf">1.5</span><span class="p">)</span>
+<span class="n">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">sinct</span><span class="p">)</span>
+</pre></div>
+
+
+<p>Burada yaptığımız işlemin Türkçesi -1, 1 aralığında frekansı 1 olan bir sinc fonksiyonunu çizdirmek oluyor. <code>ylim</code> ile alt ve üst sınırı belirterek daha net bir görünüm elde ediyoruz.</p>
+<p><img alt="Sinc isareti" src="media/sinc.png" /></p>
+<h1>Square</h1>
+<p>Kare dalga herhangi bir işaretin sadece belirli kısımlarını değerlendirmemize yarayan güzel bir fonksiyondur. Bu dalgayı nasıl ve nerede kullanacağımızı ilk defa öğrendiğimde beynimde şimşekler çakmıştı. Gerçekten de çok işe yarar olduğunu anlamıştım. Halen öyle düşünüyorum.</p>
+<div class="highlight"><pre><span class="n">import</span> <span class="n">scipy</span><span class="p">.</span><span class="n">signal</span> <span class="n">as</span> <span class="n">signals</span>
+
+<span class="n">t</span> <span class="o">=</span> <span class="n">linspace</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1000</span><span class="p">)</span>
+<span class="n">f</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="n">sqt</span> <span class="o">=</span> <span class="n">signals</span><span class="p">.</span><span class="n">square</span><span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="n">pi</span><span class="o">*</span><span class="n">f</span><span class="o">*</span><span class="n">t</span><span class="p">)</span>
+
+<span class="n">ylim</span><span class="p">(</span><span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+<span class="n">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">sqt</span><span class="p">)</span>
+</pre></div>
+
+
+<p>Yukarıdaki kodun çıktısı -1, 1 aralığında frekansı 1 olan kare dalga olacaktır. Bu fonksiyondan yola çıkıp istediğimiz dikdörtgen dalgayı da oluşturabiliriz.<code>signals.square</code> fonksiyonuna ikinci bir parametre olarak <code>duty cycle</code> değerini veriyoruz. Eğer bunu 1 olarak seçerseniz bu aralıkta yapılan işi 1 yapıp istediğiniz dikdörtgen dalgayı elde edebilirsiniz.</p>
+<p><img alt="Kare dalga" src="media/square.png" /></p>
+<p>Bu fonksiyonun kullanım alanına gelirsek elimizde herhangi bir işaret olduğunu düşünelim. Biz bu işaretin sadece 0-1 aralığını kullanmak istiyorsak yapmamız gereken bu işareti 0-1 aralığındaki dikdörtgen dalga fonksiyonu ile çarpmak. Bu sayede 0-1 aralığındaki tüm değerleri 0'a çekip söndürmüş oluyoruz.</p>
+<h1>Sawtooth</h1>
+<p>Testere fonksiyonu da temel işaretlerden birisidir. Yukarıda yaptığımız işin benzerini yaparsak bu fonksiyonu da çizdirebiliriz.</p>
+<div class="highlight"><pre><span class="n">import</span> <span class="n">scipy</span><span class="p">.</span><span class="n">signal</span> <span class="n">as</span> <span class="n">signals</span>
+
+<span class="n">t</span> <span class="o">=</span> <span class="n">linspace</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1000</span><span class="p">)</span>
+<span class="n">f</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="n">saw</span> <span class="o">=</span> <span class="n">signals</span><span class="p">.</span><span class="n">sawtooth</span><span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="n">pi</span><span class="o">*</span><span class="n">f</span><span class="o">*</span><span class="n">t</span><span class="p">)</span>
+
+<span class="n">ylim</span><span class="p">(</span><span class="o">-</span><span class="mf">1.5</span><span class="p">,</span> <span class="mf">1.5</span><span class="p">)</span>
+<span class="n">xlim</span><span class="p">(</span><span class="o">-</span><span class="mf">1.5</span><span class="p">,</span> <span class="mf">1.5</span><span class="p">)</span>
+<span class="n">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">saw</span><span class="p">)</span>
+</pre></div>
+
+
+<p><img alt="Testere disi" src="media/saw.png" /></p>
+<h1>Exponential</h1>
+<p>Exp fonksiyonu matematik ve mühendislikte çok fazla kullanılır. Kullanım sebebini gelirsek türevinin kendisini vermesinden değişimi gözlemeye yarar. Sistemlerde de işaretlerin yavaşça sönümlenmesinde kullanılabilir.</p>
+<div class="highlight"><pre><span class="n">t</span> <span class="o">=</span> <span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1000</span><span class="p">)</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">exp</span><span class="p">(</span><span class="n">t</span><span class="p">)</span>
+
+<span class="n">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+</pre></div>
+
+
+<p><img alt="Exp" src="media/exp.png" /></p>
+<p>Bunun yanında bir de azalan üstel fonksiyonu çizdirelim.</p>
+<div class="highlight"><pre><span class="n">t</span> <span class="o">=</span> <span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1000</span><span class="p">)</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="n">t</span><span class="p">)</span>
+
+<span class="n">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+</pre></div>
+
+
+<p><img alt="Exp" src="media/expn.png" /></p>
+<p>Şimdiye kadar gösterdiğim fonksiyonlardan yola çıkarak bazı işaretlerin kombinasyonlarını yaparak bu yazıyı bitireyim. Bunun için öncelikle rastlantısal bir sinyal oluşturacağım. Ve bunu üstel azalan fonksiyon ile çarpacağım.</p>
+<div class="highlight"><pre><span class="n">r</span> <span class="o">=</span> <span class="n">random_sample</span><span class="p">(</span><span class="mi">100</span><span class="p">)</span>
+<span class="n">t</span> <span class="o">=</span> <span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="n">t</span><span class="p">)</span>
+
+<span class="n">f</span> <span class="o">=</span> <span class="n">r</span><span class="o">*</span><span class="n">y</span>
+
+<span class="n">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">r</span><span class="p">)</span>
+<span class="n">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">f</span><span class="p">)</span>
+</pre></div>
+
+
+<p>Öncelikle rastlantısal sinyalimizi çizelim ve daha sonra üstel azalan fonksiyon ile çarpılmışını çizdirelim. İsterseniz yukarıda yer alan kod gibi aynı düzlemde çizdirebilirsiniz ancak ben belli olması için farklı resimlerde göstereceğim.</p>
+<p><img alt="Rastlantisal" src="media/rand.png" /></p>
+<p><img alt="Rastlantisal exp" src="media/rande.png" /></p>
+<p>Burada anlattıklarım dışında diğer tüm işaretlere <code>dir(signals)</code> diyerek ulaşabilirsiniz. Kendi işaretlerinizi yapıp üzerinde istediğiniz gibi işlem yapabilirsiniz.</p></div>
+    <footer>
+<p class="meta">
+  <span class="byline author vcard">
+    Posted by <span class="fn">Halit Alptekin</span>
+  </span>
+<time datetime="2014-01-22T00:00:00" pubdate> Jan 22, 2014 </time>  <span class="categories">
+    <a class="category" href="http://www.halitalptekin.com/tag/python.html">python</a>
+    <a class="category" href="http://www.halitalptekin.com/tag/pylab.html">pylab</a>
+    <a class="category" href="http://www.halitalptekin.com/tag/scipy.html">scipy</a>
+    <a class="category" href="http://www.halitalptekin.com/tag/matplotlib.html">matplotlib</a>
+    <a class="category" href="http://www.halitalptekin.com/tag/ipython.html">ipython</a>
+  </span>
+</p>    </footer>
+  </article>
+  <section>
+    <div class="addthis_toolbox addthis_default_style addthis_32x32_style">
+        <a class="addthis_button_preferred_1"></a>
+        <a class="addthis_button_preferred_2"></a>
+        <a class="addthis_button_preferred_3"></a>
+        <a class="addthis_button_preferred_4"></a>
+        <a class="addthis_button_preferred_5"></a>
+        <a class="addthis_button_preferred_6"></a>
+        <a class="addthis_button_preferred_7"></a>
+        <a class="addthis_button_preferred_8"></a>
+        <a class="addthis_button_preferred_9"></a>
+        <a class="addthis_button_preferred_10"></a>
+        <a class="addthis_counter addthis_bubble_style"></a>
+    </div>
+    <script type="text/javascript" src="http://s7.addthis.com/js/250/addthis_widget.js#pubid=ra-504c6d593daec57a"></script>
+  </section>
+  <section>
+    <h1>Comments</h1>
+    <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript></div>
+  </section>
+</div>
+<aside class="sidebar">
+  <section>
+    <h1>Recent Posts</h1>
+    <ul id="recent_posts">
+      <li class="post">
+          <a href="http://www.halitalptekin.com/python-ve-sinyaller.html">Python ve sinyaller</a>
+      </li>
+      <li class="post">
+          <a href="http://www.halitalptekin.com/linux-uzerinde-tersine-muhendislik.html">Linux üzerinde tersine mühendislik</a>
+      </li>
+      <li class="post">
+          <a href="http://www.halitalptekin.com/clojure-notlari-2.html">Clojure Notları #2</a>
+      </li>
+      <li class="post">
+          <a href="http://www.halitalptekin.com/clojure-gelistirme-ortami.html">Clojure geliştirme ortamı</a>
+      </li>
+      <li class="post">
+          <a href="http://www.halitalptekin.com/clojure-notlari-1.html">Clojure Notları #1</a>
+      </li>
+    </ul>
+  </section>
+  <section>
+      
+    <h1>Categories</h1>
+    <ul id="recent_posts">
+        <li><a href="http://www.halitalptekin.com/category/tasarim.html">tasarim</a></li>
+        <li><a href="http://www.halitalptekin.com/category/server.html">server</a></li>
+        <li><a href="http://www.halitalptekin.com/category/python.html">python</a></li>
+        <li><a href="http://www.halitalptekin.com/category/programlama.html">programlama</a></li>
+        <li><a href="http://www.halitalptekin.com/category/linux.html">linux</a></li>
+        <li><a href="http://www.halitalptekin.com/category/kisisel.html">kisisel</a></li>
+        <li><a href="http://www.halitalptekin.com/category/internet.html">internet</a></li>
+        <li><a href="http://www.halitalptekin.com/category/guvenlik.html">guvenlik</a></li>
+        <li><a href="http://www.halitalptekin.com/category/genel.html">genel</a></li>
+        <li><a href="http://www.halitalptekin.com/category/eglence.html">eglence</a></li>
+        <li><a href="http://www.halitalptekin.com/category/django.html">django</a></li>
+        <li><a href="http://www.halitalptekin.com/category/compsci.html">compsci</a></li>
+        <li><a href="http://www.halitalptekin.com/category/clojure.html">clojure</a></li>
+        <li><a href="http://www.halitalptekin.com/category/arduino.html">arduino</a></li>
+    </ul>
+  </section>
+ 
+
+
+    <section>
+        <h1>Social</h1>
+        <ul>
+            <li><a href="http://www.halitalptekin.com/feeds/all.rss.xml" type="application/rss+xml" rel="alternate">rss</a></li>
+            <li><a href="http://twitter.com/halitalptekin" target="_blank">twitter</a></li>
+            <li><a href="http://github.com/halitalptekin" target="_blank">github</a></li>
+            <li><a href="http://stackoverflow.com/users/1151618/halit-alptekin" target="_blank">stackoverflow</a></li>
+            <li><a href="http://tr.linkedin.com/in/halitalptekin" target="_blank">linkedin</a></li>
+        </ul>
+    </section>
+    <section>
+        <h1>Blogroll</h1>
+        <ul>
+            <li><a href="http://www.python.org" target="_blank">Python</a></li>
+        </ul>
+    </section>
+
+
+</aside><aside class="sidebar">
+  <section>
+    <h1>Recent Posts</h1>
+    <ul id="recent_posts">
+      <li class="post">
+          <a href="http://www.halitalptekin.com/python-ve-sinyaller.html">Python ve sinyaller</a>
+      </li>
+      <li class="post">
+          <a href="http://www.halitalptekin.com/linux-uzerinde-tersine-muhendislik.html">Linux üzerinde tersine mühendislik</a>
+      </li>
+      <li class="post">
+          <a href="http://www.halitalptekin.com/clojure-notlari-2.html">Clojure Notları #2</a>
+      </li>
+      <li class="post">
+          <a href="http://www.halitalptekin.com/clojure-gelistirme-ortami.html">Clojure geliştirme ortamı</a>
+      </li>
+      <li class="post">
+          <a href="http://www.halitalptekin.com/clojure-notlari-1.html">Clojure Notları #1</a>
+      </li>
+    </ul>
+  </section>
+  <section>
+      
+    <h1>Categories</h1>
+    <ul id="recent_posts">
+        <li><a href="http://www.halitalptekin.com/category/tasarim.html">tasarim</a></li>
+        <li><a href="http://www.halitalptekin.com/category/server.html">server</a></li>
+        <li><a href="http://www.halitalptekin.com/category/python.html">python</a></li>
+        <li><a href="http://www.halitalptekin.com/category/programlama.html">programlama</a></li>
+        <li><a href="http://www.halitalptekin.com/category/linux.html">linux</a></li>
+        <li><a href="http://www.halitalptekin.com/category/kisisel.html">kisisel</a></li>
+        <li><a href="http://www.halitalptekin.com/category/internet.html">internet</a></li>
+        <li><a href="http://www.halitalptekin.com/category/guvenlik.html">guvenlik</a></li>
+        <li><a href="http://www.halitalptekin.com/category/genel.html">genel</a></li>
+        <li><a href="http://www.halitalptekin.com/category/eglence.html">eglence</a></li>
+        <li><a href="http://www.halitalptekin.com/category/django.html">django</a></li>
+        <li><a href="http://www.halitalptekin.com/category/compsci.html">compsci</a></li>
+        <li><a href="http://www.halitalptekin.com/category/clojure.html">clojure</a></li>
+        <li><a href="http://www.halitalptekin.com/category/arduino.html">arduino</a></li>
+    </ul>
+  </section>
+ 
+
+
+    <section>
+        <h1>Social</h1>
+        <ul>
+            <li><a href="http://www.halitalptekin.com/feeds/all.rss.xml" type="application/rss+xml" rel="alternate">rss</a></li>
+            <li><a href="http://twitter.com/halitalptekin" target="_blank">twitter</a></li>
+            <li><a href="http://github.com/halitalptekin" target="_blank">github</a></li>
+            <li><a href="http://stackoverflow.com/users/1151618/halit-alptekin" target="_blank">stackoverflow</a></li>
+            <li><a href="http://tr.linkedin.com/in/halitalptekin" target="_blank">linkedin</a></li>
+        </ul>
+    </section>
+    <section>
+        <h1>Blogroll</h1>
+        <ul>
+            <li><a href="http://www.python.org" target="_blank">Python</a></li>
+        </ul>
+    </section>
+
+
+</aside>    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2013 - Halit Alptekin -
+  <span class="credit">Powered by <a href="http://getpelican.com">Pelican</a></span>
+</p></footer>
+    <script type="text/javascript">
+	    var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+	    document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+    </script>
+    <script type="text/javascript">
+	    try {
+	        var pageTracker = _gat._getTracker("UA-24728900-1");
+	    pageTracker._trackPageview();
+	    } catch(err) {}
+	</script>
+	<script type="text/javascript">
+	  var disqus_shortname = 'halitalptekin';
+	  (function() {
+	    var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+	    dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
+	    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+	   })();
+	</script>
+</body>
+</html>

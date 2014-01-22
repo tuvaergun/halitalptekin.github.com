@@ -1,5 +1,147 @@
 <?xml version="1.0" encoding="utf-8"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>( λ Halit Alptekin )</title><link>http://www.halitalptekin.com/</link><description></description><atom:link href="http://www.halitalptekin.com/feeds/python.rss.xml" rel="self"></atom:link><lastBuildDate>Sat, 24 Nov 2012 00:00:00 +0200</lastBuildDate><item><title>Pelican İle Static Dünyası</title><link>http://www.halitalptekin.com/pelican-ile-static-dunyasi.html</link><description>&lt;p&gt;Bir süredir aklımda olan sitemi &lt;strong&gt;Pelican&lt;/strong&gt;'a dönüştürme fikrini sonunda yapabildim. Ancak bu dönüştürme işleminde &lt;strong&gt;Django&lt;/strong&gt; gibi çok sevdiğim bir sistemi bırakmakda çok kolay olmadı. Aslında buna tam olarak bırakmak denmez. Sadece bir süre ara veriyorum. Çünkü şu anda okuldaki derslerimin sıklaşmasıyla siteme pek vakit ayıramıyordum. Bu yüzden de bir süre &lt;strong&gt;Django-Python&lt;/strong&gt; siteme ara verip yola &lt;strong&gt;Pelican&lt;/strong&gt; ile devam etmek istedim. Yaza doğru tekrardan hatta daha iyi bir şekilde dönüş yapmayı planlıyorum.&lt;/p&gt;
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>( λ Halit Alptekin )</title><link>http://www.halitalptekin.com/</link><description></description><atom:link href="http://www.halitalptekin.com/feeds/python.rss.xml" rel="self"></atom:link><lastBuildDate>Wed, 22 Jan 2014 00:00:00 +0200</lastBuildDate><item><title>Python ve sinyaller</title><link>http://www.halitalptekin.com/python-ve-sinyaller.html</link><description>&lt;p&gt;Bu dönem okulda aldığım Sinyaller ve Sistemler dersi hayatımda gördüğüm en zevkli derslerden birisidir. Genelde mühendislik bölümlerinde bu ders tam bir baş belası olarak görülür. Ne anladığının önemi olmadan dersi geç modunda alır herkes. Tüm bunlara rağmen ben dersi cidden sevdim ve boş zamanlarımda sürekli olarak uğraştım. Elektrik-Elektronik ve Bilgisayar mühendisliğinde önemli bir yeri olan bu derse verilen inşallah zamanla daha fazla artar.&lt;/p&gt;
+&lt;p&gt;Finalleri atlatıp, bahsettiğim derside zorlanmadan verince bunda en büyük payı olan Python ve kütüphanelerinden bahsetmek istedim. Bugün en temel sinyalleri nasıl çizdirebileceğimiz, bunlar üzerinde nasıl çalışabileceğimizi göstermek istiyorum. İlerleyen zamanlarda Fourier dönüşümü ve serilerine de değineceğim. Ama önce temelleri atmak lazım.&lt;/p&gt;
+&lt;p&gt;Ben uygulamalarımı iPython üzerinde Pylab ile birlikte yapıyorum. Bunun için Debian dağıtımlarında aşağıdaki komutları çalıştırmanız yeterlidir. Diğer dağıtımlar içinde genellikle aynı isimli paketleri kurabilirsiniz.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;sudo&lt;/span&gt; &lt;span class="n"&gt;apt&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;get&lt;/span&gt; &lt;span class="n"&gt;install&lt;/span&gt; &lt;span class="n"&gt;python&lt;/span&gt; &lt;span class="n"&gt;ipython&lt;/span&gt; &lt;span class="n"&gt;ipython&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;notebook&lt;/span&gt;
+&lt;span class="n"&gt;sudo&lt;/span&gt; &lt;span class="n"&gt;apt&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;get&lt;/span&gt; &lt;span class="n"&gt;install&lt;/span&gt; &lt;span class="n"&gt;python&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;numpy&lt;/span&gt; &lt;span class="n"&gt;python&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;scipy&lt;/span&gt; &lt;span class="n"&gt;python&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;matplotlib&lt;/span&gt; &lt;span class="n"&gt;python&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;sympy&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Gerekli paketleri kurduktan sonra ipython'u &lt;code&gt;pylab&lt;/code&gt; modunda açabilirsiniz. Bu şekilde başlatma sebebimiz kütüphaneleri otomatik olarak import etmesidir. Rahatlıkla işinize başlayabilirsiniz. Nerede ne vardı gibi düşünmenize gerek yok. Bu şekilde açmak için &lt;code&gt;ipython notebook --pylab&lt;/code&gt; komutunu kullanabilirsiniz.&lt;/p&gt;
+&lt;h1&gt;Sinus ve Cosinus&lt;/h1&gt;
+&lt;p&gt;Temel sinyallerin başında sinus ve cosinus yer alıyor. Zaten bu ikisini çizdirip üzerinde oynamalar yapabildiğimiz zaman geri kalan tüm sinyalleri rahatlıkla çizdirip üzerinde işlem yapabiliriz.&lt;/p&gt;
+&lt;p&gt;Sinyal dediğimiz aslında x, y koordinat düzleminde yer alan noktalar kümesidir. Bir kısmı kesikli, bir kısmı sürekli olabilir. Biz şimdilik sürekli zamanlı sinyaller ile uğraşıyoruz. Ama dikkatinizi çekeceğim bir konu ne kadar bize sürekli gibi gözüksede temelinde bilgisayar üzerinde yaptığımız işlemler hep kesikli. Bu konu analog, dijital ayrımından kaynaklanıyor. Neyse konumuz şimdilik bu değil.&lt;/p&gt;
+&lt;p&gt;Öncelikli olarak çalışacağımız bir x alanı ve bu alan üzerindeki değerleri değiştirecek y fonksiyonumuz olacak. Y fonksiyonumuz öncelikli olarak sinus olacak. X alanımızı da 0-1 aralığında 1000 tane nokta olarak belirleyeceğiz. Şimdi tüm bu söylediklerimi koda dökelim ve ilk çıktımızı alalım.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;t&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;linspace&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;1000&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="n"&gt;f&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="mi"&gt;1&lt;/span&gt;
+&lt;span class="n"&gt;sint&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;sin&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;2&lt;/span&gt;&lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="n"&gt;pi&lt;/span&gt;&lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="n"&gt;f&lt;/span&gt;&lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="n"&gt;t&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+
+&lt;span class="n"&gt;ylim&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mi"&gt;2&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;2&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="n"&gt;plot&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;t&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;sint&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Yukarıdaki kod parçasında öncelikli olarak 0-1 aralığında 1000 tane nokta seçtik. Daha sonra frekansımızın 1 olmasını belirttik. Son olarakta sinus fonksiyonumuzu kuralını uygun bir şekilde &lt;code&gt;2*pi*f*t&lt;/code&gt; formunda belirledik. Arada yaptığımız &lt;code&gt;ylim(-2, 2)&lt;/code&gt; işlemi sadece üst ve alt sınır belirleyerek işaretimizi daha net görmek için. Tüm bunlardan sonra elde edeceğimiz çıktı aşağıdaki gibi olacaktır.&lt;/p&gt;
+&lt;p&gt;&lt;img alt="Sinus sinyali" src="media/sin.png" /&gt;&lt;/p&gt;
+&lt;p&gt;Çıktıdan da görebildiğiniz gibi tam istediğimiz sonuca ulaştık. Artık elimizde 0-1 aralığında, frekansı 1 olan bir sinus işareti var. Artık üzerinde temel işlemler yapabiliriz. Mesela bu işaretimizi &lt;code&gt;pi/4&lt;/code&gt; kadar öteleme yapalım. Yani zamanda yavaşlama.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;t&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;linspace&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;1000&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="n"&gt;f&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="mi"&gt;1&lt;/span&gt;
+&lt;span class="n"&gt;sint&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;sin&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;2&lt;/span&gt;&lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="n"&gt;pi&lt;/span&gt;&lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="n"&gt;f&lt;/span&gt;&lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="n"&gt;t&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="n"&gt;sino&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;sin&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;2&lt;/span&gt;&lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="n"&gt;pi&lt;/span&gt;&lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="n"&gt;f&lt;/span&gt;&lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="n"&gt;t&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt; &lt;span class="n"&gt;pi&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="mi"&gt;4&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+
+&lt;span class="n"&gt;ylim&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mi"&gt;2&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;2&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="n"&gt;plot&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;t&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;sint&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="n"&gt;plot&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;t&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;sino&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Bir önceki işaretimiz ile kıyaslama yaptığımızda gerçekten de ötelenmiş olduğunu görebiliriz. Elimizde yer alan sinyallere bu şekilde ileri veya geri öteleme yapabiliriz. Bu işlemin tam tersi için kod içerisinde eksi olan yeri artı yapmak yeterlidir.&lt;/p&gt;
+&lt;p&gt;&lt;img alt="Otelenmis sinus sinyali" src="media/sin2.png" /&gt;&lt;/p&gt;
+&lt;p&gt;Elimizdeki bu işaretin x eksenine müdahele etme şeklini yukarıda gösterdik. Eğer y eksenine müdahale etmek istiyorsak bu da eşit derecede kolay. Aşağıdaki kod ile işaretimize doğrusal bir ekleme yapabiliriz.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;t&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;linspace&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;1000&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="n"&gt;f&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="mi"&gt;1&lt;/span&gt;
+&lt;span class="n"&gt;sint&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;sin&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;2&lt;/span&gt;&lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="n"&gt;pi&lt;/span&gt;&lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="n"&gt;f&lt;/span&gt;&lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="n"&gt;t&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="n"&gt;sinl&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;sin&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;2&lt;/span&gt;&lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="n"&gt;pi&lt;/span&gt;&lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="n"&gt;f&lt;/span&gt;&lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="n"&gt;t&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="o"&gt;+&lt;/span&gt; &lt;span class="mi"&gt;1&lt;/span&gt;
+
+&lt;span class="n"&gt;ylim&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mi"&gt;3&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;3&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="n"&gt;plot&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;t&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;sint&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="n"&gt;plot&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;t&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;sinl&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Ve artık işaretimiz negatif kısım yerine orjine kadar inip tekrardan yükseliyor.&lt;/p&gt;
+&lt;p&gt;&lt;img alt="Negatif sinus" src="media/sin3.png" /&gt;&lt;/p&gt;
+&lt;p&gt;Sinus işaretimiz ile temel anlamda yapabileceklerimizi anladığımızı umuyorum. Gösterdiğim herşey cosinus için de geçerli olduğundan hepsini tekrardan belirtmeyeceğim. Ama cosinus ile de bir örnek yapmak istediğimden yukarıda yer alan kodumuzun frekansını ve tepe değerini değiştirip göstereceğim.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;t&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;linspace&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;1000&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="n"&gt;f&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="mi"&gt;2&lt;/span&gt;
+&lt;span class="n"&gt;cost&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="mi"&gt;3&lt;/span&gt;&lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="n"&gt;cos&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;2&lt;/span&gt;&lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="n"&gt;pi&lt;/span&gt;&lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="n"&gt;f&lt;/span&gt;&lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="n"&gt;t&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+
+&lt;span class="n"&gt;ylim&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mi"&gt;4&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;4&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="n"&gt;plot&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;t&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;cost&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Yukarıdaki kodun çıktısı 0-1 aralığında, frekansı 2 ve tepe noktası 3 ile çarpılmış bir cosinus işareti olacaktır.&lt;/p&gt;
+&lt;p&gt;&lt;img alt="Cosinus isareti" src="media/cos.png" /&gt;&lt;/p&gt;
+&lt;h1&gt;Sinc&lt;/h1&gt;
+&lt;p&gt;Sinc fonksiyonu en az sinus, cosinus kadar çok kullanılır. Kare dalganın fourier dönüşümü bir sinc işareti olduğundan sinyaller arasında önemli bir yere sahiptir. Bu işareti yukarılarda yaptığımız işlemlerin benzerleri ile rahatlıkla çizdirebiliriz.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;t&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;linspace&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;1000&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="n"&gt;f&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="mi"&gt;1&lt;/span&gt;
+&lt;span class="n"&gt;sinct&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;sinc&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;2&lt;/span&gt;&lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="n"&gt;pi&lt;/span&gt;&lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="n"&gt;f&lt;/span&gt;&lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="n"&gt;t&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+
+&lt;span class="n"&gt;ylim&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mf"&gt;0.5&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mf"&gt;1.5&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="n"&gt;plot&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;t&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;sinct&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Burada yaptığımız işlemin Türkçesi -1, 1 aralığında frekansı 1 olan bir sinc fonksiyonunu çizdirmek oluyor. &lt;code&gt;ylim&lt;/code&gt; ile alt ve üst sınırı belirterek daha net bir görünüm elde ediyoruz.&lt;/p&gt;
+&lt;p&gt;&lt;img alt="Sinc isareti" src="media/sinc.png" /&gt;&lt;/p&gt;
+&lt;h1&gt;Square&lt;/h1&gt;
+&lt;p&gt;Kare dalga herhangi bir işaretin sadece belirli kısımlarını değerlendirmemize yarayan güzel bir fonksiyondur. Bu dalgayı nasıl ve nerede kullanacağımızı ilk defa öğrendiğimde beynimde şimşekler çakmıştı. Gerçekten de çok işe yarar olduğunu anlamıştım. Halen öyle düşünüyorum.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;import&lt;/span&gt; &lt;span class="n"&gt;scipy&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;signal&lt;/span&gt; &lt;span class="n"&gt;as&lt;/span&gt; &lt;span class="n"&gt;signals&lt;/span&gt;
+
+&lt;span class="n"&gt;t&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;linspace&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;1000&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="n"&gt;f&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="mi"&gt;1&lt;/span&gt;
+&lt;span class="n"&gt;sqt&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;signals&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;square&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;2&lt;/span&gt;&lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="n"&gt;pi&lt;/span&gt;&lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="n"&gt;f&lt;/span&gt;&lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="n"&gt;t&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+
+&lt;span class="n"&gt;ylim&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mi"&gt;2&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;2&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="n"&gt;plot&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;t&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;sqt&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Yukarıdaki kodun çıktısı -1, 1 aralığında frekansı 1 olan kare dalga olacaktır. Bu fonksiyondan yola çıkıp istediğimiz dikdörtgen dalgayı da oluşturabiliriz.&lt;code&gt;signals.square&lt;/code&gt; fonksiyonuna ikinci bir parametre olarak &lt;code&gt;duty cycle&lt;/code&gt; değerini veriyoruz. Eğer bunu 1 olarak seçerseniz bu aralıkta yapılan işi 1 yapıp istediğiniz dikdörtgen dalgayı elde edebilirsiniz.&lt;/p&gt;
+&lt;p&gt;&lt;img alt="Kare dalga" src="media/square.png" /&gt;&lt;/p&gt;
+&lt;p&gt;Bu fonksiyonun kullanım alanına gelirsek elimizde herhangi bir işaret olduğunu düşünelim. Biz bu işaretin sadece 0-1 aralığını kullanmak istiyorsak yapmamız gereken bu işareti 0-1 aralığındaki dikdörtgen dalga fonksiyonu ile çarpmak. Bu sayede 0-1 aralığındaki tüm değerleri 0'a çekip söndürmüş oluyoruz.&lt;/p&gt;
+&lt;h1&gt;Sawtooth&lt;/h1&gt;
+&lt;p&gt;Testere fonksiyonu da temel işaretlerden birisidir. Yukarıda yaptığımız işin benzerini yaparsak bu fonksiyonu da çizdirebiliriz.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;import&lt;/span&gt; &lt;span class="n"&gt;scipy&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;signal&lt;/span&gt; &lt;span class="n"&gt;as&lt;/span&gt; &lt;span class="n"&gt;signals&lt;/span&gt;
+
+&lt;span class="n"&gt;t&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;linspace&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;1000&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="n"&gt;f&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="mi"&gt;1&lt;/span&gt;
+&lt;span class="n"&gt;saw&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;signals&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;sawtooth&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;2&lt;/span&gt;&lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="n"&gt;pi&lt;/span&gt;&lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="n"&gt;f&lt;/span&gt;&lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="n"&gt;t&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+
+&lt;span class="n"&gt;ylim&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mf"&gt;1.5&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mf"&gt;1.5&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="n"&gt;xlim&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mf"&gt;1.5&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mf"&gt;1.5&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="n"&gt;plot&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;t&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;saw&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;&lt;img alt="Testere disi" src="media/saw.png" /&gt;&lt;/p&gt;
+&lt;h1&gt;Exponential&lt;/h1&gt;
+&lt;p&gt;Exp fonksiyonu matematik ve mühendislikte çok fazla kullanılır. Kullanım sebebini gelirsek türevinin kendisini vermesinden değişimi gözlemeye yarar. Sistemlerde de işaretlerin yavaşça sönümlenmesinde kullanılabilir.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;t&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;linspace&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;1000&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="n"&gt;y&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;exp&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;t&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+
+&lt;span class="n"&gt;plot&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;t&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;y&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;&lt;img alt="Exp" src="media/exp.png" /&gt;&lt;/p&gt;
+&lt;p&gt;Bunun yanında bir de azalan üstel fonksiyonu çizdirelim.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;t&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;linspace&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;1000&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="n"&gt;y&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;exp&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;t&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+
+&lt;span class="n"&gt;plot&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;t&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;y&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;&lt;img alt="Exp" src="media/expn.png" /&gt;&lt;/p&gt;
+&lt;p&gt;Şimdiye kadar gösterdiğim fonksiyonlardan yola çıkarak bazı işaretlerin kombinasyonlarını yaparak bu yazıyı bitireyim. Bunun için öncelikle rastlantısal bir sinyal oluşturacağım. Ve bunu üstel azalan fonksiyon ile çarpacağım.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;r&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;random_sample&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;100&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="n"&gt;t&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;linspace&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;100&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="n"&gt;y&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;exp&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;t&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+
+&lt;span class="n"&gt;f&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;r&lt;/span&gt;&lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="n"&gt;y&lt;/span&gt;
+
+&lt;span class="n"&gt;plot&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;t&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;r&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="n"&gt;plot&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;t&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;f&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Öncelikle rastlantısal sinyalimizi çizelim ve daha sonra üstel azalan fonksiyon ile çarpılmışını çizdirelim. İsterseniz yukarıda yer alan kod gibi aynı düzlemde çizdirebilirsiniz ancak ben belli olması için farklı resimlerde göstereceğim.&lt;/p&gt;
+&lt;p&gt;&lt;img alt="Rastlantisal" src="media/rand.png" /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt="Rastlantisal exp" src="media/rande.png" /&gt;&lt;/p&gt;
+&lt;p&gt;Burada anlattıklarım dışında diğer tüm işaretlere &lt;code&gt;dir(signals)&lt;/code&gt; diyerek ulaşabilirsiniz. Kendi işaretlerinizi yapıp üzerinde istediğiniz gibi işlem yapabilirsiniz.&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Halit Alptekin</dc:creator><pubDate>Wed, 22 Jan 2014 00:00:00 +0200</pubDate><guid>tag:www.halitalptekin.com,2014-01-22:python-ve-sinyaller.html</guid><category>python</category><category>pylab</category><category>scipy</category><category>matplotlib</category><category>ipython</category></item><item><title>Pelican İle Static Dünyası</title><link>http://www.halitalptekin.com/pelican-ile-static-dunyasi.html</link><description>&lt;p&gt;Bir süredir aklımda olan sitemi &lt;strong&gt;Pelican&lt;/strong&gt;'a dönüştürme fikrini sonunda yapabildim. Ancak bu dönüştürme işleminde &lt;strong&gt;Django&lt;/strong&gt; gibi çok sevdiğim bir sistemi bırakmakda çok kolay olmadı. Aslında buna tam olarak bırakmak denmez. Sadece bir süre ara veriyorum. Çünkü şu anda okuldaki derslerimin sıklaşmasıyla siteme pek vakit ayıramıyordum. Bu yüzden de bir süre &lt;strong&gt;Django-Python&lt;/strong&gt; siteme ara verip yola &lt;strong&gt;Pelican&lt;/strong&gt; ile devam etmek istedim. Yaza doğru tekrardan hatta daha iyi bir şekilde dönüş yapmayı planlıyorum.&lt;/p&gt;
 &lt;p&gt;Biraz da &lt;strong&gt;Django&lt;/strong&gt;'dan &lt;strong&gt;Pelican&lt;/strong&gt;'a dönüşüm kısmında yaptıklarımdan bahsedeyim.&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;Django sitemde yer alan tüm yazıları markdown'a dönüştürme işlemi öncesi hafif bir çıktı haline getirdim.&lt;/li&gt;
