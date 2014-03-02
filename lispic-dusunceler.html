@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>( &#955; Halit Alptekin ) - Lispic düşünceler</title>
+
+  <meta name="author" content="Halit Alptekin">
+  <meta name="description" content="Programming and Life Blog Of Halit Alptekin. Karadeniz Technical University Computer Engineering Student.">
+  <meta name="keywords" content="linux, python, django, ruby, open source, lisp, clojure, programming, ktu">
+  <meta name="robots" content="index, follow, all"/>
+
+  <link href="http://www.halitalptekin.com/feeds/all.rss.xml" type="application/rss+xml" rel="alternate"
+        title="( &#955; Halit Alptekin ) RSS Feed" />
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <link href="http://www.halitalptekin.com/favicon.png" rel="icon">
+  <link href="http://www.halitalptekin.com/theme/css/main.css" media="screen, projection"
+        rel="stylesheet" type="text/css">
+  <script src="http://www.halitalptekin.com/theme/js/modernizr-2.0.js"></script>
+  <script src="http://www.halitalptekin.com/theme/js/ender.js"></script>
+  <script src="http://www.halitalptekin.com/theme/js/octopress.js" type="text/javascript"></script>
+
+  <link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic"
+        rel="stylesheet" type="text/css">
+  <link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic"
+        rel="stylesheet" type="text/css">
+</head>
+<body>
+  <header role="banner"><hgroup>
+  <h1><a href="http://www.halitalptekin.com/">( &#955; Halit Alptekin )</a></h1>
+</hgroup></header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  <li><a href="http://www.halitalptekin.com/feeds/all.rss.xml" rel="subscribe-rss">Rss</a></li>
+</ul>
+
+<!-- TODO: add search here
+<form action="" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="q" value="site:http://www.halitalptekin.com" />
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+-->
+
+<ul class="main-navigation">
+  <li><a href="http://www.halitalptekin.com/">Blog</a></li>
+    <li><a href="http://www.halitalptekin.com/pages/about-me.html">About Me</a></li>
+    <li><a href="http://www.halitalptekin.com/pages/contact.html">Contact</a></li>
+  <!-- TODO: add categories here? -->
+</ul></nav>
+  <div id="main">
+    <div id="content">
+<div>
+  <article class="hentry" role="article">
+<header>
+      <h1 class="entry-title">Lispic düşünceler</h1>
+      <p class="meta"><time datetime="2014-03-02T00:00:00" pubdate> Mar 02, 2014 </time></p>
+</header>
+
+  <div class="entry-content"><p>Lisp ile uğraşmaya başladıktan sonra bilgisayar bilimlerine bakış açım tamamen değişti. Başlarda sadece Lisp ile uğraşıyordum. Ancak daha sonraları kendimi hesaplama teorileri içinde buldum. Haliyle programlamaya ve programlama dillerine de artık o taraftan bakıyorum. Programlamayı bir sanat olarak görmekle beraber, aslında sahip olduğu sadeliğin matematikten geldiğine inanıyorum. Bugün de lambda calculus ile ilgili yazılar okurken öğrendiğim ve çok hoşuma giden bazı olayları Python ile göstermeye çalışacağım.</p>
+<p><a href="media/lambda.gif"><img alt="Lambda Calculus" src="media/lambda.gif" /></a></p>
+<p>Birazdan anlatacaklarım baştan size çok saçma veya karmaşık gelebilir. Ancak olaylara biraz farklı bakmayı denediğinizde temelde yatan sadeliği göreceksiniz. Eminim benim kadar çok etkileneceksiniz.</p>
+<p>Bu yazıdaki amacım çok basit ve temel yapıları kullanarak karmaşık yapıların nasıl inşa edilebileceğini göstermek. Elinizde Python dilinin sadece <code>None</code> sabiti, <code>lambda</code> ve <code>if</code> ifadesi olduğunu düşünün. Aslında <code>if</code> ifadesine de ihtiyacımız yok. Onu da sıfırdan yapabiliriz ama ben uzatmamak için Python'un kendi <code>if</code> ifadesini kullanacağım.</p>
+<p>Elimizde yer alan bu 3 şey ile biraz ilginç şeyler yapalım. Öncelikle yokluğu tanımlayalım.</p>
+<div class="highlight"><pre><span class="n">n0</span> <span class="o">=</span> <span class="n">lambda</span> <span class="o">:</span> <span class="n">None</span>
+</pre></div>
+
+
+<p>Burada <code>lambda</code> ifadesinin ne yaptığını biliyorsunuz. İsimsiz bir fonksiyon tanımlıyor. Biz hiç parametre almamasını ve geriye <code>None</code> döndürmesini istedik. Bu artık bizim yokluğumuz. Bir nevi 0 sayımız.</p>
+<p>Şimdi yapmamız gereken bu yokluğumuzun birer birer artmasını ve azalmasını sağlayacak olan ifadeleri yazmak. Bunları da aşağıdaki şekilde tanımlayabiliriz.</p>
+<div class="highlight"><pre><span class="n">inc</span> <span class="o">=</span> <span class="n">lambda</span> <span class="n">x</span><span class="o">:</span> <span class="n">lambda</span><span class="o">:</span> <span class="n">x</span>
+<span class="n">dec</span> <span class="o">=</span> <span class="n">lambda</span> <span class="n">x</span><span class="o">:</span> <span class="n">x</span><span class="p">()</span>
+</pre></div>
+
+
+<p>Ooops. Neler yaptık burada. Aslında abartılacak herhangi bir şey yok. Yukarıda olan olayları def ile birer fonksiyon haline getirebilirdik. Ancak yazının ruhuna uyması için onları da <code>lambda</code> ile tanımladım. Kısaca çalışmalarına gelirsek, <code>inc</code> ifademiz geriye bir fonksiyon döndürüyor. Ama bu dönen fonksiyon da bir fonksiyon döndürüyor. Daha doğrusu bu <code>inc</code> ifademize verdiğimiz fonksiyona bir fonksiyon halkası daha takıyor. Peki <code>dec</code> ne yapıyor dersiniz. O da tam tersi işlem yapıp bu halkadan bir tane fonksiyonu çağırıyor. Yani halkadan koparıyor.</p>
+<p>Yukarıda yaptığımızdan yola çıkarak şimdi de fonksiyon halkamıza bir tane takalım ve buna <code>n1</code> diyelim. Sonra da onun üzerine yeni halkalar ekleyelim.</p>
+<div class="highlight"><pre><span class="n">n1</span> <span class="o">=</span> <span class="n">inc</span><span class="p">(</span><span class="n">n0</span><span class="p">)</span>
+<span class="n">n2</span> <span class="o">=</span> <span class="n">inc</span><span class="p">(</span><span class="n">n1</span><span class="p">)</span>
+<span class="n">n3</span> <span class="o">=</span> <span class="n">inc</span><span class="p">(</span><span class="n">n2</span><span class="p">)</span>
+<span class="n">n4</span> <span class="o">=</span> <span class="n">inc</span><span class="p">(</span><span class="n">n3</span><span class="p">)</span>
+<span class="n">n5</span> <span class="o">=</span> <span class="n">inc</span><span class="p">(</span><span class="n">n4</span><span class="p">)</span>
+</pre></div>
+
+
+<p>Buraya kadar olan kısımda ne yaptığımızı anlamadıysanız çok endişelenmeyin. Biraz sonra yazacaklarımızdan sonra bütünü incelerseniz anlamanız kolaylaşacaktır.</p>
+<p>Şimdi bu kurduğumuz sisteme bir de eşitlik olayını ekleyelim. Çünkü biz <code>n2</code> isminde bir büyüklük yaptık ancak bu gerçekten de <code>n3</code> büyüklüğünün bir azı mı. Yani sistemimiz de herhangi bir terslik var mı yok mu test etmemiz gerekiyor.</p>
+<div class="highlight"><pre><span class="n">is_zero</span> <span class="o">=</span> <span class="n">lambda</span> <span class="n">x</span><span class="o">:</span> <span class="n">x</span><span class="p">()</span> <span class="n">is</span> <span class="n">None</span>
+</pre></div>
+
+
+<p>Bu oluşturuduğumuz ifade, ona verdiğimiz halkadan bir adet koparıyor ve <code>None</code> sabitine ulaşıp ulaşmadığımızı test ediyor. Şimdi bu ifade ile önceki yaptıklarımızın ufak bir kontrolunu yapalım.</p>
+<div class="highlight"><pre><span class="n">is_zero</span><span class="p">(</span><span class="n">dec</span><span class="p">(</span><span class="n">n1</span><span class="p">))</span>
+</pre></div>
+
+
+<p>Eğer yukarıdaki kodun çıktısı <code>True</code> ise doğru yoldayız demektir.</p>
+<p>Şimdi geldik en can alıcı noktaya. Burada iki ifadenin eşit olup olmadığını kontrol edeceğiz. Bakalım nasıl oluyor bu iş.</p>
+<div class="highlight"><pre><span class="n">def</span> <span class="n">equal</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span><span class="o">:</span>
+    <span class="k">if</span> <span class="n">is_zero</span><span class="p">(</span><span class="n">x</span><span class="p">)</span><span class="o">:</span> <span class="k">return</span> <span class="n">is_zero</span><span class="p">(</span><span class="n">y</span><span class="p">)</span>
+    <span class="n">elif</span> <span class="n">is_zero</span><span class="p">(</span><span class="n">y</span><span class="p">)</span><span class="o">:</span> <span class="k">return</span> <span class="n">is_zero</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+    <span class="nl">else:</span> <span class="k">return</span> <span class="n">equal</span><span class="p">(</span><span class="n">dec</span><span class="p">(</span><span class="n">x</span><span class="p">),</span> <span class="n">dec</span><span class="p">(</span><span class="n">y</span><span class="p">))</span>
+</pre></div>
+
+
+<p>Yukarıda yer alan kod göz korkutabilir. Ancak biraz içine girmekte fayda var. Öncelikle bu fonksiyon verdiğimiz iki halkadan herhangi birisinin boş olup olmadığını kontrol ediyor. Eğer ilk verdiğimiz halka boş ise geriye diğer ifadenin dolu mu boş mu olduğunu döndürüyor. Sonuçta eğer ilk ifademiz ile ikinci ifademiz farklı ise aynı anda bu iki koşula gireceklerdir. Bu işlem her bir ifade birer azaltılarak devam ediliyor. Eğer aynı anda 0'a ulaşırlarsa ikisi eşittir. Aksi takdir de <code>is_zero</code> false döndürecektir ve birbirlerine eşit olmayacaklardır.</p>
+<p>Bu kodumuzu da anladıktan sonra şimdi biraz test edelim.</p>
+<div class="highlight"><pre><span class="n">equal</span><span class="p">(</span><span class="n">dec</span><span class="p">(</span><span class="n">n5</span><span class="p">),</span> <span class="n">n4</span><span class="p">)</span> <span class="err">#</span> <span class="mi">5</span><span class="o">-</span><span class="mi">1</span> <span class="o">==</span> <span class="mi">4</span>
+<span class="n">equal</span><span class="p">(</span><span class="n">n3</span><span class="p">,</span> <span class="n">inc</span><span class="p">(</span><span class="n">n2</span><span class="p">))</span> <span class="err">#</span> <span class="mi">3</span> <span class="o">==</span> <span class="mi">2</span><span class="o">+</span><span class="mi">1</span>
+<span class="n">equal</span><span class="p">(</span><span class="n">n3</span><span class="p">,</span> <span class="n">n3</span><span class="p">)</span> <span class="err">#</span> <span class="mi">3</span> <span class="o">==</span> <span class="mi">3</span>
+<span class="n">equal</span><span class="p">(</span><span class="n">n2</span><span class="p">,</span> <span class="n">n5</span><span class="p">)</span> <span class="err">#</span> <span class="mi">2</span> <span class="o">==</span> <span class="mi">5</span>
+<span class="n">equal</span><span class="p">(</span><span class="n">inc</span><span class="p">(</span><span class="n">n4</span><span class="p">),</span> <span class="n">dec</span><span class="p">(</span><span class="n">n2</span><span class="p">))</span> <span class="err">#</span> <span class="mi">4</span><span class="o">+</span><span class="mi">1</span> <span class="o">==</span> <span class="mi">2</span><span class="o">-</span><span class="mi">1</span>
+</pre></div>
+
+
+<p>Bunların üzerinde bir de iki ifadeyi toplayan ve çıkaran fonksiyonları yazalım.</p>
+<div class="highlight"><pre><span class="n">sub</span> <span class="o">=</span> <span class="n">lambda</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="o">:</span> <span class="n">x</span> <span class="k">if</span> <span class="n">is_zero</span><span class="p">(</span><span class="n">y</span><span class="p">)</span> <span class="k">else</span> <span class="n">sub</span><span class="p">(</span><span class="n">dec</span><span class="p">(</span><span class="n">x</span><span class="p">),</span> <span class="n">dec</span><span class="p">(</span><span class="n">y</span><span class="p">))</span>
+<span class="n">plus</span> <span class="o">=</span> <span class="n">lambda</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="o">:</span> <span class="n">x</span> <span class="k">if</span> <span class="n">is_zero</span><span class="p">(</span><span class="n">y</span><span class="p">)</span> <span class="k">else</span> <span class="n">plus</span><span class="p">(</span><span class="n">inc</span><span class="p">(</span><span class="n">x</span><span class="p">),</span> <span class="n">dec</span><span class="p">(</span><span class="n">y</span><span class="p">))</span>
+</pre></div>
+
+
+<p>Burada kurduğumuz yapı klasik olarak iki ifadenin toplaması ve çıkarmasında kullanılan yöntemdir. Toplarken bir ifadeyi sürekli arttırıp diğerini azaltıyoruz. Azalttığımız 0'a ulaştığında sürekli arttırdığımızı geri döndürüyoruz. Çıkarma işleminde de ikisini sürekli azaltıyoruz. Eğer birisi 0'a ulaştıysa diğerini döndürüyoruz. Burada çıkarma işlemindeki problemi farketmişinizdir umarım. Onu da sizlere bırakıyorum.</p>
+<p>Şimdi elimizde toplama, çıkarma, bir arttirma, bir azaltma, eşitlik kontrolu, ve oluşturduğumuz halkalar var. Bunlar ile biraz işlem yapalım.</p>
+<div class="highlight"><pre><span class="n">equal</span><span class="p">(</span><span class="n">plus</span><span class="p">(</span><span class="n">n3</span><span class="p">,</span> <span class="n">n1</span><span class="p">),</span> <span class="n">n4</span><span class="p">)</span> <span class="err">#</span> <span class="mi">3</span><span class="o">+</span><span class="mi">1</span> <span class="o">==</span> <span class="mi">4</span>
+<span class="n">equal</span><span class="p">(</span><span class="n">plus</span><span class="p">(</span><span class="n">n2</span><span class="p">,</span> <span class="n">n1</span><span class="p">),</span> <span class="n">plus</span><span class="p">(</span><span class="n">n3</span><span class="p">,</span> <span class="n">n0</span><span class="p">))</span> <span class="err">#</span> <span class="mi">2</span><span class="o">+</span><span class="mi">1</span> <span class="o">==</span> <span class="mi">3</span><span class="o">+</span><span class="mi">0</span>
+<span class="n">equal</span><span class="p">(</span><span class="n">plus</span><span class="p">(</span><span class="n">n2</span><span class="p">,</span> <span class="n">n0</span><span class="p">),</span> <span class="n">sub</span><span class="p">(</span><span class="n">n4</span><span class="p">,</span> <span class="n">n2</span><span class="p">))</span> <span class="err">#</span> <span class="mi">2</span><span class="o">+</span><span class="mi">0</span> <span class="o">==</span> <span class="mi">4</span><span class="o">-</span><span class="mi">2</span>
+<span class="n">equal</span><span class="p">(</span><span class="n">sub</span><span class="p">(</span><span class="n">n3</span><span class="p">,</span> <span class="n">n1</span><span class="p">),</span> <span class="n">sub</span><span class="p">(</span><span class="n">n2</span><span class="p">,</span> <span class="n">n0</span><span class="p">))</span> <span class="err">#</span> <span class="mi">3</span><span class="o">-</span><span class="mi">1</span> <span class="o">==</span> <span class="mi">2</span><span class="o">-</span><span class="mi">0</span>
+<span class="n">n9</span> <span class="o">=</span> <span class="n">plus</span><span class="p">(</span><span class="n">n4</span><span class="p">,</span> <span class="n">n5</span><span class="p">)</span>
+<span class="n">equal</span><span class="p">(</span><span class="n">sub</span><span class="p">(</span><span class="n">n9</span><span class="p">,</span> <span class="n">n1</span><span class="p">),</span> <span class="n">plus</span><span class="p">(</span><span class="n">n4</span><span class="p">,</span> <span class="n">n4</span><span class="p">))</span> <span class="err">#</span> <span class="mi">9</span><span class="o">-</span><span class="mi">1</span> <span class="o">==</span> <span class="mi">4</span><span class="o">+</span><span class="mi">4</span>
+<span class="n">equal</span><span class="p">(</span><span class="n">sub</span><span class="p">(</span><span class="n">n3</span><span class="p">,</span> <span class="n">n1</span><span class="p">),</span> <span class="n">n9</span><span class="p">)</span> <span class="err">#</span> <span class="mi">3</span><span class="o">-</span><span class="mi">1</span> <span class="o">==</span> <span class="mi">9</span>
+</pre></div>
+
+
+<p>İşte Lambda Calculus böyle inanılmaz bir sadelik üzerine kurulu. İnanabiliyormusunuz bu şekilde tam bir programlama dili de yapabilirsiniz? Yıllardır çok da güzel bir şekilde yapıyorlar. Hatta bu dili kullanarak, bu dili yorumlayacak yorumlayıcıyı yazmak çok moda. İlginç geldiyse gerçek dil ile ilgili kaynakların bir kısmına aşağıdaki linklerden ulaşabilirsiniz.</p>
+<p><a href="http://plato.stanford.edu/entries/lambda-calculus/">1</a>
+<a href="http://www.utdallas.edu/~gupta/courses/apl/lambda.pdf">2</a>
+<a href="http://zeroturnaround.com/rebellabs/what-is-lambda-calculus-and-why-should-you-care/">3</a>
+<a href="https://www.princeton.edu/~achaney/tmve/wiki100k/docs/Lambda_calculus.html">4</a>
+<a href="http://homepage.cs.uiowa.edu/~slonnegr/plf/Book/Chapter5.pdf">5</a></p></div>
+    <footer>
+<p class="meta">
+  <span class="byline author vcard">
+    Posted by <span class="fn">Halit Alptekin</span>
+  </span>
+<time datetime="2014-03-02T00:00:00" pubdate> Mar 02, 2014 </time>  <span class="categories">
+    <a class="category" href="http://www.halitalptekin.com/tag/lisp.html">lisp</a>
+    <a class="category" href="http://www.halitalptekin.com/tag/lambda-calculus.html">lambda calculus</a>
+    <a class="category" href="http://www.halitalptekin.com/tag/python.html">python</a>
+  </span>
+</p>    </footer>
+  </article>
+  <section>
+    <div class="addthis_toolbox addthis_default_style addthis_32x32_style">
+        <a class="addthis_button_preferred_1"></a>
+        <a class="addthis_button_preferred_2"></a>
+        <a class="addthis_button_preferred_3"></a>
+        <a class="addthis_button_preferred_4"></a>
+        <a class="addthis_button_preferred_5"></a>
+        <a class="addthis_button_preferred_6"></a>
+        <a class="addthis_button_preferred_7"></a>
+        <a class="addthis_button_preferred_8"></a>
+        <a class="addthis_button_preferred_9"></a>
+        <a class="addthis_button_preferred_10"></a>
+        <a class="addthis_counter addthis_bubble_style"></a>
+    </div>
+    <script type="text/javascript" src="http://s7.addthis.com/js/250/addthis_widget.js#pubid=ra-504c6d593daec57a"></script>
+  </section>
+  <section>
+    <h1>Comments</h1>
+    <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript></div>
+  </section>
+</div>
+<aside class="sidebar">
+  <section>
+    <h1>Recent Posts</h1>
+    <ul id="recent_posts">
+      <li class="post">
+          <a href="http://www.halitalptekin.com/lispic-dusunceler.html">Lispic düşünceler</a>
+      </li>
+      <li class="post">
+          <a href="http://www.halitalptekin.com/sanal-ekonomi.html">Sanal ekonomi</a>
+      </li>
+      <li class="post">
+          <a href="http://www.halitalptekin.com/fourier-serileri.html">Fourier serileri</a>
+      </li>
+      <li class="post">
+          <a href="http://www.halitalptekin.com/python-ve-sinyaller.html">Python ve sinyaller</a>
+      </li>
+      <li class="post">
+          <a href="http://www.halitalptekin.com/linux-uzerinde-tersine-muhendislik.html">Linux üzerinde tersine mühendislik</a>
+      </li>
+    </ul>
+  </section>
+  <section>
+      
+    <h1>Categories</h1>
+    <ul id="recent_posts">
+        <li><a href="http://www.halitalptekin.com/category/tasarim.html">tasarim</a></li>
+        <li><a href="http://www.halitalptekin.com/category/server.html">server</a></li>
+        <li><a href="http://www.halitalptekin.com/category/python.html">python</a></li>
+        <li><a href="http://www.halitalptekin.com/category/programlama.html">programlama</a></li>
+        <li><a href="http://www.halitalptekin.com/category/linux.html">linux</a></li>
+        <li><a href="http://www.halitalptekin.com/category/kisisel.html">kisisel</a></li>
+        <li><a href="http://www.halitalptekin.com/category/internet.html">internet</a></li>
+        <li><a href="http://www.halitalptekin.com/category/guvenlik.html">guvenlik</a></li>
+        <li><a href="http://www.halitalptekin.com/category/genel.html">genel</a></li>
+        <li><a href="http://www.halitalptekin.com/category/eglence.html">eglence</a></li>
+        <li><a href="http://www.halitalptekin.com/category/django.html">django</a></li>
+        <li><a href="http://www.halitalptekin.com/category/compsci.html">compsci</a></li>
+        <li><a href="http://www.halitalptekin.com/category/clojure.html">clojure</a></li>
+        <li><a href="http://www.halitalptekin.com/category/arduino.html">arduino</a></li>
+    </ul>
+  </section>
+ 
+
+
+    <section>
+        <h1>Social</h1>
+        <ul>
+            <li><a href="http://www.halitalptekin.com/feeds/all.rss.xml" type="application/rss+xml" rel="alternate">rss</a></li>
+            <li><a href="http://twitter.com/halitalptekin" target="_blank">twitter</a></li>
+            <li><a href="http://github.com/halitalptekin" target="_blank">github</a></li>
+            <li><a href="http://stackoverflow.com/users/1151618/halit-alptekin" target="_blank">stackoverflow</a></li>
+            <li><a href="http://tr.linkedin.com/in/halitalptekin" target="_blank">linkedin</a></li>
+        </ul>
+    </section>
+    <section>
+        <h1>Blogroll</h1>
+        <ul>
+            <li><a href="http://www.python.org" target="_blank">Python</a></li>
+        </ul>
+    </section>
+
+
+</aside><aside class="sidebar">
+  <section>
+    <h1>Recent Posts</h1>
+    <ul id="recent_posts">
+      <li class="post">
+          <a href="http://www.halitalptekin.com/lispic-dusunceler.html">Lispic düşünceler</a>
+      </li>
+      <li class="post">
+          <a href="http://www.halitalptekin.com/sanal-ekonomi.html">Sanal ekonomi</a>
+      </li>
+      <li class="post">
+          <a href="http://www.halitalptekin.com/fourier-serileri.html">Fourier serileri</a>
+      </li>
+      <li class="post">
+          <a href="http://www.halitalptekin.com/python-ve-sinyaller.html">Python ve sinyaller</a>
+      </li>
+      <li class="post">
+          <a href="http://www.halitalptekin.com/linux-uzerinde-tersine-muhendislik.html">Linux üzerinde tersine mühendislik</a>
+      </li>
+    </ul>
+  </section>
+  <section>
+      
+    <h1>Categories</h1>
+    <ul id="recent_posts">
+        <li><a href="http://www.halitalptekin.com/category/tasarim.html">tasarim</a></li>
+        <li><a href="http://www.halitalptekin.com/category/server.html">server</a></li>
+        <li><a href="http://www.halitalptekin.com/category/python.html">python</a></li>
+        <li><a href="http://www.halitalptekin.com/category/programlama.html">programlama</a></li>
+        <li><a href="http://www.halitalptekin.com/category/linux.html">linux</a></li>
+        <li><a href="http://www.halitalptekin.com/category/kisisel.html">kisisel</a></li>
+        <li><a href="http://www.halitalptekin.com/category/internet.html">internet</a></li>
+        <li><a href="http://www.halitalptekin.com/category/guvenlik.html">guvenlik</a></li>
+        <li><a href="http://www.halitalptekin.com/category/genel.html">genel</a></li>
+        <li><a href="http://www.halitalptekin.com/category/eglence.html">eglence</a></li>
+        <li><a href="http://www.halitalptekin.com/category/django.html">django</a></li>
+        <li><a href="http://www.halitalptekin.com/category/compsci.html">compsci</a></li>
+        <li><a href="http://www.halitalptekin.com/category/clojure.html">clojure</a></li>
+        <li><a href="http://www.halitalptekin.com/category/arduino.html">arduino</a></li>
+    </ul>
+  </section>
+ 
+
+
+    <section>
+        <h1>Social</h1>
+        <ul>
+            <li><a href="http://www.halitalptekin.com/feeds/all.rss.xml" type="application/rss+xml" rel="alternate">rss</a></li>
+            <li><a href="http://twitter.com/halitalptekin" target="_blank">twitter</a></li>
+            <li><a href="http://github.com/halitalptekin" target="_blank">github</a></li>
+            <li><a href="http://stackoverflow.com/users/1151618/halit-alptekin" target="_blank">stackoverflow</a></li>
+            <li><a href="http://tr.linkedin.com/in/halitalptekin" target="_blank">linkedin</a></li>
+        </ul>
+    </section>
+    <section>
+        <h1>Blogroll</h1>
+        <ul>
+            <li><a href="http://www.python.org" target="_blank">Python</a></li>
+        </ul>
+    </section>
+
+
+</aside>    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2013 - Halit Alptekin -
+  <span class="credit">Powered by <a href="http://getpelican.com">Pelican</a></span>
+</p></footer>
+    <script type="text/javascript">
+	    var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+	    document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+    </script>
+    <script type="text/javascript">
+	    try {
+	        var pageTracker = _gat._getTracker("UA-24728900-1");
+	    pageTracker._trackPageview();
+	    } catch(err) {}
+	</script>
+	<script type="text/javascript">
+	  var disqus_shortname = 'halitalptekin';
+	  (function() {
+	    var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+	    dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
+	    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+	   })();
+	</script>
+</body>
+</html>
