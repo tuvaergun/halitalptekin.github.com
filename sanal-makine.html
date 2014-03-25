@@ -1,0 +1,441 @@
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>( &#955; Halit Alptekin ) - Sanal makine</title>
+
+  <meta name="author" content="Halit Alptekin">
+  <meta name="description" content="Programming and Life Blog Of Halit Alptekin. Karadeniz Technical University Computer Engineering Student.">
+  <meta name="keywords" content="linux, python, django, ruby, open source, lisp, clojure, programming, ktu">
+  <meta name="robots" content="index, follow, all"/>
+
+  <link href="http://www.halitalptekin.com/feeds/all.rss.xml" type="application/rss+xml" rel="alternate"
+        title="( &#955; Halit Alptekin ) RSS Feed" />
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <link href="http://www.halitalptekin.com/favicon.png" rel="icon">
+  <link href="http://www.halitalptekin.com/theme/css/main.css" media="screen, projection"
+        rel="stylesheet" type="text/css">
+  <script src="http://www.halitalptekin.com/theme/js/modernizr-2.0.js"></script>
+  <script src="http://www.halitalptekin.com/theme/js/ender.js"></script>
+  <script src="http://www.halitalptekin.com/theme/js/octopress.js" type="text/javascript"></script>
+
+  <link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic"
+        rel="stylesheet" type="text/css">
+  <link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic"
+        rel="stylesheet" type="text/css">
+</head>
+<body>
+  <header role="banner"><hgroup>
+  <h1><a href="http://www.halitalptekin.com/">( &#955; Halit Alptekin )</a></h1>
+</hgroup></header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  <li><a href="http://www.halitalptekin.com/feeds/all.rss.xml" rel="subscribe-rss">Rss</a></li>
+</ul>
+
+<!-- TODO: add search here
+<form action="" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="q" value="site:http://www.halitalptekin.com" />
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+-->
+
+<ul class="main-navigation">
+  <li><a href="http://www.halitalptekin.com/">Blog</a></li>
+    <li><a href="http://www.halitalptekin.com/pages/about-me.html">About Me</a></li>
+    <li><a href="http://www.halitalptekin.com/pages/contact.html">Contact</a></li>
+  <!-- TODO: add categories here? -->
+</ul></nav>
+  <div id="main">
+    <div id="content">
+<div>
+  <article class="hentry" role="article">
+<header>
+      <h1 class="entry-title">Sanal makine</h1>
+      <p class="meta"><time datetime="2014-03-25T00:00:00" pubdate> Mar 25, 2014 </time></p>
+</header>
+
+  <div class="entry-content"><p>Bu dönem aldığım Mikroişlemciler dersinde Morris Mano'nun bilgisayar mimarileri üzerine yazdığı kitabı kullanmaktayız. Bu kitabın diğer birçok mikroişlemciler kitabından en büyük farkı, herhangi bir işlemci mimarisine bağımlı olmadan tamamen hayali bir işlemci mimarisi üzerinden anlatıyor olmasıdır. Bu şekilde bir anlatım tarzı olduğundan anlaması da bir hayli kolay oluyor. Çok basit, az özellikli ama işlemcileri anlamak için yeterli bir olanak sunuyor.</p>
+<p>İşte bu sanal işlemci mimarisi üzerine düşünürken kimi zaman çeşitli algoritmalar yazıyorum ve bunların nasıl çalıştığını teker teker gözlemek gerekiyor. Bu sırada aklıma bunları simule edebileceğim bir ortam yazmak geldi. Yazının konusunu da bu işlemci için yazılan kodları simule edebileceğimiz bir ortamı nasıl yazabileceğimiz oluşturuyor. Anlaşılır olması için aynı kitapta olduğu gibi kodları da o tarz bloklara böldüm. Komut seti zaten tamamen aynısı. </p>
+<p><img alt="Microprocessor" src="media/micro.png" /></p>
+<h3>Genel mimari</h3>
+<p>Sanal makinemiz çalışırken 16 bitlik <code>control word</code>'leri işleyerek çalışıyor. Bu 16 bit te A, B, D, F, H adında 5 ayrı alandan oluşuyor. A, B ve D kısımları 3 bitlik bilgi tutmaktadır. Buradaki 3 bitlik veri ile hangi kaydedici olduğu bilgisini tutacağız. Yani 8 tane kaydedicimiz olacak. A ve B isimleri işlemcinin içerisinde yer alan ve işlemci ünitesine gidecek olan yolları ifade etmektedir. D'de adından anlaşılacağı gibi <code>destination</code> yani hedef kaydediciyi tutacak. Özetlersek A kaydedicisi içerisinde veri ile B kaydedicisi içerisindeki veriyi işleme sokup D kaydedicisi içerisindeki kaydediciye yazacağız.</p>
+<p>16 bitlik kelimemizde F kısmı 4 bitlik veri tutmaktadır ve hangi işlemin gerçekleşeceğini belirtecektir. Yani toplam 16 farklı işlem yaptırabiliriz. Bu işlemlere örnek verirsek 0001 <code>Increment A</code> işlemini ifade etmektedir ve A registerının içeriğini bir arttır ve D registerının içeriğine yazar. Bu şekilde aritmetik ve mantık işlemlerinin her birinin ayrı bir 4 bitlik ifadesi vardır.</p>
+<p>Kelimemizdeki son kısım H 3 bitliktir ve kaydırma işlemleri bilgisini tutacaktır. Örneğin 000 <code>No Shift</code> anlamına gelmektedir.</p>
+<p>Bu kısımda anlattığım 16 bitlik <code>control word</code> yapısını aşağıdaki şekilde oluşturdum.</p>
+<div class="highlight"><pre><span class="k">typedef</span> <span class="k">struct</span><span class="p">{</span>
+    <span class="kt">unsigned</span> <span class="kt">short</span> <span class="n">A</span><span class="o">:</span><span class="mi">3</span><span class="p">;</span>
+    <span class="kt">unsigned</span> <span class="kt">short</span> <span class="n">B</span><span class="o">:</span><span class="mi">3</span><span class="p">;</span>
+    <span class="kt">unsigned</span> <span class="kt">short</span> <span class="n">D</span><span class="o">:</span><span class="mi">3</span><span class="p">;</span>
+    <span class="kt">unsigned</span> <span class="kt">short</span> <span class="n">F</span><span class="o">:</span><span class="mi">4</span><span class="p">;</span>
+    <span class="kt">unsigned</span> <span class="kt">short</span> <span class="n">H</span><span class="o">:</span><span class="mi">3</span><span class="p">;</span>
+<span class="p">}</span><span class="n">_control_word</span><span class="p">;</span>
+</pre></div>
+
+
+<p>Aritmetik ve mantık işlemleri sonucunda çeşitli bayrakların kaldırılmasına ihtiyacımız vardır. Bunları da tutmak için aşağıdaki gibi bir yapı oluşturdum.</p>
+<div class="highlight"><pre><span class="k">typedef</span> <span class="k">struct</span><span class="p">{</span>
+    <span class="kt">unsigned</span> <span class="kt">char</span> <span class="n">Z</span><span class="o">:</span><span class="mi">1</span><span class="p">;</span>
+    <span class="kt">unsigned</span> <span class="kt">char</span> <span class="n">S</span><span class="o">:</span><span class="mi">1</span><span class="p">;</span>
+    <span class="kt">unsigned</span> <span class="kt">char</span> <span class="n">C</span><span class="o">:</span><span class="mi">1</span><span class="p">;</span>
+    <span class="kt">unsigned</span> <span class="kt">char</span> <span class="n">V</span><span class="o">:</span><span class="mi">1</span><span class="p">;</span>
+    <span class="kt">unsigned</span> <span class="kt">char</span> <span class="n">R</span><span class="o">:</span><span class="mi">1</span><span class="p">;</span>
+<span class="p">}</span><span class="n">_flags</span><span class="p">;</span>
+</pre></div>
+
+
+<p>Yukarıda verdiğim iki yapıda da <code>bit field</code> kullandığımı fark etmişinizdir. Yanlarında yazan sayılar kaç bitlik veri tuttuğunu göstermektedir.</p>
+<p>16 bitlik kelimemizin yanında seçme işlemi yapan ayrı bir <code>select unit</code> bulunmaktadır. Onun kodlarını ilerleyen aşamada vereceğim ancak şimdilik onun kullanacağı yapıyı tanımlayalım. MUX1 ile <code>Internal</code> mı yoksa <code>External</code> adrese mi gidileceğini belirtiyoruz. MUX2'de üst seviyeli dillerden bildiğimiz if yapısını oluşturmak için gerekli. Yani zero bayrağı kalktıysa şu adrese git diyebilmemizi MUX2'ye vereceğimiz 3 bitlik veri ile belirliyoruz. Son olarakta gideceğimiz adresi 8 bitlik olarak veriyoruz. Kitapta normalde 6 bitlik adres kullanıyor ancak 8 bitlik kullanmanın bir sakıncası yok hatta daha doğru diye düşünüyorum.</p>
+<div class="highlight"><pre><span class="k">typedef</span> <span class="k">struct</span><span class="p">{</span>
+    <span class="kt">unsigned</span> <span class="kt">short</span> <span class="n">MUX1</span><span class="o">:</span><span class="mi">1</span><span class="p">;</span>
+    <span class="kt">unsigned</span> <span class="kt">short</span> <span class="n">MUX2</span><span class="o">:</span><span class="mi">3</span><span class="p">;</span>
+    <span class="kt">unsigned</span> <span class="kt">short</span> <span class="n">ADDRESS</span><span class="o">:</span><span class="mi">8</span><span class="p">;</span>
+<span class="p">}</span><span class="n">_select</span><span class="p">;</span>
+</pre></div>
+
+
+<p>Tüm bu yapılardan sonra işlemcinin anladığı <code>instruction</code> 28 bitten oluşur. A, B, C, D, F, H'den 16 bit, MUX1, MUX2 ve ADRESS'den de 8 bit gelince toplam 28 bit olur. Özetle işlemcimize 28 bitlik emirler verdiğimizde o bunları işleyecek ve davranışını belirleyecek.</p>
+<div class="highlight"><pre><span class="k">typedef</span> <span class="k">struct</span><span class="p">{</span>
+    <span class="n">_control_word</span><span class="o">*</span> <span class="n">current_word</span><span class="p">;</span>
+    <span class="n">_flags</span><span class="o">*</span> <span class="n">flags</span><span class="p">;</span>
+    <span class="n">_select</span><span class="o">*</span> <span class="n">select</span><span class="p">;</span>
+    <span class="kt">short</span><span class="o">*</span> <span class="n">registers</span><span class="p">;</span>
+    <span class="kt">unsigned</span> <span class="kt">int</span> <span class="n">reg_num</span><span class="p">;</span>
+    <span class="kt">unsigned</span> <span class="kt">int</span><span class="o">*</span> <span class="n">car</span><span class="p">;</span>
+    <span class="kt">unsigned</span> <span class="kt">int</span> <span class="n">car_counter</span><span class="p">;</span>
+<span class="p">}</span><span class="n">virtual_machine</span><span class="p">;</span>
+</pre></div>
+
+
+<p>Son olarakta sanal makine yapımızı oluşturuyoruz. Burada <code>current_word</code>, <code>flags</code> ve <code>select</code> ile yukarıda kurduğumuz yapılara işaret eden işaretçilerimizi tanımlıyoruz. Bu 3 yapının toplam 28 bitten oluştuğunu da belirtmiştim zaten.</p>
+<p><code>registers</code> ile işlemcimizde kullanacağımız kaydedicileri tutacağız. Tipini short yaptığım için bir kaydedici içinde 16 bitlik veri tutabiliriz. <code>reg_num</code> ilerde kaydedici sayısı artarsa diye koyduğum bir değişken. İşleyişte çok önemli bir yere sahip değil. </p>
+<p>En son kısımda yer alan <code>car</code> isimli işaretçiye sanal makinemizin çalıştırmasını isteceğimiz emirleri yazacağız. <code>unsigned int</code> yapma sebebim bize en azından 28 bitlik verinin yetmesidir. Düz hesap 32 bite yuvarladım yani. <code>car_counter</code>'da işlemcinin o an hangi emiri çalıştırdığı verisini tutacak. Yani bellekteki konumu tutacak. Buranın tipini değiştirerek ne kadar emir yazabileceğimizi belirleyebilirsiniz.</p>
+<h3>ALU</h3>
+<p>İşlemcideki bu kısım kod içerisinde <code>process</code> dosyaları altında duruyor. Burada yapılan işlem gayet basit. Emir <code>decode</code> edilip A, B, C, D, F bloklarına ayrıldıktan sonra uygulu koda göre işlemi uyguluyor. Mesela F bloğu 0 ise <code>TSF</code> isimli emir çalışacak. Bu da A kaydedicisi içerisindeki veriyi D kaydedicisi içerisine koyuyor. <code>vm-&gt;registers</code> bildiğiniz gibi tüm kaydedicilerimizi tutuyor. <code>vm-&gt;current_word-&gt;D</code> kısmı da D kaydedicisinin numarasını tutuyor. Yani bu değer 3 ise R3 kaydedicisinin içerisine verimiz gidecek anlamı taşır.</p>
+<div class="highlight"><pre><span class="kt">void</span> <span class="nf">process</span><span class="p">(</span><span class="n">virtual_machine</span><span class="o">*</span> <span class="n">vm</span><span class="p">){</span>
+    <span class="kt">short</span> <span class="n">first_result</span><span class="p">;</span>
+    <span class="kt">short</span> <span class="n">last_result</span><span class="p">;</span>
+    <span class="kt">unsigned</span> <span class="kt">int</span> <span class="n">tmp</span><span class="p">;</span>
+    <span class="k">switch</span><span class="p">(</span><span class="n">vm</span><span class="o">-&gt;</span><span class="n">current_word</span><span class="o">-&gt;</span><span class="n">F</span><span class="p">){</span>
+        <span class="k">case</span> <span class="mi">0</span>:
+            <span class="cm">/* TSF */</span>
+            <span class="n">vm</span><span class="o">-&gt;</span><span class="n">registers</span><span class="p">[</span><span class="n">vm</span><span class="o">-&gt;</span><span class="n">current_word</span><span class="o">-&gt;</span><span class="n">D</span><span class="p">]</span> <span class="o">=</span> <span class="n">vm</span><span class="o">-&gt;</span><span class="n">registers</span><span class="p">[</span><span class="n">vm</span><span class="o">-&gt;</span><span class="n">current_word</span><span class="o">-&gt;</span><span class="n">A</span><span class="p">];</span> <span class="c1">// transfer A to D</span>
+            <span class="k">break</span><span class="p">;</span>
+    <span class="p">....</span>
+</pre></div>
+
+
+<p>Bu birimde dikkat etmemiz gereken nokta bazı işlemlerden sonra bayrakların etkilenmesidir. Hangi işlemden sonra hangi bayrağın etkileneceği kitapta ayrıntılı belirtilmiştir. <code>process</code> fonksiyonu altında kullandığım <code>first_result</code>, <code>last_result</code> ve <code>tmp</code> isimli değişkenler bayrakların kaldırılması sırasında yardımcı olmaktadır. Mesela iki <code>short</code> tipinde veriyi topladığımızda taşma olup olmadığını anlamak için toplamı <code>int</code> tipinde tutuyorum ve eğer <code>short</code> tipinde toplama yapıldığında ortaya çıkan sonuca eşit değilse <code>overflow</code> bayrağını kaldırıyorum.</p>
+<div class="highlight"><pre><span class="kt">void</span> <span class="nf">zero_sign_control</span><span class="p">(</span><span class="kt">short</span> <span class="n">first_r</span><span class="p">,</span> <span class="kt">short</span> <span class="n">last_r</span><span class="p">,</span> <span class="n">_flags</span><span class="o">*</span> <span class="n">current</span><span class="p">){</span>
+    <span class="k">if</span><span class="p">(</span><span class="n">first_r</span> <span class="o">&gt;&gt;</span> <span class="mi">15</span><span class="p">)</span> <span class="n">current</span><span class="o">-&gt;</span><span class="n">S</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span> <span class="c1">// S = 1</span>
+    <span class="k">else</span> <span class="n">current</span><span class="o">-&gt;</span><span class="n">S</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+
+    <span class="k">if</span><span class="p">(</span><span class="o">!</span><span class="n">first_r</span><span class="p">)</span> <span class="n">current</span><span class="o">-&gt;</span><span class="n">Z</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span> <span class="c1">// Z = 1</span>
+    <span class="k">else</span> <span class="n">current</span><span class="o">-&gt;</span><span class="n">Z</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+
+
+<h3>Kaydırıcı</h3>
+<p>İşlemcinin bu kısmı emirin <code>H</code> bloğu ile ilgilenir. İşlemci çalışması sırasında buraya <code>ALU</code> kısmında işini bitirdikten sonra gelmektedir. Sonuçlar üzerinde kaydırma işlemleri burada yapılmaktadır.</p>
+<div class="highlight"><pre><span class="kt">void</span> <span class="nf">shifter</span><span class="p">(</span><span class="n">virtual_machine</span><span class="o">*</span> <span class="n">vm</span><span class="p">){</span>
+    <span class="kt">unsigned</span> <span class="kt">char</span> <span class="n">current</span><span class="p">,</span> <span class="n">temp</span><span class="p">;</span>
+    <span class="k">switch</span><span class="p">(</span><span class="n">vm</span><span class="o">-&gt;</span><span class="n">current_word</span><span class="o">-&gt;</span><span class="n">H</span><span class="p">){</span>
+        <span class="k">case</span> <span class="mh">0x0</span>:
+            <span class="cm">/* NSH */</span>
+            <span class="k">break</span><span class="p">;</span>
+
+        <span class="k">case</span> <span class="mh">0x1</span>:
+            <span class="cm">/* SHL */</span>
+            <span class="n">current</span> <span class="o">=</span> <span class="n">vm</span><span class="o">-&gt;</span><span class="n">registers</span><span class="p">[</span><span class="n">vm</span><span class="o">-&gt;</span><span class="n">current_word</span><span class="o">-&gt;</span><span class="n">D</span><span class="p">];</span>
+            <span class="n">temp</span> <span class="o">=</span> <span class="n">current</span> <span class="o">&lt;&lt;</span> <span class="mi">1</span><span class="p">;</span> <span class="c1">// shift left with input 0</span>
+            <span class="n">vm</span><span class="o">-&gt;</span><span class="n">registers</span><span class="p">[</span><span class="n">vm</span><span class="o">-&gt;</span><span class="n">current_word</span><span class="o">-&gt;</span><span class="n">D</span><span class="p">]</span> <span class="o">=</span> <span class="n">temp</span><span class="p">;</span>
+            <span class="k">break</span><span class="p">;</span>
+<span class="p">...</span>
+</pre></div>
+
+
+<p>Aynı <code>ALU</code>'da olduğu gibi burada da gelen bloğun değerine göre ilgili <code>case</code> çalışmaktadır. Mesela eğer H bloğu değeri 1 ise <code>SHL</code> komutu çalışacaktır. Yani D kaydedicisi içerisindeki veri 1 bit sola kaydırılacaktır. Yukarıdaki kod da <code>current</code> ve <code>temp</code> isimli iki değişken olduğunu göreceksiniz. Bunların <code>SHL</code> sırasında işe yaramadığını düşünebilirsiniz ancak bütünlüğü bozmamak için böyle kullandım. Biraz da ilk yazdığım koddan kaldığı için böyleler. Yakın zamanda gereksiz kısımları atabilirim.</p>
+<h3>Seçici</h3>
+<p>Bu kısımda da emirimizin <code>MUX1</code>, <code>MUX2</code> ve <code>ADDRESS</code> bloğuyla ilgileniriz. Yani bir sonraki çalıştırılcak emirin ne olacağına burası karar verir. <code>MUX2</code> içerisindeki veri bize nasıl bir zıplama yapılcağını belirtir. <code>ADDRESS</code> zaten bildiğimiz gibi eğer bir zıplama yapılacaksa bunun neresi olduğunu tutacak. </p>
+<div class="highlight"><pre><span class="kt">void</span> <span class="nf">selector</span><span class="p">(</span><span class="n">virtual_machine</span><span class="o">*</span> <span class="n">vm</span><span class="p">){</span>
+    <span class="k">switch</span><span class="p">(</span><span class="n">vm</span><span class="o">-&gt;</span><span class="n">select</span><span class="o">-&gt;</span><span class="n">MUX2</span><span class="p">){</span>
+        <span class="k">case</span> <span class="mi">0</span>:
+            <span class="cm">/* NEXT */</span>
+            <span class="n">vm</span><span class="o">-&gt;</span><span class="n">car_counter</span> <span class="o">+=</span> <span class="mi">1</span><span class="p">;</span>
+            <span class="k">break</span><span class="p">;</span>
+
+        <span class="k">case</span> <span class="mi">1</span>:
+            <span class="cm">/* LAD */</span>
+            <span class="n">vm</span><span class="o">-&gt;</span><span class="n">car_counter</span> <span class="o">=</span> <span class="n">vm</span><span class="o">-&gt;</span><span class="n">select</span><span class="o">-&gt;</span><span class="n">ADDRESS</span><span class="p">;</span>
+            <span class="k">break</span><span class="p">;</span>
+
+        <span class="k">case</span> <span class="mi">2</span>:
+            <span class="cm">/* LC */</span>
+            <span class="k">if</span><span class="p">(</span><span class="n">vm</span><span class="o">-&gt;</span><span class="n">flags</span><span class="o">-&gt;</span><span class="n">C</span><span class="p">)</span> <span class="n">vm</span><span class="o">-&gt;</span><span class="n">car_counter</span> <span class="o">=</span> <span class="n">vm</span><span class="o">-&gt;</span><span class="n">select</span><span class="o">-&gt;</span><span class="n">ADDRESS</span><span class="p">;</span>
+            <span class="k">else</span> <span class="n">vm</span><span class="o">-&gt;</span><span class="n">car_counter</span> <span class="o">+=</span> <span class="mi">1</span><span class="p">;</span>
+            <span class="k">break</span><span class="p">;</span>
+<span class="p">...</span>
+</pre></div>
+
+
+<p>Mesela eğer <code>MUX2</code> içeriği 0 ise <code>car</code> içerisinde yer alan bir sonraki emirin koşması için <code>car_counter</code> 1 arttırılıyor. Eğer 1 ise de doğrudan bir adrese gitme işlemi gerçekleşiyor. <code>ADDRESS</code> bloğu içerisindeki veri <code>car_counter</code> içerisinde alınıyor ve bir sonraki çalışacak olan emir bu adresten geliyor. Bu zıplamalar sırasında koşul çok önemlidir. Mesela <code>LC</code> eğer <code>Z</code> yani <code>ZERO</code> bayrağı kalktıysa <code>ADDRESS</code> içerisine git demek oluyor.</p>
+<h3>Makinenin çalışması</h3>
+<p>Buraya kadar işlemcinin kitapta anlatıldığı gibi yapısını nasıl kurduğumdan bahsettim. Şimdi de bu makinenin nasıl ve hangi sırayla çalışacağından bahsedeyim. <code>machine_init</code> fonksiyonu ile bellekten dinamik olarak yer tahsisi yapıp bayraklarımızı temizliyoruz ve çalışmaya hazır duruma getiriyoruz.</p>
+<div class="highlight"><pre><span class="kt">void</span> <span class="nf">execute</span><span class="p">(</span><span class="n">virtual_machine</span><span class="o">*</span> <span class="n">vm</span><span class="p">,</span> <span class="kt">unsigned</span> <span class="kt">char</span> <span class="n">flag</span><span class="p">){</span>
+    <span class="k">while</span><span class="p">(</span><span class="n">vm</span><span class="o">-&gt;</span><span class="n">flags</span><span class="o">-&gt;</span><span class="n">R</span><span class="p">){</span>
+        <span class="n">decode</span><span class="p">(</span><span class="n">vm</span><span class="p">,</span> <span class="n">vm</span><span class="o">-&gt;</span><span class="n">car</span><span class="p">[</span><span class="n">vm</span><span class="o">-&gt;</span><span class="n">car_counter</span><span class="p">]);</span>
+        <span class="n">process</span><span class="p">(</span><span class="n">vm</span><span class="p">);</span>
+        <span class="n">shifter</span><span class="p">(</span><span class="n">vm</span><span class="p">);</span>
+        <span class="n">selector</span><span class="p">(</span><span class="n">vm</span><span class="p">);</span>
+        <span class="k">if</span><span class="p">(</span><span class="n">flag</span><span class="p">)</span> <span class="n">debugger</span><span class="p">(</span><span class="n">vm</span><span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+
+
+<p>Burada yer alan <code>execute</code> fonksiyonu sanal makineyi çalıştıran ve emirleri işleten kısım. Burası da <code>vm-&gt;flags-&gt;R</code> olarak tanımlanan ve makinenin çalışıp çalışmadığı bilgisini tutan bayrağa göre işlem yapmaktadır. Eğer bu bayrak inmişse makine durur.</p>
+<p>Makine çalıştığı sürecede <code>vm-&gt;car_counter</code>'ın gösterdiği yerden emir okunup <code>decode</code> edilir ve önce işlem birimine daha sonra kaydırma ve son olarakta seçme birimlerine gider. <code>execute</code> fonksiyonuna vereceğimiz değere göre de her adımda kaydedicilerin içerisindeki veriyi basabiliriz. Görüldüğü gibi eğer 0 verirsek ekrana hiçbir çıktı verilmeyecektır. Eğer zaten tek bir kaydedicinin içeriğini görmek istiyorsak bunun için <code>printer</code> isimli fonksiyonu kullanabiliriz.</p>
+<div class="highlight"><pre><span class="kt">void</span> <span class="nf">decode</span><span class="p">(</span><span class="n">virtual_machine</span><span class="o">*</span> <span class="n">vm</span><span class="p">,</span> <span class="kt">unsigned</span> <span class="kt">int</span> <span class="n">cw</span><span class="p">){</span>
+    <span class="n">vm</span><span class="o">-&gt;</span><span class="n">select</span><span class="o">-&gt;</span><span class="n">MUX1</span> <span class="o">=</span> <span class="p">(</span><span class="n">cw</span> <span class="o">&amp;</span> <span class="mh">0x800</span><span class="p">)</span> <span class="o">&gt;&gt;</span> <span class="mi">11</span><span class="p">;</span> <span class="c1">// 0b0000000000000000100000000000 </span>
+    <span class="n">vm</span><span class="o">-&gt;</span><span class="n">select</span><span class="o">-&gt;</span><span class="n">MUX2</span> <span class="o">=</span> <span class="p">(</span><span class="n">cw</span> <span class="o">&amp;</span> <span class="mh">0x700</span><span class="p">)</span> <span class="o">&gt;&gt;</span> <span class="mi">8</span><span class="p">;</span>  <span class="c1">// 0b0000000000000000011100000000</span>
+    <span class="n">vm</span><span class="o">-&gt;</span><span class="n">select</span><span class="o">-&gt;</span><span class="n">ADDRESS</span> <span class="o">=</span> <span class="p">(</span><span class="n">cw</span> <span class="o">&amp;</span> <span class="mh">0xFF</span><span class="p">);</span>     <span class="c1">// 0b0000000000000000000011111111</span>
+    <span class="n">cw</span> <span class="o">&gt;&gt;=</span> <span class="mi">12</span><span class="p">;</span>
+    <span class="n">vm</span><span class="o">-&gt;</span><span class="n">current_word</span><span class="o">-&gt;</span><span class="n">A</span> <span class="o">=</span> <span class="p">(</span><span class="n">cw</span> <span class="o">&amp;</span> <span class="mh">0xE000</span><span class="p">)</span> <span class="o">&gt;&gt;</span> <span class="mi">13</span><span class="p">;</span> <span class="c1">// 0b1110000000000000</span>
+    <span class="n">vm</span><span class="o">-&gt;</span><span class="n">current_word</span><span class="o">-&gt;</span><span class="n">B</span> <span class="o">=</span> <span class="p">(</span><span class="n">cw</span> <span class="o">&amp;</span> <span class="mh">0x1C00</span><span class="p">)</span> <span class="o">&gt;&gt;</span> <span class="mi">10</span><span class="p">;</span> <span class="c1">// 0b0001110000000000</span>
+    <span class="n">vm</span><span class="o">-&gt;</span><span class="n">current_word</span><span class="o">-&gt;</span><span class="n">D</span> <span class="o">=</span> <span class="p">(</span><span class="n">cw</span> <span class="o">&amp;</span> <span class="mh">0x380</span><span class="p">)</span> <span class="o">&gt;&gt;</span> <span class="mi">7</span><span class="p">;</span>   <span class="c1">// 0b0000001110000000</span>
+    <span class="n">vm</span><span class="o">-&gt;</span><span class="n">current_word</span><span class="o">-&gt;</span><span class="n">F</span> <span class="o">=</span> <span class="p">(</span><span class="n">cw</span> <span class="o">&amp;</span> <span class="mh">0x78</span><span class="p">)</span> <span class="o">&gt;&gt;</span> <span class="mi">3</span><span class="p">;</span>    <span class="c1">// 0b0000000001111000</span>
+    <span class="n">vm</span><span class="o">-&gt;</span><span class="n">current_word</span><span class="o">-&gt;</span><span class="n">H</span> <span class="o">=</span> <span class="p">(</span><span class="n">cw</span> <span class="o">&amp;</span> <span class="mh">0x7</span><span class="p">);</span>          <span class="c1">// 0b0000000000000111</span>
+<span class="p">}</span>
+</pre></div>
+
+
+<p><code>decode</code> o an çalıştırılacak olan emirin binary formatını anlamlı kısıma çeviren fonksiyondur. Görüldüğü üzere emirin ikili tabandaki formuna uygun mask işlemleri ile verilerimizi çıkarabiliyoruz. Buradaki 16lık sayılar kafanızı karıştırmasın. Onlar yorum satırı olarak verdiğim ikili sayıların 16lık halleridir. Gelen emir parçalara ayrılıp maskelendikten sonra içindeki veriler en başta tanımladığımız yapıların içlerine yazılır. Haliyle artık emir çalıştırılmaya hazır duruma gelir.</p>
+<h3>Örnek algoritma</h3>
+<p>Buraya kadar işlemcinin yapısından tam olarak bahsetmek yerine sanal makineyi yazarken kullandığım yapılardan bahsettim. En azından kafanızda nasıl bir yapısı olduğu canlanmıştır. Yapabileceği tüm işlemler kitapta belirtiliyor zaten. Ayrıcana ben de yazmaya çalışıyorum. Tüm bunlardan yola çıkarak basit bir fibonacci hesaplayan kodu nasıl yazacağımızı göstermek istiyorum.</p>
+<div class="highlight"><pre>void another_fib_example<span class="p">(</span>virtual_machine<span class="o">*</span> my_vm<span class="p">){</span>
+    my_vm<span class="o">-&gt;</span>registers<span class="p">[</span><span class="m">1</span><span class="p">]</span> <span class="o">=</span> <span class="m">6</span><span class="p">;</span> <span class="o">//</span> n <span class="o">+</span> <span class="m">1</span> <span class="o">=</span> <span class="m">6</span><span class="p">,</span> n <span class="o">=</span> <span class="m">5</span>
+    my_vm<span class="o">-&gt;</span>registers<span class="p">[</span><span class="m">2</span><span class="p">]</span> <span class="o">=</span> <span class="m">1</span><span class="p">;</span> <span class="o">//</span> fib<span class="p">(</span><span class="m">0</span><span class="p">)</span> <span class="o">=</span> <span class="m">1</span>
+    my_vm<span class="o">-&gt;</span>registers<span class="p">[</span><span class="m">3</span><span class="p">]</span> <span class="o">=</span> <span class="m">1</span><span class="p">;</span> <span class="o">//</span> fib<span class="p">(</span><span class="m">1</span><span class="p">)</span> <span class="o">=</span> <span class="m">1</span>
+    my_vm<span class="o">-&gt;</span>registers<span class="p">[</span><span class="m">4</span><span class="p">]</span> <span class="o">=</span> <span class="m">0</span><span class="p">;</span> <span class="o">//</span> fib<span class="p">(</span>n<span class="p">)</span>
+
+    my_vm<span class="o">-&gt;</span>car<span class="p">[</span><span class="mh">0x0</span><span class="p">]</span> <span class="o">=</span> LZ  <span class="o">|</span> <span class="mh">0x5</span><span class="p">;</span> <span class="o">//</span> <span class="kr">if</span> z <span class="o">==</span> <span class="m">1</span> goto<span class="o">:</span> <span class="m">5</span>
+    my_vm<span class="o">-&gt;</span>car<span class="p">[</span><span class="mh">0x1</span><span class="p">]</span> <span class="o">=</span> RA2 <span class="o">|</span> RD4 <span class="o">|</span> TSF<span class="p">;</span> <span class="o">//</span> R4 <span class="o">&lt;-</span> R2
+    my_vm<span class="o">-&gt;</span>car<span class="p">[</span><span class="mh">0x2</span><span class="p">]</span> <span class="o">=</span> RA3 <span class="o">|</span> RB2 <span class="o">|</span> RD2 <span class="o">|</span> ADD<span class="p">;</span> <span class="o">//</span> R2 <span class="o">&lt;-</span> R2 <span class="o">+</span> R3
+    my_vm<span class="o">-&gt;</span>car<span class="p">[</span><span class="mh">0x3</span><span class="p">]</span> <span class="o">=</span> RA4 <span class="o">|</span> RD3 <span class="o">|</span> TSF<span class="p">;</span> <span class="o">//</span> R3 <span class="o">&lt;-</span> R4
+    my_vm<span class="o">-&gt;</span>car<span class="p">[</span><span class="mh">0x4</span><span class="p">]</span> <span class="o">=</span> RA1 <span class="o">|</span> RD1 <span class="o">|</span> DEC <span class="o">|</span> LAD <span class="o">|</span> <span class="mh">0x0</span><span class="p">;</span> <span class="o">//</span> R1 <span class="o">&lt;-</span> R1 <span class="o">-</span> <span class="m">1</span>
+    my_vm<span class="o">-&gt;</span>car<span class="p">[</span><span class="mh">0x5</span><span class="p">]</span> <span class="o">=</span> HLT<span class="p">;</span>
+
+    execute<span class="p">(</span>my_vm<span class="p">,</span> <span class="m">0</span><span class="p">);</span>
+    printer<span class="p">(</span>my_vm<span class="p">,</span> <span class="m">4</span><span class="p">);</span>
+
+<span class="p">}</span>
+</pre></div>
+
+
+<p>Bu kod da öncelikle kaydedicilerimizin içlerine değerlerimizi atadık. Normalde tam bir işlemcide bunun içinde ayrı bir emir gereklidir. Ben kitapta henüz bu kısmı görmediğim için ve kitaba sadık kalmak istediğimden bu emiri koymadım. Bu yüzden değerleri doğrudan atıyoruz şimdilik.</p>
+<p><code>car</code> isimli emir dizimizin 0 nolu adresine <code>LZ | 0x5</code> yazdık. Bunun anlamı eğer <code>Z</code> bayrağı kalkmışssa 5 nolu adresteki emiri çalıştır demektir. Burada bir noktaya dikkat çekmek istiyorum. Kodları yazarken doğrudan bit düzeyinde <code>or</code> yapabilmemizdir. Bu şekilde bir yapıyı basit typedefler ile sağladım.</p>
+<div class="highlight"><pre><span class="k">typedef</span> <span class="k">enum</span> <span class="p">{</span> <span class="n">TSF</span> <span class="o">=</span> <span class="mi">0</span><span class="n">b0000</span> <span class="o">&lt;&lt;</span> <span class="mi">15</span><span class="p">,</span> <span class="n">INC</span> <span class="o">=</span> <span class="mi">0</span><span class="n">b0001</span> <span class="o">&lt;&lt;</span> <span class="mi">15</span><span class="p">,</span> <span class="n">ADD</span> <span class="o">=</span> <span class="mi">0</span><span class="n">b0010</span> <span class="o">&lt;&lt;</span> <span class="mi">15</span><span class="p">,</span> <span class="n">SUB</span> <span class="o">=</span> <span class="mi">0</span><span class="n">b0101</span> <span class="o">&lt;&lt;</span> <span class="mi">15</span><span class="p">,</span>
+    <span class="n">DEC</span> <span class="o">=</span> <span class="mi">0</span><span class="n">b0110</span> <span class="o">&lt;&lt;</span> <span class="mi">15</span><span class="p">,</span> <span class="n">TRC</span> <span class="o">=</span> <span class="mi">0</span><span class="n">b0111</span> <span class="o">&lt;&lt;</span> <span class="mi">15</span><span class="p">,</span> <span class="n">AND</span> <span class="o">=</span> <span class="mi">0</span><span class="n">b1000</span> <span class="o">&lt;&lt;</span> <span class="mi">15</span><span class="p">,</span> <span class="n">OR</span> <span class="o">=</span> <span class="mi">0</span><span class="n">b1010</span> <span class="o">&lt;&lt;</span> <span class="mi">15</span><span class="p">,</span> 
+    <span class="n">XOR</span> <span class="o">=</span> <span class="mi">0</span><span class="n">b1100</span> <span class="o">&lt;&lt;</span> <span class="mi">15</span><span class="p">,</span> <span class="n">COM</span> <span class="o">=</span> <span class="mi">0</span><span class="n">b1110</span> <span class="o">&lt;&lt;</span> <span class="mi">15</span><span class="p">,</span> <span class="n">HLT</span> <span class="o">=</span> <span class="mi">0</span><span class="n">b1111</span> <span class="o">&lt;&lt;</span> <span class="mi">15</span><span class="p">}</span> <span class="n">Operations</span><span class="p">;</span>
+</pre></div>
+
+
+<p>İlgili işleve karşılık gelen değeri kontrol kelimesindeki konumuna gelecek kadar kaydırınca kodları yazarken gördüğünüz basit <code>or</code> işlemleri mümkün oldu.</p>
+<p>Mesela <code>car</code>'ın 2 numaraları adresine yazdığımız emirin anlamı şu şekildedir. <code>A</code> yoluna R3 registerını koy, <code>B</code> yoluna R2 registerını koy ve bunlara <code>ADD</code> işlevini uygula. Oluşan sonucu da <code>D</code> yoluna koyduğumuz R2 registerına yaz. Herhangi bir kaydırma işlevi belirtmediğimiz içinde <code>NSH</code> çalışacaktır. Yani sonuç aynen bırakılacak.</p>
+<p>Buradan da bahsettikten sonra 5 nolu satırdaki <code>HLT</code> emirinden de bahsetmek istiyorum. Kitapta normalde sanal bir ortamda olduğundan vişlemcinin nasıl duracağını bahsetmemiş. Ama bizim bir şekilde durdurmamız gerekiyordu. Ben <code>R</code> isiminde bir flag açarak bunu sağladım. Buradaki <code>HLT</code> emiri de bu bayrağı 0'a çekmektedir.</p>
+<p>Yukarıda verdiğim kod içerisinde yer alan <code>printer(my_vm, 4)</code> ifadesi, ekrana sadece 4 nolu registerin içeriğini bas demektir. Tüm işlemler bittiğinde burada fibonacci sayısının değerini görmemiz gerekiyor.</p>
+<p>Yukarıda gösterdiğim tüm kodlara, emirlere ve birkaç örneğe <a href="https://github.com/halitalptekin/monovm" title="Monovm">şuradan</a> ulaşabilirsiniz. Ben bu yazım ile bir sanal makine nasıl olmalıdır sorusuna cevap vermeye çalışmadım. Sadece günümü kurtaracak basit bir kodu yazarken nasıl bir yol izlediğimi göstermek istedim. Kodun bazı kısımlarında hatalar olabilir. Eğer bunları görürseniz ve bana bildirirseniz çok sevinirim. Sadece hata değil her türlü önerilere de açığım.</p></div>
+    <footer>
+<p class="meta">
+  <span class="byline author vcard">
+    Posted by <span class="fn">Halit Alptekin</span>
+  </span>
+<time datetime="2014-03-25T00:00:00" pubdate> Mar 25, 2014 </time>  <span class="categories">
+    <a class="category" href="http://www.halitalptekin.com/tag/c.html">c</a>
+    <a class="category" href="http://www.halitalptekin.com/tag/cpp.html">cpp</a>
+    <a class="category" href="http://www.halitalptekin.com/tag/sanal-makine.html">sanal makine</a>
+    <a class="category" href="http://www.halitalptekin.com/tag/virtual-machine.html">virtual machine</a>
+    <a class="category" href="http://www.halitalptekin.com/tag/morris-mano.html">morris mano</a>
+  </span>
+</p>    </footer>
+  </article>
+  <section>
+    <div class="addthis_toolbox addthis_default_style addthis_32x32_style">
+        <a class="addthis_button_preferred_1"></a>
+        <a class="addthis_button_preferred_2"></a>
+        <a class="addthis_button_preferred_3"></a>
+        <a class="addthis_button_preferred_4"></a>
+        <a class="addthis_button_preferred_5"></a>
+        <a class="addthis_button_preferred_6"></a>
+        <a class="addthis_button_preferred_7"></a>
+        <a class="addthis_button_preferred_8"></a>
+        <a class="addthis_button_preferred_9"></a>
+        <a class="addthis_button_preferred_10"></a>
+        <a class="addthis_counter addthis_bubble_style"></a>
+    </div>
+    <script type="text/javascript" src="http://s7.addthis.com/js/250/addthis_widget.js#pubid=ra-504c6d593daec57a"></script>
+  </section>
+  <section>
+    <h1>Comments</h1>
+    <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript></div>
+  </section>
+</div>
+<aside class="sidebar">
+  <section>
+    <h1>Recent Posts</h1>
+    <ul id="recent_posts">
+      <li class="post">
+          <a href="http://www.halitalptekin.com/sanal-makine.html">Sanal makine</a>
+      </li>
+      <li class="post">
+          <a href="http://www.halitalptekin.com/lispic-dusunceler.html">Lispic düşünceler</a>
+      </li>
+      <li class="post">
+          <a href="http://www.halitalptekin.com/sanal-ekonomi.html">Sanal ekonomi</a>
+      </li>
+      <li class="post">
+          <a href="http://www.halitalptekin.com/fourier-serileri.html">Fourier serileri</a>
+      </li>
+      <li class="post">
+          <a href="http://www.halitalptekin.com/python-ve-sinyaller.html">Python ve sinyaller</a>
+      </li>
+    </ul>
+  </section>
+  <section>
+      
+    <h1>Categories</h1>
+    <ul id="recent_posts">
+        <li><a href="http://www.halitalptekin.com/category/tasarim.html">tasarim</a></li>
+        <li><a href="http://www.halitalptekin.com/category/server.html">server</a></li>
+        <li><a href="http://www.halitalptekin.com/category/python.html">python</a></li>
+        <li><a href="http://www.halitalptekin.com/category/programlama.html">programlama</a></li>
+        <li><a href="http://www.halitalptekin.com/category/linux.html">linux</a></li>
+        <li><a href="http://www.halitalptekin.com/category/kisisel.html">kisisel</a></li>
+        <li><a href="http://www.halitalptekin.com/category/internet.html">internet</a></li>
+        <li><a href="http://www.halitalptekin.com/category/guvenlik.html">guvenlik</a></li>
+        <li><a href="http://www.halitalptekin.com/category/genel.html">genel</a></li>
+        <li><a href="http://www.halitalptekin.com/category/eglence.html">eglence</a></li>
+        <li><a href="http://www.halitalptekin.com/category/django.html">django</a></li>
+        <li><a href="http://www.halitalptekin.com/category/compsci.html">compsci</a></li>
+        <li><a href="http://www.halitalptekin.com/category/clojure.html">clojure</a></li>
+        <li><a href="http://www.halitalptekin.com/category/arduino.html">arduino</a></li>
+    </ul>
+  </section>
+ 
+
+
+    <section>
+        <h1>Social</h1>
+        <ul>
+            <li><a href="http://www.halitalptekin.com/feeds/all.rss.xml" type="application/rss+xml" rel="alternate">rss</a></li>
+            <li><a href="http://twitter.com/halitalptekin" target="_blank">twitter</a></li>
+            <li><a href="http://github.com/halitalptekin" target="_blank">github</a></li>
+            <li><a href="http://stackoverflow.com/users/1151618/halit-alptekin" target="_blank">stackoverflow</a></li>
+            <li><a href="http://tr.linkedin.com/in/halitalptekin" target="_blank">linkedin</a></li>
+        </ul>
+    </section>
+    <section>
+        <h1>Blogroll</h1>
+        <ul>
+            <li><a href="http://www.python.org" target="_blank">Python</a></li>
+        </ul>
+    </section>
+
+
+</aside><aside class="sidebar">
+  <section>
+    <h1>Recent Posts</h1>
+    <ul id="recent_posts">
+      <li class="post">
+          <a href="http://www.halitalptekin.com/sanal-makine.html">Sanal makine</a>
+      </li>
+      <li class="post">
+          <a href="http://www.halitalptekin.com/lispic-dusunceler.html">Lispic düşünceler</a>
+      </li>
+      <li class="post">
+          <a href="http://www.halitalptekin.com/sanal-ekonomi.html">Sanal ekonomi</a>
+      </li>
+      <li class="post">
+          <a href="http://www.halitalptekin.com/fourier-serileri.html">Fourier serileri</a>
+      </li>
+      <li class="post">
+          <a href="http://www.halitalptekin.com/python-ve-sinyaller.html">Python ve sinyaller</a>
+      </li>
+    </ul>
+  </section>
+  <section>
+      
+    <h1>Categories</h1>
+    <ul id="recent_posts">
+        <li><a href="http://www.halitalptekin.com/category/tasarim.html">tasarim</a></li>
+        <li><a href="http://www.halitalptekin.com/category/server.html">server</a></li>
+        <li><a href="http://www.halitalptekin.com/category/python.html">python</a></li>
+        <li><a href="http://www.halitalptekin.com/category/programlama.html">programlama</a></li>
+        <li><a href="http://www.halitalptekin.com/category/linux.html">linux</a></li>
+        <li><a href="http://www.halitalptekin.com/category/kisisel.html">kisisel</a></li>
+        <li><a href="http://www.halitalptekin.com/category/internet.html">internet</a></li>
+        <li><a href="http://www.halitalptekin.com/category/guvenlik.html">guvenlik</a></li>
+        <li><a href="http://www.halitalptekin.com/category/genel.html">genel</a></li>
+        <li><a href="http://www.halitalptekin.com/category/eglence.html">eglence</a></li>
+        <li><a href="http://www.halitalptekin.com/category/django.html">django</a></li>
+        <li><a href="http://www.halitalptekin.com/category/compsci.html">compsci</a></li>
+        <li><a href="http://www.halitalptekin.com/category/clojure.html">clojure</a></li>
+        <li><a href="http://www.halitalptekin.com/category/arduino.html">arduino</a></li>
+    </ul>
+  </section>
+ 
+
+
+    <section>
+        <h1>Social</h1>
+        <ul>
+            <li><a href="http://www.halitalptekin.com/feeds/all.rss.xml" type="application/rss+xml" rel="alternate">rss</a></li>
+            <li><a href="http://twitter.com/halitalptekin" target="_blank">twitter</a></li>
+            <li><a href="http://github.com/halitalptekin" target="_blank">github</a></li>
+            <li><a href="http://stackoverflow.com/users/1151618/halit-alptekin" target="_blank">stackoverflow</a></li>
+            <li><a href="http://tr.linkedin.com/in/halitalptekin" target="_blank">linkedin</a></li>
+        </ul>
+    </section>
+    <section>
+        <h1>Blogroll</h1>
+        <ul>
+            <li><a href="http://www.python.org" target="_blank">Python</a></li>
+        </ul>
+    </section>
+
+
+</aside>    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2013 - Halit Alptekin -
+  <span class="credit">Powered by <a href="http://getpelican.com">Pelican</a></span>
+</p></footer>
+    <script type="text/javascript">
+	    var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+	    document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+    </script>
+    <script type="text/javascript">
+	    try {
+	        var pageTracker = _gat._getTracker("UA-24728900-1");
+	    pageTracker._trackPageview();
+	    } catch(err) {}
+	</script>
+	<script type="text/javascript">
+	  var disqus_shortname = 'halitalptekin';
+	  (function() {
+	    var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+	    dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
+	    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+	   })();
+	</script>
+</body>
+</html>
