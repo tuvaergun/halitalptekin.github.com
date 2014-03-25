@@ -38,7 +38,7 @@
 &lt;/pre&gt;&lt;/div&gt;
 
 
-&lt;p&gt;Tüm bu yapılardan sonra işlemcinin anladığı &lt;code&gt;instruction&lt;/code&gt; 28 bitten oluşur. A, B, C, D, F, H'den 16 bit, MUX1, MUX2 ve ADRESS'den de 8 bit gelince toplam 28 bit olur. Özetle işlemcimize 28 bitlik emirler verdiğimizde o bunları işleyecek ve davranışını belirleyecek.&lt;/p&gt;
+&lt;p&gt;Tüm bu yapılardan sonra işlemcinin anladığı &lt;code&gt;instruction&lt;/code&gt; 28 bitten oluşur. A, B, C, D, F, H'den 16 bit, MUX1'den 1, MUX2'den 3 ve ADRESS'den de 8 bit gelince toplam 28 bit olur. Özetle işlemcimize 28 bitlik emirler verdiğimizde o bunları işleyecek ve davranışını belirleyecek.&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="k"&gt;typedef&lt;/span&gt; &lt;span class="k"&gt;struct&lt;/span&gt;&lt;span class="p"&gt;{&lt;/span&gt;
     &lt;span class="n"&gt;_control_word&lt;/span&gt;&lt;span class="o"&gt;*&lt;/span&gt; &lt;span class="n"&gt;current_word&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
     &lt;span class="n"&gt;_flags&lt;/span&gt;&lt;span class="o"&gt;*&lt;/span&gt; &lt;span class="n"&gt;flags&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
